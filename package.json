@@ -10,8 +10,10 @@
   "license": "BSD-2-Clause",
   "dependencies": {},
   "devDependencies": {
+    "chai": "^1.9.1",
     "gulp": "^3.5.6",
     "gulp-jshint": "^1.5.0",
-    "gulp-mocha": "^0.4.1"
+    "gulp-mocha": "^0.4.1",
+    "gulp-util": "^2.2.14"
   }
 }
