@@ -1,0 +1,15 @@
+{
+  "name": "Blame",
+  "version": "0.0.0",
+  "description": "Dynamic type checking system for JavaScript",
+  "main": "blame.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
