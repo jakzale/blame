@@ -8,8 +8,8 @@
   },
   "author": "",
   "license": "BSD-2-Clause",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "gulp": "^3.5.6"
   }
 }
