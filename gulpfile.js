@@ -3,8 +3,9 @@
 
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
-    mocha = require('gulp-mocha'),
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
+    karma = require('gulp-karma');
+
 
 gulp.task('lint', function () {
     gulp.src(['./lib/*.js', './test/*.js'])
@@ -12,14 +13,23 @@ gulp.task('lint', function () {
         .pipe(jshint.reporter('default'));
 });
 
-gulp.task('test', function () {
-    gulp.src(['./test/*.js'], {read: false})
-        .pipe(mocha({reporter: 'nyan'}))
-        .on('error', gutil.log);
-});
+//gulp.task('test', function () {
+//    gulp.src(['./test/*.js'], {read: false})
+//        .pipe(mocha({reporter: 'nyan'}))
+//        .on('error', gutil.log);
+//});
 
-gulp.task('watch', ['lint', 'test'], function () {
-    gulp.watch(['./test/*.js', './lib/*.js'], ['lint', 'test']);
-});
+//gulp.task('watch', ['lint', 'test'], function () {
+//    gulp.watch(['./test/*.js', './lib/*.js'], ['lint', 'test']);
+//});
 
-gulp.task('default', ['lint', 'test']);
+//gulp.task('watch', function () {
+//    gulp.src(['lib/*.js', 'test/**/*test.js'], {read: false}).
+//        pipe(karma({
+//        configFile: 'karma.conf.js',
+//        action: 'watch'}));
+//});
+
+gulp.task('default', function () {
+    console.log('Not implemented!');
+});
