@@ -8,8 +8,7 @@ define(['blame','chai'], function(blame, chai) {
 
     var expect = chai.expect;
 
-    var label = 'p',
-    l = new Label(label);
+    var label = new Label();
 
     describe('Blame', function () {
         describe('simple wrap', function () {
@@ -19,9 +18,10 @@ define(['blame','chai'], function(blame, chai) {
             });
 
             it('should return label for ill-typed', function () {
-                expect(wrap(Int, true, label)).to.eql(l);
-                expect(wrap(Int, 1.01, label)).to.eql(l);
-                expect(wrap(Bool, 1, label)).to.eql(l);
+                expect(label).to.eql(label);
+                expect(wrap(Int, true, label)).to.eql(label);
+                expect(wrap(Int, 1.01, label)).to.eql(label);
+                expect(wrap(Bool, 1, label)).to.eql(label);
             });
         });
 
@@ -53,17 +53,17 @@ define(['blame','chai'], function(blame, chai) {
             });
 
             it('should return label for ill-typed function', function () {
-                expect(wrap(I_I, nonsense_fun, label)(1)).to.eql(l);
-                expect(wrap(I_B, nonsense_fun, label)(1)).to.eql(l);
-                expect(wrap(B_I, nonsense_fun, label)(true)).to.eql(l);
-                expect(wrap(B_B, nonsense_fun, label)(true)).to.eql(l);
+                expect(wrap(I_I, nonsense_fun, label)(1)).to.eql(label);
+                expect(wrap(I_B, nonsense_fun, label)(1)).to.eql(label);
+                expect(wrap(B_I, nonsense_fun, label)(true)).to.eql(label);
+                expect(wrap(B_B, nonsense_fun, label)(true)).to.eql(label);
             });
 
             it('should return negated label for ill-typed arguments', function () {
-                expect(wrap(I_I, nonsense_fun, label)(true)).to.eql(l.negate());
-                expect(wrap(I_B, nonsense_fun, label)(true)).to.eql(l.negate());
-                expect(wrap(B_I, nonsense_fun, label)(1)).to.eql(l.negate());
-                expect(wrap(B_B, nonsense_fun, label)(1)).to.eql(l.negate());
+                expect(wrap(I_I, nonsense_fun, label)(true)).to.eql(label.negate());
+                expect(wrap(I_B, nonsense_fun, label)(true)).to.eql(label.negate());
+                expect(wrap(B_I, nonsense_fun, label)(1)).to.eql(label.negate());
+                expect(wrap(B_B, nonsense_fun, label)(1)).to.eql(label.negate());
             });
         });
     });
