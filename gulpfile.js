@@ -30,6 +30,19 @@ gulp.task('lint', function () {
 //        action: 'watch'}));
 //});
 
+gulp.task('test', function() {
+    gulp.src([
+        'test-main.js',
+        'lib/*.js',
+        'test/*.js'
+    ], {read: false}).pipe(karma({
+        configFile: 'karma.conf.js',
+        action: 'run'
+    })).on('error', function(err) {
+        throw err;
+    });
+});
+
 gulp.task('default', function () {
     console.log('Not implemented!');
 });
