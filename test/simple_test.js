@@ -7,10 +7,21 @@ define(['blame','chai'], function(blame, chai) {
     blame();
 
     var expect = chai.expect;
-
     var label = new Label();
 
     describe('Blame', function () {
+        describe('label class', function () {
+            it('should negate only the state', function() {
+                expect(label.negate().label).to.eql(label.label);
+                expect(label.negate().state).to.eql(!label.state);
+            });
+
+            it('should not allow private constructor', function() {
+                var l = new Label({}, 'a', false);
+                expect(l.state).to.eql(true);
+            });
+        });
+
         describe('simple wrap', function () {
             it('should return value for well-typed', function () {
                 expect(wrap(Int, 1, label)).to.eql(1);
