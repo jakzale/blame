@@ -1,4 +1,5 @@
 /*global describe, it, define, wrap, Int, Bool, Fun, Label */
+
 define(['blame','chai'], function(blame, chai) {
     'use strict';
 
@@ -6,9 +7,6 @@ define(['blame','chai'], function(blame, chai) {
     blame();
 
     var expect = chai.expect;
-
-    // Loading blame js
-    //require('../lib/blame.js')();
 
     var label = 'p',
     l = new Label(label);
