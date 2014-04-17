@@ -1,3 +1,4 @@
+/*global window */
 var allTestFiles = [];
 var TEST_REGEXP = /(spec|test)\.js$/i;
 
@@ -18,7 +19,9 @@ require.config({
 
     paths: {
         'blame': 'lib/blame',
-        'chai': 'node_modules/chai/chai'
+        'chai': 'node_modules/chai/chai',
+        'monadic': 'lib/monadic',
+        'type-check': 'lib/type-check'
     },
 
   // dynamically load all test files
