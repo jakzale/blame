@@ -8,7 +8,9 @@
   },
   "author": "",
   "license": "BSD-2-Clause",
-  "dependencies": {},
+  "dependencies": {
+    "type-check": "^0.3.1"
+  },
   "devDependencies": {
     "chai": "^1.9.1",
     "gulp": "^3.5.6",
