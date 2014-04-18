@@ -1,10 +1,10 @@
 /*global describe, it, define, wrap, Str, Num, Bool, Fun*/
 
-define(['monadic','chai'], function(monadic, chai) {
+define(['blame','chai'], function(blame, chai) {
   'use strict';
 
   // Pollutue the global namespace with monadic types
-  monadic();
+  blame();
   var expect = chai.expect;
 
   // Helper for generating closures
@@ -22,7 +22,7 @@ define(['monadic','chai'], function(monadic, chai) {
 
   describe('monadic blame', function() {
     it('should be a function', function () {
-      expect(typeof monadic).to.eql('function');
+      expect(typeof blame).to.eql('function');
       expect(typeof Fun).to.eql('function');
     });
 
