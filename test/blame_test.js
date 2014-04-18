@@ -1,4 +1,4 @@
-/*global describe, it, define, wrap, Str, Num, Bool, Fun*/
+/*global describe, it, define, wrap, Str, Num, Bool, TFun*/
 
 define(['blame','chai'], function(blame, chai) {
   'use strict';
@@ -23,7 +23,7 @@ define(['blame','chai'], function(blame, chai) {
   describe('monadic blame', function() {
     it('should be a function', function () {
       expect(typeof blame).to.eql('function');
-      expect(typeof Fun).to.eql('function');
+      expect(typeof TFun).to.eql('function');
     });
 
     describe('wrap', function() {
@@ -55,20 +55,20 @@ define(['blame','chai'], function(blame, chai) {
         it ('check for a function', function() {
           function empty () {}
 
-          expect(closure(Fun(Num, Num), 1, 'p')).to.throw(Error);
-          expect(closure(Fun(Num, Num), empty, 'p')).not.to.throw(Error);
+          expect(closure(TFun(Num, Num), 1, 'p')).to.throw(Error);
+          expect(closure(TFun(Num, Num), empty, 'p')).not.to.throw(Error);
         });
 
         it ('check type', function() {
           function fun (n) {return n + 1;}
           function fun2(n) {return n + '1';}
 
-          expect(wrap(Fun(Num, Num), fun, 'p')(1)).to.equal(2);
+          expect(wrap(TFun(Num, Num), fun, 'p')(1)).to.equal(2);
 
-          expect(closed(Fun(Num, Num), fun, 'p', 1)).not.to.throw(Error);
-          expect(closed(Fun(Num, Num), fun, 'p', '1')).to.throw('~p');
-          expect(closed(Fun(Num, Num), fun2, 'p', 1)).to.throw('p');
-          expect(closed(Fun(Num, Num), fun2, 'p', '1')).to.throw('p');
+          expect(closed(TFun(Num, Num), fun, 'p', 1)).not.to.throw(Error);
+          expect(closed(TFun(Num, Num), fun, 'p', '1')).to.throw('~p');
+          expect(closed(TFun(Num, Num), fun2, 'p', 1)).to.throw('p');
+          expect(closed(TFun(Num, Num), fun2, 'p', '1')).to.throw('p');
         });
       });
     });
