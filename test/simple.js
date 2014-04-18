@@ -4,12 +4,14 @@ define(['blame','chai'], function(blame, chai) {
     'use strict';
 
     // Polyfill blame
-    blame();
+    var that = this;
+    console.log(that);
 
     var expect = chai.expect;
     var label = new Label();
 
     describe('Blame', function () {
+        blame();
         describe('label class', function () {
             it('should negate only the state', function() {
                 expect(label.negate().label).to.eql(label.label);

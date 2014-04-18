@@ -21,7 +21,7 @@ require.config({
         'blame': 'lib/blame',
         'chai': 'node_modules/chai/chai',
         'monadic': 'lib/monadic',
-        'type-check': 'lib/type-check'
+        'stacktrace': 'stacktrace/stacktrace'
     },
 
   // dynamically load all test files

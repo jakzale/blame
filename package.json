@@ -9,7 +9,7 @@
   "author": "",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "type-check": "^0.3.1"
+    "contracts-js": "^0.3.4"
   },
   "devDependencies": {
     "chai": "^1.9.1",
