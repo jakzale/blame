@@ -3,11 +3,11 @@
 define(['blame','chai'], function(blame, chai) {
   'use strict';
 
-  // Pollutue the global namespace with monadic types
+   //Pollutue the global namespace with monadic types
   blame();
   var expect = chai.expect;
 
-  // Helper for generating closures
+   //Helper for generating closures
   function closure (type, value, label) {
     return function() {
       return wrap(type, value, label);
@@ -92,8 +92,45 @@ define(['blame','chai'], function(blame, chai) {
           // forall X -> X can be instantiated to Num -> Num
           expect(closed(TFun(Num, Num), wrap(TForall('X'), identity, 'p'), 'q',
                         1)).not.to.throw(Error);
+
           expect(wrap(TFun(Num, Num), wrap(TForall('X'), identity, 'p'),
                       'g')(1)).to.equal(1);
+        });
+      });
+
+      describe('new polymorphic types', function() {
+        it ('checks for a function', function() {
+          function empty () {}
+
+          expect(closure(Forall('X', TFun(Tyvar('X'), Tyvar('X'))), empty,
+                         'p')).not.to.throw(Error);
+          expect(closure(Forall('X', TFun(Tyvar('X'), Tyvar('X'))), 2,
+                         'p')).to.throw('p');
+        });
+
+        it ('ensures the invariants', function() {
+          function identity(x) {return x;}
+          function stringify(x) {return String(x);}
+
+          expect(closed(Forall('X', TFun(Tyvar('X'), Tyvar('X'))), identity,
+                        'p', 1)).not.to.throw(Error);
+          expect(closed(Forall('X', TFun(Tyvar('X'), Tyvar('X'))), stringify,
+                        'p', 1)).to.throw(Error);
+        });
+
+        it ('allows to be wrapped', function() {
+          function identity(x) {return x;}
+          // forall X -> X can be instantiated to Num -> Num
+          expect(closed(TFun(Num, Num), wrap(Forall('X', TFun(Tyvar('X'),
+                                                              Tyvar('X'))),
+                                                              identity, 'p'),
+                                                              'q',
+                                                              1)).not.to.throw(Error);
+
+          expect(wrap(TFun(Num, Num), wrap(Forall('X', TFun(Tyvar('X'),
+                                                            Tyvar('X'))),
+                                                            identity, 'p'),
+                                                            'g')(1)).to.equal(1);
         });
       });
     });
