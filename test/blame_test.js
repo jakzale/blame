@@ -76,32 +76,6 @@ define(['blame','chai'], function(blame, chai) {
         it ('checks for a function', function() {
           function empty () {}
 
-          expect(closure(TForall('X'), empty, 'p')).not.to.throw(Error);
-          expect(closure(TForall('X'), 2, 'p')).to.throw('p');
-        });
-
-        it ('ensures the invariants', function() {
-          function identity(x) {return x;}
-          function stringify(x) {return String(x);}
-          expect(closed(TForall('X'), identity, 'p', 1)).not.to.throw(Error);
-          expect(closed(TForall('X'), stringify, 'p', 1)).to.throw(Error);
-        });
-
-        it ('allows to be wrapped', function() {
-          function identity(x) {return x;}
-          // forall X -> X can be instantiated to Num -> Num
-          expect(closed(TFun(Num, Num), wrap(TForall('X'), identity, 'p'), 'q',
-                        1)).not.to.throw(Error);
-
-          expect(wrap(TFun(Num, Num), wrap(TForall('X'), identity, 'p'),
-                      'g')(1)).to.equal(1);
-        });
-      });
-
-      describe('new polymorphic types', function() {
-        it ('checks for a function', function() {
-          function empty () {}
-
           expect(closure(Forall('X', TFun(Tyvar('X'), Tyvar('X'))), empty,
                          'p')).not.to.throw(Error);
           expect(closure(Forall('X', TFun(Tyvar('X'), Tyvar('X'))), 2,
