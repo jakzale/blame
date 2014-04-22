@@ -19,7 +19,6 @@ require.config({
 
     paths: {
         'blame': 'lib/blame',
-        'poly': 'lib/poly',
         'chai': 'node_modules/chai/chai',
         'monadic': 'lib/monadic',
         'stacktrace': 'stacktrace/stacktrace'
