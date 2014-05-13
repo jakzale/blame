@@ -19,9 +19,6 @@ require.config({
 
     paths: {
         'blame': 'lib/blame',
-        'chai': 'node_modules/chai/chai',
-        'monadic': 'lib/monadic',
-        'stacktrace': 'stacktrace/stacktrace'
     },
 
   // dynamically load all test files
