@@ -9,6 +9,7 @@ define(['blame'], function (blame) {
     Str = blame.Str,
     Bool = blame.Bool,
     Fun = blame.Fun,
+    tFun = blame.tFun,
     wrap = blame.wrap;
 
   function empty() {return undefined; }
@@ -20,9 +21,9 @@ define(['blame'], function (blame) {
     };
   }
 
-  function ground(type, value) {
+  function ground(type, value, label) {
     return function () {
-      return wrap(type, value);
+      return wrap(type, value, label);
     };
   }
 
@@ -33,10 +34,10 @@ define(['blame'], function (blame) {
         definition1 = define(desc, empty),
         definition2 = define(desc, undefined);
 
-      expect(definition1).not.toThrow();
-      expect(definition2).toThrow('Test is not a function');
-      expect(definition1().description).toEqual(desc);
-      expect(definition1().contract).toEqual(empty);
+      expect(definition1).to.not.throw();
+      expect(definition2).to.throw('Test is not a function');
+      expect(definition1().description).to.equal(desc);
+      expect(definition1().contract).to.equal(empty);
     });
   });
 
@@ -66,20 +67,20 @@ define(['blame'], function (blame) {
 
     tests.forEach(function (elem) {
       var test = ground(elem.type, elem.value),
-        should = 'should',
+        shld = 'should',
         desc;
 
       if (!elem.result) {
-        should = 'shoult not';
+        shld = 'shoult not';
       }
 
-      desc = '[' + elem.type.description + ']' + ' ' + should + ' accept ' + elem.value;
+      desc = '[' + elem.type.description + ']' + ' ' + shld + ' accept ' + elem.value;
 
       it(desc, function () {
         if (elem.result) {
-          expect(test).not.toThrow();
+          expect(test).to.not.throw();
         } else {
-          expect(test).toThrow();
+          expect(test).to.throw();
         }
       });
     });
@@ -92,8 +93,21 @@ define(['blame'], function (blame) {
     };
   }
 
-  describe('First Order Functions', function () {
+  function wrapped(type, fun) {
+    return function (arg) {
+      return function () {
+        var wrapped_fun = wrap(type, fun);
 
+        return wrapped_fun(arg);
+      };
+    };
+  }
+
+  describe('First Order Functions', function () {
+    //
+    it('should not throw error', function () {
+      expect(wrapped(tFun(Num, Num), gen_function(1))(1)).to.not.throw();
+    });
   });
 });
 
