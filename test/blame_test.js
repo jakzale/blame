@@ -1,10 +1,99 @@
-/*global describe, it, define*/
+/*global describe, it, define, expect*/
+/*jslint indent: 2 */
 
-define(['blame'], function(blame){
-  describe('simple test', function() {
-    it('simple assert', function(done) {
-      expect(true).toBe(false);
+define(['blame'], function (blame) {
+  'use strict';
+
+  var Type = blame.Type,
+    Num = blame.Num,
+    Str = blame.Str,
+    Bool = blame.Bool,
+    Fun = blame.Fun,
+    wrap = blame.wrap;
+
+  function empty() {return undefined; }
+
+  function define(description, test) {
+    return function () {
+      var T = new Type(description, test);
+      return T;
+    };
+  }
+
+  function ground(type, value) {
+    return function () {
+      return wrap(type, value);
+    };
+  }
+
+  describe('Type creation', function () {
+    it('should create a type with description', function () {
+
+      var desc = 'Nonsense',
+        definition1 = define(desc, empty),
+        definition2 = define(desc, undefined);
+
+      expect(definition1).not.toThrow();
+      expect(definition2).toThrow('Test is not a function');
+      expect(definition1().description).toEqual(desc);
+      expect(definition1().contract).toEqual(empty);
     });
+  });
+
+  // Automatic test genration for simple values and types
+  // ----------------------------------------------------
+  function generate_tests(values, types) {
+    var tests = [];
+    values.forEach(function (value, vindex) {
+      types.forEach(function (type, tindex) {
+        var new_test = {
+          'value': value,
+          'type': type,
+          'result': (vindex === tindex)
+        };
+        tests.push(new_test);
+      });
+    });
+    return tests;
+  }
+
+  describe('Ground Types', function () {
+    // Run many tests for ground types:
+    // Figure out how to generate this automatically
+    var values = [1, 'a', true, empty],
+      types = [Num, Str, Bool, Fun],
+      tests = generate_tests(values, types);
+
+    tests.forEach(function (elem) {
+      var test = ground(elem.type, elem.value),
+        should = 'should',
+        desc;
+
+      if (!elem.result) {
+        should = 'shoult not';
+      }
+
+      desc = '[' + elem.type.description + ']' + ' ' + should + ' accept ' + elem.value;
+
+      it(desc, function () {
+        if (elem.result) {
+          expect(test).not.toThrow();
+        } else {
+          expect(test).toThrow();
+        }
+      });
+    });
+  });
+
+  // Generating test cases:
+  function gen_function(return_value) {
+    return function () {
+      return return_value;
+    };
+  }
+
+  describe('First Order Functions', function () {
+
   });
 });
 
