@@ -1,5 +1,5 @@
 /*global describe, it, define, expect*/
-/*jslint indent: 2 */
+/*jslint indent: 2, todo: true */
 
 define(['blame'], function (blame) {
   'use strict';
@@ -10,7 +10,23 @@ define(['blame'], function (blame) {
     Bool = blame.Bool,
     Fun = blame.Fun,
     tFun = blame.tFun,
-    wrap = blame.wrap;
+    wrap = blame.wrap,
+    forall = blame.forall,
+    tyvar = blame.tyvar,
+    gen_label,
+    values,
+    types;
+
+
+  gen_label = (function () {
+    var counter = 0;
+
+    return function () {
+      counter += 1;
+
+      return 'label_' + counter;
+    };
+  }());
 
   function empty() {return undefined; }
 
@@ -26,6 +42,9 @@ define(['blame'], function (blame) {
       return wrap(type, value, label);
     };
   }
+
+  values = [1, 'a', true, empty];
+  types = [Num, Str, Bool, Fun];
 
   describe('Type creation', function () {
     it('should create a type with description', function () {
@@ -48,9 +67,9 @@ define(['blame'], function (blame) {
     values.forEach(function (value, vindex) {
       types.forEach(function (type, tindex) {
         var new_test = {
-          'value': value,
-          'type': type,
-          'result': (vindex === tindex)
+          value: value,
+          type: type,
+          result: (vindex === tindex)
         };
         tests.push(new_test);
       });
@@ -61,26 +80,26 @@ define(['blame'], function (blame) {
   describe('Ground Types', function () {
     // Run many tests for ground types:
     // Figure out how to generate this automatically
-    var values = [1, 'a', true, empty],
-      types = [Num, Str, Bool, Fun],
-      tests = generate_tests(values, types);
+    var tests = generate_tests(values, types);
 
     tests.forEach(function (elem) {
-      var test = ground(elem.type, elem.value),
+      var label = gen_label(),
+        test = ground(elem.type, elem.value, label),
         shld = 'should',
         desc;
 
       if (!elem.result) {
-        shld = 'shoult not';
+        shld = 'should not';
       }
 
       desc = '[' + elem.type.description + ']' + ' ' + shld + ' accept ' + elem.value;
 
       it(desc, function () {
         if (elem.result) {
+          // TODO: Maybe just expect not labels
           expect(test).to.not.throw();
         } else {
-          expect(test).to.throw();
+          expect(test).to.throw(label);
         }
       });
     });
@@ -93,20 +112,93 @@ define(['blame'], function (blame) {
     };
   }
 
-  function wrapped(type, fun) {
+  function wrapped(type, fun, label) {
     return function (arg) {
       return function () {
-        var wrapped_fun = wrap(type, fun);
-
+        var wrapped_fun = wrap(type, fun, label);
         return wrapped_fun(arg);
       };
     };
   }
 
+  function gen_first_order(types, values) {
+    var tests = [];
+
+    types.forEach(function (domain, d_index) {
+      types.forEach(function (range, r_index) {
+        values.forEach(function (argument, a_index) {
+          values.forEach(function (result, res_index) {
+            var label = gen_label(),
+              error = '',
+              new_test;
+
+            // Is return value compatible?
+            if (res_index !== r_index) {
+              error = label;
+            }
+
+            // Is argument value compatible?
+            if (a_index !== d_index) {
+              error = '~' + label;
+            }
+
+            // Create new test
+            new_test = {
+              domain: domain,
+              range: range,
+              argument: argument,
+              result: result,
+              label: label,
+              error: error
+            };
+
+            tests.push(new_test);
+
+          });
+        });
+      });
+    });
+
+    return tests;
+  }
+
   describe('First Order Functions', function () {
-    //
-    it('should not throw error', function () {
-      expect(wrapped(tFun(Num, Num), gen_function(1))(1)).to.not.throw();
+    // So now I need to generate pairings of types:
+    var tests = gen_first_order(types, values);
+
+    tests.forEach(function (elem) {
+      var type = tFun(elem.domain, elem.range),
+        description = '[' + type.description + ']: wrapping ' + elem.argument +
+          ' -> ' + elem.result + ' should ',
+        fun = gen_function(elem.result),
+        test = wrapped(type, fun, elem.label)(elem.argument);
+
+      if (elem.error) {
+
+        it(description + 'raise blame ' + elem.label, function () {
+          expect(test).to.throw(elem.error);
+        });
+      } else {
+
+        it(description + 'not raise blame', function () {
+          expect(test).not.to.throw();
+        });
+      }
+    });
+  });
+
+  describe('Polymorphic Functions', function () {
+    it('should accept identity', function () {
+      var closure,
+        label = gen_label(),
+        type = forall('X', tFun(tyvar('X'), tyvar('X')));
+
+      function identity(x) { return x; }
+
+      closure = wrapped(type, identity, label)(1);
+
+      expect(closure).not.to.throw();
+
     });
   });
 });
