@@ -8,7 +8,9 @@
   },
   "author": "",
   "license": "BSD-2-Clause",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
   "devDependencies": {
     "karma": "^0.12.1",
     "karma-chai": "^0.1.0",
