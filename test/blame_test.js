@@ -230,54 +230,54 @@ define(['blame'], function (blame) {
     });
   });
 
-  // describe('Polymorphic Functions', function () {
-  //   it('should accept identity', function () {
-  //     var closure,
-  //       label = gen_label(),
-  //       bad_label = gen_label(),
-  //       type = forall('X', forall('Y', tFun(tyvar('X'), tFun(tyvar('Y'), tyvar('X')))));
-  //
-  //
-  //     function good(x) {
-  //       return function (y) {
-  //         return x;
-  //       };
-  //     }
-  //
-  //     function bad(x) {
-  //       return function (y) {
-  //         return y;
-  //       };
-  //     }
-  //
-  //     var typed_good = wrap(type, good, label);
-  //
-  //     // typed_good(1);
-  //     // typed_good('a');
-  //
-  //
-  //
-  //     function identity(x) { return x; }
-  //
-  //     function bad(x) {
-  //       if (typeof x === 'number') {
-  //         return x + 1;
-  //       }
-  //       else {
-  //         return x;
-  //       }
-  //     }
-  //
-  //     var typed_identity = wrap(type, identity, label);
-  //     var typed_bad = wrap(type, bad, bad_label);
-  //
-  //     typed_bad(2);
-  //     typed_identity(2);
-  //
-  //
-  //
-  //   });
-  // });
+   describe('Polymorphic Functions', function () {
+     it('should accept identity', function () {
+       var closure,
+         label = gen_label(),
+         bad_label = gen_label(),
+         type = forall('X', forall('Y', tFun(tyvar('X'), tFun(tyvar('Y'), tyvar('X')))));
+
+
+       function good(x) {
+         return function (y) {
+           return x;
+         };
+       }
+
+       function bad(x) {
+         return function (y) {
+           return y;
+         };
+       }
+
+       var typed_good = wrap(type, good, label);
+
+       // typed_good(1);
+       // typed_good('a');
+
+
+
+       function identity(x) { return x; }
+
+       function bad(x) {
+         if (typeof x === 'number') {
+           return x + 1;
+         }
+         else {
+           return x;
+         }
+       }
+
+       var typed_identity = wrap(type, identity, label);
+       var typed_bad = wrap(type, bad, bad_label);
+
+       typed_bad(2);
+       typed_identity(2);
+
+
+
+     });
+   });
 
 
 });

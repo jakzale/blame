@@ -18,6 +18,7 @@ module.exports = function(config) {
       // {pattern: 'stacktrace/stacktrace.js', included: false},
       {pattern: 'lib/**/*.js', included: false},
       {pattern: 'test/**/*test.js', included: false},
+      {pattern: 'node_modules/lodash/lodash.js', included: false},
       'test-main.js'
     ],
 
