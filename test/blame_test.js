@@ -187,82 +187,82 @@ define(['blame'], function (blame) {
     });
   });
 
-  describe('Polymorphic Functions', function () {
-    it('should accept identity', function () {
-      var closure,
-        label = gen_label(),
-        type = forall('X', tFun(tyvar('X'), tyvar('X')));
+  //describe('Polymorphic Functions', function () {
+  //  it('should accept identity', function () {
+  //    var closure,
+  //      label = gen_label(),
+  //      type = forall('X', tFun(tyvar('X'), tyvar('X')));
 
-      function identity(x) { return x; }
+  //    function identity(x) { return x; }
 
-      closure = wrapped(type, identity, label)(1);
+  //    closure = wrapped(type, identity, label)(1);
 
-      expect(closure).not.to.throw();
+  //    expect(closure).not.to.throw();
 
-    });
-  });
+  //  });
+  //});
 
-  describe('Polymorphic Functions', function () {
-    it('should accept identity', function () {
-      var
-        label = gen_label(),
-        bad_label = gen_label(),
-        type = forall('X', tFun(tyvar('X'), tyvar('X'))),
-        typed_identity,
-        typed_bad;
+  //describe('Polymorphic Functions', function () {
+  //  it('should accept identity', function () {
+  //    var
+  //      label = gen_label(),
+  //      bad_label = gen_label(),
+  //      type = forall('X', tFun(tyvar('X'), tyvar('X'))),
+  //      typed_identity,
+  //      typed_bad;
 
-      function identity(x) { return x; }
+  //    function identity(x) { return x; }
 
-      function bad(x) {
-        if (typeof x === 'number') {
-          return x + 1;
-        }
+  //    function bad(x) {
+  //      if (typeof x === 'number') {
+  //        return x + 1;
+  //      }
 
-        return x;
-      }
+  //      return x;
+  //    }
 
-      typed_identity = wrap(type, identity, label);
-      typed_bad = wrap(type, bad, bad_label);
+  //    typed_identity = wrap(type, identity, label);
+  //    typed_bad = wrap(type, bad, bad_label);
 
-      //typed_bad(2);
-      typed_identity(2);
+  //    //typed_bad(2);
+  //    typed_identity(2);
 
-    });
-  });
+  //  });
+  //});
 
-   describe('Polymorphic Functions', function () {
-     it('should accept identity', function () {
-       var closure,
-         label = gen_label(),
-         bad_label = gen_label(),
-         type = forall('X', forall('Y', tFun(tyvar('X'), tFun(tyvar('Y'), tyvar('X')))));
-
-
-       function good(x) {
-         return function (y) {
-           return x;
-         };
-       }
-
-       function bad(x) {
-         return function (y) {
-           return y;
-         };
-       }
-
-       var typed_good = wrap(type, good, label);
-
-       typed_good(1);
-       typed_good('a');
-
-       var typed_bad = wrap(type, bad, bad_label);
-
-       typed_bad(1);
-       typed_bad('a');
+   //describe('Polymorphic Functions', function () {
+   //  it('should accept identity', function () {
+   //    var closure,
+   //      label = gen_label(),
+   //      bad_label = gen_label(),
+   //      type = forall('X', forall('Y', tFun(tyvar('X'), tFun(tyvar('Y'), tyvar('X')))));
 
 
-     });
-   });
+   //    function good(x) {
+   //      return function (y) {
+   //        return x;
+   //      };
+   //    }
+
+   //    function bad(x) {
+   //      return function (y) {
+   //        return y;
+   //      };
+   //    }
+
+   //    var typed_good = wrap(type, good, label);
+
+   //    typed_good(1);
+   //    typed_good('a');
+
+   //    var typed_bad = wrap(type, bad, bad_label);
+
+   //    typed_bad(1);
+   //    typed_bad('a');
+
+
+   //  });
+   //});
 
 
 });
