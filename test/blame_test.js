@@ -224,7 +224,7 @@ define(['blame'], function (blame) {
       typed_identity = wrap(type, identity, label);
       typed_bad = wrap(type, bad, bad_label);
 
-      typed_bad(2);
+      //typed_bad(2);
       typed_identity(2);
 
     });
@@ -252,28 +252,13 @@ define(['blame'], function (blame) {
 
        var typed_good = wrap(type, good, label);
 
-       // typed_good(1);
-       // typed_good('a');
+       typed_good(1);
+       typed_good('a');
 
-
-
-       function identity(x) { return x; }
-
-       function bad(x) {
-         if (typeof x === 'number') {
-           return x + 1;
-         }
-         else {
-           return x;
-         }
-       }
-
-       var typed_identity = wrap(type, identity, label);
        var typed_bad = wrap(type, bad, bad_label);
 
-       typed_bad(2);
-       typed_identity(2);
-
+       typed_bad(1);
+       typed_bad('a');
 
 
      });
