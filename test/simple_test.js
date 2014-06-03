@@ -54,7 +54,7 @@ define(['blame'], function (blame) {
         definition2 = define(desc, undefined);
 
       expect(definition1).to.not.throw();
-      expect(definition2).to.throw('Test is not a function');
+      expect(definition2).to.throw('is not a function');
       expect(definition1().description).to.equal(desc);
       expect(definition1().contract).to.equal(empty);
     });
@@ -164,44 +164,22 @@ define(['blame'], function (blame) {
 
   describe('First Order Functions', function () {
     // So now I need to generate pairings of types:
-    var tests = gen_first_order(types, values);
+    it('should accept combinations of first order types', function (){
+      var tests = gen_first_order(types, values);
 
-    tests.forEach(function (elem) {
-      var type = tFun(elem.domain, elem.range),
-        description = '[' + type.description + ']: wrapping ' + elem.argument +
-          ' -> ' + elem.result + ' should ',
+      tests.forEach(function (elem) {
+        var type = tFun(elem.domain, elem.range),
         fun = gen_function(elem.result),
         test = wrapped(type, fun, elem.label)(elem.argument);
 
-      if (elem.error) {
-
-        it(description + 'raise blame ' + elem.label, function () {
-          expect(test).to.throw(elem.error);
-        });
-      } else {
-
-        it(description + 'not raise blame', function () {
-          expect(test).not.to.throw();
-        });
-      }
+        if (elem.error) {
+            expect(test).to.throw(elem.error);
+        } else {
+            expect(test).not.to.throw();
+        }
+      });
     });
   });
-
-  describe('Polymorphic Functions', function () {
-    it('should accept identity', function () {
-      var closure,
-        label = gen_label(),
-        type = forall('X', tFun(tyvar('X'), tyvar('X')));
-
-      function identity(x) { return x; }
-
-      closure = wrapped(type, identity, label)(1);
-
-      expect(closure).not.to.throw();
-
-    });
-  });
-
 });
 
 // vim: set ts=2 sw=2 sts=2 et :
