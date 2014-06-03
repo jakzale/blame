@@ -83,7 +83,7 @@ define(['blame'], function (blame) {
       //  typed_bad(2);
       //}).to.throw();
 
-      expect(function (){
+      expect(function () {
         typed_identity(2);
       }).not.to.throw();
 
@@ -133,7 +133,35 @@ define(['blame'], function (blame) {
     });
   });
 
+  describe('Multiple Arguments', function () {
+    it('should check for the right seal', function () {
+      var label = gen_label(),
+      AX_XXX = forall('X', tfun(tyvar('X'), tyvar('X'), tyvar('X'))),
+      AX_AY_XYX = forall('X', forall('Y', tfun(tyvar('X'), tyvar('Y'), tyvar('X'))));
 
+      function first(x, y) {
+        unused(y);
+        return x;
+      }
+
+      function second(x, y) {
+        unused(x);
+        return y;
+      }
+
+      function wrap2(type, fun, label) {
+        return function () {
+          wrap(type, fun, label)(1, 1);
+        };
+      }
+
+      expect(wrap2(AX_XXX, first, label)).not.to.throw();
+      expect(wrap2(AX_XXX, second, label)).not.to.throw();
+
+      expect(wrap2(AX_AY_XYX, first, label)).not.to.throw();
+      expect(wrap2(AX_AY_XYX, second, label)).to.throw(label);
+    });
+  });
 });
 
 // vim: set ts=2 sw=2 sts=2 et :

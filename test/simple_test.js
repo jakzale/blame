@@ -11,8 +11,7 @@ define(['blame'], function (blame) {
     Fun = blame.Fun,
     tfun = blame.tfun,
     wrap = blame.wrap,
-    forall = blame.forall,
-    tyvar = blame.tyvar,
+    Undefined = blame.Undefined,
     gen_label,
     values,
     types;
@@ -177,6 +176,106 @@ define(['blame'], function (blame) {
         } else {
             expect(test).not.to.throw();
         }
+      });
+    });
+  });
+
+  describe('Multiple Arity', function () {
+    it ('should accept functions that return no values', function () {
+
+      var foo = empty,
+        zero = tfun(Undefined),
+        one = tfun(Bool, Undefined),
+        two = tfun(Bool, Num, Undefined),
+        three = tfun(Bool, Num, Str, Undefined),
+        label = gen_label();
+
+      var fun_types = [zero, one, two, three];
+      var good = [true, 1, 'a'];
+      var bad = [1, 'a', true];
+
+      var i, args;
+      var good_cases = [];
+      var bad_cases = [];
+
+      for (i = 0; i <= good.length; i++) {
+        args = good.slice(0,i);
+        good_cases.push(args);
+      }
+
+      for (i = 1; i <= bad.length; i++) {
+        args = bad.slice(0,i);
+        bad_cases.push(args);
+      }
+
+      // Testing good cases
+      good_cases.forEach(function (args, index) {
+        expect(function () {
+          wrap(fun_types[index], foo, label).apply(undefined, args);
+        }).not.to.throw();
+      });
+
+      // Testing bad arguments
+      bad_cases.forEach(function (args, index) {
+        expect(function () {
+          wrap(fun_types[index + 1], foo, label).apply(undefined, args);
+        }).to.throw('~' + label);
+      });
+
+      // Testing bad number of arguments
+      good_cases.forEach(function (args, index) {
+        expect(function () {
+          wrap(fun_types[index], foo, label).apply(undefined, args.concat([1]));
+        }).to.throw('Wrong number of arguments');
+      });
+    });
+
+    it ('should reject functions when the return value is required', function() {
+
+      var foo = function () { return 1; },
+        zero = tfun(Undefined),
+        one = tfun(Bool, Undefined),
+        two = tfun(Bool, Num, Undefined),
+        three = tfun(Bool, Num, Str, Undefined),
+        label = gen_label();
+
+      var fun_types = [zero, one, two, three];
+      var good = [true, 1, 'a'];
+      var bad = [1, 'a', true];
+
+      var i, args;
+      var good_cases = [];
+      var bad_cases = [];
+
+      for (i = 0; i <= good.length; i++) {
+        args = good.slice(0,i);
+        good_cases.push(args);
+      }
+
+      for (i = 1; i <= bad.length; i++) {
+        args = bad.slice(0,i);
+        bad_cases.push(args);
+      }
+
+      // Testing good cases
+      good_cases.forEach(function (args, index) {
+        expect(function () {
+          wrap(fun_types[index], foo, label).apply(undefined, args);
+        }).to.throw(label);
+      });
+
+      // Testing bad arguments
+      bad_cases.forEach(function (args, index) {
+        expect(function () {
+          wrap(fun_types[index + 1], foo, label).apply(undefined, args);
+        }).to.throw('~' + label);
+      });
+
+      // Testing bad number of arguments
+      good_cases.forEach(function (args, index) {
+        expect(function () {
+          wrap(fun_types[index], foo, label).apply(undefined, args.concat([1]));
+        }).to.throw('Wrong number of arguments');
       });
     });
   });
