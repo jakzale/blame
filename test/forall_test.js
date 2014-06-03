@@ -4,18 +4,19 @@
 define(['blame'], function (blame) {
   'use strict';
 
+  function empty() {return; }
+
   var Type = blame.Type,
-    Num = blame.Num,
-    Str = blame.Str,
-    Bool = blame.Bool,
-    Fun = blame.Fun,
-    tFun = blame.tfun,
+    //Num = blame.Num,
+    //Str = blame.Str,
+    //Bool = blame.Bool,
+    //Fun = blame.Fun,
+    tfun = blame.tfun,
     wrap = blame.wrap,
     forall = blame.forall,
     tyvar = blame.tyvar,
-    gen_label,
-    values,
-    types;
+    unused = empty,
+    gen_label;
 
 
   gen_label = (function () {
@@ -28,7 +29,6 @@ define(['blame'], function (blame) {
     };
   }());
 
-  //function empty() {return undefined; }
 
   // Generating test cases:
 
@@ -45,7 +45,7 @@ define(['blame'], function (blame) {
     it('should accept identity', function () {
       var closure,
         label = gen_label(),
-        type = forall('X', tFun(tyvar('X'), tyvar('X')));
+        type = forall('X', tfun(tyvar('X'), tyvar('X')));
 
       function identity(x) { return x; }
 
@@ -61,7 +61,7 @@ define(['blame'], function (blame) {
       var
         label = gen_label(),
         //bad_label = gen_label(),
-        type = forall('X', tFun(tyvar('X'), tyvar('X'))),
+        type = forall('X', tfun(tyvar('X'), tyvar('X'))),
         typed_identity;
         //typed_bad;
 
@@ -90,46 +90,48 @@ define(['blame'], function (blame) {
     });
   });
 
-   describe('Nested Foralls', function () {
-     it('should check for the right seal', function () {
-       var label = gen_label(),
-         bad_label = gen_label(),
-         type = forall('X', forall('Y', tFun(tyvar('X'), tFun(tyvar('Y'), tyvar('X')))));
+  describe('Nested Foralls', function () {
+    it('should check for the right seal', function () {
+      var label = gen_label(),
+      bad_label = gen_label(),
+      type = forall('X', forall('Y', tfun(tyvar('X'), tfun(tyvar('Y'), tyvar('X')))));
 
 
-       function good(x) {
-         return function (y) {
-           return x;
-         };
-       }
+      function good(x) {
+        return function (y) {
+          unused(y);
+          return x;
+        };
+      }
 
-       function bad(x) {
-         return function (y) {
-           return y;
-         };
-       }
+      function bad(x) {
+        return function (y) {
+          unused(x);
+          return y;
+        };
+      }
 
-       var typed_good = wrap(type, good, label);
+      var typed_good = wrap(type, good, label);
 
-       expect(function () {
-         typed_good(1)(1);
-       }).not.to.throw();
-       expect(function () {
-         typed_good('a')('a');
-       }).not.to.throw();
+      expect(function () {
+        typed_good(1)(1);
+      }).not.to.throw();
+      expect(function () {
+        typed_good('a')('a');
+      }).not.to.throw();
 
-       var typed_bad = wrap(type, bad, bad_label);
+      var typed_bad = wrap(type, bad, bad_label);
 
-       expect(function () {
-         typed_bad(1)(1);
-       }).to.throw(/wrong seal/);
+      expect(function () {
+        typed_bad(1)(1);
+      }).to.throw(/wrong seal/);
 
-       expect(function () {
-         typed_bad('a')('a');
-       }).to.throw(/wrong seal/);
+      expect(function () {
+        typed_bad('a')('a');
+      }).to.throw(/wrong seal/);
 
-     });
-   });
+    });
+  });
 
 
 });

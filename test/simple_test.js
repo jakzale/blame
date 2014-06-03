@@ -9,7 +9,7 @@ define(['blame'], function (blame) {
     Str = blame.Str,
     Bool = blame.Bool,
     Fun = blame.Fun,
-    tFun = blame.tfun,
+    tfun = blame.tfun,
     wrap = blame.wrap,
     forall = blame.forall,
     tyvar = blame.tyvar,
@@ -168,7 +168,7 @@ define(['blame'], function (blame) {
       var tests = gen_first_order(types, values);
 
       tests.forEach(function (elem) {
-        var type = tFun(elem.domain, elem.range),
+        var type = tfun(elem.domain, elem.range),
         fun = gen_function(elem.result),
         test = wrapped(type, fun, elem.label)(elem.argument);
 
