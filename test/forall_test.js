@@ -6,11 +6,12 @@ define(['blame'], function (blame) {
 
   function empty() {return; }
 
-  var Type = blame.Type,
+  var
     //Num = blame.Num,
     //Str = blame.Str,
     //Bool = blame.Bool,
     //Fun = blame.Fun,
+    Any = blame.Any,
     tfun = blame.tfun,
     wrap = blame.wrap,
     forall = blame.forall,
@@ -53,6 +54,29 @@ define(['blame'], function (blame) {
 
       expect(closure).not.to.throw();
 
+    });
+
+    it('should complain about undefined tyvars', function () {
+      var type = forall('X', tfun(tyvar('X'), tyvar('Z'), tyvar('X'))),
+        label = gen_label();
+
+      function first(x, y) { unused(y); return x; }
+
+      expect(function () {
+        wrap(type, first, label)(1, 2);
+      }).to.throw('Z is not defined');
+    });
+
+    it('should prevent sealed values leaving the function', function () {
+      var type = forall('X', tfun(tyvar('X'), Any)),
+        label = gen_label();
+
+      function idenitity(x) { return x; }
+
+      // TODO: Check if it throws the right blame label
+      expect(function () {
+        wrap(type, idenitity, label)(1);
+      }).to.throw(label);
     });
   });
 
