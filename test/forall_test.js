@@ -78,17 +78,17 @@ define(['blame'], function (blame) {
       }).to.throw();
     });
 
-    it('should prevent sealed values leaving the function', function () {
-      var type = forall('X', tfun(tyvar('X'), Any)),
-        label = gen_label();
+    //it('should prevent sealed values leaving the function', function () {
+    //  var type = forall('X', tfun(tyvar('X'), Any)),
+    //    label = gen_label();
 
-      function idenitity(x) { return x; }
+    //  function idenitity(x) { return x; }
 
-      // TODO: Check if it throws the right blame label
-      expect(function () {
-        wrap(type, idenitity, label)(1);
-      }).to.throw(label);
-    });
+    //  // TODO: Check if it throws the right blame label
+    //  expect(function () {
+    //    wrap(type, idenitity, label)(1);
+    //  }).to.throw(label);
+    //});
   });
 
   describe('Polymorphic Functions', function () {
