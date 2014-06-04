@@ -196,6 +196,10 @@ define(['blame'], function (blame) {
       expect(wrap2(AX_AY_XYX, first, label)).not.to.throw();
       expect(wrap2(AX_AY_XYX, second, label)).to.throw(label);
     });
+
+    it('test', function() {
+
+    });
   });
 });
 
