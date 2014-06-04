@@ -67,6 +67,17 @@ define(['blame'], function (blame) {
       }).to.throw('Z is not defined');
     });
 
+    it('should complain about defining tyvar twice', function () {
+      var type = forall('X', forall('X', tfun(tyvar('X'), tyvar('X')))),
+        label = gen_label();
+
+      function identity(x) { return x; }
+
+      expect(function () {
+        wrap(type, identity, label)(1);
+      }).to.throw();
+    });
+
     it('should prevent sealed values leaving the function', function () {
       var type = forall('X', tfun(tyvar('X'), Any)),
         label = gen_label();
