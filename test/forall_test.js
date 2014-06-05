@@ -197,8 +197,31 @@ define(['blame'], function (blame) {
       expect(wrap2(AX_AY_XYX, second, label)).to.throw(label);
     });
 
-    it('test', function() {
+  });
 
+  describe('Seal Generation', function () {
+    it('should generate fresh seals', function () {
+      var type = forall('X', tfun(tyvar('X'), tyvar('X'))),
+      repeat = false,
+      label = gen_label(),
+      keep;
+
+      function iden_or_repeat(value) {
+        if (repeat) {
+          return keep;
+        }
+
+        keep = value;
+        return value;
+      }
+
+      expect(function () {
+        var wrapped_iden_or_repeat = wrap(type, iden_or_repeat, label);
+
+        console.log(wrapped_iden_or_repeat(1));
+        console.log(wrapped_iden_or_repeat(2));
+
+      }).to.throw();
     });
   });
 });
