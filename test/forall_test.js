@@ -212,6 +212,7 @@ define(['blame'], function (blame) {
         }
 
         keep = value;
+        repeat = true;
         return value;
       }
 
