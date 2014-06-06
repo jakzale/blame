@@ -4,8 +4,7 @@
 define(['blame'], function (blame) {
   'use strict';
 
-  var Type = blame.Type,
-    Num = blame.Num,
+  var Num = blame.Num,
     Str = blame.Str,
     Bool = blame.Bool,
     Fun = blame.Fun,
@@ -29,12 +28,6 @@ define(['blame'], function (blame) {
 
   function empty() {return undefined; }
 
-  function define(description, test) {
-    return function () {
-      var T = new Type(description, test);
-      return T;
-    };
-  }
 
   function ground(type, value, label) {
     return function () {
@@ -44,20 +37,6 @@ define(['blame'], function (blame) {
 
   values = [1, 'a', true, empty];
   types = [Num, Str, Bool, Fun];
-
-  describe('Type creation', function () {
-    it('should create a type with description', function () {
-
-      var desc = 'Nonsense',
-        definition1 = define(desc, empty),
-        definition2 = define(desc, undefined);
-
-      expect(definition1).to.not.throw();
-      expect(definition2).to.throw('is not a function');
-      expect(definition1().description).to.equal(desc);
-      expect(definition1().contract).to.equal(empty);
-    });
-  });
 
   // Automatic test genration for simple values and types
   // ----------------------------------------------------
