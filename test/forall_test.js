@@ -43,17 +43,16 @@ define(['blame'], function (blame) {
   }
 
   describe('Polymorphic Functions', function () {
-    it('should accept identity', function () {
-      var closure,
-        label = gen_label(),
-        type = forall('X', tfun(tyvar('X'), tyvar('X')));
-
+    it('accept idenitity', function () {
       function identity(x) { return x; }
+      var type = forall('X', tfun(tyvar('X'), tyvar('X'))),
+        label = gen_label(),
+        wrapped_identity = wrapped(type, identity, label);
 
-      closure = wrapped(type, identity, label)(1);
-
-      expect(closure).not.to.throw();
-
+        [1, 'a', true].forEach(function (value) {
+          expect(wrapped_identity(value)).not.to.throw();
+          expect(wrapped_identity(value)()).to.eql(value);
+        });
     });
 
     it('should complain about undefined tyvars', function () {
