@@ -6,13 +6,7 @@ define(['blame'], function (blame) {
 
   function empty() {return; }
 
-  var
-    //Num = blame.Num,
-    //Str = blame.Str,
-    //Bool = blame.Bool,
-    //Fun = blame.Fun,
-    Any = blame.Any,
-    tfun = blame.tfun,
+  var tfun = blame.tfun,
     wrap = blame.wrap,
     forall = blame.forall,
     tyvar = blame.tyvar,
