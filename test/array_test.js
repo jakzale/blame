@@ -11,6 +11,7 @@ define(['blame'], function (blame) {
     Num = blame.Num,
     Bool = blame.Bool,
     Str = blame.Str,
+    Fun = blame.Fun,
     tfun = blame.tfun,
     wrap = blame.wrap,
     forall = blame.forall,
@@ -126,7 +127,7 @@ define(['blame'], function (blame) {
 
    describe('checks on read', function () {
      function get(array, i) {
-       return function() {
+       return function () {
          return array[i];
        };
      }
@@ -150,6 +151,41 @@ define(['blame'], function (blame) {
         unused(v);
         expect(get(wrapped_array, i)).to.throw(label);
       });
+     });
+   });
+
+   describe('checks on write', function () {
+     function set(array, i, v) {
+       return function () {
+         array[i] = v;
+         return array[i];
+       };
+     }
+
+     it('should accept the correct type', function () {
+       var label = gen_label(),
+        values = [1, true, 'a', unused, []],
+        types = [Num, Bool, Str, Fun, Arr];
+
+        values.forEach(function (v, i) {
+          var array = [],
+            wrapped_array = wrap(tarr(types[i]), array, label);
+
+          expect(set(wrapped_array, 0, v)).not.to.throw().and.equal(v);
+        });
+     });
+
+     it('should reject the incorrect type', function () {
+       var label = gen_label(),
+        values = [1, true, 'a', unused, []],
+        types = [Arr, Num, Bool, Str, Fun];
+
+        values.forEach(function (v, i) {
+          var array = [],
+            wrapped_array = wrap(tarr(types[i]), array, label);
+
+          expect(set(wrapped_array, 0, v)).to.throw('~' + label);
+        });
      });
    });
   });
