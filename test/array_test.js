@@ -35,7 +35,34 @@ define(['blame'], function (blame) {
 
       return 'label_' + counter;
     };
+
   }());
+
+  describe('JavaScript Array type', function () {
+    describe('assumption', function () {
+      it('should have the property of length', function () {
+        used(expect([].hasOwnProperty('length')).to.be.true);
+      });
+
+      it('should not loop over properties', function () {
+        var count = 0,
+         other_count = 0,
+         array = [],
+         property;
+
+        for (property in array) {
+          if (array.hasOwnProperty(property)) {
+            count += 1;
+          } else {
+            other_count += 1;
+          }
+        }
+
+        expect(count).to.equal(0);
+        expect(other_count).to.equal(0);
+      });
+    });
+  });
 
   describe('Array wrapper', function () {
     it('should exist', function () {
@@ -89,9 +116,43 @@ define(['blame'], function (blame) {
         wrapped_a = wrap(tarr(Num), a, label);
 
         expect(wrapped_a.length).to.equal(a.length);
+
+        // Check for different type than Num:
+        a = repeat(true, v);
+        wrapped_a = wrap(tarr(Bool), a, label);
+        expect(wrapped_a.length).to.equal(a.length);
      });
    });
 
+   describe('checks on read', function () {
+     function get(array, i) {
+       return function() {
+         return array[i];
+       };
+     }
+
+     it('should accept the correct type', function () {
+       var label = gen_label(),
+        array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        wrapped_array = wrap(tarr(Num), array, label);
+
+      array.forEach(function (v, i) {
+        expect(get(wrapped_array, i)).not.to.throw().and.to.equal(v);
+      });
+     });
+
+     it('should reject the incorrect type', function () {
+       var label = gen_label(),
+        array = ['a', true, [], unused],
+        wrapped_array = wrap(tarr(Num), array, label);
+
+      array.forEach(function (v, i) {
+        unused(v);
+        expect(get(wrapped_array, i)).to.throw(label);
+      });
+     });
+   });
+  });
 
 });
 
