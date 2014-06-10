@@ -66,6 +66,13 @@ define(['blame'], function (blame) {
       expect(wrap(tarr(Num), array, label)).not.to.equal(array);
    });
 
+   it('should defer the check on elements until read/write', function () {
+     var label = gen_label();
+
+     expect(wrapped(tarr(Num), ['a', 'b', 'c'], label)).not.to.throw();
+   });
+
+
   });
 
 });
