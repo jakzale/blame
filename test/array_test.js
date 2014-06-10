@@ -63,6 +63,7 @@ define(['blame'], function (blame) {
       array = [];
 
       expect(array).to.equal(array);
+      expect(wrap(Arr, array, label)).to.equal(array);
       expect(wrap(tarr(Num), array, label)).not.to.equal(array);
    });
 
@@ -72,8 +73,25 @@ define(['blame'], function (blame) {
      expect(wrapped(tarr(Num), ['a', 'b', 'c'], label)).not.to.throw();
    });
 
+   it('should preserve the length', function () {
+     function repeat(e, n) {
+       var a = [];
+       while(n--) {
+         a.push(e);
+       }
+       return a;
+     }
 
-  });
+     var label = gen_label();
+
+     [0,1,2,3,4,5,6].forEach(function (v) {
+       var a = repeat(1, v),
+        wrapped_a = wrap(tarr(Num), a, label);
+
+        expect(wrapped_a.length).to.equal(a.length);
+     });
+   });
+
 
 });
 
