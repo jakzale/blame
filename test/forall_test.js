@@ -326,10 +326,10 @@ define(['blame'], function (blame) {
         }
 
         var type_filter = forall('X', tfun(tfun(tyvar('X'), Bool), tarr(tyvar('X')), tarr(tyvar('X')))),
-          wrapped_filter = wrap(type_filter, filter, label),
-          closure = function () {
-            return wrapped_filter(is_even, [1, 2, 3, 4, 5, 6]);
-          };
+        wrapped_filter = wrap(type_filter, filter, label),
+        closure = function () {
+          return wrapped_filter(is_even, [1, 2, 3, 4, 5, 6]);
+        };
 
         expect(closure).not.to.throw();
 
@@ -338,6 +338,37 @@ define(['blame'], function (blame) {
         [2, 4, 6].forEach(function (v, i) {
           expect(b[i]).to.equal(v);
         });
+      });
+
+
+      it('should allow to define map', function () {
+        function map(f, a) {
+          var b = [], i;
+
+          for (i = 0; i < a.length; i++) {
+            b[i] = f(a[i]);
+          }
+
+          return b;
+        }
+
+        function add1(x) {
+          return x + 1;
+        }
+
+        var type_map = forall('X', forall('Y', tfun(tfun(tyvar('X'), tyvar('Y')), tarr(tyvar('X')), tarr(tyvar('Y'))))),
+          wrapped_map = wrap(type_map, map, label),
+          closure = function () {
+            return wrapped_map(add1, [1, 2, 3, 4]);
+          };
+
+          expect(closure).not.to.throw();
+
+          var b = closure();
+          [2, 3, 4, 5].forEach(function (v, i) {
+            expect(b[i]).to.equal(v);
+          });
+
       });
     });
   });
