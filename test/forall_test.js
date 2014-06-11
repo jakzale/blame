@@ -11,6 +11,7 @@ define(['blame'], function (blame) {
     forall = blame.forall,
     tyvar = blame.tyvar,
     tarr = blame.tarr,
+    Bool = blame.Bool,
     unused = empty,
     gen_label;
 
@@ -303,6 +304,38 @@ define(['blame'], function (blame) {
         // Reverse a:
         a.reverse();
         a.forEach(function (v, i){
+          expect(b[i]).to.equal(v);
+        });
+      });
+
+      it('should allow to define filter', function () {
+        function filter(f, a) {
+          var b = [], i = 0, k = 0;
+
+          for (i = 0; i < a.length; i++) {
+            if (f(a[i])) {
+              b[k++] = a[i];
+            }
+          }
+
+          return b;
+        }
+
+        function is_even(x) {
+          return (x % 2) === 0;
+        }
+
+        var type_filter = forall('X', tfun(tfun(tyvar('X'), Bool), tarr(tyvar('X')), tarr(tyvar('X')))),
+          wrapped_filter = wrap(type_filter, filter, label),
+          closure = function () {
+            return wrapped_filter(is_even, [1, 2, 3, 4, 5, 6]);
+          };
+
+        expect(closure).not.to.throw();
+
+        var b = closure();
+
+        [2, 4, 6].forEach(function (v, i) {
           expect(b[i]).to.equal(v);
         });
       });
