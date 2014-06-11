@@ -138,7 +138,8 @@ define(['blame'], function (blame) {
         wrapped_array = wrap(tarr(Num), array, label);
 
       array.forEach(function (v, i) {
-        expect(get(wrapped_array, i)).not.to.throw().and.to.equal(v);
+        expect(get(wrapped_array, i)).not.to.throw();
+        expect(get(wrapped_array, i)()).to.equal(v);
       });
      });
 
@@ -171,7 +172,8 @@ define(['blame'], function (blame) {
           var array = [],
             wrapped_array = wrap(tarr(types[i]), array, label);
 
-          expect(set(wrapped_array, 0, v)).not.to.throw().and.equal(v);
+          expect(set(wrapped_array, 0, v)).not.to.throw();
+          expect(set(wrapped_array, 0, v)()).to.equal(v);
         });
      });
 
@@ -189,7 +191,6 @@ define(['blame'], function (blame) {
      });
    });
   });
-
 });
 
 // vim: set ts=2 sw=2 sts=2 et :

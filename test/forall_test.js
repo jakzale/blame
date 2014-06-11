@@ -10,6 +10,7 @@ define(['blame'], function (blame) {
     wrap = blame.wrap,
     forall = blame.forall,
     tyvar = blame.tyvar,
+    tarr = blame.tarr,
     unused = empty,
     gen_label;
 
@@ -45,7 +46,7 @@ define(['blame'], function (blame) {
 
         [1, 'a', true].forEach(function (value) {
           expect(wrapped_identity(value)).not.to.throw();
-          expect(wrapped_identity(value)()).to.eql(value);
+          expect(wrapped_identity(value)()).to.equal(value);
         });
     });
 
@@ -216,6 +217,46 @@ define(['blame'], function (blame) {
         wrapped_iden_or_repeat(2);
 
       }).to.throw();
+    });
+  });
+
+  describe('More Complex Polymorphic Tests', function () {
+    describe('Example From Phil', function () {
+      //var type = forall('Y', forall('X', tfun(tfun(tfun()))))
+      unused();
+    });
+
+    describe('Array Operations', function () {
+        var type = forall('X', tfun(tarr(tyvar('X')), tyvar('X'))),
+          label = gen_label();
+
+      it('should allow to define head', function () {
+        function head (a) {
+          return a[0];
+        }
+
+        var wrapped_head = wrap(type, head, label),
+          closure = function () {
+            return wrapped_head([1, 2, 3]);
+          };
+
+        expect(closure).to.not.throw();
+        expect(closure()).to.equal(1);
+      });
+
+      it('should allow to define last', function (){
+        function last (a) {
+          return a[a.length - 1];
+        }
+
+        var wrapped_last = wrap(type, last, label),
+          closure = function () {
+            return wrapped_last([1, 2, 3]);
+          };
+
+        expect(closure).not.to.throw();
+        expect(closure()).to.equal(3);
+      });
     });
   });
 });
