@@ -231,7 +231,7 @@ define(['blame'], function (blame) {
           label = gen_label();
 
       it('should allow to define head', function () {
-        function head (a) {
+        function head(a) {
           return a[0];
         }
 
@@ -245,7 +245,7 @@ define(['blame'], function (blame) {
       });
 
       it('should allow to define last', function (){
-        function last (a) {
+        function last(a) {
           return a[a.length - 1];
         }
 
@@ -257,6 +257,29 @@ define(['blame'], function (blame) {
         expect(closure).not.to.throw();
         expect(closure()).to.equal(3);
       });
+
+      it('should allow to define array identity', function () {
+        function array_id(a) {
+          return a;
+        }
+
+        var type_id = forall('X', tfun(tarr(tyvar('X')), tarr(tyvar('X')))),
+          wrapped_id = wrap(type_id, array_id, label),
+          a = [1, 2, 3, 4, 5],
+          closure = function () {
+            return wrapped_id(a);
+          };
+
+          expect(closure).not.to.throw();
+
+          var b = closure();
+          a.forEach(function (v, i) {
+            expect(b[i]).to.equal(v);
+          });
+
+      });
+
+
     });
   });
 });
