@@ -227,8 +227,15 @@ define(['blame'], function (blame) {
     });
 
     describe('Array Operations', function () {
-        var type = forall('X', tfun(tarr(tyvar('X')), tyvar('X'))),
-          label = gen_label();
+      var type = forall('X', tfun(tarr(tyvar('X')), tyvar('X'))),
+        type_id = forall('X', tfun(tarr(tyvar('X')), tarr(tyvar('X')))),
+        label = gen_label();
+
+      function apply(fun, val) {
+        return function () {
+          return fun(val);
+        };
+      }
 
       it('should allow to define head', function () {
         function head(a) {
@@ -236,9 +243,7 @@ define(['blame'], function (blame) {
         }
 
         var wrapped_head = wrap(type, head, label),
-          closure = function () {
-            return wrapped_head([1, 2, 3]);
-          };
+          closure = apply(wrapped_head, [1, 2, 3]);
 
         expect(closure).to.not.throw();
         expect(closure()).to.equal(1);
@@ -250,9 +255,7 @@ define(['blame'], function (blame) {
         }
 
         var wrapped_last = wrap(type, last, label),
-          closure = function () {
-            return wrapped_last([1, 2, 3]);
-          };
+          closure = apply(wrapped_last, [1, 2, 3]);
 
         expect(closure).not.to.throw();
         expect(closure()).to.equal(3);
@@ -263,23 +266,46 @@ define(['blame'], function (blame) {
           return a;
         }
 
-        var type_id = forall('X', tfun(tarr(tyvar('X')), tarr(tyvar('X')))),
-          wrapped_id = wrap(type_id, array_id, label),
+        var wrapped_id = wrap(type_id, array_id, label),
           a = [1, 2, 3, 4, 5],
-          closure = function () {
-            return wrapped_id(a);
-          };
+          closure = apply(wrapped_id, a);
 
           expect(closure).not.to.throw();
 
           var b = closure();
+
           a.forEach(function (v, i) {
             expect(b[i]).to.equal(v);
           });
 
       });
 
+      it('should allow to define reverse', function () {
+        function reverse(a) {
+          var b = [],
+            l = a.length,
+            i = 0;
 
+          while(l--) {
+            b[i++] = a[l];
+          }
+
+          return b;
+        }
+
+        var wrapped_reverse = wrap(type_id, reverse, label),
+          a = ['a', '1', true, 2],
+          closure = apply(wrapped_reverse, a);
+
+        expect(closure).not.to.throw();
+
+        var b = closure();
+        // Reverse a:
+        a.reverse();
+        a.forEach(function (v, i){
+          expect(b[i]).to.equal(v);
+        });
+      });
     });
   });
 });
