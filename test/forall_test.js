@@ -362,13 +362,37 @@ define(['blame'], function (blame) {
             return wrapped_map(add1, [1, 2, 3, 4]);
           };
 
+        expect(closure).not.to.throw();
+
+        var b = closure();
+        [2, 3, 4, 5].forEach(function (v, i) {
+          expect(b[i]).to.equal(v);
+        });
+      });
+
+      it('should allow to define fold', function () {
+        function fold(f, s, a) {
+          var i;
+          for (i = 0; i < a.length; i++) {
+            s = f(a[i], s);
+          }
+          return s;
+        }
+
+        function add(x, y) {
+          return x + y;
+        }
+
+        var type_fold = forall('X', forall('Y', tfun(tfun(tyvar('X'), tyvar('Y'), tyvar('Y')), tyvar('Y'), tarr(tyvar('X')), tyvar('Y')))),
+          wrapped_fold = wrap(type_fold, fold, label),
+          closure = function () {
+            return wrapped_fold(add, 0, [1, 2, 3, 4, 5]);
+          };
+
           expect(closure).not.to.throw();
 
           var b = closure();
-          [2, 3, 4, 5].forEach(function (v, i) {
-            expect(b[i]).to.equal(v);
-          });
-
+          expect(b).to.equal(15);
       });
     });
   });
