@@ -176,7 +176,7 @@ define(['blame'], function (blame) {
   });
 
   describe('More Complex Polymorphic Tests', function () {
-    it('Example From Phil -- modified by me', function () {
+    it('Simple application', function () {
       function identity(x) { return x; }
       function apply(f, x) { return f(x); }
 
@@ -193,25 +193,25 @@ define(['blame'], function (blame) {
         expect(closure(identity, 1)).not.to.throw();
     });
 
-    //describe('Example From Phil', function () {
-    //  function identity(x) { return x; }
-    //  function apply(f, x) { return f(x); }
-    //  function applied(app) {
-    //    return app(identity, 1);
-    //  }
+    describe('Example From Phil', function () {
+      function identity(x) { return x; }
+      function apply(f, x) { return f(x); }
+      function applied(app) {
+        return app(identity, 1);
+      }
 
-    //  var type = forall('X', forall('Y', tfun(tfun(tfun(tyvar('Y'), tyvar('X')), tyvar('X')), tyvar('Y')))),
-    //    label = gen_label(),
-    //    wrapped_applied = wrap(type, applied, label),
-    //    closure = function () {
-    //      return function()
-    //      {
-    //        return wrapped_applied(apply);
-    //      };
-    //    };
+      var type = forall('Y', tfun(forall('X', tfun(tfun(tyvar('Y'), tyvar('X')), tyvar('X')), tyvar('Y')))),
+        label = gen_label(),
+        wrapped_applied = wrap(type, applied, label),
+        closure = function () {
+          return function()
+          {
+            return wrapped_applied(apply);
+          };
+        };
 
-    //    expect(closure()).not.to.throw();
-    //});
+        expect(closure).not.to.throw();
+    });
 
     describe('Array Operations', function () {
       var type = forall('X', tfun(tarr(tyvar('X')), tyvar('X'))),
@@ -229,11 +229,18 @@ define(['blame'], function (blame) {
           return a[0];
         }
 
+        function bad_head(a) {
+          return 1;
+        }
+
         var wrapped_head = wrap(type, head, label),
-          closure = apply(wrapped_head, [1, 2, 3]);
+            wrapped_bad = wrap(type, bad_head, label),
+          closure = apply(wrapped_head, [1, 2, 3]),
+          bad_closure = apply(wrapped_bad, [1, 2, 3]);
 
         expect(closure).to.not.throw();
         expect(closure()).to.equal(1);
+        expect(bad_closure).to.throw('X');
       });
 
       it('should allow to define last', function (){
@@ -241,11 +248,18 @@ define(['blame'], function (blame) {
           return a[a.length - 1];
         }
 
+        function bad_last(a) {
+          return 3;
+        }
+
         var wrapped_last = wrap(type, last, label),
-          closure = apply(wrapped_last, [1, 2, 3]);
+          wrapped_bad = wrap(type, bad_last, label),
+          closure = apply(wrapped_last, [1, 2, 3]),
+          bad_closure = apply(wrapped_bad, [1, 2, 3]);
 
         expect(closure).not.to.throw();
         expect(closure()).to.equal(3);
+        expect(bad_closure).to.throw('X');
       });
 
       it('should allow to define array identity', function () {
@@ -253,13 +267,23 @@ define(['blame'], function (blame) {
           return a;
         }
 
+        function bad_id(a) {
+          return [1, 2, 3, 4, 5];
+        }
+
         var wrapped_id = wrap(type_id, array_id, label),
           a = [1, 2, 3, 4, 5],
-          closure = apply(wrapped_id, a);
+          closure = apply(wrapped_id, a),
+          wrapped_bad = wrap(type_id, bad_id, label),
+          bad_closure = apply(wrapped_bad, a);
 
           expect(closure).not.to.throw();
-
           var b = closure();
+
+          // You need to access an element to throw an error
+          expect(function () {
+            bad_closure()[0];
+          }).to.throw();
 
           a.forEach(function (v, i) {
             expect(b[i]).to.equal(v);
