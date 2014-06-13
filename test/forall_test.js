@@ -72,52 +72,6 @@ define(['blame'], function (blame) {
         wrap(type, identity, label)(1);
       }).to.throw();
     });
-
-    //it('should prevent sealed values leaving the function', function () {
-    //  var type = forall('X', tfun(tyvar('X'), Any)),
-    //    label = gen_label();
-
-    //  function idenitity(x) { return x; }
-
-    //  // TODO: Check if it throws the right blame label
-    //  expect(function () {
-    //    wrap(type, idenitity, label)(1);
-    //  }).to.throw(label);
-    //});
-  });
-
-  describe('Polymorphic Functions', function () {
-    it('should accept identity', function () {
-      var
-        label = gen_label(),
-        //bad_label = gen_label(),
-        type = forall('X', tfun(tyvar('X'), tyvar('X'))),
-        typed_identity;
-        //typed_bad;
-
-      function identity(x) { return x; }
-
-      //function bad(x) {
-      //  if (typeof x === 'number') {
-      //    return x + 1;
-      //  }
-
-      //  return x;
-      //}
-
-      typed_identity = wrap(type, identity, label);
-      //typed_bad = wrap(type, bad, bad_label);
-
-      // TODO: Figure how to pass this
-      //expect(function () {
-      //  typed_bad(2);
-      //}).to.throw();
-
-      expect(function () {
-        typed_identity(2);
-      }).not.to.throw();
-
-    });
   });
 
   describe('Nested Foralls', function () {
@@ -222,7 +176,7 @@ define(['blame'], function (blame) {
   });
 
   describe('More Complex Polymorphic Tests', function () {
-    describe('Example From Phil -- modified by me', function () {
+    it('Example From Phil -- modified by me', function () {
       function identity(x) { return x; }
       function apply(f, x) { return f(x); }
 
