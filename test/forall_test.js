@@ -222,10 +222,42 @@ define(['blame'], function (blame) {
   });
 
   describe('More Complex Polymorphic Tests', function () {
-    describe('Example From Phil', function () {
-      //var type = forall('Y', forall('X', tfun(tfun(tfun()))))
-      unused();
+    describe('Example From Phil -- modified by me', function () {
+      function identity(x) { return x; }
+      function apply(f, x) { return f(x); }
+
+      var type = forall('X', forall('Y', tfun(tfun(tyvar('X'), tyvar('Y')), tyvar('X'), tyvar('Y')))),
+        label = gen_label(),
+        wrapped_apply = wrap(type, apply, label),
+        closure = function (f, x) {
+          return function()
+          {
+            return wrapped_apply(f, x);
+          };
+        };
+
+        expect(closure(identity, 1)).not.to.throw();
     });
+
+    //describe('Example From Phil', function () {
+    //  function identity(x) { return x; }
+    //  function apply(f, x) { return f(x); }
+    //  function applied(app) {
+    //    return app(identity, 1);
+    //  }
+
+    //  var type = forall('X', forall('Y', tfun(tfun(tfun(tyvar('Y'), tyvar('X')), tyvar('X')), tyvar('Y')))),
+    //    label = gen_label(),
+    //    wrapped_applied = wrap(type, applied, label),
+    //    closure = function () {
+    //      return function()
+    //      {
+    //        return wrapped_applied(apply);
+    //      };
+    //    };
+
+    //    expect(closure()).not.to.throw();
+    //});
 
     describe('Array Operations', function () {
       var type = forall('X', tfun(tarr(tyvar('X')), tyvar('X'))),
