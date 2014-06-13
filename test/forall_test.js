@@ -193,25 +193,34 @@ define(['blame'], function (blame) {
         expect(closure(identity, 1)).not.to.throw();
     });
 
-    describe('Example From Phil', function () {
-      function identity(x) { return x; }
-      function apply(f, x) { return f(x); }
-      function applied(app) {
-        return app(identity, 1);
-      }
+    //it('Example From Phil', function () {
+    //  function identity(x) {
+    //    console.log('identity', x);
+    //    return x;
+    //  }
+    //  function apply(f) {
+    //    var ret = f(1);
+    //    console.log('apply', ret);
+    //    return ret;
+    //  }
+    //  function applied(app) {
+    //      var ret = app(identity);
+    //      console.log('applied', ret);
+    //      return ret;
+    //  }
 
-      var type = forall('Y', tfun(forall('X', tfun(tfun(tyvar('Y'), tyvar('X')), tyvar('X')), tyvar('Y')))),
-        label = gen_label(),
-        wrapped_applied = wrap(type, applied, label),
-        closure = function () {
-          return function()
-          {
-            return wrapped_applied(apply);
-          };
-        };
+    //  // A Y (AX. (y -> x) -> x) -> Y
+    //  var type = forall('Y', tfun(forall('X', tfun(tfun(tyvar('Y'), tyvar('X')), tyvar('X'))), tyvar('Y'))),
+    //    label = gen_label(),
+    //    wrapped_applied = wrap(type, applied, label),
+    //    closure = function () {
+    //        return wrapped_applied(apply);
+    //    };
 
-        expect(closure).not.to.throw();
-    });
+    //    closure();
+
+    //    expect(closure).not.to.throw();
+    //});
 
     describe('Array Operations', function () {
       var type = forall('X', tfun(tarr(tyvar('X')), tyvar('X'))),
