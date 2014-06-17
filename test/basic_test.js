@@ -94,6 +94,20 @@ define(['blame'], function (blame) {
         expect(closed_bad('a')).to.throw(q.msg());
         expect(closed_good('a')).to.throw(q.msg());
       });
+
+      describe('with multiple arguments', function () {
+        var type2 = fun(Num, Num, Num),
+          wrapped_id = wrap(identity, p, q, type2, type2),
+          closed_id = closed(wrapped_id);
+
+        it('should accept right number of arguments', function () {
+          expect(closed_id(1, 2)).not.to.throw();
+        });
+
+        it('should reject wrong number of arguments', function () {
+          expect(closed_id(1)).to.throw('wrong number of arguments');
+        });
+      });
     });
 
   });
