@@ -61,7 +61,23 @@ define(['blame'], function (blame) {
   });
 
   describe('wrapping', function () {
+    function wrapped(value, p, q, A, B) {
+      return function() {
+        return wrap(value, p, q, A, B);
+      };
+    }
+
     describe('basic types', function () {
+      it('should permit proper types', function () {
+        expect(wrapped(1, p, q, Num, Num)).not.to.throw();
+      });
+
+      it('should reject improper types', function () {
+        expect(wrapped('a', p, q, Num, Num)).to.throw(p);
+      });
+    });
+
+    describe('functions', function () {
         var type = fun(Num, Num),
           bad = gen_const('a'),
           wrapped_good = wrap(identity, p, q, type, type),
