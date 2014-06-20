@@ -151,21 +151,40 @@ define(['blame'], function (blame) {
     describe('foralls', function () {
       var type_id = forall('X', fun(tyvar('X'), tyvar('X')));
 
-      it('should accept identity', function () {
-        var forall_id = wrap_fun(identity, p, q, type_id, type_id);
-        values.forEach(function (v){
-          expect(forall_id(v)).not.to.throw();
-          expect(forall_id(v)()).to.equal(v);
-        });
-      });
+      //it('should accept identity', function () {
+      //  var forall_id = wrap_fun(identity, p, q, type_id, type_id);
+      //  values.forEach(function (v){
+      //    expect(forall_id(v)).not.to.throw();
+      //    expect(forall_id(v)()).to.equal(v);
+      //  });
+      //});
 
-      it('should reject other functions', function () {
-        function bad () {
-          return 1;
+      //it('should reject other functions', function () {
+      //  function bad () {
+      //    return 1;
+      //  }
+      //  expect(function () {
+      //    wrap(bad, p, q, type_id, type_id)(1);
+      //  }).to.throw(q);
+      //});
+
+      it('should accept Phills example', function () {
+        // forall Y. (forall X. (Y -> X) -> X) -> Y
+        function my_iden(x) {
+          return x;
         }
-        expect(function () {
-          wrap(bad, p, q, type_id, type_id)(1);
-        }).to.throw(q);
+        function app(f) {
+          var x = f(1);
+          return x;
+        }
+        function apply(app) {
+          var y = app(my_iden);
+          return y;
+        }
+        var type = forall('Y', fun(forall('X', fun(fun(tyvar('Y'), tyvar('X')), tyvar('X'))), tyvar('Y'))),
+          closed_fun = wrap_fun(apply, p, q, type, type);
+
+          expect(closed_fun(app)).not.to.throw();
       });
     });
 
