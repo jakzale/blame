@@ -18,6 +18,7 @@ define(['blame'], function (blame) {
     Num = blame.Num,
     Bool = blame.Bool,
     Str = blame.Str,
+    Und = blame.Und,
     tyvar = blame.tyvar,
     forall = blame.forall;
 
@@ -52,12 +53,12 @@ define(['blame'], function (blame) {
   // Some constants for testing
   var p = new Label(),
     q = new Label(),
-    values = [1, 'a', true],
-    types = [Num, Str, Bool];
+    values = [1, 'a', true, undefined, empty],
+    types = [Num, Str, Bool, Und, fun(Und)];
 
   describe('Blame module', function () {
     it('should be imported and populated', function () {
-      [blame, wrap, Label, fun, Num, Bool, Str, tyvar, forall].forEach(function (v) {
+      [blame, wrap, Label, fun, Num, Bool, Str, Und, tyvar, forall].forEach(function (v) {
         used(expect(v).to.exist);
       });
     });
@@ -101,9 +102,6 @@ define(['blame'], function (blame) {
     });
 
     describe('functions', function () {
-        var type = fun(Num, Num),
-          bad = gen_const('a'),
-          closed_bad = wrap_fun(bad, p, q, type, type);
 
       it('should permit types for identity', function () {
         types.forEach(function (type, i) {
