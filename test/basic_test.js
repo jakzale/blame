@@ -15,7 +15,11 @@ define(['blame'], function (blame) {
   var wrap = blame.wrap,
     Label = blame.Label,
     fun = blame.fun,
-    Num = blame.Num;
+    Num = blame.Num,
+    Bool = blame.Bool,
+    Str = blame.Str,
+    tyvar = blame.tyvar,
+    forall = blame.forall;
 
   function identity (x) { return x; }
 
@@ -25,7 +29,7 @@ define(['blame'], function (blame) {
     };
   }
 
-  function closed (f) {
+  function closed(f) {
     return function () {
       var args = Array.prototype.slice.call(arguments || []);
       return function () {
@@ -34,13 +38,28 @@ define(['blame'], function (blame) {
     };
   }
 
+  function wrapped(value, p, q, A, B) {
+    return function() {
+      return wrap(value, p, q, A, B);
+    };
+  }
+
+  function wrap_fun(fun, p, q, A, B) {
+    var wrapped_fun = wrap(fun, p, q, A, B);
+    return closed(wrapped_fun);
+  }
+
   // Some constants for testing
   var p = new Label(),
-    q = new Label();
+    q = new Label(),
+    values = [1, 'a', true],
+    types = [Num, Str, Bool];
 
   describe('Blame module', function () {
-    it('should be imported', function () {
-      used(expect(blame).to.exist);
+    it('should be imported and populated', function () {
+      [blame, wrap, Label, fun, Num, Bool, Str, tyvar, forall].forEach(function (v) {
+        used(expect(v).to.exist);
+      });
     });
 
     describe('blame labels', function () {
@@ -61,29 +80,31 @@ define(['blame'], function (blame) {
   });
 
   describe('wrapping', function () {
-    function wrapped(value, p, q, A, B) {
-      return function() {
-        return wrap(value, p, q, A, B);
-      };
-    }
 
     describe('basic types', function () {
       it('should permit proper types', function () {
-        expect(wrapped(1, p, q, Num, Num)).not.to.throw();
+        types.forEach(function (type, i) {
+          var value = values[i];
+          expect(wrapped(value, p, q, type, type)).not.to.throw();
+        });
       });
 
       it('should reject improper types', function () {
-        expect(wrapped('a', p, q, Num, Num)).to.throw(p);
+        types.forEach(function (type, i) {
+          values.forEach(function (value, j) {
+            if (i !== j) {
+              expect(wrapped(value, p, q, type, type)).to.throw(p);
+            }
+          });
+        });
       });
     });
 
     describe('functions', function () {
         var type = fun(Num, Num),
           bad = gen_const('a'),
-          wrapped_good = wrap(identity, p, q, type, type),
-          wrapped_bad = wrap(bad, p, q, type, type),
-          closed_good = closed(wrapped_good),
-          closed_bad = closed(wrapped_bad);
+          closed_good = wrap_fun(identity, p, q, type, type),
+          closed_bad = wrap_fun(bad, p, q, type, type);
 
       it('should permit proper types', function () {
           expect(closed_good(1)).not.to.throw();
@@ -97,8 +118,7 @@ define(['blame'], function (blame) {
 
       describe('with multiple arguments', function () {
         var type2 = fun(Num, Num, Num),
-          wrapped_id = wrap(identity, p, q, type2, type2),
-          closed_id = closed(wrapped_id);
+          closed_id = wrap_fun(identity, p, q, type2, type2);
 
         it('should accept right number of arguments', function () {
           expect(closed_id(1, 2)).not.to.throw();
@@ -107,6 +127,27 @@ define(['blame'], function (blame) {
         it('should reject wrong number of arguments', function () {
           expect(closed_id(1)).to.throw('wrong number of arguments');
         });
+      });
+    });
+
+    describe('foralls', function () {
+      var type_id = forall('X', fun(tyvar('X'), tyvar('X')));
+
+      it('should accept identity', function () {
+        var forall_id = wrap_fun(identity, p, q, type_id, type_id);
+        values.forEach(function (v){
+          expect(forall_id(v)).not.to.throw();
+          expect(forall_id(v)()).to.equal(v);
+        });
+      });
+
+      it('should reject other functions', function () {
+        function bad () {
+          return 1;
+        }
+        expect(function () {
+          wrap(bad, p, q, type_id, type_id)(1);
+        }).to.throw(q);
       });
     });
 
