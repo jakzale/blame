@@ -103,17 +103,37 @@ define(['blame'], function (blame) {
     describe('functions', function () {
         var type = fun(Num, Num),
           bad = gen_const('a'),
-          closed_good = wrap_fun(identity, p, q, type, type),
           closed_bad = wrap_fun(bad, p, q, type, type);
 
-      it('should permit proper types', function () {
-          expect(closed_good(1)).not.to.throw();
+      it('should permit types for identity', function () {
+        types.forEach(function (type, i) {
+          var fun_type = fun(type, type),
+            closed_good = wrap_fun(identity, p, q, fun_type, fun_type),
+            value = values[i];
+
+          expect(closed_good(value)).not.to.throw();
+        });
       });
 
-      it('should reject improper types', function () {
-        expect(closed_bad(1)).to.throw(p.msg());
-        expect(closed_bad('a')).to.throw(q.msg());
-        expect(closed_good('a')).to.throw(q.msg());
+      it('should pass the mix of types', function () {
+        types.forEach(function (type, i) {
+          types.forEach(function (type2, j) {
+            values.forEach(function (value, k) {
+              values.forEach(function (value2, l) {
+                var fun_type = fun(type, type2),
+                  closed_fun = wrap_fun(gen_const(value2), p, q, fun_type, fun_type);
+
+                if (i !== k) {
+                  expect(closed_fun(value)).to.throw(q.msg());
+                } else if (j !== l) {
+                  expect(closed_fun(value)).to.throw(p.msg());
+                } else {
+                  expect(closed_fun(value)).not.to.throw();
+                }
+              });
+            });
+          });
+        });
       });
 
       describe('with multiple arguments', function () {
