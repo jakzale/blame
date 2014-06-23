@@ -122,10 +122,13 @@ define(['blame'], function (blame) {
                   closed_fun = wrap_fun(gen_const(value2), p, q, fun_type, fun_type);
 
                 if (i !== k) {
+                  // Wrong argument
                   expect(closed_fun(value)).to.throw(q.msg());
                 } else if (j !== l) {
+                  // Wrong return value
                   expect(closed_fun(value)).to.throw(p.msg());
                 } else {
+                  // Both ok
                   expect(closed_fun(value)).not.to.throw();
                 }
               });
@@ -151,22 +154,22 @@ define(['blame'], function (blame) {
     describe('foralls', function () {
       var type_id = forall('X', fun(tyvar('X'), tyvar('X')));
 
-      //it('should accept identity', function () {
-      //  var forall_id = wrap_fun(identity, p, q, type_id, type_id);
-      //  values.forEach(function (v){
-      //    expect(forall_id(v)).not.to.throw();
-      //    expect(forall_id(v)()).to.equal(v);
-      //  });
-      //});
+      it('should accept identity', function () {
+        var forall_id = wrap_fun(identity, p, q, type_id, type_id);
+        values.forEach(function (v){
+          expect(forall_id(v)).not.to.throw();
+          expect(forall_id(v)()).to.equal(v);
+        });
+      });
 
-      //it('should reject other functions', function () {
-      //  function bad () {
-      //    return 1;
-      //  }
-      //  expect(function () {
-      //    wrap(bad, p, q, type_id, type_id)(1);
-      //  }).to.throw(q);
-      //});
+      it('should reject other functions', function () {
+        function bad () {
+          return 1;
+        }
+        expect(function () {
+          wrap(bad, p, q, type_id, type_id)(1);
+        }).to.throw(q);
+      });
 
       it('should accept Phills example', function () {
         // forall Y. (forall X. (Y -> X) -> X) -> Y
@@ -186,6 +189,51 @@ define(['blame'], function (blame) {
 
           expect(closed_fun(app)).not.to.throw();
       });
+
+      it('should generate fresh seals', function () {
+        var repeat = false,
+        keep;
+
+        function iden_or_repeat(value) {
+          if (repeat) {
+            return keep;
+          }
+
+          keep = value;
+          repeat = true;
+          return value;
+        }
+
+        expect(function () {
+          var wrapped_iden_or_repeat = wrap(iden_or_repeat, p, q, type_id, type_id);
+
+          wrapped_iden_or_repeat(1);
+          wrapped_iden_or_repeat(2);
+
+        }).to.throw(q.msg());
+
+      });
+    });
+
+
+    it('should check for the right seal', function () {
+      function first(x, y) {
+        unused(y);
+        return x;
+      }
+
+      function second(x, y) {
+        unused(x);
+        return y;
+      }
+      var AX_XXX = forall('X', fun(tyvar('X'), tyvar('X'), tyvar('X'))),
+      AX_AY_XYX = forall('X', forall('Y', fun(tyvar('X'), tyvar('Y'), tyvar('X'))));
+
+      expect(wrap_fun(first, p, q, AX_XXX, AX_XXX)(1, 1)).not.to.throw();
+      expect(wrap_fun(second, p, q, AX_XXX, AX_XXX)(1, 1)).not.to.throw();
+
+      expect(wrap_fun(first, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).not.to.throw();
+      expect(wrap_fun(second, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).to.throw(q);
     });
 
   });
