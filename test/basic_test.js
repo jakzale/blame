@@ -20,7 +20,8 @@ define(['blame'], function (blame) {
     Str = blame.Str,
     Und = blame.Und,
     tyvar = blame.tyvar,
-    forall = blame.forall;
+    forall = blame.forall,
+    arr = blame.arr;
 
   function identity (x) { return x; }
 
@@ -58,7 +59,7 @@ define(['blame'], function (blame) {
 
   describe('Blame module', function () {
     it('should be imported and populated', function () {
-      [blame, wrap, Label, fun, Num, Bool, Str, Und, tyvar, forall].forEach(function (v) {
+      [blame, wrap, Label, fun, Num, Bool, Str, Und, tyvar, forall, arr].forEach(function (v) {
         used(expect(v).to.exist);
       });
     });
