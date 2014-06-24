@@ -168,7 +168,7 @@ define(['blame'], function (blame) {
         }
         expect(function () {
           wrap(bad, p, q, type_id, type_id)(1);
-        }).to.throw(q);
+        }).to.throw(q.negated().msg());
       });
 
       it('should accept Phills example', function () {
@@ -210,7 +210,7 @@ define(['blame'], function (blame) {
           wrapped_iden_or_repeat(1);
           wrapped_iden_or_repeat(2);
 
-        }).to.throw(q.msg());
+        }).to.throw(q.negated().msg());
 
       });
     });
