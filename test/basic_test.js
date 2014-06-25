@@ -381,7 +381,7 @@ define(['blame'], function (blame) {
     });
 
     describe('advanced operations', function () {
-      it('should allow to define fitler', function () {
+      it('should allow to define filter', function () {
         function filter(f, a) {
           var b = [], i = 0, k = 0;
 
