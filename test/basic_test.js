@@ -300,6 +300,88 @@ define(['blame'], function (blame) {
       });
     });
   });
+
+  describe('forall arrays', function () {
+      var type_single = forall('X', fun(arr(tyvar('X')), tyvar('X'))),
+        type_multi = forall('X', fun(arr(tyvar('X')), arr(tyvar('X')))),
+        array = [1, 2, 3, 4, 5];
+
+        function check(array, reference) {
+          return function () {
+            var i;
+            for (i = 0; i < array.length; i++) {
+              if (array[i] !== reference[i]) {
+                throw new Error('value mismatch: ' + array[i] + ', not ' + reference[i]);
+              }
+            }
+          };
+        }
+
+    describe('simple operations', function () {
+      it('should allow to define head', function () {
+        function head(a) {
+          return a[0];
+        }
+
+        function bad(a) {
+          unused(a);
+          return 1;
+        }
+
+        expect(wrap_fun(head, p, q, type_single, type_single)(array)).not.to.throw();
+        expect(wrap(head, p, q, type_single, type_single)(array)).to.equal(1);
+
+        expect(wrap_fun(bad, p, q, type_single, type_single)(array)).to.throw(q.negated().msg());
+      });
+
+      it('should allow to define rest', function () {
+        function rest(a) {
+          var ret = [], i;
+
+          for (i = 1; i < a.length; i++) {
+            ret[i - 1] = a[i];
+          }
+
+          return ret;
+        }
+
+        var ref = [2, 3, 4, 5];
+
+        function bad(a) {
+          unused(a);
+          return ref;
+        }
+
+
+        expect(check(wrap(rest, p, q, type_multi, type_multi)(array), ref)).not.to.throw();
+        expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(q.negated().msg());
+      });
+
+      it('should allow to define reverse', function () {
+        function reverse(a) {
+          var b = [],
+            l = a.length,
+            i = 0;
+
+          while(l--) {
+            b[i++] = a[l];
+          }
+
+          return b;
+        }
+
+        var ref = [5, 4, 3, 2, 1];
+
+        function bad(a) {
+          unused(a);
+          return ref;
+        }
+
+        expect(check(wrap(reverse, p, q, type_multi, type_multi)(array), ref)).not.to.throw();
+        expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(q.negated().msg());
+      });
+    });
+  });
 });
 
 // vim: set ts=2 sw=2 sts=2 et :
