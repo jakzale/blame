@@ -54,8 +54,8 @@ define(['blame'], function (blame) {
   // Some constants for testing
   var p = new Label(),
     q = new Label(),
-    values = [1, 'a', true, undefined, empty],
-    types = [Num, Str, Bool, Und, fun(Und)];
+    values = [1, 'a', true, undefined, empty, []],
+    types = [Num, Str, Bool, Und, fun(Und), arr(Num)];
 
   describe('Blame module', function () {
     it('should be imported and populated', function () {
@@ -110,7 +110,8 @@ define(['blame'], function (blame) {
             closed_good = wrap_fun(identity, p, q, fun_type, fun_type),
             value = values[i];
 
-          expect(closed_good(value)).not.to.throw();
+          closed_good(value)();
+          //expect(closed_good(value)).not.to.throw();
         });
       });
 
@@ -237,6 +238,67 @@ define(['blame'], function (blame) {
       expect(wrap_fun(second, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).to.throw(q);
     });
 
+  });
+
+  describe('Arr', function () {
+    it('should wrap arrays', function () {
+      [[], [1], [1, 2, 3]].forEach(function (e) {
+        expect(wrapped(e, p, q, arr(Num), arr(Num))).not.to.throw();
+        expect(wrap(e, p, q, arr(Num), arr(Num))).not.to.equal(e);
+      });
+    });
+
+    it('wrap arrays lazily', function () {
+      [[], ['a'], [true]].forEach(function (e) {
+        expect(wrapped(e, p, q, arr(Num), arr(Num))).not.to.throw();
+      });
+    });
+
+    it('should check on read', function () {
+      function get(array, i) {
+        return function () {
+          return array[i];
+        };
+      }
+
+      types.forEach(function (type, i) {
+        values.forEach(function (value, j) {
+          var atype = arr(type),
+          array = wrap([value], p, q, atype, atype);
+
+          if (i === j) {
+            expect(get(array, 0)).not.to.throw();
+            //expect(array[0]).to.equal(value);
+          } else {
+
+            expect(get(array, 0)).to.throw(p.msg());
+          }
+        });
+      });
+    });
+
+    it('should check on write', function () {
+      function set(array, i, v) {
+        return function () {
+          array[i] = v;
+        };
+      }
+
+      types.forEach(function (type, i) {
+        values.forEach(function (value, j) {
+          var atype = arr(type),
+          array = wrap([value], p, q, atype, atype);
+
+          if (i === j) {
+            expect(set(array, 0, value)).not.to.throw();
+            //expect(array[0]).to.equal(value);
+          } else {
+
+            expect(set(array, 0, value)).to.throw(q.msg());
+          }
+        });
+      });
+    });
   });
 });
 
