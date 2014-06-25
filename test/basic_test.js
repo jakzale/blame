@@ -347,8 +347,7 @@ define(['blame'], function (blame) {
 
         var ref = [2, 3, 4, 5];
 
-        function bad(a) {
-          unused(a);
+        function bad() {
           return ref;
         }
 
@@ -372,13 +371,95 @@ define(['blame'], function (blame) {
 
         var ref = [5, 4, 3, 2, 1];
 
-        function bad(a) {
-          unused(a);
+        function bad() {
           return ref;
         }
 
         expect(check(wrap(reverse, p, q, type_multi, type_multi)(array), ref)).not.to.throw();
         expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(q.negated().msg());
+      });
+    });
+
+    describe('advanced operations', function () {
+      it('should allow to define fitler', function () {
+        function filter(f, a) {
+          var b = [], i = 0, k = 0;
+
+          for (i = 0; i < a.length; i++) {
+            if (f(a[i])) {
+              b[k++] = a[i];
+            }
+          }
+
+          return b;
+        }
+
+        function is_even(x) {
+          return (x % 2) === 0;
+        }
+
+        var ref = [2, 4];
+
+        function bad() {
+          return ref;
+        }
+
+        var type_filter = forall('X', fun(fun(tyvar('X'), Bool), arr(tyvar('X')), arr(tyvar('X'))));
+
+        expect(check(wrap(filter, p, q, type_filter, type_filter)(is_even, array), ref)).not.to.throw();
+        expect(check(wrap(bad, p, q, type_filter, type_filter)(is_even, array), ref)).to.throw(q.negated().msg());
+      });
+
+      it('should allow to define map', function () {
+        function map(f, a) {
+          var b = [], i;
+
+          for (i = 0; i < a.length; i++) {
+            b[i] = f(a[i]);
+          }
+
+          return b;
+        }
+
+        function add1(x) {
+          return x + 1;
+        }
+
+        var ref = [2, 3, 4, 5, 6];
+
+        function bad() {
+          return ref;
+        }
+
+        var type_map = forall('X', forall('Y', fun(fun(tyvar('X'), tyvar('Y')), arr(tyvar('X')), arr(tyvar('Y')))));
+
+        expect(check(wrap(map, p, q, type_map, type_map)(add1, array), ref)).not.to.throw();
+        expect(check(wrap(bad, p, q, type_map, type_map)(add1, array), ref)).to.throw(q.negated().msg());
+      });
+
+      it('should allow to define fold', function () {
+        function fold(f, s, a) {
+          var i;
+          for (i = 0; i < a.length; i++) {
+            s = f(a[i], s);
+          }
+          return s;
+        }
+
+        function add(x, y) {
+          return x + y;
+        }
+
+        function bad () {
+          return 15;
+        }
+
+        var type_fold = forall('X', forall('Y', fun(fun(tyvar('X'), tyvar('Y'), tyvar('Y')), tyvar('Y'), arr(tyvar('X')), tyvar('Y'))));
+
+        expect(wrap_fun(fold, p, q, type_fold, type_fold)(add, 0, array)).not.to.throw();
+        expect(wrap(fold, p, q, type_fold, type_fold)(add, 0, array)).to.equal(15);
+
+        expect(wrap_fun(bad, p, q, type_fold, type_fold)(add, 0, array)).to.throw(q.negated().msg());
       });
     });
   });
