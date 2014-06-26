@@ -466,14 +466,20 @@ define(['blame'], function (blame) {
   });
 
   describe('ARRAY API', function () {
+    var type = arr(Num),
+      A = wrap([1, 2, 3, 4], p, q, type, type);
+
+    function even (x) { return x % 2 === 0; }
+
     describe('map', function () {
       it('should be properly wrapped', function () {
         expect(function () {
-          var type = arr(Num);
-          var A = wrap([1, 2], p, q, type, type);
           var B = A.map(function (x) { return x + 1; });
+
           expect(B[0]).to.equal(2);
           expect(B[1]).to.equal(3);
+          expect(B[2]).to.equal(4);
+          expect(B[3]).to.equal(5);
         }).not.to.throw();
       });
     });
@@ -481,10 +487,7 @@ define(['blame'], function (blame) {
     describe('every', function () {
       it('should be properly wrapped', function () {
         expect(function () {
-          var type = arr(Num);
-          var A = wrap([2, 3, 4], p, q, type, type);
           var B = wrap([2, 4, 6], p, q, type, type);
-          function even (x) { return x % 2 === 0; }
 
           expect(A.every(even)).to.equal(false);
           expect(B.every(even)).to.equal(true);
@@ -496,13 +499,24 @@ define(['blame'], function (blame) {
     describe('filter', function () {
       it('should be properly wrapped', function () {
         expect(function () {
-
-          var type = arr(Num);
-          var A = wrap([2, 3, 4], p, q, type, type);
-          function even (x) { return x % 2 === 0; }
           var B = A.filter(even);
+
           expect(B[0]).to.equal(2);
           expect(B[1]).to.equal(4);
+        }).not.to.throw();
+      });
+    });
+
+    describe('forEach', function () {
+      it('should be properly wrapped', function () {
+        expect(function () {
+          var c = 0;
+
+          function count(x) { c += x; }
+
+          A.forEach(count);
+
+          expect(c).to.equal(10);
         }).not.to.throw();
       });
     });
