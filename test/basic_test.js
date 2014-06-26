@@ -473,6 +473,22 @@ define(['blame'], function (blame) {
           var A = wrap([1, 2], p, q, type, type);
           var B = A.map(function (x) { return x + 1; });
           expect(B[0]).to.equal(2);
+          expect(B[1]).to.equal(3);
+        }).not.to.throw();
+      });
+    });
+
+    describe('every', function () {
+      it('should be properly wrapped', function () {
+        expect(function () {
+          var type = arr(Num);
+          var A = wrap([2, 3, 4], p, q, type, type);
+          var B = wrap([2, 4, 6], p, q, type, type);
+          function even (x) { return x % 2 === 0; }
+
+          expect(A.every(even)).to.equal(false);
+          expect(B.every(even)).to.equal(true);
+
         }).not.to.throw();
       });
     });
