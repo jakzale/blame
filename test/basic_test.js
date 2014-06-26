@@ -546,6 +546,19 @@ define(['blame'], function (blame) {
         }).not.to.throw();
       });
     });
+
+    describe('pop', function () {
+      it('should be properly wrapped', function () {
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        expect(function () {
+          var b = B.pop();
+
+          expect(b).to.equal(4);
+          expect(B.length).to.equal(3);
+        }).not.to.throw();
+      });
+    });
   });
 });
 
