@@ -95,7 +95,8 @@ define(['blame'], function (blame) {
         types.forEach(function (type, i) {
           values.forEach(function (value, j) {
             if (i !== j) {
-              expect(wrapped(value, p, q, type, type)).to.throw(p);
+              //console.log(type);
+              expect(wrapped(value, p, q, type, type)).to.throw(p.msg());
             }
           });
         });
@@ -235,7 +236,7 @@ define(['blame'], function (blame) {
       expect(wrap_fun(second, p, q, AX_XXX, AX_XXX)(1, 1)).not.to.throw();
 
       expect(wrap_fun(first, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).not.to.throw();
-      expect(wrap_fun(second, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).to.throw(q);
+      expect(wrap_fun(second, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).to.throw(q.negated().msg());
     });
 
   });
@@ -460,6 +461,19 @@ define(['blame'], function (blame) {
         expect(wrap(fold, p, q, type_fold, type_fold)(add, 0, array)).to.equal(15);
 
         expect(wrap_fun(bad, p, q, type_fold, type_fold)(add, 0, array)).to.throw(q.negated().msg());
+      });
+    });
+  });
+
+  describe('ARRAY API', function () {
+    describe('map', function () {
+      it('should be properly wrapped', function () {
+        expect(function () {
+          var type = arr(Num);
+          var A = wrap([1, 2], p, q, type, type);
+          var B = A.map(function (x) { return x + 1; });
+          expect(B[0]).to.equal(2);
+        }).not.to.throw();
       });
     });
   });
