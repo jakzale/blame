@@ -539,10 +539,12 @@ define(['blame'], function (blame) {
     });
 
     describe('lastIndexOf', function () {
+      it('should be properly wrapped', function () {
         expect(function () {
           expect(A.lastIndexOf(2, 4)).to.equal(1);
           expect(A.lastIndexOf(2, 0)).to.equal(-1);
         }).not.to.throw();
+      });
     });
   });
 });
