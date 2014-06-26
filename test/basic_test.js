@@ -492,6 +492,20 @@ define(['blame'], function (blame) {
         }).not.to.throw();
       });
     });
+
+    describe('filter', function () {
+      it('should be properly wrapped', function () {
+        expect(function () {
+
+          var type = arr(Num);
+          var A = wrap([2, 3, 4], p, q, type, type);
+          function even (x) { return x % 2 === 0; }
+          var B = A.filter(even);
+          expect(B[0]).to.equal(2);
+          expect(B[1]).to.equal(4);
+        }).not.to.throw();
+      });
+    });
   });
 });
 
