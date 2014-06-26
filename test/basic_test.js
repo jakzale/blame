@@ -529,6 +529,15 @@ define(['blame'], function (blame) {
         }).not.to.throw();
       });
     });
+
+    describe('join', function () {
+      it('should be properly wrapped', function () {
+        expect(function () {
+          expect(A.join(' ')).to.equal('1 2 3 4');
+        }).not.to.throw();
+      });
+    });
+
   });
 });
 
