@@ -520,6 +520,15 @@ define(['blame'], function (blame) {
         }).not.to.throw();
       });
     });
+
+    describe('indexOf', function () {
+      it('should be properly wrapped', function () {
+        expect(function () {
+          expect(A.indexOf(2, 0)).to.equal(1);
+          expect(A.indexOf(1, 1)).to.equal(-1);
+        }).not.to.throw();
+      });
+    });
   });
 });
 
