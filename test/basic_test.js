@@ -542,6 +542,18 @@ define(['blame'], function (blame) {
           expect(B.length).to.equal(3);
       });
     });
+
+    describe('sort', function () {
+      it('should be properly wrapped', function () {
+        function compare(a, b) {
+          return b - a;
+        }
+
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        B.sort(compare);
+
+        expect(B[0]).to.equal(4);
       });
     });
   });
