@@ -543,6 +543,16 @@ define(['blame'], function (blame) {
       });
     });
 
+    describe('push', function () {
+      it('should be properly wrapped', function () {
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        expect(B.push(5)).to.equal(5);
+        expect(B[4]).to.equal(5);
+        expect(B.length).to.equal(5);
+      });
+    });
+
     describe('sort', function () {
       it('should be properly wrapped', function () {
         function compare(a, b) {
