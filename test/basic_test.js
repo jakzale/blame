@@ -473,43 +473,35 @@ define(['blame'], function (blame) {
 
     describe('map', function () {
       it('should be properly wrapped', function () {
-        expect(function () {
           var B = A.map(function (x) { return x + 1; });
 
           expect(B[0]).to.equal(2);
           expect(B[1]).to.equal(3);
           expect(B[2]).to.equal(4);
           expect(B[3]).to.equal(5);
-        }).not.to.throw();
       });
     });
 
     describe('every', function () {
       it('should be properly wrapped', function () {
-        expect(function () {
           var B = wrap([2, 4, 6], p, q, type, type);
 
           expect(A.every(even)).to.equal(false);
           expect(B.every(even)).to.equal(true);
-
-        }).not.to.throw();
       });
     });
 
     describe('filter', function () {
       it('should be properly wrapped', function () {
-        expect(function () {
           var B = A.filter(even);
 
           expect(B[0]).to.equal(2);
           expect(B[1]).to.equal(4);
-        }).not.to.throw();
       });
     });
 
     describe('forEach', function () {
       it('should be properly wrapped', function () {
-        expect(function () {
           var c = 0;
 
           function count(x) { c += x; }
@@ -517,33 +509,26 @@ define(['blame'], function (blame) {
           A.forEach(count);
 
           expect(c).to.equal(10);
-        }).not.to.throw();
       });
     });
 
     describe('indexOf', function () {
       it('should be properly wrapped', function () {
-        expect(function () {
           expect(A.indexOf(2, 0)).to.equal(1);
           expect(A.indexOf(1, 1)).to.equal(-1);
-        }).not.to.throw();
       });
     });
 
     describe('join', function () {
       it('should be properly wrapped', function () {
-        expect(function () {
           expect(A.join(' ')).to.equal('1 2 3 4');
-        }).not.to.throw();
       });
     });
 
     describe('lastIndexOf', function () {
       it('should be properly wrapped', function () {
-        expect(function () {
           expect(A.lastIndexOf(2, 4)).to.equal(1);
           expect(A.lastIndexOf(2, 0)).to.equal(-1);
-        }).not.to.throw();
       });
     });
 
@@ -551,12 +536,12 @@ define(['blame'], function (blame) {
       it('should be properly wrapped', function () {
         var B = wrap([1, 2, 3, 4], p, q, type, type);
 
-        expect(function () {
           var b = B.pop();
 
           expect(b).to.equal(4);
           expect(B.length).to.equal(3);
-        }).not.to.throw();
+      });
+    });
       });
     });
   });
