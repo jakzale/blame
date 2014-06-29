@@ -580,6 +580,16 @@ define(['blame'], function (blame) {
       });
     });
 
+    describe('shift', function () {
+      it('should be properly wrapped', function () {
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        expect(B.shift()).to.equal(1);
+        expect(B[0]).to.equal(2);
+        expect(B.length).to.equal(3);
+      });
+    });
+
     describe('sort', function () {
       it('should be properly wrapped', function () {
         function compare(a, b) {
