@@ -562,6 +562,15 @@ define(['blame'], function (blame) {
       });
     });
 
+    describe('reduceRight', function () {
+      it('should be properly wrapped', function () {
+        function add(a, b) { return a + b; }
+
+        expect(A.reduceRight(add, 0)).to.equal(10);
+
+      });
+    });
+
     describe('sort', function () {
       it('should be properly wrapped', function () {
         function compare(a, b) {
