@@ -571,6 +571,15 @@ define(['blame'], function (blame) {
       });
     });
 
+    describe('reverse', function () {
+      it('should be properly wrapped', function () {
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        expect(B.reverse()[0]).to.equal(4);
+        expect(B[1]).to.equal(3);
+      });
+    });
+
     describe('sort', function () {
       it('should be properly wrapped', function () {
         function compare(a, b) {
