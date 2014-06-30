@@ -752,6 +752,14 @@ define(['blame'], function (blame) {
         var B = A.slice(1, 2);
         expect(B.length).to.equal(1);
         expect(B[0]).to.equal(2);
+
+        B = A.slice(1);
+        expect(B.length).to.equal(3);
+        expect(B[0]).to.equal(2);
+
+        B = A.slice();
+        expect(B.length).to.equal(4);
+        expect(B[0]).to.equal(1);
       });
     });
 
