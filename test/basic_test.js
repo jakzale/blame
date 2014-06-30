@@ -620,6 +620,12 @@ define(['blame'], function (blame) {
         expect(B[0]).to.equal(4);
       });
     });
+
+    describe('toLocaleString', function () {
+      it('should be properly wrapped', function () {
+        expect(A.toLocaleString()).to.equal('1,2,3,4');
+      });
+    });
   });
 });
 
