@@ -489,6 +489,19 @@ define(['blame'], function (blame) {
 
     function even (x) { return x % 2 === 0; }
 
+    describe('length', function () {
+      it('should allow to get', function () {
+        expect(A.length).to.equal(4);
+      });
+
+      it('should allow to set', function () {
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        B.length = 2;
+        expect(B.length).to.equal(2);
+      });
+    });
+
     describe('map', function () {
       it('should be properly wrapped', function () {
           var B = A.map(function (x) { return x + 1; });
@@ -528,6 +541,19 @@ define(['blame'], function (blame) {
 
           expect(B[0]).to.equal(2);
           expect(B[1]).to.equal(4);
+      });
+
+      it('should allow for optional thisArg', function () {
+        function append(x) {
+          this.push(x);
+          return true;
+        }
+
+        var B = [],
+          C = A.filter(append, B);
+
+        expect(B.length).to.equal(4);
+        expect(C.length).to.equal(4);
       });
     });
 
