@@ -15,6 +15,7 @@ define(['blame'], function (blame) {
   var wrap = blame.wrap,
     Label = blame.Label,
     func = blame.func,
+    fun = blame.fun,
     Num = blame.Num,
     Bool = blame.Bool,
     Str = blame.Str,
@@ -59,7 +60,7 @@ define(['blame'], function (blame) {
 
   describe('Blame module', function () {
     it('should be imported and populated', function () {
-      [blame, wrap, Label, func, Num, Bool, Str, Und, tyvar, forall, arr].forEach(function (v) {
+      [blame, wrap, Label, func, fun, Num, Bool, Str, Und, tyvar, forall, arr].forEach(function (v) {
         used(expect(v).to.exist);
       });
     });
@@ -95,7 +96,6 @@ define(['blame'], function (blame) {
         types.forEach(function (type, i) {
           values.forEach(function (value, j) {
             if (i !== j) {
-              //console.log(type);
               expect(wrapped(value, p, q, type, type)).to.throw(p.msg());
             }
           });
@@ -151,6 +151,24 @@ define(['blame'], function (blame) {
         it('should reject wrong number of arguments', function () {
           expect(closed_id(1)).to.throw('arguments');
         });
+      });
+    });
+
+    describe('new function api', function () {
+      it('should properly construct the type', function () {
+        var fun_type = fun(null, null, null, Num);
+
+        expect(fun_type.domain).to.eql([]);
+        expect(fun_type.optional).to.eql([]);
+        expect(fun_type.repeated).to.equal(null);
+        expect(fun_type.range).to.equal(Num);
+        expect(fun_type.description).to.equal('() -> Num');
+
+        fun_type = fun([Num], [Bool], Str, func(Bool, Bool));
+        expect(fun_type.domain).to.eql([Num]);
+        expect(fun_type.optional).to.eql([Bool]);
+        expect(fun_type.repeated).to.equal(Str);
+        expect(fun_type.description).to.equal('Num -> ?Bool -> *Str -> (Bool -> Bool)');
       });
     });
 
