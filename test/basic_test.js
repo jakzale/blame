@@ -592,6 +592,19 @@ define(['blame'], function (blame) {
 
           expect(c).to.equal(10);
       });
+
+
+      it('should allow for optional thisArg', function () {
+        function append(x) {
+          this.push(x);
+        }
+
+        var B = [];
+
+        A.forEach(append, B);
+
+        expect(B.length).to.equal(4);
+      });
     });
 
     describe('indexOf', function () {
