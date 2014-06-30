@@ -536,6 +536,21 @@ define(['blame'], function (blame) {
           expect(B[2]).to.equal(4);
           expect(B[3]).to.equal(5);
       });
+
+      it('should allow for optional thisArg', function () {
+        function append(x) {
+          this.push(x);
+          return x;
+        }
+
+        var B = [], C;
+
+        C = A.map(append, B);
+
+        expect(B.length).to.equal(4);
+        expect(C.length).to.equal(4);
+        expect(C[0]).to.equal(1);
+      });
     });
 
     describe('every', function () {
