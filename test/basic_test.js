@@ -507,6 +507,19 @@ define(['blame'], function (blame) {
           expect(A.every(even)).to.equal(false);
           expect(B.every(even)).to.equal(true);
       });
+
+      it('should allow for optional thisArg', function () {
+
+        function append(x) {
+          this.push(x);
+          return true;
+        }
+
+        var B = [];
+
+        expect(A.every(append, B)).to.equal(true);
+        expect(B).to.eql([1, 2, 3, 4]);
+      });
     });
 
     describe('filter', function () {
