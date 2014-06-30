@@ -22,7 +22,8 @@ define(['blame'], function (blame) {
     Und = blame.Und,
     tyvar = blame.tyvar,
     forall = blame.forall,
-    arr = blame.arr;
+    arr = blame.arr,
+    sum = blame.sum;
 
   function identity (x) { return x; }
 
@@ -60,7 +61,7 @@ define(['blame'], function (blame) {
 
   describe('Blame module', function () {
     it('should be imported and populated', function () {
-      [blame, wrap, Label, func, fun, Num, Bool, Str, Und, tyvar, forall, arr].forEach(function (v) {
+      [blame, wrap, Label, func, fun, Num, Bool, Str, Und, tyvar, forall, arr, sum].forEach(function (v) {
         used(expect(v).to.exist);
       });
     });
@@ -517,6 +518,13 @@ define(['blame'], function (blame) {
         expect(B.length).to.equal(7);
         expect(B[6]).to.equal(7);
       });
+
+      it('should allow for non-array arguments', function () {
+        var B = A.concat(5, [6], 7);
+
+        expect(B.length).to.equal(7);
+        expect(B[6]).to.equal(7);
+      });
     });
 
     describe('map', function () {
@@ -718,6 +726,29 @@ define(['blame'], function (blame) {
       it('should be properly wrapped', function () {
         expect(A.toString()).to.equal('1,2,3,4');
       });
+    });
+  });
+
+  describe('sums', function () {
+    var sum_type = sum([Num, Bool]);
+
+    it('should be properly created', function () {
+      expect(sum_type.description).to.equal('(Num | Bool)');
+    });
+
+    it('should allow correct types', function () {
+
+      wrap(1, p, q, sum_type, sum_type);
+      wrap(true, p, q, sum_type, sum_type);
+    });
+
+    it('should reject incorrect type', function () {
+      expect(wrapped('a', p, q, sum_type, sum_type)).to.throw();
+    });
+
+    it('should detect ambiguous sum', function () {
+      var ambiguous = sum([arr(Num), arr(Bool)]);
+      expect(wrapped([], p, q, ambiguous, ambiguous)).to.throw('ambiguous');
     });
   });
 });
