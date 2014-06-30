@@ -14,7 +14,7 @@ define(['blame'], function (blame) {
 
   var wrap = blame.wrap,
     Label = blame.Label,
-    fun = blame.fun,
+    func = blame.func,
     Num = blame.Num,
     Bool = blame.Bool,
     Str = blame.Str,
@@ -46,8 +46,8 @@ define(['blame'], function (blame) {
     };
   }
 
-  function wrap_fun(fun, p, q, A, B) {
-    var wrapped_fun = wrap(fun, p, q, A, B);
+  function wrap_fun(func, p, q, A, B) {
+    var wrapped_fun = wrap(func, p, q, A, B);
     return closed(wrapped_fun);
   }
 
@@ -55,11 +55,11 @@ define(['blame'], function (blame) {
   var p = new Label(),
     q = new Label(),
     values = [1, 'a', true, undefined, empty, []],
-    types = [Num, Str, Bool, Und, fun(Und), arr(Num)];
+    types = [Num, Str, Bool, Und, func(Und), arr(Num)];
 
   describe('Blame module', function () {
     it('should be imported and populated', function () {
-      [blame, wrap, Label, fun, Num, Bool, Str, Und, tyvar, forall, arr].forEach(function (v) {
+      [blame, wrap, Label, func, Num, Bool, Str, Und, tyvar, forall, arr].forEach(function (v) {
         used(expect(v).to.exist);
       });
     });
@@ -107,7 +107,7 @@ define(['blame'], function (blame) {
 
       it('should permit types for identity', function () {
         types.forEach(function (type, i) {
-          var fun_type = fun(type, type),
+          var fun_type = func(type, type),
             closed_good = wrap_fun(identity, p, q, fun_type, fun_type),
             value = values[i];
 
@@ -121,7 +121,7 @@ define(['blame'], function (blame) {
           types.forEach(function (type2, j) {
             values.forEach(function (value, k) {
               values.forEach(function (value2, l) {
-                var fun_type = fun(type, type2),
+                var fun_type = func(type, type2),
                   closed_fun = wrap_fun(gen_const(value2), p, q, fun_type, fun_type);
 
                 if (i !== k) {
@@ -141,7 +141,7 @@ define(['blame'], function (blame) {
       });
 
       describe('with multiple arguments', function () {
-        var type2 = fun(Num, Num, Num),
+        var type2 = func(Num, Num, Num),
           closed_id = wrap_fun(identity, p, q, type2, type2);
 
         it('should accept right number of arguments', function () {
@@ -155,7 +155,7 @@ define(['blame'], function (blame) {
     });
 
     describe('foralls', function () {
-      var type_id = forall('X', fun(tyvar('X'), tyvar('X')));
+      var type_id = forall('X', func(tyvar('X'), tyvar('X')));
 
       it('should accept identity', function () {
         var forall_id = wrap_fun(identity, p, q, type_id, type_id);
@@ -187,7 +187,7 @@ define(['blame'], function (blame) {
           var y = app(my_iden);
           return y;
         }
-        var type = forall('Y', fun(forall('X', fun(fun(tyvar('Y'), tyvar('X')), tyvar('X'))), tyvar('Y'))),
+        var type = forall('Y', func(forall('X', func(func(tyvar('Y'), tyvar('X')), tyvar('X'))), tyvar('Y'))),
           closed_fun = wrap_fun(apply, p, q, type, type);
 
           expect(closed_fun(app)).not.to.throw();
@@ -229,8 +229,8 @@ define(['blame'], function (blame) {
         unused(x);
         return y;
       }
-      var AX_XXX = forall('X', fun(tyvar('X'), tyvar('X'), tyvar('X'))),
-      AX_AY_XYX = forall('X', forall('Y', fun(tyvar('X'), tyvar('Y'), tyvar('X'))));
+      var AX_XXX = forall('X', func(tyvar('X'), tyvar('X'), tyvar('X'))),
+      AX_AY_XYX = forall('X', forall('Y', func(tyvar('X'), tyvar('Y'), tyvar('X'))));
 
       expect(wrap_fun(first, p, q, AX_XXX, AX_XXX)(1, 1)).not.to.throw();
       expect(wrap_fun(second, p, q, AX_XXX, AX_XXX)(1, 1)).not.to.throw();
@@ -303,8 +303,8 @@ define(['blame'], function (blame) {
   });
 
   describe('forall arrays', function () {
-      var type_single = forall('X', fun(arr(tyvar('X')), tyvar('X'))),
-        type_multi = forall('X', fun(arr(tyvar('X')), arr(tyvar('X')))),
+      var type_single = forall('X', func(arr(tyvar('X')), tyvar('X'))),
+        type_multi = forall('X', func(arr(tyvar('X')), arr(tyvar('X')))),
         array = [1, 2, 3, 4, 5];
 
         function check(array, reference) {
@@ -405,7 +405,7 @@ define(['blame'], function (blame) {
           return ref;
         }
 
-        var type_filter = forall('X', fun(fun(tyvar('X'), Bool), arr(tyvar('X')), arr(tyvar('X'))));
+        var type_filter = forall('X', func(func(tyvar('X'), Bool), arr(tyvar('X')), arr(tyvar('X'))));
 
         expect(check(wrap(filter, p, q, type_filter, type_filter)(is_even, array), ref)).not.to.throw();
         expect(check(wrap(bad, p, q, type_filter, type_filter)(is_even, array), ref)).to.throw(q.negated().msg());
@@ -432,7 +432,7 @@ define(['blame'], function (blame) {
           return ref;
         }
 
-        var type_map = forall('X', forall('Y', fun(fun(tyvar('X'), tyvar('Y')), arr(tyvar('X')), arr(tyvar('Y')))));
+        var type_map = forall('X', forall('Y', func(func(tyvar('X'), tyvar('Y')), arr(tyvar('X')), arr(tyvar('Y')))));
 
         expect(check(wrap(map, p, q, type_map, type_map)(add1, array), ref)).not.to.throw();
         expect(check(wrap(bad, p, q, type_map, type_map)(add1, array), ref)).to.throw(q.negated().msg());
@@ -455,7 +455,7 @@ define(['blame'], function (blame) {
           return 15;
         }
 
-        var type_fold = forall('X', forall('Y', fun(fun(tyvar('X'), tyvar('Y'), tyvar('Y')), tyvar('Y'), arr(tyvar('X')), tyvar('Y'))));
+        var type_fold = forall('X', forall('Y', func(func(tyvar('X'), tyvar('Y'), tyvar('Y')), tyvar('Y'), arr(tyvar('X')), tyvar('Y'))));
 
         expect(wrap_fun(fold, p, q, type_fold, type_fold)(add, 0, array)).not.to.throw();
         expect(wrap(fold, p, q, type_fold, type_fold)(add, 0, array)).to.equal(15);
