@@ -598,6 +598,15 @@ define(['blame'], function (blame) {
       });
     });
 
+    describe('some', function () {
+      it('should be properly wrapped', function () {
+          var B = wrap([3, 5, 7], p, q, type, type);
+
+          expect(A.some(even)).to.equal(true);
+          expect(B.some(even)).to.equal(false);
+      });
+    });
+
     describe('sort', function () {
       it('should be properly wrapped', function () {
         function compare(a, b) {
