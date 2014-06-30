@@ -590,6 +590,14 @@ define(['blame'], function (blame) {
       });
     });
 
+    describe('slice', function () {
+      it('should be properly wrapped', function () {
+        var B = A.slice(1, 2);
+        expect(B.length).to.equal(1);
+        expect(B[0]).to.equal(2);
+      });
+    });
+
     describe('sort', function () {
       it('should be properly wrapped', function () {
         function compare(a, b) {
