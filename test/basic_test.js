@@ -149,7 +149,7 @@ define(['blame'], function (blame) {
         });
 
         it('should reject wrong number of arguments', function () {
-          expect(closed_id(1)).to.throw('wrong number of arguments');
+          expect(closed_id(1)).to.throw('arguments');
         });
       });
     });
@@ -627,11 +627,11 @@ define(['blame'], function (blame) {
       });
     });
 
-    //describe('toString', function () {
-    //  it('should be properly wrapped', function () {
-    //    expect(A.toString()).to.equal('1,2,3,4');
-    //  });
-    //});
+    describe('toString', function () {
+      it('should be properly wrapped', function () {
+        expect(A.toString()).to.equal('1,2,3,4');
+      });
+    });
   });
 });
 
