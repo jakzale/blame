@@ -626,6 +626,12 @@ define(['blame'], function (blame) {
         expect(A.toLocaleString()).to.equal('1,2,3,4');
       });
     });
+
+    //describe('toString', function () {
+    //  it('should be properly wrapped', function () {
+    //    expect(A.toString()).to.equal('1,2,3,4');
+    //  });
+    //});
   });
 });
 
