@@ -685,6 +685,22 @@ define(['blame'], function (blame) {
         expect(A.reduce(add, 0)).to.equal(10);
 
       });
+
+      it('sould allow for optional accumulator', function () {
+        function add(a, b) { return a + b; }
+
+        expect(A.reduce(add)).to.equal(10);
+      });
+
+      it('sould allow for more complex reduction', function () {
+        function addS(a, b) {
+          return String(a) + String(b);
+        }
+
+        expect(A.reduce(addS)).to.equal('1234');
+
+        expect(A.reduce(addS, 'a')).to.equal('a1234');
+      });
     });
 
     describe('reduceRight', function () {
@@ -693,6 +709,22 @@ define(['blame'], function (blame) {
 
         expect(A.reduceRight(add, 0)).to.equal(10);
 
+      });
+
+      it('sould allow for optional accumulator', function () {
+        function add(a, b) { return a + b; }
+
+        expect(A.reduceRight(add)).to.equal(10);
+      });
+
+      it('sould allow for more complex reduction', function () {
+        function addS(a, b) {
+          return String(a) + String(b);
+        }
+
+        expect(A.reduceRight(addS)).to.equal('4321');
+
+        expect(A.reduceRight(addS, 'a')).to.equal('a4321');
       });
     });
 
