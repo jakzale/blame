@@ -502,6 +502,23 @@ define(['blame'], function (blame) {
       });
     });
 
+    describe('concat', function () {
+      it('should be properly wrapped', function () {
+        var B = A.concat([5]);
+
+        expect(B.length).to.equal(5);
+        expect(B[4]).to.equal(5);
+      });
+
+      it('should allow for repeated arguments', function () {
+        var B = A.concat([5], [6], [7]);
+
+
+        expect(B.length).to.equal(7);
+        expect(B[6]).to.equal(7);
+      });
+    });
+
     describe('map', function () {
       it('should be properly wrapped', function () {
           var B = A.map(function (x) { return x + 1; });
