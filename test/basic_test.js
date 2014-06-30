@@ -625,6 +625,7 @@ define(['blame'], function (blame) {
       it('should be properly wrapped', function () {
           expect(A.lastIndexOf(2, 4)).to.equal(1);
           expect(A.lastIndexOf(2, 0)).to.equal(-1);
+          expect(A.lastIndexOf(2)).to.equal(1);
       });
     });
 
