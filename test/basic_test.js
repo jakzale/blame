@@ -569,6 +569,19 @@ define(['blame'], function (blame) {
         expect(B[4]).to.equal(5);
         expect(B.length).to.equal(5);
       });
+
+      it('should allow for repeated arguments', function () {
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        expect(B.push(5, 6, 7, 8, 9, 10)).to.equal(10);
+        expect(B.length).to.equal(10);
+        expect(B[9]).to.equal(10);
+      });
+
+      it('should allow for zero arguments', function () {
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        expect(B.push()).to.equal(4);
+      });
     });
 
     describe('reduce', function () {
