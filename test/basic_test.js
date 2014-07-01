@@ -819,6 +819,17 @@ define(['blame'], function (blame) {
         expect(A.toString()).to.equal('1,2,3,4');
       });
     });
+
+    describe('unshift', function () {
+      it('should be properly wrapped', function () {
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        expect(B.unshift()).to.equal(4);
+        expect(B.unshift(0)).to.equal(5);
+        expect(B.unshift(-2, -1)).to.equal(7);
+        expect(B[0]).to.equal(-2);
+      });
+    });
   });
 
   describe('sums', function () {
