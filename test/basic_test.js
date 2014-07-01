@@ -515,6 +515,10 @@ define(['blame'], function (blame) {
       it('should allow for valueOf', function () {
         expect(A.valueOf()).to.eql(A);
       });
+
+      it('should allow for hasOwnProperty', function () {
+        expect(A.hasOwnProperty('0')).to.equal(true);
+      });
     });
 
     describe('concat', function () {
