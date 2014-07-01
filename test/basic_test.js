@@ -503,6 +503,20 @@ define(['blame'], function (blame) {
       });
     });
 
+    describe('Object', function () {
+      it('should be allowed to inspect', function () {
+        expect(A).to.eql([1, 2, 3, 4]);
+      });
+
+      it('should allow for prototype', function () {
+        expect(A.prototype).to.equal(undefined);
+      });
+
+      it('should allow for valueOf', function () {
+        expect(A.valueOf()).to.eql(A);
+      });
+    });
+
     describe('concat', function () {
       it('should be properly wrapped', function () {
         var B = A.concat([5]);
