@@ -770,6 +770,19 @@ define(['blame'], function (blame) {
           expect(A.some(even)).to.equal(true);
           expect(B.some(even)).to.equal(false);
       });
+
+      it('should allow for optional thisArg', function () {
+        function append(x) {
+          this.push(x);
+
+          return false;
+        }
+
+        var B = [];
+
+        expect(A.some(append, B)).to.equal(false);
+        expect(B.length).to.equal(4);
+      });
     });
 
     describe('sort', function () {
