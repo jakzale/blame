@@ -19,7 +19,6 @@ require.config({
 
     paths: {
         'blame': 'lib/blame',
-        'lodash': 'node_modules/lodash/lodash'
     },
 
   // dynamically load all test files
