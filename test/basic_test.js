@@ -797,6 +797,15 @@ define(['blame'], function (blame) {
 
         expect(B[0]).to.equal(4);
       });
+
+      it('should allow for optional compare', function () {
+
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        B.sort();
+
+        expect(B[0]).to.equal(1);
+      });
     });
 
     describe('toLocaleString', function () {
