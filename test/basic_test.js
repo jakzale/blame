@@ -896,6 +896,27 @@ define(['blame'], function (blame) {
         expect(A.b).to.equal(1);
       });
     });
+
+    describe('foralls', function () {
+      it('should permit property swap', function () {
+        function swap_ab(o) {
+          var temp = o.a;
+          o.a = o.b;
+          o.b = temp;
+        }
+
+        var type = forall('X', func(obj({a: tyvar('X'), b: tyvar('X')}), Und)),
+          A = {a: true, b: 1},
+          wrapped_swap = wrap(swap_ab, p, q, type, type);
+
+        expect(type.description).to.equal('forall X. {a: X, b: X} -> Und');
+        wrapped_swap(A);
+
+        expect(A.a).to.equal(1);
+        expect(A.b).to.equal(true);
+
+      });
+    });
   });
 });
 
