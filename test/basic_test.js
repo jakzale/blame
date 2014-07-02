@@ -515,6 +515,10 @@ define(['blame'], function (blame) {
 
       it('should allow for valueOf', function () {
         expect(A.valueOf()).to.eql(A);
+
+        expect(function () {
+          A[0] = true;
+        }).to.throw(q.msg());
       });
 
       it('should allow for hasOwnProperty', function () {
@@ -528,6 +532,10 @@ define(['blame'], function (blame) {
 
         expect(B.length).to.equal(5);
         expect(B[4]).to.equal(5);
+
+        expect(function () {
+          B[0] = true;
+        }).to.throw(q.msg());
       });
 
       it('should allow for repeated arguments', function () {
@@ -548,12 +556,11 @@ define(['blame'], function (blame) {
 
     describe('map', function () {
       it('should be properly wrapped', function () {
-          var B = A.map(function (x) { return x + 1; });
+        function add1(x) { return x + 1; }
 
-          expect(B[0]).to.equal(2);
-          expect(B[1]).to.equal(3);
-          expect(B[2]).to.equal(4);
-          expect(B[3]).to.equal(5);
+        var B = A.map(add1);
+
+        expect(B).to.eql([2, 3, 4, 5]);
       });
 
       it('should allow for optional thisArg', function () {
@@ -569,6 +576,19 @@ define(['blame'], function (blame) {
         expect(B.length).to.equal(4);
         expect(C.length).to.equal(4);
         expect(C[0]).to.equal(1);
+      });
+
+      it('should allow for forall types', function () {
+        function add1(x) { return x + 1; }
+
+        var type_id = forall('X', func(arr(tyvar('X')), arr(tyvar('X')))),
+          wrapped_id_array = wrap(identity, p, q, type_id, type_id),
+          B = wrapped_id_array([1, 2, 3, 4]),
+          C = B.map(add1);
+
+        expect(C).to.eql([2, 3, 4, 5]);
+        expect(C.map(add1)).to.eql([3, 4, 5, 6]);
+
       });
     });
 
