@@ -887,8 +887,10 @@ define(['blame'], function (blame) {
 
     describe('basic wrapping', function () {
       var type = obj({a: Num});
-      var A = wrap({a: true}, p, q, type, type);
+
       it('should lazily test for types', function () {
+        var A = wrap({a: true}, p, q, type, type);
+
         expect(function () {
           used(A.a);
         }).to.throw(p.msg());
@@ -899,10 +901,23 @@ define(['blame'], function (blame) {
       });
 
       it('should permit other properties', function () {
+        var A = wrap({a: true}, p, q, type, type);
+
         A.b = true;
         A.b = false;
         A.b = 1;
         expect(A.b).to.equal(1);
+      });
+
+      it('should permit valueOf', function () {
+        var A = wrap({a: true}, p, q, type, type),
+          B = A.valueOf();
+
+        expect(B).to.equal(A);
+
+        expect(function () {
+          B.a = true;
+        }).to.throw(q.msg());
       });
     });
 
