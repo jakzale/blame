@@ -23,7 +23,8 @@ define(['blame'], function (blame) {
     tyvar = blame.tyvar,
     forall = blame.forall,
     arr = blame.arr,
-    sum = blame.sum;
+    sum = blame.sum,
+    obj = blame.obj;
 
   function identity (x) { return x; }
 
@@ -61,7 +62,7 @@ define(['blame'], function (blame) {
 
   describe('Blame module', function () {
     it('should be imported and populated', function () {
-      [blame, wrap, Label, func, fun, Num, Bool, Str, Und, tyvar, forall, arr, sum].forEach(function (v) {
+      [blame, wrap, Label, func, fun, Num, Bool, Str, Und, tyvar, forall, arr, sum, obj].forEach(function (v) {
         used(expect(v).to.exist);
       });
     });
@@ -870,6 +871,30 @@ define(['blame'], function (blame) {
     it('should detect ambiguous sum', function () {
       var ambiguous = sum([arr(Num), arr(Bool)]);
       expect(wrapped([], p, q, ambiguous, ambiguous)).to.throw('ambiguous');
+    });
+  });
+
+  describe('Objects', function () {
+
+    describe('basic wrapping', function () {
+      var type = obj({a: Num});
+      var A = wrap({a: true}, p, q, type, type);
+      it('should lazily test for types', function () {
+        expect(function () {
+          used(A.a);
+        }).to.throw(p.msg());
+
+        expect(function () {
+          A.a = false;
+        }).to.throw(q.msg());
+      });
+
+      it('should permit other properties', function () {
+        A.b = true;
+        A.b = false;
+        A.b = 1;
+        expect(A.b).to.equal(1);
+      });
     });
   });
 });
