@@ -9,13 +9,13 @@
   "author": "Jakub Z",
   "private": true,
   "license": "BSD-2-Clause",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "karma": "0.12.x",
     "karma-chai": "0.1.x",
     "karma-firefox-launcher": "0.1.x",
     "karma-mocha": "0.1.x",
+    "karma-nyan-reporter": "0.0.x",
     "karma-requirejs": "0.2.x",
     "mocha": "1.20.x",
     "requirejs": "2.1.x"
