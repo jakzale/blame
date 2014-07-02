@@ -898,23 +898,40 @@ define(['blame'], function (blame) {
     });
 
     describe('foralls', function () {
-      it('should permit property swap', function () {
-        function swap_ab(o) {
-          var temp = o.a;
-          o.a = o.b;
-          o.b = temp;
-        }
+      describe('property swap', function () {
+          var type = forall('X', func(obj({a: tyvar('X'), b: tyvar('X')}), Und));
 
-        var type = forall('X', func(obj({a: tyvar('X'), b: tyvar('X')}), Und)),
-          A = {a: true, b: 1},
-          wrapped_swap = wrap(swap_ab, p, q, type, type);
+        it('should permit good swap', function () {
+          function swap_ab(o) {
+            var temp = o.a;
+            o.a = o.b;
+            o.b = temp;
+          }
 
-        expect(type.description).to.equal('forall X. {a: X, b: X} -> Und');
-        wrapped_swap(A);
+          var A = {a: true, b: 1},
+            wrapped_swap = wrap(swap_ab, p, q, type, type);
 
-        expect(A.a).to.equal(1);
-        expect(A.b).to.equal(true);
+          expect(type.description).to.equal('forall X. {a: X, b: X} -> Und');
+          wrapped_swap(A);
 
+          expect(A.a).to.equal(1);
+          expect(A.b).to.equal(true);
+
+        });
+
+        it('should reject improper', function () {
+          function swap_bad(o) {
+            o.a = 1;
+            o.b = true;
+          }
+
+          var A = {a: true, b: 1},
+            wrapped_swap = wrap(swap_bad, p, q, type, type);
+
+          expect(function () {
+            wrapped_swap(A);
+          }).to.throw(q.negated().msg());
+        });
       });
     });
   });
