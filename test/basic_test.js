@@ -818,12 +818,21 @@ define(['blame'], function (blame) {
       });
 
       it('should allow for optional compare', function () {
-
         var B = wrap([1, 2, 3, 4], p, q, type, type);
 
         B.sort();
 
         expect(B[0]).to.equal(1);
+      });
+    });
+
+    describe('splice', function () {
+      it('should be properly wrapped', function () {
+        var B = wrap([1, 2, 3, 4], p, q, type, type);
+
+        B.splice(2, 2, 1, 2);
+
+        expect(B).to.eql([1, 2, 1, 2]);
       });
     });
 
