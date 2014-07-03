@@ -579,12 +579,18 @@ define(['blame'], function (blame) {
       });
 
       it('should allow for forall types', function () {
-        function add1(x) { return x + 1; }
+        function add1(x) {
+          return x + 1;
+        }
 
         var type_id = forall('X', func(arr(tyvar('X')), arr(tyvar('X')))),
           wrapped_id_array = wrap(identity, p, q, type_id, type_id),
-          B = wrapped_id_array([1, 2, 3, 4]),
-          C = B.map(add1);
+          B, C;
+
+        B = wrapped_id_array([1, 2, 3, 4]);
+        expect(B).to.eql([1, 2, 3, 4]);
+
+        C = B.map(add1);
 
         expect(C).to.eql([2, 3, 4, 5]);
         expect(C.map(add1)).to.eql([3, 4, 5, 6]);
