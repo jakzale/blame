@@ -1,4 +1,3 @@
-
 /*global describe, it, define, expect*/
 /*jslint indent: 2, todo: true */
 
@@ -508,13 +507,16 @@ define(['blame'], function (blame) {
           F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
         [D, E, F].forEach(function (D) {
-          console.log('D');
           D[0] = 1;
+        });
 
+        [D, F].forEach(function (D) {
           expect(function () {
             D[0] = true;
           }).to.throw(q.msg());
         });
+
+        E[0] = true;
       });
     });
 
@@ -719,26 +721,33 @@ define(['blame'], function (blame) {
           E = wrapped_id_array([1, 2, 3, 4]),
           F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-        /*
-         *[D, E, F].forEach(function (D) {
-         *  expect(D.push(5)).to.equal(5);
-         *  expect(D[4]).to.equal(5);
-         *  expect(D.length).to.equal(5);
-         *});
-         */
+        [D, E, F].forEach(function (D) {
+          expect(D.push(5)).to.equal(5);
+          expect(D.length).to.equal(5);
+          expect(D).to.eql([1, 2, 3, 4, 5]);
+        });
       });
 
       it('should allow for repeated arguments', function () {
-        var D = wrap([1, 2, 3, 4], p, q, type, type);
-        expect(D.push(5, 6, 7, 8, 9, 10)).to.equal(10);
-        expect(D.length).to.equal(10);
-        expect(D[9]).to.equal(10);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
+
+        [D, E, F].forEach(function (D) {
+          expect(D.push(5, 6, 7, 8, 9, 10)).to.equal(10);
+          expect(D.length).to.equal(10);
+          expect(D).to.eql([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+        });
       });
 
       it('should allow for zero arguments', function () {
-        var D = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-        expect(D.push()).to.equal(4);
+        [D, E, F].forEach(function (D) {
+          expect(D.push()).to.equal(4);
+        });
       });
     });
 
@@ -746,14 +755,17 @@ define(['blame'], function (blame) {
       it('should be properly wrapped', function () {
         function add(a, b) { return a + b; }
 
-        expect(A.reduce(add, 0)).to.equal(10);
-
+        [A, B, C].forEach(function (A) {
+          expect(A.reduce(add, 0)).to.equal(10);
+        });
       });
 
       it('sould allow for optional accumulator', function () {
         function add(a, b) { return a + b; }
 
-        expect(A.reduce(add)).to.equal(10);
+        [A, B, C].forEach(function (A) {
+          expect(A.reduce(add)).to.equal(10);
+        });
       });
 
       it('sould allow for more complex reduction', function () {
@@ -761,9 +773,11 @@ define(['blame'], function (blame) {
           return String(a) + String(b);
         }
 
-        expect(A.reduce(addS)).to.equal('1234');
+        [A, B, C].forEach(function (A) {
+          expect(A.reduce(addS)).to.equal('1234');
 
-        expect(A.reduce(addS, 'a')).to.equal('a1234');
+          expect(A.reduce(addS, 'a')).to.equal('a1234');
+        });
       });
     });
 
@@ -771,14 +785,17 @@ define(['blame'], function (blame) {
       it('should be properly wrapped', function () {
         function add(a, b) { return a + b; }
 
-        expect(A.reduceRight(add, 0)).to.equal(10);
-
+        [A, B, C].forEach(function (A) {
+          expect(A.reduceRight(add, 0)).to.equal(10);
+        });
       });
 
       it('sould allow for optional accumulator', function () {
         function add(a, b) { return a + b; }
 
-        expect(A.reduceRight(add)).to.equal(10);
+        [A, B, C].forEach(function (A) {
+          expect(A.reduceRight(add)).to.equal(10);
+        });
       });
 
       it('sould allow for more complex reduction', function () {
@@ -786,44 +803,55 @@ define(['blame'], function (blame) {
           return String(a) + String(b);
         }
 
-        expect(A.reduceRight(addS)).to.equal('4321');
+        [A, B, C].forEach(function (A) {
+          expect(A.reduceRight(addS)).to.equal('4321');
 
-        expect(A.reduceRight(addS, 'a')).to.equal('a4321');
+          expect(A.reduceRight(addS, 'a')).to.equal('a4321');
+        });
       });
     });
 
     describe('reverse', function () {
       it('should be properly wrapped', function () {
-        var D = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-        expect(D.reverse()[0]).to.equal(4);
-        expect(D[1]).to.equal(3);
+        [D, E, F].forEach(function (D) {
+          expect(D.reverse()).to.eql([4, 3, 2, 1]);
+        });
       });
     });
 
     describe('shift', function () {
       it('should be properly wrapped', function () {
-        var D = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-        expect(D.shift()).to.equal(1);
-        expect(D[0]).to.equal(2);
-        expect(D.length).to.equal(3);
+        [D, E, F].forEach(function (D) {
+          expect(D.shift()).to.equal(1);
+          expect(D[0]).to.equal(2);
+          expect(D.length).to.equal(3);
+        });
       });
     });
 
     describe('slice', function () {
       it('should be properly wrapped', function () {
-        var D = A.slice(1, 2);
-        expect(D.length).to.equal(1);
-        expect(D[0]).to.equal(2);
+        [A, B, C].forEach(function (A) {
+          var D = A.slice(1, 2);
+          expect(D.length).to.equal(1);
+          expect(D[0]).to.equal(2);
 
-        D = A.slice(1);
-        expect(D.length).to.equal(3);
-        expect(D[0]).to.equal(2);
+          D = A.slice(1);
+          expect(D.length).to.equal(3);
+          expect(D[0]).to.equal(2);
 
-        D = A.slice();
-        expect(D.length).to.equal(4);
-        expect(D[0]).to.equal(1);
+          D = A.slice();
+          expect(D.length).to.equal(4);
+          expect(D[0]).to.equal(1);
+        });
       });
     });
 
@@ -831,8 +859,10 @@ define(['blame'], function (blame) {
       it('should be properly wrapped', function () {
           var D = wrap([3, 5, 7], p, q, type, type);
 
+        [A, B, C].forEach(function (A) {
           expect(A.some(even)).to.equal(true);
           expect(D.some(even)).to.equal(false);
+        });
       });
 
       it('should allow for optional thisArg', function () {
@@ -842,10 +872,12 @@ define(['blame'], function (blame) {
           return false;
         }
 
-        var D = [];
+        [A, B, C].forEach(function (A) {
+          var D = [];
 
-        expect(A.some(append, D)).to.equal(false);
-        expect(D.length).to.equal(4);
+          expect(A.some(append, D)).to.equal(false);
+          expect(D).to.eql([1, 2, 3, 4]);
+        });
       });
     });
 
@@ -855,52 +887,76 @@ define(['blame'], function (blame) {
           return b - a;
         }
 
-        var D = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-        D.sort(compare);
+        [D, E, F].forEach(function (D) {
+          D.sort(compare);
 
-        expect(D[0]).to.equal(4);
+          expect(D).to.eql([4, 3, 2, 1]);
+        });
       });
 
       it('should allow for optional compare', function () {
-        var D = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-        D.sort();
+        [D, E, F].forEach(function (D) {
+          D.sort();
 
-        expect(D[0]).to.equal(1);
+          expect(D).to.eql([1, 2, 3, 4]);
+        });
       });
     });
 
     describe('splice', function () {
       it('should be properly wrapped', function () {
-        var D = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-        D.splice(2, 2, 1, 2);
+        [D, E, F].forEach(function (D) {
+          D.splice(2, 2, 1, 2);
 
-        expect(D).to.eql([1, 2, 1, 2]);
+          expect(D).to.eql([1, 2, 1, 2]);
+        });
       });
     });
 
     describe('toLocaleString', function () {
       it('should be properly wrapped', function () {
-        expect(A.toLocaleString()).to.equal('1,2,3,4');
+        [A, B, C].forEach(function (A) {
+          expect(A.toLocaleString()).to.equal('1,2,3,4');
+        });
       });
     });
 
     describe('toString', function () {
       it('should be properly wrapped', function () {
-        expect(A.toString()).to.equal('1,2,3,4');
+        [A, B, C].forEach(function (A) {
+          expect(A.toString()).to.equal('1,2,3,4');
+        });
       });
     });
 
     describe('unshift', function () {
       it('should be properly wrapped', function () {
-        var D = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-        expect(D.unshift()).to.equal(4);
-        expect(D.unshift(0)).to.equal(5);
-        expect(D.unshift(-2, -1)).to.equal(7);
-        expect(D[0]).to.equal(-2);
+        [D, E, F].forEach(function (D) {
+          expect(D.unshift()).to.equal(4);
+          expect(D).to.eql([1, 2, 3, 4]);
+
+          expect(D.unshift(0)).to.equal(5);
+          expect(D).to.eql([0, 1, 2, 3, 4]);
+
+          expect(D.unshift(-2, -1)).to.equal(7);
+          expect(D).to.eql([-2, -1, 0, 1, 2, 3, 4]);
+        });
       });
     });
   });
