@@ -487,9 +487,36 @@ define(['blame'], function (blame) {
 
   describe('ARRAY API', function () {
     var type = arr(Num),
-      A = wrap([1, 2, 3, 4], p, q, type, type);
+      type_id = forall('X', func(arr(tyvar('X')), arr(tyvar('X')))),
+      wrapped_id_array = wrap(identity, p, q, type_id, type_id),
+      A = wrap([1, 2, 3, 4], p, q, type, type),
+      B = wrapped_id_array([1, 2, 3, 4]),
+      C = wrap(wrapped_id_array([1, 2, 3, 4]), p, q, type, type);
 
     function even (x) { return x % 2 === 0; }
+
+    describe('element access', function () {
+      it('should allow to get', function () {
+        [A, B, C].forEach(function (A) {
+          expect(A).to.eql([1, 2, 3, 4]);
+        });
+      });
+
+      it('should allow to set', function () {
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
+
+        [D, E, F].forEach(function (D) {
+          console.log('D');
+          D[0] = 1;
+
+          expect(function () {
+            D[0] = true;
+          }).to.throw(q.msg());
+        });
+      });
+    });
 
     describe('length', function () {
       it('should allow to get', function () {
@@ -497,60 +524,22 @@ define(['blame'], function (blame) {
       });
 
       it('should allow to set', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type);
 
-        B.length = 2;
-        expect(B.length).to.equal(2);
-      });
-    });
-
-    describe('Object', function () {
-      it('should be allowed to inspect', function () {
-        expect(A).to.eql([1, 2, 3, 4]);
-      });
-
-      it('should allow for prototype', function () {
-        expect(A.prototype).to.equal(undefined);
-      });
-
-      it('should allow for valueOf', function () {
-        expect(A.valueOf()).to.eql(A);
-
-        expect(function () {
-          A[0] = true;
-        }).to.throw(q.msg());
-      });
-
-      it('should allow for hasOwnProperty', function () {
-        expect(A.hasOwnProperty('0')).to.equal(true);
+        D.length = 2;
+        expect(D.length).to.equal(2);
+        expect(D).to.eql([1, 2]);
       });
     });
 
     describe('concat', function () {
-      it('should be properly wrapped', function () {
-        var B = A.concat([5]);
+      it('should return an unwrapped array', function () {
+        [A, B, C].forEach(function (A) {
+          var D = A.concat([5], 6, [7]);
 
-        expect(B.length).to.equal(5);
-        expect(B[4]).to.equal(5);
-
-        //expect(function () {
-        //  B[0] = true;
-        //}).to.throw(q.msg());
-      });
-
-      it('should allow for repeated arguments', function () {
-        var B = A.concat([5], [6], [7]);
-
-
-        expect(B.length).to.equal(7);
-        expect(B[6]).to.equal(7);
-      });
-
-      it('should allow for non-array arguments', function () {
-        var B = A.concat(5, [6], 7);
-
-        expect(B.length).to.equal(7);
-        expect(B[6]).to.equal(7);
+          D[0] = true;
+          expect(D).to.eql([true, 2, 3, 4, 5, 6, 7]);
+        });
       });
     });
 
@@ -558,9 +547,11 @@ define(['blame'], function (blame) {
       it('should be properly wrapped', function () {
         function add1(x) { return x + 1; }
 
-        var B = A.map(add1);
+        [A, B, C].forEach(function (A) {
+          var D = A.map(add1);
 
-        expect(B).to.eql([2, 3, 4, 5]);
+          expect(D).to.eql([2, 3, 4, 5]);
+        });
       });
 
       it('should allow for optional thisArg', function () {
@@ -569,13 +560,14 @@ define(['blame'], function (blame) {
           return x;
         }
 
-        var B = [], C;
+        [A, B, C].forEach(function (A) {
+          var D = [], E;
 
-        C = A.map(append, B);
+          E = A.map(append, D);
 
-        expect(B.length).to.equal(4);
-        expect(C.length).to.equal(4);
-        expect(C[0]).to.equal(1);
+          expect(D).to.eql([1, 2, 3, 4]);
+          expect(E).to.eql([1, 2, 3, 4]);
+        });
       });
 
       it('should allow for forall types', function () {
@@ -583,27 +575,27 @@ define(['blame'], function (blame) {
           return x + 1;
         }
 
-        var type_id = forall('X', func(arr(tyvar('X')), arr(tyvar('X')))),
-          wrapped_id_array = wrap(identity, p, q, type_id, type_id),
-          B, C;
+        var D, E, F;
 
-        B = wrapped_id_array([1, 2, 3, 4]);
-        expect(B).to.eql([1, 2, 3, 4]);
+        D = wrapped_id_array([1, 2, 3, 4]);
+        expect(D).to.eql([1, 2, 3, 4]);
 
-        C = B.map(add1);
+        E = D.map(add1);
+        expect(E).to.eql([2, 3, 4, 5]);
 
-        expect(C).to.eql([2, 3, 4, 5]);
-        expect(C.map(add1)).to.eql([3, 4, 5, 6]);
-
+        F = E.map(add1);
+        expect(F).to.eql([3, 4, 5, 6]);
       });
     });
 
     describe('every', function () {
       it('should be properly wrapped', function () {
-          var B = wrap([2, 4, 6], p, q, type, type);
+          var D = wrap([2, 4, 6], p, q, type, type);
 
           expect(A.every(even)).to.equal(false);
-          expect(B.every(even)).to.equal(true);
+          expect(B.every(even)).to.equal(false);
+          expect(C.every(even)).to.equal(false);
+          expect(D.every(even)).to.equal(true);
       });
 
       it('should allow for optional thisArg', function () {
@@ -613,19 +605,23 @@ define(['blame'], function (blame) {
           return true;
         }
 
-        var B = [];
+        [A, B, C].forEach(function (A) {
+          var D = [];
 
-        expect(A.every(append, B)).to.equal(true);
-        expect(B).to.eql([1, 2, 3, 4]);
+          expect(A.every(append, D)).to.equal(true);
+          expect(D).to.eql([1, 2, 3, 4]);
+        });
       });
     });
 
     describe('filter', function () {
       it('should be properly wrapped', function () {
-          var B = A.filter(even);
+        [A, B, C].forEach(function (A) {
+          var D = A.filter(even);
 
-          expect(B[0]).to.equal(2);
-          expect(B[1]).to.equal(4);
+          expect(D[0]).to.equal(2);
+          expect(D[1]).to.equal(4);
+        });
       });
 
       it('should allow for optional thisArg', function () {
@@ -634,16 +630,19 @@ define(['blame'], function (blame) {
           return true;
         }
 
-        var B = [],
-          C = A.filter(append, B);
+        [A, B, C].forEach(function (A) {
+          var D = [],
+          E = A.filter(append, D);
 
-        expect(B.length).to.equal(4);
-        expect(C.length).to.equal(4);
+          expect(D).to.eql([1, 2, 3, 4]);
+          expect(E).to.eql([1, 2, 3, 4]);
+        });
       });
     });
 
     describe('forEach', function () {
       it('should be properly wrapped', function () {
+        [A, B, C].forEach(function (A) {
           var c = 0;
 
           function count(x) { c += x; }
@@ -651,6 +650,7 @@ define(['blame'], function (blame) {
           A.forEach(count);
 
           expect(c).to.equal(10);
+        });
       });
 
 
@@ -659,67 +659,86 @@ define(['blame'], function (blame) {
           this.push(x);
         }
 
-        var B = [];
+        [A, B, C].forEach(function (A) {
+          var D = [];
 
-        A.forEach(append, B);
+          A.forEach(append, D);
 
-        expect(B.length).to.equal(4);
+          expect(D).to.eql([1, 2, 3, 4]);
+        });
       });
     });
 
     describe('indexOf', function () {
       it('should be properly wrapped', function () {
+        [A, B, C].forEach(function (A) {
           expect(A.indexOf(2, 0)).to.equal(1);
           expect(A.indexOf(1, 1)).to.equal(-1);
           expect(A.indexOf(2)).to.equal(1);
+        });
       });
     });
 
     describe('join', function () {
       it('should be properly wrapped', function () {
+        [A, B, C].forEach(function (A) {
           expect(A.join(' ')).to.equal('1 2 3 4');
+        });
       });
     });
 
     describe('lastIndexOf', function () {
       it('should be properly wrapped', function () {
+        [A, B, C].forEach(function (A) {
           expect(A.lastIndexOf(2, 4)).to.equal(1);
           expect(A.lastIndexOf(2, 0)).to.equal(-1);
           expect(A.lastIndexOf(2)).to.equal(1);
+        });
       });
     });
 
     describe('pop', function () {
       it('should be properly wrapped', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-          var b = B.pop();
+        [D, E, F].forEach(function (D) {
+          var b = D.pop();
 
           expect(b).to.equal(4);
-          expect(B.length).to.equal(3);
+          expect(D).to.eql([1, 2, 3]);
+          expect(D.length).to.equal(3);
+        });
       });
     });
 
     describe('push', function () {
       it('should be properly wrapped', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type),
+          E = wrapped_id_array([1, 2, 3, 4]),
+          F = wrapped_id_array(wrap([1, 2, 3, 4], p, q, type, type));
 
-        expect(B.push(5)).to.equal(5);
-        expect(B[4]).to.equal(5);
-        expect(B.length).to.equal(5);
+        /*
+         *[D, E, F].forEach(function (D) {
+         *  expect(D.push(5)).to.equal(5);
+         *  expect(D[4]).to.equal(5);
+         *  expect(D.length).to.equal(5);
+         *});
+         */
       });
 
       it('should allow for repeated arguments', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
-        expect(B.push(5, 6, 7, 8, 9, 10)).to.equal(10);
-        expect(B.length).to.equal(10);
-        expect(B[9]).to.equal(10);
+        var D = wrap([1, 2, 3, 4], p, q, type, type);
+        expect(D.push(5, 6, 7, 8, 9, 10)).to.equal(10);
+        expect(D.length).to.equal(10);
+        expect(D[9]).to.equal(10);
       });
 
       it('should allow for zero arguments', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type);
 
-        expect(B.push()).to.equal(4);
+        expect(D.push()).to.equal(4);
       });
     });
 
@@ -775,45 +794,45 @@ define(['blame'], function (blame) {
 
     describe('reverse', function () {
       it('should be properly wrapped', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type);
 
-        expect(B.reverse()[0]).to.equal(4);
-        expect(B[1]).to.equal(3);
+        expect(D.reverse()[0]).to.equal(4);
+        expect(D[1]).to.equal(3);
       });
     });
 
     describe('shift', function () {
       it('should be properly wrapped', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type);
 
-        expect(B.shift()).to.equal(1);
-        expect(B[0]).to.equal(2);
-        expect(B.length).to.equal(3);
+        expect(D.shift()).to.equal(1);
+        expect(D[0]).to.equal(2);
+        expect(D.length).to.equal(3);
       });
     });
 
     describe('slice', function () {
       it('should be properly wrapped', function () {
-        var B = A.slice(1, 2);
-        expect(B.length).to.equal(1);
-        expect(B[0]).to.equal(2);
+        var D = A.slice(1, 2);
+        expect(D.length).to.equal(1);
+        expect(D[0]).to.equal(2);
 
-        B = A.slice(1);
-        expect(B.length).to.equal(3);
-        expect(B[0]).to.equal(2);
+        D = A.slice(1);
+        expect(D.length).to.equal(3);
+        expect(D[0]).to.equal(2);
 
-        B = A.slice();
-        expect(B.length).to.equal(4);
-        expect(B[0]).to.equal(1);
+        D = A.slice();
+        expect(D.length).to.equal(4);
+        expect(D[0]).to.equal(1);
       });
     });
 
     describe('some', function () {
       it('should be properly wrapped', function () {
-          var B = wrap([3, 5, 7], p, q, type, type);
+          var D = wrap([3, 5, 7], p, q, type, type);
 
           expect(A.some(even)).to.equal(true);
-          expect(B.some(even)).to.equal(false);
+          expect(D.some(even)).to.equal(false);
       });
 
       it('should allow for optional thisArg', function () {
@@ -823,10 +842,10 @@ define(['blame'], function (blame) {
           return false;
         }
 
-        var B = [];
+        var D = [];
 
-        expect(A.some(append, B)).to.equal(false);
-        expect(B.length).to.equal(4);
+        expect(A.some(append, D)).to.equal(false);
+        expect(D.length).to.equal(4);
       });
     });
 
@@ -836,29 +855,29 @@ define(['blame'], function (blame) {
           return b - a;
         }
 
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type);
 
-        B.sort(compare);
+        D.sort(compare);
 
-        expect(B[0]).to.equal(4);
+        expect(D[0]).to.equal(4);
       });
 
       it('should allow for optional compare', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type);
 
-        B.sort();
+        D.sort();
 
-        expect(B[0]).to.equal(1);
+        expect(D[0]).to.equal(1);
       });
     });
 
     describe('splice', function () {
       it('should be properly wrapped', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type);
 
-        B.splice(2, 2, 1, 2);
+        D.splice(2, 2, 1, 2);
 
-        expect(B).to.eql([1, 2, 1, 2]);
+        expect(D).to.eql([1, 2, 1, 2]);
       });
     });
 
@@ -876,12 +895,12 @@ define(['blame'], function (blame) {
 
     describe('unshift', function () {
       it('should be properly wrapped', function () {
-        var B = wrap([1, 2, 3, 4], p, q, type, type);
+        var D = wrap([1, 2, 3, 4], p, q, type, type);
 
-        expect(B.unshift()).to.equal(4);
-        expect(B.unshift(0)).to.equal(5);
-        expect(B.unshift(-2, -1)).to.equal(7);
-        expect(B[0]).to.equal(-2);
+        expect(D.unshift()).to.equal(4);
+        expect(D.unshift(0)).to.equal(5);
+        expect(D.unshift(-2, -1)).to.equal(7);
+        expect(D[0]).to.equal(-2);
       });
     });
   });
