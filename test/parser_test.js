@@ -22,6 +22,24 @@ define(['blame_parser'], function (parser) {
       });
     });
   });
+
+  describe('parsing', function () {
+    describe('ambients', function () {
+      it('should accept global variable declaration', function () {
+        [
+          'declare var my_var;',
+          'declare var _;',
+          'declare var $;',
+        ].forEach(function (s) {
+          parser.parse(s);
+        });
+
+        expect(function () {
+          parser.parse('declare var 1;');
+        }).to.throw();
+      });
+    });
+  });
 });
 
 
