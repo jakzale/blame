@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       // {pattern: 'stacktrace/stacktrace.js', included: false},
       {pattern: 'lib/**/*.js', included: false},
+      {pattern: 'build/**/*.js', included: false},
       {pattern: 'test/**/*test.js', included: false},
       'test-main.js'
     ],
