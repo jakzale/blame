@@ -59,11 +59,17 @@ gulp.task('peg:compile', function () {
       file.contents = Buffer.concat([
         new Buffer('define(\'' + module_name + '\', [], function () {\nvar module = {};\n'),
         file.contents,
-        new Buffer('\n});\nreturn module.exports;')
+        new Buffer('\nreturn module.exports;\n});')
       ]);
 
     })).
     pipe(gulp.dest(paths.build));
 });
+
+gulp.task('peg:watch', function () {
+  gulp.watch([paths.scripts.peg], ['peg:compile']);
+});
+
+gulp.task('default', ['peg:compile', 'peg:watch', 'test-watch']);
 
 // vim: set ts=2 sw=2 sts=2 et :

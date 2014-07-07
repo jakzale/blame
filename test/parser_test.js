@@ -8,38 +8,39 @@ var unused, used;
 unused = empty;
 used = empty;
 
-define(['blame_parser'], function (parser) {
+define(['parser'], function (parser) {
   describe('parser module', function () {
     it('should be properly imported', function () {
       used(expect(parser).to.exist);
+      used(expect(parser.parse).to.exist);
     });
 
-    describe('pegjs', function () {
-      it('should be properly imported', function () {
-        used(expect(PEG).to.exist);
-        used(expect(PEG.buildParser).to.exist);
-        expect(typeof PEG.buildParser).to.equal('function');
-      });
-    });
   });
 
-  describe('parsing', function () {
-    describe('ambients', function () {
-      it('should accept global variable declaration', function () {
-        [
-          'declare var my_var;',
-          'declare var _;',
-          'declare var $;',
-        ].forEach(function (s) {
-          parser.parse(s);
-        });
-
-        expect(function () {
-          parser.parse('declare var 1;');
-        }).to.throw();
-      });
-    });
-  });
+/*
+ *  describe('parsing', function () {
+ *    describe('white space', function () {
+ *      //it('should be ignored', function () {
+ *        //console.log(parser.parse('declare var my_var;'));
+ *      //});
+ *    });
+ *    describe('ambients', function () {
+ *      it('should accept global variable declaration', function () {
+ *        [
+ *          'declare var my_var;',
+ *          'declare var _;',
+ *          'declare var $;',
+ *        ].forEach(function (s) {
+ *          parser.parse(s);
+ *        });
+ *
+ *        expect(function () {
+ *          parser.parse('declare var 1;');
+ *        }).to.throw();
+ *      });
+ *    });
+ *  });
+ */
 });
 
 

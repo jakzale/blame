@@ -19,8 +19,7 @@ require.config({
 
     paths: {
         'blame': 'lib/blame',
-        'blame_parser': 'lib/parser',
-        'peg': 'lib/peg'
+        'parser': 'build/parser',
     },
 
   // dynamically load all test files
