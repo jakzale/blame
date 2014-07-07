@@ -4,7 +4,19 @@
 var gulp = require('gulp'),
   jshint = require('gulp-jshint'),
   karma = require('gulp-karma'),
-  lint_files, test_files;
+  peg = require('gulp-peg'),
+  gutil = require('gulp-util'),
+  tap = require('gulp-tap'),
+  wrapper = require('gulp-wrapper'),
+  path = require('path'),
+  lint_files, test_files, paths;
+
+paths = {
+  build: 'build',
+  scripts: {
+    peg: 'src/**/*.peg'
+  }
+};
 
 
 lint_files = ['./lib/blame.js', './lib/parser.js'];
@@ -38,6 +50,20 @@ gulp.task('test-watch', function () {
   }));
 });
 
+gulp.task('peg:compile', function () {
+  return gulp.src(paths.scripts.peg).
+    pipe(peg().on('error', gutil.log)).
+    pipe(tap(function (file) {
+      var module_name = path.basename(file.path, '.js');
 
+      file.contents = Buffer.concat([
+        new Buffer('define(\'' + module_name + '\', [], function () {\nvar module = {};\n'),
+        file.contents,
+        new Buffer('\n});\nreturn module.exports;')
+      ]);
+
+    })).
+    pipe(gulp.dest(paths.build));
+});
 
 // vim: set ts=2 sw=2 sts=2 et :
