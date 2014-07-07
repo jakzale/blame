@@ -1,4 +1,4 @@
-/*global describe, it, define, expect*/
+/*global describe, it, define, expect, PEG*/
 /*jslint indent: 2, todo: true */
 
 function empty() { return; }
@@ -12,6 +12,14 @@ define(['blame_parser'], function (parser) {
   describe('parser module', function () {
     it('should be properly imported', function () {
       used(expect(parser).to.exist);
+    });
+
+    describe('pegjs', function () {
+      it('should be properly imported', function () {
+        used(expect(PEG).to.exist);
+        used(expect(PEG.buildParser).to.exist);
+        expect(typeof PEG.buildParser).to.equal('function');
+      });
     });
   });
 });
