@@ -38,7 +38,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots', 'osx'],
+    reporters: ['dots'],
 
 
     // web server port
@@ -68,6 +68,3 @@ module.exports = function(config) {
     singleRun: false
   });
 };
-
-
-// vim: set ts=2 sw=2 sts=2 et :

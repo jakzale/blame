@@ -11,6 +11,10 @@
   "license": "BSD-2-Clause",
   "dependencies": {},
   "devDependencies": {
+    "gulp": "^3.8.5",
+    "gulp-jshint": "^1.6.4",
+    "gulp-karma": "0.0.4",
+    "gulp-util": "^2.2.19",
     "karma": "0.12.x",
     "karma-chai": "0.1.x",
     "karma-firefox-launcher": "0.1.x",

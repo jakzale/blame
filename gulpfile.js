@@ -2,47 +2,42 @@
 'use strict';
 
 var gulp = require('gulp'),
-    jshint = require('gulp-jshint'),
-    gutil = require('gulp-util'),
-    karma = require('gulp-karma');
+  jshint = require('gulp-jshint'),
+  karma = require('gulp-karma'),
+  lint_files, test_files;
 
 
-gulp.task('lint', function () {
-    gulp.src(['./lib/*.js', './test/*.js'])
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
-});
+lint_files = ['./lib/blame.js', './lib/parser.js'];
 
-//gulp.task('test', function () {
-//    gulp.src(['./test/*.js'], {read: false})
-//        .pipe(mocha({reporter: 'nyan'}))
-//        .on('error', gutil.log);
-//});
-
-//gulp.task('watch', ['lint', 'test'], function () {
-//    gulp.watch(['./test/*.js', './lib/*.js'], ['lint', 'test']);
-//});
-
-//gulp.task('watch', function () {
-//    gulp.src(['lib/*.js', 'test/**/*test.js'], {read: false}).
-//        pipe(karma({
-//        configFile: 'karma.conf.js',
-//        action: 'watch'}));
-//});
+test_files = ['undefined.js'];
 
 gulp.task('test', function() {
-    gulp.src([
-        'test-main.js',
-        'lib/*.js',
-        'test/*.js'
-    ], {read: false}).pipe(karma({
-        configFile: 'karma.conf.js',
-        action: 'run'
-    })).on('error', function(err) {
-        throw err;
-    });
+  // Be sure to return the stream
+  return gulp.src(test_files)
+  .pipe(karma({
+    configFile: 'karma-run.conf.js',
+    action: 'run'
+  }))
+  .on('error', function(err) {
+    // Make sure failed tests cause gulp to exit non-zero
+    throw err;
+  });
 });
 
-gulp.task('default', function () {
-    console.log('Not implemented!');
+gulp.task('lint', function () {
+  gulp.src(lint_files)
+  .pipe(jshint())
+  .pipe(jshint.reporter('default'));
 });
+
+gulp.task('test-watch', function () {
+  return gulp.src(test_files)
+  .pipe(karma({
+    configFile: 'karma.conf.js',
+    action: 'watch'
+  }));
+});
+
+
+
+// vim: set ts=2 sw=2 sts=2 et :
