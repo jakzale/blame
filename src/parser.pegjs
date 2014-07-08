@@ -1,8 +1,8 @@
 AmbientDeclaration "declaration"
-  = 'declare' ' ' AmbientVariableDeclaration
+  = 'declare' WhiteSpace+ AmbientVariableDeclaration
 
 AmbientVariableDeclaration "variable"
-  = 'var' ' ' Identifier ';'
+  = 'var' WhiteSpace+ Identifier WhiteSpace* ';'
 
 Identifier "identifier"
   = [a-z | A-Z | '$' | '_'] [a-z | A-Z | '$' | '_' | 0-9]*
