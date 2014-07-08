@@ -14,17 +14,21 @@
   }
 }
 
+Specification
+  = __ declarations:AmbientDeclaration* __ {
+    return declarations.join('\n');
+  }
+
 AmbientDeclaration "declaration"
-  = DeclareToken __ VariableStatement
+  = DeclareToken __ variables:VariableStatement {
+    return variables.join('\n');
+  }
 
 
 // Grammar Rules
 VariableStatement
   = VarToken __ declarations:VariableDeclarationList EOS {
-      return {
-        type:         "VariableDeclaration",
-        declarations: declarations
-      };
+      return declarations
     }
 
 VariableDeclarationList
@@ -34,18 +38,18 @@ VariableDeclarationList
 
 VariableDeclaration
   = id:Identifier annotation:(__ TypeAnnotation)? {
-      return {
-        type: "VariableDeclarator",
-        id:   id,
-        annotation: annotation
-      };
+      var type = annotation && annotation.pop ? annotation.pop() || 'null' : 'null';
+
+      return id + ' = blame.simple_wrap(' + id + ', ' + type + ');'
     }
 
 TypeAnnotation
- = ":" __ expression:TypeExpression { return expression; }
+ = ":" __ expression:TypeExpression { 
+   return expression;
+ }
 
 TypeExpression
- = NumberToken
+ = NumberToken { return 'blame.Num' }
 
 /*******************************
  * Lexer Rules                 *
@@ -91,10 +95,7 @@ Identifier
 
 IdentifierName "identifier"
   = first:IdentifierStart rest:IdentifierPart* {
-      return {
-        type: "Identifier",
-        name: first + rest.join("")
-      };
+      return first + rest.join("");
     }
 
 IdentifierStart

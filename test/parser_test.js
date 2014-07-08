@@ -47,7 +47,14 @@ define(['parser'], function (parser) {
       it('should allow to use it as a type', function () {
         parser.parse('declare var n:number;');
       });
+
+      it('should compile to wrapper', function () {
+        var parsed = parser.parse('declare var n:number;');
+        console.log(parsed);
+        expect(parsed).to.equal('n = blame.simple_wrap(n, blame.Num);');
+      });
     });
+
 
     describe('ambients', function () {
       it('should accept global variable declaration', function () {
