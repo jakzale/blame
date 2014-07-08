@@ -177,6 +177,7 @@ FutureReservedWord
 TypeScriptReservedWord
   = DeclareToken
   / NumberToken
+  / BooleanToken
 
 Literal
   = NullLiteral
@@ -412,7 +413,6 @@ ClassToken      = "class"      !IdentifierPart
 ConstToken      = "const"      !IdentifierPart
 ContinueToken   = "continue"   !IdentifierPart
 DebuggerToken   = "debugger"   !IdentifierPart
-DeclareToken    = "declare"    !IdentifierPart
 DefaultToken    = "default"    !IdentifierPart
 DeleteToken     = "delete"     !IdentifierPart
 DoToken         = "do"         !IdentifierPart
@@ -431,7 +431,6 @@ InstanceofToken = "instanceof" !IdentifierPart
 InToken         = "in"         !IdentifierPart
 NewToken        = "new"        !IdentifierPart
 NullToken       = "null"       !IdentifierPart
-NumberToken     = "number"     !IdentifierPart
 ReturnToken     = "return"     !IdentifierPart
 SetToken        = "set"        !IdentifierPart
 SuperToken      = "super"      !IdentifierPart
@@ -446,8 +445,13 @@ VoidToken       = "void"       !IdentifierPart
 WhileToken      = "while"      !IdentifierPart
 WithToken       = "with"       !IdentifierPart
 
-/* Skipped */
+/* TypeScript Tokens */
+BooleanToken    = "boolean"    !IdentifierPart
+DeclareToken    = "declare"    !IdentifierPart
+NumberToken     = "number"     !IdentifierPart
 
+
+/* Skipped */
 __
   = (WhiteSpace / LineTerminatorSequence / Comment)*
 

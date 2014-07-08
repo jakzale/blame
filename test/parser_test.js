@@ -55,6 +55,13 @@ define(['parser'], function (parser) {
       });
     });
 
+    describe('boolean', function () {
+      it('should be a keyword', function () {
+        expect(function () {
+          parser.parse('declare var boolean;');
+        }).to.throw();
+      });
+    });
 
     describe('ambients', function () {
       it('should accept global variable declaration', function () {
