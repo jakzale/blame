@@ -44,10 +44,6 @@ define(['parser'], function (parser) {
         }).to.throw();
       });
 
-      it('should allow to use it as a type', function () {
-        parser.parse('declare var n:number;');
-      });
-
       it('should compile to wrapper', function () {
         var parsed = parser.parse('declare var n:number;');
         expect(parsed).to.equal('n = blame.simple_wrap(n, blame.Num);');
@@ -59,6 +55,11 @@ define(['parser'], function (parser) {
         expect(function () {
           parser.parse('declare var boolean;');
         }).to.throw();
+      });
+
+      it('should allow to use it as a type', function () {
+        var parsed = parser.parse('declare var b:boolean;');
+        expect(parsed).to.equal('b = blame.simple_wrap(b, blame.Bool);');
       });
     });
 

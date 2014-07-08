@@ -49,7 +49,8 @@ TypeAnnotation
  }
 
 TypeExpression
- = NumberToken { return 'blame.Num' }
+ = NumberToken { return 'blame.Num'; }
+ / BooleanToken { return 'blame.Bool'; }
 
 /*******************************
  * Lexer Rules                 *
