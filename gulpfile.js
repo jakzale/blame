@@ -9,6 +9,7 @@ var gulp = require('gulp'),
   tap = require('gulp-tap'),
   wrapper = require('gulp-wrapper'),
   path = require('path'),
+  plumber = require('gulp-plumber'),
   lint_files, test_files, paths;
 
 paths = {
@@ -52,6 +53,7 @@ gulp.task('test-watch', function () {
 
 gulp.task('peg:compile', function () {
   return gulp.src(paths.scripts.peg).
+    pipe(plumber()).
     pipe(peg().on('error', gutil.log)).
     pipe(tap(function (file) {
       var module_name = path.basename(file.path, '.js');
