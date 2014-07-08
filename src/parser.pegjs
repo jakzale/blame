@@ -33,13 +33,19 @@ VariableDeclarationList
     }
 
 VariableDeclaration
-  = id:Identifier {
+  = id:Identifier annotation:(__ TypeAnnotation)? {
       return {
         type: "VariableDeclarator",
         id:   id,
+        annotation: annotation
       };
     }
 
+TypeAnnotation
+ = ":" __ expression:TypeExpression { return expression; }
+
+TypeExpression
+ = NumberToken
 
 /*******************************
  * Lexer Rules                 *
@@ -126,6 +132,7 @@ UnicodeConnectorPunctuation
 ReservedWord
   = Keyword
   / FutureReservedWord
+  / TypeScriptReservedWord
   / NullLiteral
   / BooleanLiteral
 
@@ -135,7 +142,6 @@ Keyword
   / CatchToken
   / ContinueToken
   / DebuggerToken
-  / DeclareToken
   / DefaultToken
   / DeleteToken
   / DoToken
@@ -166,6 +172,10 @@ FutureReservedWord
   / ExtendsToken
   / ImportToken
   / SuperToken
+
+TypeScriptReservedWord
+  = DeclareToken
+  / NumberToken
 
 Literal
   = NullLiteral
@@ -420,6 +430,7 @@ InstanceofToken = "instanceof" !IdentifierPart
 InToken         = "in"         !IdentifierPart
 NewToken        = "new"        !IdentifierPart
 NullToken       = "null"       !IdentifierPart
+NumberToken     = "number"     !IdentifierPart
 ReturnToken     = "return"     !IdentifierPart
 SetToken        = "set"        !IdentifierPart
 SuperToken      = "super"      !IdentifierPart

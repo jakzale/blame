@@ -36,6 +36,19 @@ define(['parser'], function (parser) {
         }).to.throw();
       });
     });
+
+    describe('number', function () {
+      it('should be a keyword', function () {
+        expect(function () {
+          parser.parse('declare var number;');
+        }).to.throw();
+      });
+
+      it('should allow to use it as a type', function () {
+        parser.parse('declare var n:number;');
+      });
+    });
+
     describe('ambients', function () {
       it('should accept global variable declaration', function () {
         [
