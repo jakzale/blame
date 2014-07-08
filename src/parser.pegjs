@@ -49,9 +49,19 @@ TypeAnnotation
  }
 
 TypeExpression
+ = BasicTypeExpression
+ / ArrayExpression
+
+BasicTypeExpression
  = NumberToken { return 'blame.Num'; }
  / BooleanToken { return 'blame.Bool'; }
  / StringToken { return 'blame.Str'; }
+
+ArrayExpression
+  = ArrayToken __ '<' __ type:BasicTypeExpression __ '>' {
+    return 'blame.Arr(' + type + ')';
+    }
+
 
 /*******************************
  * Lexer Rules                 *
@@ -181,6 +191,7 @@ TypeScriptReservedWord
   / NumberToken
   / BooleanToken
   / StringToken
+  / ArrayToken
 
 Literal
   = NullLiteral
@@ -449,6 +460,7 @@ WhileToken      = "while"      !IdentifierPart
 WithToken       = "with"       !IdentifierPart
 
 /* TypeScript Tokens */
+ArrayToken      = "Array"      !IdentifierPart
 BooleanToken    = "boolean"    !IdentifierPart
 DeclareToken    = "declare"    !IdentifierPart
 NumberToken     = "number"     !IdentifierPart

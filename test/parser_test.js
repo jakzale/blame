@@ -92,6 +92,19 @@ define(['parser'], function (parser) {
       });
     });
 
+    describe('array', function () {
+      it('should be a keyword', function () {
+        expect(function () {
+          parser.parse('declare var Array;');
+        }).to.throw();
+      });
+
+      it('should allow to use Array syntax', function () {
+        var parsed = parser.parse('declare var a:Array<string>;');
+        expect(parsed).to.equal('a = blame.simple_wrap(a, blame.Arr(blame.Str));');
+      });
+    });
+
 
   });
 });
