@@ -50,7 +50,6 @@ define(['parser'], function (parser) {
 
       it('should compile to wrapper', function () {
         var parsed = parser.parse('declare var n:number;');
-        console.log(parsed);
         expect(parsed).to.equal('n = blame.simple_wrap(n, blame.Num);');
       });
     });
