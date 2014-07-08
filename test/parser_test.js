@@ -99,9 +99,23 @@ define(['parser'], function (parser) {
         }).to.throw();
       });
 
-      it('should allow to use Array syntax', function () {
-        var parsed = parser.parse('declare var a:Array<string>;');
-        expect(parsed).to.equal('a = blame.simple_wrap(a, blame.Arr(blame.Str));');
+      describe('Array syntax', function () {
+        it('should allow for use basic types', function () {
+          var parsed = parser.parse('declare var a:Array<string>;');
+          expect(parsed).to.equal('a = blame.simple_wrap(a, blame.Arr(blame.Str));');
+        });
+      });
+
+      describe('[] syntax', function () {
+        it('should allow for basic types', function () {
+          var parsed = parser.parse('declare var a:string[];');
+          expect(parsed).to.equal('a = blame.simple_wrap(a, blame.Arr(blame.Str));');
+        });
+
+        it('should allow for more complex definition', function () {
+          var parsed = parser.parse('declare var a:string[][];');
+          expect(parsed).to.equal('a = blame.simple_wrap(a, blame.Arr(blame.Arr(blame.Str)));');
+        });
       });
     });
 

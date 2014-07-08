@@ -44,24 +44,40 @@ VariableDeclaration
     }
 
 TypeAnnotation
- = ":" __ expression:TypeExpression { 
+ = ":" __ expression:TypeExpression {
    return expression;
  }
 
+
 TypeExpression
- = BasicTypeExpression
- / ArrayExpression
+ = ArrayExpression
+ / NonArrayExpression
+
+NonArrayExpression
+  = BasicTypeExpression
+  / GenericTypeExpression
 
 BasicTypeExpression
  = NumberToken { return 'blame.Num'; }
  / BooleanToken { return 'blame.Bool'; }
  / StringToken { return 'blame.Str'; }
 
-ArrayExpression
-  = ArrayToken __ '<' __ type:BasicTypeExpression __ '>' {
+
+GenericTypeExpression
+  = ArrayToken __ '<' __ type:TypeExpression __ '>' {
     return 'blame.Arr(' + type + ')';
     }
 
+ArrayExpression
+  = expression:NonArrayExpression arr:(__ '[]')+ {
+    var type = expression;
+
+    for (var i = 0; i < arr.length; i++) {
+      type = 'blame.Arr(' + type + ')';
+    }
+
+    return type;
+  }
 
 /*******************************
  * Lexer Rules                 *
