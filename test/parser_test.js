@@ -17,30 +17,32 @@ define(['parser'], function (parser) {
 
   });
 
-/*
- *  describe('parsing', function () {
- *    describe('white space', function () {
- *      //it('should be ignored', function () {
- *        //console.log(parser.parse('declare var my_var;'));
- *      //});
- *    });
- *    describe('ambients', function () {
- *      it('should accept global variable declaration', function () {
- *        [
- *          'declare var my_var;',
- *          'declare var _;',
- *          'declare var $;',
- *        ].forEach(function (s) {
- *          parser.parse(s);
- *        });
- *
- *        expect(function () {
- *          parser.parse('declare var 1;');
- *        }).to.throw();
- *      });
- *    });
- *  });
- */
+  describe('parsing', function () {
+    describe('white space', function () {
+      it('should be ignored', function () {
+        [
+          'declare\tvar\tmy\t;',
+        ].forEach(function (s) {
+          parser.parse(s);
+        });
+      });
+    });
+    describe('ambients', function () {
+      it('should accept global variable declaration', function () {
+        [
+          'declare var my_var;',
+          'declare var _;',
+          'declare var $;',
+        ].forEach(function (s) {
+          parser.parse(s);
+        });
+
+        expect(function () {
+          parser.parse('declare var 1;');
+        }).to.throw();
+      });
+    });
+  });
 });
 
 
