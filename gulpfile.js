@@ -14,12 +14,12 @@ var gulp = require('gulp'),
 paths = {
   build: 'build',
   scripts: {
-    peg: 'src/**/*.peg'
+    peg: 'src/**/*.pegjs'
   }
 };
 
 
-lint_files = ['./lib/blame.js', './lib/parser.js'];
+lint_files = ['./lib/blame.js'];
 
 test_files = ['undefined.js'];
 
