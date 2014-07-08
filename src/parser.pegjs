@@ -51,6 +51,7 @@ TypeAnnotation
 TypeExpression
  = NumberToken { return 'blame.Num'; }
  / BooleanToken { return 'blame.Bool'; }
+ / StringToken { return 'blame.Str'; }
 
 /*******************************
  * Lexer Rules                 *
@@ -179,6 +180,7 @@ TypeScriptReservedWord
   = DeclareToken
   / NumberToken
   / BooleanToken
+  / StringToken
 
 Literal
   = NullLiteral
@@ -450,6 +452,7 @@ WithToken       = "with"       !IdentifierPart
 BooleanToken    = "boolean"    !IdentifierPart
 DeclareToken    = "declare"    !IdentifierPart
 NumberToken     = "number"     !IdentifierPart
+StringToken     = "string"     !IdentifierPart
 
 
 /* Skipped */

@@ -79,6 +79,19 @@ define(['parser'], function (parser) {
       });
     });
 
+    describe('string', function () {
+      it('should be a keyword', function () {
+        expect(function () {
+          parser.parse('declare var string;');
+        }).to.throw();
+      });
+
+      it('should allow to use it as a type', function () {
+        var parsed = parser.parse('declare var s:string;');
+        expect(parsed).to.equal('s = blame.simple_wrap(s, blame.Str);');
+      });
+    });
+
 
   });
 });
