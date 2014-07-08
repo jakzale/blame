@@ -1,7 +1,19 @@
 /*global describe, it, define, expect*/
 /*jslint indent: 2, todo: true */
 
-define(['blame'], function (blame) {
+// UMD Shim
+(function (factory) {
+  'use strict';
+
+  if (typeof define === 'function' && define.amd) {
+    // AMD
+    define(['blame'], function (blame) {
+      return factory(blame);
+    });
+  } else if (typeof exports === 'object') {
+    module.exports = factory(require('lib/blame.js'));
+  }
+}(function (blame) {
   'use strict';
 
   // Global utils
@@ -1060,6 +1072,6 @@ define(['blame'], function (blame) {
       });
     });
   });
-});
+}));
 
 // vim: set ts=2 sw=2 sts=2 et :
