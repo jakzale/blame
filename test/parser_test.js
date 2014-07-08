@@ -22,9 +22,18 @@ define(['parser'], function (parser) {
       it('should be ignored', function () {
         [
           'declare\tvar\tmy\t;',
+          'declare\nvar\nmy\n;',
         ].forEach(function (s) {
           parser.parse(s);
         });
+      });
+    });
+
+    describe('declare', function () {
+      it('should be a keyword', function () {
+        expect(function () {
+          parser.parse('declare var declare;');
+        }).to.throw();
       });
     });
     describe('ambients', function () {
