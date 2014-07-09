@@ -66,9 +66,37 @@ gulp.task('peg:compile', function () {
     pipe(peg().on('error', gutil.log)).
     pipe(tap(function (file) {
       var module_name = path.basename(file.path, '.js');
+/*
 
+(function (factory) {
+  'use strict';
+
+  var exported = {};
+
+  // Set up the exports
+  factory(exported);
+
+  if (typeof define === 'function' && define.amd) {
+    // AMD
+    define(module_name, [], function () {
+      return exported.exports;
+    });
+  } else if (typeof exports === 'object') {
+      module.exports = exported.exports;
+  }
+}(function (module) {
+
+// Parser Begin
+
+module.exports = parser;
+
+// Parser End
+}));
+
+ */
       file.contents = Buffer.concat([
-        new Buffer('define(\'' + module_name + '\', [], function () {\nvar module = {};\n'),
+        new Buffer('define(\'' + module_name + '\', [], function () {\n' +
+                   'var module = {};\n'),
         file.contents,
         new Buffer('\nreturn module.exports;\n});')
       ]);
