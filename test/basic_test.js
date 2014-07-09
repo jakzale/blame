@@ -8,12 +8,12 @@
   if (typeof define === 'function' && define.amd) {
     // AMD
     define(['blame'], function (blame) {
-      return factory(blame);
+      return factory(blame, expect);
     });
   } else if (typeof exports === 'object') {
-    module.exports = factory(require('lib/blame.js'));
+    module.exports = factory(require('../lib/blame.js'), require('chai').expect);
   }
-}(function (blame) {
+}(function (blame, expect) {
   'use strict';
 
   // Global utils

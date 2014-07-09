@@ -10,6 +10,7 @@ var gulp = require('gulp'),
   wrapper = require('gulp-wrapper'),
   path = require('path'),
   plumber = require('gulp-plumber'),
+  mocha = require('gulp-mocha'),
   lint_files, test_files, paths;
 
 paths = {
@@ -24,7 +25,7 @@ lint_files = ['./lib/blame.js'];
 
 test_files = ['undefined.js'];
 
-gulp.task('test', function() {
+gulp.task('karma:run', function() {
   // Be sure to return the stream
   return gulp.src(test_files)
   .pipe(karma({
@@ -43,12 +44,20 @@ gulp.task('lint', function () {
   .pipe(jshint.reporter('default'));
 });
 
-gulp.task('test-watch', function () {
+gulp.task('karma:watch', function () {
   return gulp.src(test_files)
   .pipe(karma({
     configFile: 'karma.conf.js',
     action: 'watch'
   }));
+});
+
+gulp.task('mocha:run', function () {
+  return gulp.src('test/basic_test.js', {read: false})
+    .pipe(mocha({
+      reporter: 'nyan',
+      bail: true
+    }));
 });
 
 gulp.task('peg:compile', function () {
@@ -72,6 +81,6 @@ gulp.task('peg:watch', function () {
   gulp.watch([paths.scripts.peg], ['peg:compile']);
 });
 
-gulp.task('default', ['peg:compile', 'peg:watch', 'test-watch']);
+gulp.task('default', ['peg:compile', 'peg:watch', 'karma:watch']);
 
 // vim: set ts=2 sw=2 sts=2 et :
