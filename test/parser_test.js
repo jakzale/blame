@@ -1,14 +1,32 @@
 /*global describe, it, define, expect, PEG*/
 /*jslint indent: 2, todo: true */
 
-function empty() { return; }
 
-var unused, used;
+// UMD Shim
+(function (factory) {
+  'use strict';
 
-unused = empty;
-used = empty;
+  if (typeof define === 'function' && define.amd) {
+    // AMD
+    define(['parser'], function (parser) {
+      return factory(parser, expect);
+    });
+  } else if (typeof exports === 'object') {
+    // Common JS
+    module.exports = factory(require('../build/parser.js'), require('chai').expect);
+  }
+}(function (parser, expect) {
+  'use strict';
 
-define(['parser'], function (parser) {
+  var unused, used;
+
+  function empty() { return; }
+
+  unused = empty;
+  used = empty;
+
+  used(unused);
+
   describe('parser module', function () {
     it('should be properly imported', function () {
       used(expect(parser).to.exist);
@@ -121,7 +139,6 @@ define(['parser'], function (parser) {
 
 
   });
-});
-
+}));
 
 // vim: set ts=2 sw=2 sts=2 et :

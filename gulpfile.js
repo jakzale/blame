@@ -53,7 +53,7 @@ gulp.task('karma:watch', function () {
 });
 
 gulp.task('mocha:run', function () {
-  return gulp.src('test/basic_test.js', {read: false})
+  return gulp.src('test/**/*_test.js', {read: false})
     .pipe(mocha({
       reporter: 'nyan',
       bail: true
@@ -66,41 +66,34 @@ gulp.task('peg:compile', function () {
     pipe(peg().on('error', gutil.log)).
     pipe(tap(function (file) {
       var module_name = path.basename(file.path, '.js');
-/*
 
-(function (factory) {
-  'use strict';
-
-  var exported = {};
-
-  // Set up the exports
-  factory(exported);
-
-  if (typeof define === 'function' && define.amd) {
-    // AMD
-    define(module_name, [], function () {
-      return exported.exports;
-    });
-  } else if (typeof exports === 'object') {
-      module.exports = exported.exports;
-  }
-}(function (module) {
-
-// Parser Begin
-
-module.exports = parser;
-
-// Parser End
-}));
-
- */
       file.contents = Buffer.concat([
-        new Buffer('define(\'' + module_name + '\', [], function () {\n' +
-                   'var module = {};\n'),
-        file.contents,
-        new Buffer('\nreturn module.exports;\n});')
+        new Buffer(
+          '(function (factory) {\n' +
+          '  \'use strict\';\n' +
+          '\n' +
+          '  var exported = {};\n' +
+          '\n' +
+          '  // Set up the exports\n' +
+          '  factory(exported);\n' +
+          '\n' +
+          '  if (typeof define === \'function\' && define.amd) {\n' +
+          '    // AMD\n' +
+          '    define(\'' + module_name + '\', [], function () {\n' +
+          '      return exported.exports;\n' +
+          '    });\n' +
+          '  } else if (typeof exports === \'object\') {\n' +
+          '      module.exports = exported.exports;\n' +
+          '  }\n' +
+          '}(function (module) {\n' +
+          '\n' +
+          '// Parser Begin\n' +
+          '\n'),
+          file.contents,
+          new Buffer(
+            '// Parser End\n' +
+            '}));')
       ]);
-
     })).
     pipe(gulp.dest(paths.build));
 });
