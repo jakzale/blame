@@ -15,8 +15,17 @@
 }
 
 Specification
-  = __ declarations:AmbientDeclaration* __ {
-    return declarations.join('\n');
+  = declarations:AmbientDeclarations? {
+    if (declarations && declarations.length) {
+      return declarations.join('\n');
+    }
+
+    return '';
+  }
+
+AmbientDeclarations
+  = first:AmbientDeclaration rest:(__ AmbientDeclaration)* {
+    return buildList(first, rest, 1);
   }
 
 AmbientDeclaration "declaration"

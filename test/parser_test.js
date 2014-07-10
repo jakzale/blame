@@ -31,6 +31,7 @@
     it('should be properly imported', function () {
       used(expect(parser).to.exist);
       used(expect(parser.parse).to.exist);
+      parser.parse('');
     });
 
   });
@@ -53,10 +54,14 @@
           parser.parse('declare var declare;');
         }).to.throw();
       });
+
+      it('should allow multiple declare statements', function () {
+        parser.parse('declare var i; declare var j;');
+      });
     });
 
-    describe('ambients', function () {
-      it('should accept global variable declaration', function () {
+    describe('identifiers', function () {
+      it('it should allow strings starting with a letter, $ and _', function () {
         [
           'declare var my_var;',
           'declare var _;',
@@ -64,10 +69,22 @@
         ].forEach(function (s) {
           parser.parse(s);
         });
+      });
 
+      it('should not allow strings starting with a number', function () {
         expect(function () {
           parser.parse('declare var 1;');
         }).to.throw();
+      });
+    });
+
+    describe('variable', function () {
+      it('should allow to define a single variable', function () {
+        parser.parse('declare var i;');
+      });
+
+      it('should allow to define multiple variables', function () {
+        parser.parse('declare var i, j;');
       });
     });
 
@@ -81,6 +98,12 @@
       it('should compile to wrapper', function () {
         var parsed = parser.parse('declare var n:number;');
         expect(parsed).to.equal('n = blame.simple_wrap(n, blame.Num);');
+      });
+
+      it('should allow to define multiple variables', function () {
+        var parsed = parser.parse('declare var n:number, m:number;');
+        expect(parsed).to.equal(['n = blame.simple_wrap(n, blame.Num);',
+                                'm = blame.simple_wrap(m, blame.Num);'].join('\n'));
       });
     });
 
