@@ -29,7 +29,14 @@ AmbientDeclarations
   }
 
 AmbientDeclaration "declaration"
-  = DeclareToken __ variables:VariableStatement {
+  = DeclareToken __
+  declaration:(AmbientVariableDeclaration
+    / AmbientFunctionDeclaration) {
+      return declaration;
+    }
+
+AmbientVariableDeclaration
+  = variables:VariableStatement {
     return variables.join('\n');
   }
 
@@ -50,6 +57,17 @@ VariableDeclaration
       var type = annotation && annotation.pop ? annotation.pop() || 'null' : 'null';
 
       return id + ' = blame.simple_wrap(' + id + ', ' + type + ');'
+    }
+
+AmbientFunctionDeclaration
+  = FunctionToken __ id:Identifier __
+  "(" __ params:(FormalParameterList __)? ")"
+  annotation:(__ TypeAnnotation)? EOS
+
+FormalParameterList
+  = first:Identifier annotation:(__ TypeAnnotation)?
+  rest:(__ "," __ Identifier (__ TypeAnnotation)?)* {
+      return buildList(first, rest, 3);
     }
 
 TypeAnnotation
@@ -87,6 +105,8 @@ ArrayExpression
 
     return type;
   }
+
+
 
 /*******************************
  * Lexer Rules                 *

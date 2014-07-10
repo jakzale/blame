@@ -166,6 +166,29 @@
       });
     });
 
+    describe('functions', function () {
+      it('should recognize the identifier', function () {
+        expect(function() {
+          parser.parse('declare function function();');
+        }).to.throw();
+
+        expect(function() {
+          parser.parse('declare function 1();');
+        }).to.throw();
+      });
+
+      it('should allow simple function definition', function () {
+        parser.parse('declare function f();');
+        parser.parse('declare function f(x);');
+        parser.parse('declare function f():number;');
+        parser.parse('declare function f(x:number);');
+        parser.parse('declare function f(x:number):number;');
+        parser.parse('declare function f(x:number, y:number):number;');
+        parser.parse('declare function f(x:number, y:number, z):number;');
+        parser.parse('declare function f(x:number, y, z:number):number;');
+      });
+    });
+
 
   });
 }));
