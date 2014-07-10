@@ -105,6 +105,12 @@
         expect(parsed).to.equal(['n = blame.simple_wrap(n, blame.Num);',
                                 'm = blame.simple_wrap(m, blame.Num);'].join('\n'));
       });
+
+      it('should allow for multiple definitions', function () {
+        var parsed = parser.parse('declare var n:number; declare var m:number;');
+        expect(parsed).to.equal(['n = blame.simple_wrap(n, blame.Num);',
+                                'm = blame.simple_wrap(m, blame.Num);'].join('\n'));
+      });
     });
 
     describe('boolean', function () {
