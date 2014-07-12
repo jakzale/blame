@@ -20,7 +20,7 @@ require.config({
     paths: {
         'blame': 'lib/blame',
         'parser': 'build/parser',
-        'tsc-parser': 'lib/parser',
+        //'tsc-parser': 'lib/parser',
         'typescript': 'node_modules/typescript/bin/typescript'
     },
 
