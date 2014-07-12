@@ -3,7 +3,7 @@
 
 // No UMD Shim for now, need to UMD-Enable TSC
 
-define([], function () {
+define(['parser'], function (parser) {
   describe('TypeScript', function () {
     it('should be imported', function () {
       expect(TypeScript).to.exist;
