@@ -1,7 +1,7 @@
 // New version of the parser, actually just a custom Emitter
 
 // TypeScriptCompiler
-///<reference path='./typescript.d.ts' />
+///<reference path='../lib/typescript.d.ts' />
 
 export module Blame {
 

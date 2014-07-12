@@ -11,12 +11,14 @@ var gulp = require('gulp'),
   path = require('path'),
   plumber = require('gulp-plumber'),
   mocha = require('gulp-mocha'),
+  tsc = require('gulp-typescript-compiler'),
   lint_files, test_files, paths;
 
 paths = {
   build: 'build',
   scripts: {
-    peg: 'src/**/*.pegjs'
+    peg: 'src/**/*.pegjs',
+    tsc: 'src/**/*.ts'
   }
 };
 
@@ -100,6 +102,18 @@ gulp.task('peg:compile', function () {
 
 gulp.task('peg:watch', function () {
   gulp.watch([paths.scripts.peg], ['peg:compile']);
+});
+
+gulp.task('tsc:compile', function () {
+  return gulp
+    .src(paths.scripts.tsc)
+    .pipe(tsc({
+      module: 'amd',
+      target: 'ES5',
+      logErrors: true,
+      sourcemap: false,
+    }))
+    .pipe(gulp.dest(paths.build));
 });
 
 gulp.task('default', ['peg:compile', 'karma:watch']);
