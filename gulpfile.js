@@ -102,6 +102,6 @@ gulp.task('peg:watch', function () {
   gulp.watch([paths.scripts.peg], ['peg:compile']);
 });
 
-gulp.task('default', ['peg:compile', 'peg:watch', 'karma:watch']);
+gulp.task('default', ['peg:compile', 'karma:watch']);
 
 // vim: set ts=2 sw=2 sts=2 et :
