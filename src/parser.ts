@@ -3,11 +3,15 @@
 // TypeScriptCompiler
 ///<reference path='./typescript.d.ts' />
 
-module Blame {
+export module Blame {
 
     export class BlameEmitter extends TypeScript.Emitter {
     }
 
     export class BlameCompiler extends TypeScript.TypeScriptCompiler {
+    }
+
+    export function version() {
+        return "0.0.1";
     }
 }

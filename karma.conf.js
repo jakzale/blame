@@ -19,6 +19,7 @@ module.exports = function(config) {
       {pattern: 'lib/**/*.js', included: false},
       {pattern: 'build/**/*.js', included: false},
       {pattern: 'test/**/*test.js', included: false},
+      {pattern: 'node_modules/typescript/bin/typescript.js', included: false},
       'test-main.js'
     ],
 
