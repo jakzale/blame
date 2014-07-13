@@ -7,6 +7,8 @@ define(['parser'], function (parser) {
   describe('TypeScript', function () {
     it('should be imported', function () {
       expect(TypeScript).to.exist;
+
+      expect(parser.version()).to.equal('0.0.1');
     });
   });
 });

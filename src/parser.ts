@@ -3,15 +3,15 @@
 // TypeScriptCompiler
 ///<reference path='../lib/typescript.d.ts' />
 
-export module Blame {
+var compiler:TypeScript.TypeScriptCompiler = null;
 
-    export class BlameEmitter extends TypeScript.Emitter {
-    }
+export class BlameEmitter extends TypeScript.Emitter {
+}
 
-    export class BlameCompiler extends TypeScript.TypeScriptCompiler {
-    }
+export class BlameCompiler extends TypeScript.TypeScriptCompiler {
+}
 
-    export function version() {
-        return "0.0.1";
-    }
+// This to ensure that the Parer Module is properly exported
+export function version() {
+    return "0.0.1";
 }
