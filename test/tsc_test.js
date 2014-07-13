@@ -9,6 +9,7 @@ define(['parser'], function (parser) {
       expect(TypeScript).to.exist;
 
       expect(parser.version()).to.equal('0.0.1');
+      expect(parser.compileFromString('')).to.equal('done!');
     });
   });
 });
