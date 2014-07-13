@@ -9,8 +9,20 @@ define(['parser'], function (parser) {
       expect(TypeScript).to.exist;
 
       expect(parser.version()).to.equal('0.0.1');
-      expect(parser.compileFromString('')).to.equal('done!');
+      expect(parser.compileFromString('declare var i: number;')).to.equal('done!');
+      //expect(parser.compileFromString('declare class X {};')).to.equal('done!');
     });
+
+    it('should throw a syntactic error', function () {
+      expect(function () {
+        parser.compileFromString('dkajfdka');
+      }).to.throw();
+      expect(function () {
+        parser.compileFromString('var i = 10;');
+      }).to.throw();
+    });
+
+
   });
 });
 

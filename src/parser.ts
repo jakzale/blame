@@ -118,6 +118,35 @@ class SourceUnit extends Unit {
     }
 }
 
+function parsePullDeclaration(decl: TypeScript.PullDecl) {
+    switch (decl.kind) {
+        case TypeScript.PullElementKind.Variable :
+            console.log('variable: ', decl.getDisplayName());
+
+            var symbol = decl.getSymbol();
+
+            console.log(symbol.getNameAndTypeName());
+            break;
+    }
+
+    var decls: TypeScript.PullDecl[] = decl.getChildDecls();
+    for (var i = 0, n = decls.length; i < n; i++) {
+        parsePullDeclaration(decls[i]);
+    }
+}
+
+function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]) {
+    if (diagnostics.length) {
+
+        for (var i = 0, n = diagnostics.length; i < n; i++) {
+            messages.push(diagnostics[i].diagnosticKey());
+        }
+        return(messages.join('\n'));
+    }
+
+    return "";
+}
+
 export function compileFromString(source: string) {
     var compiler:TypeScript.TypeScriptCompiler;
     var logger:TypeScript.ILogger = new TypeScript.NullLogger();
@@ -132,8 +161,28 @@ export function compileFromString(source: string) {
 
     // Create a simple source unit
     var sourceUnit = new SourceUnit('generated.d.ts', source, false);
+    var snapshot = TypeScript.ScriptSnapshot.fromString(sourceUnit.content);
 
+    compiler.addFile(sourceUnit.path, snapshot, TypeScript.ByteOrderMark.Utf8, 0, false);
 
+    // Getting diagnostics, throw an error on diagnostic
+    var diagnostics:TypeScript.Diagnostic[] = compiler.getSyntacticDiagnostics('generated.d.ts');
+    var message = get_diagnostic_message(diagnostics);
+    if (message) {
+        throw new Error(message);
+    }
+
+    // I am not sure if throwing semantic errors is possible in declarations
+    //diagnostics:TypeScript.Diagnostic[] = compiler.getSemanticDiagnostics('generated.d.ts');
+    //message = get_diagnostic_message(diagnostics);
+    //if (message) {
+        //throw new Error(message);
+    //}
+
+    //compiler.getSemanticDiagnostics('generated.d.ts');
+    var decl:TypeScript.PullDecl = compiler.topLevelDecl('generated.d.ts');
+
+    parsePullDeclaration(decl);
     // Creating a source unit
     return "done!";
 }
