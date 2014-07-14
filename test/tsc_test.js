@@ -55,6 +55,13 @@ define(['parser'], function (parser) {
       });
     });
   });
+
+  describe('function declaration', function () {
+    it('should accept a function declaration without type', function () {
+      var source = 'declare function blah()'
+      expect(parser.compileFromString(source)).to.equal('');
+    });
+  });
 });
 
 

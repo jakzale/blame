@@ -59,7 +59,9 @@ function parse(ast: TypeScript.AST): string {
         case TypeScript.SyntaxKind.GenericType:
             return parseGenericType(<TypeScript.GenericType> ast);
         case TypeScript.SyntaxKind.TypeArgumentList:
-            return parseTypeArgumentList(<TypeArgumentList> ast);
+            return parseTypeArgumentList(<TypeScript.TypeArgumentList> ast);
+        case TypeScript.SyntaxKind.FunctionDeclaration:
+            return parseFunctionDeclaration(<TypeScript.FunctionDeclaration> ast);
 
         /* Keywords */
         case TypeScript.SyntaxKind.NumberKeyword:
@@ -148,6 +150,10 @@ function parseTypeArgumentList(list: TypeScript.TypeArgumentList) {
 
 function parseIdentifier(type: TypeScript.Identifier) {
     return type.text();
+}
+
+function parseFunctionDeclaration(declaration: TypeScript.FunctionDeclaration) {
+
 }
 
 export function compileFromString(source: string) {
