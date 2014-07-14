@@ -47,6 +47,12 @@ define(['parser'], function (parser) {
         var source = 'declare var ns:Array<number>';
         expect(parser.compileFromString(source)).to.equal(desired);
       });
+
+      it('should allow for multiple definitions', function () {
+        var source = 'declare var b:boolean, n:number';
+        desired = 'b = Blame.simple_wrap(b, Blame.Bool);\nn = Blame.simple_wrap(n, Blame.Num);';
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
     });
   });
 });
