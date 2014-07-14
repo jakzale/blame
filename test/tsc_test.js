@@ -22,12 +22,32 @@ define(['parser'], function (parser) {
       }).to.throw();
     });
 
-    it('should work', function () {
-      var source = 'declare var n:number';
-      expect(parser.compileFromString(source)).to.equal('n = Blame.simple_wrap(n, Blame.Num);');
+    describe('variable declaration', function () {
+      it('should accept basic types', function () {
+        // It could be refactored as a file with fixtures
+
+        var source = 'declare var n:number';
+        var desired = 'n = Blame.simple_wrap(n, Blame.Num);';
+        expect(parser.compileFromString(source)).to.equal(desired);
+
+        source = 'declare var b:boolean';
+        desired = 'b = Blame.simple_wrap(b, Blame.Bool);';
+        expect(parser.compileFromString(source)).to.equal(desired);
+
+        source = 'declare var s:string';
+        desired = 's = Blame.simple_wrap(s, Blame.Str);';
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
+      it('should accept array types', function () {
+        var source = 'declare var ns:number[]';
+        var desired = 'ns = Blame.simple_wrap(ns, Blame.arr(Blame.Num));';
+        expect(parser.compileFromString(source)).to.equal(desired);
+
+        var source = 'declare var ns:Array<number>';
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
     });
-
-
   });
 });
 

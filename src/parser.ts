@@ -153,6 +153,24 @@ function parse(ast: TypeScript.AST): string {
             return parseVariableDeclaration(<TypeScript.VariableDeclaration> ast);
         case TypeScript.SyntaxKind.VariableDeclarator:
             return parseVariableDeclarator(<TypeScript.VariableDeclarator> ast);
+        case TypeScript.SyntaxKind.ArrayType:
+            return parseArrayType(<TypeScript.ArrayType> ast);
+        case TypeScript.SyntaxKind.GenericType:
+            return parseGenericType(<TypeScript.GenericType> ast);
+        case TypeScript.SyntaxKind.TypeArgumentList:
+            return parseTypeArgumentList(<TypeArgumentList> ast);
+
+        /* Keywords */
+        case TypeScript.SyntaxKind.NumberKeyword:
+            return 'Blame.Num';
+        case TypeScript.SyntaxKind.BooleanKeyword:
+            return 'Blame.Bool';
+        case TypeScript.SyntaxKind.StringKeyword:
+            return 'Blame.Str';
+
+        /* Identifier */
+        case TypeScript.SyntaxKind.IdentifierName:
+            return parseIdentifier(<TypeScript.Identifier> ast);
 
         default:
             throw Error('Panic: ' + TypeScript.SyntaxKind[ast.kind()] + ' not supported');
@@ -186,10 +204,50 @@ function parseVariableDeclaration(variableDeclaration: TypeScript.VariableDeclar
 }
 
 function parseVariableDeclarator(variableDeclarator: TypeScript.VariableDeclarator): string {
-    return "";
+    var name: string = parsePropertyName(variableDeclarator.propertyName);
+    var type: string = parseTypeAnnotation(variableDeclarator.typeAnnotation);
+
+    return name + ' = ' + 'Blame.simple_wrap(' + name + ', ' + type + ');';
 }
 
+function parsePropertyName(name: TypeScript.IASTToken) {
+    return name.text();
+}
 
+function parseTypeAnnotation(type: TypeScript.TypeAnnotation) {
+    return parse(type.type);
+}
+
+function parseArrayType(type: TypeScript.ArrayType) {
+    var type: string = parse(type.type);
+
+    return 'Blame.arr(' + type + ')';
+}
+
+function parseGenericType(type: TypeScript.GenericType) {
+    var name:string = parseIdentifier(type.name);
+    switch (name) {
+        case 'Array':
+            return 'Blame.arr(' + parse(type.typeArgumentList) +')';
+        default:
+            throw Error('Panic: Generic ' + name +' not supported');
+    }
+}
+
+function parseTypeArgumentList(list: TypeScript.TypeArgumentList) {
+    var types : string[] = [];
+    var typeArguments:TypeScript.ISeparatedSyntaxList2 = list.typeArguments;
+
+    for (var i = 0, n = typeArguments.nonSeparatorCount(); i < n; i++) {
+        types.push(parse(typeArguments.nonSeparatorAt(i)));
+    }
+
+    return types.join(', ');
+}
+
+function parseIdentifier(type: TypeScript.Identifier) {
+    return type.text();
+}
 
 export function compileFromString(source: string) {
     var compiler:TypeScript.TypeScriptCompiler;
