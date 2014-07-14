@@ -118,23 +118,6 @@ class SourceUnit extends Unit {
     }
 }
 
-function parsePullDeclaration(decl: TypeScript.PullDecl) {
-    switch (decl.kind) {
-        case TypeScript.PullElementKind.Variable :
-            console.log('variable: ', decl.getDisplayName());
-
-            var symbol = decl.getSymbol();
-
-            console.log(symbol.getNameAndTypeName());
-            break;
-    }
-
-    var decls: TypeScript.PullDecl[] = decl.getChildDecls();
-    for (var i = 0, n = decls.length; i < n; i++) {
-        parsePullDeclaration(decls[i]);
-    }
-}
-
 function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]) {
     if (diagnostics.length) {
 
@@ -146,6 +129,67 @@ function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]) {
 
     return "";
 }
+
+export function getName(ast: TypeScript.AST) {
+    var k = ast.kind();
+    switch (k) {
+        case TypeScript.SyntaxKind.IdentifierName:
+            return (<TypeScript.Identifier>ast).text();
+        case TypeScript.SyntaxKind.QualifiedName:
+            var qn = <TypeScript.QualifiedName>ast;
+            return getName(qn.left) + '.' + getName(qn.right);
+        default:
+            return TypeScript.SyntaxKind[k];
+    }
+}
+
+function parse(ast: TypeScript.AST): string {
+    switch (ast.kind()) {
+        case TypeScript.SyntaxKind.SourceUnit:
+            return parseSourceUnit(<TypeScript.SourceUnit> ast);
+        case TypeScript.SyntaxKind.VariableStatement:
+            return parseVariableStatement(<TypeScript.VariableStatement> ast);
+        case TypeScript.SyntaxKind.VariableDeclaration:
+            return parseVariableDeclaration(<TypeScript.VariableDeclaration> ast);
+        case TypeScript.SyntaxKind.VariableDeclarator:
+            return parseVariableDeclarator(<TypeScript.VariableDeclarator> ast);
+
+        default:
+            throw Error('Panic: ' + TypeScript.SyntaxKind[ast.kind()] + ' not supported');
+    }
+    return '';
+}
+
+function parseSourceUnit(sourceUnit: TypeScript.SourceUnit): string {
+    var output : string[] = [];
+
+    for (var i = 0, n = sourceUnit.moduleElements.childCount(); i < n; i++) {
+        output.push(parse(sourceUnit.moduleElements.childAt(i)));
+    }
+
+    return output.join('\n');
+}
+
+function parseVariableStatement(variableStatement: TypeScript.VariableStatement): string {
+    return parse(variableStatement.declaration);
+}
+
+function parseVariableDeclaration(variableDeclaration: TypeScript.VariableDeclaration): string {
+    var declarators: TypeScript.ISeparatedSyntaxList2 = variableDeclaration.declarators;
+    var output: string[] = [];
+
+    for (var i = 0, n = declarators.nonSeparatorCount(); i < n; i++) {
+        output.push(parse(declarators.nonSeparatorAt(i)));
+    }
+
+    return output.join('\n');
+}
+
+function parseVariableDeclarator(variableDeclarator: TypeScript.VariableDeclarator): string {
+    return "";
+}
+
+
 
 export function compileFromString(source: string) {
     var compiler:TypeScript.TypeScriptCompiler;
@@ -172,18 +216,11 @@ export function compileFromString(source: string) {
         throw new Error(message);
     }
 
-    // I am not sure if throwing semantic errors is possible in declarations
-    //diagnostics:TypeScript.Diagnostic[] = compiler.getSemanticDiagnostics('generated.d.ts');
-    //message = get_diagnostic_message(diagnostics);
-    //if (message) {
-        //throw new Error(message);
-    //}
-
-    //compiler.getSemanticDiagnostics('generated.d.ts');
     var decl:TypeScript.PullDecl = compiler.topLevelDecl('generated.d.ts');
 
-    parsePullDeclaration(decl);
-    // Creating a source unit
-    return "done!";
+    var ast:TypeScript.AST = decl.ast();
+
+    return parse(ast);
 }
+
 

@@ -9,7 +9,7 @@ define(['parser'], function (parser) {
       expect(TypeScript).to.exist;
 
       expect(parser.version()).to.equal('0.0.1');
-      expect(parser.compileFromString('declare var i: number;')).to.equal('done!');
+      //expect(parser.compileFromString('declare var i: number;')).to.equal('done!');
       //expect(parser.compileFromString('declare class X {};')).to.equal('done!');
     });
 
@@ -20,6 +20,11 @@ define(['parser'], function (parser) {
       expect(function () {
         parser.compileFromString('var i = 10;');
       }).to.throw();
+    });
+
+    it('should work', function () {
+      var source = 'declare var n:number';
+      expect(parser.compileFromString(source)).to.equal('n = Blame.simple_wrap(n, Blame.Num);');
     });
 
 
