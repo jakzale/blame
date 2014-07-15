@@ -70,6 +70,11 @@ define(['parser'], function (parser) {
       expect(parser.compileFromString(source)).to.equal(desired);
     });
 
+    it('should accept a function declaration with parameters', function () {
+      var source = 'declare function blah(n: number)';
+      var desired = 'blah = Blame.simple_wrap(blah, Blame.func([Blame.Num], [], null, null));';
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
   });
 });
 
