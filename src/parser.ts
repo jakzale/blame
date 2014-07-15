@@ -66,6 +66,10 @@ function parse(ast: TypeScript.AST): string {
             return parseCallSignature(<TypeScript.CallSignature> ast);
         case TypeScript.SyntaxKind.FunctionType:
             return parseFunctionType(<TypeScript.FunctionType> ast);
+        case TypeScript.SyntaxKind.ObjectType:
+            return parseObjectType(<TypeScript.ObjectType> ast);
+        case TypeScript.SyntaxKind.PropertySignature:
+            return parsePropertySignature(<TypeScript.PropertySignature> ast);
 
         /* Keywords */
         case TypeScript.SyntaxKind.NumberKeyword:
@@ -263,6 +267,25 @@ function getRepeatParameter(parameterList: TypeScript.ParameterList):string {
     }
 
     return repeatParameter;
+}
+
+function parseObjectType(type: TypeScript.ObjectType): string {
+    var typeMembers: ISeparatedSyntaxList2 = type.typeMembers;
+    var properties: string[] = [];
+
+    for (var i = 0, n = typeMembers.nonSeparatorCount(); i < n; i++) {
+        var member: TypeScript.PropertySignature = typeMembers.nonSeparatorAt(i);
+
+        properties.push(parse(member));
+    }
+    return 'Blame.obj({' + properties.join(', ') + '})';
+}
+
+function parsePropertySignature(signature: TypeScript.PropertySignature): string {
+    var name: string = parsePropertyName(signature.propertyName);
+    var type: string = parse(signature.typeAnnotation);
+
+    return name + ': ' + type;
 }
 
 export function compileFromString(source: string) {

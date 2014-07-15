@@ -67,24 +67,48 @@ define(['parser'], function (parser) {
       });
     });
 
-    describe('function literals', function () {
-      it('should accept simple literal', function () {
+    describe('function types', function () {
+      it('should accept simple type', function () {
         var source = 'declare var f : (x: number) => number';
         var desired = 'f = Blame.simple_wrap(f, Blame.func([Blame.Num], [], null, Blame.Num));';
 
         expect(parser.compileFromString(source)).to.equal(desired);
       });
 
-      it('should accept literal with optional parameters', function () {
+      it('should accept type with optional parameters', function () {
         var source = 'declare var f : (x?: number) => number';
         var desired = 'f = Blame.simple_wrap(f, Blame.func([], [Blame.Num], null, Blame.Num));';
 
         expect(parser.compileFromString(source)).to.equal(desired);
       });
 
-      it('should accept literal with rest parameter', function () {
+      it('should accept type with rest parameter', function () {
         var source = 'declare var f : (...x: number[]) => number';
         var desired = 'f = Blame.simple_wrap(f, Blame.func([], [], Blame.Num, Blame.Num));';
+
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+    });
+
+
+    describe('object types', function () {
+      it('should accept simple type', function () {
+        var source = 'declare var o : {}';
+        var desired = 'o = Blame.simple_wrap(o, Blame.obj({}));';
+
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
+      it('should accept an object with basic member', function () {
+        var source = 'declare var o : {n: number}';
+        var desired = 'o = Blame.simple_wrap(o, Blame.obj({n: Blame.Num}));';
+
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
+      it('should accept an object with function member', function () {
+        var source = 'declare var o: {f: (x:number) => string}';
+        var desired = 'o = Blame.simple_wrap(o, Blame.obj({f: Blame.func([Blame.Num], [], null, Blame.Str)}));';
 
         expect(parser.compileFromString(source)).to.equal(desired);
       });
