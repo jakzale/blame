@@ -21,7 +21,7 @@ require.config({
         'blame': 'lib/blame',
         'parser': 'build/parser',
         //'tsc-parser': 'lib/parser',
-        'typescript': 'node_modules/typescript/bin/typescript'
+        //'typescript': 'node_modules/typescript/bin/typescript'
     },
 
   // dynamically load all test files

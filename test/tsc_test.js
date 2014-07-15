@@ -176,8 +176,21 @@ define(['parser'], function (parser) {
       var desired = '';
       expect(parser.compileFromString(source)).to.equal(desired);
     });
+
+    it('should accept a simple class declaration', function () {
+      var source = 'declare class MyClass { x: number }';
+      var desired = '';
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+  });
+
+  describe('TypeScript Services', function () {
+    it('should be loaded', function () {
+      expect(TypeScript.Services).to.exist;
+    });
   });
 });
+
 
 
 // vim: set ts=2 sw=2 sts=2 et :
