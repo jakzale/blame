@@ -183,6 +183,7 @@ function parseCallSignature(signature: TypeScript.CallSignature):string {
     }
 
     requiredParameters = getRequiredParameters(parameterList);
+    optionalParameters = getOptionalParameters(parameterList);
 
     var output: string = 'Blame.func([' + requiredParameters.join(', ') +'], ' +
                                     '[' + optionalParameters.join(', ') + '], ' +
@@ -198,10 +199,28 @@ function getRequiredParameters(parameterList: TypeScript.ParameterList):string[]
 
     for (var i = 0, n = parameters.nonSeparatorCount(); i < n; i++) {
         var parameter: TypeScript.Parameter = parameters.nonSeparatorAt(i);
-        requiredParameters.push(parse(parameter.typeAnnotation));
+
+        if (!parameter.questionToken) {
+            requiredParameters.push(parse(parameter.typeAnnotation));
+        }
     }
 
     return requiredParameters;
+}
+
+function getOptionalParameters(parameterList: TypeScript.ParameterList):string[] {
+    var optionalParameters: string[] = [];
+    var parameters: TypeScript.ISeparatedSyntaxList2 = parameterList.parameters;
+
+    for (var i = 0, n = parameters.nonSeparatorCount(); i < n; i++) {
+        var parameter: TypeScript.Parameter = parameters.nonSeparatorAt(i);
+
+        if (parameter.questionToken) {
+            optionalParameters.push(parse(parameter.typeAnnotation));
+        }
+    }
+
+    return optionalParameters;
 }
 
 export function compileFromString(source: string) {

@@ -87,6 +87,22 @@ define(['parser'], function (parser) {
       expect(parser.compileFromString(source)).to.equal(desired);
     });
 
+    it('should accept a function declaration with optional parameters', function () {
+      var source = 'declare function blah(s?: string)';
+      var desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [Blame.Str], null, null));';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+
+      source = 'declare function blah(s?: string, b?: boolean)';
+      desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [Blame.Str, Blame.Bool], null, null));';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+
+      source = 'declare function blah(s: string, b?: boolean)';
+      desired = 'blah = Blame.simple_wrap(blah, Blame.func([Blame.Str], [Blame.Bool], null, null));';
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+
   });
 });
 
