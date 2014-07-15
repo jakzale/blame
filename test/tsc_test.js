@@ -74,7 +74,19 @@ define(['parser'], function (parser) {
       var source = 'declare function blah(n: number)';
       var desired = 'blah = Blame.simple_wrap(blah, Blame.func([Blame.Num], [], null, null));';
       expect(parser.compileFromString(source)).to.equal(desired);
+
+      source = 'declare function blah(n: number, m: string)';
+      desired = 'blah = Blame.simple_wrap(blah, Blame.func([Blame.Num, Blame.Str], [], null, null));';
+      expect(parser.compileFromString(source)).to.equal(desired);
     });
+
+    it('should accept a function declaration with parameters and return type', function () {
+      var source = 'declare function blah(n: number, b: boolean): string';
+      var desired = 'blah = Blame.simple_wrap(blah, Blame.func([Blame.Num, Blame.Bool], [], null, Blame.Str));';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+
   });
 });
 
