@@ -25,6 +25,12 @@ define(['parser'], function (parser) {
 
   });
 
+  describe('TypeScript Services', function () {
+    it('should be loaded', function () {
+      used(expect(TypeScript.Services).to.exist);
+    });
+  });
+
   describe('variable declaration', function () {
     describe('basic types', function () {
       it('should accept numbers', function () {
@@ -184,11 +190,6 @@ define(['parser'], function (parser) {
     });
   });
 
-  describe('TypeScript Services', function () {
-    it('should be loaded', function () {
-      expect(TypeScript.Services).to.exist;
-    });
-  });
 });
 
 
