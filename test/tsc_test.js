@@ -103,6 +103,13 @@ define(['parser'], function (parser) {
       expect(parser.compileFromString(source)).to.equal(desired);
     });
 
+    it('should accept a function declaration with rest parameter', function () {
+      var source = 'declare function blah(...args: string[])';
+      var desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [], Blame.Str, null));';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+
   });
 });
 

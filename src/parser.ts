@@ -184,6 +184,7 @@ function parseCallSignature(signature: TypeScript.CallSignature):string {
 
     requiredParameters = getRequiredParameters(parameterList);
     optionalParameters = getOptionalParameters(parameterList);
+    repeatType = getRepeatParameter(parameterList);
 
     var output: string = 'Blame.func([' + requiredParameters.join(', ') +'], ' +
                                     '[' + optionalParameters.join(', ') + '], ' +
@@ -200,7 +201,7 @@ function getRequiredParameters(parameterList: TypeScript.ParameterList):string[]
     for (var i = 0, n = parameters.nonSeparatorCount(); i < n; i++) {
         var parameter: TypeScript.Parameter = parameters.nonSeparatorAt(i);
 
-        if (!parameter.questionToken) {
+        if (!parameter.questionToken && !parameter.dotDotDotToken) {
             requiredParameters.push(parse(parameter.typeAnnotation));
         }
     }
@@ -221,6 +222,21 @@ function getOptionalParameters(parameterList: TypeScript.ParameterList):string[]
     }
 
     return optionalParameters;
+}
+
+function getRepeatParameter(parameterList: TypeScript.ParameterList):string {
+    var repeatParameter: string = 'null';
+    var parameters: TypeScript.ISeparatedSyntaxList2 = parameterList.parameters;
+
+    for (var i = 0, n = parameters.nonSeparatorCount(); i < n; i++) {
+        var parameter: TypeScript.Parameter = parameters.nonSeparatorAt(i);
+
+        if (parameter.dotDotDotToken) {
+            repeatParameter = parse(parameter.typeAnnotation.type.type);
+        }
+    }
+
+    return repeatParameter;
 }
 
 export function compileFromString(source: string) {
