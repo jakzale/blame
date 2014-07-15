@@ -62,6 +62,8 @@ function parse(ast: TypeScript.AST): string {
             return parseTypeArgumentList(<TypeScript.TypeArgumentList> ast);
         case TypeScript.SyntaxKind.FunctionDeclaration:
             return parseFunctionDeclaration(<TypeScript.FunctionDeclaration> ast);
+        case TypeScript.SyntaxKind.CallSignature:
+            return parseCallSignature(<TypeScript.CallSignature> ast);
 
         /* Keywords */
         case TypeScript.SyntaxKind.NumberKeyword:
@@ -74,6 +76,10 @@ function parse(ast: TypeScript.AST): string {
         /* Identifier */
         case TypeScript.SyntaxKind.IdentifierName:
             return parseIdentifier(<TypeScript.Identifier> ast);
+
+        /* TypeAnnotation */
+        case TypeScript.SyntaxKind.TypeAnnotation:
+            return parseTypeAnnotation(<TypeScript.TypeAnnotation> ast);
 
         default:
             throw Error('Panic: ' + TypeScript.SyntaxKind[ast.kind()] + ' not supported');
@@ -108,26 +114,27 @@ function parseVariableDeclaration(variableDeclaration: TypeScript.VariableDeclar
 
 function parseVariableDeclarator(variableDeclarator: TypeScript.VariableDeclarator): string {
     var name: string = parsePropertyName(variableDeclarator.propertyName);
-    var type: string = parseTypeAnnotation(variableDeclarator.typeAnnotation);
+
+    var type: string = parse(variableDeclarator.typeAnnotation);
 
     return name + ' = ' + 'Blame.simple_wrap(' + name + ', ' + type + ');';
 }
 
-function parsePropertyName(name: TypeScript.IASTToken) {
+function parsePropertyName(name: TypeScript.IASTToken):string {
     return name.text();
 }
 
-function parseTypeAnnotation(type: TypeScript.TypeAnnotation) {
+function parseTypeAnnotation(type: TypeScript.TypeAnnotation):string {
     return parse(type.type);
 }
 
-function parseArrayType(type: TypeScript.ArrayType) {
+function parseArrayType(type: TypeScript.ArrayType):string {
     var type: string = parse(type.type);
 
     return 'Blame.arr(' + type + ')';
 }
 
-function parseGenericType(type: TypeScript.GenericType) {
+function parseGenericType(type: TypeScript.GenericType):string {
     var name:string = parseIdentifier(type.name);
     switch (name) {
         case 'Array':
@@ -137,7 +144,7 @@ function parseGenericType(type: TypeScript.GenericType) {
     }
 }
 
-function parseTypeArgumentList(list: TypeScript.TypeArgumentList) {
+function parseTypeArgumentList(list: TypeScript.TypeArgumentList):string {
     var types : string[] = [];
     var typeArguments:TypeScript.ISeparatedSyntaxList2 = list.typeArguments;
 
@@ -152,8 +159,35 @@ function parseIdentifier(type: TypeScript.Identifier) {
     return type.text();
 }
 
-function parseFunctionDeclaration(declaration: TypeScript.FunctionDeclaration) {
+function parseFunctionDeclaration(declaration: TypeScript.FunctionDeclaration):string {
+    var name = parse(declaration.identifier);
+    var type = parse(declaration.callSignature);
 
+    if (type) {
+        return name + ' = Blame.simple_wrap(' + name + ', ' + type + ');';
+    }
+
+    return '';
+}
+
+function parseCallSignature(signature: TypeScript.CallSignature):string {
+    var typeParameterList: TypeScript.TypeParameterList = signature.typeParameterList;
+    var parameterList: TypeScript.ParameterList = signature.parameterList;
+    var requiredParameters: string[] = [];
+    var optionalParameters: string[] = [];
+    var repeatType: string = 'null';
+    var returnType: string = 'null';
+
+    if (signature.typeAnnotation) {
+        returnType = parse(signature.typeAnnotation);
+    }
+
+    var output: string = 'Blame.func([' + requiredParameters.join(', ') +'], ' +
+                                    '[' + optionalParameters.join(', ') + '], ' +
+                                     repeatType + ', ' +
+                                     returnType + ')';
+
+    return output;
 }
 
 export function compileFromString(source: string) {

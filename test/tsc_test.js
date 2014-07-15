@@ -1,16 +1,17 @@
-/*global describe, it, define, expect, PEG*/
+/*global describe, it, define, expect, TypeScript*/
 /*jslint indent: 2, todo: true */
 
 // No UMD Shim for now, need to UMD-Enable TSC
 
 define(['parser'], function (parser) {
+  'use strict';
+
+  function used() { return; }
+
   describe('TypeScript', function () {
     it('should be imported', function () {
-      expect(TypeScript).to.exist;
-
+      used(expect(TypeScript).to.exist);
       expect(parser.version()).to.equal('0.0.1');
-      //expect(parser.compileFromString('declare var i: number;')).to.equal('done!');
-      //expect(parser.compileFromString('declare class X {};')).to.equal('done!');
     });
 
     it('should throw a syntactic error', function () {
@@ -44,13 +45,13 @@ define(['parser'], function (parser) {
         var desired = 'ns = Blame.simple_wrap(ns, Blame.arr(Blame.Num));';
         expect(parser.compileFromString(source)).to.equal(desired);
 
-        var source = 'declare var ns:Array<number>';
+        source = 'declare var ns:Array<number>';
         expect(parser.compileFromString(source)).to.equal(desired);
       });
 
       it('should allow for multiple definitions', function () {
         var source = 'declare var b:boolean, n:number';
-        desired = 'b = Blame.simple_wrap(b, Blame.Bool);\nn = Blame.simple_wrap(n, Blame.Num);';
+        var desired = 'b = Blame.simple_wrap(b, Blame.Bool);\nn = Blame.simple_wrap(n, Blame.Num);';
         expect(parser.compileFromString(source)).to.equal(desired);
       });
     });
@@ -58,9 +59,17 @@ define(['parser'], function (parser) {
 
   describe('function declaration', function () {
     it('should accept a function declaration without type', function () {
-      var source = 'declare function blah()'
-      expect(parser.compileFromString(source)).to.equal('');
+      var source = 'declare function blah()';
+      var desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [], null, null));';
+      expect(parser.compileFromString(source)).to.equal(desired);
     });
+
+    it('should accept a function declaration with return type', function () {
+      var source = 'declare function blah():string';
+      var desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [], null, Blame.Str));';
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+
   });
 });
 
