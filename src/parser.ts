@@ -70,6 +70,8 @@ function parse(ast: TypeScript.AST): string {
             return parseObjectType(<TypeScript.ObjectType> ast);
         case TypeScript.SyntaxKind.PropertySignature:
             return parsePropertySignature(<TypeScript.PropertySignature> ast);
+        case TypeScript.SyntaxKind.ClassDeclaration:
+            return parseClassDeclaration(<TypeScript.ClassDeclaration> ast);
 
         /* Keywords */
         case TypeScript.SyntaxKind.NumberKeyword:
@@ -286,6 +288,10 @@ function parsePropertySignature(signature: TypeScript.PropertySignature): string
     var type: string = parse(signature.typeAnnotation);
 
     return name + ': ' + type;
+}
+
+function parseClassDeclaration(declaration: TypeScript.ClassDeclaration): string {
+    return '';
 }
 
 export function compileFromString(source: string) {

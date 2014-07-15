@@ -167,7 +167,15 @@ define(['parser'], function (parser) {
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
+  });
 
+
+  describe('class declaration', function () {
+    it('should accept a simple class declaration', function () {
+      var source = 'declare class MyClass {}';
+      var desired = '';
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
   });
 });
 
