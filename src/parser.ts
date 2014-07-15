@@ -23,7 +23,7 @@ function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]) {
     if (diagnostics.length) {
 
         for (var i = 0, n = diagnostics.length; i < n; i++) {
-            messages.push(diagnostics[i].diagnosticKey());
+            messages.push(diagnostics[i].message());
         }
         return(messages.join('\n'));
     }
@@ -64,6 +64,8 @@ function parse(ast: TypeScript.AST): string {
             return parseFunctionDeclaration(<TypeScript.FunctionDeclaration> ast);
         case TypeScript.SyntaxKind.CallSignature:
             return parseCallSignature(<TypeScript.CallSignature> ast);
+        case TypeScript.SyntaxKind.FunctionType:
+            return parseFunctionType(<TypeScript.FunctionType> ast);
 
         /* Keywords */
         case TypeScript.SyntaxKind.NumberKeyword:
@@ -180,6 +182,30 @@ function parseCallSignature(signature: TypeScript.CallSignature):string {
 
     if (signature.typeAnnotation) {
         returnType = parse(signature.typeAnnotation);
+    }
+
+    requiredParameters = getRequiredParameters(parameterList);
+    optionalParameters = getOptionalParameters(parameterList);
+    repeatType = getRepeatParameter(parameterList);
+
+    var output: string = 'Blame.func([' + requiredParameters.join(', ') +'], ' +
+                                    '[' + optionalParameters.join(', ') + '], ' +
+                                     repeatType + ', ' +
+                                     returnType + ')';
+
+    return output;
+}
+
+function parseFunctionType(type: TypeScript.FunctionType): string {
+    var typeParameterList: TypeScript.TypeParameterList = type.typeParameterList;
+    var parameterList: TypeScript.ParameterList = type.parameterList;
+    var requiredParameters: string[] = [];
+    var optionalParameters: string[] = [];
+    var repeatType: string = 'null';
+    var returnType: string = 'null';
+
+    if (type.type) {
+        returnType = parse(type.type);
     }
 
     requiredParameters = getRequiredParameters(parameterList);

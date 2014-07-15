@@ -67,7 +67,28 @@ define(['parser'], function (parser) {
       });
     });
 
+    describe('function literals', function () {
+      it('should accept simple literal', function () {
+        var source = 'declare var f : (x: number) => number';
+        var desired = 'f = Blame.simple_wrap(f, Blame.func([Blame.Num], [], null, Blame.Num));';
 
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
+      it('should accept literal with optional parameters', function () {
+        var source = 'declare var f : (x?: number) => number';
+        var desired = 'f = Blame.simple_wrap(f, Blame.func([], [Blame.Num], null, Blame.Num));';
+
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
+      it('should accept literal with rest parameter', function () {
+        var source = 'declare var f : (...x: number[]) => number';
+        var desired = 'f = Blame.simple_wrap(f, Blame.func([], [], Blame.Num, Blame.Num));';
+
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+    });
   });
 
   describe('function declaration', function () {
