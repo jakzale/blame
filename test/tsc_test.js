@@ -26,36 +26,48 @@ define(['parser'], function (parser) {
   });
 
   describe('variable declaration', function () {
-    it('should accept basic types', function () {
-      // It could be refactored as a file with fixtures
+    describe('basic types', function () {
+      it('should accept numbers', function () {
+        var source = 'declare var n:number';
+        var desired = 'n = Blame.simple_wrap(n, Blame.Num);';
 
-      var source = 'declare var n:number';
-      var desired = 'n = Blame.simple_wrap(n, Blame.Num);';
-      expect(parser.compileFromString(source)).to.equal(desired);
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
 
-      source = 'declare var b:boolean';
-      desired = 'b = Blame.simple_wrap(b, Blame.Bool);';
-      expect(parser.compileFromString(source)).to.equal(desired);
+      it('should accept booleans', function () {
+        var source = 'declare var b:boolean';
+        var desired = 'b = Blame.simple_wrap(b, Blame.Bool);';
 
-      source = 'declare var s:string';
-      desired = 's = Blame.simple_wrap(s, Blame.Str);';
-      expect(parser.compileFromString(source)).to.equal(desired);
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
+      it('should accept strings', function () {
+        var source = 'declare var s:string';
+        var desired = 's = Blame.simple_wrap(s, Blame.Str);';
+
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
+      it('should allow for multiple definitions', function () {
+        var source = 'declare var b:boolean, n:number';
+        var desired = 'b = Blame.simple_wrap(b, Blame.Bool);\nn = Blame.simple_wrap(n, Blame.Num);';
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
     });
 
-    it('should accept array types', function () {
-      var source = 'declare var ns:number[]';
-      var desired = 'ns = Blame.simple_wrap(ns, Blame.arr(Blame.Num));';
-      expect(parser.compileFromString(source)).to.equal(desired);
+    describe('array types', function () {
+      it('should accept array types', function () {
+        var source = 'declare var ns:number[]';
+        var desired = 'ns = Blame.simple_wrap(ns, Blame.arr(Blame.Num));';
+        expect(parser.compileFromString(source)).to.equal(desired);
 
-      source = 'declare var ns:Array<number>';
-      expect(parser.compileFromString(source)).to.equal(desired);
+        source = 'declare var ns:Array<number>';
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
     });
 
-    it('should allow for multiple definitions', function () {
-      var source = 'declare var b:boolean, n:number';
-      var desired = 'b = Blame.simple_wrap(b, Blame.Bool);\nn = Blame.simple_wrap(n, Blame.Num);';
-      expect(parser.compileFromString(source)).to.equal(desired);
-    });
+
   });
 
   describe('function declaration', function () {
