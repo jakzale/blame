@@ -421,6 +421,28 @@ export function compileFromString(source: string, shouldLog?: boolean) {
         }
     }
 
+    function extractType(pullSymbol: TypeScript.PullSymbol): TypeScript.PullTypeSymbol {
+        return pullSymbol.type;
+    }
+
+    function isOptional(pullSymbol: TypeScript.PullSymbol): boolean {
+        return pullSymbol.isOptional;
+    }
+
+    function not<T>(fun: (T) => boolean): (T) => boolean {
+        return  function(x: T) {
+            return !(fun(x));
+        }
+    }
+
+    function isRest(pullSymbol: TypeScript.PullSymbol): boolean {
+        return pullSymbol.isVarArg;
+    }
+
+    function extractElementType(typeSymbol: TypeScript.PullTypeSymbol): TypeScript.PullTypeSymbol {
+        return typeSymbol.getElementType();
+    }
+
     function parseFunctionType(typeSymbol: TypeScript.PullTypeSymbol): string {
         var callSignatures: TypeScript.PullSignatureSymbol[] = typeSymbol.getCallSignatures();
 
@@ -433,27 +455,6 @@ export function compileFromString(source: string, shouldLog?: boolean) {
         var repeatType = 'null';
         var returnType = 'null';
 
-        function extractType(pullSymbol: TypeScript.PullSymbol): TypeScript.PullTypeSymbol {
-            return pullSymbol.type;
-        }
-
-        function isOptional(pullSymbol: TypeScript.PullSymbol): boolean {
-            return pullSymbol.isOptional;
-        }
-
-        function not<T>(fun: (T) => boolean): (T) => boolean {
-            return  function(x: T) {
-                return !(fun(x));
-            }
-        }
-
-        function isRest(pullSymbol: TypeScript.PullSymbol): boolean {
-            return pullSymbol.isVarArg;
-        }
-
-        function extractElementType(typeSymbol: TypeScript.PullTypeSymbol): TypeScript.PullTypeSymbol {
-            return typeSymbol.getElementType();
-        }
 
         if (callSignatures.length > 0) {
             var callSignature: TypeScript.PullSignatureSymbol = callSignatures[0];
@@ -480,9 +481,15 @@ export function compileFromString(source: string, shouldLog?: boolean) {
         return output;
     }
 
+    function parseMember(member: TypeScript.PullSymbol) {
+        return member.name + ': ' + parsePullTypeSymbol(extractType(member));
+    }
+
     function parseObjectType(typeSymbol: TypeScript.PullTypeSymbol): string {
-        log(typeSymbol.hasMembers());
-        return 'Blame.obj({})';
+        var members: TypeScript.PullSymbol[] = typeSymbol.getMembers();
+        var outMembers: string[] = members.map(parseMember);
+
+        return 'Blame.obj({' + outMembers.join(', ')  + '})';
     }
 
     var decls = decl.getChildDecls();

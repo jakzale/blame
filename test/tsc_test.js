@@ -114,22 +114,36 @@ define(['parser'], function (parser) {
         var source = 'declare var o : {}';
         var desired = 'o = Blame.simple_wrap(o, Blame.obj({}));';
 
-        expect(parser.compileFromString(source, true)).to.equal(desired);
+        expect(parser.compileFromString(source)).to.equal(desired);
       });
 
-      //it('should accept an object with basic member', function () {
-        //var source = 'declare var o : {n: number}';
-        //var desired = 'o = Blame.simple_wrap(o, Blame.obj({n: Blame.Num}));';
+      it('should accept an object with basic member', function () {
+        var source = 'declare var o : {n: number}';
+        var desired = 'o = Blame.simple_wrap(o, Blame.obj({n: Blame.Num}));';
 
-        //expect(parser.compileFromString(source)).to.equal(desired);
-      //});
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
 
-      //it('should accept an object with function member', function () {
-        //var source = 'declare var o: {f: (x:number) => string}';
-        //var desired = 'o = Blame.simple_wrap(o, Blame.obj({f: Blame.func([Blame.Num], [], null, Blame.Str)}));';
+      it('should accept an object with function member', function () {
+        var source = 'declare var o: {f: (x:number) => string}';
+        var desired = 'o = Blame.simple_wrap(o, Blame.obj({f: Blame.func([Blame.Num], [], null, Blame.Str)}));';
 
-        //expect(parser.compileFromString(source)).to.equal(desired);
-      //});
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
+      it('should accept an object with an object member', function () {
+        var source = 'declare var o : {o: {}}';
+        var desired = 'o = Blame.simple_wrap(o, Blame.obj({o: Blame.obj({})}));';
+
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+
+      it('should accept an object with multiple members', function () {
+        var source = 'declare var o: {b: boolean; s: string}';
+        var desired = 'o = Blame.simple_wrap(o, Blame.obj({b: Blame.Bool, s: Blame.Str}));';
+
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
     });
   });
 
