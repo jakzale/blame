@@ -350,10 +350,13 @@ export function compileFromString(source: string, shouldLog?: boolean) {
                 log('got variable');
                 return parsePullSymbol(declaration.getSymbol());
             case TypeScript.PullElementKind.FunctionType:
-                    log('got function type');
-                  return '';
+                log('got function type');
+                return '';
+            case TypeScript.PullElementKind.Function:
+                log('got function');
+                return parsePullSymbol(declaration.getSymbol());
             default:
-                  throw new Error('Panic, Declaration: ' + TypeScript.PullElementKind[declaration.kind] + ' not supported');
+                throw new Error('Panic, Declaration: ' + TypeScript.PullElementKind[declaration.kind] + ' not supported');
         }
     }
 
@@ -369,8 +372,10 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     function parsePullTypeSymbol(typeSymbol: TypeScript.PullTypeSymbol): string {
         switch (typeSymbol.kind) {
             case TypeScript.PullElementKind.Primitive:
+                log('parsing primitive type');
                 return parsePrimitiveType(typeSymbol);
             case TypeScript.PullElementKind.Interface:
+                log('parsing interface');
                 return parseInterface(typeSymbol);
             case TypeScript.PullElementKind.FunctionType:
                 log('parsing function type');
@@ -391,6 +396,8 @@ export function compileFromString(source: string, shouldLog?: boolean) {
                 return 'Blame.Bool';
             case 'string':
                 return 'Blame.Str';
+            case 'any':
+                return 'null';
 
             default:
                 throw Error('Panic, PrimitiveType: ' + type + ' not supported!');
