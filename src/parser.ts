@@ -416,23 +416,51 @@ export function compileFromString(source: string, shouldLog?: boolean) {
             throw new Error('Panic, Functions with more than one call singature not supported: ' + typeSymbol.getFunctionSymbol().name);
         }
 
-        var parameters: string[] = [];
+        var requiredParameters: string[] = [];
         var optionalParameters: string[] = [];
         var repeatType = 'null';
         var returnType = 'null';
 
+        function extractType(pullSymbol: TypeScript.PullSymbol): TypeScript.PullTypeSymbol {
+            return pullSymbol.type;
+        }
+
+        function isOptional(pullSymbol: TypeScript.PullSymbol): boolean {
+            return pullSymbol.isOptional;
+        }
+
+        function not<T>(fun: (T) => boolean): (T) => boolean {
+            return  function(x: T) {
+                return !(fun(x));
+            }
+        }
+
+        function isRest(pullSymbol: TypeScript.PullSymbol): boolean {
+            return pullSymbol.isVarArg;
+        }
+
+        function extractElementType(typeSymbol: TypeScript.PullTypeSymbol): TypeScript.PullTypeSymbol {
+            return typeSymbol.getElementType();
+        }
+
         if (callSignatures.length > 0) {
             var callSignature: TypeScript.PullSignatureSymbol = callSignatures[0];
-            var parameters: string[] = callSignature.parameters.map(function (pullSymbol) {
-                return parsePullTypeSymbol(pullSymbol.type);
-            });
+            var parameters: TypeScript.PullSymbol[] = callSignature.parameters;
+
+            requiredParameters = parameters.filter(not(isRest)).filter(not(isOptional)).map(extractType).map(parsePullTypeSymbol);
+            optionalParameters = parameters.filter(not(isRest)).filter(isOptional).map(extractType).map(parsePullTypeSymbol);
 
             if (callSignature.returnType) {
                 returnType = parsePullTypeSymbol(callSignature.returnType);
             }
+
+            if (callSignature.hasVarArgs) {
+                repeatType = parsePullTypeSymbol(parameters.filter(isRest).map(extractType).map(extractElementType)[0]);
+            }
+
         }
 
-        var output: string = 'Blame.func([' + parameters.join(', ') +'], ' +
+        var output: string = 'Blame.func([' + requiredParameters.join(', ') +'], ' +
                 '[' + optionalParameters.join(', ') + '], ' +
                 repeatType + ', ' +
                 returnType + ')';
@@ -443,7 +471,7 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     var decls = decl.getChildDecls();
     var intermediate: string[] = decls.map(parsePullDecl);
     //console.log(intermediate);
-    var result = intermediate.filter(function (e) {return e.length}).join('\n');
+    var result = intermediate.filter(function (e) {return e.length > 0}).join('\n');
     compiler.removeFile(filename);
 
     return result;
