@@ -6,12 +6,6 @@
 // Asume there is no need of a resolver at the moment
 
 
-export class BlameEmitter extends TypeScript.Emitter {
-}
-
-export class BlameCompiler extends TypeScript.TypeScriptCompiler {
-}
-
 // This to ensure that the Parer Module is properly exported
 export function version() {
     return "0.0.1";
@@ -137,13 +131,13 @@ function parseTypeAnnotation(type: TypeScript.TypeAnnotation):string {
 }
 
 function parseArrayType(type: TypeScript.ArrayType):string {
-    var type: string = parse(type.type);
+    var out: string = parse(type.type);
 
-    return 'Blame.arr(' + type + ')';
+    return 'Blame.arr(' + out + ')';
 }
 
 function parseGenericType(type: TypeScript.GenericType):string {
-    var name:string = parseIdentifier(type.name);
+    var name:string = parse(type.name);
     switch (name) {
         case 'Array':
             return 'Blame.arr(' + parse(type.typeArgumentList) +')';
@@ -231,7 +225,7 @@ function getRequiredParameters(parameterList: TypeScript.ParameterList):string[]
     var parameters: TypeScript.ISeparatedSyntaxList2 = parameterList.parameters;
 
     for (var i = 0, n = parameters.nonSeparatorCount(); i < n; i++) {
-        var parameter: TypeScript.Parameter = parameters.nonSeparatorAt(i);
+        var parameter: TypeScript.Parameter = <TypeScript.Parameter> parameters.nonSeparatorAt(i);
 
         if (!parameter.questionToken && !parameter.dotDotDotToken) {
             requiredParameters.push(parse(parameter.typeAnnotation));
@@ -246,7 +240,7 @@ function getOptionalParameters(parameterList: TypeScript.ParameterList):string[]
     var parameters: TypeScript.ISeparatedSyntaxList2 = parameterList.parameters;
 
     for (var i = 0, n = parameters.nonSeparatorCount(); i < n; i++) {
-        var parameter: TypeScript.Parameter = parameters.nonSeparatorAt(i);
+        var parameter: TypeScript.Parameter = <TypeScript.Parameter> parameters.nonSeparatorAt(i);
 
         if (parameter.questionToken) {
             optionalParameters.push(parse(parameter.typeAnnotation));
@@ -261,10 +255,10 @@ function getRepeatParameter(parameterList: TypeScript.ParameterList):string {
     var parameters: TypeScript.ISeparatedSyntaxList2 = parameterList.parameters;
 
     for (var i = 0, n = parameters.nonSeparatorCount(); i < n; i++) {
-        var parameter: TypeScript.Parameter = parameters.nonSeparatorAt(i);
+        var parameter: TypeScript.Parameter = <TypeScript.Parameter> parameters.nonSeparatorAt(i);
 
         if (parameter.dotDotDotToken) {
-            repeatParameter = parse(parameter.typeAnnotation.type.type);
+            repeatParameter = parse((<TypeScript.ArrayType> parameter.typeAnnotation.type).type);
         }
     }
 
@@ -272,11 +266,11 @@ function getRepeatParameter(parameterList: TypeScript.ParameterList):string {
 }
 
 function parseObjectType(type: TypeScript.ObjectType): string {
-    var typeMembers: ISeparatedSyntaxList2 = type.typeMembers;
+    var typeMembers: TypeScript.ISeparatedSyntaxList2 = type.typeMembers;
     var properties: string[] = [];
 
     for (var i = 0, n = typeMembers.nonSeparatorCount(); i < n; i++) {
-        var member: TypeScript.PropertySignature = typeMembers.nonSeparatorAt(i);
+        var member: TypeScript.PropertySignature = <TypeScript.PropertySignature> typeMembers.nonSeparatorAt(i);
 
         properties.push(parse(member));
     }
@@ -294,35 +288,86 @@ function parseClassDeclaration(declaration: TypeScript.ClassDeclaration): string
     return '';
 }
 
-export function compileFromString(source: string) {
-    var compiler:TypeScript.TypeScriptCompiler;
-    var logger:TypeScript.ILogger = new TypeScript.NullLogger();
-    var settings:TypeScript.CompilationSettings = new TypeScript.CompilationSettings();
+// Declaring the compiler as static
+declare var LibD: string;
 
-    // hardcoding this for now;
-    settings.codeGenTarget = TypeScript.LanguageVersion.EcmaScript5;
-    settings.moduleGenTarget = TypeScript.ModuleGenTarget.Asynchronous;
+var compiler:TypeScript.TypeScriptCompiler = null;
+var logger:TypeScript.ILogger = new TypeScript.NullLogger();
+var settings:TypeScript.CompilationSettings = new TypeScript.CompilationSettings();
 
-    compiler = new TypeScript.TypeScriptCompiler(logger,
-            TypeScript.ImmutableCompilationSettings.fromCompilationSettings(settings));
+// hardcoding this for now;
+settings.codeGenTarget = TypeScript.LanguageVersion.EcmaScript5;
+settings.moduleGenTarget = TypeScript.ModuleGenTarget.Asynchronous;
 
+compiler = new TypeScript.TypeScriptCompiler(logger,
+        TypeScript.ImmutableCompilationSettings.fromCompilationSettings(settings));
+
+var libdSnapsthot = TypeScript.ScriptSnapshot.fromString(LibD);
+compiler.addFile('lib.d.ts', libdSnapsthot, TypeScript.ByteOrderMark.Utf8, 0, false);
+
+export function compileFromString(source: string, log?: boolean) {
+    var filename: string = 'generated.d.ts';
     // Create a simple source unit
     var snapshot = TypeScript.ScriptSnapshot.fromString(source);
+
+    // Adding the lib.d file
 
     compiler.addFile('generated.d.ts', snapshot, TypeScript.ByteOrderMark.Utf8, 0, false);
 
     // Getting diagnostics, throw an error on diagnostic
-    var diagnostics:TypeScript.Diagnostic[] = compiler.getSyntacticDiagnostics('generated.d.ts');
+    var diagnostics:TypeScript.Diagnostic[] = compiler.getSyntacticDiagnostics(filename);
+    var message = get_diagnostic_message(diagnostics);
+    if (message) {
+        compiler.removeFile(filename);
+        throw new Error(message);
+    }
+
+    // I am unsure if declaration file can cause semantic diagnostic
+    // This will trigger the type resolver
+
+    diagnostics = compiler.getSemanticDiagnostics(filename);
     var message = get_diagnostic_message(diagnostics);
     if (message) {
         throw new Error(message);
     }
 
-    var decl:TypeScript.PullDecl = compiler.topLevelDecl('generated.d.ts');
+    var decl:TypeScript.PullDecl = compiler.topLevelDecl(filename);
 
     var ast:TypeScript.AST = decl.ast();
 
-    return parse(ast);
+
+    function parsePullDecl (declaration: TypeScript.PullDecl) {
+        console.log('declaration: ' + TypeScript.PullElementKind[declaration.kind]);
+        console.log('name: ' + declaration.name);
+        parsePullSymbol(declaration.getSymbol());
+    }
+
+    function parseTypeSymbol (type: TypeScript.PullTypeSymbol) {
+        //console.log(type);
+        console.log('type symbol: ' + type.getNamePartForFullName());
+        console.log('is class ' + type.isClass());
+        console.log('has members ' + type.hasMembers());
+        type.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all).map(parsePullSymbol);
+    }
+
+    function parsePullSymbol (symbol: TypeScript.PullSymbol) {
+        console.log('symbol ' + symbol.getNameAndTypeName());
+        parseTypeSymbol(symbol.type);
+    }
+
+
+    if (log) {
+        var decls = decl.getChildDecls();
+
+        //parsePullDecl(decls[1]);
+        decls.map(parsePullDecl);
+        //var symbols: TypeScript.PullVisibleSymbolsInfo = compiler.pullGetVisibleMemberSymbolsFromAST(ast, compiler.getDocument('generated.d.ts'));
+    }
+
+    var result = parse(ast);
+    compiler.removeFile(filename);
+
+    return result;
 }
 
 

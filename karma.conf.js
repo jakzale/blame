@@ -22,6 +22,7 @@ module.exports = function(config) {
       // Loading TypeScript
       'node_modules/typescript/bin/typescript.js',
       '../typescript/bin/typescriptServices.js',
+      'lib.js',
       'test-main.js'
     ],
 

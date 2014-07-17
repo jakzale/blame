@@ -1,4 +1,4 @@
-/*global describe, it, define, expect, TypeScript*/
+/*global describe, it, define, expect, TypeScript, LibD*/
 /*jslint indent: 2, todo: true */
 
 // No UMD Shim for now, need to UMD-Enable TSC
@@ -23,11 +23,22 @@ define(['parser'], function (parser) {
       }).to.throw();
     });
 
+    it('should throw a semantic error', function () {
+      expect(function () {
+        parser.compileFromString('declare class MyClass {n: number} declare class MyClass {b: boolean}');
+      }).to.throw();
+    });
   });
 
   describe('TypeScript Services', function () {
     it('should be loaded', function () {
       used(expect(TypeScript.Services).to.exist);
+    });
+  });
+
+  describe('Library', function () {
+    it('should be loaded', function () {
+      used(expect(LibD).to.exist);
     });
   });
 
@@ -89,7 +100,8 @@ define(['parser'], function (parser) {
       });
 
       it('should accept type with rest parameter', function () {
-        var source = 'declare var f : (...x: number[]) => number';
+        var source = 'declare var f: (...rest: number[]) => number;';
+        //var source = 'declare function f(...rest: number[]): number;';
         var desired = 'f = Blame.simple_wrap(f, Blame.func([], [], Blame.Num, Blame.Num));';
 
         expect(parser.compileFromString(source)).to.equal(desired);
@@ -186,7 +198,7 @@ define(['parser'], function (parser) {
     it('should accept a simple class declaration', function () {
       var source = 'declare class MyClass { x: number }';
       var desired = '';
-      expect(parser.compileFromString(source)).to.equal(desired);
+      expect(parser.compileFromString(source, true)).to.equal(desired);
     });
   });
 
