@@ -336,35 +336,54 @@ export function compileFromString(source: string, log?: boolean) {
     var ast:TypeScript.AST = decl.ast();
 
 
-    function parsePullDecl (declaration: TypeScript.PullDecl) {
-        console.log('declaration: ' + TypeScript.PullElementKind[declaration.kind]);
-        console.log('name: ' + declaration.name);
-        parsePullSymbol(declaration.getSymbol());
+    function parsePullDecl(declaration: TypeScript.PullDecl):string {
+        switch (declaration.kind) {
+            case TypeScript.PullElementKind.Variable:
+                  return parsePullSymbol(declaration.getSymbol());
+
+            default:
+                  throw new Error('Panic, Declaration: ' + TypeScript.PullElementKind[declaration.kind] + ' not supported');
+        }
     }
 
-    function parseTypeSymbol (type: TypeScript.PullTypeSymbol) {
-        //console.log(type);
-        console.log('type symbol: ' + type.getNamePartForFullName());
-        console.log('is class ' + type.isClass());
-        console.log('has members ' + type.hasMembers());
-        type.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all).map(parsePullSymbol);
+    function parsePullSymbol(pullSymbol: TypeScript.PullSymbol): string {
+        var name: string = pullSymbol.name;
+        var type: string = parsePullTypeSymbol(pullSymbol.type);
+        console.log(name, type);
+        return name + '= Blame.simple_wrap(' + name + ', ' + type + ');';
     }
 
-    function parsePullSymbol (symbol: TypeScript.PullSymbol) {
-        console.log('symbol ' + symbol.getNameAndTypeName());
-        parseTypeSymbol(symbol.type);
+    function parsePullTypeSymbol(typeSymbol: TypeScript.PullTypeSymbol): string {
+        switch (typeSymbol.kind) {
+            case TypeScript.PullElementKind.Primitive:
+                return parsePrimitiveType(typeSymbol);
+
+            default:
+                throw Error('Panic, TypeSymbol: ' + TypeScript.PullElementKind[typeSymbol.kind] + ' not supported!');
+        }
+    }
+
+    function parsePrimitiveType(typeSymbol: TypeScript.PullTypeSymbol): string {
+        var type: string = typeSymbol.getDisplayName();
+
+        switch (type) {
+            case 'number':
+                return 'Blame.Num';
+
+            default:
+                throw Error('Panic, PrimitiveType: ' + type + ' not supported!');
+        }
     }
 
 
-    if (log) {
-        var decls = decl.getChildDecls();
 
-        //parsePullDecl(decls[1]);
-        decls.map(parsePullDecl);
-        //var symbols: TypeScript.PullVisibleSymbolsInfo = compiler.pullGetVisibleMemberSymbolsFromAST(ast, compiler.getDocument('generated.d.ts'));
-    }
+    var decls = decl.getChildDecls();
 
-    var result = parse(ast);
+    //parsePullDecl(decls[1]);
+    decls.map(parsePullDecl);
+    //var symbols: TypeScript.PullVisibleSymbolsInfo = compiler.pullGetVisibleMemberSymbolsFromAST(ast, compiler.getDocument('generated.d.ts'));
+
+    var result = decls.map(parsePullDecl).join('\n');
     compiler.removeFile(filename);
 
     return result;

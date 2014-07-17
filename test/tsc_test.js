@@ -48,7 +48,7 @@ define(['parser'], function (parser) {
         var source = 'declare var n:number';
         var desired = 'n = Blame.simple_wrap(n, Blame.Num);';
 
-        expect(parser.compileFromString(source)).to.equal(desired);
+        expect(parser.compileFromString(source, true)).to.equal(desired);
       });
 
       it('should accept booleans', function () {
@@ -198,7 +198,7 @@ define(['parser'], function (parser) {
     it('should accept a simple class declaration', function () {
       var source = 'declare class MyClass { x: number }';
       var desired = '';
-      expect(parser.compileFromString(source, true)).to.equal(desired);
+      expect(parser.compileFromString(source)).to.equal(desired);
     });
   });
 
