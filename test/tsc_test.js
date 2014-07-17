@@ -84,29 +84,29 @@ define(['parser'], function (parser) {
       });
     });
 
-    //describe('function types', function () {
-    //  it('should accept simple type', function () {
-    //    var source = 'declare var f : (x: number) => number';
-    //    var desired = 'f = Blame.simple_wrap(f, Blame.func([Blame.Num], [], null, Blame.Num));';
+    describe('function types', function () {
+      it('should accept simple type', function () {
+        var source = 'declare var f : (x: number) => number';
+        var desired = 'f = Blame.simple_wrap(f, Blame.func([Blame.Num], [], null, Blame.Num));';
 
-    //    expect(parser.compileFromString(source)).to.equal(desired);
-    //  });
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
 
-    //  it('should accept type with optional parameters', function () {
-    //    var source = 'declare var f : (x?: number) => number';
-    //    var desired = 'f = Blame.simple_wrap(f, Blame.func([], [Blame.Num], null, Blame.Num));';
+      //it('should accept type with optional parameters', function () {
+      //  var source = 'declare var f : (x?: number) => number';
+      //  var desired = 'f = Blame.simple_wrap(f, Blame.func([], [Blame.Num], null, Blame.Num));';
 
-    //    expect(parser.compileFromString(source)).to.equal(desired);
-    //  });
+      //  expect(parser.compileFromString(source)).to.equal(desired);
+      //});
 
-    //  it('should accept type with rest parameter', function () {
-    //    var source = 'declare var f: (...rest: number[]) => number;';
-    //    //var source = 'declare function f(...rest: number[]): number;';
-    //    var desired = 'f = Blame.simple_wrap(f, Blame.func([], [], Blame.Num, Blame.Num));';
+      //it('should accept type with rest parameter', function () {
+      //  var source = 'declare var f: (...rest: number[]) => number;';
+      //  //var source = 'declare function f(...rest: number[]): number;';
+      //  var desired = 'f = Blame.simple_wrap(f, Blame.func([], [], Blame.Num, Blame.Num));';
 
-    //    expect(parser.compileFromString(source)).to.equal(desired);
-    //  });
-    //});
+      //  expect(parser.compileFromString(source)).to.equal(desired);
+      //});
+    });
 
 
     //describe('object types', function () {

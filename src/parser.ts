@@ -305,7 +305,15 @@ compiler = new TypeScript.TypeScriptCompiler(logger,
 var libdSnapsthot = TypeScript.ScriptSnapshot.fromString(LibD);
 compiler.addFile('lib.d.ts', libdSnapsthot, TypeScript.ByteOrderMark.Utf8, 0, false);
 
-export function compileFromString(source: string, log?: boolean) {
+var call: number = 0;
+export function compileFromString(source: string, shouldLog?: boolean) {
+    call += 1;
+
+    function log(...rest: any[]) {
+        if (shouldLog) {
+            console.log.apply(undefined, [call + ' '].concat(rest));
+        }
+    }
     var filename: string = 'generated.d.ts';
     // Create a simple source unit
     var snapshot = TypeScript.ScriptSnapshot.fromString(source);
@@ -339,8 +347,11 @@ export function compileFromString(source: string, log?: boolean) {
     function parsePullDecl(declaration: TypeScript.PullDecl):string {
         switch (declaration.kind) {
             case TypeScript.PullElementKind.Variable:
-                  return parsePullSymbol(declaration.getSymbol());
-
+                log('got variable');
+                return parsePullSymbol(declaration.getSymbol());
+            case TypeScript.PullElementKind.FunctionType:
+                    log('got function type');
+                  return '';
             default:
                   throw new Error('Panic, Declaration: ' + TypeScript.PullElementKind[declaration.kind] + ' not supported');
         }
@@ -350,9 +361,7 @@ export function compileFromString(source: string, log?: boolean) {
         var name: string = pullSymbol.name;
         var type: string = parsePullTypeSymbol(pullSymbol.type);
 
-        if (log) {
-            console.log(name, type);
-        }
+        log(name, type);
 
         return name + ' = Blame.simple_wrap(' + name + ', ' + type + ');';
     }
@@ -363,6 +372,9 @@ export function compileFromString(source: string, log?: boolean) {
                 return parsePrimitiveType(typeSymbol);
             case TypeScript.PullElementKind.Interface:
                 return parseInterface(typeSymbol);
+            case TypeScript.PullElementKind.FunctionType:
+                log('parsing function type');
+                return parseFunctionType(typeSymbol);
 
             default:
                 throw Error('Panic, TypeSymbol: ' + TypeScript.PullElementKind[typeSymbol.kind] + ' not supported!');
@@ -395,18 +407,43 @@ export function compileFromString(source: string, log?: boolean) {
             default:
                 throw Error('Panic, Interface: ' + type + ' not supported!');
         }
-        return '';
     }
 
+    function parseFunctionType(typeSymbol: TypeScript.PullTypeSymbol): string {
+        var callSignatures: TypeScript.PullSignatureSymbol[] = typeSymbol.getCallSignatures();
 
+        if (callSignatures.length > 1) {
+            throw new Error('Panic, Functions with more than one call singature not supported: ' + typeSymbol.getFunctionSymbol().name);
+        }
+
+        var parameters: string[] = [];
+        var optionalParameters: string[] = [];
+        var repeatType = 'null';
+        var returnType = 'null';
+
+        if (callSignatures.length > 0) {
+            var callSignature: TypeScript.PullSignatureSymbol = callSignatures[0];
+            var parameters: string[] = callSignature.parameters.map(function (pullSymbol) {
+                return parsePullTypeSymbol(pullSymbol.type);
+            });
+
+            if (callSignature.returnType) {
+                returnType = parsePullTypeSymbol(callSignature.returnType);
+            }
+        }
+
+        var output: string = 'Blame.func([' + parameters.join(', ') +'], ' +
+                '[' + optionalParameters.join(', ') + '], ' +
+                repeatType + ', ' +
+                returnType + ')';
+
+        return output;
+    }
 
     var decls = decl.getChildDecls();
-
-    //parsePullDecl(decls[1]);
-    decls.map(parsePullDecl);
-    //var symbols: TypeScript.PullVisibleSymbolsInfo = compiler.pullGetVisibleMemberSymbolsFromAST(ast, compiler.getDocument('generated.d.ts'));
-
-    var result = decls.map(parsePullDecl).join('\n');
+    var intermediate: string[] = decls.map(parsePullDecl);
+    //console.log(intermediate);
+    var result = intermediate.filter(function (e) {return e.length}).join('\n');
     compiler.removeFile(filename);
 
     return result;
