@@ -109,13 +109,13 @@ define(['parser'], function (parser) {
     });
 
 
-    //describe('object types', function () {
-      //it('should accept simple type', function () {
-        //var source = 'declare var o : {}';
-        //var desired = 'o = Blame.simple_wrap(o, Blame.obj({}));';
+    describe('object types', function () {
+      it('should accept simple type', function () {
+        var source = 'declare var o : {}';
+        var desired = 'o = Blame.simple_wrap(o, Blame.obj({}));';
 
-        //expect(parser.compileFromString(source)).to.equal(desired);
-      //});
+        expect(parser.compileFromString(source, true)).to.equal(desired);
+      });
 
       //it('should accept an object with basic member', function () {
         //var source = 'declare var o : {n: number}';
@@ -130,7 +130,7 @@ define(['parser'], function (parser) {
 
         //expect(parser.compileFromString(source)).to.equal(desired);
       //});
-    //});
+    });
   });
 
   describe('function declaration', function () {

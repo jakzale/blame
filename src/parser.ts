@@ -355,6 +355,8 @@ export function compileFromString(source: string, shouldLog?: boolean) {
             case TypeScript.PullElementKind.Function:
                 log('got function');
                 return parsePullSymbol(declaration.getSymbol());
+            case TypeScript.PullElementKind.ObjectType:
+                return '';
             default:
                 throw new Error('Panic, Declaration: ' + TypeScript.PullElementKind[declaration.kind] + ' not supported');
         }
@@ -380,6 +382,9 @@ export function compileFromString(source: string, shouldLog?: boolean) {
             case TypeScript.PullElementKind.FunctionType:
                 log('parsing function type');
                 return parseFunctionType(typeSymbol);
+            case TypeScript.PullElementKind.ObjectType:
+                log('parsing object type');
+                return parseObjectType(typeSymbol);
 
             default:
                 throw Error('Panic, TypeSymbol: ' + TypeScript.PullElementKind[typeSymbol.kind] + ' not supported!');
@@ -473,6 +478,11 @@ export function compileFromString(source: string, shouldLog?: boolean) {
                 returnType + ')';
 
         return output;
+    }
+
+    function parseObjectType(typeSymbol: TypeScript.PullTypeSymbol): string {
+        log(typeSymbol.hasMembers());
+        return 'Blame.obj({})';
     }
 
     var decls = decl.getChildDecls();
