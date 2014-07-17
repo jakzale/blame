@@ -73,16 +73,16 @@ define(['parser'], function (parser) {
 
     });
 
-    //describe('array types', function () {
-    //  it('should accept array types', function () {
-    //    var source = 'declare var ns:number[]';
-    //    var desired = 'ns = Blame.simple_wrap(ns, Blame.arr(Blame.Num));';
-    //    expect(parser.compileFromString(source)).to.equal(desired);
+    describe('array types', function () {
+      it('should accept array types', function () {
+        var source = 'declare var ns:number[]';
+        var desired = 'ns = Blame.simple_wrap(ns, Blame.arr(Blame.Num));';
+        expect(parser.compileFromString(source)).to.equal(desired);
 
-    //    source = 'declare var ns:Array<number>';
-    //    expect(parser.compileFromString(source)).to.equal(desired);
-    //  });
-    //});
+        source = 'declare var ns:Array<number>';
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+    });
 
     //describe('function types', function () {
     //  it('should accept simple type', function () {

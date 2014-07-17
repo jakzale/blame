@@ -361,6 +361,8 @@ export function compileFromString(source: string, log?: boolean) {
         switch (typeSymbol.kind) {
             case TypeScript.PullElementKind.Primitive:
                 return parsePrimitiveType(typeSymbol);
+            case TypeScript.PullElementKind.Interface:
+                return parseInterface(typeSymbol);
 
             default:
                 throw Error('Panic, TypeSymbol: ' + TypeScript.PullElementKind[typeSymbol.kind] + ' not supported!');
@@ -381,6 +383,19 @@ export function compileFromString(source: string, log?: boolean) {
             default:
                 throw Error('Panic, PrimitiveType: ' + type + ' not supported!');
         }
+    }
+
+    function parseInterface(typeSymbol: TypeScript.PullTypeSymbol): string {
+        var type: string = typeSymbol.getDisplayName();
+
+        switch (type) {
+            case 'Array':
+                return 'Blame.arr(' + parsePullTypeSymbol(typeSymbol.getElementType()) + ')';
+
+            default:
+                throw Error('Panic, Interface: ' + type + ' not supported!');
+        }
+        return '';
     }
 
 
