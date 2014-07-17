@@ -349,8 +349,12 @@ export function compileFromString(source: string, log?: boolean) {
     function parsePullSymbol(pullSymbol: TypeScript.PullSymbol): string {
         var name: string = pullSymbol.name;
         var type: string = parsePullTypeSymbol(pullSymbol.type);
-        console.log(name, type);
-        return name + '= Blame.simple_wrap(' + name + ', ' + type + ');';
+
+        if (log) {
+            console.log(name, type);
+        }
+
+        return name + ' = Blame.simple_wrap(' + name + ', ' + type + ');';
     }
 
     function parsePullTypeSymbol(typeSymbol: TypeScript.PullTypeSymbol): string {
@@ -369,6 +373,10 @@ export function compileFromString(source: string, log?: boolean) {
         switch (type) {
             case 'number':
                 return 'Blame.Num';
+            case 'boolean':
+                return 'Blame.Bool';
+            case 'string':
+                return 'Blame.Str';
 
             default:
                 throw Error('Panic, PrimitiveType: ' + type + ' not supported!');
