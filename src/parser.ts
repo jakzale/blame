@@ -83,13 +83,17 @@ export function compileFromString(source: string, shouldLog?: boolean) {
             case TypeScript.PullElementKind.Variable:
                 log('got variable');
                 return parsePullSymbol(declaration.getSymbol());
-            case TypeScript.PullElementKind.FunctionType:
-                log('got function type');
-                return '';
             case TypeScript.PullElementKind.Function:
                 log('got function');
                 return parsePullSymbol(declaration.getSymbol());
+
+            /* Ignored Declaration */
+
             case TypeScript.PullElementKind.ObjectType:
+                log('got object type');
+                return '';
+            case TypeScript.PullElementKind.FunctionType:
+                log('got function type');
                 return '';
             default:
                 throw new Error('Panic, Declaration: ' + TypeScript.PullElementKind[declaration.kind] + ' not supported');
