@@ -3,29 +3,6 @@
 // TypeScriptCompiler
 ///<reference path='../lib/typescript.d.ts' />
 
-// Asume there is no need of a resolver at the moment
-
-
-// This to ensure that the Parer Module is properly exported
-export function version() {
-  return "0.0.1";
-}
-
-function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]) {
-  var messages:string[] = [];
-
-  if (diagnostics.length) {
-
-    for (var i = 0, n = diagnostics.length; i < n; i++) {
-      messages.push(diagnostics[i].message());
-    }
-
-    return(messages.join('\n'));
-  }
-
-  return "";
-}
-
 // Declaring the compiler as static
 declare var LibD: string;
 
@@ -45,6 +22,21 @@ compiler.addFile('lib.d.ts', libdSnapsthot, TypeScript.ByteOrderMark.Utf8, 0, fa
 
 var call: number = 0;
 
+
+function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]):string {
+  var messages:string[] = [];
+
+  if (diagnostics.length) {
+
+    for (var i = 0, n = diagnostics.length; i < n; i++) {
+      messages.push(diagnostics[i].message());
+    }
+
+    return(messages.join('\n'));
+  }
+
+  return "";
+}
 
 export function compileFromString(source: string, shouldLog?: boolean) {
   call += 1;
