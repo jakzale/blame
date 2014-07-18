@@ -230,6 +230,13 @@ define(['parser'], function (parser) {
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
+
+    it('should allow for inheritance', function () {
+      var source = 'declare class ParentClass {x: number} declare class MyClass extends ParentClass {b: boolean}';
+      var desired = 'var Blame_ParentClass = Blame.obj({x: Blame.Num});\nvar Blame_MyClass = Blame.obj({b: Blame.Bool, x: Blame.Num});';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
   });
 
 });

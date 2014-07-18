@@ -239,7 +239,7 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     log('got class symbol: ' + name);
     typeCache[name] = bname;
 
-    var members: string[] = symbol.getMembers().map(parseMember);
+    var members: string[] = symbol.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all).map(parseMember);
     log(members);
 
     return 'var ' + bname + ' = Blame.obj({' + members.join(', ') + '});' ;
