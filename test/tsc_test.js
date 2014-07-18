@@ -202,19 +202,21 @@ define(['parser'], function (parser) {
   });
 
 
-  //describe('class declaration', function () {
-  //  it('should accept a simple class declaration', function () {
-  //    var source = 'declare class MyClass {}';
-  //    var desired = '';
-  //    expect(parser.compileFromString(source)).to.equal(desired);
-  //  });
+  describe('class declaration', function () {
+    it('should accept a simple class declaration', function () {
+      var source = 'declare class MyClass {}';
+      var desired = 'var Blame_MyClass = Blame.obj({});';
 
-  //  it('should accept a simple class declaration', function () {
-  //    var source = 'declare class MyClass { x: number }';
-  //    var desired = '';
-  //    expect(parser.compileFromString(source)).to.equal(desired);
-  //  });
-  //});
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+
+    it('should accept a declaration of instance', function () {
+      var source = 'declare class MyClass {} declare var c: MyClass';
+      var desired = 'var Blame_MyClass = Blame.obj({});\nc = Blame.simple_wrap(c, Blame_MyClass);';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+  });
 
 });
 

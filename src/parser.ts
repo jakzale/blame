@@ -49,6 +49,9 @@ var call: number = 0;
 export function compileFromString(source: string, shouldLog?: boolean) {
   call += 1;
 
+  /* Creating a cache to hold types */
+  var typeCache = Object.create(null);
+
   /* Helper functions */
 
   function log(...rest: any[]) {
@@ -65,6 +68,9 @@ export function compileFromString(source: string, shouldLog?: boolean) {
       case TypeScript.PullElementKind.Function:
         log('got function');
         return parsePullSymbol(declaration.getSymbol());
+      case TypeScript.PullElementKind.Class:
+        log('got class class');
+        return parseClassDefinitionSymbol(<TypeScript.PullTypeSymbol> declaration.getSymbol());
 
         /* Ignored Declaration */
 
@@ -74,6 +80,7 @@ export function compileFromString(source: string, shouldLog?: boolean) {
       case TypeScript.PullElementKind.FunctionType:
         log('got function type');
         return '';
+
       default:
         throw new Error('Panic, Declaration: ' + TypeScript.PullElementKind[declaration.kind] + ' not supported');
     }
@@ -82,6 +89,11 @@ export function compileFromString(source: string, shouldLog?: boolean) {
   function parsePullSymbol(pullSymbol: TypeScript.PullSymbol): string {
     var name: string = pullSymbol.name;
     var type: string = parsePullTypeSymbol(pullSymbol.type);
+
+    if (typeCache[name]) {
+      log('skip wrapping type: ' + name);
+      return '';
+    }
 
     log(name, type);
 
@@ -102,6 +114,13 @@ export function compileFromString(source: string, shouldLog?: boolean) {
       case TypeScript.PullElementKind.ObjectType:
         log('parsing object type');
         return parseObjectType(typeSymbol);
+      case TypeScript.PullElementKind.ConstructorType:
+        log('parsing constructor type');
+        return parseConstructorType(typeSymbol);
+      case TypeScript.PullElementKind.Class:
+        log('parsing class');
+        return parseClassSymbol(typeSymbol);
+
 
       default:
         throw Error('Panic, TypeSymbol: ' + TypeScript.PullElementKind[typeSymbol.kind] + ' not supported!');
@@ -209,6 +228,34 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     return 'Blame.obj({' + outMembers.join(', ')  + '})';
   }
 
+  function parseConstructorType(typeSymbol: TypeScript.PullTypeSymbol): string {
+    return '';
+  }
+
+  function parseClassDefinitionSymbol(symbol: TypeScript.PullTypeSymbol): string {
+    var name: string = symbol.getDisplayName();
+    var bname: string = 'Blame_' + name;
+
+    log('got class symbol: ' + name);
+    typeCache[name] = bname;
+
+    var members: string[] = symbol.getMembers().map(parseMember);
+    log(members);
+
+    return 'var ' + bname + ' = Blame.obj({' + members.join(', ') + '});' ;
+  }
+
+  function parseClassSymbol(typeSymbol: TypeScript.PullTypeSymbol): string {
+    var name: string = typeSymbol.getDisplayName();
+
+    if (typeCache[name]) {
+      return typeCache[name];
+    }
+
+    // TODO: Figure out how to pull a class defined somewhere else
+    throw new Error('Panic, Undefined class symbol: ' + name);
+  }
+
 
   var filename: string = 'generated.d.ts';
   // Create a simple source unit
@@ -236,7 +283,7 @@ export function compileFromString(source: string, shouldLog?: boolean) {
   var decl:TypeScript.PullDecl = compiler.topLevelDecl(filename);
   var decls = decl.getChildDecls();
 
-  function isBlank(s: string): bool {
+  function isBlank(s: string): boolean {
     return s.length > 0;
   }
 
