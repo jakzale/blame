@@ -210,6 +210,20 @@ define(['parser'], function (parser) {
       expect(parser.compileFromString(source)).to.equal(desired);
     });
 
+    it('should accept a more complicated declaration', function () {
+      var source = 'declare class MyClass {x: number;}';
+      var desired = 'var Blame_MyClass = Blame.obj({x: Blame.Num});';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+
+    it('should accept a recursive type', function () {
+      var source = 'declare class MyClass {mc: MyClass;}';
+      var desired = 'var Blame_MyClass = Blame.obj({mc: Blame_MyClass});';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+
     it('should accept a declaration of instance', function () {
       var source = 'declare class MyClass {} declare var c: MyClass';
       var desired = 'var Blame_MyClass = Blame.obj({});\nc = Blame.simple_wrap(c, Blame_MyClass);';
