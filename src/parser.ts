@@ -72,13 +72,16 @@ export function compileFromString(source: string, shouldLog?: boolean) {
         log('got class class');
         return parseClassDefinitionSymbol(<TypeScript.PullTypeSymbol> declaration.getSymbol());
 
-        /* Ignored Declaration */
+        /* Ignored Declarations */
 
       case TypeScript.PullElementKind.ObjectType:
         log('got object type');
         return '';
       case TypeScript.PullElementKind.FunctionType:
         log('got function type');
+        return '';
+      case TypeScript.PullElementKind.Enum:
+        log('got enum type');
         return '';
 
       default:
@@ -90,14 +93,15 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     var name: string = pullSymbol.name;
     var type: string = parsePullTypeSymbol(pullSymbol.type);
 
-    if (typeCache[name]) {
-      log('skip wrapping type: ' + name);
-      return '';
-    }
-
     log(name, type);
 
-    return name + ' = Blame.simple_wrap(' + name + ', ' + type + ');';
+    if (type && !(typeCache[name])) {
+      return name + ' = Blame.simple_wrap(' + name + ', ' + type + ');';
+    }
+
+    log('skipping wrapping: ' + name);
+
+    return '';
   }
 
   function parsePullTypeSymbol(typeSymbol: TypeScript.PullTypeSymbol): string {
@@ -120,7 +124,9 @@ export function compileFromString(source: string, shouldLog?: boolean) {
       case TypeScript.PullElementKind.Class:
         log('parsing class');
         return parseClassSymbol(typeSymbol);
-
+      case TypeScript.PullElementKind.Enum:
+        log('parsing enum');
+        return parseEnumType(typeSymbol);
 
       default:
         throw Error('Panic, TypeSymbol: ' + TypeScript.PullElementKind[typeSymbol.kind] + ' not supported!');
@@ -254,6 +260,13 @@ export function compileFromString(source: string, shouldLog?: boolean) {
 
     // TODO: Figure out how to pull a class defined somewhere else
     throw new Error('Panic, Undefined class symbol: ' + name);
+  }
+
+  function parseEnumType(typeSymbol: TypeScript.PullTypeSymbol): string {
+    var name: string = typeSymbol.getDisplayName();
+    typeCache[name] = name;
+
+    return '';
   }
 
 

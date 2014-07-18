@@ -201,6 +201,22 @@ define(['parser'], function (parser) {
     });
   });
 
+  describe('enum declaratio', function () {
+    it('should ignore enum declaration', function () {
+      var source = 'declare enum Color {Red, Green, Blue}';
+      var desired = '';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+
+    it('should ignore enum declaration with values', function () {
+      var source = 'declare enum Color {Red = 1, Green = 2, Blue = 4}';
+      var desired = '';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+  });
+
 
   describe('class declaration', function () {
     it('should accept a simple class declaration', function () {
