@@ -4,7 +4,8 @@
 ///<reference path='../lib/typescript.d.ts' />
 
 // Libd contents
-import LibD = require("./libd");
+import LibD = require("../lib/libd.js");
+
 // Declaring the compiler as static
 
 var compiler: TypeScript.TypeScriptCompiler = null;

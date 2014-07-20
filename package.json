@@ -10,24 +10,24 @@
   "private": true,
   "license": "BSD-2-Clause",
   "dependencies": {
-    "harmony-reflect": "^1.0.1"
+    "harmony-reflect": "1.0.x"
   },
   "devDependencies": {
+    "browserify": "4.2.x",
     "chai": "1.9.x",
+    "glob": "4.0.x",
     "gulp": "3.8.x",
     "gulp-jshint": "1.6.x",
     "gulp-karma": "0.0.x",
     "gulp-mocha": "0.5.x",
     "gulp-typescript-compiler": "1.0.x",
     "karma": "0.12.x",
-    "karma-chai": "0.1.x",
     "karma-firefox-launcher": "0.1.x",
     "karma-mocha": "0.1.x",
     "karma-nyan-reporter": "0.0.x",
     "karma-osx-reporter": "0.1.x",
-    "karma-requirejs": "0.2.x",
     "mocha": "1.20.x",
-    "requirejs": "2.1.x",
-    "typescript": "1.0.x"
+    "typescript": "1.0.x",
+    "vinyl-source-stream": "^0.1.1"
   }
 }

@@ -10,18 +10,13 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['requirejs', 'mocha', 'chai'],
+    frameworks: ['mocha'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      // {pattern: 'stacktrace/stacktrace.js', included: false},
-      {pattern: 'lib/**/*.js', included: false},
-      {pattern: 'build/**/*.js', included: false},
-      {pattern: 'test/**/*test.js', included: false},
-      // Loading TypeScript
       'node_modules/typescript/bin/typescript.js',
-      'test-main.js'
+      'test/gen/bundle-tests.js'
     ],
 
 
@@ -34,7 +29,6 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-
     },
 
 
