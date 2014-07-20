@@ -21,8 +21,6 @@ module.exports = function(config) {
       {pattern: 'test/**/*test.js', included: false},
       // Loading TypeScript
       'node_modules/typescript/bin/typescript.js',
-      '../typescript/bin/typescriptServices.js',
-      'lib.js',
       'test-main.js'
     ],
 

@@ -3,12 +3,13 @@
 // TypeScriptCompiler
 ///<reference path='../lib/typescript.d.ts' />
 
+// Libd contents
+import LibD = require("./libd");
 // Declaring the compiler as static
-declare var LibD: string;
 
-var compiler:TypeScript.TypeScriptCompiler = null;
-var logger:TypeScript.ILogger = new TypeScript.NullLogger();
-var settings:TypeScript.CompilationSettings = new TypeScript.CompilationSettings();
+var compiler: TypeScript.TypeScriptCompiler = null;
+var logger: TypeScript.ILogger = new TypeScript.NullLogger();
+var settings: TypeScript.CompilationSettings = new TypeScript.CompilationSettings();
 
 // hardcoding this for now;
 settings.codeGenTarget = TypeScript.LanguageVersion.EcmaScript5;
@@ -18,13 +19,13 @@ compiler = new TypeScript.TypeScriptCompiler(logger,
     TypeScript.ImmutableCompilationSettings.fromCompilationSettings(settings));
 
 var libdSnapsthot = TypeScript.ScriptSnapshot.fromString(LibD);
-compiler.addFile('lib.d.ts', libdSnapsthot, TypeScript.ByteOrderMark.Utf8, 0, false);
+compiler.addFile("lib.d.ts", libdSnapsthot, TypeScript.ByteOrderMark.Utf8, 0, false);
 
 var call: number = 0;
 
 
-function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]):string {
-  var messages:string[] = [];
+function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]): string {
+  var messages: string[] = [];
 
   if (diagnostics.length) {
 
@@ -32,7 +33,7 @@ function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]):string {
       messages.push(diagnostics[i].message());
     }
 
-    return(messages.join('\n'));
+    return(messages.join("\n"));
   }
 
   return "";
@@ -48,36 +49,36 @@ export function compileFromString(source: string, shouldLog?: boolean) {
 
   function log(...rest: any[]) {
     if (shouldLog) {
-      console.log.apply(undefined, [call + ' '].concat(rest));
+      console.log.apply(undefined, [call + " "].concat(rest));
     }
   }
 
-  function parsePullDecl(declaration: TypeScript.PullDecl):string {
+  function parsePullDecl(declaration: TypeScript.PullDecl): string {
     switch (declaration.kind) {
       case TypeScript.PullElementKind.Variable:
-        log('got variable');
+        log("got variable");
         return parsePullSymbol(declaration.getSymbol());
       case TypeScript.PullElementKind.Function:
-        log('got function');
+        log("got function");
         return parsePullSymbol(declaration.getSymbol());
       case TypeScript.PullElementKind.Class:
-        log('got class class');
+        log("got class class");
         return parseClassDefinitionSymbol(<TypeScript.PullTypeSymbol> declaration.getSymbol());
 
         /* Ignored Declarations */
 
       case TypeScript.PullElementKind.ObjectType:
-        log('got object type');
-        return '';
+        log("got object type");
+        return "";
       case TypeScript.PullElementKind.FunctionType:
-        log('got function type');
-        return '';
+        log("got function type");
+        return "";
       case TypeScript.PullElementKind.Enum:
-        log('got enum type');
-        return '';
+        log("got enum type");
+        return "";
 
       default:
-        throw new Error('Panic, Declaration: ' + TypeScript.PullElementKind[declaration.kind] + ' not supported');
+        throw new Error("Panic, Declaration: " + TypeScript.PullElementKind[declaration.kind] + " not supported");
     }
   }
 
@@ -88,40 +89,40 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     log(name, type);
 
     if (type && !(typeCache[name])) {
-      return name + ' = Blame.simple_wrap(' + name + ', ' + type + ');';
+      return name + " = Blame.simple_wrap(" + name + ", " + type + ");";
     }
 
-    log('skipping wrapping: ' + name);
+    log("skipping wrapping: " + name);
 
-    return '';
+    return "";
   }
 
   function parsePullTypeSymbol(typeSymbol: TypeScript.PullTypeSymbol): string {
     switch (typeSymbol.kind) {
       case TypeScript.PullElementKind.Primitive:
-        log('parsing primitive type');
+        log("parsing primitive type");
         return parsePrimitiveType(typeSymbol);
       case TypeScript.PullElementKind.Interface:
-        log('parsing interface');
+        log("parsing interface");
         return parseInterface(typeSymbol);
       case TypeScript.PullElementKind.FunctionType:
-        log('parsing function type');
+        log("parsing function type");
         return parseFunctionType(typeSymbol);
       case TypeScript.PullElementKind.ObjectType:
-        log('parsing object type');
+        log("parsing object type");
         return parseObjectType(typeSymbol);
       case TypeScript.PullElementKind.ConstructorType:
-        log('parsing constructor type');
+        log("parsing constructor type");
         return parseConstructorType(typeSymbol);
       case TypeScript.PullElementKind.Class:
-        log('parsing class');
+        log("parsing class");
         return parseClassSymbol(typeSymbol);
       case TypeScript.PullElementKind.Enum:
-        log('parsing enum');
+        log("parsing enum");
         return parseEnumType(typeSymbol);
 
       default:
-        throw Error('Panic, TypeSymbol: ' + TypeScript.PullElementKind[typeSymbol.kind] + ' not supported!');
+        throw Error("Panic, TypeSymbol: " + TypeScript.PullElementKind[typeSymbol.kind] + " not supported!");
     }
   }
 
@@ -129,17 +130,17 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     var type: string = typeSymbol.getDisplayName();
 
     switch (type) {
-      case 'number':
-        return 'Blame.Num';
-      case 'boolean':
-        return 'Blame.Bool';
-      case 'string':
-        return 'Blame.Str';
-      case 'any':
-        return 'null';
+      case "number":
+        return "Blame.Num";
+      case "boolean":
+        return "Blame.Bool";
+      case "string":
+        return "Blame.Str";
+      case "any":
+        return "null";
 
       default:
-        throw Error('Panic, PrimitiveType: ' + type + ' not supported!');
+        throw Error("Panic, PrimitiveType: " + type + " not supported!");
     }
   }
 
@@ -147,11 +148,11 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     var type: string = typeSymbol.getDisplayName();
 
     switch (type) {
-      case 'Array':
-        return 'Blame.arr(' + parsePullTypeSymbol(typeSymbol.getElementType()) + ')';
+      case "Array":
+        return "Blame.arr(" + parsePullTypeSymbol(typeSymbol.getElementType()) + ")";
 
       default:
-        throw Error('Panic, Interface: ' + type + ' not supported!');
+        throw Error("Panic, Interface: " + type + " not supported!");
     }
   }
 
@@ -166,7 +167,7 @@ export function compileFromString(source: string, shouldLog?: boolean) {
   function not<T>(fun: (T) => boolean): (T) => boolean {
     return  function(x: T) {
       return !(fun(x));
-    }
+    };
   }
 
   function isRest(pullSymbol: TypeScript.PullSymbol): boolean {
@@ -181,13 +182,13 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     var callSignatures: TypeScript.PullSignatureSymbol[] = typeSymbol.getCallSignatures();
 
     if (callSignatures.length > 1) {
-      throw new Error('Panic, Functions with more than one call singature not supported: ' + typeSymbol.getFunctionSymbol().name);
+      throw new Error("Panic, Functions with more than one call singature not supported: " + typeSymbol.getFunctionSymbol().name);
     }
 
     var requiredParameters: string[] = [];
     var optionalParameters: string[] = [];
-    var repeatType = 'null';
-    var returnType = 'null';
+    var repeatType = "null";
+    var returnType = "null";
 
 
     if (callSignatures.length > 0) {
@@ -207,40 +208,40 @@ export function compileFromString(source: string, shouldLog?: boolean) {
 
     }
 
-    var output: string = 'Blame.func([' + requiredParameters.join(', ') +'], ' +
-        '[' + optionalParameters.join(', ') + '], ' +
-        repeatType + ', ' +
-        returnType + ')';
+    var output: string = "Blame.func([" + requiredParameters.join(", ") + "], " +
+        "[" + optionalParameters.join(", ") + "], " +
+        repeatType + ", " +
+        returnType + ")";
 
     return output;
   }
 
   function parseMember(member: TypeScript.PullSymbol) {
-    return member.name + ': ' + parsePullTypeSymbol(extractType(member));
+    return member.name + ": " + parsePullTypeSymbol(extractType(member));
   }
 
   function parseObjectType(typeSymbol: TypeScript.PullTypeSymbol): string {
     var members: TypeScript.PullSymbol[] = typeSymbol.getMembers();
     var outMembers: string[] = members.map(parseMember);
 
-    return 'Blame.obj({' + outMembers.join(', ')  + '})';
+    return "Blame.obj({" + outMembers.join(", ")  + "})";
   }
 
   function parseConstructorType(typeSymbol: TypeScript.PullTypeSymbol): string {
-    return '';
+    return "";
   }
 
   function parseClassDefinitionSymbol(symbol: TypeScript.PullTypeSymbol): string {
     var name: string = symbol.getDisplayName();
-    var bname: string = 'Blame_' + name;
+    var bname: string = "Blame_" + name;
 
-    log('got class symbol: ' + name);
+    log("got class symbol: " + name);
     typeCache[name] = bname;
 
     var members: string[] = symbol.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all).map(parseMember);
     log(members);
 
-    return 'var ' + bname + ' = Blame.obj({' + members.join(', ') + '});' ;
+    return "var " + bname + " = Blame.obj({" + members.join(", ") + "});" ;
   }
 
   function parseClassSymbol(typeSymbol: TypeScript.PullTypeSymbol): string {
@@ -251,27 +252,29 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     }
 
     // TODO: Figure out how to pull a class defined somewhere else
-    throw new Error('Panic, Undefined class symbol: ' + name);
+    throw new Error("Panic, Undefined class symbol: " + name);
   }
 
   function parseEnumType(typeSymbol: TypeScript.PullTypeSymbol): string {
     var name: string = typeSymbol.getDisplayName();
     typeCache[name] = name;
 
-    return '';
+    return "";
   }
 
 
-  var filename: string = 'generated.d.ts';
+  var filename: string = "generated.d.ts";
   // Create a simple source unit
   var snapshot = TypeScript.ScriptSnapshot.fromString(source);
 
   // Adding the lib.d file
-  compiler.addFile('generated.d.ts', snapshot, TypeScript.ByteOrderMark.Utf8, 0, false);
+  compiler.addFile(filename, snapshot, TypeScript.ByteOrderMark.Utf8, 0, false);
 
   // Getting diagnostics, throw an error on diagnostic
-  var diagnostics:TypeScript.Diagnostic[] = compiler.getSyntacticDiagnostics(filename);
-  var message = get_diagnostic_message(diagnostics);
+  var message : string;
+  var diagnostics: TypeScript.Diagnostic[] = compiler.getSyntacticDiagnostics(filename);
+
+  message = get_diagnostic_message(diagnostics);
   if (message) {
     compiler.removeFile(filename);
     throw new Error(message);
@@ -280,19 +283,19 @@ export function compileFromString(source: string, shouldLog?: boolean) {
   // I am unsure if declaration file can cause semantic diagnostic
   // This will trigger the type resolver
   diagnostics = compiler.getSemanticDiagnostics(filename);
-  var message = get_diagnostic_message(diagnostics);
+  message = get_diagnostic_message(diagnostics);
   if (message) {
     throw new Error(message);
   }
 
-  var decl:TypeScript.PullDecl = compiler.topLevelDecl(filename);
+  var decl: TypeScript.PullDecl = compiler.topLevelDecl(filename);
   var decls = decl.getChildDecls();
 
   function isBlank(s: string): boolean {
     return s.length > 0;
   }
 
-  var result: string = decls.map(parsePullDecl).filter(isBlank).join('\n');
+  var result: string = decls.map(parsePullDecl).filter(isBlank).join("\n");
 
   // Clean up the compiler
   compiler.removeFile(filename);

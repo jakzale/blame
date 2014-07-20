@@ -1,4 +1,4 @@
-/*global describe, it, define, expect, TypeScript, LibD*/
+/*global describe, it, define, expect, TypeScript*/
 /*jslint indent: 2, todo: true */
 
 // No UMD Shim for now, need to UMD-Enable TSC
@@ -26,18 +26,6 @@ define(['parser'], function (parser) {
       expect(function () {
         parser.compileFromString('declare class MyClass {n: number} declare class MyClass {b: boolean}');
       }).to.throw();
-    });
-  });
-
-  describe('TypeScript Services', function () {
-    it('should be loaded', function () {
-      used(expect(TypeScript.Services).to.exist);
-    });
-  });
-
-  describe('Library', function () {
-    it('should be loaded', function () {
-      used(expect(LibD).to.exist);
     });
   });
 
