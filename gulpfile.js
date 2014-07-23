@@ -16,13 +16,12 @@ var gulp = require('gulp'),
 paths = {
   blame: {
     source: 'src/**/*.ts',
-    build: 'build/**/*.js',
     dest: 'build'
   },
   tests: 'test/**/*_both.js'
 };
 
-gulp.task('karma:watch', function () {
+gulp.task('karma:watch', ['browserify:run'], function () {
   return gulp.src('undefined.js')
     .pipe(karma({
       configFile: 'karma.conf.js',
@@ -42,12 +41,7 @@ gulp.task('tsc:compile', function () {
     .pipe(gulp.dest(paths.blame.dest));
 });
 
-
-gulp.task('tsc:watch', function () {
-  gulp.watch([paths.blame.source], ['tsc:compile']);
-});
-
-gulp.task('browserify:run', function() {
+gulp.task('browserify:run', ['tsc:compile'], function() {
     var testFiles = glob.sync('./' + paths.tests);
     var bundleStream = browserify(testFiles).bundle({debug: true});
 
@@ -56,11 +50,12 @@ gulp.task('browserify:run', function() {
         .pipe(gulp.dest('test/gen'));
 });
 
-gulp.task('browserify:watch', function () {
-  gulp.watch([paths.blame.build, paths.tests], ['browserify:run']);
+gulp.task('compile', ['tsc:compile', 'browserify:run']);
+
+gulp.task('watch', function () {
+  gulp.watch([paths.blame.source, paths.tests], ['compile']);
 });
 
-
-gulp.task('default', ['tsc:compile', 'browserify:run', 'karma:watch', 'tsc:watch', 'browserify:watch']);
+gulp.task('default', ['compile', 'watch', 'karma:watch']);
 
 // vim: set ts=2 sw=2 sts=2 et :

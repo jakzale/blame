@@ -10,7 +10,7 @@ var unused = empty,
 
 used(unused);
 
-var blame = require('../lib/blame.js');
+var blame = require('../build/blame.js');
 var expect = require('chai').expect;
 
 var wrap = blame.wrap,
@@ -63,7 +63,7 @@ types = [Num, Str, Bool, Und, func(Und), arr(Num)];
 
 describe('Blame module', function () {
   it('should be imported and populated', function () {
-    [blame, wrap, Label, func, fun, Num, Bool, Str, Und, tyvar, forall, arr, sum, obj].forEach(function (v) {
+    [blame, wrap, Label, func, fun, Num, Bool, Str, Und, tyvar, forall, arr, /*sum, */ obj].forEach(function (v) {
       used(expect(v).to.exist);
     });
   });
@@ -72,15 +72,15 @@ describe('Blame module', function () {
     it('should initialize properly', function () {
       var l1 = new Label(),
       l2 = new Label();
-      expect(l1.label).to.not.equal('label');
-      expect(l1.label).to.not.equal(l2.label);
+      expect(l1.label()).to.not.equal('label');
+      expect(l1.label()).to.not.equal(l2.label());
     });
 
     it('should negate properly', function () {
       var l1 = new Label(),
       l2 = l1.negated();
-      expect(l1.label).to.equal(l2.label);
-      expect(l1.status).to.not.equal(l2.status);
+      expect(l1.label()).to.equal(l2.label());
+      expect(l1.status()).to.not.equal(l2.status());
     });
   });
 });
@@ -161,17 +161,17 @@ describe('wrapping', function () {
     it('should properly construct the type', function () {
       var fun_type = fun(null, null, null, Num);
 
-      expect(fun_type.domain).to.eql([]);
-      expect(fun_type.optional).to.eql([]);
-      expect(fun_type.repeated).to.equal(null);
-      expect(fun_type.range).to.equal(Num);
+      expect(fun_type.requiredParameters).to.eql([]);
+      expect(fun_type.optionalParameters).to.eql([]);
+      expect(fun_type.restParameter).to.equal(null);
+      expect(fun_type.returnType).to.equal(Num);
       expect(fun_type.description).to.equal('() -> Num');
 
       fun_type = fun([Num], [Bool], Str, func(Bool, Bool));
-      expect(fun_type.domain).to.eql([Num]);
-      expect(fun_type.optional).to.eql([Bool]);
-      expect(fun_type.repeated).to.equal(Str);
-      expect(fun_type.description).to.equal('Num -> ?Bool -> *Str -> (Bool -> Bool)');
+      expect(fun_type.requiredParameters).to.eql([Num]);
+      expect(fun_type.optionalParameters).to.eql([Bool]);
+      expect(fun_type.restParameter).to.equal(Str);
+      expect(fun_type.description).to.equal('Num -> Bool? -> Str* -> (Bool -> Bool)');
     });
   });
 
@@ -963,28 +963,28 @@ describe('ARRAY API', function () {
   });
 });
 
-describe('sums', function () {
-  var sum_type = sum([Num, Bool]);
+//describe('sums', function () {
+//  var sum_type = sum([Num, Bool]);
 
-  it('should be properly created', function () {
-    expect(sum_type.description).to.equal('(Num | Bool)');
-  });
+//  it('should be properly created', function () {
+//    expect(sum_type.description).to.equal('(Num | Bool)');
+//  });
 
-  it('should allow correct types', function () {
+//  it('should allow correct types', function () {
 
-    wrap(1, p, q, sum_type, sum_type);
-    wrap(true, p, q, sum_type, sum_type);
-  });
+//    wrap(1, p, q, sum_type, sum_type);
+//    wrap(true, p, q, sum_type, sum_type);
+//  });
 
-  it('should reject incorrect type', function () {
-    expect(wrapped('a', p, q, sum_type, sum_type)).to.throw();
-  });
+//  it('should reject incorrect type', function () {
+//    expect(wrapped('a', p, q, sum_type, sum_type)).to.throw();
+//  });
 
-  it('should detect ambiguous sum', function () {
-    var ambiguous = sum([arr(Num), arr(Bool)]);
-    expect(wrapped([], p, q, ambiguous, ambiguous)).to.throw('ambiguous');
-  });
-});
+//  it('should detect ambiguous sum', function () {
+//    var ambiguous = sum([arr(Num), arr(Bool)]);
+//    expect(wrapped([], p, q, ambiguous, ambiguous)).to.throw('ambiguous');
+//  });
+//});
 
 describe('Objects', function () {
 
