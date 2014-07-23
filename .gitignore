@@ -4,3 +4,6 @@ node_modules
 # Ignore generated files
 build
 test/gen
+
+# Ignore typings --- should be reinstalled by tsd
+typings
