@@ -234,14 +234,18 @@ export function compileFromString(source: string, shouldLog?: boolean) {
   }
 
   function parseObjectType(typeSymbol: TypeScript.PullTypeSymbol): string {
-    var members: TypeScript.PullSymbol[] = typeSymbol.getMembers();
-    var outMembers: string[] = members.map(parseMember);
-
-    return "Blame.obj({" + outMembers.sort().join(", ")  + "})";
+    var members: string = parseMembersOfSymbol(typeSymbol);
+    return "Blame.obj({" + members + "})";
   }
 
   function parseConstructorType(typeSymbol: TypeScript.PullTypeSymbol): string {
     return "";
+  }
+
+  function parseMembersOfSymbol(typeSymbol: TypeScript.PullTypeSymbol): string[] {
+    var members: PullSymbol[] = typeSymbol.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all);
+
+    return members.map(parseMember).sort().join(", ");
   }
 
   function parseClassDefinitionSymbol(symbol: TypeScript.PullTypeSymbol): string {
@@ -251,10 +255,10 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     log("got class symbol: " + name);
     typeCache[name] = bname;
 
-    var members: string[] = symbol.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all).map(parseMember).sort();
+    var members: string = parseMembersOfSymbol(symbol);
     log(members);
 
-    return "var " + bname + " = Blame.obj({" + members.join(", ") + "});" ;
+    return "var " + bname + " = Blame.obj({" + members + "});" ;
   }
 
   function parseClassSymbol(typeSymbol: TypeScript.PullTypeSymbol): string {
@@ -275,13 +279,10 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     log("got class symbol: " + name);
     typeCache[name] = bname;
 
-    var members: string[] = symbol
-                              .getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all)
-                              .map(parseMember)
-                              .sort();
+    var members: string = parseMembersOfSymbol(symbol);
     log(members);
 
-    return "var " + bname + " = Blame.obj({" + members.join(", ") + "});" ;
+    return "var " + bname + " = Blame.obj({" + members + "});" ;
   }
 
   function parseEnumType(typeSymbol: TypeScript.PullTypeSymbol): string {
