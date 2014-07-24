@@ -24,7 +24,7 @@ paths = {
   wrappers: 'test/src/*_both.js'
 };
 
-gulp.task('karma', ['browserify'], function () {
+gulp.task('karma', function () {
   return gulp.src('undefined.js')
     .pipe(karma({
       configFile: 'karma.conf.js',
@@ -44,7 +44,7 @@ gulp.task('tsc', function () {
     .pipe(gulp.dest(paths.blame.dest));
 });
 
-gulp.task('browserify', ['tsc', 'wrappers'], function() {
+gulp.task('browserify', function() {
     var testFiles = glob.sync('./' + paths.tests);
     var wrapperFiles = glob.sync('./' + paths.wrappers);
 
@@ -93,10 +93,16 @@ gulp.task('wrappers', function () {
     .pipe(gulp.dest('test/wrapped'));
 });
 
-gulp.task('watch', ['browserify'], function () {
-  gulp.watch([paths.blame.source, paths.tests, paths.wrappers], ['browserify']);
+gulp.task('watch', function () {
+  gulp.watch([paths.blame.source, paths.tests, paths.wrappers], ['compile:bundle']);
 });
 
-gulp.task('default', ['watch', 'karma']);
+// Listing the happens before relations
+// to allow to run in isolation
+gulp.task('build:compile', ['tsc', 'wrappers']);
+gulp.task('build:bundle', ['build:compile', 'browserify']);
+gulp.task('build:watch', ['build:bundle']);
+
+gulp.task('default', ['build:watch', 'karma']);
 
 // vim: set ts=2 sw=2 sts=2 et :
