@@ -17,10 +17,14 @@
     "chai": "1.9.x",
     "glob": "4.0.x",
     "gulp": "3.8.x",
+    "gulp-handlebars": "^2.1.0",
     "gulp-jshint": "1.6.x",
     "gulp-karma": "0.0.x",
     "gulp-mocha": "0.5.x",
+    "gulp-rename": "^1.2.0",
+    "gulp-tap": "^0.1.1",
     "gulp-typescript-compiler": "1.0.x",
+    "handlebars": "^2.0.0-alpha.4",
     "karma": "0.12.x",
     "karma-firefox-launcher": "0.1.x",
     "karma-mocha": "0.1.x",
@@ -28,6 +32,7 @@
     "karma-osx-reporter": "0.1.x",
     "mocha": "1.20.x",
     "typescript": "1.0.x",
+    "vinyl-map": "^1.0.1",
     "vinyl-source-stream": "^0.1.1"
   }
 }

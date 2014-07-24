@@ -10,7 +10,7 @@ var unused = empty,
 
 used(unused);
 
-var blame = require('../build/blame.js');
+var blame = require('../../build/blame.js');
 var expect = require('chai').expect;
 
 var wrap = blame.wrap,

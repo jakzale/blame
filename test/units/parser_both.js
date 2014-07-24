@@ -3,7 +3,7 @@
 'use strict';
 
 var expect = require('chai').expect,
-  parser = require('../build/parser.js');
+  parser = require('../../build/parser.js');
 
 function used() { return; }
 

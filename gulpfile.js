@@ -10,6 +10,9 @@ var gulp = require('gulp'),
   source = require('vinyl-source-stream'),
   browserify = require('browserify'),
   glob = require('glob'),
+  tap = require('gulp-tap'),
+  map = require('vinyl-map'),
+  rename = require('gulp-rename'),
   test_files,
   paths;
 
@@ -18,10 +21,11 @@ paths = {
     source: 'src/**/*.ts',
     dest: 'build'
   },
-  tests: 'test/**/*_both.js'
+  tests: 'test/units/*_both.js',
+  wrappers: 'test/wrapped/*_both.js'
 };
 
-gulp.task('karma:watch', ['browserify:run'], function () {
+gulp.task('karma:watch', ['browserify'], function () {
   return gulp.src('undefined.js')
     .pipe(karma({
       configFile: 'karma.conf.js',
@@ -29,7 +33,7 @@ gulp.task('karma:watch', ['browserify:run'], function () {
     }));
 });
 
-gulp.task('tsc:compile', function () {
+gulp.task('tsc', function () {
   return gulp
     .src(paths.blame.source)
     .pipe(tsc({
@@ -41,21 +45,57 @@ gulp.task('tsc:compile', function () {
     .pipe(gulp.dest(paths.blame.dest));
 });
 
-gulp.task('browserify:run', ['tsc:compile'], function() {
+gulp.task('browserify', ['tsc', 'wrappers'], function() {
     var testFiles = glob.sync('./' + paths.tests);
-    var bundleStream = browserify(testFiles).bundle({debug: true});
+    var wrapperFiles = glob.sync('./' + paths.wrappers);
+
+    var bundleFiles = testFiles.concat(wrapperFiles);
+
+    var bundleStream = browserify(bundleFiles).bundle({debug: true});
 
     return bundleStream
         .pipe(source('bundle-tests.js'))
         .pipe(gulp.dest('test/gen'));
 });
 
-gulp.task('compile', ['tsc:compile', 'browserify:run']);
+// Loading the wrapper:
+var fs = require('fs');
+var handlebars = require('handlebars');
 
-gulp.task('watch', function () {
-  gulp.watch([paths.blame.source, paths.tests], ['compile']);
+var template = fs.readFileSync('lib/test_template.js', {encoding: 'utf8'});
+var wrapper = handlebars.compile(template);
+
+var mapper = map(function (code, filename) {
+  // Split the code, then indent it, then join it together
+  code = code
+    .toString()
+    .split(/\r\n?|\n/)
+    .map(function (line) {
+      if (line.trim().length > 0) {
+        line = '    ' + line;
+      }
+      return line;
+    })
+    .join('\n');
+
+    return wrapper({
+      contents: code,
+      filename: filename,
+      declarations: ''
+    });
 });
 
-gulp.task('default', ['compile', 'watch', 'karma:watch']);
+gulp.task('wrappers', function () {
+
+  return gulp.src('test/src/*.js')
+    .pipe(mapper)
+    .pipe(gulp.dest('test/wrapped'));
+});
+
+gulp.task('watch', ['browserify'], function () {
+  gulp.watch([paths.blame.source, paths.tests, paths.wrappers], ['browserify']);
+});
+
+gulp.task('default', ['watch', 'karma:watch']);
 
 // vim: set ts=2 sw=2 sts=2 et :
