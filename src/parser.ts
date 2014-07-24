@@ -59,21 +59,29 @@ export function compileFromString(source: string, shouldLog?: boolean) {
       case TypeScript.PullElementKind.Variable:
         log("got variable");
         return parsePullSymbol(declaration.getSymbol());
+
       case TypeScript.PullElementKind.Function:
         log("got function");
         return parsePullSymbol(declaration.getSymbol());
+
       case TypeScript.PullElementKind.Class:
         log("got class class");
         return parseClassDefinitionSymbol(<TypeScript.PullTypeSymbol> declaration.getSymbol());
+
+      case TypeScript.PullElementKind.Interface:
+        log("got interface");
+        return parseInterfaceDeclarationSymbol(<TypeScript.PullTypeSymbol> declaration.getSymbol());
 
         /* Ignored Declarations */
 
       case TypeScript.PullElementKind.ObjectType:
         log("got object type");
         return "";
+
       case TypeScript.PullElementKind.FunctionType:
         log("got function type");
         return "";
+
       case TypeScript.PullElementKind.Enum:
         log("got enum type");
         return "";
@@ -153,6 +161,10 @@ export function compileFromString(source: string, shouldLog?: boolean) {
         return "Blame.arr(" + parsePullTypeSymbol(typeSymbol.getElementType()) + ")";
 
       default:
+        if (typeCache[type]) {
+          return typeCache[type];
+        }
+
         throw Error("Panic, Interface: " + type + " not supported!");
     }
   }
@@ -225,7 +237,7 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     var members: TypeScript.PullSymbol[] = typeSymbol.getMembers();
     var outMembers: string[] = members.map(parseMember);
 
-    return "Blame.obj({" + outMembers.join(", ")  + "})";
+    return "Blame.obj({" + outMembers.sort().join(", ")  + "})";
   }
 
   function parseConstructorType(typeSymbol: TypeScript.PullTypeSymbol): string {
@@ -239,7 +251,7 @@ export function compileFromString(source: string, shouldLog?: boolean) {
     log("got class symbol: " + name);
     typeCache[name] = bname;
 
-    var members: string[] = symbol.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all).map(parseMember);
+    var members: string[] = symbol.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all).map(parseMember).sort();
     log(members);
 
     return "var " + bname + " = Blame.obj({" + members.join(", ") + "});" ;
@@ -254,6 +266,22 @@ export function compileFromString(source: string, shouldLog?: boolean) {
 
     // TODO: Figure out how to pull a class defined somewhere else
     throw new Error("Panic, Undefined class symbol: " + name);
+  }
+
+  function parseInterfaceDeclarationSymbol(symbol: TypeScript.PullTypeSymbol): string {
+    var name: string = symbol.getDisplayName();
+    var bname: string = "Blame_" + name;
+
+    log("got class symbol: " + name);
+    typeCache[name] = bname;
+
+    var members: string[] = symbol
+                              .getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all)
+                              .map(parseMember)
+                              .sort();
+    log(members);
+
+    return "var " + bname + " = Blame.obj({" + members.join(", ") + "});" ;
   }
 
   function parseEnumType(typeSymbol: TypeScript.PullTypeSymbol): string {

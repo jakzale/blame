@@ -241,4 +241,27 @@ describe('class declaration', function () {
   });
 });
 
+describe('interface declaration', function () {
+  it('should accept an empty interface declaration', function () {
+    var source = 'interface MyInterface {}';
+    var desired = 'var Blame_MyInterface = Blame.obj({});';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should accept an instance of an empty interface', function () {
+    var source = 'interface MyInterface {} declare var my: MyInterface;';
+    var desired = 'var Blame_MyInterface = Blame.obj({});\nmy = Blame.simple_wrap(my, Blame_MyInterface);';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should allow interface inheritance', function () {
+    var source = 'interface ParentInterface {b: boolean} interface ChildInterface extends ParentInterface {x: number}';
+    var desired = 'var Blame_ParentInterface = Blame.obj({b: Blame.Bool});\nvar Blame_ChildInterface = Blame.obj({b: Blame.Bool, x: Blame.Num});';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+});
+
 // vim: set ts=2 sw=2 sts=2 et :
