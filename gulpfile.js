@@ -21,10 +21,10 @@ paths = {
     dest: 'build'
   },
   tests: 'test/units/*_both.js',
-  wrappers: 'test/wrapped/*_both.js'
+  wrappers: 'test/src/*_both.js'
 };
 
-gulp.task('karma:watch', ['browserify'], function () {
+gulp.task('karma', ['browserify'], function () {
   return gulp.src('undefined.js')
     .pipe(karma({
       configFile: 'karma.conf.js',
@@ -57,34 +57,36 @@ gulp.task('browserify', ['tsc', 'wrappers'], function() {
         .pipe(gulp.dest('test/gen'));
 });
 
-// Loading the wrapper:
+// Loading the wrapper generator
 var fs = require('fs');
 var handlebars = require('handlebars');
 
+// Loading it in sync
 var template = fs.readFileSync('lib/test_template.js', {encoding: 'utf8'});
 var wrapper = handlebars.compile(template);
 
-var mapper = map(function (code, filename) {
-  // Split the code, then indent it, then join it together
-  code = code
-    .toString()
-    .split(/\r\n?|\n/)
-    .map(function (line) {
-      if (line.trim().length > 0) {
-        line = '    ' + line;
-      }
-      return line;
-    })
-    .join('\n');
-
-    return wrapper({
-      contents: code,
-      filename: filename,
-      declarations: ''
-    });
-});
 
 gulp.task('wrappers', function () {
+
+  var mapper = map(function (code, filename) {
+    // Split the code, then indent it, then join it together
+    code = code
+      .toString()
+      .split(/\r\n?|\n/)
+      .map(function (line) {
+        if (line.trim().length > 0) {
+          line = '    ' + line;
+        }
+        return line;
+      })
+      .join('\n');
+
+      return wrapper({
+        contents: code,
+        filename: filename,
+        declarations: ''
+      });
+  });
 
   return gulp.src('test/src/*.js')
     .pipe(mapper)
@@ -95,6 +97,6 @@ gulp.task('watch', ['browserify'], function () {
   gulp.watch([paths.blame.source, paths.tests, paths.wrappers], ['browserify']);
 });
 
-gulp.task('default', ['watch', 'karma:watch']);
+gulp.task('default', ['watch', 'karma']);
 
 // vim: set ts=2 sw=2 sts=2 et :
