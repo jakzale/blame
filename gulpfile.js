@@ -94,14 +94,14 @@ gulp.task('wrappers', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch([paths.blame.source, paths.tests, paths.wrappers], ['compile:bundle']);
+  gulp.watch([paths.blame.source, paths.tests, paths.wrappers], ['build:bundle']);
 });
 
 // Listing the happens before relations
 // to allow to run in isolation
 gulp.task('build:compile', ['tsc', 'wrappers']);
 gulp.task('build:bundle', ['build:compile', 'browserify']);
-gulp.task('build:watch', ['build:bundle']);
+gulp.task('build:watch', ['build:bundle', 'watch']);
 
 gulp.task('default', ['build:watch', 'karma']);
 
