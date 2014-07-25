@@ -227,7 +227,11 @@ function parseDeclaration(declaration: TypeScript.PullDecl, logger: ILogger, typ
       logger.log("declaration: interface");
       return parseInterfaceDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache);
 
-      // --- Ignored Declarations ---
+    case TypeScript.PullElementKind.Container:
+      logger.log("declaration: module");
+      return parseInternalModuleDeclarationSymbol(<TypeScript.PullContainerSymbol> symbol, next, typeCache);
+
+    // --- Ignored Declarations ---
 
     case TypeScript.PullElementKind.ObjectType:
       logger.log("declaration: object type -- ignored");
@@ -257,12 +261,12 @@ function parseSymbol(symbol: TypeScript.PullSymbol, logger: ILogger, typeCache: 
   var type: string = parseTypeSymbol(symbol.type, logger.next(), typeCache);
 
   if (type && !(typeCache.has(name))) {
-    logger.log("declared: " + name + ": " + type);
+    logger.log("declared! " + name + ": " + type);
 
     return name + " = Blame.simple_wrap(" + name + ", " + type + ");";
   }
 
-  logger.log("skipped: " + name);
+  logger.log("skipped! " + name);
 
   return "";
 }
@@ -298,6 +302,10 @@ function parseTypeSymbol(symbol: TypeScript.PullTypeSymbol, logger: ILogger, typ
     case TypeScript.PullElementKind.Enum:
       logger.log("parse: enum type");
       return parseEnumType(symbol, next, typeCache);
+
+    case TypeScript.PullElementKind.Container:
+      logger.log("parse: module type");
+      return parseObjectType(symbol, next, typeCache);
 
     default:
       throw Error("Panic, TypeSymbol: " + TypeScript.PullElementKind[symbol.kind] + " not supported!");
@@ -404,7 +412,7 @@ function parseFunctionType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogge
 
 function parseMember(member: TypeScript.PullSymbol, logger: ILogger, typeCache: TypeCache): string {
   var name: string = member.getDisplayName();
-  logger.log("member : " + name);
+  logger.log("member: " + name);
 
   var type: string = parseTypeSymbol(member.type, logger.next(), typeCache);
 
@@ -482,6 +490,13 @@ function parseEnumType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, t
   typeCache.set(name, bname);
 
   return "";
+}
+
+function parseInternalModuleDeclarationSymbol(symbol: TypeScript.PullContainerSymbol, logger: ILogger, typeCache: TypeCache): string {
+  var name: string = symbol.getDisplayName();
+
+  logger.log("internal module: " + name);
+  return parseSymbol(symbol, logger.next(), typeCache);
 }
 
 

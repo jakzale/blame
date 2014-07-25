@@ -264,4 +264,13 @@ describe('interface declaration', function () {
   });
 });
 
+describe('internal modules', function () {
+  it('should allow to define an empty module', function () {
+    var source = 'declare module MyModule {}';
+    var desired = 'MyModule = Blame.simple_wrap(MyModule, Blame.obj({}));';
+
+    expect(parser.compileFromString(source, true)).to.equal(desired);
+  });
+});
+
 // vim: set ts=2 sw=2 sts=2 et :
