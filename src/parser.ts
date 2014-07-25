@@ -227,11 +227,14 @@ function parseDeclaration(declaration: TypeScript.PullDecl, logger: ILogger, typ
       logger.log("declaration: interface");
       return parseInterfaceDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache);
 
-    case TypeScript.PullElementKind.Container:
-      logger.log("declaration: module");
-      return parseInternalModuleDeclarationSymbol(<TypeScript.PullContainerSymbol> symbol, next, typeCache);
 
     // --- Ignored Declarations ---
+    // They are present in the subsequent declarations
+
+    case TypeScript.PullElementKind.Container:
+      logger.log("declaration: module");
+      parseInternalModuleDeclarationSymbol(<TypeScript.PullContainerSymbol> symbol, ignore, typeCache);
+      return "";
 
     case TypeScript.PullElementKind.ObjectType:
       logger.log("declaration: object type -- ignored");
@@ -450,6 +453,7 @@ function parseClassDefinitionSymbol(symbol: TypeScript.PullTypeSymbol, logger: I
   var bname: string = "Blame_" + name;
 
   logger.log("cache class: " + name + " <- " + bname);
+  logger.log("class full name: " + symbol.getTypeName());
   typeCache.set(name, bname);
 
   var members: string = parseMembersOfSymbol(symbol, logger.next(), typeCache);
@@ -466,6 +470,9 @@ function parseClassSymbol(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger
     return cached;
   }
 
+  parseClassDefinitionSymbol(typeSymbol, logger.next(), typeCache);
+
+  //return "";
   // TODO: Figure out how to pull a class defined somewhere else
   throw new Error("Panic, Undefined class symbol: " + name);
 }
