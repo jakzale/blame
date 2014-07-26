@@ -94,7 +94,7 @@ describe('variable declaration', function () {
 
     it('should accept a function with no return type', function () {
       var source = 'declare var f: () => void';
-      var desired = 'f = Blame.simple_wrap(f, Blame.fun([], [], null, Blame.Void));'
+      var desired = 'f = Blame.simple_wrap(f, Blame.fun([], [], null, Blame.Void));';
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
