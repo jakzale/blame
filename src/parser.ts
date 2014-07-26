@@ -325,7 +325,9 @@ function parsePrimitiveType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogg
     case "string":
       return "Blame.Str";
     case "any":
-      return "null";
+      return "Blame.Any";
+    case "void":
+      return "Blame.Void";
 
     default:
       throw Error("Panic, PrimitiveType: " + type + " not supported!");
