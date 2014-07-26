@@ -20,7 +20,7 @@ fun = blame.fun,
 Num = blame.Num,
 Bool = blame.Bool,
 Str = blame.Str,
-Und = blame.Und,
+Void = blame.Void,
 tyvar = blame.tyvar,
 forall = blame.forall,
 arr = blame.arr,
@@ -59,11 +59,11 @@ function wrap_fun(func, p, q, A, B) {
 var p = new Label(),
 q = new Label(),
 values = [1, 'a', true, undefined, empty, []],
-types = [Num, Str, Bool, Und, func(Und), arr(Num)];
+types = [Num, Str, Bool, Void, func(Void), arr(Num)];
 
 describe('Blame module', function () {
   it('should be imported and populated', function () {
-    [blame, wrap, Label, func, fun, Num, Bool, Str, Und, tyvar, forall, arr, /*sum, */ obj].forEach(function (v) {
+    [blame, wrap, Label, func, fun, Num, Bool, Str, Void, tyvar, forall, arr, /*sum, */ obj].forEach(function (v) {
       used(expect(v).to.exist);
     });
   });
@@ -1026,7 +1026,7 @@ describe('Objects', function () {
 
   describe('foralls', function () {
     describe('property swap', function () {
-      var type = forall('X', func(obj({a: tyvar('X'), b: tyvar('X')}), Und));
+      var type = forall('X', func(obj({a: tyvar('X'), b: tyvar('X')}), Void));
 
       it('should permit good swap', function () {
         function swap_ab(o) {
@@ -1038,7 +1038,7 @@ describe('Objects', function () {
         var A = {a: true, b: 1},
         wrapped_swap = wrap(swap_ab, p, q, type, type);
 
-        expect(type.description).to.equal('forall X. {a: X, b: X} -> Und');
+        expect(type.description).to.equal('forall X. {a: X, b: X} -> Void');
         wrapped_swap(A);
 
         expect(A.a).to.equal(1);
@@ -1131,7 +1131,7 @@ describe('Objects', function () {
 
   describe('as a function returning void', function () {
     function MyType () { return; }
-    var type = fun([Num], [], null, Und),
+    var type = fun([Num], [], null, Void),
       Wrapped = wrap(MyType, p, q, type, type);
 
     it('should just wrap arguments', function () {

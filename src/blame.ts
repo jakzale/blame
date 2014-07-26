@@ -85,7 +85,7 @@ export var Str = new BaseType("Str", function (value: any): boolean {
   return typeof value === "string";
 });
 
-export var Und = new BaseType("Und", function (value: any): boolean {
+export var Void = new BaseType("Void", function (value: any): boolean {
   return typeof value === "undefined";
 });
 
@@ -139,7 +139,7 @@ export class FunctionType implements IType {
     this.requiredParameters = requiredParameters || [];
     this.optionalParameters = optionalParameters || [];
     this.restParameter = restParameter;
-    this.returnType = returnType || Any;
+    this.returnType = returnType || Void;
 
     var descs: string[] = ([])
       .concat(this.requiredParameters.map(description("")),
@@ -533,7 +533,7 @@ function wrap_fun(value: any, p: Label, q: Label, A: FunctionType, B: FunctionTy
       var instance = Object.create(target.prototype);
 
       // If unknown object type
-      if (A.returnType === Und && B.returnType === Und) {
+      if (A.returnType === Void && B.returnType === Void) {
         target.apply(instance, wrapped_args);
         return instance;
       }
