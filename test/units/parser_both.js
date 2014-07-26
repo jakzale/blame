@@ -73,22 +73,28 @@ describe('variable declaration', function () {
   describe('function types', function () {
     it('should accept simple type', function () {
       var source = 'declare var f : (x: number) => number';
-      var desired = 'f = Blame.simple_wrap(f, Blame.func([Blame.Num], [], null, Blame.Num));';
+      var desired = 'f = Blame.simple_wrap(f, Blame.fun([Blame.Num], [], null, Blame.Num));';
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
 
     it('should accept type with optional parameters', function () {
       var source = 'declare var f : (x?: number) => number';
-      var desired = 'f = Blame.simple_wrap(f, Blame.func([], [Blame.Num], null, Blame.Num));';
+      var desired = 'f = Blame.simple_wrap(f, Blame.fun([], [Blame.Num], null, Blame.Num));';
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
 
     it('should accept type with rest parameter', function () {
       var source = 'declare var f: (...rest: number[]) => number;';
-      //var source = 'declare function f(...rest: number[]): number;';
-      var desired = 'f = Blame.simple_wrap(f, Blame.func([], [], Blame.Num, Blame.Num));';
+      var desired = 'f = Blame.simple_wrap(f, Blame.fun([], [], Blame.Num, Blame.Num));';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+
+    it('should accept a function with no return type', function () {
+      var source = 'declare var f: () => void';
+      var desired = 'f = Blame.simple_wrap(f, Blame.fun([], [], null, Blame.Void));'
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
@@ -112,7 +118,7 @@ describe('variable declaration', function () {
 
     it('should accept an object with function member', function () {
       var source = 'declare var o: {f: (x:number) => string}';
-      var desired = 'o = Blame.simple_wrap(o, Blame.obj({f: Blame.func([Blame.Num], [], null, Blame.Str)}));';
+      var desired = 'o = Blame.simple_wrap(o, Blame.obj({f: Blame.fun([Blame.Num], [], null, Blame.Str)}));';
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
@@ -136,58 +142,58 @@ describe('variable declaration', function () {
 describe('function declaration', function () {
   it('should accept a function declaration without type', function () {
     var source = 'declare function blah()';
-    var desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [], null, null));';
+    var desired = 'blah = Blame.simple_wrap(blah, Blame.fun([], [], null, null));';
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should accept a function declaration with return type', function () {
     var source = 'declare function blah():string';
-    var desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [], null, Blame.Str));';
+    var desired = 'blah = Blame.simple_wrap(blah, Blame.fun([], [], null, Blame.Str));';
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should accept a function declaration with parameters', function () {
     var source = 'declare function blah(n: number)';
-    var desired = 'blah = Blame.simple_wrap(blah, Blame.func([Blame.Num], [], null, null));';
+    var desired = 'blah = Blame.simple_wrap(blah, Blame.fun([Blame.Num], [], null, null));';
     expect(parser.compileFromString(source)).to.equal(desired);
 
     source = 'declare function blah(n: number, m: string)';
-    desired = 'blah = Blame.simple_wrap(blah, Blame.func([Blame.Num, Blame.Str], [], null, null));';
+    desired = 'blah = Blame.simple_wrap(blah, Blame.fun([Blame.Num, Blame.Str], [], null, null));';
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should accept a function declaration with parameters and return type', function () {
     var source = 'declare function blah(n: number, b: boolean): string';
-    var desired = 'blah = Blame.simple_wrap(blah, Blame.func([Blame.Num, Blame.Bool], [], null, Blame.Str));';
+    var desired = 'blah = Blame.simple_wrap(blah, Blame.fun([Blame.Num, Blame.Bool], [], null, Blame.Str));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should accept a function declaration with optional parameters', function () {
     var source = 'declare function blah(s?: string)';
-    var desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [Blame.Str], null, null));';
+    var desired = 'blah = Blame.simple_wrap(blah, Blame.fun([], [Blame.Str], null, null));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
 
     source = 'declare function blah(s?: string, b?: boolean)';
-    desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [Blame.Str, Blame.Bool], null, null));';
+    desired = 'blah = Blame.simple_wrap(blah, Blame.fun([], [Blame.Str, Blame.Bool], null, null));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
 
     source = 'declare function blah(s: string, b?: boolean)';
-    desired = 'blah = Blame.simple_wrap(blah, Blame.func([Blame.Str], [Blame.Bool], null, null));';
+    desired = 'blah = Blame.simple_wrap(blah, Blame.fun([Blame.Str], [Blame.Bool], null, null));';
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should accept a function declaration with rest parameter', function () {
     var source = 'declare function blah(...args: string[])';
-    var desired = 'blah = Blame.simple_wrap(blah, Blame.func([], [], Blame.Str, null));';
+    var desired = 'blah = Blame.simple_wrap(blah, Blame.fun([], [], Blame.Str, null));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 });
 
-describe('enum declaratio', function () {
+describe('enum declaration', function () {
   it('should ignore enum declaration', function () {
     var source = 'declare enum Color {Red, Green, Blue}';
     var desired = '';

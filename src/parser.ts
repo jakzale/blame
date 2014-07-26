@@ -25,11 +25,7 @@ compiler.addFile("lib.d.ts", libdSnapsthot, TypeScript.ByteOrderMark.Utf8, 0, fa
 var call: number = 0;
 
 // TODO clear up this parser
-// TODO clean all the methods
 // TODO fix the parser structure
-// TODO refactor the logger out
-// TODO Draw the diagram of function calls et all
-// TODO Split the parsing between parsing declarations and symbols
 
 
 function get_diagnostic_message(diagnostics: TypeScript.Diagnostic[]): string {
@@ -405,7 +401,7 @@ function parseFunctionType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogge
     }
   }
 
-  var output: string = "Blame.func([" + requiredParameters.join(", ") + "], " +
+  var output: string = "Blame.fun([" + requiredParameters.join(", ") + "], " +
     "[" + optionalParameters.join(", ") + "], " +
     restType + ", " +
     returnType + ")";
