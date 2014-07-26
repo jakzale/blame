@@ -477,11 +477,11 @@ function wrap_fun(value: any, p: Label, q: Label, A: FunctionType, B: FunctionTy
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        throw new Error(p.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        throw new Error(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        throw new Error(p.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        throw new Error(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
       }
 
       var wrapped_args: any[] = [];
@@ -501,6 +501,52 @@ function wrap_fun(value: any, p: Label, q: Label, A: FunctionType, B: FunctionTy
       var ret = target.apply(thisValue, wrapped_args);
 
       return wrap(ret, p, q, A.returnType, B.returnType);
+    },
+    construct: function (target: any, args: any[]): any {
+      var nArgs: number = args.length;
+      var minArgs: number = A.requiredParameters.length;
+      var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
+
+      if (nArgs < minArgs) {
+        throw new Error(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+      }
+
+      if (nArgs > maxArgs && !A.restParameter) {
+        throw new Error(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+      }
+
+      var wrapped_args: any[] = [];
+
+      for (var i = 0; i < A.requiredParameters.length; i++) {
+        wrapped_args.push(wrap(args[i], q, p, B.requiredParameters[i], A.requiredParameters[i]));
+      }
+
+      for (var j = 0; j < A.optionalParameters.length && (i + j) < args.length; j++) {
+        wrapped_args.push(wrap(args[i + j], q, p, B.optionalParameters[j], A.optionalParameters[j]));
+      }
+
+      for (var k = i + j; k < args.length; k++) {
+        wrapped_args.push(wrap(args[k], q, p, B.restParameter, A.restParameter));
+      }
+
+      // Create the instance
+      var instance = Object.create(target.prototype);
+
+      // If unknown object type
+      if (A.returnType === Und && B.returnType === Und) {
+        target.apply(instance, wrapped_args);
+        return instance;
+      }
+
+      // Create wrapped instance for the constructor;
+      // Swapping the labels
+      // Eager constructor enforcement
+      var cons_instance = wrap(instance, q, p, A.returnType, B.returnType);
+
+      target.apply(cons_instance, wrapped_args);
+
+      // Returning wrapped instance for the rest of the program
+      return wrap(instance, p, q, A.returnType, B.returnType);
     }
   });
 }

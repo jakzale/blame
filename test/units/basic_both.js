@@ -24,7 +24,7 @@ Und = blame.Und,
 tyvar = blame.tyvar,
 forall = blame.forall,
 arr = blame.arr,
-sum = blame.sum,
+//sum = blame.sum,
 obj = blame.obj;
 
 function identity (x) { return x; }
@@ -152,7 +152,7 @@ describe('wrapping', function () {
       });
 
       it('should reject wrong number of arguments', function () {
-        expect(closed_id(1)).to.throw('arguments');
+        expect(closed_id(1)).to.throw(q.msg());
       });
     });
   });
@@ -1059,6 +1059,98 @@ describe('Objects', function () {
           wrapped_swap(A);
         }).to.throw(q.negated().msg());
       });
+    });
+  });
+
+  describe('constructors', function () {
+    describe('as a function returning an object', function () {
+      function MyType(a) {
+        this.a = a;
+      }
+
+
+      var type = fun([Num], [], null, obj({a: Num})),
+        Wrapped = wrap(MyType, p, q, type, type);
+
+      it('should check the arguments', function () {
+        var A;
+        used(A);
+
+        expect(function () {
+          A = new Wrapped('a');
+        }).to.throw(q.msg());
+
+        expect(function () {
+          A = new Wrapped();
+        }).to.throw(q.msg());
+
+        expect(function () {
+          A = new Wrapped(1, 1);
+        }).to.throw(q.msg());
+
+        A = new Wrapped(1);
+      });
+
+      it('should set up the prototype chain', function () {
+        var A = new Wrapped(1);
+
+        expect(A instanceof Wrapped).to.equal(true);
+        expect(A instanceof MyType).to.equal(true);
+      });
+
+      it('should wrap the object', function () {
+        var A = new Wrapped(1);
+
+        expect(A.a).to.equal(1);
+        A.a = 2;
+        expect(A.a).to.equal(2);
+
+        expect(function () {
+          A.a = 'a';
+        }).to.throw(q.msg());
+
+        expect(A.a).to.equal(2);
+      });
+
+      it('wrap object before calling the constructor', function () {
+        function BadType(a) {
+          used(a);
+          this.a = 'a';
+        }
+
+        var BadWrapped = wrap(BadType, p, q, type, type);
+
+        expect(function () {
+          var B = new BadWrapped(1);
+          used(B);
+        }).to.throw(p.msg());
+
+      });
+    });
+  });
+
+  describe('as a function returning void', function () {
+    function MyType () { return; }
+    var type = fun([Num], [], null, Und),
+      Wrapped = wrap(MyType, p, q, type, type);
+
+    it('should just wrap arguments', function () {
+      var A;
+
+      expect(function () {
+        A = new Wrapped('a');
+      }).to.throw(q.msg());
+
+      expect(function () {
+        A = new Wrapped();
+      }).to.throw(q.msg());
+
+      expect(function () {
+        A = new Wrapped(1, 2);
+      }).to.throw(q.msg());
+
+      A = new Wrapped(1);
+      used(A);
     });
   });
 });
