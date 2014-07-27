@@ -208,74 +208,117 @@ describe('enum declaration', function () {
     var source = 'declare enum Color {Red = 1, Green = 2, Blue = 4}';
     var desired = 'Color = Blame.simple_wrap(Color, Blame.obj({}));';
 
-    expect(parser.compileFromString(source, true)).to.equal(desired);
+    expect(parser.compileFromString(source)).to.equal(desired);
   });
 });
 
 
-/*
- *describe('class declaration', function () {
- *  it('should accept a simple class declaration', function () {
- *    var source = 'declare class MyClass {}';
- *    var desired = 'var Blame_MyClass = Blame.obj({});';
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *
- *  it('should accept a more complicated declaration', function () {
- *    var source = 'declare class MyClass {x: number;}';
- *    var desired = 'var Blame_MyClass = Blame.obj({x: Blame.Num});';
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *
- *  it('should accept a recursive type', function () {
- *    var source = 'declare class MyClass {mc: MyClass;}';
- *    var desired = 'var Blame_MyClass = Blame.obj({mc: Blame_MyClass});';
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *
- *  it('should accept a declaration of instance', function () {
- *    var source = 'declare class MyClass {} declare var c: MyClass';
- *    var desired = 'var Blame_MyClass = Blame.obj({});\nc = Blame.simple_wrap(c, Blame_MyClass);';
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *
- *  it('should allow for inheritance', function () {
- *    var source = 'declare class ParentClass {x: number} declare class MyClass extends ParentClass {b: boolean}';
- *    var desired = 'var Blame_ParentClass = Blame.obj({x: Blame.Num});\nvar Blame_MyClass = Blame.obj({b: Blame.Bool, x: Blame.Num});';
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *});
- */
+describe('class declaration', function () {
+  it('should accept a simple class declaration', function () {
+    var source = 'declare class MyClass {}';
+    var desired = [
+      'var Blame_MyClass;',
+      'Blame_MyClass = Blame.obj({});',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));'
+    ].join('\n');
 
-/*
- *describe('interface declaration', function () {
- *  it('should accept an empty interface declaration', function () {
- *    var source = 'interface MyInterface {}';
- *    var desired = 'var Blame_MyInterface = Blame.obj({});';
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *
- *  it('should accept an instance of an empty interface', function () {
- *    var source = 'interface MyInterface {} declare var my: MyInterface;';
- *    var desired = 'var Blame_MyInterface = Blame.obj({});\nmy = Blame.simple_wrap(my, Blame_MyInterface);';
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *
- *  it('should allow interface inheritance', function () {
- *    var source = 'interface ParentInterface {b: boolean} interface ChildInterface extends ParentInterface {x: number}';
- *    var desired = 'var Blame_ParentInterface = Blame.obj({b: Blame.Bool});\nvar Blame_ChildInterface = Blame.obj({b: Blame.Bool, x: Blame.Num});';
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *});
- */
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should accept a more complicated declaration', function () {
+    var source = 'declare class MyClass {x: number;}';
+    var desired = [
+      'var Blame_MyClass;',
+      'Blame_MyClass = Blame.obj({x: Blame.Num});',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));'
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should accept a recursive type', function () {
+    var source = 'declare class MyClass {mc: MyClass;}';
+    var desired = [
+      'var Blame_MyClass;',
+      'Blame_MyClass = Blame.obj({mc: Blame_MyClass});',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));'
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should accept alternating recursive types', function () {
+    var source = 'declare class A { b: B } declare class B { a: A }';
+    var desired = [
+      'var Blame_A, Blame_B;',
+      'Blame_A = Blame.obj({b: Blame_B});',
+      'A = Blame.simple_wrap(A, Blame.fun([], [], null, Blame_A));',
+      'Blame_B = Blame.obj({a: Blame_A});',
+      'B = Blame.simple_wrap(B, Blame.fun([], [], null, Blame_B));'
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should accept a declaration of instance', function () {
+    var source = 'declare class MyClass {} declare var c: MyClass';
+    var desired = [
+      'var Blame_MyClass;',
+      'Blame_MyClass = Blame.obj({});',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));',
+      'c = Blame.simple_wrap(c, Blame_MyClass);'
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should allow for inheritance', function () {
+    var source = 'declare class ParentClass {x: number} declare class MyClass extends ParentClass {b: boolean}';
+    var desired = [
+      'var Blame_MyClass, Blame_ParentClass;',
+      'Blame_ParentClass = Blame.obj({x: Blame.Num});',
+      'ParentClass = Blame.simple_wrap(ParentClass, Blame.fun([], [], null, Blame_ParentClass));',
+      'Blame_MyClass = Blame.obj({b: Blame.Bool, x: Blame.Num});',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));',
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+});
+
+describe('interface declaration', function () {
+  it('should accept an empty interface declaration', function () {
+    var source = 'interface MyInterface {}';
+    var desired = [
+      'var Blame_MyInterface;',
+      'Blame_MyInterface = Blame.obj({});'
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should accept an instance of an empty interface', function () {
+    var source = 'interface MyInterface {} declare var my: MyInterface;';
+    var desired = [
+      'var Blame_MyInterface;',
+      'Blame_MyInterface = Blame.obj({});',
+      'my = Blame.simple_wrap(my, Blame_MyInterface);'
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should allow interface inheritance', function () {
+    var source = 'interface ParentInterface {b: boolean} interface ChildInterface extends ParentInterface {x: number}';
+    var desired = [
+      'var Blame_ChildInterface, Blame_ParentInterface;',
+      'Blame_ParentInterface = Blame.obj({b: Blame.Bool});',
+      'Blame_ChildInterface = Blame.obj({b: Blame.Bool, x: Blame.Num});'
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+});
 
 /*
  *describe('internal modules', function () {

@@ -102,22 +102,53 @@ class Logger {
 
 // A simple type cache
 class TypeCache {
-  private cache: {[id: string]: string};
+  private defined: {[id: string]: string};
+  private requested: string[];
+  private notEmpty_: boolean;
 
   constructor() {
-    this.cache = Object.create(null);
+    this.defined = Object.create(null);
+    this.requested = [];
+    this.notEmpty_ = false;
   }
 
-  public has(key: string): boolean {
-    return Object.prototype.hasOwnProperty.call(this.cache, key);
-  }
 
-  public set(key: string, val: string): void {
-    this.cache[key] = val;
+  public add(key: string): string {
+    var val: string = to_bname(key);
+
+    this.notEmpty_ = true;
+
+    this.defined[key] = val;
+    return val;
   }
 
   public get(key: string): string {
-    return this.cache[key];
+    this.requested.push(key);
+
+    return to_bname(key);
+  }
+
+  public notEmpty(): boolean {
+    return this.notEmpty_;
+  }
+
+  public getBindings(): string {
+    var bindings: string[] = [];
+
+    var that = this;
+    this.requested.forEach(function (key: string): void {
+      if (!Object.prototype.hasOwnProperty.call(that.defined, key)) {
+        throw new Error("Panic, type: " + key + ", was never defined");
+      }
+    });
+
+    for (var key in this.defined) {
+      if (Object.prototype.hasOwnProperty.call(this.defined, key)) {
+        bindings.push(this.defined[key]);
+      }
+    }
+
+    return "var " + bindings.sort().join(", ") + ";";
   }
 }
 
@@ -188,16 +219,19 @@ export function compile(filename: string, source: string, shouldLog?: boolean): 
     return parseDeclaration2(decl, nextLogger, typeCache);
   }
 
-  var result: string;
+  // TypeDeclarations
+  var result_declarations: string[] = decls.map(parseSingleDeclaration).filter(notBlank);
+
+  // Required variable bindings
+  if (typeCache.notEmpty()) {
+    result_declarations.unshift(typeCache.getBindings());
+  }
   // Parse each declaration, and log the results
-  result = decls.map(parseSingleDeclaration)
-    .filter(notBlank)
-    .join("\n");
 
   // Clean up the compiler
   compiler.removeFile(filename);
 
-  return result;
+  return result_declarations.join("\n");
 }
 
 /*
@@ -262,14 +296,14 @@ function parseDeclaration2(declaration: TypeScript.PullDecl, logger: ILogger, ty
     case TypeScript.PullElementKind.Interface:
     case TypeScript.PullElementKind.Container:
       logger.log("type declaration: " + kind);
-      return parseTypeDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache);
+      return parseTypeDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache, true);
 
     case TypeScript.PullElementKind.ObjectType:
     case TypeScript.PullElementKind.FunctionType:
     case TypeScript.PullElementKind.Enum:
       logger.log("ignored declaration: " + kind);
       ignore = logger.next(true);
-      parseType(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache);
+      parseTypeDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache, false);
       return "";
 
     default:
@@ -297,22 +331,26 @@ function parseGlobalSymbol(symbol: TypeScript.PullSymbol, logger: ILogger, typeC
 }
 
 function to_bname(name: string): string {
-  return "_" + name.replace("_", "__").replace(".", "_");
+  return "Blame_" + name.replace("_", "__").replace(".", "_");
 }
 
-function parseTypeDeclarationSymbol(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache) {
+function parseTypeDeclarationSymbol(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache, shouldCache: boolean) {
   var name: string = type.getTypeName();
-  var bname: string = to_bname(name);
-
   logger.log("type name: " + name);
-  typeCache.set(name, bname);
-  logger.log("cached type: " + name + " <- " + bname);
 
-  return bname + " = " + parseType(type, logger.next(), typeCache);
+  if (shouldCache && type.isNamedTypeSymbol()) {
+    var bname: string = typeCache.add(name);
+    logger.log("cached type: " + name + " <- " + bname);
+  }
+
+  // Declaring the type for the first time
+  var declaration: string = bname + " = " + parseType(type, logger.next(), typeCache, true) + ";";
+
+  return declaration;
 }
 
 
-function parseType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache) {
+function parseType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache, declaration?: boolean) {
   var next: ILogger = logger.next();
   var kind: string = TypeScript.PullElementKind[type.kind];
 
@@ -331,13 +369,14 @@ function parseType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: 
     case TypeScript.PullElementKind.Interface:
     case TypeScript.PullElementKind.Container:
       logger.log("object-like type: " + kind);
-      return parseObjectLikeType(type, next, typeCache);
+      return parseObjectLikeType(type, next, typeCache, declaration);
 
     // Enums Are ignored
     case TypeScript.PullElementKind.Enum:
       logger.log("ignored type: " + kind);
       var ignored = logger.next(true);
-      parseObjectLikeType(type, ignored, typeCache);
+      // Forcing the declaration mode, to prevent using the typeCache
+      parseObjectLikeType(type, ignored, typeCache, true);
       return "";
 
 
@@ -369,7 +408,14 @@ function parsePrimitiveType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogg
 }
 
 function parseFunctionLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var callSignatures: TypeScript.PullSignatureSymbol[] = type.getCallSignatures();
+  var callSignatures: TypeScript.PullSignatureSymbol[];
+
+  // Checking if this is a constructor
+  if (type.isConstructor()) {
+    callSignatures = type.getConstructSignatures();
+  } else {
+    callSignatures = type.getCallSignatures();
+  }
 
   if (callSignatures.length > 1) {
     throw new Error("Panic, Functions with more than one call singature not supported: " + type.getFunctionSymbol().name);
@@ -423,8 +469,19 @@ function parseFunctionLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger,
   return output;
 }
 
-function parseObjectLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  logger.log("object type: " + type.getDisplayName());
+function parseObjectLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache, declaration?: boolean): string {
+  var name: string = type.getDisplayName();
+
+  logger.log("object type: " + name);
+
+  var shouldCheck: boolean = !declaration;
+
+  // TODO: Add checker that all types are balanced later:
+  if (shouldCheck && type.isNamedTypeSymbol()) {
+    var bname: string = typeCache.get(name);
+    logger.log("load type: " + name + " -> " + bname);
+    return bname;
+  }
 
   var members: string = parseTypeMembers(type, logger.next(), typeCache);
 
