@@ -4,7 +4,7 @@
 ///<reference path='../lib/typescript.d.ts' />
 
 // Libd contents
-import LibD = require("../lib/libd.js");
+declare var LibD: string;
 
 // Declaring the compiler as static
 
@@ -72,7 +72,7 @@ class Logger {
     this.ignored = ignored;
   }
 
-  public log(...args: any): void {
+  public log(...args: any[]): void {
     var indent: string = (new Array(this.level)).join("  ");
     if (this.ignored) {
       indent = "--" + indent;
@@ -83,7 +83,7 @@ class Logger {
     console.log(indent + args.join(" "));
   }
 
-  public raw(...args: any): void {
+  public raw(...args: any[]): void {
     this.log("-- RAW --");
     console.log.apply(console, args);
     this.log("-- END --");
@@ -139,6 +139,10 @@ function isRest(pullSymbol: TypeScript.PullSymbol): boolean {
   return pullSymbol.isVarArg;
 }
 
+function notBlank(s: string): boolean {
+  return s.length > 0;
+}
+
 export function compile(filename: string, source: string, shouldLog?: boolean): string {
   var logger: ILogger;
   if (shouldLog) {
@@ -178,19 +182,16 @@ export function compile(filename: string, source: string, shouldLog?: boolean): 
   var decl: TypeScript.PullDecl = compiler.topLevelDecl(filename);
   var decls = decl.getChildDecls();
 
-  function isBlank(s: string): boolean {
-    return s.length > 0;
-  }
 
   var nextLogger: ILogger = logger.next();
   function parseSingleDeclaration(decl: TypeScript.PullDecl): string {
-    return parseDeclaration(decl, nextLogger, typeCache);
+    return parseDeclaration2(decl, nextLogger, typeCache);
   }
 
   var result: string;
   // Parse each declaration, and log the results
   result = decls.map(parseSingleDeclaration)
-    .filter(isBlank)
+    .filter(notBlank)
     .join("\n");
 
   // Clean up the compiler
@@ -199,118 +200,151 @@ export function compile(filename: string, source: string, shouldLog?: boolean): 
   return result;
 }
 
-/** Parse the TypeScript Declaration */
-function parseDeclaration(declaration: TypeScript.PullDecl, logger: ILogger, typeCache: TypeCache): string {
+/*
+
+# Declaration Parser Structure
+
+There are 3 types of declarations to emit:
+* global declaration
+* type declaration
+* external module declaration
+
+## Global declaration structure
+
+Global declarations wrap over global objects.
+The general form:
+
+  identifier = Blame.simple_wrap(identifier, type)
+where identifier is the name of the symbol (variable or function) and type is the computed type.
+
+The global declarations are present for internal modules as well.
+
+## Type declaration structure
+
+Type declaration defines types for classes and interfaces
+
+## Module declaration structure
+
+Module declarations wrap over external modules, which are imported using the require syntax:
+
+  var module = require('module-name')
+
+The general form for external module declaration:
+
+  M['module-name'] = Blame.obj(members)
+where members is the dictionary of module members
+
+
+*/
+
+// New ParseDeclaration
+
+// TODO:
+// I am too tired to figure this one out:!
+// There are two places where you will be using parseType
+// TODO: You need to make a distinction when you are defining the type,
+//       and when you are just retrieving the type
+
+function parseDeclaration2(declaration: TypeScript.PullDecl, logger: ILogger, typeCache: TypeCache) {
   var symbol: TypeScript.PullSymbol = declaration.getSymbol();
+  var kind: string = TypeScript.PullElementKind[declaration.kind];
 
   var next: ILogger = logger.next();
-  var ignore: ILogger = logger.next(true);
+  var ignore: ILogger;
 
   switch (declaration.kind) {
     case TypeScript.PullElementKind.Variable:
-      logger.log("declaration: variable");
-      return parseSymbol(symbol, next, typeCache);
-
     case TypeScript.PullElementKind.Function:
-      logger.log("declaration: function");
-      return parseSymbol(symbol, next, typeCache);
+      logger.log("global declaration: " + kind);
+      return parseGlobalSymbol(symbol, next, typeCache);
 
     case TypeScript.PullElementKind.Class:
-      logger.log("declaration: class");
-      return parseClassDefinitionSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache);
-
     case TypeScript.PullElementKind.Interface:
-      logger.log("declaration: interface");
-      return parseInterfaceDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache);
-
-
-    // --- Ignored Declarations ---
-    // They are present in the subsequent declarations
-
     case TypeScript.PullElementKind.Container:
-      logger.log("declaration: module");
-      parseInternalModuleDeclarationSymbol(<TypeScript.PullContainerSymbol> symbol, ignore, typeCache);
-      return "";
+      logger.log("type declaration: " + kind);
+      return parseTypeDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache);
 
     case TypeScript.PullElementKind.ObjectType:
-      logger.log("declaration: object type -- ignored");
-      parseObjectType(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache);
-      return "";
-
     case TypeScript.PullElementKind.FunctionType:
-      logger.log("declaration: function type -- ignored");
-      parseFunctionType(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache);
-      return "";
-
     case TypeScript.PullElementKind.Enum:
-      logger.log("declaration: enum type -- ignored");
-      parseEnumType(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache);
+      logger.log("ignored declaration: " + kind);
+      ignore = logger.next(true);
+      parseType(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache);
       return "";
 
     default:
-      throw new Error("Panic, Declaration: " + TypeScript.PullElementKind[declaration.kind] + " not supported");
+      throw new Error("Panic, Declaration: " + kind + " not supported");
   }
 }
 
-/** Parse the Symbol Token and return a wrapper */
-function parseSymbol(symbol: TypeScript.PullSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var name: string = symbol.name;
+function parseGlobalSymbol(symbol: TypeScript.PullSymbol, logger: ILogger, typeCache: TypeCache) {
+  var name: string = symbol.getDisplayName();
   logger.log("symbol name: " + name);
 
-  var type: string = parseTypeSymbol(symbol.type, logger.next(), typeCache);
+  var type: string = parseType(symbol.type, logger.next(), typeCache);
 
-  if (type && !(typeCache.has(name))) {
+  // Checking if the type is not ignored:
+  if (type) {
     logger.log("declared! " + name + ": " + type);
 
     return name + " = Blame.simple_wrap(" + name + ", " + type + ");";
   }
 
+  // Reporting skipped type declaration
   logger.log("skipped! " + name);
 
   return "";
 }
 
-function parseTypeSymbol(symbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var next: ILogger = logger.next();
-
-  switch (symbol.kind) {
-    case TypeScript.PullElementKind.Primitive:
-      logger.log("parse: primitive type");
-      return parsePrimitiveType(symbol, next);
-
-    case TypeScript.PullElementKind.Interface:
-      logger.log("parse: interface type");
-      return parseInterface(symbol, next, typeCache);
-
-    case TypeScript.PullElementKind.FunctionType:
-      logger.log("parse: function type");
-      return parseFunctionType(symbol, next, typeCache);
-
-    case TypeScript.PullElementKind.ObjectType:
-      logger.log("parse: object type");
-      return parseObjectType(symbol, next, typeCache);
-
-    case TypeScript.PullElementKind.ConstructorType:
-      logger.log("parse: constructor type");
-      return parseConstructorType(symbol, next, typeCache);
-
-    case TypeScript.PullElementKind.Class:
-      logger.log("parse: class type");
-      return parseClassSymbol(symbol, next, typeCache);
-
-    case TypeScript.PullElementKind.Enum:
-      logger.log("parse: enum type");
-      return parseEnumType(symbol, next, typeCache);
-
-    case TypeScript.PullElementKind.Container:
-      logger.log("parse: module type");
-      return parseObjectType(symbol, next, typeCache);
-
-    default:
-      throw Error("Panic, TypeSymbol: " + TypeScript.PullElementKind[symbol.kind] + " not supported!");
-  }
+function to_bname(name: string): string {
+  return "_" + name.replace("_", "__").replace(".", "_");
 }
 
+function parseTypeDeclarationSymbol(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache) {
+  var name: string = type.getTypeName();
+  var bname: string = to_bname(name);
+
+  logger.log("type name: " + name);
+  typeCache.set(name, bname);
+  logger.log("cached type: " + name + " <- " + bname);
+
+  return bname + " = " + parseType(type, logger.next(), typeCache);
+}
+
+
+function parseType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache) {
+  var next: ILogger = logger.next();
+  var kind: string = TypeScript.PullElementKind[type.kind];
+
+  switch (type.kind) {
+    case TypeScript.PullElementKind.Primitive:
+      logger.log("primitive type: ");
+      return parsePrimitiveType(type, next);
+
+    case TypeScript.PullElementKind.FunctionType:
+    case TypeScript.PullElementKind.ConstructorType:
+      logger.log("function-like type: " + kind);
+      return parseFunctionLikeType(type, next, typeCache);
+
+    case TypeScript.PullElementKind.ObjectType:
+    case TypeScript.PullElementKind.Class:
+    case TypeScript.PullElementKind.Interface:
+    case TypeScript.PullElementKind.Container:
+      logger.log("object-like type: " + kind);
+      return parseObjectLikeType(type, next, typeCache);
+
+    // Enums Are ignored
+    case TypeScript.PullElementKind.Enum:
+      logger.log("ignored type: " + kind);
+      var ignored = logger.next(true);
+      parseObjectLikeType(type, ignored, typeCache);
+      return "";
+
+
+    default:
+      throw Error("Panic, TypeSymbol: " + kind + " not supported!");
+  }
+}
 
 function parsePrimitiveType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger): string {
   var type: string = typeSymbol.getDisplayName();
@@ -334,33 +368,11 @@ function parsePrimitiveType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogg
   }
 }
 
-function parseInterface(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var type: string = typeSymbol.getDisplayName();
-
-  logger.log("type: " + type);
-
-  switch (type) {
-    case "Array":
-      return "Blame.arr(" + parseTypeSymbol(typeSymbol.getElementType(), logger.next(), typeCache) + ")";
-
-    default:
-      if (typeCache.has(type)) {
-        var cached: string = typeCache.get(type);
-        logger.log("load interface: " + type + " -> " + cached);
-
-        return cached;
-      }
-
-      throw Error("Panic, Interface: " + type + " not supported!");
-  }
-}
-
-
-function parseFunctionType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var callSignatures: TypeScript.PullSignatureSymbol[] = typeSymbol.getCallSignatures();
+function parseFunctionLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+  var callSignatures: TypeScript.PullSignatureSymbol[] = type.getCallSignatures();
 
   if (callSignatures.length > 1) {
-    throw new Error("Panic, Functions with more than one call singature not supported: " + typeSymbol.getFunctionSymbol().name);
+    throw new Error("Panic, Functions with more than one call singature not supported: " + type.getFunctionSymbol().name);
   }
 
   var requiredParameters: string[] = [];
@@ -381,7 +393,7 @@ function parseFunctionType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogge
     function parseParameterSymbol(symbol: TypeScript.PullSymbol): string {
       next.log("parameter: " + symbol.getDisplayName());
 
-      return parseTypeSymbol(symbol.type, nextNext, typeCache);
+      return parseType(symbol.type, nextNext, typeCache);
     }
 
     logger.log("required parameters: ");
@@ -394,12 +406,12 @@ function parseFunctionType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogge
     if (callSignature.hasVarArgs) {
       logger.log("rest parameter: ");
       var elementType: TypeScript.PullTypeSymbol = (parameters.filter(isRest)[0]).type.getElementType();
-      restType = parseTypeSymbol(elementType, nextNext, typeCache);
+      restType = parseType(elementType, nextNext, typeCache);
     }
 
     if (callSignature.returnType) {
       logger.log("return type:");
-      returnType = parseTypeSymbol(callSignature.returnType, nextNext, typeCache);
+      returnType = parseType(callSignature.returnType, nextNext, typeCache);
     }
   }
 
@@ -411,30 +423,16 @@ function parseFunctionType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogge
   return output;
 }
 
-function parseMember(member: TypeScript.PullSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var name: string = member.getDisplayName();
-  logger.log("member: " + name);
+function parseObjectLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+  logger.log("object type: " + type.getDisplayName());
 
-  var type: string = parseTypeSymbol(member.type, logger.next(), typeCache);
-
-  return member.name + ": " + type;
-}
-
-function parseObjectType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  logger.log("object type:");
-
-  var members: string = parseMembersOfSymbol(typeSymbol, logger.next(), typeCache);
+  var members: string = parseTypeMembers(type, logger.next(), typeCache);
 
   return "Blame.obj({" + members + "})";
 }
 
-function parseConstructorType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  logger.log("constructor: " + typeSymbol.getDisplayName() + "  -- skipped");
-  return "";
-}
-
-function parseMembersOfSymbol(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var members: TypeScript.PullSymbol[] = typeSymbol.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all);
+function parseTypeMembers(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+  var members: TypeScript.PullSymbol[] = type.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all);
 
   logger.log("members:");
   var next: ILogger = logger.next();
@@ -443,66 +441,327 @@ function parseMembersOfSymbol(typeSymbol: TypeScript.PullTypeSymbol, logger: ILo
     return parseMember(member, next, typeCache);
   }
 
-  return members.map(parseSingleMember).sort().join(", ");
+  return members.map(parseSingleMember).filter(notBlank).sort().join(", ");
 }
 
-function parseClassDefinitionSymbol(symbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var name: string = symbol.getDisplayName();
-  var bname: string = "Blame_" + name;
+function parseMember(member: TypeScript.PullSymbol, logger: ILogger, typeCache: TypeCache): string {
+  var name: string = member.getDisplayName();
+  logger.log("member: " + name);
 
-  logger.log("cache class: " + name + " <- " + bname);
-  logger.log("class full name: " + symbol.getTypeName());
-  typeCache.set(name, bname);
+  var type: string = parseType(member.type, logger.next(), typeCache);
 
-  var members: string = parseMembersOfSymbol(symbol, logger.next(), typeCache);
-
-  return "var " + bname + " = Blame.obj({" + members + "});" ;
-}
-
-function parseClassSymbol(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var name: string = typeSymbol.getDisplayName();
-
-  if (typeCache.has(name)) {
-    var cached: string = typeCache.get(name);
-    logger.log("load class: " + name + " -> " + cached);
-    return cached;
+  if (type) {
+    return member.name + ": " + type;
   }
 
-  parseClassDefinitionSymbol(typeSymbol, logger.next(), typeCache);
-
-  //return "";
-  // TODO: Figure out how to pull a class defined somewhere else
-  throw new Error("Panic, Undefined class symbol: " + name);
-}
-
-function parseInterfaceDeclarationSymbol(symbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var name: string = symbol.getDisplayName();
-  var bname: string = "Blame_" + name;
-
-  logger.log("cache interface: " + name + " <- " + bname);
-  typeCache.set(name, bname);
-
-  var members: string = parseMembersOfSymbol(symbol, logger.next(), typeCache);
-
-  return "var " + bname + " = Blame.obj({" + members + "});" ;
-}
-
-function parseEnumType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var name: string = typeSymbol.getDisplayName();
-  var bname: string = "Blame_" + name;
-
-  logger.log("cache enum: " + name + " <- " + bname);
-  typeCache.set(name, bname);
-
+  logger.log("skipped member! " + name);
   return "";
 }
 
-function parseInternalModuleDeclarationSymbol(symbol: TypeScript.PullContainerSymbol, logger: ILogger, typeCache: TypeCache): string {
-  var name: string = symbol.getDisplayName();
+///** Parse the TypeScript Declaration */
+//function parseDeclaration(declaration: TypeScript.PullDecl, logger: ILogger, typeCache: TypeCache): string {
+//  var symbol: TypeScript.PullSymbol = declaration.getSymbol();
 
-  logger.log("internal module: " + name);
-  return parseSymbol(symbol, logger.next(), typeCache);
-}
+//  var next: ILogger = logger.next();
+//  var ignore: ILogger = logger.next(true);
+
+//  switch (declaration.kind) {
+//    case TypeScript.PullElementKind.Variable:
+//      logger.log("declaration: variable");
+//      return parseSymbol(symbol, next, typeCache);
+
+//    case TypeScript.PullElementKind.Function:
+//      logger.log("declaration: function");
+//      return parseSymbol(symbol, next, typeCache);
+
+//    case TypeScript.PullElementKind.Class:
+//      logger.log("declaration: class");
+//      return parseClassDefinitionSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache);
+
+//    case TypeScript.PullElementKind.Interface:
+//      logger.log("declaration: interface");
+//      return parseInterfaceDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache);
+
+
+//    // --- Ignored Declarations ---
+//    // They are present in the subsequent declarations
+
+//    case TypeScript.PullElementKind.Container:
+//      logger.log("declaration: module");
+//      parseInternalModuleDeclarationSymbol(<TypeScript.PullContainerSymbol> symbol, ignore, typeCache);
+//      return "";
+
+//    case TypeScript.PullElementKind.ObjectType:
+//      logger.log("declaration: object type -- ignored");
+//      parseObjectType(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache);
+//      return "";
+
+//    case TypeScript.PullElementKind.FunctionType:
+//      logger.log("declaration: function type -- ignored");
+//      parseFunctionType(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache);
+//      return "";
+
+//    case TypeScript.PullElementKind.Enum:
+//      logger.log("declaration: enum type -- ignored");
+//      parseEnumType(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache);
+//      return "";
+
+//    default:
+//      throw new Error("Panic, Declaration: " + TypeScript.PullElementKind[declaration.kind] + " not supported");
+//  }
+//}
+
+///** Parse the Symbol Token and return a wrapper */
+//function parseSymbol(symbol: TypeScript.PullSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var name: string = symbol.name;
+//  logger.log("symbol name: " + name);
+
+//  var type: string = parseTypeSymbol(symbol.type, logger.next(), typeCache);
+
+//  if (type && !(typeCache.has(name))) {
+//    logger.log("declared! " + name + ": " + type);
+
+//    return name + " = Blame.simple_wrap(" + name + ", " + type + ");";
+//  }
+
+//  logger.log("skipped! " + name);
+
+//  return "";
+//}
+
+//function parseTypeSymbol(symbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var next: ILogger = logger.next();
+
+//  switch (symbol.kind) {
+//    case TypeScript.PullElementKind.Primitive:
+//      logger.log("parse: primitive type");
+//      return parsePrimitiveType(symbol, next);
+
+//    case TypeScript.PullElementKind.Interface:
+//      logger.log("parse: interface type");
+//      return parseInterface(symbol, next, typeCache);
+
+//    case TypeScript.PullElementKind.FunctionType:
+//      logger.log("parse: function type");
+//      return parseFunctionType(symbol, next, typeCache);
+
+//    case TypeScript.PullElementKind.ObjectType:
+//      logger.log("parse: object type");
+//      return parseObjectType(symbol, next, typeCache);
+
+//    case TypeScript.PullElementKind.ConstructorType:
+//      logger.log("parse: constructor type");
+//      return parseConstructorType(symbol, next, typeCache);
+
+//    case TypeScript.PullElementKind.Class:
+//      logger.log("parse: class type");
+//      return parseClassSymbol(symbol, next, typeCache);
+
+//    case TypeScript.PullElementKind.Enum:
+//      logger.log("parse: enum type");
+//      return parseEnumType(symbol, next, typeCache);
+
+//    case TypeScript.PullElementKind.Container:
+//      logger.log("parse: module type");
+//      return parseObjectType(symbol, next, typeCache);
+
+//    default:
+//      throw Error("Panic, TypeSymbol: " + TypeScript.PullElementKind[symbol.kind] + " not supported!");
+//  }
+//}
+
+
+//function parsePrimitiveType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger): string {
+//  var type: string = typeSymbol.getDisplayName();
+
+//  logger.log("type: " + type);
+
+//  switch (type) {
+//    case "number":
+//      return "Blame.Num";
+//    case "boolean":
+//      return "Blame.Bool";
+//    case "string":
+//      return "Blame.Str";
+//    case "any":
+//      return "Blame.Any";
+//    case "void":
+//      return "Blame.Void";
+
+//    default:
+//      throw Error("Panic, PrimitiveType: " + type + " not supported!");
+//  }
+//}
+
+//function parseInterface(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var type: string = typeSymbol.getDisplayName();
+
+//  logger.log("type: " + type);
+
+//  switch (type) {
+//    case "Array":
+//      return "Blame.arr(" + parseTypeSymbol(typeSymbol.getElementType(), logger.next(), typeCache) + ")";
+
+//    default:
+//      if (typeCache.has(type)) {
+//        var cached: string = typeCache.get(type);
+//        logger.log("load interface: " + type + " -> " + cached);
+
+//        return cached;
+//      }
+
+//      throw Error("Panic, Interface: " + type + " not supported!");
+//  }
+//}
+
+
+//function parseFunctionType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var callSignatures: TypeScript.PullSignatureSymbol[] = typeSymbol.getCallSignatures();
+
+//  if (callSignatures.length > 1) {
+//    throw new Error("Panic, Functions with more than one call singature not supported: " + typeSymbol.getFunctionSymbol().name);
+//  }
+
+//  var requiredParameters: string[] = [];
+//  var optionalParameters: string[] = [];
+//  var restType: string = "null";
+//  var returnType: string = "null";
+
+//  logger.log("call signatures: ", callSignatures.length);
+
+//  if (callSignatures.length > 0) {
+
+//    var next: ILogger = logger.next();
+//    var nextNext: ILogger = next.next();
+
+//    var callSignature: TypeScript.PullSignatureSymbol = callSignatures[0];
+//    var parameters: TypeScript.PullSymbol[] = callSignature.parameters;
+
+//    function parseParameterSymbol(symbol: TypeScript.PullSymbol): string {
+//      next.log("parameter: " + symbol.getDisplayName());
+
+//      return parseTypeSymbol(symbol.type, nextNext, typeCache);
+//    }
+
+//    logger.log("required parameters: ");
+//    requiredParameters = parameters.filter(not(isRest)).filter(not(isOptional)).map(parseParameterSymbol);
+
+//    logger.log("optional parameters: ");
+//    optionalParameters = parameters.filter(not(isRest)).filter(isOptional).map(parseParameterSymbol);
+
+
+//    if (callSignature.hasVarArgs) {
+//      logger.log("rest parameter: ");
+//      var elementType: TypeScript.PullTypeSymbol = (parameters.filter(isRest)[0]).type.getElementType();
+//      restType = parseTypeSymbol(elementType, nextNext, typeCache);
+//    }
+
+//    if (callSignature.returnType) {
+//      logger.log("return type:");
+//      returnType = parseTypeSymbol(callSignature.returnType, nextNext, typeCache);
+//    }
+//  }
+
+//  var output: string = "Blame.fun([" + requiredParameters.join(", ") + "], " +
+//    "[" + optionalParameters.join(", ") + "], " +
+//    restType + ", " +
+//    returnType + ")";
+
+//  return output;
+//}
+
+//function parseMember(member: TypeScript.PullSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var name: string = member.getDisplayName();
+//  logger.log("member: " + name);
+
+//  var type: string = parseTypeSymbol(member.type, logger.next(), typeCache);
+
+//  return member.name + ": " + type;
+//}
+
+//function parseObjectType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  logger.log("object type:");
+
+//  var members: string = parseMembersOfSymbol(typeSymbol, logger.next(), typeCache);
+
+//  return "Blame.obj({" + members + "})";
+//}
+
+//function parseConstructorType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  logger.log("constructor: " + typeSymbol.getDisplayName() + "  -- skipped");
+//  return "";
+//}
+
+//function parseMembersOfSymbol(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var members: TypeScript.PullSymbol[] = typeSymbol.getAllMembers(TypeScript.PullElementKind.All, TypeScript.GetAllMembersVisiblity.all);
+
+//  logger.log("members:");
+//  var next: ILogger = logger.next();
+
+//  function parseSingleMember(member: TypeScript.PullSymbol): string {
+//    return parseMember(member, next, typeCache);
+//  }
+
+//  return members.map(parseSingleMember).sort().join(", ");
+//}
+
+//function parseClassDefinitionSymbol(symbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var name: string = symbol.getDisplayName();
+//  var bname: string = "Blame_" + name;
+
+//  logger.log("cache class: " + name + " <- " + bname);
+//  logger.log("class full name: " + symbol.getTypeName());
+//  typeCache.set(name, bname);
+
+//  var members: string = parseMembersOfSymbol(symbol, logger.next(), typeCache);
+
+//  return "var " + bname + " = Blame.obj({" + members + "});" ;
+//}
+
+//function parseClassSymbol(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var name: string = typeSymbol.getDisplayName();
+
+//  if (typeCache.has(name)) {
+//    var cached: string = typeCache.get(name);
+//    logger.log("load class: " + name + " -> " + cached);
+//    return cached;
+//  }
+
+//  parseClassDefinitionSymbol(typeSymbol, logger.next(), typeCache);
+
+//  //return "";
+//  // TODO: Figure out how to pull a class defined somewhere else
+//  throw new Error("Panic, Undefined class symbol: " + name);
+//}
+
+//function parseInterfaceDeclarationSymbol(symbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var name: string = symbol.getDisplayName();
+//  var bname: string = "Blame_" + name;
+
+//  logger.log("cache interface: " + name + " <- " + bname);
+//  typeCache.set(name, bname);
+
+//  var members: string = parseMembersOfSymbol(symbol, logger.next(), typeCache);
+
+//  return "var " + bname + " = Blame.obj({" + members + "});" ;
+//}
+
+//function parseEnumType(typeSymbol: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var name: string = typeSymbol.getDisplayName();
+//  var bname: string = "Blame_" + name;
+
+//  logger.log("cache enum: " + name + " <- " + bname);
+//  typeCache.set(name, bname);
+
+//  return "";
+//}
+
+//function parseInternalModuleDeclarationSymbol(symbol: TypeScript.PullContainerSymbol, logger: ILogger, typeCache: TypeCache): string {
+//  var name: string = symbol.getDisplayName();
+
+//  logger.log("internal module: " + name);
+//  return parseSymbol(symbol, logger.next(), typeCache);
+//}
 
 
 export function compileFromString(source: string, shouldLog?: boolean) {

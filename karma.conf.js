@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'node_modules/typescript/bin/typescript.js',
+      'lib/libd.js',
       'test/gen/bundle-tests.js'
     ],
 
