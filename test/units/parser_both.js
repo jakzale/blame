@@ -320,25 +320,23 @@ describe('interface declaration', function () {
   });
 });
 
-/*
- *describe('internal modules', function () {
- *  it('should allow to define an empty module', function () {
- *    // An Empty module produces no code
- *    var source = 'declare module MyModule {}';
- *    var desired = '';
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *
- *  //it('should allow to define module with contents', function () {
- *    //var source = 'declare module MyModule { export class MyClass { x: number; } }';
- *    //var desired = 'MyModule = Blame.simple_wrap(MyModule, Blame.obj({}));';
- *
- *    //parser.compileFromString(source, true);
- *    ////expect(parser.compileFromString(source, true)).to.equal(desired);
- *  //});
- *});
- */
+describe('internal modules', function () {
+  it('should allow to define an empty module', function () {
+    // An Empty module produces no code
+    var source = 'declare module MyModule {}';
+    var desired = '';
+
+    expect(parser.compileFromString(source, true)).to.equal(desired);
+  });
+
+  //it('should allow to define module with contents', function () {
+    //var source = 'declare module MyModule { export class MyClass { x: number; } }';
+    //var desired = 'MyModule = Blame.simple_wrap(MyModule, Blame.obj({}));';
+
+    //parser.compileFromString(source, true);
+    ////expect(parser.compileFromString(source, true)).to.equal(desired);
+  //});
+});
 
 
 
