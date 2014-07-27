@@ -105,11 +105,13 @@ class TypeCache {
   private defined: {[id: string]: string};
   private requested: string[];
   private notEmpty_: boolean;
+  private declarations: string[];
 
   constructor() {
     this.defined = Object.create(null);
     this.requested = [];
     this.notEmpty_ = false;
+    this.declarations = [];
   }
 
 
@@ -150,6 +152,25 @@ class TypeCache {
 
     return "var " + bindings.sort().join(", ") + ";";
   }
+
+  public addGlobalDeclaration(identifier: string, type: string): void {
+    var declaration: string = identifier + " = Blame.simple_wrap(" + identifier + ", " + type + ");";
+    this.declarations.push(declaration);
+  }
+
+  public addTypeDeclaration(identifier: string, type: string): void {
+    var declaration: string = identifier + " = " + type + ";";
+    this.declarations.push(declaration);
+  }
+
+  public generateDeclarations(): string {
+    var variables: string = "";
+    if (this.notEmpty()) {
+      variables = this.getBindings() + "\n";
+    }
+
+    return variables + this.declarations.join("\n");
+  }
 }
 
 // -----------------------------
@@ -174,69 +195,6 @@ function notBlank(s: string): boolean {
   return s.length > 0;
 }
 
-export function compile(filename: string, source: string, shouldLog?: boolean): string {
-  var logger: ILogger;
-  if (shouldLog) {
-    logger = new Logger();
-  } else {
-    logger = new NullLogger();
-  }
-
-  logger.log("parsing file: ", filename);
-
-  var typeCache = new TypeCache();
-
-  // Create a simple source unit
-  var snapshot = TypeScript.ScriptSnapshot.fromString(source);
-
-  // Adding the lib.d file
-  compiler.addFile(filename, snapshot, TypeScript.ByteOrderMark.Utf8, 0, false);
-
-  // Getting diagnostics, throw an error on diagnostic
-  var message : string;
-  var diagnostics: TypeScript.Diagnostic[] = compiler.getSyntacticDiagnostics(filename);
-
-  message = get_diagnostic_message(diagnostics);
-  if (message) {
-    compiler.removeFile(filename);
-    throw new Error(message);
-  }
-
-  // I am unsure if declaration file can cause semantic diagnostic
-  // This will trigger the type resolver
-  diagnostics = compiler.getSemanticDiagnostics(filename);
-  message = get_diagnostic_message(diagnostics);
-  if (message) {
-    throw new Error(message);
-  }
-
-  var decl: TypeScript.PullDecl = compiler.topLevelDecl(filename);
-  var decls = decl.getChildDecls();
-
-
-  var nextLogger: ILogger = logger.next();
-  function parseSingleDeclaration(decl: TypeScript.PullDecl): string {
-    return parseDeclaration2(decl, nextLogger, typeCache);
-  }
-
-  // TypeDeclarations
-  var result_declarations: string[] = decls.map(parseSingleDeclaration).filter(notBlank);
-
-  // Required variable bindings
-  if (typeCache.notEmpty()) {
-    result_declarations.unshift(typeCache.getBindings());
-  }
-  // Parse each declaration, and log the results
-
-  // Clean up the compiler
-  compiler.removeFile(filename);
-
-  return result_declarations.join("\n");
-}
-
-export function compileFromString(source: string, shouldLog?: boolean) {
-  return compile("generated.d.ts", source, !!shouldLog);
-}
 
 /*
 
@@ -283,7 +241,7 @@ where members is the dictionary of module members
 // TODO: You need to make a distinction when you are defining the type,
 //       and when you are just retrieving the type
 
-function parseDeclaration2(declaration: TypeScript.PullDecl, logger: ILogger, typeCache: TypeCache) {
+function parseDeclaration2(declaration: TypeScript.PullDecl, logger: ILogger, typeCache: TypeCache): void {
   var symbol: TypeScript.PullSymbol = declaration.getSymbol();
   var kind: string = TypeScript.PullElementKind[declaration.kind];
 
@@ -294,13 +252,15 @@ function parseDeclaration2(declaration: TypeScript.PullDecl, logger: ILogger, ty
     case TypeScript.PullElementKind.Variable:
     case TypeScript.PullElementKind.Function:
       logger.log("global declaration: " + kind);
-      return parseGlobalSymbol(symbol, next, typeCache);
+      parseGlobalSymbol(symbol, next, typeCache);
+      break;
 
     case TypeScript.PullElementKind.Class:
     case TypeScript.PullElementKind.Interface:
     case TypeScript.PullElementKind.Container:
       logger.log("type declaration: " + kind);
-      return parseTypeDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache, true);
+      parseTypeDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, next, typeCache, true);
+      break;
 
     case TypeScript.PullElementKind.ObjectType:
     case TypeScript.PullElementKind.FunctionType:
@@ -308,14 +268,14 @@ function parseDeclaration2(declaration: TypeScript.PullDecl, logger: ILogger, ty
       logger.log("ignored declaration: " + kind);
       ignore = logger.next(true);
       parseTypeDeclarationSymbol(<TypeScript.PullTypeSymbol> symbol, ignore, typeCache, false);
-      return "";
+      break;
 
     default:
       throw new Error("Panic, Declaration: " + kind + " not supported");
   }
 }
 
-function parseGlobalSymbol(symbol: TypeScript.PullSymbol, logger: ILogger, typeCache: TypeCache) {
+function parseGlobalSymbol(symbol: TypeScript.PullSymbol, logger: ILogger, typeCache: TypeCache): void {
   var name: string = symbol.getDisplayName();
   logger.log("symbol name: " + name);
 
@@ -325,37 +285,34 @@ function parseGlobalSymbol(symbol: TypeScript.PullSymbol, logger: ILogger, typeC
   if (type) {
     logger.log("declared! " + name + ": " + type);
 
-    return name + " = Blame.simple_wrap(" + name + ", " + type + ");";
+    typeCache.addGlobalDeclaration(name, type);
+    return;
   }
 
   // Reporting skipped type declaration
   logger.log("skipped! " + name);
-
-  return "";
 }
 
 function to_bname(name: string): string {
   return "Blame_" + name.replace("_", "__").replace(".", "_");
 }
 
-function parseTypeDeclarationSymbol(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache, shouldCache: boolean) {
+function parseTypeDeclarationSymbol(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache, shouldCache: boolean): void {
   var name: string = type.getTypeName();
   logger.log("type name: " + name);
 
   var declaration: string = parseType(type, logger.next(), typeCache, true);
 
-  if (declaration) {
-    if (shouldCache && type.isNamedTypeSymbol()) {
+  if (declaration && type.isNamedTypeSymbol()) {
+    if (shouldCache) {
       var bname: string = typeCache.add(name);
       logger.log("cached type: " + name + " <- " + bname);
     }
   // Declaring the type for the first time
     logger.log("declared! " + bname + ": " + declaration);
 
-    return bname + " = " + declaration + ";";
+    typeCache.addTypeDeclaration(bname, declaration);
   }
-
-  return "";
 }
 
 
@@ -480,18 +437,23 @@ function parseFunctionLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger,
 
 function parseObjectLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger, typeCache: TypeCache, declaration?: boolean): string {
   var name: string = type.getDisplayName();
+  var next: ILogger = logger.next();
 
   logger.log("object type: " + name);
 
-  var shouldCheck: boolean = !declaration;
+  // If it is an array:
+  if (name === "Array") {
+    logger.log("element type: ");
+    return "Blame.arr(" + parseType(type.getElementType(), next, typeCache) + ")";
+  }
 
-  if (shouldCheck && type.isNamedTypeSymbol()) {
+  if (!declaration && type.isNamedTypeSymbol()) {
     var bname: string = typeCache.get(name);
     logger.log("load type: " + name + " -> " + bname);
     return bname;
   }
 
-  var members: string = parseTypeMembers(type, logger.next(), typeCache);
+  var members: string = parseTypeMembers(type, next, typeCache);
 
   // If it is a container, empty members means no code
   if (type.isContainer() && !members) {
@@ -528,6 +490,65 @@ function parseMember(member: TypeScript.PullSymbol, logger: ILogger, typeCache: 
   logger.log("skipped member! " + name);
   return "";
 }
+
+export function compile(filename: string, source: string, shouldLog?: boolean): string {
+  var logger: ILogger;
+  if (shouldLog) {
+    logger = new Logger();
+  } else {
+    logger = new NullLogger();
+  }
+
+  logger.log("parsing file: ", filename);
+
+  var typeCache = new TypeCache();
+
+  // Create a simple source unit
+  var snapshot = TypeScript.ScriptSnapshot.fromString(source);
+
+  // Adding the lib.d file
+  compiler.addFile(filename, snapshot, TypeScript.ByteOrderMark.Utf8, 0, false);
+
+  // Getting diagnostics, throw an error on diagnostic
+  var message : string;
+  var diagnostics: TypeScript.Diagnostic[] = compiler.getSyntacticDiagnostics(filename);
+
+  message = get_diagnostic_message(diagnostics);
+  if (message) {
+    compiler.removeFile(filename);
+    throw new Error(message);
+  }
+
+  // I am unsure if declaration file can cause semantic diagnostic
+  // This will trigger the type resolver
+  diagnostics = compiler.getSemanticDiagnostics(filename);
+  message = get_diagnostic_message(diagnostics);
+  if (message) {
+    throw new Error(message);
+  }
+
+  var decl: TypeScript.PullDecl = compiler.topLevelDecl(filename);
+  var decls = decl.getChildDecls();
+
+
+  var nextLogger: ILogger = logger.next();
+  function parseSingleDeclaration(decl: TypeScript.PullDecl): void {
+    parseDeclaration2(decl, nextLogger, typeCache);
+  }
+
+  // TypeDeclarations
+  decls.forEach(parseSingleDeclaration);
+
+  // Clean up the compiler
+  compiler.removeFile(filename);
+
+  return typeCache.generateDeclarations();
+}
+
+export function compileFromString(source: string, shouldLog?: boolean) {
+  return compile("generated.d.ts", source, !!shouldLog);
+}
+
 
 
 // vim: set ts=2 sw=2 sts=2 et :

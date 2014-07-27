@@ -59,19 +59,16 @@ describe('variable declaration', function () {
 
   });
 
-  // TODO: Remember about this
-/*
- *  describe('array types', function () {
- *    it('should accept array types', function () {
- *      var source = 'declare var ns:number[]';
- *      var desired = 'ns = Blame.simple_wrap(ns, Blame.arr(Blame.Num));';
- *      expect(parser.compileFromString(source)).to.equal(desired);
- *
- *      source = 'declare var ns:Array<number>';
- *      expect(parser.compileFromString(source)).to.equal(desired);
- *    });
- *  });
- */
+  describe('array types', function () {
+    it('should accept array types', function () {
+      var source = 'declare var ns:number[]';
+      var desired = 'ns = Blame.simple_wrap(ns, Blame.arr(Blame.Num));';
+      expect(parser.compileFromString(source, true)).to.equal(desired);
+
+      source = 'declare var ns:Array<number>';
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
+  });
 
   describe('function types', function () {
     it('should accept simple type', function () {
@@ -326,11 +323,11 @@ describe('internal modules', function () {
     var source = 'declare module MyModule {}';
     var desired = '';
 
-    expect(parser.compileFromString(source, true)).to.equal(desired);
+    expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   //it('should allow to define module with contents', function () {
-    //var source = 'declare module MyModule { export class MyClass { x: number; } }';
+    //var source = 'declare module MyModule { export class MyClass { x: number; } var x:MyClass; }';
     //var desired = 'MyModule = Blame.simple_wrap(MyModule, Blame.obj({}));';
 
     //parser.compileFromString(source, true);
