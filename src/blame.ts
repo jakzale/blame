@@ -406,6 +406,12 @@ function compatible_obj(A: ObjectType, B: ObjectType): boolean {
   return true;
 }
 
+export function simple_wrap(value: any, A: IType): any {
+  var p = new Label();
+
+  return wrap(value, p, p.negated(), A, A);
+}
+
 export function wrap(value: any, p: Label, q: Label, A: IType, B: IType): any {
   var a: TypeKind = A.kind();
   var b: TypeKind = B.kind();
