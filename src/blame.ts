@@ -63,17 +63,12 @@ export enum TypeKind {
 }
 
 export interface IType {
-  reporter: IReported;
   description: string;
   kind(): TypeKind;
 }
 
 export class BaseType implements IType {
-  public reporter: IReporter;
-
-  constructor(public description: string, public contract: (any) => boolean) {
-    this.reporter = GlobalReporter;
-  }
+  constructor(public description: string, public contract: (any) => boolean) {}
   public kind(): TypeKind {
     return TypeKind.BaseType;
   }
