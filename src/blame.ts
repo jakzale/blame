@@ -65,12 +65,32 @@ export enum TypeKind {
 export interface IType {
   description: string;
   kind(): TypeKind;
+  reporter: IReporter;
+  clone(reporter?: IReporter);
 }
 
+
+export interface IReporter {
+  report(msg: string): void;
+}
+
+var GlobalReporter : IReporter = {
+  report(msg: string): void {
+    throw new Error(msg);
+  }
+};
+
 export class BaseType implements IType {
-  constructor(public description: string, public contract: (any) => boolean) {}
+  public reporter: IReporter;
+
+  constructor(public description: string, public contract: (any) => boolean, reporter?: IReporter) {
+    this.reporter = reporter || GlobalReporter;
+  }
   public kind(): TypeKind {
     return TypeKind.BaseType;
+  }
+  public clone(reporter?: IReporter): BaseType {
+    return new BaseType(this.description, this.contract, reporter || this.reporter);
   }
 }
 
@@ -109,6 +129,10 @@ export var Any: IType = {
   description: "Any",
   kind: function(): TypeKind {
     return TypeKind.AnyType;
+  },
+  reporter: null,
+  clone(reporter?: IReporter) {
+    return this;
   }
 };
 
@@ -132,19 +156,31 @@ export class FunctionType implements IType {
   public returnType: IType;
   public constructType: IType;
 
+  public reporter: IReporter;
+
   public description: string;
 
   constructor(requiredParameters: IType[],
       optionalParameters: IType[],
       restParameter: IType,
       returnType: IType,
-      constructType: IType) {
+      constructType: IType,
+      reporter?: IReporter) {
 
-    this.requiredParameters = requiredParameters || [];
-    this.optionalParameters = optionalParameters || [];
-    this.restParameter = restParameter;
-    this.returnType = returnType || Any;
-    this.constructType = constructType || Any;
+    this.reporter = reporter || GlobalReporter;
+
+    var copy = (type) => { return type.clone(this.reporter); };
+
+    this.requiredParameters = (requiredParameters || []).map(copy);
+    this.optionalParameters = (optionalParameters || []).map(copy);
+
+    this.restParameter = null;
+    if (restParameter) {
+      this.restParameter = copy(restParameter);
+    }
+
+    this.returnType = copy(returnType || Any);
+    this.constructType = copy(constructType || Any);
 
     var descs: string[] = ([])
       .concat(this.requiredParameters.map(description("")),
@@ -172,6 +208,10 @@ export class FunctionType implements IType {
   public kind(): TypeKind {
     return TypeKind.FunctionType;
   }
+
+  public clone(reporter?: IReporter) {
+    return new FunctionType(this.requiredParameters, this.optionalParameters, this.restParameter, this.returnType, this.constructType, reporter || this.reporter);
+  }
 }
 
 export function fun(range: IType[], optional: IType[], rest: IType, ret: IType, cons: IType): FunctionType {
@@ -189,9 +229,15 @@ export function func(...args: IType[]) {
 }
 
 export class ForallType implements IType {
+
+  public reporter: IReporter;
+  public type: IType;
+
   public description: string;
 
-  constructor(public tyvar: string, public type: IType) {
+  constructor(public tyvar: string, type: IType, reporter?: IReporter) {
+    this.reporter = reporter || GlobalReporter;
+
     switch (type.kind()) {
       case TypeKind.FunctionType:
       case TypeKind.ForallType:
@@ -201,11 +247,17 @@ export class ForallType implements IType {
         throw new Error("Panic, type " + type.description + " not supported for forall");
     }
 
+    this.type = type.clone(this.reporter);
+
     this.description = "forall " + this.tyvar + ". " + this.type.description;
   }
 
   public kind(): TypeKind {
     return TypeKind.ForallType;
+  }
+
+  public clone(reporter?: IReporter): ForallType {
+    return new ForallType(this.tyvar, this.type, reporter || this.reporter);
   }
 }
 
@@ -214,11 +266,18 @@ export function forall(tyvar: string, type: IType) {
 }
 
 export class TypeVariable implements IType {
-  constructor(public description: string) {
+  public reporter: IReporter;
+
+  constructor(public description: string, reporter?: IReporter) {
+    this.reporter = reporter || GlobalReporter;
   }
 
   public kind(): TypeKind {
     return TypeKind.TypeVariable;
+  }
+
+  public clone(reporter?: IReporter): TypeVariable {
+    return new TypeVariable(this.description, reporter || this.reporter);
   }
 }
 
@@ -227,36 +286,41 @@ export function tyvar(id: string): TypeVariable {
 }
 
 class BoundTypeVariable extends TypeVariable {
-  public seal: (any) => Token;
-  public unseal: (Token, Label) => any;
+  public storage: WeakMap<Token, any>;
 
-  constructor(description: string) {
+  constructor(description: string, storage?: WeakMap<Token, any>, reporter?: IReporter) {
     super(description);
 
-    var storage: WeakMap<Token, any> = new WeakMap();
+    this.storage = storage || new WeakMap();
+    this.reporter = reporter || GlobalReporter;
+  }
 
-    this.seal = function(value: any): Token {
-      var t: Token = new Token(this.description);
+  public seal(value: any): Token {
+    var t: Token = new Token(this.description);
 
-      storage.set(t, value);
+    this.storage.set(t, value);
 
-      return t;
-    };
+    return t;
+  }
 
-    this.unseal = function(t: Token, q: Label): any {
-      if (!(t instanceof Token)) {
-        throw new Error(q.negated().msg(t + " is not a sealed token (" + this.description + ")"));
-      }
-      if (storage.has(t)) {
-        return storage.get(t);
-      }
+  public unseal(t: Token, q: Label): any {
+    if (!(t instanceof Token)) {
+      this.reporter.report(q.negated().msg(t + " is not a sealed token (" + this.description + ")"));
+    }
+    if (this.storage.has(t)) {
+      return this.storage.get(t);
+    }
 
-      throw Error(q.negated().msg("Token: " + t.tyvar + " sealed by a different forall"));
-    };
+    this.reporter.report(q.negated().msg("Token: " + t.tyvar + " sealed by a different forall"));
+    return t;
   }
 
   public kind(): TypeKind {
     return TypeKind.BoundTypeVariable;
+  }
+
+  public clone(reporter?: IReporter): BoundTypeVariable {
+    return new BoundTypeVariable(this.description, this.storage, reporter || this.reporter);
   }
 }
 
@@ -266,13 +330,21 @@ class Token {
 
 export class ArrayType implements IType {
   public description: string;
+  public reporter: IReporter;
+  public type: IType;
 
-  constructor(public type: IType) {
+  constructor(type: IType, reporter?: IReporter) {
+    this.reporter = reporter || GlobalReporter;
+    this.type = type.clone(this.reporter);
     this.description = "[" + this.type.description + "]";
   }
 
   public kind(): TypeKind {
     return TypeKind.ArrayType;
+  }
+
+  public clone(reporter?: IReporter): ArrayType {
+    return new ArrayType(this.type, reporter || this.reporter);
   }
 }
 
@@ -283,6 +355,10 @@ export function arr(type: IType): ArrayType {
 export class DictionaryType extends ArrayType {
   public kind(): TypeKind {
     return TypeKind.DictionaryType;
+  }
+
+  public clone(reporter?: IReporter): DictionaryType {
+    return new DictionaryType(this.type, reporter || this.reporter);
   }
 }
 
@@ -297,15 +373,17 @@ export interface TypeDict {
 export class ObjectType implements IType {
   public description: string;
   public properties: TypeDict;
+  public reporter: IReporter;
 
-  constructor(properties: TypeDict) {
+  constructor(properties: TypeDict, reporter?: IReporter) {
+    this.reporter = reporter || GlobalReporter;
     this.properties = Object.create(null);
 
     var descs: string[] = [];
 
     for (var key in properties) {
       if (Object.prototype.hasOwnProperty.call(properties, key)) {
-        this.properties[key] = properties[key];
+        this.properties[key] = properties[key].clone(this.reporter);
         descs.push(key + ": " + properties[key].description);
       }
     }
@@ -316,23 +394,34 @@ export class ObjectType implements IType {
   public kind(): TypeKind {
     return TypeKind.ObjectType;
   }
+
+  public clone(reporter?: IReporter): ObjectType {
+    return new ObjectType(this.properties, reporter || this.reporter);
+  }
 }
 
 export function obj(properties: TypeDict): ObjectType {
   return new ObjectType(properties);
 }
 
+// This is essentially and :P
 export class HybridType implements IType {
   public description: string;
   public types: IType[] = [];
+  public reporter: IReporter;
 
-  constructor(types: IType[]) {
-    this.types = types;
+  constructor(types: IType[], reporter?: IReporter) {
+    this.reporter = reporter || GlobalReporter;
+    this.types = types.map((type) => { return type.clone(this.reporter); });
     this.description = "|" + this.types.map((type) => { return type.description; }).join(", ") + "|";
   }
 
   public kind(): TypeKind {
     return TypeKind.HybridType;
+  }
+
+  public clone(reporter?: IReporter): HybridType {
+    return new HybridType(this.types, reporter || this.reporter);
   }
 }
 
@@ -723,14 +812,5 @@ function wrap_hybrid(value: any, p: Label, q: Label, A: HybridType, B: HybridTyp
   return value;
 }
 
-interface IReporter {
-  report(msg: string): void;
-}
-
-var GlobalReporter : IReporter = {
-  report(msg: string): void {
-    throw new Error(msg);
-  }
-};
 
 // vim: set ts=2 sw=2 sts=2 et :

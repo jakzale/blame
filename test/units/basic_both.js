@@ -160,13 +160,13 @@ describe('wrapping', function () {
       expect(fun_type.requiredParameters).to.eql([]);
       expect(fun_type.optionalParameters).to.eql([]);
       expect(fun_type.restParameter).to.equal(null);
-      expect(fun_type.returnType).to.equal(Num);
+      expect(fun_type.returnType.description).to.equal(Num.description);
       expect(fun_type.description).to.equal('() -> Num');
 
       fun_type = fun([Num], [Bool], Str, func(Bool, Bool));
       expect(fun_type.requiredParameters).to.eql([Num]);
       expect(fun_type.optionalParameters).to.eql([Bool]);
-      expect(fun_type.restParameter).to.equal(Str);
+      expect(fun_type.restParameter.description).to.equal(Str.description);
       expect(fun_type.description).to.equal('Num -> Bool? -> Str* -> (Bool -> Bool)');
 
       var obj_type = obj({});
@@ -176,8 +176,8 @@ describe('wrapping', function () {
       expect(fun_type.requiredParameters).to.eql([]);
       expect(fun_type.optionalParameters).to.eql([]);
       expect(fun_type.restParameter).to.equal(null);
-      expect(fun_type.returnType).to.equal(Num);
-      expect(fun_type.constructType).to.equal(obj_type);
+      expect(fun_type.returnType.description).to.equal(Num.description);
+      expect(fun_type.constructType.description).to.equal(obj_type.description);
       expect(fun_type.description).to.equal('() -> Num  C:{}');
 
     });
