@@ -63,7 +63,7 @@ describe('variable declaration', function () {
     it('should accept array types', function () {
       var source = 'declare var ns:number[]';
       var desired = 'ns = Blame.simple_wrap(ns, Blame.arr(Blame.Num));';
-      expect(parser.compileFromString(source, true)).to.equal(desired);
+      expect(parser.compileFromString(source)).to.equal(desired);
 
       source = 'declare var ns:Array<number>';
       expect(parser.compileFromString(source)).to.equal(desired);
@@ -326,15 +326,24 @@ describe('internal modules', function () {
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
-  //it('should allow to define module with contents', function () {
-    //var source = 'declare module MyModule { export class MyClass { x: number; } var x:MyClass; }';
-    //var desired = 'MyModule = Blame.simple_wrap(MyModule, Blame.obj({}));';
+  it('should allow to define module with contents', function () {
+    var source = 'declare module MyModule { export class MyClass { x: number; } var x:MyClass; }';
+    var desired = [
+      'var Blame_MyModule_MyClass;',
+      'Blame_MyModule_MyClass = Blame.obj({x: Blame.Num});',
+      'MyModule = Blame.simple_wrap(MyModule, Blame.obj({MyClass: Blame.fun([], [], null, Blame_MyModule_MyClass), x: Blame_MyModule_MyClass}));'
+    ].join('\n');
 
-    //parser.compileFromString(source, true);
-    ////expect(parser.compileFromString(source, true)).to.equal(desired);
-  //});
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
 });
 
+describe('random test', function () {
+  it('should work', function () {
+    var source = 'interface Date {}';
+    parser.compileFromString(source);
+  });
+});
 
 
 // vim: set ts=2 sw=2 sts=2 et :

@@ -2,6 +2,10 @@
 
 'use strict';
 
+// Load typescript globally
+global.TypeScript = require('typescript-api');
+global.LibD = require('./lib/libd.js');
+
 var gulp = require('gulp'),
   jshint = require('gulp-jshint'),
   karma = require('gulp-karma'),
@@ -12,8 +16,11 @@ var gulp = require('gulp'),
   glob = require('glob'),
   map = require('vinyl-map'),
   rename = require('gulp-rename'),
+  parser = require('./build/parser.js'),
   test_files,
   paths;
+
+
 
 paths = {
   blame: {
@@ -21,7 +28,10 @@ paths = {
     dest: 'build'
   },
   tests: 'test/units/*_both.js',
-  wrappers: 'test/src/*_both.js'
+  wrappers: {
+    source: 'test/src/*_both.js',
+    wrapped: 'test/wrapped/*_both.js'
+  }
 };
 
 gulp.task('karma', function () {
@@ -46,7 +56,7 @@ gulp.task('tsc', function () {
 
 gulp.task('browserify', function() {
     var testFiles = glob.sync('./' + paths.tests);
-    var wrapperFiles = glob.sync('./' + paths.wrappers);
+    var wrapperFiles = glob.sync('./' + paths.wrappers.wrapped);
 
     var bundleFiles = testFiles.concat(wrapperFiles);
 
@@ -65,26 +75,59 @@ var handlebars = require('handlebars');
 var template = fs.readFileSync('lib/test_template.js', {encoding: 'utf8'});
 var wrapper = handlebars.compile(template);
 
+var referenceMatcher = /\/\/\/[\ \t]*<reference[\ \t]*path="(.*)"[\ \t]*\/?>/;
+
 
 gulp.task('wrappers', function () {
 
   var mapper = map(function (code, filename) {
+    var lineEnding = /\r\n?|\n/;
     // Split the code, then indent it, then join it together
-    code = code
-      .toString()
-      .split(/\r\n?|\n/)
-      .map(function (line) {
+    var codeLines = code.toString().split(lineEnding);
+
+    // extract declarations
+    var declFile = '';
+    var blameDeclarations = '';
+
+    // Find the first declaration
+    var found = codeLines.some(function (line) {
+      var match = referenceMatcher.exec(line);
+      if (match) {
+        declFile = match[1];
+
+        return true;
+      }
+    });
+
+    // Correcting the folder position
+    declFile = declFile.replace(/^\.\.\/\.\.\//, './');
+
+    if (found) {
+      var declCode = fs.readFileSync(declFile, {encoding: 'utf8'});
+      blameDeclarations = parser.compile(declFile, declCode);
+    }
+
+    function indent(length) {
+      var space = (new Array(length + 1)).join(' ');
+      return function(line) {
         if (line.trim().length > 0) {
-          line = '    ' + line;
+          line = space + line;
         }
         return line;
-      })
-      .join('\n');
+      };
+    }
+
+    code = codeLines.map(indent(4)).join('\n');
+    blameDeclarations = blameDeclarations.split(lineEnding).map(indent(8)).join('\n');
+
+
+      // Load the declarations
+
 
       return wrapper({
         contents: code,
         filename: filename,
-        declarations: ''
+        declarations: blameDeclarations
       });
   });
 
@@ -94,7 +137,7 @@ gulp.task('wrappers', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch([paths.blame.source, paths.tests, paths.wrappers], ['build:bundle']);
+  gulp.watch([paths.blame.source, paths.tests, paths.wrappers.source], ['build:bundle']);
 });
 
 // Listing the happens before relations

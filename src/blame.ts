@@ -139,7 +139,7 @@ export class FunctionType implements IType {
     this.requiredParameters = requiredParameters || [];
     this.optionalParameters = optionalParameters || [];
     this.restParameter = restParameter;
-    this.returnType = returnType || Void;
+    this.returnType = returnType || Any;
 
     var descs: string[] = ([])
       .concat(this.requiredParameters.map(description("")),
@@ -607,7 +607,7 @@ function wrap_arr(value: any, p: Label, q: Label, A: ArrayType, B: ArrayType): a
 }
 
 function wrap_obj(value: any, p: Label, q: Label, A: ObjectType, B: ObjectType): any {
-  value = wrap_base(value, p, Obj);
+  //value = wrap_base(value, p, Obj);
 
   return new Proxy(value, {
     get: function (target: any, name: string, receiver: any): any {

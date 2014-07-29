@@ -10,7 +10,8 @@
   "private": true,
   "license": "BSD-2-Clause",
   "dependencies": {
-    "harmony-reflect": "1.0.x"
+    "harmony-reflect": "1.0.x",
+    "typescript-api": "1.0.x"
   },
   "devDependencies": {
     "browserify": "4.2.x",
