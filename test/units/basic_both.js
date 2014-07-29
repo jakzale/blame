@@ -172,6 +172,18 @@ describe('wrapping', function () {
       expect(fun_type.optionalParameters).to.eql([Bool]);
       expect(fun_type.restParameter).to.equal(Str);
       expect(fun_type.description).to.equal('Num -> Bool? -> Str* -> (Bool -> Bool)');
+
+      var obj_type = obj({});
+
+      fun_type = fun([], [], null, Num, obj_type);
+
+      expect(fun_type.requiredParameters).to.eql([]);
+      expect(fun_type.optionalParameters).to.eql([]);
+      expect(fun_type.restParameter).to.equal(null);
+      expect(fun_type.returnType).to.equal(Num);
+      expect(fun_type.constructType).to.equal(obj_type);
+      expect(fun_type.description).to.equal('() -> Num  C:{}');
+
     });
   });
 
@@ -1069,7 +1081,7 @@ describe('Objects', function () {
       }
 
 
-      var type = fun([Num], [], null, obj({a: Num})),
+      var type = fun([Num], [], null, Void, obj({a: Num})),
         Wrapped = wrap(MyType, p, q, type, type);
 
       it('should check the arguments', function () {

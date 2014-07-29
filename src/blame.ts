@@ -160,7 +160,11 @@ export class FunctionType implements IType {
 
     descs.push(description("")(this.returnType));
 
-    this.description = descs.join(" -> ") + "  C:" + this.constructType.description;
+    this.description = descs.join(" -> ");
+
+    if (this.constructType !== Any) {
+    this.description += "  C:" + this.constructType.description;
+    }
   }
 
   public kind(): TypeKind {
@@ -168,8 +172,8 @@ export class FunctionType implements IType {
   }
 }
 
-export function fun(range: IType[], optional: IType[], rest: IType, ret: IType): FunctionType {
-  return new FunctionType(range, optional, rest, ret);
+export function fun(range: IType[], optional: IType[], rest: IType, ret: IType, cons: IType): FunctionType {
+  return new FunctionType(range, optional, rest, ret, cons);
 }
 
 export function func(...args: IType[]) {
@@ -179,7 +183,7 @@ export function func(...args: IType[]) {
 
   var returnType: IType = args.pop();
 
-  return new FunctionType(args, null, null, returnType);
+  return new FunctionType(args, [], null, returnType, null);
 }
 
 export class ForallType implements IType {
@@ -291,9 +295,10 @@ export class ObjectType implements IType {
       if (Object.prototype.hasOwnProperty.call(properties, key)) {
         this.properties[key] = properties[key];
         descs.push(key + ": " + properties[key].description);
-        this.description = "{" + descs.join(", ") + "}";
       }
     }
+
+    this.description = "{" + descs.join(", ") + "}";
   }
 
   public kind(): TypeKind {
