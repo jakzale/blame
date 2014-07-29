@@ -128,18 +128,21 @@ export class FunctionType implements IType {
   public optionalParameters: IType[];
   public restParameter: IType;
   public returnType: IType;
+  public constructType: IType;
 
   public description: string;
 
   constructor(requiredParameters: IType[],
       optionalParameters: IType[],
       restParameter: IType,
-      returnType: IType) {
+      returnType: IType,
+      constructType: IType) {
 
     this.requiredParameters = requiredParameters || [];
     this.optionalParameters = optionalParameters || [];
     this.restParameter = restParameter;
     this.returnType = returnType || Any;
+    this.constructType = constructType || Any;
 
     var descs: string[] = ([])
       .concat(this.requiredParameters.map(description("")),
@@ -157,7 +160,7 @@ export class FunctionType implements IType {
 
     descs.push(description("")(this.returnType));
 
-    this.description = descs.join(" -> ");
+    this.description = descs.join(" -> ") + "  C:" + this.constructType.description;
   }
 
   public kind(): TypeKind {
@@ -344,8 +347,9 @@ function substitute_tyvar_fun(target: FunctionType, ty: string, new_type: IType)
   }
 
   var returnType: IType = substitute(target.returnType);
+  var constructType: IType = substitute(target.constructType);
 
-  return new FunctionType(requiredParameters, optionalParameters, restParameter, returnType);
+  return new FunctionType(requiredParameters, optionalParameters, restParameter, returnType, constructType);
 }
 
 function substitute_tyvar_forall(target: ForallType, ty: string, new_type: IType): ForallType {
@@ -538,21 +542,15 @@ function wrap_fun(value: any, p: Label, q: Label, A: FunctionType, B: FunctionTy
       // Create the instance
       var instance = Object.create(target.prototype);
 
-      // If unknown object type
-      if (A.returnType === Void && B.returnType === Void) {
-        target.apply(instance, wrapped_args);
-        return instance;
-      }
-
       // Create wrapped instance for the constructor;
       // Swapping the labels
       // Eager constructor enforcement
-      var cons_instance = wrap(instance, q, p, A.returnType, B.returnType);
+      var cons_instance = wrap(instance, q, p, A.constructType, B.constructType);
 
       target.apply(cons_instance, wrapped_args);
 
       // Returning wrapped instance for the rest of the program
-      return wrap(instance, p, q, A.returnType, B.returnType);
+      return wrap(instance, p, q, A.constructType, B.constructType);
     }
   });
 }
