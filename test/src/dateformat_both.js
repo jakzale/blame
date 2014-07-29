@@ -7,8 +7,8 @@ var thenDefaultFormat = then.format();
 
 var thenCustom =  then.format('yyyy/m/d HH:MM');
 
-console.log(Object.prototype.hasOwnProperty.call(then, 'format'));
+//console.log(Object.prototype.hasOwnProperty.call(then, 'format'));
 
-expect(function () {
-    var bad = then.format({});
-}).to.throw();
+//expect(function () {
+//    var bad = then.format({});
+//}).to.throw();

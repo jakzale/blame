@@ -63,12 +63,17 @@ export enum TypeKind {
 }
 
 export interface IType {
+  reporter: IReported;
   description: string;
   kind(): TypeKind;
 }
 
 export class BaseType implements IType {
-  constructor(public description: string, public contract: (any) => boolean) {}
+  public reporter: IReporter;
+
+  constructor(public description: string, public contract: (any) => boolean) {
+    this.reporter = GlobalReporter;
+  }
   public kind(): TypeKind {
     return TypeKind.BaseType;
   }
@@ -427,11 +432,11 @@ function substitute_tyvar_hybrid(target: HybridType, ty: string, new_type: IType
   var new_types: IType[];
   new_types = target.types.map((type) => { return substitute_tyvar(type, ty, new_type); });
 
-  return new FunctionType(new_types);
+  return new HybridType(new_types);
 }
 
 function compatible_base(A: BaseType, B: BaseType): boolean {
-  return A === B;
+  return A.description === B.description;
 }
 
 function compatible_fun(A: FunctionType, B: FunctionType): boolean {
@@ -723,5 +728,14 @@ function wrap_hybrid(value: any, p: Label, q: Label, A: HybridType, B: HybridTyp
   return value;
 }
 
+interface IReporter {
+  report(msg: string): void;
+}
+
+var GlobalReporter : IReporter = {
+  report(msg: string): void {
+    throw new Error(msg);
+  }
+};
 
 // vim: set ts=2 sw=2 sts=2 et :
