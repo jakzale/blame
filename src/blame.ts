@@ -59,7 +59,8 @@ export enum TypeKind {
   ArrayType,
   DictionaryType,
   ObjectType,
-  HybridType
+  HybridType,
+  SumType
 }
 
 export interface IType {
@@ -210,7 +211,8 @@ export class FunctionType implements IType {
   }
 
   public clone(reporter?: IReporter) {
-    return new FunctionType(this.requiredParameters, this.optionalParameters, this.restParameter, this.returnType, this.constructType, reporter || this.reporter);
+    return new FunctionType(this.requiredParameters, this.optionalParameters, this.restParameter, this.returnType, this.constructType,
+        reporter || this.reporter);
   }
 }
 
@@ -220,7 +222,7 @@ export function fun(range: IType[], optional: IType[], rest: IType, ret: IType, 
 
 export function func(...args: IType[]) {
   if (args.length < 0) {
-    throw Error("Func needs at least one argument");
+    throw Error("Panic, Func needs at least one argument");
   }
 
   var returnType: IType = args.pop();
@@ -257,6 +259,9 @@ export class ForallType implements IType {
   }
 
   public clone(reporter?: IReporter): ForallType {
+    if (reporter && reporter !== GlobalReporter) {
+      throw new Error("Panic, sum types with foralls are not suported");
+    }
     return new ForallType(this.tyvar, this.type, reporter || this.reporter);
   }
 }
@@ -277,6 +282,9 @@ export class TypeVariable implements IType {
   }
 
   public clone(reporter?: IReporter): TypeVariable {
+    if (reporter && reporter !== GlobalReporter) {
+      throw new Error("Panic, sum types with foralls are not suported");
+    }
     return new TypeVariable(this.description, reporter || this.reporter);
   }
 }
@@ -320,6 +328,9 @@ class BoundTypeVariable extends TypeVariable {
   }
 
   public clone(reporter?: IReporter): BoundTypeVariable {
+    if (reporter && reporter !== GlobalReporter) {
+      throw new Error("Panic, sum types with foralls are not suported");
+    }
     return new BoundTypeVariable(this.description, this.storage, reporter || this.reporter);
   }
 }
@@ -413,7 +424,7 @@ export class HybridType implements IType {
   constructor(types: IType[], reporter?: IReporter) {
     this.reporter = reporter || GlobalReporter;
     this.types = types.map((type) => { return type.clone(this.reporter); });
-    this.description = "|" + this.types.map((type) => { return type.description; }).join(", ") + "|";
+    this.description = this.types.map((type) => { return type.description; }).join(" && ");
   }
 
   public kind(): TypeKind {
@@ -427,6 +438,30 @@ export class HybridType implements IType {
 
 export function hybrid(...types: IType[]): HybridType {
   return new HybridType(types);
+}
+
+export class SumType implements IType {
+  public description: string;
+  public types: IType[] = [];
+  public reporter: IReporter;
+
+  constructor(types: IType[], reporter?: IReporter) {
+    this.reporter = reporter || GlobalReporter;
+    this.types = types.map((type) => { return type.clone(this.reporter); });
+    this.description = this.types.map((type) => { return type.description; }).join(" || ");
+  }
+
+  public kind(): TypeKind {
+    return TypeKind.SumType;
+  }
+
+  public clone(reporter?: IReporter): SumType {
+    return new SumType(this.types, reporter || this.reporter);
+  }
+}
+
+export function sum(...types: IType[]): SumType {
+  return new SumType(types);
 }
 
 function substitute_tyvar(target: IType, ty: string, new_type: IType): IType {
@@ -455,6 +490,7 @@ function substitute_tyvar(target: IType, ty: string, new_type: IType): IType {
     case TypeKind.HybridType:
       return substitute_tyvar_hybrid(<HybridType> target, ty, new_type);
 
+    // Sum Types are not supported
     default:
       throw new Error("Panic: unsupported type " + target.description +
           "in tyvar substitution");
@@ -559,6 +595,20 @@ function compatible_hybrid(A: HybridType, B: HybridType): boolean {
   return true;
 }
 
+function compatible_sum(A: SumType, B: SumType): boolean {
+  if (A.types.length !== B.types.length) {
+    return false;
+  }
+
+  for (var i = 0, n = A.types.length; i < n; i += 1) {
+    if (A.types[i].kind !== B.types[i].kind) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 export function simple_wrap(value: any, A: IType): any {
   var p = new Label();
 
@@ -610,6 +660,13 @@ export function wrap(value: any, p: Label, q: Label, A: IType, B: IType): any {
         if (compatible_hybrid(<HybridType> A, <HybridType> B)) {
           return wrap_hybrid(value, p, q, <HybridType> A, <HybridType> B);
         }
+        break;
+
+      case TypeKind.SumType:
+        if (compatible_sum(<SumType> A, <SumType> B)) {
+          return wrap_sum(value, p, q, <SumType> A, <SumType> B);
+        }
+        break;
     }
   }
 
@@ -628,7 +685,7 @@ export function wrap(value: any, p: Label, q: Label, A: IType, B: IType): any {
 
 function wrap_base(value: any, p: Label, A: BaseType): any {
   if (!A.contract(value)) {
-    throw new Error(p.msg("not of type " + A.description));
+    A.reporter.report(p.msg("not of type " + A.description));
   }
 
   return value;
@@ -645,11 +702,11 @@ function wrap_fun(value: any, p: Label, q: Label, A: FunctionType, B: FunctionTy
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        throw new Error(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        A.reporter.report(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        throw new Error(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        A.reporter.report(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
       }
 
       var wrapped_args: any[] = [];
@@ -676,11 +733,11 @@ function wrap_fun(value: any, p: Label, q: Label, A: FunctionType, B: FunctionTy
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        throw new Error(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        A.reporter.report(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        throw new Error(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        A.reporter.report(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
       }
 
       var wrapped_args: any[] = [];
@@ -807,6 +864,58 @@ function wrap_obj(value: any, p: Label, q: Label, A: ObjectType, B: ObjectType):
 function wrap_hybrid(value: any, p: Label, q: Label, A: HybridType, B: HybridType): any {
   for (var i = 0, n = A.types.length; i < n; i += 1) {
     value = wrap(value, p, q, A.types[i], B.types[i]);
+  }
+
+  return value;
+}
+
+class SumReporter {
+  private statuses: boolean[] = [];
+
+  constructor(private parentReporter: IReporter) {
+  }
+
+  public getReporter(): IReporter {
+    var i: number = this.statuses.length;
+
+    // Create a slot for the reporter
+    this.statuses.push(true);
+
+    return {
+      report: (msg) => { this.report(msg, i); }
+    };
+  }
+
+  private report(msg: string, i: number): void {
+    // Flag the reporter
+    this.statuses[i] = false;
+
+    // If all elements have failed, report it back to the parent
+    if (!this.statuses.some((stat) => { return stat; })) {
+      this.parentReporter.report(msg);
+    }
+  }
+}
+
+function wrap_sum(value: any, p: Label, q: Label, A: SumType, B: SumType): any {
+  // When wrapping sum create a custom reporter:
+  var reporter: SumReporter = new SumReporter(A.reporter);
+
+  var types_A: IType[] = [];
+  var types_B: IType[] = [];
+  var i, n;
+
+  for (i = 0, n = A.types.length; i < n; i += 1) {
+    var newReporter: IReporter = reporter.getReporter();
+
+    types_A.push(A.types[i].clone(newReporter));
+    types_B.push(B.types[i].clone(newReporter));
+  }
+
+  // In this situation cannot reuse the code for hybrid type
+
+  for (i = 0, n = types_A.length; i < n; i += 1) {
+    value = wrap(value, p, q, types_A[i], types_B[i]);
   }
 
   return value;

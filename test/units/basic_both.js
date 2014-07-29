@@ -26,7 +26,7 @@ forall = blame.forall,
 arr = blame.arr,
 dict = blame.dict,
 hybrid = blame.hybrid,
-//sum = blame.sum,
+sum = blame.sum,
 obj = blame.obj;
 
 function identity (x) { return x; }
@@ -1169,7 +1169,7 @@ describe('Hybrid Types', function () {
       B = obj({length: Num}),
       C = hybrid(A, B);
 
-    expect(C.description).to.eql('|' + A.description + ', ' + B.description + '|');
+    expect(C.description).to.eql(A.description + ' && ' + B.description);
   });
 
   it('should allow to specify array', function () {
@@ -1209,5 +1209,45 @@ describe('Dictionaries', function () {
       a.a = 1;
       expect(a.a).to.equal(1);
   });
+});
+
+describe('Sums', function () {
+  it('should allow to define simple sums', function () {
+    var type = sum(Num, Str);
+
+    wrap('a', p, q, type, type);
+    wrap(1, p, q, type, type);
+
+    expect(function () {
+      wrap({}, p, q, type, type);
+    }).to.throw(p.msg());
+  });
+
+  it('should allow to define ambiguous sums', function () {
+    function goodA () { return 'a'; }
+    function goodB () { return 1; }
+
+    var funcA = fun([Num], [], null, Str),
+      funcB = fun([Str], [], null, Num),
+      type = sum(funcA, funcB),
+      wrappedA = wrap(goodA, p, q, type, type),
+      wrappedB = wrap(goodB, p, q, type, type);
+
+    wrappedA(1);
+    wrappedB('a');
+
+    expect(function () {
+      wrappedA('a');
+    }).to.throw();
+
+    expect(function () {
+      wrappedB(1);
+    }).to.throw();
+
+  });
+
+  //it('should allow for even more ambiguous sums', function () {
+
+  //});
 });
 // vim: set ts=2 sw=2 sts=2 et :
