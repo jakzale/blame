@@ -57,7 +57,8 @@ export enum TypeKind {
   TypeVariable,
   BoundTypeVariable,
   ArrayType,
-  ObjectType
+  ObjectType,
+  HybridType
 }
 
 export interface IType {
@@ -310,7 +311,24 @@ export function obj(properties: TypeDict): ObjectType {
   return new ObjectType(properties);
 }
 
-// TODO Consider adding a new type for a bound type variable
+export class HybridType implements IType {
+  public description: string;
+  public types: IType[] = [];
+
+  constructor(types: IType[]) {
+    this.types = types;
+    this.description = "|" + this.types.map((type) => { return type.description; }).join(", ") + "|";
+  }
+
+  public kind(): TypeKind {
+    return TypeKind.HybridType;
+  }
+}
+
+export function hybrid(...types: IType[]): HybridType {
+  return new HybridType(types);
+}
+
 function substitute_tyvar(target: IType, ty: string, new_type: IType): IType {
   switch (target.kind()) {
     case TypeKind.AnyType:
@@ -333,11 +351,15 @@ function substitute_tyvar(target: IType, ty: string, new_type: IType): IType {
     case TypeKind.ObjectType:
       return substitute_tyvar_obj(<ObjectType> target, ty, new_type);
 
+    case TypeKind.HybridType:
+      return substitute_tyvar_hybrid(<HybridType> target, ty, new_type);
+
     default:
       throw new Error("Panic: unsupported type " + target.description +
           "in tyvar substitution");
   }
 }
+
 
 function substitute_tyvar_fun(target: FunctionType, ty: string, new_type: IType): FunctionType {
   function substitute(p: IType) {
@@ -389,6 +411,13 @@ function substitute_tyvar_obj(target: ObjectType, ty: string, new_type: IType): 
   return new ObjectType(properties);
 }
 
+function substitute_tyvar_hybrid(target: HybridType, ty: string, new_type: IType): HybridType {
+  var new_types: IType[];
+  new_types = target.types.map((type) => { return substitute_tyvar(type, ty, new_type); });
+
+  return new FunctionType(new_types);
+}
+
 function compatible_base(A: BaseType, B: BaseType): boolean {
   return A === B;
 }
@@ -409,6 +438,20 @@ function compatible_obj(A: ObjectType, B: ObjectType): boolean {
       if (!Object.prototype.hasOwnProperty.call(B, key)) {
         return false;
       }
+    }
+  }
+
+  return true;
+}
+
+function compatible_hybrid(A: HybridType, B: HybridType): boolean {
+  if (A.types.length !== B.types.length) {
+    return false;
+  }
+
+  for (var i = 0, n = A.types.length; i < n; i += 1) {
+    if (A.types[i].kind !== B.types[i].kind) {
+      return false;
     }
   }
 
@@ -457,6 +500,11 @@ export function wrap(value: any, p: Label, q: Label, A: IType, B: IType): any {
           return wrap_obj(value, p, q, <ObjectType> A, <ObjectType> B);
         }
         break;
+
+      case TypeKind.HybridType:
+        if (compatible_hybrid(<HybridType> A, <HybridType> B)) {
+          return wrap_hybrid(value, p, q, <HybridType> A, <HybridType> B);
+        }
     }
   }
 
@@ -635,6 +683,14 @@ function wrap_obj(value: any, p: Label, q: Label, A: ObjectType, B: ObjectType):
       target[name] = val;
     }
   });
+}
+
+function wrap_hybrid(value: any, p: Label, q: Label, A: HybridType, B: HybridType): any {
+  for (var i = 0, n = A.types.length; i < n; i += 1) {
+    value = wrap(value, p, q, A.types[i], B.types[i]);
+  }
+
+  return value;
 }
 
 

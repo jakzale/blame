@@ -24,6 +24,7 @@ Void = blame.Void,
 tyvar = blame.tyvar,
 forall = blame.forall,
 arr = blame.arr,
+hybrid = blame.hybrid,
 //sum = blame.sum,
 obj = blame.obj;
 
@@ -62,12 +63,6 @@ values = [1, 'a', true, undefined, empty, []],
 types = [Num, Str, Bool, Void, func(Void), arr(Num)];
 
 describe('Blame module', function () {
-  it('should be imported and populated', function () {
-    [blame, wrap, Label, func, fun, Num, Bool, Str, Void, tyvar, forall, arr, /*sum, */ obj].forEach(function (v) {
-      used(expect(v).to.exist);
-    });
-  });
-
   describe('blame labels', function () {
     it('should initialize properly', function () {
       var l1 = new Label(),
@@ -1164,6 +1159,40 @@ describe('Objects', function () {
       A = new Wrapped(1);
       used(A);
     });
+  });
+});
+
+describe('Hybrid Types', function () {
+  it('should allow to define a hybrid type', function () {
+    var A = arr(Num),
+      B = obj({length: Num}),
+      C = hybrid(A, B);
+
+    expect(C.description).to.eql('|' + A.description + ', ' + B.description + '|');
+  });
+
+  it('should allow to specify array', function () {
+    var A = arr(Num),
+      B = obj({length: Num}),
+      C = hybrid(A, B),
+      a = wrap([], p, q, C, C);
+
+      expect(a.length).to.equal(0);
+
+      expect(function () {
+        a.length = 'a';
+      }).to.throw(q.msg());
+
+      expect(a.length).to.equal(0);
+
+      expect(function () {
+        a[0] = 'a';
+      }).to.throw(q.msg());
+
+      expect(a.length).to.equal(0);
+
+      a[0] = 1;
+      expect(a.length).to.equal(1);
   });
 });
 
