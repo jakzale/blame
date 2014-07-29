@@ -57,6 +57,7 @@ export enum TypeKind {
   TypeVariable,
   BoundTypeVariable,
   ArrayType,
+  DictionaryType,
   ObjectType,
   HybridType
 }
@@ -279,6 +280,16 @@ export function arr(type: IType): ArrayType {
   return new ArrayType(type);
 }
 
+export class DictionaryType extends ArrayType {
+  public kind(): TypeKind {
+    return TypeKind.DictionaryType;
+  }
+}
+
+export function dict(type: IType): DictionaryType {
+  return new DictionaryType(type);
+}
+
 export interface TypeDict {
   [id: string]: IType
 }
@@ -346,6 +357,7 @@ function substitute_tyvar(target: IType, ty: string, new_type: IType): IType {
       return substitute_tyvar_tyvar(<TypeVariable> target, ty, new_type);
 
     case TypeKind.ArrayType:
+    case TypeKind.DictionaryType:
       return substitute_tyvar_arr(<ArrayType> target, ty, new_type);
 
     case TypeKind.ObjectType:
@@ -494,6 +506,10 @@ export function wrap(value: any, p: Label, q: Label, A: IType, B: IType): any {
       case TypeKind.ArrayType:
         // Arrays are always compatible
         return wrap_arr(value, p, q, <ArrayType> A, <ArrayType> B);
+
+      case TypeKind.DictionaryType:
+        // Dictionaries are also compatible
+        return wrap_dict(value, p, q, <DictionaryType> A, <DictionaryType> B);
 
       case TypeKind.ObjectType:
         if (compatible_obj(<ObjectType> A, <ObjectType> B)) {
@@ -654,6 +670,20 @@ function wrap_arr(value: any, p: Label, q: Label, A: ArrayType, B: ArrayType): a
      target[name] = val;
    }
 
+  });
+}
+
+
+// TODO: Check if it applies to the dictionary or the receiver
+function wrap_dict(value: any, p: Label, q: Label, A: DictionaryType, B: DictionaryType): any {
+  return new Proxy(value, {
+    get: function (target: any, name: string, receiver: any): any {
+
+      return wrap(target[name], p, q, A.type, B.type);
+    },
+   set: function (target: any, name: string, val: any, receiver: any): void {
+     target[name] = wrap(val, q, p, B.type, A.type);
+   }
   });
 }
 

@@ -24,6 +24,7 @@ Void = blame.Void,
 tyvar = blame.tyvar,
 forall = blame.forall,
 arr = blame.arr,
+dict = blame.dict,
 hybrid = blame.hybrid,
 //sum = blame.sum,
 obj = blame.obj;
@@ -1196,4 +1197,17 @@ describe('Hybrid Types', function () {
   });
 });
 
+describe('Dictionaries', function () {
+  it('should allow to define a dictionary', function () {
+    var A = dict(Num),
+      a = wrap({}, p, q, A, A);
+
+      expect(function () {
+        a.a = 'a';
+      }).to.throw(q.msg());
+
+      a.a = 1;
+      expect(a.a).to.equal(1);
+  });
+});
 // vim: set ts=2 sw=2 sts=2 et :
