@@ -4,7 +4,15 @@ var count: number = 0;
 
 declare function Proxy(target: any, handler: {}): void;
 
-export class Label {
+
+export interface ILabel {
+  label(): string;
+  status(): boolean;
+  negated(): ILabel;
+  msg(m: string): string;
+}
+
+export class Label implements ILabel {
   private _label: string;
   private _status: boolean;
 
@@ -46,6 +54,34 @@ export class Label {
     }
 
     return "{" + stat + " " + this.label() + "}" + message;
+  }
+}
+
+class SwappableLabel implements ILabel {
+  constructor(private front: ILabel, private back: ILabel) {
+
+  }
+
+  public label(): string {
+    return this.front.label();
+  }
+
+  public status(): boolean {
+    return this.front.status();
+  }
+
+  public negated(): SwappableLabel {
+    return new SwappableLabel(this.front.negated(), this.back.negated());
+  }
+
+  public msg(m: string): string {
+    return this.front.msg(m);
+  }
+
+  public swap(): void {
+    var temp = this.front;
+    this.front = this.back;
+    this.back = this.front;
   }
 }
 
@@ -242,14 +278,14 @@ export class ForallType implements IType {
   constructor(public tyvar: string, type: IType, reporter?: IReporter) {
     this.reporter = reporter || GlobalReporter;
 
-    switch (type.kind()) {
-      case TypeKind.FunctionType:
-      case TypeKind.ForallType:
-        break;
+    //switch (type.kind()) {
+    //  case TypeKind.FunctionType:
+    //  case TypeKind.ForallType:
+    //    break;
 
-      default:
-        throw new Error("Panic, type " + type.description + " not supported for forall");
-    }
+    //  default:
+    //    throw new Error("Panic, type " + type.description + " not supported for forall");
+    //}
 
     this.type = type.clone(this.reporter);
 
@@ -313,7 +349,7 @@ class BoundTypeVariable extends TypeVariable {
     return t;
   }
 
-  public unseal(t: Token, q: Label): any {
+  public unseal(t: Token, q: ILabel): any {
     if (!(t instanceof Token)) {
       this.reporter.report(q.negated().msg(t + " is not a sealed token (" + this.description + ")"));
     }
@@ -712,7 +748,7 @@ export function simple_wrap(value: any, A: IType): any {
   return wrap(value, p, p.negated(), A, A);
 }
 
-export function wrap(value: any, p: Label, q: Label, A: IType, B: IType): any {
+export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any {
   var a: TypeKind = A.kind();
   var b: TypeKind = B.kind();
 
@@ -787,7 +823,7 @@ export function wrap(value: any, p: Label, q: Label, A: IType, B: IType): any {
   throw new Error("Panic, A: " + A.description + " and B: " + B.description + " are not compatible");
 }
 
-function wrap_base(value: any, p: Label, A: BaseType): any {
+function wrap_base(value: any, p: ILabel, A: BaseType): any {
   if (!A.contract(value)) {
     A.reporter.report(p.msg("not of type " + A.description));
   }
@@ -795,7 +831,7 @@ function wrap_base(value: any, p: Label, A: BaseType): any {
   return value;
 }
 
-function wrap_fun(value: any, p: Label, q: Label, A: FunctionType, B: FunctionType) {
+function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: FunctionType) {
   // Checking if value is a function
   value = wrap_base(value, p, Fun);
 
@@ -866,30 +902,45 @@ function wrap_fun(value: any, p: Label, q: Label, A: FunctionType, B: FunctionTy
       var instance = Object.create(target.prototype);
 
       // Create wrapped instance for the constructor;
-      // Swapping the labels
+      var q_p: SwappableLabel = new SwappableLabel(q, p);
+      var p_q: SwappableLabel = new SwappableLabel(p, q);
+
       // Eager constructor enforcement
-      var cons_instance = wrap(instance, q, p, A.constructType, B.constructType);
+      var cons_instance = wrap(instance, q_p, p_q, A.constructType, B.constructType);
 
       target.apply(cons_instance, wrapped_args);
 
+
+      // Swapping the labels
+      q_p.swap();
+      p_q.swap();
+
       // Returning wrapped instance for the rest of the program
-      return wrap(instance, p, q, A.constructType, B.constructType);
+      return cons_instance;
     }
   });
 }
 
+function wrap_forall(value: any, p: ILabel, q: ILabel, A: ForallType, B: ForallType): any {
+  //value = wrap_base(value, p, Fun);
 
-function wrap_forall(value: any, p: Label, q: Label, A: ForallType, B: ForallType): any {
-  value = wrap_base(value, p, Fun);
+  function fresh_wrap(value: any): any {
+    var XX = new BoundTypeVariable(A.tyvar + "'");
+
+    var A_XX: IType = substitute_tyvar(A.type, A.tyvar, XX);
+    var B_prim: IType = substitute_tyvar(B.type, B.tyvar, Any);
+
+    return wrap(value, p, q, A_XX, B_prim);
+  }
+
+  if (typeof value !== "function") {
+    return fresh_wrap(value);
+  }
 
   return new Proxy(value, {
     apply: function (target: any, thisValue: any, args: any[]): any {
-      var XX = new BoundTypeVariable(A.tyvar + "'");
 
-      var A_XX: IType = substitute_tyvar(A.type, A.tyvar, XX);
-      var B_prim: IType = substitute_tyvar(B.type, B.tyvar, Any);
-
-      var wrapped_fun = wrap(target, p, q, A_XX, B_prim);
+      var wrapped_fun = fresh_wrap(target);
 
       return wrapped_fun.apply(thisValue, args);
     }
@@ -902,7 +953,7 @@ function is_index(value: string): boolean {
   return value === index.toString() && index !== (-1 >>> 0);
 }
 
-function wrap_arr(value: any, p: Label, q: Label, A: ArrayType, B: ArrayType): any {
+function wrap_arr(value: any, p: ILabel, q: ILabel, A: ArrayType, B: ArrayType): any {
   value = wrap_base(value, p, Arr);
 
   return new Proxy(value, {
@@ -929,7 +980,7 @@ function wrap_arr(value: any, p: Label, q: Label, A: ArrayType, B: ArrayType): a
 
 
 // TODO: Check if it applies to the dictionary or the receiver
-function wrap_dict(value: any, p: Label, q: Label, A: DictionaryType, B: DictionaryType): any {
+function wrap_dict(value: any, p: ILabel, q: ILabel, A: DictionaryType, B: DictionaryType): any {
   var type: string = typeof value;
   if (type !== "object" && type !== "function" || !value) {
     A.reporter.report(p.msg("not of Indexable type"));
@@ -947,7 +998,7 @@ function wrap_dict(value: any, p: Label, q: Label, A: DictionaryType, B: Diction
   });
 }
 
-function wrap_obj(value: any, p: Label, q: Label, A: ObjectType, B: ObjectType): any {
+function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType): any {
   var type: string = typeof value;
   if (type !== "object" && type !== "function" || !value) {
     A.reporter.report(p.msg("not of type Obj"));
@@ -979,7 +1030,7 @@ function wrap_obj(value: any, p: Label, q: Label, A: ObjectType, B: ObjectType):
   });
 }
 
-function wrap_hybrid(value: any, p: Label, q: Label, A: HybridType, B: HybridType): any {
+function wrap_hybrid(value: any, p: ILabel, q: ILabel, A: HybridType, B: HybridType): any {
   for (var i = 0, n = A.types.length; i < n; i += 1) {
     value = wrap(value, p, q, A.types[i], B.types[i]);
   }
@@ -1017,7 +1068,7 @@ class SumReporter {
   }
 }
 
-function wrap_sum(value: any, p: Label, q: Label, A: SumType, B: SumType): any {
+function wrap_sum(value: any, p: ILabel, q: ILabel, A: SumType, B: SumType): any {
   // When wrapping sum create a custom reporter:
   var reporter: SumReporter = new SumReporter(A.reporter);
 
@@ -1079,7 +1130,7 @@ function wrap_sum(value: any, p: Label, q: Label, A: SumType, B: SumType): any {
   return value;
 }
 
-function wrap_lazy(value: any, p: Label, q: Label, A: LazyType, B: LazyType): any {
+function wrap_lazy(value: any, p: ILabel, q: ILabel, A: LazyType, B: LazyType): any {
   return wrap(value, p, q, A.resolve(), B.resolve());
 }
 

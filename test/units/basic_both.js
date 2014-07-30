@@ -1324,7 +1324,7 @@ describe('recursive types', function () {
 
   describe('lazy types', function () {
     it('should allow to define recursive types', function () {
-      var typeCache = new LazyTypeCache;
+      var typeCache = new LazyTypeCache();
       var MyObj = obj({n: func(Num), p: func(Num, typeCache.get('MyObj'))});
 
       function Counter(n) {
@@ -1367,5 +1367,63 @@ describe('recursive types', function () {
       }).to.throw(p.msg());
     });
   });
+
+  describe('foralls', function () {
+    it('should allow to define recursive forall type', function () {
+      var typeCache = new LazyTypeCache();
+      var MyObj = obj({put: func(tyvar('X'), typeCache.get('MyObj')), get: func(tyvar('X'))});
+      typeCache.set('MyObj', MyObj);
+
+      var FactType = forall('X', func(tyvar('X'), typeCache.get('MyObj')));
+
+      function Constructor(x) {
+        this.get = function () {
+          return x;
+        };
+
+        this.put = function (n) {
+          return new Constructor(n);
+        };
+      }
+
+      function Factory(x) {
+        return new Constructor(x);
+      }
+
+      var f = wrap(Factory, p, q, FactType, FactType);
+
+      expect(f(1).put(2).put('a').put(3).get()).to.equal(3);
+    });
+
+    it('should detect recursive error', function () {
+      var typeCache = new LazyTypeCache();
+      var MyObj = obj({put: func(tyvar('X'), typeCache.get('MyObj')), get: func(tyvar('X'))});
+      typeCache.set('MyObj', MyObj);
+
+      var FactType = forall('X', func(tyvar('X'), typeCache.get('MyObj')));
+
+      function Constructor(x) {
+        used(x);
+        this.get = function () {
+          return 3;
+        };
+
+        this.put = function (n) {
+          return new Constructor(n);
+        };
+      }
+
+      function Factory(x) {
+        return new Constructor(x);
+      }
+
+      var f = wrap(Factory, p, q, FactType, FactType);
+
+      expect(function () {
+        f(1).put(2).put('a').put(3).get();
+      }).to.throw(q.negated().msg());
+    });
+  });
+
 });
 // vim: set ts=2 sw=2 sts=2 et :
