@@ -113,11 +113,11 @@ export var Void = new BaseType("Void", function (value: any): boolean {
 });
 
 // Private BaseTypes, used by other types
-var Obj = new BaseType("Obj", function (value: any): boolean {
+export var Obj = new BaseType("Obj", function (value: any): boolean {
   return typeof value === "object";
 });
 
-var Fun = new BaseType("Fun", function (value: any): boolean {
+export var Fun = new BaseType("Fun", function (value: any): boolean {
   return typeof value === "function";
 });
 
@@ -703,10 +703,14 @@ function wrap_fun(value: any, p: Label, q: Label, A: FunctionType, B: FunctionTy
 
       if (nArgs < minArgs) {
         A.reporter.report(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        // Pass through the unwrapped value
+        return target.apply(thisValue, args);
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
         A.reporter.report(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        // Pass through the unwrapped value
+        return target.apply(thisValue, args);
       }
 
       var wrapped_args: any[] = [];
@@ -822,6 +826,12 @@ function wrap_arr(value: any, p: Label, q: Label, A: ArrayType, B: ArrayType): a
 
 // TODO: Check if it applies to the dictionary or the receiver
 function wrap_dict(value: any, p: Label, q: Label, A: DictionaryType, B: DictionaryType): any {
+  var type: string = typeof value;
+  if (type !== "object" && type !== "function" || !value) {
+    A.reporter.report(p.msg("not of Indexable type"));
+    return value;
+  }
+
   return new Proxy(value, {
     get: function (target: any, name: string, receiver: any): any {
 
@@ -835,7 +845,7 @@ function wrap_dict(value: any, p: Label, q: Label, A: DictionaryType, B: Diction
 
 function wrap_obj(value: any, p: Label, q: Label, A: ObjectType, B: ObjectType): any {
   var type: string = typeof value;
-  if (type !== 'object' && type !== 'function' && !type) {
+  if (type !== "object" && type !== "function" || !value) {
     A.reporter.report(p.msg("not of type Obj"));
     return value;
   }

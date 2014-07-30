@@ -257,7 +257,7 @@ class BlameCompiler {
     // Check if symbol is already declared
     if (this.typeCache.isDeclared(name)) {
       logger.log("skipping already declared symbol");
-      return "";
+      return;
     }
 
     var type: string = this.parseType(symbol.type, logger.next());
@@ -369,7 +369,7 @@ class BlameCompiler {
         var ignored = logger.next(true);
         // Forcing the declaration mode, to prevent using the typeCache
         this.parseObjectLikeType(type, ignored);
-        return "";
+        return "Blame.Num";
 
 
       default:
@@ -475,25 +475,71 @@ class BlameCompiler {
     return "Blame.sum(" + signatures.join(", ") + ")";
   }
 
+  private parseIndexSignature(indexSignature: TypeScript.PullSignatureSymbol, logger: ILogger): string {
+    logger.log("index signature");
+    var index: TypeScript.PullSymbol = indexSignature.parameters[0];
+    if (index && index.type) {
+      logger.log("index type: " + index.type.getDisplayName());
+    }
+
+    var retType: TypeScript.PullTypeSymbol = indexSignature.returnType;
+
+    if (retType) {
+      logger.log("return type: ");
+      return this.parseType(retType, logger.next());
+    }
+
+    return "";
+  }
+
 
   private parseObjectLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger, declaration?: boolean): string {
     var name: string = type.getTypeName();
     var typeName: string = type.getDisplayName();
     var next: ILogger = logger.next();
 
+    var declarations: string[] = [];
+
     logger.log("object type: " + name);
 
-    // If it is an array:
+    // Handling guild it types
+    switch(typeName) {
+      case "Function":
+        return "Blame.Fun";
+
+      case "Object":
+        return "Blame.Obj";
+    }
     if (typeName === "Array") {
       logger.log("element type: ");
       return "Blame.arr(" + this.parseType(type.getElementType(), next) + ")";
     }
+
+    if (type.hasOwnIndexSignatures()) {
+      logger.log("indexable");
+      type.getIndexSignatures().forEach((signature) => {
+        var indexSignature: string = this.parseIndexSignature(signature, next);
+        var idSignature: string = this.parseType(signature.parameters[0].type, next);
+
+        switch (idSignature) {
+          case "Blame.Num":
+            declarations.unshift("Blame.arr(" + indexSignature + ")");
+            break;
+          case "Blame.Str":
+            declarations.unshift("Blame.dict(" + indexSignature + ")");
+            break;
+        }
+      });
+    }
+
 
     if (!declaration && type.isNamedTypeSymbol()) {
       var bname: string = this.typeCache.get(name);
       logger.log("load type: " + name + " -> " + bname);
       return bname;
     }
+
+    // If it is indexable:
 
     var members: string = this.parseTypeMembers(type, next);
 
@@ -503,7 +549,23 @@ class BlameCompiler {
       return "";
     }
 
-    return "Blame.obj({" + members + "})";
+    // Add members
+    if (members.length > 0) {
+      declarations.push("Blame.obj({" + members + "})");
+    }
+
+    // Compose the resulting type
+    if (declarations.length === 0) {
+      return "Blame.obj({})";
+    }
+
+    if (declarations.length === 1) {
+      return declarations[0];
+    }
+
+    // Return a hybrid type
+
+    return "Blame.hybrid(" + declarations.join(", ") + ")";
   }
 
 

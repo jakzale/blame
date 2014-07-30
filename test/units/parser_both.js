@@ -104,7 +104,16 @@ describe('variable declaration', function () {
         var source = 'declare function f(): number; declare function f(b: boolean): string;';
         var desired = 'f = Blame.simple_wrap(f, Blame.sum(Blame.fun([], [], null, Blame.Num), Blame.fun([Blame.Bool], [], null, Blame.Str)));';
 
-        expect(parser.compileFromString(source, true)).to.equal(desired);
+        expect(parser.compileFromString(source)).to.equal(desired);
+      });
+    });
+
+    describe('dictionaries', function () {
+      it('should allow to define typeless dict', function () {
+        var source = 'declare var d: { [id: string]: number };';
+        var desired = 'd = Blame.simple_wrap(d, Blame.dict(Blame.Num));';
+
+        expect(parser.compileFromString(source)).to.equal(desired);
       });
     });
   });
@@ -205,14 +214,14 @@ describe('function declaration', function () {
 describe('enum declaration', function () {
   it('should ignore enum declaration', function () {
     var source = 'declare enum Color {Red, Green, Blue}';
-    var desired = 'Color = Blame.simple_wrap(Color, Blame.obj({}));';
+    var desired = 'Color = Blame.simple_wrap(Color, Blame.hybrid(Blame.arr(Blame.Str), Blame.obj({Blue: Blame.Num, Green: Blame.Num, Red: Blame.Num})));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should ignore enum declaration with values', function () {
     var source = 'declare enum Color {Red = 1, Green = 2, Blue = 4}';
-    var desired = 'Color = Blame.simple_wrap(Color, Blame.obj({}));';
+    var desired = 'Color = Blame.simple_wrap(Color, Blame.hybrid(Blame.arr(Blame.Str), Blame.obj({Blue: Blame.Num, Green: Blame.Num, Red: Blame.Num})));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
@@ -326,6 +335,7 @@ describe('interface declaration', function () {
   });
 });
 
+
 describe('internal modules', function () {
   it('should allow to define an empty module', function () {
     // An Empty module produces no code
@@ -347,5 +357,32 @@ describe('internal modules', function () {
   });
 });
 
+
+describe('routie test', function () {
+  it('should work', function () {
+    var source = [
+      'interface Route {',
+      '    constructor(path: string, name: string): Route;',
+      '    addHandler(fn: Function): void;',
+      '    removeHandler(fn: Function): void;',
+      '    run(params: any): void;',
+      '    match(path: string, params: any): boolean;',
+      '    toURL(params: any): string;',
+      '}',
+      '',
+      'declare function routie(path: string): void;',
+      'declare function routie(path: string, fn: Function): void;',
+      'declare function routie(routes: { [key: string]: Function }): void;'
+    ].join("\n");
+
+    var desired = [
+      'var Blame_Route;',
+      'Blame_Route = Blame.obj({addHandler: Blame.fun([Blame.Fun], [], null, Blame.Void), constructor: Blame.fun([Blame.Str, Blame.Str], [], null, Blame_Route), match: Blame.fun([Blame.Str, Blame.Any], [], null, Blame.Bool), removeHandler: Blame.fun([Blame.Fun], [], null, Blame.Void), run: Blame.fun([Blame.Any], [], null, Blame.Void), toURL: Blame.fun([Blame.Any], [], null, Blame.Str)});',
+      'routie = Blame.simple_wrap(routie, Blame.sum(Blame.fun([Blame.Str], [], null, Blame.Void), Blame.fun([Blame.Str, Blame.Fun], [], null, Blame.Void), Blame.fun([Blame.dict(Blame.Fun)], [], null, Blame.Void)));'
+    ].join("\n");
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+});
 
 // vim: set ts=2 sw=2 sts=2 et :
