@@ -834,7 +834,11 @@ function wrap_dict(value: any, p: Label, q: Label, A: DictionaryType, B: Diction
 }
 
 function wrap_obj(value: any, p: Label, q: Label, A: ObjectType, B: ObjectType): any {
-  //value = wrap_base(value, p, Obj);
+  var type: string = typeof value;
+  if (type !== 'object' && type !== 'function' && !type) {
+    A.reporter.report(p.msg("not of type Obj"));
+    return value;
+  }
 
   return new Proxy(value, {
     get: function (target: any, name: string, receiver: any): any {
@@ -880,6 +884,7 @@ class SumReporter {
 
     // Create a slot for the reporter
     this.statuses.push(true);
+    //console.log('create reporter ' + i);
 
     return {
       report: (msg) => { this.report(msg, i); }
@@ -889,6 +894,7 @@ class SumReporter {
   private report(msg: string, i: number): void {
     // Flag the reporter
     this.statuses[i] = false;
+    //console.log(msg, i);
 
     // If all elements have failed, report it back to the parent
     if (!this.statuses.some((stat) => { return stat; })) {
@@ -905,14 +911,52 @@ function wrap_sum(value: any, p: Label, q: Label, A: SumType, B: SumType): any {
   var types_B: IType[] = [];
   var i, n;
 
-  for (i = 0, n = A.types.length; i < n; i += 1) {
+  // Sums of functional types are generated in a slightly different way
+  // Generate them separately
+  var isFuncType = (type) => { return type.kind() === TypeKind.FunctionType; };
+  var notFuncType = (type) => { return type.kind() !== TypeKind.FunctionType; };
+  var func_types_A: IType[] = A.types.filter(isFuncType);
+  var func_types_B: IType[] = B.types.filter(isFuncType);
+
+  var non_func_types_A: IType[] = A.types.filter(notFuncType);
+  var non_func_types_B: IType[] = B.types.filter(notFuncType);
+
+
+  for (i = 0, n = non_func_types_A.length; i < n; i += 1) {
     var newReporter: IReporter = reporter.getReporter();
 
-    types_A.push(A.types[i].clone(newReporter));
-    types_B.push(B.types[i].clone(newReporter));
+    types_A.push(non_func_types_A[i].clone(newReporter));
+    types_B.push(non_func_types_B[i].clone(newReporter));
   }
 
   // In this situation cannot reuse the code for hybrid type
+
+  // wrapping the function types
+  if (typeof value === "function") {
+    var funcReporter: IReporter = reporter.getReporter();
+
+    value = new Proxy(value, {
+      apply: function (target, thisValue, args) {
+        // Perform sum wrapping here
+        var callReporter = new SumReporter(funcReporter);
+        var call_types_A = [];
+        var call_types_B = [];
+
+        for (i = 0, n = func_types_A.length; i < n; i += 1) {
+          var call_newReporter = callReporter.getReporter();
+
+          call_types_A.push(func_types_A[i].clone(call_newReporter));
+          call_types_B.push(func_types_B[i].clone(call_newReporter));
+        }
+
+        for (i = 0, n = call_types_A.length; i < n; i += 1) {
+          target = wrap(target, p, q, call_types_A[i], call_types_B[i]);
+        }
+
+        return target.apply(thisValue, args);
+      }
+    });
+  }
 
   for (i = 0, n = types_A.length; i < n; i += 1) {
     value = wrap(value, p, q, types_A[i], types_B[i]);
