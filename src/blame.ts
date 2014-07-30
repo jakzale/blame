@@ -700,6 +700,10 @@ function compatible_sum(A: SumType, B: SumType): boolean {
   return true;
 }
 
+function compatible_lazy(A: LazyType, B: LazyType): boolean {
+  return A.description === B.description;
+}
+
 export function simple_wrap(value: any, A: IType): any {
   var p = new Label();
 
@@ -756,6 +760,13 @@ export function wrap(value: any, p: Label, q: Label, A: IType, B: IType): any {
       case TypeKind.SumType:
         if (compatible_sum(<SumType> A, <SumType> B)) {
           return wrap_sum(value, p, q, <SumType> A, <SumType> B);
+        }
+        break;
+
+      case TypeKind.BoundLazyType:
+      case TypeKind.LazyType:
+        if (compatible_lazy(<LazyType> A, <LazyType> B)) {
+          return wrap_lazy(value, p, q, <LazyType> A, <LazyType> B);
         }
         break;
     }
@@ -1064,6 +1075,10 @@ function wrap_sum(value: any, p: Label, q: Label, A: SumType, B: SumType): any {
   }
 
   return value;
+}
+
+function wrap_lazy(value: any, p: Label, q: Label, A: LazyType, B: LazyType): any {
+  return wrap(value, p, q, A.resolve(), B.resolve());
 }
 
 
