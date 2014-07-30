@@ -106,6 +106,7 @@ class TypeCache {
   private requested: string[];
   private notEmpty_: boolean;
   private declarations: string[];
+  private typeDeclarations: {[id: string]: string};
   private declaredSymbols: {[id: string]: boolean};
 
   constructor() {
@@ -114,6 +115,7 @@ class TypeCache {
     this.requested = [];
     this.notEmpty_ = false;
     this.declarations = [];
+    this.typeDeclarations = Object.create(null);
   }
 
 
@@ -136,26 +138,6 @@ class TypeCache {
     return this.notEmpty_;
   }
 
-  public getBindings(): string {
-    var bindings: string[] = [];
-
-    var that = this;
-    for (var key in this.defined) {
-      if (Object.prototype.hasOwnProperty.call(this.defined, key)) {
-        bindings.push(this.defined[key]);
-      }
-    }
-    this.requested.forEach(function (key: string): void {
-      if (!Object.prototype.hasOwnProperty.call(that.defined, key)) {
-        console.log(bindings);
-
-        throw new Error("Panic, type: " + key + ", was never defined");
-      }
-    });
-
-
-    return "var " + bindings.sort().join(", ") + ";";
-  }
 
   public addGlobalDeclaration(identifier: string, type: string): void {
     var declaration: string = identifier + " = Blame.simple_wrap(" + identifier + ", " + type + ");";
@@ -166,16 +148,56 @@ class TypeCache {
   public addTypeDeclaration(name: string, type: string): void {
     var bname = this.add(name);
     var declaration: string = bname + " = " + type + ";";
-    this.declarations.push(declaration);
+    this.typeDeclarations[name] = declaration;
+  }
+
+
+  private getBindings(): string[] {
+    var bindings: string[] = [];
+    var declared: {[id: string]: boolean} = Object.create(null);
+
+    this.requested.forEach((key) => {
+      if (!Object.prototype.hasOwnProperty.call(this.defined, key)) {
+        throw new Error("Panic, type: " + key + ", was never defined");
+      }
+
+      if (!Object.prototype.hasOwnProperty.call(declared, key)) {
+        declared[key] = true;
+        bindings.push(key);
+      }
+    });
+
+    // Now add all declared types that were not used
+    for (var key in this.typeDeclarations) {
+      if (Object.prototype.hasOwnProperty.call(this.typeDeclarations, key)) {
+        if (!Object.prototype.hasOwnProperty.call(declared, key)) {
+          bindings.push(key);
+        }
+      }
+    }
+
+    return bindings;
   }
 
   public generateDeclarations(): string {
     var variables: string = "";
+    var bindings: string[] = this.getBindings();
+
+    // Generate variable bindings
     if (this.notEmpty()) {
-      variables = this.getBindings() + "\n";
+      variables = "var " + bindings.map(this.to_bname).sort().join(", ") + ";";
     }
 
-    return variables + this.declarations.join("\n");
+    // Generate requested type definitions
+    var out: string[] = bindings.map((name) => {
+      return this.typeDeclarations[name];
+    });
+
+    if (variables) {
+      out.unshift(variables);
+    }
+
+    return out.concat(this.declarations).join("\n");
   }
 
   public isDeclared(name: string): boolean {
@@ -368,7 +390,7 @@ class BlameCompiler {
         logger.log("ignored type: " + kind);
         var ignored = logger.next(true);
         // Forcing the declaration mode, to prevent using the typeCache
-        this.parseObjectLikeType(type, ignored);
+        //this.parseObjectLikeType(type, ignored);
         return "Blame.Num";
 
 
