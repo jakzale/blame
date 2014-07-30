@@ -20,6 +20,7 @@ module.exports = function(config) {
       //'lib/date.format.js',
       // Loading libraries to test:
       'bower_components/routie/dist/routie.js',
+      'bower_components/platform/platform.js',
       'test/gen/bundle-tests.js'
     ],
 
