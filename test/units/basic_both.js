@@ -1263,7 +1263,6 @@ describe('Sums', function () {
       funcB = fun([objAS], [], null, objAN),
       type = sum(funcA, funcB),
       wrappedA = wrap(goodA, p, q, type, type),
-      wrappedB = wrap(goodB, p, q, type, type),
       o;
 
     expect(function () {
@@ -1277,6 +1276,9 @@ describe('Sums', function () {
     expect(function () {
       used(o.a);
     }).to.throw();
+
+    o = wrappedA({a: 'a'});
+    expect(o.a).to.equal(1);
 
   });
 });
