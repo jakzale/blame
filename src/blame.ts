@@ -61,7 +61,8 @@ export enum TypeKind {
   ObjectType,
   HybridType,
   SumType,
-  LazyType
+  LazyType,
+  BoundLazyType
 }
 
 export interface IType {
@@ -493,7 +494,7 @@ export class LazyTypeCache {
 
   public verify(): boolean {
     return this.requested.every((name) => {
-      return Object.prototype.hasOwnProperty(this.typeCache, name);
+      return Object.prototype.hasOwnProperty.call(this.typeCache, name);
     });
   }
 }
@@ -501,7 +502,7 @@ export class LazyTypeCache {
 export class LazyType {
   public reporter: IReporter;
 
-  constructor(public description: string, private resolver: () => IType, reporter?: IReporter) {
+  constructor(public description: string, public resolver: () => IType, reporter?: IReporter) {
     this.reporter = reporter || GlobalReporter;
   }
 
@@ -515,6 +516,23 @@ export class LazyType {
 
   public resolve(): IType {
     return this.resolver().clone(this.reporter);
+  }
+}
+
+export class BoundLazyType extends LazyType {
+  public reporter: IReporter;
+
+  constructor(type: LazyType, public ty: string, private new_type: IType) {
+    super(type.description, type.resolver, type.reporter);
+  }
+
+  public clone(reporter?: IReporter): BoundLazyType {
+    var lt: LazyType = new LazyType(this.description, this.resolver, reporter || this.reporter);
+    return new BoundLazyType(lt, this.ty, this.new_type);
+  }
+
+  public resolve(): IType {
+    return substitute_tyvar(this.resolver().clone(this.reporter), this.ty, this.new_type);
   }
 }
 
@@ -543,6 +561,12 @@ function substitute_tyvar(target: IType, ty: string, new_type: IType): IType {
 
     case TypeKind.HybridType:
       return substitute_tyvar_hybrid(<HybridType> target, ty, new_type);
+
+    case TypeKind.LazyType:
+      return substitute_tyvar_lazy(<LazyType> target, ty, new_type);
+
+    case TypeKind.BoundLazyType:
+      return substitute_tyvar_bound_lazy(<BoundLazyType> target, ty, new_type);
 
     // Sum Types are not supported
     default:
@@ -608,6 +632,19 @@ function substitute_tyvar_hybrid(target: HybridType, ty: string, new_type: IType
 
   return new HybridType(new_types);
 }
+
+function substitute_tyvar_lazy(target: LazyType, ty: string, new_type: IType): BoundLazyType {
+  return new BoundLazyType(target, ty, new_type);
+}
+
+function substitute_tyvar_bound_lazy(target: BoundLazyType, ty: string, new_type: IType): IType {
+  if (target.ty === ty) {
+    return target;
+  }
+
+  return substitute_tyvar(target.resolve(), ty, new_type);
+}
+
 
 function compatible_base(A: BaseType, B: BaseType): boolean {
   return A.description === B.description;
