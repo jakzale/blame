@@ -98,6 +98,15 @@ describe('variable declaration', function () {
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
+
+    describe('overloading', function () {
+      it('should allow to define simple overloading', function () {
+        var source = 'declare function f(): number; declare function f(b: boolean): string;';
+        var desired = 'f = Blame.simple_wrap(f, Blame.sum(Blame.fun([], [], null, Blame.Num), Blame.fun([Blame.Bool], [], null, Blame.Str)));';
+
+        expect(parser.compileFromString(source, true)).to.equal(desired);
+      });
+    });
   });
 
 
@@ -335,13 +344,6 @@ describe('internal modules', function () {
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
-  });
-});
-
-describe('random test', function () {
-  it('should work', function () {
-    var source = 'interface Date {}';
-    parser.compileFromString(source);
   });
 });
 

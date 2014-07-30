@@ -106,9 +106,11 @@ class TypeCache {
   private requested: string[];
   private notEmpty_: boolean;
   private declarations: string[];
+  private declaredSymbols: {[id: string]: boolean};
 
   constructor() {
     this.defined = Object.create(null);
+    this.declaredSymbols = Object.create(null);
     this.requested = [];
     this.notEmpty_ = false;
     this.declarations = [];
@@ -138,17 +140,19 @@ class TypeCache {
     var bindings: string[] = [];
 
     var that = this;
-    this.requested.forEach(function (key: string): void {
-      if (!Object.prototype.hasOwnProperty.call(that.defined, key)) {
-        throw new Error("Panic, type: " + key + ", was never defined");
-      }
-    });
-
     for (var key in this.defined) {
       if (Object.prototype.hasOwnProperty.call(this.defined, key)) {
         bindings.push(this.defined[key]);
       }
     }
+    this.requested.forEach(function (key: string): void {
+      if (!Object.prototype.hasOwnProperty.call(that.defined, key)) {
+        console.log(bindings);
+
+        throw new Error("Panic, type: " + key + ", was never defined");
+      }
+    });
+
 
     return "var " + bindings.sort().join(", ") + ";";
   }
@@ -156,6 +160,7 @@ class TypeCache {
   public addGlobalDeclaration(identifier: string, type: string): void {
     var declaration: string = identifier + " = Blame.simple_wrap(" + identifier + ", " + type + ");";
     this.declarations.push(declaration);
+    this.declaredSymbols[identifier] = true;
   }
 
   public addTypeDeclaration(name: string, type: string): void {
@@ -171,6 +176,10 @@ class TypeCache {
     }
 
     return variables + this.declarations.join("\n");
+  }
+
+  public isDeclared(name: string): boolean {
+    return Object.prototype.hasOwnProperty.call(this.declaredSymbols, name);
   }
 
   private to_bname(name: string): string {
@@ -244,6 +253,13 @@ class BlameCompiler {
     var name: string = symbol.getDisplayName();
     logger.log("symbol name: " + name);
 
+
+    // Check if symbol is already declared
+    if (this.typeCache.isDeclared(name)) {
+      logger.log("skipping already declared symbol");
+      return "";
+    }
+
     var type: string = this.parseType(symbol.type, logger.next());
 
     // Checking if the type is not ignored:
@@ -267,8 +283,10 @@ class BlameCompiler {
       return "";
     }
 
+
     var name: string = type.getTypeName();
     logger.log("type name: " + name);
+
 
     // Parsing Members
     var parsedMembers: string[] = [];
@@ -382,6 +400,50 @@ class BlameCompiler {
     }
   }
 
+  private parseCallSignature(callSignature: TypeScript.PullSignatureSymbol, logger: ILogger): string {
+    var next: ILogger = logger.next();
+
+    logger.log("call singature");
+
+    var requiredParameters: string[] = [];
+    var optionalParameters: string[] = [];
+    var restType: string = "null";
+    var returnType: string = "null";
+
+    var parameters: TypeScript.PullSymbol[] = callSignature.parameters;
+
+    var parseParameterSymbol: (symbol: TypeScript.PullSymbol) => string = (symbol) => {
+      next.log("parameter: " + symbol.getDisplayName());
+
+      return this.parseType(symbol.type, next);
+    };
+
+    logger.log("required parameters: ");
+    requiredParameters = parameters.filter(not(isRest)).filter(not(isOptional)).map(parseParameterSymbol);
+
+    logger.log("optional parameters: ");
+    optionalParameters = parameters.filter(not(isRest)).filter(isOptional).map(parseParameterSymbol);
+
+
+    if (callSignature.hasVarArgs) {
+      logger.log("rest parameter: ");
+      var elementType: TypeScript.PullTypeSymbol = (parameters.filter(isRest)[0]).type.getElementType();
+      restType = this.parseType(elementType, next);
+    }
+
+    if (callSignature.returnType) {
+      logger.log("return type:");
+      returnType = this.parseType(callSignature.returnType, next);
+    }
+
+
+    var output: string = "Blame.fun([" + requiredParameters.join(", ") + "], " +
+      "[" + optionalParameters.join(", ") + "], " +
+      restType + ", " +
+      returnType + ")";
+
+    return output;
+  }
 
   private parseFunctionLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger): string {
     var callSignatures: TypeScript.PullSignatureSymbol[];
@@ -393,56 +455,24 @@ class BlameCompiler {
       callSignatures = type.getCallSignatures();
     }
 
-    //if (callSignatures.length > 1) {
-    //  throw new Error("Panic, Functions with more than one call singature not supported: " + type.getFunctionSymbol().name);
-    //}
-
-    var requiredParameters: string[] = [];
-    var optionalParameters: string[] = [];
-    var restType: string = "null";
-    var returnType: string = "null";
-
     logger.log("call signatures: ", callSignatures.length);
+    var next: ILogger = logger.next();
 
-    if (callSignatures.length > 0) {
+    var signatures: string[] = callSignatures.map((signature) => {
+      return this.parseCallSignature(signature, next);
+    });
 
-      var next: ILogger = logger.next();
-      var nextNext: ILogger = next.next();
-
-      var callSignature: TypeScript.PullSignatureSymbol = callSignatures[0];
-      var parameters: TypeScript.PullSymbol[] = callSignature.parameters;
-
-      var parseParameterSymbol: (symbol: TypeScript.PullSymbol) => string = (symbol) => {
-        next.log("parameter: " + symbol.getDisplayName());
-
-        return this.parseType(symbol.type, nextNext);
-      };
-
-      logger.log("required parameters: ");
-      requiredParameters = parameters.filter(not(isRest)).filter(not(isOptional)).map(parseParameterSymbol);
-
-      logger.log("optional parameters: ");
-      optionalParameters = parameters.filter(not(isRest)).filter(isOptional).map(parseParameterSymbol);
-
-
-      if (callSignature.hasVarArgs) {
-        logger.log("rest parameter: ");
-        var elementType: TypeScript.PullTypeSymbol = (parameters.filter(isRest)[0]).type.getElementType();
-        restType = this.parseType(elementType, nextNext);
-      }
-
-      if (callSignature.returnType) {
-        logger.log("return type:");
-        returnType = this.parseType(callSignature.returnType, nextNext);
-      }
+    if (signatures.length === 0) {
+      // No signatures
+      logger.log("no call signatures, just a func");
+      return "Blame.fun([], [], Blame.Any, Blame.Any)";
     }
 
-    var output: string = "Blame.fun([" + requiredParameters.join(", ") + "], " +
-      "[" + optionalParameters.join(", ") + "], " +
-      restType + ", " +
-      returnType + ")";
+    if (signatures.length === 1) {
+      return signatures[0];
+    }
 
-    return output;
+    return "Blame.sum(" + signatures.join(", ") + ")";
   }
 
 
