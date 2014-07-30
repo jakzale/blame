@@ -60,7 +60,8 @@ export enum TypeKind {
   DictionaryType,
   ObjectType,
   HybridType,
-  SumType
+  SumType,
+  LazyType
 }
 
 export interface IType {
@@ -364,6 +365,11 @@ export function arr(type: IType): ArrayType {
 }
 
 export class DictionaryType extends ArrayType {
+  constructor(type: IType, reporter?: IReporter) {
+    super(type, reporter);
+    this.description = "{" + this.type.description + "}";
+  }
+
   public kind(): TypeKind {
     return TypeKind.DictionaryType;
   }
@@ -462,6 +468,54 @@ export class SumType implements IType {
 
 export function sum(...types: IType[]): SumType {
   return new SumType(types);
+}
+
+export class LazyTypeCache {
+  private typeCache: TypeDict;
+  private requested: string[];
+
+  constructor() {
+    this.typeCache = Object.create(null);
+    this.requested = [];
+  }
+
+  public get(name: string): IType {
+    var resolver = () => {
+      return this.typeCache[name] || Any;
+    };
+
+    return new LazyType(name, resolver);
+  }
+
+  public set(name: string, type: IType): void {
+    this.typeCache[name] = type;
+  }
+
+  public verify(): boolean {
+    return this.requested.every((name) => {
+      return Object.prototype.hasOwnProperty(this.typeCache, name);
+    });
+  }
+}
+
+export class LazyType {
+  public reporter: IReporter;
+
+  constructor(public description: string, private resolver: () => IType, reporter?: IReporter) {
+    this.reporter = reporter || GlobalReporter;
+  }
+
+  public kind(): TypeKind {
+    return TypeKind.LazyType;
+  }
+
+  public clone(reporter?: IReporter): LazyType {
+    return new LazyType(this.description, this.resolver, reporter || this.reporter);
+  }
+
+  public resolve(): IType {
+    return this.resolver().clone(this.reporter);
+  }
 }
 
 function substitute_tyvar(target: IType, ty: string, new_type: IType): IType {
