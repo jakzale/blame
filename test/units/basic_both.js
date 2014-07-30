@@ -27,7 +27,8 @@ arr = blame.arr,
 dict = blame.dict,
 hybrid = blame.hybrid,
 sum = blame.sum,
-obj = blame.obj;
+obj = blame.obj,
+LazyTypeCache = blame.LazyTypeCache;
 
 function identity (x) { return x; }
 
@@ -1280,6 +1281,91 @@ describe('Sums', function () {
     o = wrappedA({a: 'a'});
     expect(o.a).to.equal(1);
 
+  });
+});
+
+describe('recursive types', function () {
+  describe('type cache', function () {
+
+      it('empty cache is valid', function () {
+        var typeCache = new LazyTypeCache();
+        expect(typeCache.verify()).to.equal(true);
+      });
+
+      it('too much provided is valid', function () {
+        var typeCache = new LazyTypeCache();
+        typeCache.set('Num', Num);
+        expect(typeCache.verify()).to.equal(true);
+      });
+
+      it('balanced types are valid', function () {
+        var typeCache = new LazyTypeCache();
+        expect(typeCache.get('Num').description).to.equal('Num');
+
+        expect(typeCache.verify()).to.equal(false);
+
+        typeCache.set('Num', Num);
+        expect(typeCache.verify()).to.equal(true);
+      });
+
+      it('should be valid even if requested many times', function () {
+        var typeCache = new LazyTypeCache();
+        expect(typeCache.get('Num').description).to.equal('Num');
+        expect(typeCache.get('Num').description).to.equal('Num');
+
+        expect(typeCache.verify()).to.equal(false);
+
+        typeCache.set('Num', Num);
+        expect(typeCache.get('Num').description).to.equal('Num');
+
+        expect(typeCache.verify()).to.equal(true);
+    });
+  });
+
+  describe('lazy types', function () {
+    it('should allow to define recursive types', function () {
+      var typeCache = new LazyTypeCache;
+      var MyObj = obj({n: func(Num), p: func(Num, typeCache.get('MyObj'))});
+
+      function Counter(n) {
+        this.n = function() {
+          return n;
+        };
+
+        this.p = function(k) {
+          return new Counter(k+n);
+        };
+      }
+
+      expect(MyObj.description).to.equal('{n: () -> Num, p: Num -> MyObj}');
+
+      typeCache.set('MyObj', MyObj);
+
+      expect(typeCache.verify()).to.equal(true);
+
+      var o = new Counter(0),
+        wO = wrap(o, p, q, MyObj, MyObj);
+
+      expect(wO.n()).to.equal(0);
+      expect(wO.p(1).p(2).p(3).n()).to.equal(6);
+
+      expect(function () {
+        wO.p(1).p(2).p('a').n();
+      }).to.throw(q.msg());
+
+
+      // Wrapped bad recursive type
+      var bad = new Counter('a'),
+        wBad = wrap(bad, p, q, MyObj, MyObj);
+
+      expect(function () {
+        wBad.p('a');
+      }).to.throw(q.msg());
+
+      expect(function () {
+        wBad.p(1).p(2).p(3).n();
+      }).to.throw(p.msg());
+    });
   });
 });
 // vim: set ts=2 sw=2 sts=2 et :

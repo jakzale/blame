@@ -485,6 +485,8 @@ export class LazyTypeCache {
       return this.typeCache[name] || Any;
     };
 
+    this.requested.push(name);
+
     return new LazyType(name, resolver);
   }
 
