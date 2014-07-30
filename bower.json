@@ -1,0 +1,26 @@
+{
+  "name": "Blame",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jakzale/blame",
+  "authors": [
+    "Jakub Z <jakzale@gmail.com>"
+  ],
+  "description": "JavaScript with Blame",
+  "keywords": [
+    "typescript",
+    "blame"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "routie": "~0.3.2",
+    "platform": "~1.2.0"
+  }
+}
