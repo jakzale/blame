@@ -20,7 +20,7 @@
     "tests"
   ],
   "devDependencies": {
-    "routie": "~0.3.2",
-    "platform": "~1.2.0"
+    "routie": "0.3.2",
+    "platform": "1.0.0"
   }
 }
