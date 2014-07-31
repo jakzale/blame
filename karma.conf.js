@@ -21,6 +21,7 @@ module.exports = function(config) {
       // Loading libraries to test:
       'bower_components/routie/dist/routie.js',
       'bower_components/platform/platform.js',
+      'bower_components/mustache/mustache.js',
       'test/gen/bundle-tests.js'
     ],
 
