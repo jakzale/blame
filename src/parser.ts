@@ -102,110 +102,31 @@ class Logger {
 
 // A simple type cache
 class TypeCache {
-  private defined: {[id: string]: string};
-  private requested: string[];
-  private notEmpty_: boolean;
   private declarations: string[];
-  private typeDeclarations: {[id: string]: string};
-  private declaredSymbols: {[id: string]: boolean};
+  private symbols: {[id: string]: string};
 
   constructor() {
-    this.defined = Object.create(null);
-    this.declaredSymbols = Object.create(null);
-    this.requested = [];
-    this.notEmpty_ = false;
     this.declarations = [];
-    this.typeDeclarations = Object.create(null);
+    this.symbols = Object.create(null);
   }
-
-
-  private add(key: string): string {
-    var val: string = this.to_bname(key);
-
-    this.notEmpty_ = true;
-
-    this.defined[key] = val;
-    return val;
-  }
-
-  public get(key: string): string {
-    this.requested.push(key);
-
-    return this.to_bname(key);
-  }
-
-  public notEmpty(): boolean {
-    return this.notEmpty_;
-  }
-
 
   public addGlobalDeclaration(identifier: string, type: string): void {
     var declaration: string = identifier + " = Blame.simple_wrap(" + identifier + ", " + type + ");";
     this.declarations.push(declaration);
-    this.declaredSymbols[identifier] = true;
+    this.symbols[identifier] = true;
   }
 
   public addTypeDeclaration(name: string, type: string): void {
-    var bname = this.add(name);
-    var declaration: string = bname + " = " + type + ";";
-    this.typeDeclarations[name] = declaration;
-  }
-
-
-  private getBindings(): string[] {
-    var bindings: string[] = [];
-    var declared: {[id: string]: boolean} = Object.create(null);
-
-    this.requested.forEach((key) => {
-      if (!Object.prototype.hasOwnProperty.call(this.defined, key)) {
-        throw new Error("Panic, type: " + key + ", was never defined");
-      }
-
-      if (!Object.prototype.hasOwnProperty.call(declared, key)) {
-        declared[key] = true;
-        bindings.push(key);
-      }
-    });
-
-    // Now add all declared types that were not used
-    for (var key in this.typeDeclarations) {
-      if (Object.prototype.hasOwnProperty.call(this.typeDeclarations, key)) {
-        if (!Object.prototype.hasOwnProperty.call(declared, key)) {
-          bindings.push(key);
-        }
-      }
-    }
-
-    return bindings;
+    var declaration: string = "T.set('" + name + "', " + type + ");";
+    this.declarations.push(declaration);
   }
 
   public generateDeclarations(): string {
-    var variables: string = "";
-    var bindings: string[] = this.getBindings();
-
-    // Generate variable bindings
-    if (this.notEmpty()) {
-      variables = "var " + bindings.map(this.to_bname).sort().join(", ") + ";";
-    }
-
-    // Generate requested type definitions
-    var out: string[] = bindings.map((name) => {
-      return this.typeDeclarations[name];
-    });
-
-    if (variables) {
-      out.unshift(variables);
-    }
-
-    return out.concat(this.declarations).join("\n");
+    return this.declarations.join("\n");
   }
 
-  public isDeclared(name: string): boolean {
-    return Object.prototype.hasOwnProperty.call(this.declaredSymbols, name);
-  }
-
-  private to_bname(name: string): string {
-    return "Blame_" + name.replace("_", "__").replace(".", "_");
+  public isDeclared(identifier: string): boolean {
+    return Object.prototype.hasOwnProperty.call(this.symbols, identifier);
   }
 }
 
@@ -556,9 +477,8 @@ class BlameCompiler {
 
 
     if (!declaration && type.isNamedTypeSymbol()) {
-      var bname: string = this.typeCache.get(name);
-      logger.log("load type: " + name + " -> " + bname);
-      return bname;
+      logger.log("load type: " + name);
+      return "T.get('" + name + "')";
     }
 
     // If it is indexable:

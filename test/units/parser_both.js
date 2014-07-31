@@ -232,9 +232,8 @@ describe('class declaration', function () {
   it('should accept a simple class declaration', function () {
     var source = 'declare class MyClass {}';
     var desired = [
-      'var Blame_MyClass;',
-      'Blame_MyClass = Blame.obj({});',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));'
+      'T.set(\'MyClass\', Blame.obj({}));',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -243,47 +242,41 @@ describe('class declaration', function () {
   it('should accept a more complicated declaration', function () {
     var source = 'declare class MyClass {x: number;}';
     var desired = [
-      'var Blame_MyClass;',
-      'Blame_MyClass = Blame.obj({x: Blame.Num});',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));'
+      'T.set(\'MyClass\', Blame.obj({x: Blame.Num}));',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
-/* TODO: Not supported now
- *  it('should accept a recursive type', function () {
- *    var source = 'declare class MyClass {mc: MyClass;}';
- *    var desired = [
- *      'var Blame_MyClass;',
- *      'Blame_MyClass = Blame.obj({mc: Blame_MyClass});',
- *      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));'
- *    ].join('\n');
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- *
- *  it('should accept alternating recursive types', function () {
- *    var source = 'declare class A { b: B } declare class B { a: A }';
- *    var desired = [
- *      'var Blame_A, Blame_B;',
- *      'Blame_A = Blame.obj({b: Blame_B});',
- *      'A = Blame.simple_wrap(A, Blame.fun([], [], null, Blame_A));',
- *      'Blame_B = Blame.obj({a: Blame_A});',
- *      'B = Blame.simple_wrap(B, Blame.fun([], [], null, Blame_B));'
- *    ].join('\n');
- *
- *    expect(parser.compileFromString(source)).to.equal(desired);
- *  });
- */
+  it('should accept a recursive type', function () {
+    var source = 'declare class MyClass {mc: MyClass;}';
+    var desired = [
+      'T.set(\'MyClass\', Blame.obj({mc: T.get(\'MyClass\')}));',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));'
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should accept alternating recursive types', function () {
+    var source = 'declare class A { b: B } declare class B { a: A }';
+    var desired = [
+      'T.set(\'A\', Blame.obj({b: T.get(\'B\')}));',
+      'A = Blame.simple_wrap(A, Blame.fun([], [], null, T.get(\'A\')));',
+      'T.set(\'B\', Blame.obj({a: T.get(\'A\')}));',
+      'B = Blame.simple_wrap(B, Blame.fun([], [], null, T.get(\'B\')));'
+    ].join('\n');
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
 
   it('should accept a declaration of instance', function () {
     var source = 'declare class MyClass {} declare var c: MyClass';
     var desired = [
-      'var Blame_MyClass;',
-      'Blame_MyClass = Blame.obj({});',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));',
-      'c = Blame.simple_wrap(c, Blame_MyClass);'
+      'T.set(\'MyClass\', Blame.obj({}));',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));',
+      'c = Blame.simple_wrap(c, T.get(\'MyClass\'));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -292,11 +285,10 @@ describe('class declaration', function () {
   it('should allow for inheritance', function () {
     var source = 'declare class ParentClass {x: number} declare class MyClass extends ParentClass {b: boolean}';
     var desired = [
-      'var Blame_MyClass, Blame_ParentClass;',
-      'Blame_ParentClass = Blame.obj({x: Blame.Num});',
-      'Blame_MyClass = Blame.obj({b: Blame.Bool, x: Blame.Num});',
-      'ParentClass = Blame.simple_wrap(ParentClass, Blame.fun([], [], null, Blame_ParentClass));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame_MyClass));',
+      'T.set(\'ParentClass\', Blame.obj({x: Blame.Num}));',
+      'ParentClass = Blame.simple_wrap(ParentClass, Blame.fun([], [], null, T.get(\'ParentClass\')));',
+      'T.set(\'MyClass\', Blame.obj({b: Blame.Bool, x: Blame.Num}));',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -307,8 +299,7 @@ describe('interface declaration', function () {
   it('should accept an empty interface declaration', function () {
     var source = 'interface MyInterface {}';
     var desired = [
-      'var Blame_MyInterface;',
-      'Blame_MyInterface = Blame.obj({});'
+      'T.set(\'MyInterface\', Blame.obj({}));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -317,9 +308,8 @@ describe('interface declaration', function () {
   it('should accept an instance of an empty interface', function () {
     var source = 'interface MyInterface {} declare var my: MyInterface;';
     var desired = [
-      'var Blame_MyInterface;',
-      'Blame_MyInterface = Blame.obj({});',
-      'my = Blame.simple_wrap(my, Blame_MyInterface);'
+      'T.set(\'MyInterface\', Blame.obj({}));',
+      'my = Blame.simple_wrap(my, T.get(\'MyInterface\'));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -328,9 +318,8 @@ describe('interface declaration', function () {
   it('should allow interface inheritance', function () {
     var source = 'interface ParentInterface {b: boolean} interface ChildInterface extends ParentInterface {x: number}';
     var desired = [
-      'var Blame_ChildInterface, Blame_ParentInterface;',
-      'Blame_ParentInterface = Blame.obj({b: Blame.Bool});',
-      'Blame_ChildInterface = Blame.obj({b: Blame.Bool, x: Blame.Num});'
+      'T.set(\'ParentInterface\', Blame.obj({b: Blame.Bool}));',
+      'T.set(\'ChildInterface\', Blame.obj({b: Blame.Bool, x: Blame.Num}));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -350,9 +339,8 @@ describe('internal modules', function () {
   it('should allow to define module with contents', function () {
     var source = 'declare module MyModule { export class MyClass { x: number; } var x:MyClass; }';
     var desired = [
-      'var Blame_MyModule_MyClass;',
-      'Blame_MyModule_MyClass = Blame.obj({x: Blame.Num});',
-      'MyModule = Blame.simple_wrap(MyModule, Blame.obj({MyClass: Blame.fun([], [], null, Blame_MyModule_MyClass), x: Blame_MyModule_MyClass}));'
+      'T.set(\'MyModule.MyClass\', Blame.obj({x: Blame.Num}));',
+      'MyModule = Blame.simple_wrap(MyModule, Blame.obj({MyClass: Blame.fun([], [], null, T.get(\'MyModule.MyClass\')), x: T.get(\'MyModule.MyClass\')}));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -378,8 +366,7 @@ describe('routie test', function () {
     ].join("\n");
 
     var desired = [
-      'var Blame_Route;',
-      'Blame_Route = Blame.obj({addHandler: Blame.fun([Blame.Fun], [], null, Blame.Void), constructor: Blame.fun([Blame.Str, Blame.Str], [], null, Blame_Route), match: Blame.fun([Blame.Str, Blame.Any], [], null, Blame.Bool), removeHandler: Blame.fun([Blame.Fun], [], null, Blame.Void), run: Blame.fun([Blame.Any], [], null, Blame.Void), toURL: Blame.fun([Blame.Any], [], null, Blame.Str)});',
+      'T.set(\'Route\', Blame.obj({addHandler: Blame.fun([Blame.Fun], [], null, Blame.Void), constructor: Blame.fun([Blame.Str, Blame.Str], [], null, T.get(\'Route\')), match: Blame.fun([Blame.Str, Blame.Any], [], null, Blame.Bool), removeHandler: Blame.fun([Blame.Fun], [], null, Blame.Void), run: Blame.fun([Blame.Any], [], null, Blame.Void), toURL: Blame.fun([Blame.Any], [], null, Blame.Str)}));',
       'routie = Blame.simple_wrap(routie, Blame.sum(Blame.fun([Blame.Str], [], null, Blame.Void), Blame.fun([Blame.Str, Blame.Fun], [], null, Blame.Void), Blame.fun([Blame.dict(Blame.Fun)], [], null, Blame.Void)));'
     ].join("\n");
 
