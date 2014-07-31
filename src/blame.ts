@@ -564,18 +564,44 @@ export class LazyType {
 
 export class BoundLazyType extends LazyType {
   public reporter: IReporter;
+  private tys: string[];
+  private new_types: IType[];
 
-  constructor(type: LazyType, public ty: string, private new_type: IType) {
+  constructor(type: LazyType) {
     super(type.description, type.resolver, type.reporter);
+    this.tys = [];
+    this.new_types = [];
   }
 
   public clone(reporter?: IReporter): BoundLazyType {
     var lt: LazyType = new LazyType(this.description, this.resolver, reporter || this.reporter);
-    return new BoundLazyType(lt, this.ty, this.new_type);
+    var blt: BoundLazyType = new BoundLazyType(lt);
+    this.tys.forEach((ty, i) => {
+      blt.add(ty, this.new_types[i]);
+    });
+
+    return blt;
+  }
+
+  public add(ty: string, new_type: IType): void {
+    this.tys.push(ty);
+    this.new_types.push(new_type);
   }
 
   public resolve(): IType {
-    return substitute_tyvar(this.resolver().clone(this.reporter), this.ty, this.new_type);
+    var resolved = this.resolver().clone(this.reporter);
+
+    this.tys.forEach((ty, i) => {
+      resolved = substitute_tyvar(resolved, ty, this.new_types[i]);
+    });
+
+    return resolved;
+  }
+
+  public hasTy(ty: string): boolean {
+    return this.tys.some((myTy) => {
+      return ty === myTy;
+    });
   }
 }
 
@@ -677,15 +703,19 @@ function substitute_tyvar_hybrid(target: HybridType, ty: string, new_type: IType
 }
 
 function substitute_tyvar_lazy(target: LazyType, ty: string, new_type: IType): BoundLazyType {
-  return new BoundLazyType(target, ty, new_type);
+  var blt: BoundLazyType = new BoundLazyType(target);
+  blt.add(ty, new_type);
+
+  return blt;
 }
 
 function substitute_tyvar_bound_lazy(target: BoundLazyType, ty: string, new_type: IType): IType {
-  if (target.ty === ty) {
+  if (target.hasTy(ty)) {
     return target;
   }
+  target.add(ty, new_type);
 
-  return substitute_tyvar(target.resolve(), ty, new_type);
+  return target;
 }
 
 
