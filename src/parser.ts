@@ -380,8 +380,14 @@ class BlameCompiler {
 
     if (callSignature.hasVarArgs) {
       logger.log("rest parameter: ");
-      var elementType: TypeScript.PullTypeSymbol = (parameters.filter(isRest)[0]).type.getElementType();
-      restType = this.parseType(elementType, next);
+      var elementType: TypeScript.PullTypeSymbol = (parameters.filter(isRest)[0]).type;
+
+      if (elementType) {
+        restType = this.parseType(elementType.getElementType(), next);
+      } else {
+        // Parsing null will result in Blame.Any
+        restType = this.parseType(elementType, next);
+      }
     }
 
     if (callSignature.returnType) {
@@ -455,20 +461,20 @@ class BlameCompiler {
 
     logger.log("object type: " + name);
 
-
-
-    // Handling build in types
-    switch (typeName) {
-      case "Function":
-        return "Blame.Fun";
-
-      case "Object":
-        return "Blame.Obj";
-    }
-    if (typeName === "Array") {
+    // Checking if it is an array
+    if (type.isArrayNamedTypeReference()) {
       logger.log("element type: ");
       return "Blame.arr(" + this.parseType(type.getElementType(), next) + ")";
     }
+
+    // Handling build in types
+    //switch (typeName) {
+    //  case "Function":
+    //    return "Blame.Fun";
+
+    //  case "Object":
+    //    return "Blame.Obj";
+    //}
 
     // Handling types from the outside:
     if (type.isNamedTypeSymbol() && !this.typeCache.isTypeDeclared(name) && !declaration) {
