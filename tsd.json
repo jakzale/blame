@@ -19,6 +19,9 @@
     },
     "raphael/raphael.d.ts": {
       "commit": "1b831404eebc5f7ab6f741aac08b9bd3f74b04c3"
+    },
+    "nprogress/NProgress.d.ts": {
+      "commit": "1b831404eebc5f7ab6f741aac08b9bd3f74b04c3"
     }
   }
 }

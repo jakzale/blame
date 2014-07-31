@@ -22,6 +22,7 @@ module.exports = function(config) {
       'bower_components/platform/platform.js',
       'bower_components/mustache/mustache.js',
       'bower_components/raphael/raphael.js',
+      'bower_components/nprogress/nprogress.js',
       'lib/date.format.js',
       // Loading test cases
       'test/gen/bundle-tests.js'
