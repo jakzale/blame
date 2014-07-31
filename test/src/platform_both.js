@@ -1,5 +1,5 @@
 /// <reference path="../../typings/platform/platform.d.ts" />
-it('shoul pass', function () {
+it('should pass', function () {
   var tests = {
     'Chrome Mobile 16.0.912.77 on Android 4.0.3': {
       description: "Chrome Mobile 16.0.912.77 on Android 4.0.3",
