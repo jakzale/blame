@@ -5,20 +5,14 @@
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
   "installed": {
-    "asciify/asciify.d.ts": {
-      "commit": "5a8f9e312f3db37b8efc4dcdd1de204f60e67eb1"
-    },
-    "node/node.d.ts": {
-      "commit": "006076798bb99261dfa4dc60dcb3f435db5035a6"
-    },
-    "date.format.js/date.format.d.ts": {
-      "commit": "85bc00eebb86a1d61b7ecc6d3ec64ecdadfd7d4d"
-    },
     "routie/routie.d.ts": {
       "commit": "69d01173ad642d907526294f6ee3d70e7994d81c"
     },
     "platform/platform.d.ts": {
       "commit": "b00321fc62008b5c78e08232b48e810a322b65cc"
+    },
+    "mustache/mustache.d.ts": {
+      "commit": "5c000a23b5d00efe35ab0fcc3b568f71f3aa23c8"
     }
   }
 }
