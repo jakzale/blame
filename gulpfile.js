@@ -118,7 +118,16 @@ gulp.task('wrappers', function () {
     }
 
     code = codeLines.map(indent(4)).join('\n');
-    blameDeclarations = blameDeclarations.split(lineEnding).map(indent(8)).join('\n');
+    var blameDeclarationLines = blameDeclarations.split(lineEnding);
+
+    // Add require to bindings
+    var bindings = blameDeclarationLines.filter(function (line) {
+      return line.indexOf(' = ') > -1;
+    }).map(function (line) {
+      return line.split(' = ').shift();
+    }).concat('require').join(', ');
+
+    blameDeclarations = blameDeclarationLines.map(indent(8)).join('\n');
 
 
       // Load the declarations
@@ -127,7 +136,8 @@ gulp.task('wrappers', function () {
       return wrapper({
         contents: code,
         filename: filename,
-        declarations: blameDeclarations
+        declarations: blameDeclarations,
+        bindings: bindings
       });
   });
 
