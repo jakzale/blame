@@ -17,11 +17,11 @@ module.exports = function(config) {
     files: [
       'node_modules/typescript/bin/typescript.js',
       'lib/libd.js',
-      //'lib/date.format.js',
       // Loading libraries to test:
       'bower_components/routie/dist/routie.js',
       'bower_components/platform/platform.js',
       'bower_components/mustache/mustache.js',
+      'lib/date.format.js',
       'test/gen/bundle-tests.js'
     ],
 
