@@ -103,11 +103,13 @@ class Logger {
 // A simple type cache
 class TypeCache {
   private declarations: string[];
-  private symbols: {[id: string]: string};
+  private symbols: {[id: string]: boolean};
+  private types: {[id: string]: boolean};
 
   constructor() {
     this.declarations = [];
     this.symbols = Object.create(null);
+    this.types = Object.create(null);
   }
 
   public addGlobalDeclaration(identifier: string, type: string): void {
@@ -119,6 +121,7 @@ class TypeCache {
   public addTypeDeclaration(name: string, type: string): void {
     var declaration: string = "T.set('" + name + "', " + type + ");";
     this.declarations.push(declaration);
+    this.types[name] = true;
   }
 
   public generateDeclarations(): string {
@@ -127,6 +130,10 @@ class TypeCache {
 
   public isDeclared(identifier: string): boolean {
     return Object.prototype.hasOwnProperty.call(this.symbols, identifier);
+  }
+
+  public isTypeDeclared(name: string): boolean {
+    return Object.prototype.hasOwnProperty.call(this.types, name);
   }
 }
 
@@ -155,6 +162,9 @@ function notBlank(s: string): boolean {
 
 class BlameCompiler {
   private typeCache: TypeCache = new TypeCache();
+
+  constructor(private filename: string) {
+  }
 
   public generateDeclarations(): string {
     return this.typeCache.generateDeclarations();
@@ -445,8 +455,10 @@ class BlameCompiler {
 
     logger.log("object type: " + name);
 
-    // Handling guild it types
-    switch(typeName) {
+
+
+    // Handling build in types
+    switch (typeName) {
       case "Function":
         return "Blame.Fun";
 
@@ -456,6 +468,18 @@ class BlameCompiler {
     if (typeName === "Array") {
       logger.log("element type: ");
       return "Blame.arr(" + this.parseType(type.getElementType(), next) + ")";
+    }
+
+    // Handling types from the outside:
+    if (type.isNamedTypeSymbol() && !this.typeCache.isTypeDeclared(name) && !declaration) {
+      var sourceDeclarations: TypeScript.PullDecl[] = type.getDeclarations();
+
+      sourceDeclarations.forEach((decl) => {
+        if (decl.fileName() !== this.filename) {
+          logger.log("addition " + name + " from " + decl.fileName());
+          this.parseDeclaration(decl, next);
+        }
+      });
     }
 
     if (type.hasOwnIndexSignatures()) {
@@ -477,7 +501,9 @@ class BlameCompiler {
 
 
     if (!declaration && type.isNamedTypeSymbol()) {
+      // If type is not declared try declaring it.
       logger.log("load type: " + name);
+      // Checking if the type was defined somewhere else
       return "T.get('" + name + "')";
     }
 
@@ -552,7 +578,7 @@ export function compile(filename: string, source: string, shouldLog?: boolean): 
 
   logger.log("parsing file: ", filename);
 
-  var blameCompiler: BlameCompiler = new BlameCompiler();
+  var blameCompiler: BlameCompiler = new BlameCompiler(filename);
 
   // Create a simple source unit
   var snapshot = TypeScript.ScriptSnapshot.fromString(source);

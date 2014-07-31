@@ -374,4 +374,16 @@ describe('routie test', function () {
   });
 });
 
+describe('loading external types', function () {
+  it('should work', function () {
+    var source = 'declare var r: RegExp';
+    var desired = [
+      'T.set(\'RegExp\', Blame.obj({compile: Blame.fun([], [], null, null), exec: Blame.fun([Blame.Any], [], null, null), global: Blame.Any, ignoreCase: Blame.Any, lastIndex: Blame.Any, multiline: Blame.Any, source: Blame.Any, test: Blame.fun([Blame.Any], [], null, null)}));',
+      'r = Blame.simple_wrap(r, T.get(\'RegExp\'));'
+    ].join("\n");
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+});
+
 // vim: set ts=2 sw=2 sts=2 et :
