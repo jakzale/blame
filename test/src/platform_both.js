@@ -51,7 +51,7 @@ it('shoul pass', function () {
         };
       };
 
-      console.log('Starting tests for: ' + n);
+      //console.log('Starting tests for: ' + n);
 
       falsy(function () {
         return t.description === p.description;
@@ -82,7 +82,7 @@ it('shoul pass', function () {
         return t.os.version === p.os.version;
       }, onFalse('os.version'));
 
-      console.log('Finished tests for: ' + n);
+      //console.log('Finished tests for: ' + n);
     }
   }
 
@@ -98,6 +98,7 @@ it('shoul pass', function () {
     platform.parse(1);
   }).to.throw('negative');
 
+  runTests();
 });
 
 
