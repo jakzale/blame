@@ -159,6 +159,11 @@ export var Fun = new BaseType("Fun", function (value: any): boolean {
   return typeof value === "function";
 });
 
+
+export var Null = new BaseType("Fun", function (value: any): boolean {
+  return typeof value === "undefined" || value === null;
+});
+
 var Arr = new BaseType("Arr", function (value: any): boolean {
   return Array.isArray(value);
 });
@@ -825,7 +830,7 @@ export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any 
 
 function wrap_base(value: any, p: ILabel, A: BaseType): any {
   if (!A.contract(value)) {
-    A.reporter.report(p.msg("not of type " + A.description));
+    A.reporter.report(p.msg("not of type " + A.description + ": " + value));
   }
 
   return value;

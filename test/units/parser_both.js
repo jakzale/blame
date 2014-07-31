@@ -154,6 +154,13 @@ describe('variable declaration', function () {
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
+
+    it('should accept an object with optional members', function () {
+      var source = 'declare var o: {b?: boolean;}';
+      var desired = 'o = Blame.simple_wrap(o, Blame.obj({b: Blame.sum(Blame.Bool, Blame.Null)}));';
+
+      expect(parser.compileFromString(source)).to.equal(desired);
+    });
   });
 });
 

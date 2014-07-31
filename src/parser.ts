@@ -564,6 +564,10 @@ class BlameCompiler {
     var type: string = this.parseType(member.type, logger.next());
 
     if (type) {
+      if (member.isOptional) {
+        logger.next().log("optional");
+        type = "Blame.sum(" + type + ", Blame.Null)";
+      }
       return member.name + ": " + type;
     }
 
