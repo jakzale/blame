@@ -22,6 +22,7 @@
   "devDependencies": {
     "routie": "0.3.2",
     "platform": "1.0.0",
-    "mustache": "0.7"
+    "mustache": "0.7",
+    "raphael": "2.1"
   }
 }

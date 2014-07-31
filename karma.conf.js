@@ -21,7 +21,9 @@ module.exports = function(config) {
       'bower_components/routie/dist/routie.js',
       'bower_components/platform/platform.js',
       'bower_components/mustache/mustache.js',
+      'bower_components/raphael/raphael.js',
       'lib/date.format.js',
+      // Loading test cases
       'test/gen/bundle-tests.js'
     ],
 
