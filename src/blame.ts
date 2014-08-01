@@ -1,9 +1,9 @@
 // Blame
 
+// Counter for blame labels
 var count: number = 0;
 
 declare function Proxy(target: any, handler: {}): void;
-
 
 export interface ILabel {
   label(): string;
