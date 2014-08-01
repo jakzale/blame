@@ -96,7 +96,6 @@ export enum TypeKind {
   DictionaryType,
   ObjectType,
   HybridType,
-  SumType,
   LazyType,
   BoundLazyType
 }
@@ -304,13 +303,13 @@ class BoundTypeVariable extends TypeVariable {
 
   public unseal(t: Token, q: ILabel): any {
     if (!(t instanceof Token)) {
-      throw(q.negated().msg(t + " is not a sealed token (" + this.description + ")"));
+      throw new Error(q.negated().msg(t + " is not a sealed token (" + this.description + ")"));
     }
     if (this.storage.has(t)) {
       return this.storage.get(t);
     }
 
-    throw(q.negated().msg("Token: " + t.tyvar + " sealed by a different forall"));
+    throw new Error(q.negated().msg("Token: " + t.tyvar + " sealed by a different forall"));
   }
 
   public kind(): TypeKind {
@@ -406,8 +405,6 @@ export function hybrid(...types: IType[]): HybridType {
   return new HybridType(types);
 }
 
-export function sum(...types: IType[]): SumType {
-  return new SumType(types);
 }
 
 export class LazyTypeCache {
@@ -631,28 +628,16 @@ function compatible_hybrid(A: HybridType, B: HybridType): boolean {
     return false;
   }
 
-  for (var i = 0, n = A.types.length; i < n; i += 1) {
-    if (A.types[i].kind !== B.types[i].kind) {
-      return false;
-    }
-  }
+  // TODO: This is wrong
+  //for (var i = 0, n = A.types.length; i < n; i += 1) {
+  //  if (A.types[i].kind !== B.types[i].kind) {
+  //    return false;
+  //  }
+  //}
 
   return true;
 }
 
-function compatible_sum(A: SumType, B: SumType): boolean {
-  if (A.types.length !== B.types.length) {
-    return false;
-  }
-
-  for (var i = 0, n = A.types.length; i < n; i += 1) {
-    if (A.types[i].kind !== B.types[i].kind) {
-      return false;
-    }
-  }
-
-  return true;
-}
 
 function compatible_lazy(A: LazyType, B: LazyType): boolean {
   return A.description === B.description;
@@ -711,11 +696,6 @@ export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any 
         }
         break;
 
-      case TypeKind.SumType:
-        if (compatible_sum(<SumType> A, <SumType> B)) {
-          return wrap_sum(value, p, q, <SumType> A, <SumType> B);
-        }
-        break;
 
       case TypeKind.BoundLazyType:
       case TypeKind.LazyType:
@@ -741,7 +721,7 @@ export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any 
 
 function wrap_base(value: any, p: ILabel, A: BaseType): any {
   if (!A.contract(value)) {
-    throw(p.msg("not of type " + A.description + ": " + value));
+    throw new Error(p.msg("not of type " + A.description + ": " + value));
   }
 
   return value;
@@ -758,13 +738,13 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        throw(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        throw new Error(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
         //return target.apply(thisValue, args);
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        throw(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        throw new Error(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
         //return target.apply(thisValue, args);
       }
@@ -793,7 +773,7 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        throw(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        throw new Error(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
@@ -899,7 +879,7 @@ function wrap_arr(value: any, p: ILabel, q: ILabel, A: ArrayType, B: ArrayType):
 function wrap_dict(value: any, p: ILabel, q: ILabel, A: DictionaryType, B: DictionaryType): any {
   var type: string = typeof value;
   if (type !== "object" && type !== "function" || !value) {
-    throw(p.msg("not of Indexable type"));
+    throw new Error(p.msg("not of Indexable type"));
     //return value;
   }
 
@@ -918,7 +898,7 @@ function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType
   var type: string = typeof value;
 
   if (type !== "object" && type !== "function" || !value) {
-    throw(p.msg("not of type Obj"));
+    throw new Error(p.msg("not of type Obj"));
   }
 
   return new Proxy(value, {
@@ -946,12 +926,10 @@ function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType
   });
 }
 
-function wrap_hybrid(value: any, p: ILabel, q: ILabel, A: HybridType, B: HybridType): any {
-  for (var i = 0, n = A.types.length; i < n; i += 1) {
-    value = wrap(value, p, q, A.types[i], B.types[i]);
-  }
-
-  return value;
+function wrap_hybrid(value: any, p: ILabel, q: ILabel, A: HybridType, B: HybridType, report: IReport): any {
+  return A.types.reduce((value, type, i) => {
+    return wrap(value, p, q, A.types[i], B.types[i], report);
+  }, value);
 }
 
 function wrap_lazy(value: any, p: ILabel, q: ILabel, A: LazyType, B: LazyType): any {
