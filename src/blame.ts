@@ -104,32 +104,15 @@ export enum TypeKind {
 export interface IType {
   description: string;
   kind(): TypeKind;
-  reporter: IReporter;
-  clone(reporter?: IReporter);
 }
-
-
-export interface IReporter {
-  report(msg: string): void;
-}
-
-var GlobalReporter : IReporter = {
-  report(msg: string): void {
-    throw new Error(msg);
-  }
-};
 
 export class BaseType implements IType {
-  public reporter: IReporter;
 
-  constructor(public description: string, public contract: (any) => boolean, reporter?: IReporter) {
-    this.reporter = reporter || GlobalReporter;
+  constructor(public description: string, public contract: (any) => boolean) {
   }
+
   public kind(): TypeKind {
     return TypeKind.BaseType;
-  }
-  public clone(reporter?: IReporter): BaseType {
-    return new BaseType(this.description, this.contract, reporter || this.reporter);
   }
 }
 
@@ -173,10 +156,6 @@ export var Any: IType = {
   description: "Any",
   kind: function(): TypeKind {
     return TypeKind.AnyType;
-  },
-  reporter: null,
-  clone(reporter?: IReporter) {
-    return this;
   }
 };
 
@@ -200,31 +179,24 @@ export class FunctionType implements IType {
   public returnType: IType;
   public constructType: IType;
 
-  public reporter: IReporter;
-
   public description: string;
 
   constructor(requiredParameters: IType[],
       optionalParameters: IType[],
       restParameter: IType,
       returnType: IType,
-      constructType: IType,
-      reporter?: IReporter) {
+      constructType: IType) {
 
-    this.reporter = reporter || GlobalReporter;
-
-    var copy = (type) => { return type.clone(this.reporter); };
-
-    this.requiredParameters = (requiredParameters || []).map(copy);
-    this.optionalParameters = (optionalParameters || []).map(copy);
+    this.requiredParameters = requiredParameters || [];
+    this.optionalParameters = optionalParameters || [];
 
     this.restParameter = null;
     if (restParameter) {
-      this.restParameter = copy(restParameter);
+      this.restParameter = restParameter;
     }
 
-    this.returnType = copy(returnType || Any);
-    this.constructType = copy(constructType || Any);
+    this.returnType = returnType || Any;
+    this.constructType = constructType || Any;
 
     var descs: string[] = ([])
       .concat(this.requiredParameters.map(description("")),
@@ -252,11 +224,6 @@ export class FunctionType implements IType {
   public kind(): TypeKind {
     return TypeKind.FunctionType;
   }
-
-  public clone(reporter?: IReporter) {
-    return new FunctionType(this.requiredParameters, this.optionalParameters, this.restParameter, this.returnType, this.constructType,
-        reporter || this.reporter);
-  }
 }
 
 export function fun(range: IType[], optional: IType[], rest: IType, ret: IType, cons: IType): FunctionType {
@@ -275,13 +242,11 @@ export function func(...args: IType[]) {
 
 export class ForallType implements IType {
 
-  public reporter: IReporter;
   public type: IType;
 
   public description: string;
 
-  constructor(public tyvar: string, type: IType, reporter?: IReporter) {
-    this.reporter = reporter || GlobalReporter;
+  constructor(public tyvar: string, type: IType) {
 
     //switch (type.kind()) {
     //  case TypeKind.FunctionType:
@@ -292,20 +257,13 @@ export class ForallType implements IType {
     //    throw new Error("Panic, type " + type.description + " not supported for forall");
     //}
 
-    this.type = type.clone(this.reporter);
+    this.type = type;
 
     this.description = "forall " + this.tyvar + ". " + this.type.description;
   }
 
   public kind(): TypeKind {
     return TypeKind.ForallType;
-  }
-
-  public clone(reporter?: IReporter): ForallType {
-    if (reporter && reporter !== GlobalReporter) {
-      throw new Error("Panic, sum types with foralls are not suported");
-    }
-    return new ForallType(this.tyvar, this.type, reporter || this.reporter);
   }
 }
 
@@ -314,21 +272,12 @@ export function forall(tyvar: string, type: IType) {
 }
 
 export class TypeVariable implements IType {
-  public reporter: IReporter;
 
-  constructor(public description: string, reporter?: IReporter) {
-    this.reporter = reporter || GlobalReporter;
+  constructor(public description: string) {
   }
 
   public kind(): TypeKind {
     return TypeKind.TypeVariable;
-  }
-
-  public clone(reporter?: IReporter): TypeVariable {
-    if (reporter && reporter !== GlobalReporter) {
-      throw new Error("Panic, sum types with foralls are not suported");
-    }
-    return new TypeVariable(this.description, reporter || this.reporter);
   }
 }
 
@@ -339,11 +288,10 @@ export function tyvar(id: string): TypeVariable {
 class BoundTypeVariable extends TypeVariable {
   public storage: WeakMap<Token, any>;
 
-  constructor(description: string, storage?: WeakMap<Token, any>, reporter?: IReporter) {
+  constructor(description: string, storage?: WeakMap<Token, any>) {
     super(description);
 
     this.storage = storage || new WeakMap();
-    this.reporter = reporter || GlobalReporter;
   }
 
   public seal(value: any): Token {
@@ -356,25 +304,17 @@ class BoundTypeVariable extends TypeVariable {
 
   public unseal(t: Token, q: ILabel): any {
     if (!(t instanceof Token)) {
-      this.reporter.report(q.negated().msg(t + " is not a sealed token (" + this.description + ")"));
+      throw(q.negated().msg(t + " is not a sealed token (" + this.description + ")"));
     }
     if (this.storage.has(t)) {
       return this.storage.get(t);
     }
 
-    this.reporter.report(q.negated().msg("Token: " + t.tyvar + " sealed by a different forall"));
-    return t;
+    throw(q.negated().msg("Token: " + t.tyvar + " sealed by a different forall"));
   }
 
   public kind(): TypeKind {
     return TypeKind.BoundTypeVariable;
-  }
-
-  public clone(reporter?: IReporter): BoundTypeVariable {
-    if (reporter && reporter !== GlobalReporter) {
-      throw new Error("Panic, sum types with foralls are not suported");
-    }
-    return new BoundTypeVariable(this.description, this.storage, reporter || this.reporter);
   }
 }
 
@@ -384,21 +324,15 @@ class Token {
 
 export class ArrayType implements IType {
   public description: string;
-  public reporter: IReporter;
   public type: IType;
 
-  constructor(type: IType, reporter?: IReporter) {
-    this.reporter = reporter || GlobalReporter;
-    this.type = type.clone(this.reporter);
+  constructor(type: IType) {
+    this.type = type;
     this.description = "[" + this.type.description + "]";
   }
 
   public kind(): TypeKind {
     return TypeKind.ArrayType;
-  }
-
-  public clone(reporter?: IReporter): ArrayType {
-    return new ArrayType(this.type, reporter || this.reporter);
   }
 }
 
@@ -407,17 +341,13 @@ export function arr(type: IType): ArrayType {
 }
 
 export class DictionaryType extends ArrayType {
-  constructor(type: IType, reporter?: IReporter) {
-    super(type, reporter);
+  constructor(type: IType) {
+    super(type);
     this.description = "{" + this.type.description + "}";
   }
 
   public kind(): TypeKind {
     return TypeKind.DictionaryType;
-  }
-
-  public clone(reporter?: IReporter): DictionaryType {
-    return new DictionaryType(this.type, reporter || this.reporter);
   }
 }
 
@@ -432,17 +362,15 @@ export interface TypeDict {
 export class ObjectType implements IType {
   public description: string;
   public properties: TypeDict;
-  public reporter: IReporter;
 
-  constructor(properties: TypeDict, reporter?: IReporter) {
-    this.reporter = reporter || GlobalReporter;
+  constructor(properties: TypeDict) {
     this.properties = Object.create(null);
 
     var descs: string[] = [];
 
     for (var key in properties) {
       if (Object.prototype.hasOwnProperty.call(properties, key)) {
-        this.properties[key] = properties[key].clone(this.reporter);
+        this.properties[key] = properties[key];
         descs.push(key + ": " + properties[key].description);
       }
     }
@@ -452,10 +380,6 @@ export class ObjectType implements IType {
 
   public kind(): TypeKind {
     return TypeKind.ObjectType;
-  }
-
-  public clone(reporter?: IReporter): ObjectType {
-    return new ObjectType(this.properties, reporter || this.reporter);
   }
 }
 
@@ -467,45 +391,19 @@ export function obj(properties: TypeDict): ObjectType {
 export class HybridType implements IType {
   public description: string;
   public types: IType[] = [];
-  public reporter: IReporter;
 
-  constructor(types: IType[], reporter?: IReporter) {
-    this.reporter = reporter || GlobalReporter;
-    this.types = types.map((type) => { return type.clone(this.reporter); });
+  constructor(types: IType[]) {
+    this.types = types.map((type) => { return type; });
     this.description = this.types.map((type) => { return type.description; }).join(" && ");
   }
 
   public kind(): TypeKind {
     return TypeKind.HybridType;
   }
-
-  public clone(reporter?: IReporter): HybridType {
-    return new HybridType(this.types, reporter || this.reporter);
-  }
 }
 
 export function hybrid(...types: IType[]): HybridType {
   return new HybridType(types);
-}
-
-export class SumType implements IType {
-  public description: string;
-  public types: IType[] = [];
-  public reporter: IReporter;
-
-  constructor(types: IType[], reporter?: IReporter) {
-    this.reporter = reporter || GlobalReporter;
-    this.types = types.map((type) => { return type.clone(this.reporter); });
-    this.description = this.types.map((type) => { return type.description; }).join(" || ");
-  }
-
-  public kind(): TypeKind {
-    return TypeKind.SumType;
-  }
-
-  public clone(reporter?: IReporter): SumType {
-    return new SumType(this.types, reporter || this.reporter);
-  }
 }
 
 export function sum(...types: IType[]): SumType {
@@ -543,44 +441,27 @@ export class LazyTypeCache {
 }
 
 export class LazyType {
-  public reporter: IReporter;
 
-  constructor(public description: string, public resolver: () => IType, reporter?: IReporter) {
-    this.reporter = reporter || GlobalReporter;
+  constructor(public description: string, public resolver: () => IType) {
   }
 
   public kind(): TypeKind {
     return TypeKind.LazyType;
   }
 
-  public clone(reporter?: IReporter): LazyType {
-    return new LazyType(this.description, this.resolver, reporter || this.reporter);
-  }
-
   public resolve(): IType {
-    return this.resolver().clone(this.reporter);
+    return this.resolver();
   }
 }
 
 export class BoundLazyType extends LazyType {
-  public reporter: IReporter;
   private tys: string[];
   private new_types: IType[];
 
   constructor(type: LazyType) {
-    super(type.description, type.resolver, type.reporter);
+    super(type.description, type.resolver);
     this.tys = [];
     this.new_types = [];
-  }
-
-  public clone(reporter?: IReporter): BoundLazyType {
-    var lt: LazyType = new LazyType(this.description, this.resolver, reporter || this.reporter);
-    var blt: BoundLazyType = new BoundLazyType(lt);
-    this.tys.forEach((ty, i) => {
-      blt.add(ty, this.new_types[i]);
-    });
-
-    return blt;
   }
 
   public add(ty: string, new_type: IType): void {
@@ -589,7 +470,7 @@ export class BoundLazyType extends LazyType {
   }
 
   public resolve(): IType {
-    var resolved = this.resolver().clone(this.reporter);
+    var resolved = this.resolver();
 
     this.tys.forEach((ty, i) => {
       resolved = substitute_tyvar(resolved, ty, this.new_types[i]);
@@ -860,7 +741,7 @@ export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any 
 
 function wrap_base(value: any, p: ILabel, A: BaseType): any {
   if (!A.contract(value)) {
-    A.reporter.report(p.msg("not of type " + A.description + ": " + value));
+    throw(p.msg("not of type " + A.description + ": " + value));
   }
 
   return value;
@@ -877,15 +758,15 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        A.reporter.report(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        throw(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
-        return target.apply(thisValue, args);
+        //return target.apply(thisValue, args);
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        A.reporter.report(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        throw(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
-        return target.apply(thisValue, args);
+        //return target.apply(thisValue, args);
       }
 
       var wrapped_args: any[] = [];
@@ -912,11 +793,11 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        A.reporter.report(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        throw(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        A.reporter.report(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        throw(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
       }
 
       var wrapped_args: any[] = [];
@@ -1018,8 +899,8 @@ function wrap_arr(value: any, p: ILabel, q: ILabel, A: ArrayType, B: ArrayType):
 function wrap_dict(value: any, p: ILabel, q: ILabel, A: DictionaryType, B: DictionaryType): any {
   var type: string = typeof value;
   if (type !== "object" && type !== "function" || !value) {
-    A.reporter.report(p.msg("not of Indexable type"));
-    return value;
+    throw(p.msg("not of Indexable type"));
+    //return value;
   }
 
   return new Proxy(value, {
@@ -1035,9 +916,9 @@ function wrap_dict(value: any, p: ILabel, q: ILabel, A: DictionaryType, B: Dicti
 
 function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType): any {
   var type: string = typeof value;
+
   if (type !== "object" && type !== "function" || !value) {
-    A.reporter.report(p.msg("not of type Obj"));
-    return value;
+    throw(p.msg("not of type Obj"));
   }
 
   return new Proxy(value, {
@@ -1068,98 +949,6 @@ function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType
 function wrap_hybrid(value: any, p: ILabel, q: ILabel, A: HybridType, B: HybridType): any {
   for (var i = 0, n = A.types.length; i < n; i += 1) {
     value = wrap(value, p, q, A.types[i], B.types[i]);
-  }
-
-  return value;
-}
-
-class SumReporter {
-  private statuses: boolean[] = [];
-
-  constructor(private parentReporter: IReporter) {
-  }
-
-  public getReporter(): IReporter {
-    var i: number = this.statuses.length;
-
-    // Create a slot for the reporter
-    this.statuses.push(true);
-    //console.log('create reporter ' + i);
-
-    return {
-      report: (msg) => { this.report(msg, i); }
-    };
-  }
-
-  private report(msg: string, i: number): void {
-    // Flag the reporter
-    this.statuses[i] = false;
-    //console.log(msg, i);
-
-    // If all elements have failed, report it back to the parent
-    if (!this.statuses.some((stat) => { return stat; })) {
-      this.parentReporter.report(msg);
-    }
-  }
-}
-
-function wrap_sum(value: any, p: ILabel, q: ILabel, A: SumType, B: SumType): any {
-  // When wrapping sum create a custom reporter:
-  var reporter: SumReporter = new SumReporter(A.reporter);
-
-  var types_A: IType[] = [];
-  var types_B: IType[] = [];
-  var i, n;
-
-  // Sums of functional types are generated in a slightly different way
-  // Generate them separately
-  var isFuncType = (type) => { return type.kind() === TypeKind.FunctionType; };
-  var notFuncType = (type) => { return type.kind() !== TypeKind.FunctionType; };
-  var func_types_A: IType[] = A.types.filter(isFuncType);
-  var func_types_B: IType[] = B.types.filter(isFuncType);
-
-  var non_func_types_A: IType[] = A.types.filter(notFuncType);
-  var non_func_types_B: IType[] = B.types.filter(notFuncType);
-
-
-  for (i = 0, n = non_func_types_A.length; i < n; i += 1) {
-    var newReporter: IReporter = reporter.getReporter();
-
-    types_A.push(non_func_types_A[i].clone(newReporter));
-    types_B.push(non_func_types_B[i].clone(newReporter));
-  }
-
-  // In this situation cannot reuse the code for hybrid type
-
-  // wrapping the function types
-  if (typeof value === "function") {
-    var funcReporter: IReporter = reporter.getReporter();
-
-    value = new Proxy(value, {
-      apply: function (target, thisValue, args) {
-        // Perform sum wrapping here
-        var callReporter = new SumReporter(funcReporter);
-        var call_types_A = [];
-        var call_types_B = [];
-
-        for (i = 0, n = func_types_A.length; i < n; i += 1) {
-          var call_newReporter = callReporter.getReporter();
-
-          call_types_A.push(func_types_A[i].clone(call_newReporter));
-          call_types_B.push(func_types_B[i].clone(call_newReporter));
-        }
-
-        for (i = 0, n = call_types_A.length; i < n; i += 1) {
-          target = wrap(target, p, q, call_types_A[i], call_types_B[i]);
-        }
-
-        return target.apply(thisValue, args);
-      }
-    });
-  }
-
-  for (i = 0, n = types_A.length; i < n; i += 1) {
-    value = wrap(value, p, q, types_A[i], types_B[i]);
   }
 
   return value;
