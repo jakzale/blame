@@ -431,7 +431,7 @@ class BlameCompiler {
       return signatures[0];
     }
 
-    return "Blame.sum(" + signatures.join(", ") + ")";
+    return "Blame.union(" + signatures.join(", ") + ")";
   }
 
   private parseIndexSignature(indexSignature: TypeScript.PullSignatureSymbol, logger: ILogger): string {
@@ -566,7 +566,7 @@ class BlameCompiler {
     if (type) {
       if (member.isOptional) {
         logger.next().log("optional");
-        type = "Blame.sum(" + type + ", Blame.Null)";
+        type = "Blame.union(" + type + ", Blame.Null)";
       }
       return member.name + ": " + type;
     }
