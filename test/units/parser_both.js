@@ -102,7 +102,7 @@ describe('variable declaration', function () {
     describe('overloading', function () {
       it('should allow to define simple overloading', function () {
         var source = 'declare function f(): number; declare function f(b: boolean): string;';
-        var desired = 'f = Blame.simple_wrap(f, Blame.sum(Blame.fun([], [], null, Blame.Num), Blame.fun([Blame.Bool], [], null, Blame.Str)));';
+        var desired = 'f = Blame.simple_wrap(f, Blame.union(Blame.fun([], [], null, Blame.Num), Blame.fun([Blame.Bool], [], null, Blame.Str)));';
 
         expect(parser.compileFromString(source)).to.equal(desired);
       });
@@ -157,7 +157,7 @@ describe('variable declaration', function () {
 
     it('should accept an object with optional members', function () {
       var source = 'declare var o: {b?: boolean;}';
-      var desired = 'o = Blame.simple_wrap(o, Blame.obj({b: Blame.sum(Blame.Bool, Blame.Null)}));';
+      var desired = 'o = Blame.simple_wrap(o, Blame.obj({b: Blame.union(Blame.Bool, Blame.Null)}));';
 
       expect(parser.compileFromString(source)).to.equal(desired);
     });
@@ -375,13 +375,13 @@ describe('routie test', function () {
     // Old version
     //var desired = [
     //  'T.set(\'Route\', Blame.obj({addHandler: Blame.fun([Blame.Fun], [], null, Blame.Void), constructor: Blame.fun([Blame.Str, Blame.Str], [], null, T.get(\'Route\')), match: Blame.fun([Blame.Str, Blame.Any], [], null, Blame.Bool), removeHandler: Blame.fun([Blame.Fun], [], null, Blame.Void), run: Blame.fun([Blame.Any], [], null, Blame.Void), toURL: Blame.fun([Blame.Any], [], null, Blame.Str)}));',
-    //  'routie = Blame.simple_wrap(routie, Blame.sum(Blame.fun([Blame.Str], [], null, Blame.Void), Blame.fun([Blame.Str, Blame.Fun], [], null, Blame.Void), Blame.fun([Blame.dict(Blame.Fun)], [], null, Blame.Void)));'
+    //  'routie = Blame.simple_wrap(routie, Blame.union(Blame.fun([Blame.Str], [], null, Blame.Void), Blame.fun([Blame.Str, Blame.Fun], [], null, Blame.Void), Blame.fun([Blame.dict(Blame.Fun)], [], null, Blame.Void)));'
     //].join("\n");
 
     var desired = [
       'T.set(\'Function\', Blame.obj({apply: Blame.fun([Blame.Any], [Blame.Any], null, null), arguments: Blame.Any, bind: Blame.fun([Blame.Any], [], Blame.Any, null), call: Blame.fun([Blame.Any], [], Blame.Any, null), caller: Blame.Any, length: Blame.Any, prototype: Blame.Any}));',
       'T.set(\'Route\', Blame.obj({addHandler: Blame.fun([T.get(\'Function\')], [], null, Blame.Void), constructor: Blame.fun([Blame.Str, Blame.Str], [], null, T.get(\'Route\')), match: Blame.fun([Blame.Str, Blame.Any], [], null, Blame.Bool), removeHandler: Blame.fun([T.get(\'Function\')], [], null, Blame.Void), run: Blame.fun([Blame.Any], [], null, Blame.Void), toURL: Blame.fun([Blame.Any], [], null, Blame.Str)}));',
-      'routie = Blame.simple_wrap(routie, Blame.sum(Blame.fun([Blame.Str], [], null, Blame.Void), Blame.fun([Blame.Str, T.get(\'Function\')], [], null, Blame.Void), Blame.fun([Blame.dict(T.get(\'Function\'))], [], null, Blame.Void)));'
+      'routie = Blame.simple_wrap(routie, Blame.union(Blame.fun([Blame.Str], [], null, Blame.Void), Blame.fun([Blame.Str, T.get(\'Function\')], [], null, Blame.Void), Blame.fun([Blame.dict(T.get(\'Function\'))], [], null, Blame.Void)));'
     ].join("\n");
 
     expect(parser.compileFromString(source)).to.equal(desired);
