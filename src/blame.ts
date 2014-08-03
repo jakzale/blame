@@ -356,13 +356,13 @@ class BoundTypeVariable extends TypeVariable {
 
   public unseal(t: Token, q: ILabel): any {
     if (!(t instanceof Token)) {
-      this.reporter.report(q.negated().msg(t + " is not a sealed token (" + this.description + ")"));
+      this.reporter.report(q.msg(t + " is not a sealed token (" + this.description + ")"));
     }
     if (this.storage.has(t)) {
       return this.storage.get(t);
     }
 
-    this.reporter.report(q.negated().msg("Token: " + t.tyvar + " sealed by a different forall"));
+    this.reporter.report(q.msg("Token: " + t.tyvar + " sealed by a different forall"));
     return t;
   }
 
@@ -852,7 +852,7 @@ export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any 
   }
 
   if (a === TypeKind.BoundTypeVariable && b === TypeKind.AnyType) {
-    return (<BoundTypeVariable> A).unseal(value, q);
+    return (<BoundTypeVariable> A).unseal(value, p);
   }
 
   throw new Error("Panic, A: " + A.description + " and B: " + B.description + " are not compatible");

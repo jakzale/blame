@@ -201,7 +201,7 @@ describe('wrapping', function () {
       }
       expect(function () {
         wrap(bad, p, q, type_id, type_id)(1);
-      }).to.throw(q.negated().msg());
+      }).to.throw(p.msg());
     });
 
     it('should accept Phills example', function () {
@@ -243,7 +243,7 @@ describe('wrapping', function () {
         wrapped_iden_or_repeat(1);
         wrapped_iden_or_repeat(2);
 
-      }).to.throw(q.negated().msg());
+      }).to.throw(p.msg());
 
     });
   });
@@ -266,7 +266,7 @@ describe('wrapping', function () {
     expect(wrap_fun(second, p, q, AX_XXX, AX_XXX)(1, 1)).not.to.throw();
 
     expect(wrap_fun(first, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).not.to.throw();
-    expect(wrap_fun(second, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).to.throw(q.negated().msg());
+    expect(wrap_fun(second, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).to.throw(p.msg());
   });
 
 });
@@ -362,7 +362,7 @@ describe('forall arrays', function () {
       expect(wrap_fun(head, p, q, type_single, type_single)(array)).not.to.throw();
       expect(wrap(head, p, q, type_single, type_single)(array)).to.equal(1);
 
-      expect(wrap_fun(bad, p, q, type_single, type_single)(array)).to.throw(q.negated().msg());
+      expect(wrap_fun(bad, p, q, type_single, type_single)(array)).to.throw(p.msg());
     });
 
     it('should allow to define rest', function () {
@@ -384,7 +384,7 @@ describe('forall arrays', function () {
 
 
       expect(check(wrap(rest, p, q, type_multi, type_multi)(array), ref)).not.to.throw();
-      expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(q.negated().msg());
+      expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(p.msg());
     });
 
     it('should allow to define reverse', function () {
@@ -407,7 +407,7 @@ describe('forall arrays', function () {
       }
 
       expect(check(wrap(reverse, p, q, type_multi, type_multi)(array), ref)).not.to.throw();
-      expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(q.negated().msg());
+      expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(p.msg());
     });
   });
 
@@ -438,7 +438,7 @@ describe('forall arrays', function () {
       var type_filter = forall('X', func(func(tyvar('X'), Bool), arr(tyvar('X')), arr(tyvar('X'))));
 
       expect(check(wrap(filter, p, q, type_filter, type_filter)(is_even, array), ref)).not.to.throw();
-      expect(check(wrap(bad, p, q, type_filter, type_filter)(is_even, array), ref)).to.throw(q.negated().msg());
+      expect(check(wrap(bad, p, q, type_filter, type_filter)(is_even, array), ref)).to.throw(p.msg());
     });
 
     it('should allow to define map', function () {
@@ -465,7 +465,7 @@ describe('forall arrays', function () {
       var type_map = forall('X', forall('Y', func(func(tyvar('X'), tyvar('Y')), arr(tyvar('X')), arr(tyvar('Y')))));
 
       expect(check(wrap(map, p, q, type_map, type_map)(add1, array), ref)).not.to.throw();
-      expect(check(wrap(bad, p, q, type_map, type_map)(add1, array), ref)).to.throw(q.negated().msg());
+      expect(check(wrap(bad, p, q, type_map, type_map)(add1, array), ref)).to.throw(p.msg());
     });
 
     it('should allow to define fold', function () {
@@ -490,7 +490,7 @@ describe('forall arrays', function () {
       expect(wrap_fun(fold, p, q, type_fold, type_fold)(add, 0, array)).not.to.throw();
       expect(wrap(fold, p, q, type_fold, type_fold)(add, 0, array)).to.equal(15);
 
-      expect(wrap_fun(bad, p, q, type_fold, type_fold)(add, 0, array)).to.throw(q.negated().msg());
+      expect(wrap_fun(bad, p, q, type_fold, type_fold)(add, 0, array)).to.throw(p.msg());
     });
   });
 });
@@ -1066,7 +1066,7 @@ describe('Objects', function () {
 
         expect(function () {
           wrapped_swap(A);
-        }).to.throw(q.negated().msg());
+        }).to.throw(p.msg());
       });
     });
   });
@@ -1421,7 +1421,7 @@ describe('recursive types', function () {
 
       expect(function () {
         f(1).put(2).put('a').put(3).get();
-      }).to.throw(q.negated().msg());
+      }).to.throw(p.msg());
     });
   });
 
