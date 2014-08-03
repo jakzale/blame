@@ -23,6 +23,7 @@
     "gulp-karma": "0.0.x",
     "gulp-mocha": "0.5.x",
     "gulp-rename": "^1.2.0",
+    "gulp-rimraf": "^0.1.0",
     "gulp-typescript-compiler": "1.0.x",
     "handlebars": "^2.0.0-alpha.4",
     "karma": "0.12.x",
