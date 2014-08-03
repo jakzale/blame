@@ -405,8 +405,6 @@ export function hybrid(...types: IType[]): HybridType {
   return new HybridType(types);
 }
 
-}
-
 export class LazyTypeCache {
   private typeCache: TypeDict;
   private requested: string[];
