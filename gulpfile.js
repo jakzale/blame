@@ -142,7 +142,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('clean', function () {
-  gulp.src(['build/**/*.js', 'test/wrapped/**/*.js', 'test/gen/bundle-tests.js'], {read: false})
+  gulp.src(['test/wrapped/**/*.js', 'test/gen/bundle-tests.js'], {read: false})
   .pipe(rimraf());
 });
 
