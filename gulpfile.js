@@ -16,6 +16,7 @@ var gulp = require('gulp'),
   glob = require('glob'),
   map = require('vinyl-map'),
   rename = require('gulp-rename'),
+  rimraf = require('gulp-rimraf'),
   parser = require('./build/parser.js'),
   test_files,
   paths;
@@ -138,6 +139,11 @@ gulp.task('wrappers', function () {
 
 gulp.task('watch', function () {
   gulp.watch([paths.blame.source, paths.tests, paths.wrappers.source], ['build:bundle']);
+});
+
+gulp.task('clean', function () {
+  gulp.src(['build/**/*.js', 'test/wrapped/**/*.js', 'test/gen/bundle-tests.js'], {read: false})
+  .pipe(rimraf());
 });
 
 // Listing the happens before relations
