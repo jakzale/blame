@@ -58,30 +58,25 @@ export class Label implements ILabel {
 }
 
 
-function swappableLabel(front: ILabel, back: ILabel): ILabel {
-  // A simple swappableLabel
-  // It is a bit of a trick
-  var current = front;
-  var front = true;
-  return new Proxy({}, {
+function poppableLabel(front: ILabel, back: ILabel): ILabel {
+  var notPopped = true;
+
+  return new Proxy(back, {
     get: function (target, name, receiver): any {
-
-      if (name === "swap") {
-        return function () {
-          if (front) {
-            current = back;
-          } else {
-            current = front;
-          }
-
-          front = !front;
-        };
+      if (notPopped) {
+        if (name === "pop") {
+          return function () {
+            notPopped = false;
+          };
+        }
+        return front[name];
       }
 
-      return current[name];
+      return target[name];
     }
   });
 }
+
 
 //class SwappableLabel implements ILabel {
 //  constructor(private front: ILabel, private back: ILabel) {
@@ -822,8 +817,8 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var instance = Object.create(target.prototype);
 
       // Create wrapped instance for the constructor;
-      var q_p: ILabel = swappableLabel(q, p);
-      var p_q: ILabel = swappableLabel(p, q);
+      var q_p: ILabel = poppableLabel(q, p);
+      var p_q: ILabel = poppableLabel(p, q);
 
       // Eager constructor enforcement
       var cons_instance = wrap(instance, q_p, p_q, A.constructType, B.constructType);
@@ -832,8 +827,8 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
 
 
       // Swapping the labels
-      q_p.swap();
-      p_q.swap();
+      q_p.pop();
+      p_q.pop();
 
       // Returning wrapped instance for the rest of the program
       return cons_instance;
