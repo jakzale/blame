@@ -6,17 +6,18 @@ var count: number = 0;
 declare function Proxy(target: any, handler: {}): void;
 
 export interface ILabel {
-  label(): string;
-  status(): boolean;
-  negated(): ILabel;
+  dom(): ILabel;
+  rng(): ILabel;
+  get(): ILabel;
+  set(): ILabel;
   msg(m: string): string;
 }
 
-export class Label implements ILabel {
+class Label implements ILabel {
   private _label: string;
-  private _status: boolean;
+  private _paths: string[];
 
-  constructor(label?: string, status?: boolean) {
+  constructor(label?: string, paths?: string[]) {
 
     if (label !== undefined) {
       this._label = String(label);
@@ -25,38 +26,43 @@ export class Label implements ILabel {
       count += 1;
     }
 
-    if (status !== undefined) {
-      this._status = !!status;
-    } else {
-      this._status = true;
-    }
-
+    this._paths = paths || [];
   }
 
-  public label(): string {
-    return this._label;
+  private addPath(path: string): ILabel {
+    return new Label(this._label, this._paths.concat(path));
   }
 
-  public status(): boolean {
-    return this._status;
+  public dom(): ILabel {
+    return this.addPath("dom");
   }
 
-  public negated(): Label {
-    return new Label(this.label(), !this.status());
+  public rng(): ILabel {
+    return this.addPath("rng");
+  }
+
+  public set(): ILabel {
+    return this.addPath("set");
+  }
+
+  public get(): ILabel {
+    return this.addPath("get");
   }
 
   public msg(m: string): string {
-    var stat: string = this.status() ? "positive" : "negative";
     var message: string = "";
 
     if (m) {
       message = " " + m;
     }
 
-    return "{" + stat + " " + this.label() + "}" + message;
+    return "{" + this._label + "}[" + this._paths.join(", ") + "]" + message;
   }
 }
 
+export function label(lab?: string): ILabel {
+  return new Label(lab);
+}
 
 function poppableLabel(front: ILabel, back: ILabel): ILabel {
   var notPopped = true;
@@ -322,15 +328,15 @@ class BoundTypeVariable extends TypeVariable {
     return t;
   }
 
-  public unseal(t: Token, q: ILabel): any {
+  public unseal(t: Token, p: ILabel): any {
     if (!(t instanceof Token)) {
-      throw new Error(q.negated().msg(t + " is not a sealed token (" + this.description + ")"));
+      throw new Error(p.msg(t + " is not a sealed token (" + this.description + ")"));
     }
     if (this.storage.has(t)) {
       return this.storage.get(t);
     }
 
-    throw new Error(q.negated().msg("Token: " + t.tyvar + " sealed by a different forall"));
+    throw new Error(p.msg("Token: " + t.tyvar + " sealed by a different forall"));
   }
 
   public kind(): TypeKind {
@@ -665,7 +671,7 @@ function compatible_lazy(A: LazyType, B: LazyType): boolean {
 export function simple_wrap(value: any, A: IType): any {
   var p = new Label();
 
-  return wrap(value, p, p.negated(), A, A);
+  return wrap(value, p, p, A, A);
 }
 
 export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any {
@@ -732,7 +738,7 @@ export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any 
   }
 
   if (a === TypeKind.BoundTypeVariable && b === TypeKind.AnyType) {
-    return (<BoundTypeVariable> A).unseal(value, q);
+    return (<BoundTypeVariable> A).unseal(value, p);
   }
 
   throw new Error("Panic, A: " + A.description + " and B: " + B.description + " are not compatible");
@@ -757,13 +763,13 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        throw new Error(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        throw new Error(q.dom().msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
         //return target.apply(thisValue, args);
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        throw new Error(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        throw new Error(q.dom().msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
         //return target.apply(thisValue, args);
       }
@@ -771,20 +777,20 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var wrapped_args: any[] = [];
 
       for (var i = 0; i < A.requiredParameters.length; i++) {
-        wrapped_args.push(wrap(args[i], q, p, B.requiredParameters[i], A.requiredParameters[i]));
+        wrapped_args.push(wrap(args[i], q.dom(), p.dom(), B.requiredParameters[i], A.requiredParameters[i]));
       }
 
       for (var j = 0; j < A.optionalParameters.length && (i + j) < args.length; j++) {
-        wrapped_args.push(wrap(args[i + j], q, p, B.optionalParameters[j], A.optionalParameters[j]));
+        wrapped_args.push(wrap(args[i + j], q.dom(), p.dom(), B.optionalParameters[j], A.optionalParameters[j]));
       }
 
       for (var k = i + j; k < args.length; k++) {
-        wrapped_args.push(wrap(args[k], q, p, B.restParameter, A.restParameter));
+        wrapped_args.push(wrap(args[k], q.dom(), p.dom(), B.restParameter, A.restParameter));
       }
 
       var ret = target.apply(thisValue, wrapped_args);
 
-      return wrap(ret, p, q, A.returnType, B.returnType);
+      return wrap(ret, p.rng(), q.rng(), A.returnType, B.returnType);
     },
     construct: function (target: any, args: any[]): any {
       var nArgs: number = args.length;
@@ -792,36 +798,36 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        throw new Error(q.msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        throw new Error(q.dom().msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        throw(q.msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        throw(q.dom().msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
       }
 
       var wrapped_args: any[] = [];
 
       for (var i = 0; i < A.requiredParameters.length; i++) {
-        wrapped_args.push(wrap(args[i], q, p, B.requiredParameters[i], A.requiredParameters[i]));
+        wrapped_args.push(wrap(args[i], q.dom(), p.dom(), B.requiredParameters[i], A.requiredParameters[i]));
       }
 
       for (var j = 0; j < A.optionalParameters.length && (i + j) < args.length; j++) {
-        wrapped_args.push(wrap(args[i + j], q, p, B.optionalParameters[j], A.optionalParameters[j]));
+        wrapped_args.push(wrap(args[i + j], q.dom(), p.dom(), B.optionalParameters[j], A.optionalParameters[j]));
       }
 
       for (var k = i + j; k < args.length; k++) {
-        wrapped_args.push(wrap(args[k], q, p, B.restParameter, A.restParameter));
+        wrapped_args.push(wrap(args[k], q.dom(), p.dom(), B.restParameter, A.restParameter));
       }
 
       // Create the instance
       var instance = Object.create(target.prototype);
 
       // Create wrapped instance for the constructor;
-      var q_p: ILabel = poppableLabel(q, p);
-      var p_q: ILabel = poppableLabel(p, q);
+      var q_p: any = poppableLabel(q, p);
+      var p_q: any = poppableLabel(p, q);
 
       // Eager constructor enforcement
-      var cons_instance = wrap(instance, q_p, p_q, A.constructType, B.constructType);
+      var cons_instance = wrap(instance, <ILabel> q_p, <ILabel> p_q, A.constructType, B.constructType);
 
       target.apply(cons_instance, wrapped_args);
 
@@ -875,14 +881,14 @@ function wrap_arr(value: any, p: ILabel, q: ILabel, A: ArrayType, B: ArrayType):
     get: function (target: any, name: string, receiver: any): any {
 
       if (is_index(name)) {
-        return wrap(target[name], p, q, A.type, B.type);
+        return wrap(target[name], p.get(), q.get(), A.type, B.type);
       }
 
       return target[name];
     },
    set: function (target: any, name: string, val: any, receiver: any): void {
      if (is_index(name)) {
-       target[name] = wrap(val, q, p, B.type, A.type);
+       target[name] = wrap(val, q.set(), p.set(), B.type, A.type);
 
        return;
      }
@@ -905,10 +911,10 @@ function wrap_dict(value: any, p: ILabel, q: ILabel, A: DictionaryType, B: Dicti
   return new Proxy(value, {
     get: function (target: any, name: string, receiver: any): any {
 
-      return wrap(target[name], p, q, A.type, B.type);
+      return wrap(target[name], p.get(), q.get(), A.type, B.type);
     },
    set: function (target: any, name: string, val: any, receiver: any): void {
-     target[name] = wrap(val, q, p, B.type, A.type);
+     target[name] = wrap(val, q.set(), p.set(), B.type, A.type);
    }
   });
 }
@@ -926,7 +932,7 @@ function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType
         var A_type: IType = A.properties[name];
         var B_type: IType = B.properties[name];
 
-        return wrap(target[name], p, q, A_type, B_type);
+        return wrap(target[name], p.get(), q.get(), A_type, B_type);
       }
 
       return target[name];
@@ -936,7 +942,7 @@ function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType
         var A_type: IType = A.properties[name];
         var B_type: IType = B.properties[name];
 
-        target[name] = wrap(val, q, p, B_type, A_type);
+        target[name] = wrap(val, q.set(), p.set(), B_type, A_type);
         return;
       }
 
