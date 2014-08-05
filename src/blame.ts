@@ -57,33 +57,59 @@ export class Label implements ILabel {
   }
 }
 
-class SwappableLabel implements ILabel {
-  constructor(private front: ILabel, private back: ILabel) {
 
-  }
+function swappableLabel(front: ILabel, back: ILabel): ILabel {
+  // A simple swappableLabel
+  // It is a bit of a trick
+  var current = front;
+  var front = true;
+  return new Proxy({}, {
+    get: function (target, name, receiver): any {
 
-  public label(): string {
-    return this.front.label();
-  }
+      if (name === "swap") {
+        return function () {
+          if (front) {
+            current = back;
+          } else {
+            current = front;
+          }
 
-  public status(): boolean {
-    return this.front.status();
-  }
+          front = !front;
+        };
+      }
 
-  public negated(): SwappableLabel {
-    return new SwappableLabel(this.front.negated(), this.back.negated());
-  }
-
-  public msg(m: string): string {
-    return this.front.msg(m);
-  }
-
-  public swap(): void {
-    var temp = this.front;
-    this.front = this.back;
-    this.back = this.front;
-  }
+      return current[name];
+    }
+  });
 }
+
+//class SwappableLabel implements ILabel {
+//  constructor(private front: ILabel, private back: ILabel) {
+
+//  }
+
+//  public label(): string {
+//    return this.front.label();
+//  }
+
+//  public status(): boolean {
+//    return this.front.status();
+//  }
+
+//  public negated(): SwappableLabel {
+//    return new SwappableLabel(this.front.negated(), this.back.negated());
+//  }
+
+//  public msg(m: string): string {
+//    return this.front.msg(m);
+//  }
+
+//  public swap(): void {
+//    var temp = this.front;
+//    this.front = this.back;
+//    this.back = this.front;
+//  }
+//}
 
 export enum TypeKind {
   AnyType,
@@ -796,8 +822,8 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var instance = Object.create(target.prototype);
 
       // Create wrapped instance for the constructor;
-      var q_p: SwappableLabel = new SwappableLabel(q, p);
-      var p_q: SwappableLabel = new SwappableLabel(p, q);
+      var q_p: ILabel = swappableLabel(q, p);
+      var p_q: ILabel = swappableLabel(p, q);
 
       // Eager constructor enforcement
       var cons_instance = wrap(instance, q_p, p_q, A.constructType, B.constructType);
