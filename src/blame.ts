@@ -10,6 +10,7 @@ export interface ILabel {
   rng(): ILabel;
   get(): ILabel;
   set(): ILabel;
+  complete(): boolean;
   msg(m: string): string;
 }
 
@@ -58,6 +59,10 @@ class Label implements ILabel {
 
     return "{" + this._label + "}[" + this._paths.join(", ") + "]" + message;
   }
+
+  public complete(): boolean {
+    return true;
+  }
 }
 
 export function label(lab?: string): ILabel {
@@ -83,34 +88,6 @@ function poppableLabel(front: ILabel, back: ILabel): ILabel {
   });
 }
 
-
-//class SwappableLabel implements ILabel {
-//  constructor(private front: ILabel, private back: ILabel) {
-
-//  }
-
-//  public label(): string {
-//    return this.front.label();
-//  }
-
-//  public status(): boolean {
-//    return this.front.status();
-//  }
-
-//  public negated(): SwappableLabel {
-//    return new SwappableLabel(this.front.negated(), this.back.negated());
-//  }
-
-//  public msg(m: string): string {
-//    return this.front.msg(m);
-//  }
-
-//  public swap(): void {
-//    var temp = this.front;
-//    this.front = this.back;
-//    this.back = this.front;
-//  }
-//}
 
 export enum TypeKind {
   AnyType,
@@ -258,7 +235,7 @@ export function fun(range: IType[], optional: IType[], rest: IType, ret: IType, 
 
 export function func(...args: IType[]) {
   if (args.length < 0) {
-    throw Error("Panic, Func needs at least one argument");
+    throw new Error("Panic, Func needs at least one argument");
   }
 
   var returnType: IType = args.pop();
@@ -653,19 +630,18 @@ function compatible_hybrid(A: HybridType, B: HybridType): boolean {
     return false;
   }
 
-  // TODO: This is wrong
-  //for (var i = 0, n = A.types.length; i < n; i += 1) {
-  //  if (A.types[i].kind !== B.types[i].kind) {
-  //    return false;
-  //  }
-  //}
-
   return true;
 }
 
 
 function compatible_lazy(A: LazyType, B: LazyType): boolean {
   return A.description === B.description;
+}
+
+function blame(p: ILabel, m: string): void {
+  if (p.complete()) {
+    throw new Error(p.msg(m));
+  }
 }
 
 export function simple_wrap(value: any, A: IType): any {
@@ -746,7 +722,8 @@ export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any 
 
 function wrap_base(value: any, p: ILabel, A: BaseType): any {
   if (!A.contract(value)) {
-    throw new Error(p.msg("not of type " + A.description + ": " + value));
+    //throw new Error(p.msg("not of type " + A.description + ": " + value));
+    blame(p, "not of type " + A.description + ": " + value);
   }
 
   return value;
@@ -763,15 +740,17 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
       if (nArgs < minArgs) {
-        throw new Error(q.dom().msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        //throw new Error(q.dom().msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
-        //return target.apply(thisValue, args);
+        blame(q.dom(), "not enough arguments, expected >=" + minArgs + ", got: " + nArgs);
+        return target.apply(thisValue, args);
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        throw new Error(q.dom().msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        //throw new Error(q.dom().msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
-        //return target.apply(thisValue, args);
+        blame(q.dom(), "too many arguments, expected <=" + maxArgs + ", got: " + nArgs);
+        return target.apply(thisValue, args);
       }
 
       var wrapped_args: any[] = [];
@@ -797,12 +776,21 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       var minArgs: number = A.requiredParameters.length;
       var maxArgs: number = (A.requiredParameters.length + A.optionalParameters.length);
 
+      // Create the instance
+      var instance = Object.create(target.prototype);
+
       if (nArgs < minArgs) {
-        throw new Error(q.dom().msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        //throw new Error(q.dom().msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
+        blame(q.dom(), "not enough arguments, expected >=" + minArgs + ", got: " + nArgs);
+        target.apply(instance, args);
+        return instance;
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
-        throw(q.dom().msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        //throw new Error (q.dom().msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
+        blame(q.dom(), "too many arguments, expected <=" + maxArgs + ", got: " + nArgs);
+        target.apply(instance, args);
+        return instance;
       }
 
       var wrapped_args: any[] = [];
@@ -819,8 +807,6 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
         wrapped_args.push(wrap(args[k], q.dom(), p.dom(), B.restParameter, A.restParameter));
       }
 
-      // Create the instance
-      var instance = Object.create(target.prototype);
 
       // Create wrapped instance for the constructor;
       var q_p: any = poppableLabel(q, p);
@@ -904,8 +890,9 @@ function wrap_arr(value: any, p: ILabel, q: ILabel, A: ArrayType, B: ArrayType):
 function wrap_dict(value: any, p: ILabel, q: ILabel, A: DictionaryType, B: DictionaryType): any {
   var type: string = typeof value;
   if (type !== "object" && type !== "function" || !value) {
-    throw new Error(p.msg("not of Indexable type"));
-    //return value;
+    //throw new Error(p.msg("not of Indexable type"));
+    blame(p, "not of Indexable type");
+    return value;
   }
 
   return new Proxy(value, {
@@ -923,7 +910,9 @@ function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType
   var type: string = typeof value;
 
   if (type !== "object" && type !== "function" || !value) {
-    throw new Error(p.msg("not of type Obj"));
+    //throw new Error(p.msg("not of type Obj"));
+    blame(p, "not of type Obj");
+    return value;
   }
 
   return new Proxy(value, {
