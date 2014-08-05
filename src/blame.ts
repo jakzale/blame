@@ -945,9 +945,9 @@ function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType
   });
 }
 
-function wrap_hybrid(value: any, p: ILabel, q: ILabel, A: HybridType, B: HybridType, report: IReport): any {
+function wrap_hybrid(value: any, p: ILabel, q: ILabel, A: HybridType, B: HybridType): any {
   return A.types.reduce((value, type, i) => {
-    return wrap(value, p, q, A.types[i], B.types[i], report);
+    return wrap(value, p, q, A.types[i], B.types[i]);
   }, value);
 }
 
