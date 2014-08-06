@@ -240,7 +240,7 @@ describe('class declaration', function () {
     var source = 'declare class MyClass {}';
     var desired = [
       'T.set(\'MyClass\', Blame.obj({}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));'
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -250,7 +250,7 @@ describe('class declaration', function () {
     var source = 'declare class MyClass {x: number;}';
     var desired = [
       'T.set(\'MyClass\', Blame.obj({x: Blame.Num}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));'
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -260,7 +260,7 @@ describe('class declaration', function () {
     var source = 'declare class MyClass {mc: MyClass;}';
     var desired = [
       'T.set(\'MyClass\', Blame.obj({mc: T.get(\'MyClass\')}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));'
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -270,9 +270,9 @@ describe('class declaration', function () {
     var source = 'declare class A { b: B } declare class B { a: A }';
     var desired = [
       'T.set(\'A\', Blame.obj({b: T.get(\'B\')}));',
-      'A = Blame.simple_wrap(A, Blame.fun([], [], null, T.get(\'A\')));',
+      'A = Blame.simple_wrap(A, Blame.fun([], [], null, Blame.Any, T.get(\'A\')));',
       'T.set(\'B\', Blame.obj({a: T.get(\'A\')}));',
-      'B = Blame.simple_wrap(B, Blame.fun([], [], null, T.get(\'B\')));'
+      'B = Blame.simple_wrap(B, Blame.fun([], [], null, Blame.Any, T.get(\'B\')));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -282,7 +282,7 @@ describe('class declaration', function () {
     var source = 'declare class MyClass {} declare var c: MyClass';
     var desired = [
       'T.set(\'MyClass\', Blame.obj({}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));',
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));',
       'c = Blame.simple_wrap(c, T.get(\'MyClass\'));'
     ].join('\n');
 
@@ -293,9 +293,9 @@ describe('class declaration', function () {
     var source = 'declare class ParentClass {x: number} declare class MyClass extends ParentClass {b: boolean}';
     var desired = [
       'T.set(\'ParentClass\', Blame.obj({x: Blame.Num}));',
-      'ParentClass = Blame.simple_wrap(ParentClass, Blame.fun([], [], null, T.get(\'ParentClass\')));',
+      'ParentClass = Blame.simple_wrap(ParentClass, Blame.fun([], [], null, Blame.Any, T.get(\'ParentClass\')));',
       'T.set(\'MyClass\', Blame.obj({b: Blame.Bool, x: Blame.Num}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, T.get(\'MyClass\')));'
+      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -347,7 +347,7 @@ describe('internal modules', function () {
     var source = 'declare module MyModule { export class MyClass { x: number; } var x:MyClass; }';
     var desired = [
       'T.set(\'MyModule.MyClass\', Blame.obj({x: Blame.Num}));',
-      'MyModule = Blame.simple_wrap(MyModule, Blame.obj({MyClass: Blame.fun([], [], null, T.get(\'MyModule.MyClass\')), x: T.get(\'MyModule.MyClass\')}));'
+      'MyModule = Blame.simple_wrap(MyModule, Blame.obj({MyClass: Blame.fun([], [], null, Blame.Any, T.get(\'MyModule.MyClass\')), x: T.get(\'MyModule.MyClass\')}));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -417,14 +417,14 @@ describe('forall types', function () {
 
   it('should parse objects with forall members', function () {
     var source = 'declare class C<X, Y> { x(x: X): Y; y(y: Y): X;}';
-    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nC = Blame.simple_wrap(C, Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, T.get(\'C<X, Y>\')))));';
+    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nC = Blame.simple_wrap(C, Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, Blame.Any, T.get(\'C<X, Y>\')))));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should allow instances with forall members', function () {
     var source = 'declare class C<X, Y> { x(x: X): Y; y(y: Y): X;} declare var c:C<number,string>;';
-    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nC = Blame.simple_wrap(C, Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, T.get(\'C<X, Y>\')))));\nT.set(\'C<number, string>\', Blame.obj({x: Blame.fun([Blame.Num], [], null, Blame.Str), y: Blame.fun([Blame.Str], [], null, Blame.Num)}));\nc = Blame.simple_wrap(c, T.get(\'C<number, string>\'));';
+    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nC = Blame.simple_wrap(C, Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, Blame.Any, T.get(\'C<X, Y>\')))));\nT.set(\'C<number, string>\', Blame.obj({x: Blame.fun([Blame.Num], [], null, Blame.Str), y: Blame.fun([Blame.Str], [], null, Blame.Num)}));\nc = Blame.simple_wrap(c, T.get(\'C<number, string>\'));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
@@ -436,6 +436,17 @@ describe('external modules', function () {
     var desired = 'M["test"] = Blame.obj({f: Blame.fun([], [], null, Blame.Bool)});';
 
     expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should handle export = statement', function () {
+    var source = 'declare module "test" { var g: string; export = g; }';
+    var desired = 'M["test"] = Blame.Str;';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should parse an example external module', function () {
+    var source = '';
   });
 });
 

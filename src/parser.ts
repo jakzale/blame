@@ -201,9 +201,6 @@ class BlameCompiler {
 
       case TypeScript.PullElementKind.ObjectType:
       case TypeScript.PullElementKind.FunctionType:
-        logger.log("ignored declaration: " + kind);
-        break;
-
       case TypeScript.PullElementKind.DynamicModule:
         logger.log("ignored declaration: " + kind);
         break;
@@ -227,7 +224,7 @@ class BlameCompiler {
     var type: string = this.parseType(symbol.type, logger.next());
 
     // Checking if this is an external module, hack solution, but should work
-    if (name.indexOf('"') > -1) {
+    if (name.indexOf("\"") > -1) {
       this.typeCache.addModuleDeclaration(name, type);
       logger.log("declared module! " + name + ": " + type);
       return;
@@ -380,7 +377,7 @@ class BlameCompiler {
     }
   }
 
-  private parseCallSignature(callSignature: TypeScript.PullSignatureSymbol, logger: ILogger): string {
+  private parseCallSignature(callSignature: TypeScript.PullSignatureSymbol, logger: ILogger, constr?: boolean): string {
     var next: ILogger = logger.next();
     logger.log("call singature");
 
@@ -429,10 +426,20 @@ class BlameCompiler {
     }
 
 
-    var output: string = "Blame.fun([" + requiredParameters.join(", ") + "], " +
-      "[" + optionalParameters.join(", ") + "], " +
-      restType + ", " +
-      returnType + ")";
+    var output: string;
+
+    if (!constr) {
+      output = "Blame.fun([" + requiredParameters.join(", ") + "], " +
+        "[" + optionalParameters.join(", ") + "], " +
+        restType + ", " +
+        returnType + ")";
+    } else {
+      output = "Blame.fun([" + requiredParameters.join(", ") + "], " +
+        "[" + optionalParameters.join(", ") + "], " +
+        restType + ", " +
+        "Blame.Any, " +
+        returnType + ")";
+    }
 
     if (generic) {
       output = tyvars.reduce((output, tyvar) => {
@@ -445,21 +452,26 @@ class BlameCompiler {
 
   private parseFunctionLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger): string {
     var callSignatures: TypeScript.PullSignatureSymbol[];
+    var constrSignatures: TypeScript.PullSignatureSymbol[];
     var generic: boolean = type.getHasGenericSignature();
 
     // Checking if this is a constructor
-    if (type.isConstructor()) {
-      callSignatures = type.getConstructSignatures();
-    } else {
-      callSignatures = type.getCallSignatures();
-    }
+    //if (type.isConstructor()) {
+      constrSignatures = type.getConstructSignatures() || [];
+    //} else {
+      callSignatures = type.getCallSignatures() || [];
+    //}
 
     logger.log("call signatures: ", callSignatures.length);
     var next: ILogger = logger.next();
 
-    var signatures: string[] = callSignatures.map((signature) => {
-      return this.parseCallSignature(signature, next);
+    var signatures: string[] = constrSignatures.map((signature) => {
+      return this.parseCallSignature(signature, next, true);
     });
+
+    signatures = signatures.concat(callSignatures.map((signature) => {
+      return this.parseCallSignature(signature, next);
+    }));
 
     if (signatures.length === 0) {
       // No signatures
@@ -586,6 +598,12 @@ class BlameCompiler {
 
     // Compose the resulting type
     if (declarations.length === 0) {
+
+      if (name.indexOf("\"") > -1) {
+        // Module with an aliased export
+        return this.parseAliasedModule(type, next);
+      }
+
       return "Blame.obj({})";
     }
 
@@ -596,6 +614,39 @@ class BlameCompiler {
     // Return a hybrid type
 
     return "Blame.hybrid(" + declarations.join(", ") + ")";
+  }
+
+  private parseAliasedModule(type: TypeScript.PullTypeSymbol, logger: ILogger) {
+    var name = type.getDisplayName();
+    logger.log("aliased module " + name);
+
+    var next = logger.next();
+
+    var parentDeclaration: TypeScript.ModuleDeclaration;
+
+    var declarations = type.getDeclarations();
+    if (!declarations || declarations.length === 0) {
+      throw new Error("Panic, aliased external module with no declaration");
+    }
+
+    parentDeclaration = <TypeScript.ModuleDeclaration> declarations[0].ast().parent;
+
+    // Finding the type structure of aliased module
+
+    for (var i = 0, n = parentDeclaration.moduleElements.childCount(); i < n; i += 1) {
+      var child = parentDeclaration.moduleElements.childAt(i);
+
+      switch (child.kind()) {
+        case TypeScript.SyntaxKind.ExportAssignment:
+          var exAsgn = <TypeScript.ExportAssignment> child;
+
+          // Get declaration for ast
+          var symbolInfo = compiler.pullGetSymbolInformationFromAST(exAsgn.identifier, compiler.getDocument(this.filename));
+          return this.parseType(symbolInfo.symbol.type, next.next());
+      }
+    }
+
+    throw new Error("Panic, aliased external module with no declaration");
   }
 
 
