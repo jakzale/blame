@@ -119,9 +119,16 @@ class TypeCache {
   }
 
   public addTypeDeclaration(name: string, type: string): void {
-    var declaration: string = "T.set('" + name + "', " + type + ");";
+    if (!this.isTypeDeclared(name)) {
+      var declaration: string = "T.set('" + name + "', " + type + ");";
+      this.declarations.push(declaration);
+      this.types[name] = true;
+    }
+  }
+
+  public addModuleDeclaration(name: string, type: string): void {
+    var declaration: string = "M[" + name + "] = " + type + ";";
     this.declarations.push(declaration);
-    this.types[name] = true;
   }
 
   public generateDeclarations(): string {
@@ -197,6 +204,10 @@ class BlameCompiler {
         logger.log("ignored declaration: " + kind);
         break;
 
+      case TypeScript.PullElementKind.DynamicModule:
+        logger.log("ignored declaration: " + kind);
+        break;
+
       default:
         throw new Error("Panic, Declaration: " + kind + " not supported");
     }
@@ -215,6 +226,14 @@ class BlameCompiler {
 
     var type: string = this.parseType(symbol.type, logger.next());
 
+    // Checking if this is an external module, hack solution, but should work
+    if (name.indexOf('"') > -1) {
+      this.typeCache.addModuleDeclaration(name, type);
+      logger.log("declared module! " + name + ": " + type);
+      return;
+    }
+
+
     // Checking if the type is not ignored:
     if (type) {
       logger.log("declared! " + name + ": " + type);
@@ -228,7 +247,7 @@ class BlameCompiler {
   }
 
 
-  public parseTypeDeclarationSymbol(type: TypeScript.PullTypeSymbol, logger: ILogger): string {
+  private parseTypeDeclarationSymbol(type: TypeScript.PullTypeSymbol, logger: ILogger): string {
 
     if (!type.isNamedTypeSymbol()) {
       // Do nothing and return -- technically this should not happen
@@ -286,6 +305,9 @@ class BlameCompiler {
 
     // Add declaration without checking the cache first
     declaration = this.parseObjectLikeType(type, logger, true);
+
+
+
     var bname = this.typeCache.addTypeDeclaration(name, declaration);
     logger.log("declared type! " + name + ": " + declaration);
   }
@@ -298,6 +320,8 @@ class BlameCompiler {
 
     var next: ILogger = logger.next();
     var kind: string = TypeScript.PullElementKind[type.kind];
+    var generics: string[] = [];
+
 
     switch (type.kind) {
       case TypeScript.PullElementKind.Primitive:
@@ -324,6 +348,9 @@ class BlameCompiler {
         //this.parseObjectLikeType(type, ignored);
         return "Blame.Num";
 
+      case TypeScript.PullElementKind.TypeParameter:
+        logger.log("tyvar: " + type);
+        return "Blame.tyvar('" + type + "')";
 
       default:
         throw Error("Panic, TypeSymbol: " + kind + " not supported!");
@@ -355,8 +382,14 @@ class BlameCompiler {
 
   private parseCallSignature(callSignature: TypeScript.PullSignatureSymbol, logger: ILogger): string {
     var next: ILogger = logger.next();
-
     logger.log("call singature");
+
+    var generic = callSignature.isGeneric();
+    var tyvars = [];
+
+    if (generic) {
+      tyvars = callSignature.getTypeParameters().map((type) => { return type.toString(); });
+    }
 
     var requiredParameters: string[] = [];
     var optionalParameters: string[] = [];
@@ -401,11 +434,18 @@ class BlameCompiler {
       restType + ", " +
       returnType + ")";
 
+    if (generic) {
+      output = tyvars.reduce((output, tyvar) => {
+        return "Blame.forall('" + tyvar + "', " + output + ")";
+      }, output);
+    }
+
     return output;
   }
 
   private parseFunctionLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger): string {
     var callSignatures: TypeScript.PullSignatureSymbol[];
+    var generic: boolean = type.getHasGenericSignature();
 
     // Checking if this is a constructor
     if (type.isConstructor()) {
@@ -428,7 +468,16 @@ class BlameCompiler {
     }
 
     if (signatures.length === 1) {
+      if (generic) {
+        // Extract generics here
+        //logger.log(type.getTypeArgumentsOrTypeParameters());
+        // TODO: Write tyvar extraction manually
+      }
       return signatures[0];
+    }
+
+    if (generic) {
+      throw new Error("Panic, generics in unions are not supported");
     }
 
     return "Blame.union(" + signatures.join(", ") + ")";
@@ -507,6 +556,13 @@ class BlameCompiler {
 
 
     if (!declaration && type.isNamedTypeSymbol()) {
+      // Checking if type is an instantiated generic type
+      if (type.isGeneric() && type.getTypeParameters().length) {
+        //logger.log('AAAA', type.getTypeParameters().length);
+        // Rerun the declaration
+        this.parseTypeDeclarationSymbol(type, next);
+      }
+
       // If type is not declared try declaring it.
       logger.log("load type: " + name);
       // Checking if the type was defined somewhere else

@@ -400,4 +400,44 @@ describe('loading external types', function () {
   });
 });
 
+describe('forall types', function () {
+  it('should handle simple forall types', function () {
+    var source = 'declare function f<X>(x: X): X';
+    var desired = 'f = Blame.simple_wrap(f, Blame.forall(\'X\', Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'X\'))));';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should handle nested foralls', function () {
+    var source = 'declare function f<X, Y>(x: X, f: (X) => Y): Y';
+    var desired = 'f = Blame.simple_wrap(f, Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([Blame.tyvar(\'X\'), Blame.fun([Blame.Any], [], null, Blame.tyvar(\'Y\'))], [], null, Blame.tyvar(\'Y\')))));';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should parse objects with forall members', function () {
+    var source = 'declare class C<X, Y> { x(x: X): Y; y(y: Y): X;}';
+    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nC = Blame.simple_wrap(C, Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, T.get(\'C<X, Y>\')))));';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should allow instances with forall members', function () {
+    var source = 'declare class C<X, Y> { x(x: X): Y; y(y: Y): X;} declare var c:C<number,string>;';
+    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nC = Blame.simple_wrap(C, Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, T.get(\'C<X, Y>\')))));\nT.set(\'C<number, string>\', Blame.obj({x: Blame.fun([Blame.Num], [], null, Blame.Str), y: Blame.fun([Blame.Str], [], null, Blame.Num)}));\nc = Blame.simple_wrap(c, T.get(\'C<number, string>\'));';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+});
+
+describe('external modules', function () {
+  it('should handle a simple external module definition', function () {
+    var source = 'declare module "test" { function f(): boolean; }';
+    var desired = 'M["test"] = Blame.obj({f: Blame.fun([], [], null, Blame.Bool)});';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+});
+
+
 // vim: set ts=2 sw=2 sts=2 et :
