@@ -2,7 +2,7 @@
   "name": "Blame",
   "version": "0.0.0",
   "description": "Dynamic type checking system for JavaScript",
-  "main": "blame.js",
+  "main": "build/blame.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,9 @@
   "private": true,
   "license": "BSD-2-Clause",
   "dependencies": {
+    "commander": "^2.3.0",
     "harmony-reflect": "1.0.x",
+    "js-beautify": "^1.5.1",
     "typescript-api": "1.0.x"
   },
   "devDependencies": {
@@ -35,5 +37,8 @@
     "typescript": "1.0.x",
     "vinyl-map": "^1.0.1",
     "vinyl-source-stream": "^0.1.1"
+  },
+  "bin": {
+    "blm": "lib/blm.js"
   }
 }
