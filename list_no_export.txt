@@ -4,7 +4,6 @@
        9      40     438 karma-jasmine/karma-jasmine.d.ts
       10      26     318 riotjs/riotjs-render.d.ts
       10      26     383 jquery.sortElements/jquery.sortElement.d.ts
-      11      41     463 sprintf/sprintf.d.ts
       11      47     532 google.geolocation/google.geolocation.d.ts
       12      28     340 riotjs/riotjs.d.ts
       12      38     508 knockout.projections/knockout.projections.d.ts
@@ -20,7 +19,6 @@
       15      37     428 scroller/easyscroller.d.ts
       15      45     482 jquery.base64/jquery.base64.d.ts
       15      45     483 knockout.mapper/knockout.mapper.d.ts
-      15      46     483 form-data/form-data.d.ts
       16      64     631 routie/routie.d.ts
       16      72     569 jquery.tile/jquery.tile.d.ts
       16      72     620 cordova/plugins/Splashscreen.d.ts
@@ -29,45 +27,32 @@
       17      52     592 chai-fuzzy/chai-fuzzy.d.ts
       18      45     540 viewporter/viewporter.d.ts
       19      34     383 pegjs/pegjs.d.ts
-      19      57     591 mime/mime.d.ts
       19      60     584 jquery.simulate/jquery.simulate.d.ts
       19      79     689 ncp/ncp.d.ts
       20      41     391 stats/stats.d.ts
       20      48     486 jquery.autosize/jquery.autosize.d.ts
       20      65     689 knockout.viewmodel/knockout.viewmodel.d.ts
-      20      75     729 memory-cache/memory-cache.d.ts
-      20     100    1022 atpl/atpl.d.ts
       21      40     366 dojo/dojox.xml.d.ts
       21      54     565 dojo/dojox.rails.d.ts
       21      54     861 angularjs/angular-animate.d.ts
       21      57     634 js-fixtures/fixtures.d.ts
-      21      61     527 from/from.d.ts
       21      71     656 storejs/storejs.d.ts
       21      87     880 mousetrap/mousetrap.d.ts
       21     107     923 promises-a-plus/promises-a-plus.d.ts
       22      49     561 linq/linq.jquery.d.ts
       22      50     814 angularjs/legacy/angular-sanitize-1.0.d.ts
       22      61     669 angularLocalStorage/angularLocalStorage.d.ts
-      22      72     793 JSONStream/JSONStream.d.ts
       22     117    1026 ftdomdelegate/ftdomdelegate.d.ts
       23      60     545 dojo/dojox.flash.d.ts
       24      50     578 dojo/dojox.help.d.ts
       24      54     758 chosen/chosen.jquery.d.ts
-      24     109     944 lockfile/lockfile.d.ts
       24     232    1959 createjs/createjs.d.ts
       25      56     667 jquery.jnotify/jquery.jnotify.d.ts
       25      68     766 jquery.payment/jquery.payment.d.ts
       25      74     752 rtree/rtree.d.ts
       25      76     834 localForage/localForage.d.ts
-      26      47     593 colors/colors.d.ts
-      26      73     728 glob-stream/glob-stream.d.ts
-      26      75     687 svgjs.draggable/svgjs.draggable.d.ts
-      26      75     946 convert-source-map/convert-source-map.d.ts
       27      62     805 bootstrap.timepicker/bootstrap.timepicker.d.ts
-      27      63     780 ngprogress-lite/ngprogress-lite.d.ts
-      27      86     881 swig/swig.d.ts
       27      93    1013 vimeo/froogaloop.d.ts
-      27     125    1325 wrench/wrench.d.ts
       28      72     913 sinon-chai/sinon-chai.d.ts
       28      76     731 elm/elm.d.ts
       28      78     808 jquery.livestampjs/jquery.livestampjs.d.ts
@@ -77,7 +62,6 @@
       29      71     697 dojo/dojox.sql.d.ts
       29      85     984 cometd/cometd.d.ts
       29      87    1043 bootstrap.paginator/bootstrap.paginator.d.ts
-      29     112    1171 mu2/mu2.d.ts
       29     119    1187 yui/yui.d.ts
       30      68    1172 angularjs/legacy/angular-cookies-1.0.d.ts
       30      68    1197 angularjs/angular-cookies.d.ts
@@ -87,7 +71,6 @@
       30     104     983 jquery.watermark/jquery.watermark.d.ts
       30     120    1093 dojo/dojox.jsonPath.d.ts
       30     171    1230 cordova/plugins/Device.d.ts
-      30     225    1602 consolidate/consolidate.d.ts
       30     229    1692 jquery.clientSideLogging/jquery.clientSideLogging.d.ts
       31      77    1357 vinyl-fs/vinyl-fs.d.ts
       31      87     898 history/history.d.ts
@@ -102,49 +85,34 @@
       33      89     925 jquery.contextMenu/jquery.contextMenu.d.ts
       33      94     807 cordova-ionic/plugins/keyboard.d.ts
       33      95    1082 easystarjs/easystarjs.d.ts
-      33     102    1150 socket.io-client/socket.io-client.d.ts
       33     108     975 jquery.are-you-sure/jquery.are-you-sure.d.ts
       34      94    1093 passport-facebook/passport-facebook.d.ts
       34     240    1624 rx/rx.coincidence-lite.d.ts
       35      72     863 ladda/ladda.d.ts
-      35      98    1479 angularjs/angular-sanitize.d.ts
-      35     149    1347 watch/watch.d.ts
       36      79     915 x2js/xml2json.d.ts
       37      89    1015 chai-jquery/chai-jquery.d.ts
-      37     117    1222 promptly/promptly.d.ts
-      37     123    1190 logg/logg.d.ts
-      37     147    1355 twig/twig.d.ts
       38      71     787 d3/plugins/d3.superformula.d.ts
-      38     126     835 configstore/configstore.d.ts
-      38     156    1458 xsockets/XSockets.d.ts
       39      67     827 firefox/firefox.d.ts
       39      92    1073 humane/humane.d.ts
       39      96    1076 recaptcha/recaptcha.d.ts
       39     102    1038 iscroll/iscroll-5-lite.d.ts
       39     111    1379 jquery.simplePagination/jquery.simplePagination.d.ts
-      39     130    1228 winston/winston.d.ts
       39     142    1403 chai-datetime/chai-datetime.d.ts
       40      99    1238 angular-hotkeys/angular-hotkeys.d.ts
       40     100    1087 jquery.ui.layout/jquery.ui.layout.d.ts
-      41      95    1053 slickgrid/slick.headerbuttons.d.ts
       41     101    1049 numeraljs/numeraljs.d.ts
       41     109    1350 google.analytics/ga.d.ts
-      41     128    1164 source-map-support/source-map-support.d.ts
       41     145    1664 angularfire/angularfire.d.ts
       42      87    1043 swipeview/swipeview.d.ts
       44     244    1806 fpsmeter/FPSMeter.d.ts
       44     639    4600 jquery.postMessage/jquery.postMessage.d.ts
       45     118    1355 knockout.deferred.updates/knockout.deferred.updates.d.ts
       46     240    1905 spin/spin.d.ts
-      46     564    3744 jquery.jsignature/jquery.jsignature.d.ts
-      47     118    1188 persona/persona.d.ts
       47     155    1625 jquery.bootstrap.wizard/jquery.bootstrap.wizard.d.ts
       47     166    1663 bootbox/bootbox.d.ts
       48     117    1404 iscroll/iscroll-lite.d.ts
-      48     259    2041 js-yaml/js-yaml.d.ts
       49     103     935 dot/dot.d.ts
       49     141    1570 jquery.form/jquery.form.d.ts
-      49     211    1774 rx/rx.backpressure-lite.d.ts
       50     161    1555 keyboardjs/keyboardjs.d.ts
       50     172    1933 scroller/scroller.d.ts
       50     210    1638 trunk8/trunk8.d.ts
@@ -152,30 +120,19 @@
       51     129    1308 sockjs/sockjs.d.ts
       51     312    2738 dojo/dojox.socket.d.ts
       52     166    2001 velocity-animate/velocity-animate.d.ts
-      52     192    1716 jquery.tinyscrollbar/jquery.tinyscrollbar.d.ts
       53     165    1601 videojs/videojs.d.ts
       54     125    1473 mustache/mustache.d.ts
       56     138    1559 jsrender/jsrender.d.ts
-      56     152    1734 sockjs-node/sockjs-node.d.ts
       57     202    2140 bootstrap.datepicker/bootstrap.datepicker.d.ts
       58     299    2508 dojo/dojox.secure.d.ts
-      59     215    2011 nodeunit/nodeunit.d.ts
-      59     231    2096 imagemagick/imagemagick.d.ts
       59     232    2073 cordova/plugins/NetworkInformation.d.ts
       59     245    2243 node-ffi/node-ffi-buffer.d.ts
-      59     343    2880 gapi.youtubeAnalytics/gapi.youtubeAnalytics.d.ts
       60      72    1310 expectations/expectations.d.ts
-      60     143    1717 epiceditor/epiceditor.d.ts
-      60     174    2154 msnodesql/msnodesql.d.ts
       60     264    2288 lz-string/lz-string.d.ts
-      60     285    2603 cordova/cordova.d.ts
       61     125    1823 emissary/emissary.d.ts
       61     133    1475 jquery.timeago/jquery.timeago.d.ts
       61     144    1622 stripe/stripe.d.ts
-      62     230    2901 rx/rx.time-lite.d.ts
-      62     284    2527 xregexp/xregexp.d.ts
       63     222    1711 jquery.total-storage/jquery.total-storage.d.ts
-      63     373    2525 gae.channel.api/gae.channel.api.d.ts
       65     325    2282 jquery.menuaim/jquery.menuaim.d.ts
       65     367    2911 cordova/plugins/Dialogs.d.ts
       65     760    5935 rx/rx.async-lite.d.ts
@@ -186,26 +143,20 @@
       68     330    2652 cordova/plugins/Push.d.ts
       69     162    1865 gldatepicker/gldatepicker.d.ts
       69     294    3035 jasmine-matchers/jasmine-matchers.d.ts
-      70     208    2157 socket.io/socket.io.d.ts
       71     209    1500 hashmap/hashmap.d.ts
       72      99    1930 mixpanel/mixpanel.d.ts
       72     180    2350 jquery.tagsmanager/jquery.tagsmanager.d.ts
-      72     368    3393 rx/rx.binding-lite.d.ts
       73     392    2883 cordova/plugins/Media.d.ts
       74     326    3087 jqrangeslider/jqrangeslider.d.ts
       74     522    4389 jquery.timepicker/jquery.timepicker.d.ts
-      75     382    3870 firebase/firebase.d.ts
       76     178    2134 iscroll/iscroll.d.ts
       76     284    2622 jwplayer/jwplayer.d.ts
       76     441    3419 cordova/plugins/DeviceMotion.d.ts
       77     346    3031 dojo/dojox.analytics.d.ts
       77     537    3585 gamepad/gamepad.d.ts
-      78     265    2341 jquery.tinycarousel/jquery.tinycarousel.d.ts
       79     192    2323 dropzone/dropzone.d.ts
       80     117    2009 reveal/reveal.d.ts
-      80     172    1768 google.feeds/google.feed.api.d.ts
       81     166    2016 kolite/kolite.d.ts
-      81     355    3446 sqlite3/sqlite3.d.ts
       81     373    2981 dojo/dojox.testing.d.ts
       82     279    2622 hellojs/hellojs.d.ts
       82     310    3043 angularjs/legacy/angular-resource-1.0.d.ts
@@ -214,17 +165,13 @@
       84     260    2575 cordovarduino/cordovarduino.d.ts
       85     174    1968 backgrid/backgrid.d.ts
       85     465    3533 cordova/plugins/DeviceOrientation.d.ts
-      87     312    3080 pg/pg.d.ts
-      87     339    3311 passport/passport.d.ts
       88     198    2248 foundation/foundation.d.ts
       88     254    2470 uuid/UUID.d.ts
-      88     412    3772 superagent/superagent.d.ts
       89     137    2282 pathwatcher/pathwatcher.d.ts
       90     840    7346 flexSlider/flexSlider.d.ts
       91     200    2123 iscroll/iscroll-5.d.ts
       91     382    3006 js-signals/js-signals.d.ts
       92     256    4133 angular-translate/angular-translate.d.ts
-      92     308    3120 timezone-js/timezone-js.d.ts
       93     214    2378 firebase/firebase-simplelogin.d.ts
       93     323    2716 flipsnap/flipsnap.d.ts
       93    1076   15007 jquery.cycle/jquery.cycle.d.ts
@@ -233,36 +180,23 @@
       98     416    3491 passport-strategy/passport-strategy.d.ts
       99     287    2486 jquery.notifyBar/jquery.notifyBar.d.ts
       99     348    4725 bootstrap.v3.datetimepicker/bootstrap.v3.datetimepicker.d.ts
-     100     236    2688 tween.js/tween.js.d.ts
      100     331    3314 dojo/dojox.gesture.d.ts
-     100     344    3411 nconf/nconf.d.ts
      101     155    2453 unity-webapi/unity-webapi.d.ts
      101     312    2740 notify.js/notify.js.d.ts
-     101     347    3848 dropboxjs/dropboxjs.d.ts
      102     352    3284 cordova/plugins/WebSQL.d.ts
-     102     680    6299 createjs-lib/createjs-lib.d.ts
      103     328    2576 progressjs/progress.d.ts
-     103     458    4505 preloadjs/preloadjs.d.ts
      104     339    4019 yui/yui-test.d.ts
      104     391    3168 nprogress/NProgress.d.ts
      104     399    4319 jdataview/jdataview.d.ts
      104     865    5367 parallel/parallel.d.ts
-     105     185    3062 angular-agility/angular-agility.d.ts
      105     590    4768 dojo/dojox.timing.d.ts
      106     291    3570 atmosphere/atmosphere.d.ts
      106     300    2935 nodemailer/nodemailer.d.ts
-     107     470    5565 noble/noble.d.ts
-     108     380    3057 googlemaps.infobubble/google.maps.infobubble.d.ts
-     109     443    3731 jquery.finger/jquery.finger.d.ts
-     110     217    3792 libxmljs/libxmljs.d.ts
-     110     393    3224 mocha/mocha.d.ts
      111     330    3412 signalr/signalr.d.ts
-     111     369    3848 crossfilter/crossfilter.d.ts
      112     222    2507 bootstrap/bootstrap.d.ts
      112     428    3094 icheck/icheck.d.ts
      113     331    2573 bucks/bucks.d.ts
      116     215    2745 threejs/tests/webgl/webgl_loader_awd.ts
-     116     298    2441 gapi.translate/gapi.translate.d.ts
      116     436    3331 jquery.scrollTo/jquery.scrollTo.d.ts
      117     266    3072 modernizr/modernizr.d.ts
      117     364    4065 angular-ui/angular-ui-router.d.ts
@@ -275,7 +209,6 @@
      124    1050    8522 cordova/plugins/BatteryStatus.d.ts
      125     278    3234 globalize/globalize.d.ts
      125     560    6308 restangular/restangular.d.ts
-     126     224    2892 geojson/geojson.d.ts
      127     428    5183 underscore-ko/underscore-ko.d.ts
      128     181    3302 popcorn/popcorn.d.ts
      128     247    2860 fancybox/fancybox.d.ts
@@ -285,9 +218,6 @@
      128     736    5830 cordova/plugins/FileTransfer.d.ts
      131    1189    8927 dojo/dojox.json.d.ts
      131    1354   10443 jquery.ui.datetimepicker/jquery.ui.datetimepicker.d.ts
-     132     910    8971 browser-harness/browser-harness.d.ts
-     133     560    4757 arbiter/Arbiter.d.ts
-     135     358    3529 timelinejs/timelinejs.d.ts
      136    1489   10384 datejs/datejs.d.ts
      137     852    7071 angularjs/angular-route.d.ts
      139     431    3977 noVNC/noVNC.d.ts
@@ -295,27 +225,17 @@
      142    1036    7434 jquery.pjax/jquery.pjax.d.ts
      144     372    5528 jasmine-jquery/jasmine-jquery.d.ts
      144     568    7069 jquery.cycle2/jquery.cycle2.d.ts
-     145     488    4715 gapi.urlshortener/gapi.urlshortener.d.ts
      149     462    4787 dojo/dojox.math.d.ts
      149     595    5271 select2/select2.d.ts
-     150     545    7442 angularjs/legacy/angular-mocks-1.0.d.ts
      151     710    6367 mCustomScrollbar/mCustomScrollbar.d.ts
      152     652    7118 angularjs/angular-resource.d.ts
-     155     403    4768 angularjs/legacy/angular-scenario-1.0.d.ts
-     155     418    4356 jquery.colorpicker/jquery.colorpicker.d.ts
-     155     700    5786 crossroads/crossroads.d.ts
-     159     312    4191 youtube/youtube.d.ts
      160     431    5305 dojo/dojox.collections.d.ts
      160     894    7019 jquery.bbq/jquery.bbq.d.ts
      162     623    4381 jstorage/jstorage.d.ts
      163     442    4345 webrtc/MediaStream.d.ts
      163     968    6632 jquery.fileupload/jquery.fileupload.d.ts
-     166     432    5022 angularjs/angular-scenario.d.ts
      166     721    5729 cordova/plugins/Camera.d.ts
      166     934    7164 cordova/plugins/MediaCapture.d.ts
-     167     871    6398 dustjs-linkedin/dustjs-linkedin.d.ts
-     170     816    7883 tweenjs/tweenjs.d.ts
-     171     190    4235 backbone-relational/backbone-relational.d.ts
      171     409    4287 gamequery/gamequery.d.ts
      173     600    4652 jquery.pnotify/jquery.pnotify.d.ts
      176     912    6119 filewriter/filewriter.d.ts
@@ -323,66 +243,40 @@
      180     523    5528 dock-spawn/dock-spawn.d.ts
      181     485    5415 jsoneditoronline/jsoneditoronline.d.ts
      181     776    5856 amplifyjs/amplifyjs.d.ts
-     182     580    5057 jszip/jszip.d.ts
-     184     430    4195 node_zeromq/zmq.d.ts
      186     500    5537 urijs/URI.d.ts
      186    1094    7622 jquery.tooltipster/jquery.tooltipster.d.ts
      187     481    5509 giraffe/giraffe.d.ts
-     187     761    6825 smoothie/smoothie.d.ts
-     187    1299   11128 fs-extra/fs-extra.d.ts
      188     860    8942 jquery.pjax.falsandtru/jquery.pjax.d.ts
      188     874    6296 js-git/js-git.d.ts
-     188     935    9794 soundjs/soundjs.d.ts
      189     589    3841 toastr/toastr.d.ts
-     190    1149    8354 ref/ref.d.ts
-     193     917    7637 knockout.kogrid/ko-grid.d.ts
      194     476    5751 swiper/swiper.d.ts
-     195     569    5628 swiz/swiz.d.ts
-     195     930    7923 node-ffi/node-ffi.d.ts
-     196    1191   12423 linq/linq.3.0.3-Beta4.d.ts
-     199     475    5368 dcjs/dc.d.ts
-     199    1824   11822 big.js/big.js.d.ts
      203     712    5072 jquery.color/jquery.color.d.ts
-     207    1071    7996 gapi/gapi.d.ts
-     211     579    7046 cheerio/cheerio.d.ts
      216     545    4937 expect.js/expect.js.d.ts
      218    1808   13569 cordova/plugins/InAppBrowser.d.ts
      220     841    8106 dojo/dojox.css3.d.ts
-     220     858    8836 restify/restify.d.ts
      221     679    7385 flot/jquery.flot.d.ts
      222    1081   12570 linq/linq.d.ts
      223     860    8512 dojo/dojox.uuid.d.ts
      223    1094   10853 knockback/knockback.d.ts
      224     751    6368 pouchDB/pouch.d.ts
-     224     992   10440 redis/redis.d.ts
-     226    1126   14177 angularjs/angular-mocks.d.ts
-     227    1236    9031 commander/commander.d.ts
      227    1696   13366 pixi/webgl.d.ts
-     235     416    6971 rethinkdb/rethinkdb.d.ts
      235     863    7582 greasemonkey/greasemonkey.d.ts
      236    1125    7503 jquery.gridster/gridster.d.ts
      243    1069   11005 dojo/dojox.io.d.ts
      244    1239   11545 jquery.dynatree/jquery.dynatree.d.ts
      244    1708   11178 date.format.js/date.format.d.ts
      250     493    5849 webaudioapi/waa-20120802.d.ts
-     252    1282   11188 flight/flight.d.ts
      253     514    6014 webaudioapi/waa-nightly.d.ts
      254    1612   12708 cordova/plugins/Globalization.d.ts
      261    1291    9889 cordova/plugins/Contacts.d.ts
      268     951    9750 dojo/dojox.rpc.d.ts
-     270     625    7198 datejs/sugarpak.d.ts
      270    1165   10523 dojo/dojox.string.d.ts
-     271     427    7596 svgjs/svgjs.d.ts
      272     778    5104 jquery.joyride/jquery.joyride.d.ts
-     278    1058   10535 gapi.pagespeedonline/gapi.pagespeedonline.d.ts
-     280     894    9177 chrome/chrome-app.d.ts
-     281     884   10761 sammyjs/sammyjs.d.ts
      281    2173   14432 cordova/plugins/FileSystem.d.ts
      287    1763   12341 jquery.validation/jquery.validation.d.ts
      289     877    8689 jquery.prettyphoto/jquery.prettyphoto.d.ts
      289    1247    9766 typeahead/typeahead.d.ts
      293    1365   14538 raphael/raphael.d.ts
-     298     957   10344 leapmotionTS/LeapMotionTS.d.ts
      299    1426    9838 jquery.colorbox/jquery.colorbox.d.ts
      304     881    8711 phantomjs/phantomjs.d.ts
      309     809    9521 webrtc/RTCPeerConnection.d.ts
@@ -390,134 +284,66 @@
      313     633    8142 jquery.elang/jquery.elang.d.ts
      316    2298   14998 jscrollpane/jscrollpane.d.ts
      320    1384   12823 dojo/dojox.dnd.d.ts
-     335     693   11492 greensock/greensock.d.ts
-     347     697    9144 node_redis/node_redis.d.ts
      351    2098   18232 dojo/dojox.color.d.ts
      353    2720   21522 camljs/camljs.d.ts
-     360    1311    8806 requirejs/require.d.ts
      390    1706   13672 jquery.pickadate/jquery.pickadate.d.ts
-     392    1811   15184 jake/jake.d.ts
-     394    1068   11799 jasmine/legacy/jasmine-1.3.d.ts
-     400    1220   12611 fullCalendar/fullCalendar.d.ts
-     408    1257   15576 node-azure/azure.d.ts
-     433    1492   15029 jasmine/jasmine.d.ts
-     443    2333   20437 mongodb/mongodb.d.ts
-     447     981   10535 pixi/pixi.d.ts
-     452    1302   12173 mapbox/mapbox.d.ts
-     453    2038   19209 mongoose/mongoose.d.ts
      463    1235   16892 cryptojs/cryptojs.d.ts
-     479    1532   13422 jquery.dataTables/jquery.dataTables.d.ts
-     481    1870   13538 joi/joi.d.ts
-     482    1355   11159 vega/vega.d.ts
      487     928   11757 jquerymobile/jquerymobile.d.ts
-     495    1935   17638 royalslider/royalslider.d.ts
      502    2173   22026 valerie/valerie.d.ts
-     527    4701   32446 durandal/durandal-1.x.d.ts
      528    3168   21770 filesystem/filesystem.d.ts
      548    1257   14830 kineticjs/kineticjs.d.ts
-     552    1451   17217 less/less.d.ts
-     565    4216   38964 rx/rx-lite.d.ts
      569    2301   23468 dojo/dojox.html.d.ts
-     574    2731   22985 websocket/websocket.d.ts
      586    1528   19656 dojo/dojox.encoding.d.ts
      597    1638   17461 phonegap/phonegap.d.ts
-     604    1676   17656 meteor/meteor.d.ts
      606    1710   14763 angular-ui-bootstrap/angular-ui-bootstrap.d.ts
      625     692   11562 space-pen/space-pen.d.ts
-     650    1831   22818 ng-grid/ng-grid.d.ts
-     681    3392   25933 timezonecomplete/timezonecomplete-1.2.0.d.ts
      683    1239   13098 teechart/teechart.d.ts
-     684    1064   18330 node-git/node-git.d.ts
-     702    3473   27018 timezonecomplete/timezonecomplete.d.ts
      723    3506   23263 qunit/qunit.d.ts
-     729    2662   23445 couchbase/couchbase.d.ts
-     760    2213   30221 angularjs/legacy/angular-1.0.d.ts
-     779    3233   34865 easeljs/easeljs.d.ts
-     809    7163   51399 codemirror/codemirror.d.ts
      838    3533   27213 lunr/lunr.d.ts
-     856    1975   26521 fabricjs/fabricjs.d.ts
-     893    2354   32996 breeze/breeze.d.ts
-     909    2042   27605 aws-sdk/aws-sdk.d.ts
-     921    2055   32998 google.visualization/google.visualization.d.ts
      953    2504   33927 ckeditor/ckeditor.d.ts
      988    3934   24495 dhtmlxgantt/dhtmlxgantt.d.ts
      998    4019   39838 dojo/dojox.mdnd.d.ts
     1011    5797   52849 dojo/dojox.embed.d.ts
-    1055    4312   44234 node/node-0.8.8.d.ts
     1076    2835   32922 siesta/siesta.d.ts
     1082    2011   29624 dojo/dojox.gantt.d.ts
     1106    5698   55651 dojo/dojox.treemap.d.ts
     1127    5960   41892 jstree/jstree.d.ts
-    1138    2779   32667 highcharts/highcharts.d.ts
     1144    9529   63406 webaudioapi/waa.d.ts
     1152    8262   67901 dojo/dojox.NodeList.d.ts
-    1166    5177   53433 angularjs/angular.d.ts
-    1219    3769   47500 phonejs/dx.phonejs.d.ts
     1305    6728   65084 dojo/dojox.validate.d.ts
     1318    4518   40752 appframework/appframework.d.ts
     1363    4755   54575 dojo/dojox.date.d.ts
-    1440    6246   53080 jsfl/jsfl.d.ts
     1574    7164   48717 zepto/zepto.d.ts
-    1599    3625   47508 googlemaps/google.maps.d.ts
-    1603    6757   42635 dhtmlxscheduler/dhtmlxscheduler.d.ts
     1661    2240   50064 atom/atom.d.ts
-    1661    4468   59049 chartjs/dx.chartjs.d.ts
-    1700   14751  105159 mathjax/mathjax.d.ts
-    1718    6632   50988 slickgrid/SlickGrid.d.ts
     1764    7316   67276 jqueryui/jqueryui.d.ts
     1822    7243   71314 dojo/dojox.sketch.d.ts
     1904   12738  108211 dojo/doh.d.ts
     2017   12045  105677 dojo/dojox.fx.d.ts
     2329    9990   96265 dojo/dojox.main.d.ts
-    2337   13948  110789 gapi.youtube/gapi.youtube.d.ts
     2339   10994   82419 microsoft-live-connect/microsoft-live-connect.d.ts
     2350   17061  129727 amcharts/AmCharts.d.ts
     2372    7023   91297 dojo/dojox.highlight.d.ts
     2383   11387  119553 dojo/dojox.app.d.ts
-    2411    9935  109590 ember/ember.d.ts
-    2483    6602   77734 chrome/chrome.d.ts
-    2720   12705   96009 mapsjs/mapsjs.d.ts
     2761   15190  141635 dojo/dojox.image.d.ts
-    2937   11453   94357 ace/ace.d.ts
     3236   11330  130720 dojo/dojox.gfx3d.d.ts
-    3462   11311  112353 d3/d3.d.ts
-    4012   22455  182261 microsoft-ajax/microsoft.ajax.d.ts
-    4020   14527  126005 leaflet/leaflet.d.ts
-    4049   20055  193183 dojo/dojox.dtl.d.ts
     4723   24483  265051 dojo/dojox.geo.d.ts
-    5030   18035  150933 openlayers/openlayers.d.ts
     5055   22606  154094 sugar/sugar.d.ts
-    5478   17357  175484 threejs/three.d.ts
-    5526   21889  148164 box2d/box2dweb.d.ts
     5657   30615  303851 dojo/dojox.av.d.ts
-    6239   27330  235401 titanium/titanium.d.ts
     6599   39246  357486 dojo/dojox.data.d.ts
-    6709   39208  291721 winjs/winjs-1.0.d.ts
-    7000   42095  312750 winjs/winjs-2.1.d.ts
     7226   38131  405583 dojo/dojox.atom.d.ts
     8123   46018  343098 goJS/goJS.d.ts
-    8554   49450  371486 winjs/winjs-2.0.d.ts
-    8575   49567  372335 winjs/winjs.d.ts
-    9760   38080  457130 sharepoint/SharePoint.d.ts
    11254   63296  639361 dojo/dojox.calc.d.ts
    11434   60889  590834 dojo/dojox.layout.d.ts
    11806   46374  479561 dojo/dojox.gfx.d.ts
    12021   53432  542298 dojo/dojox.lang.d.ts
    13131   58228  609050 dojo/dojox.charting.d.ts
-   14197   47475  553487 dojo/dojox.drawing.d.ts
-   14744   41479  907700 winrt/winrt.d.ts
    15304   80019  847742 dojo/dojox.editor.d.ts
    20923  111176 1105527 dojo/dojox.calendar.d.ts
    21504  123543 1217826 dojo/dojox.mvc.d.ts
    21553  117943 1132784 dojo/dojox.gauges.d.ts
    21990  122181 1320410 dojo/dojox.dgauges.d.ts
-   26085  107836 1218230 dojo/dojox.grid.d.ts
-   27173  172540 1467156 dojo/dojo.d.ts
    29058  152197 1506996 dojo/dojox.form.d.ts
    30672  169368 1620576 dojo/dojox.widget.d.ts
-   40997  316643 2240244 extjs/ExtJS.d.ts
-   42741  254088 1827740 sencha_touch/SenchaTouch-2.2.1.d.ts
-   45751  277640 1987629 sencha_touch/SenchaTouch.d.ts
    60717  336477 3190981 dojo/dojox.mobile.d.ts
   104749  562031 5345459 dojo/dijit.d.ts
-  850034 4413641 40586376 total
+  502014 2595075 25085602 total
