@@ -445,8 +445,11 @@ describe('external modules', function () {
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
-  it('should parse an example external module', function () {
-    var source = '';
+  it('should parse sprintf declaration', function () {
+    var source = 'declare module "sprintf" { export function sprintf(fmt: string, ...args: any[]): string; export function vsprintf(fmt: string, args: any[]): string;}';
+    var desired = 'M["sprintf"] = Blame.obj({sprintf: Blame.fun([Blame.Str], [], Blame.Any, Blame.Str), vsprintf: Blame.fun([Blame.Str, Blame.arr(Blame.Any)], [], null, Blame.Str)});';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
   });
 });
 
