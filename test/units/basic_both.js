@@ -14,7 +14,7 @@ var blame = require('../../build/blame.js');
 var expect = require('chai').expect;
 
 var wrap = blame.wrap,
-Label = blame.Label,
+label = blame.label,
 func = blame.func,
 fun = blame.fun,
 Num = blame.Num,
@@ -26,7 +26,7 @@ forall = blame.forall,
 arr = blame.arr,
 dict = blame.dict,
 hybrid = blame.hybrid,
-sum = blame.sum,
+union = blame.union,
 obj = blame.obj,
 LazyTypeCache = blame.LazyTypeCache;
 
@@ -59,25 +59,18 @@ function wrap_fun(func, p, q, A, B) {
 }
 
 // Some constants for testing
-var p = new Label(),
-q = new Label(),
+var p = label(),
+q = label(),
 values = [1, 'a', true, undefined, empty, []],
 types = [Num, Str, Bool, Void, func(Void), arr(Num)];
 
 describe('Blame module', function () {
   describe('blame labels', function () {
     it('should initialize properly', function () {
-      var l1 = new Label(),
-      l2 = new Label();
-      expect(l1.label()).to.not.equal('label');
-      expect(l1.label()).to.not.equal(l2.label());
-    });
-
-    it('should negate properly', function () {
-      var l1 = new Label(),
-      l2 = l1.negated();
-      expect(l1.label()).to.equal(l2.label());
-      expect(l1.status()).to.not.equal(l2.status());
+      var l1 = label(),
+      l2 = label();
+      expect(l1.msg()).to.not.equal('label');
+      expect(l1.msg()).to.not.equal(l2.msg());
     });
   });
 });
@@ -126,10 +119,10 @@ describe('wrapping', function () {
 
               if (i !== k) {
                 // Wrong argument
-                expect(closed_fun(value)).to.throw(q.msg());
+                expect(closed_fun(value)).to.throw(q.dom().msg());
               } else if (j !== l) {
                 // Wrong return value
-                expect(closed_fun(value)).to.throw(p.msg());
+                expect(closed_fun(value)).to.throw(p.rng().msg());
               } else {
                 // Both ok
                 expect(closed_fun(value)).not.to.throw();
@@ -149,7 +142,7 @@ describe('wrapping', function () {
       });
 
       it('should reject wrong number of arguments', function () {
-        expect(closed_id(1)).to.throw(q.msg());
+        expect(closed_id(1)).to.throw(q.dom().msg());
       });
     });
   });
@@ -201,7 +194,7 @@ describe('wrapping', function () {
       }
       expect(function () {
         wrap(bad, p, q, type_id, type_id)(1);
-      }).to.throw(p.msg());
+      }).to.throw(p.rng().msg());
     });
 
     it('should accept Phills example', function () {
@@ -243,7 +236,7 @@ describe('wrapping', function () {
         wrapped_iden_or_repeat(1);
         wrapped_iden_or_repeat(2);
 
-      }).to.throw(p.msg());
+      }).to.throw(p.rng().msg());
 
     });
   });
@@ -266,7 +259,7 @@ describe('wrapping', function () {
     expect(wrap_fun(second, p, q, AX_XXX, AX_XXX)(1, 1)).not.to.throw();
 
     expect(wrap_fun(first, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).not.to.throw();
-    expect(wrap_fun(second, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).to.throw(p.msg());
+    expect(wrap_fun(second, p, q, AX_AY_XYX, AX_AY_XYX)(1, 1)).to.throw(p.rng().msg());
   });
 
 });
@@ -302,7 +295,7 @@ describe('Arr', function () {
           //expect(array[0]).to.equal(value);
         } else {
 
-          expect(get(array, 0)).to.throw(p.msg());
+          expect(get(array, 0)).to.throw(p.get().msg());
         }
       });
     });
@@ -325,7 +318,7 @@ describe('Arr', function () {
           //expect(array[0]).to.equal(value);
         } else {
 
-          expect(set(array, 0, value)).to.throw(q.msg());
+          expect(set(array, 0, value)).to.throw(q.set().msg());
         }
       });
     });
@@ -362,7 +355,7 @@ describe('forall arrays', function () {
       expect(wrap_fun(head, p, q, type_single, type_single)(array)).not.to.throw();
       expect(wrap(head, p, q, type_single, type_single)(array)).to.equal(1);
 
-      expect(wrap_fun(bad, p, q, type_single, type_single)(array)).to.throw(p.msg());
+      expect(wrap_fun(bad, p, q, type_single, type_single)(array)).to.throw(p.rng().msg());
     });
 
     it('should allow to define rest', function () {
@@ -384,7 +377,7 @@ describe('forall arrays', function () {
 
 
       expect(check(wrap(rest, p, q, type_multi, type_multi)(array), ref)).not.to.throw();
-      expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(p.msg());
+      expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(p.rng().get().msg());
     });
 
     it('should allow to define reverse', function () {
@@ -407,7 +400,7 @@ describe('forall arrays', function () {
       }
 
       expect(check(wrap(reverse, p, q, type_multi, type_multi)(array), ref)).not.to.throw();
-      expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(p.msg());
+      expect(check(wrap(bad, p, q, type_multi, type_multi)(array), ref)).to.throw(p.rng().get().msg());
     });
   });
 
@@ -438,7 +431,7 @@ describe('forall arrays', function () {
       var type_filter = forall('X', func(func(tyvar('X'), Bool), arr(tyvar('X')), arr(tyvar('X'))));
 
       expect(check(wrap(filter, p, q, type_filter, type_filter)(is_even, array), ref)).not.to.throw();
-      expect(check(wrap(bad, p, q, type_filter, type_filter)(is_even, array), ref)).to.throw(p.msg());
+      expect(check(wrap(bad, p, q, type_filter, type_filter)(is_even, array), ref)).to.throw(p.rng().get().msg());
     });
 
     it('should allow to define map', function () {
@@ -465,7 +458,7 @@ describe('forall arrays', function () {
       var type_map = forall('X', forall('Y', func(func(tyvar('X'), tyvar('Y')), arr(tyvar('X')), arr(tyvar('Y')))));
 
       expect(check(wrap(map, p, q, type_map, type_map)(add1, array), ref)).not.to.throw();
-      expect(check(wrap(bad, p, q, type_map, type_map)(add1, array), ref)).to.throw(p.msg());
+      expect(check(wrap(bad, p, q, type_map, type_map)(add1, array), ref)).to.throw(p.rng().get().msg());
     });
 
     it('should allow to define fold', function () {
@@ -490,7 +483,7 @@ describe('forall arrays', function () {
       expect(wrap_fun(fold, p, q, type_fold, type_fold)(add, 0, array)).not.to.throw();
       expect(wrap(fold, p, q, type_fold, type_fold)(add, 0, array)).to.equal(15);
 
-      expect(wrap_fun(bad, p, q, type_fold, type_fold)(add, 0, array)).to.throw(p.msg());
+      expect(wrap_fun(bad, p, q, type_fold, type_fold)(add, 0, array)).to.throw(p.rng().msg());
     });
   });
 });
@@ -524,7 +517,7 @@ describe('ARRAY API', function () {
       [D, F].forEach(function (D) {
         expect(function () {
           D[0] = true;
-        }).to.throw(q.msg());
+        }).to.throw(q.set().msg());
       });
 
       E[0] = true;
@@ -1005,11 +998,11 @@ describe('Objects', function () {
 
       expect(function () {
         used(A.a);
-      }).to.throw(p.msg());
+      }).to.throw(p.get().msg());
 
       expect(function () {
         A.a = false;
-      }).to.throw(q.msg());
+      }).to.throw(q.set().msg());
     });
 
     it('should permit other properties', function () {
@@ -1029,7 +1022,7 @@ describe('Objects', function () {
 
       expect(function () {
         B.a = true;
-      }).to.throw(q.msg());
+      }).to.throw(q.set().msg());
     });
   });
 
@@ -1066,7 +1059,7 @@ describe('Objects', function () {
 
         expect(function () {
           wrapped_swap(A);
-        }).to.throw(p.msg());
+        }).to.throw(q.dom().set());
       });
     });
   });
@@ -1087,15 +1080,15 @@ describe('Objects', function () {
 
         expect(function () {
           A = new Wrapped('a');
-        }).to.throw(q.msg());
+        }).to.throw(q.dom().msg());
 
         expect(function () {
           A = new Wrapped();
-        }).to.throw(q.msg());
+        }).to.throw(q.dom().msg());
 
         expect(function () {
           A = new Wrapped(1, 1);
-        }).to.throw(q.msg());
+        }).to.throw(q.dom().msg());
 
         A = new Wrapped(1);
       });
@@ -1116,7 +1109,7 @@ describe('Objects', function () {
 
         expect(function () {
           A.a = 'a';
-        }).to.throw(q.msg());
+        }).to.throw(q.set().msg());
 
         expect(A.a).to.equal(2);
       });
@@ -1132,7 +1125,7 @@ describe('Objects', function () {
         expect(function () {
           var B = new BadWrapped(1);
           used(B);
-        }).to.throw(p.msg());
+        }).to.throw(p.set().msg());
 
       });
     });
@@ -1148,15 +1141,15 @@ describe('Objects', function () {
 
       expect(function () {
         A = new Wrapped('a');
-      }).to.throw(q.msg());
+      }).to.throw(q.dom().msg());
 
       expect(function () {
         A = new Wrapped();
-      }).to.throw(q.msg());
+      }).to.throw(q.dom().msg());
 
       expect(function () {
         A = new Wrapped(1, 2);
-      }).to.throw(q.msg());
+      }).to.throw(q.dom().msg());
 
       A = new Wrapped(1);
       used(A);
@@ -1183,13 +1176,13 @@ describe('Hybrid Types', function () {
 
       expect(function () {
         a.length = 'a';
-      }).to.throw(q.msg());
+      }).to.throw(q.set().msg());
 
       expect(a.length).to.equal(0);
 
       expect(function () {
         a[0] = 'a';
-      }).to.throw(q.msg());
+      }).to.throw(q.set().msg());
 
       expect(a.length).to.equal(0);
 
@@ -1205,32 +1198,32 @@ describe('Dictionaries', function () {
 
       expect(function () {
         a.a = 'a';
-      }).to.throw(q.msg());
+      }).to.throw(q.set().msg());
 
       a.a = 1;
       expect(a.a).to.equal(1);
   });
 });
 
-describe('Sums', function () {
-  it('should allow to define simple sums', function () {
-    var type = sum(Num, Str);
+describe('Unions', function () {
+  it('should allow to define simple unions', function () {
+    var type = union(Num, Str);
 
     wrap('a', p, q, type, type);
     wrap(1, p, q, type, type);
 
     expect(function () {
       wrap({}, p, q, type, type);
-    }).to.throw(p.msg());
+    }).to.throw(p.l());
   });
 
-  it('should allow to define ambiguous sums', function () {
+  it('should allow to define ambiguous unions', function () {
     function goodA() { return 'a'; }
     function goodB() { return 1; }
 
     var funcA = fun([Num], [], null, Str),
       funcB = fun([Str], [], null, Num),
-      type = sum(funcA, funcB),
+      type = union(funcA, funcB),
       wrappedA = wrap(goodA, p, q, type, type),
       wrappedB = wrap(goodB, p, q, type, type);
 
@@ -1247,7 +1240,7 @@ describe('Sums', function () {
 
   });
 
-  it('should allow for even more ambiguous sums', function () {
+  it('should allow for even more ambiguous unions', function () {
     function goodA(o) {
       used(o.a);
       return {a: 1};
@@ -1262,7 +1255,7 @@ describe('Sums', function () {
       objAS = obj({a: Str}),
       funcA = fun([objAN], [], null, objAS),
       funcB = fun([objAS], [], null, objAN),
-      type = sum(funcA, funcB),
+      type = union(funcA, funcB),
       wrappedA = wrap(goodA, p, q, type, type),
       o;
 
@@ -1351,7 +1344,7 @@ describe('recursive types', function () {
 
       expect(function () {
         wO.p(1).p(2).p('a').n();
-      }).to.throw(q.msg());
+      }).to.throw(q.get().rng().get().rng().get().dom().msg());
 
 
       // Wrapped bad recursive type
@@ -1360,11 +1353,11 @@ describe('recursive types', function () {
 
       expect(function () {
         wBad.p('a');
-      }).to.throw(q.msg());
+      }).to.throw(q.get().dom().msg());
 
       expect(function () {
         wBad.p(1).p(2).p(3).n();
-      }).to.throw(p.msg());
+      }).to.throw(p.get().rng().get().rng().get().rng().get().rng().msg());
     });
   });
 
@@ -1421,7 +1414,7 @@ describe('recursive types', function () {
 
       expect(function () {
         f(1).put(2).put('a').put(3).get();
-      }).to.throw(p.msg());
+      }).to.throw(p.rng().get().rng().get().rng().get().rng().get().rng());
     });
   });
 
