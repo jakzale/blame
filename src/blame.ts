@@ -10,44 +10,106 @@ export interface ILabel {
   rng(): ILabel;
   get(): ILabel;
   set(): ILabel;
-  complete(): boolean;
   msg(m: string): string;
+  blame(m: string): void;
+  l(): string;
+  sum(state: any): ILabel;
 }
 
-class Label implements ILabel {
-  private _label: string;
-  private _paths: string[];
+class Path {
+  private nodes: string[];
+  constructor(nodes?: string[]) {
+    this.nodes = nodes || [];
+  }
 
-  constructor(label?: string, paths?: string[]) {
+  path(): string {
+    return this.nodes.join("/");
+  }
+
+  next(node: string): Path {
+    return new Path(this.nodes.concat(node));
+  }
+}
+
+class LabelMap {
+  branches: string[];
+  constructor(branches: number) {
+    this.branches = [];
+    for (var i = 0; i < branches; i += 1) {
+      this.branches.push("");
+    }
+  }
+
+  getState(n: number): IState {
+    return {
+      complete: () => {
+        return this.branches.every((branch) => {
+          return branch && branch.length > 0;
+        });
+      },
+      report: (m: string) => {
+        if (!this.branches[n]) {
+          this.branches[n] = m;
+        }
+      },
+      msg: () => {
+        return this.branches.join("\n");
+      },
+      id: () => {
+        return n;
+      }
+    };
+  }
+}
+
+interface IState {
+  complete(): boolean;
+  report(m: string): void;
+  msg(): string;
+  id(): number;
+}
+
+// Extend labels to support unions
+class Label implements ILabel {
+  private label: string;
+  private path: Path;
+  private state: IState;
+
+  constructor(label?: string, path?: Path, state?: IState) {
 
     if (label !== undefined) {
-      this._label = String(label);
+      this.label = String(label);
     } else {
-      this._label = "label_" + count;
+      this.label = "label_" + count;
       count += 1;
     }
 
-    this._paths = paths || [];
+    this.path = path || new Path();
+    this.state = state || null;
   }
 
-  private addPath(path: string): ILabel {
-    return new Label(this._label, this._paths.concat(path));
+  private next(path: string): ILabel {
+    return new Label(this.label, this.path.next(path), this.state);
   }
 
   public dom(): ILabel {
-    return this.addPath("dom");
+    return this.next("dom");
   }
 
   public rng(): ILabel {
-    return this.addPath("rng");
+    return this.next("rng");
   }
 
   public set(): ILabel {
-    return this.addPath("set");
+    return this.next("set");
   }
 
   public get(): ILabel {
-    return this.addPath("get");
+    return this.next("get");
+  }
+
+  public sum(state: IState): ILabel {
+    return new Label(this.label, this.path.next("sum#" + state.id()), state);
   }
 
   public msg(m: string): string {
@@ -57,13 +119,27 @@ class Label implements ILabel {
       message = " " + m;
     }
 
-    return "{" + this._label + "}[" + this._paths.join(", ") + "]" + message;
+    return "{" + this.label + "}[" + this.path.path() + "]" + message;
   }
 
-  public complete(): boolean {
-    return true;
+  public blame(m: string): void {
+    if (this.state) {
+      this.state.report(this.msg(m));
+
+      if (this.state.complete()) {
+        throw new Error(this.state.msg());
+      }
+    } else {
+      throw new Error(this.msg(m));
+    }
+  }
+
+  public l(): string {
+    return this.label;
   }
 }
+
+
 
 export function label(lab?: string): ILabel {
   return new Label(lab);
@@ -101,7 +177,8 @@ export enum TypeKind {
   ObjectType,
   HybridType,
   LazyType,
-  BoundLazyType
+  BoundLazyType,
+  UnionType
 }
 
 export interface IType {
@@ -485,6 +562,25 @@ export class BoundLazyType extends LazyType {
   }
 }
 
+
+export class UnionType implements IType {
+  public description: string;
+  public types: IType[] = [];
+
+  constructor(types: IType[]) {
+    this.types = types.map((type) => { return type; });
+    this.description = this.types.map((type) => { return type.description; }).join(" + ");
+  }
+
+  public kind(): TypeKind {
+    return TypeKind.UnionType;
+  }
+}
+
+export function union(...types: IType[]): UnionType {
+  return new UnionType(types);
+}
+
 function substitute_tyvar(target: IType, ty: string, new_type: IType): IType {
   switch (target.kind()) {
     case TypeKind.AnyType:
@@ -638,10 +734,12 @@ function compatible_lazy(A: LazyType, B: LazyType): boolean {
   return A.description === B.description;
 }
 
-function blame(p: ILabel, m: string): void {
-  if (p.complete()) {
-    throw new Error(p.msg(m));
+function compatible_union(A: UnionType, B: UnionType): boolean {
+  if (A.types.length !== B.types.length) {
+    return false;
   }
+
+  return true;
 }
 
 export function simple_wrap(value: any, A: IType): any {
@@ -698,6 +796,12 @@ export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any 
         break;
 
 
+      case TypeKind.UnionType:
+        if (compatible_union(<UnionType> A, <UnionType> B)) {
+          return wrap_union(value, p, q, <UnionType> A, <UnionType> B);
+        }
+        break;
+
       case TypeKind.BoundLazyType:
       case TypeKind.LazyType:
         if (compatible_lazy(<LazyType> A, <LazyType> B)) {
@@ -723,7 +827,7 @@ export function wrap(value: any, p: ILabel, q: ILabel, A: IType, B: IType): any 
 function wrap_base(value: any, p: ILabel, A: BaseType): any {
   if (!A.contract(value)) {
     //throw new Error(p.msg("not of type " + A.description + ": " + value));
-    blame(p, "not of type " + A.description + ": " + value);
+    p.blame("not of type " + A.description + ": " + value);
   }
 
   return value;
@@ -742,14 +846,14 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
       if (nArgs < minArgs) {
         //throw new Error(q.dom().msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
-        blame(q.dom(), "not enough arguments, expected >=" + minArgs + ", got: " + nArgs);
+        q.dom().blame("not enough arguments, expected >=" + minArgs + ", got: " + nArgs);
         return target.apply(thisValue, args);
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
         //throw new Error(q.dom().msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
         // Pass through the unwrapped value
-        blame(q.dom(), "too many arguments, expected <=" + maxArgs + ", got: " + nArgs);
+        q.dom().blame("too many arguments, expected <=" + maxArgs + ", got: " + nArgs);
         return target.apply(thisValue, args);
       }
 
@@ -781,14 +885,14 @@ function wrap_fun(value: any, p: ILabel, q: ILabel, A: FunctionType, B: Function
 
       if (nArgs < minArgs) {
         //throw new Error(q.dom().msg("not enough arguments, expected >=" + minArgs + ", got: " + nArgs));
-        blame(q.dom(), "not enough arguments, expected >=" + minArgs + ", got: " + nArgs);
+        q.dom().blame("not enough arguments, expected >=" + minArgs + ", got: " + nArgs);
         target.apply(instance, args);
         return instance;
       }
 
       if (nArgs > maxArgs && !A.restParameter) {
         //throw new Error (q.dom().msg("too many arguments, expected <=" + maxArgs + ", got: " + nArgs));
-        blame(q.dom(), "too many arguments, expected <=" + maxArgs + ", got: " + nArgs);
+        q.dom().blame("too many arguments, expected <=" + maxArgs + ", got: " + nArgs);
         target.apply(instance, args);
         return instance;
       }
@@ -891,7 +995,7 @@ function wrap_dict(value: any, p: ILabel, q: ILabel, A: DictionaryType, B: Dicti
   var type: string = typeof value;
   if (type !== "object" && type !== "function" || !value) {
     //throw new Error(p.msg("not of Indexable type"));
-    blame(p, "not of Indexable type");
+    p.blame("not of Indexable type");
     return value;
   }
 
@@ -911,7 +1015,7 @@ function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType
 
   if (type !== "object" && type !== "function" || !value) {
     //throw new Error(p.msg("not of type Obj"));
-    blame(p, "not of type Obj");
+    p.blame("not of type Obj");
     return value;
   }
 
@@ -949,6 +1053,34 @@ function wrap_hybrid(value: any, p: ILabel, q: ILabel, A: HybridType, B: HybridT
 function wrap_lazy(value: any, p: ILabel, q: ILabel, A: LazyType, B: LazyType): any {
   return wrap(value, p, q, A.resolve(), B.resolve());
 }
+
+function wrap_union(value: any, p: ILabel, q: ILabel, A: UnionType, B: UnionType): any {
+
+  function wrap_union_single(value): any {
+    var map: LabelMap = new LabelMap(A.types.length);
+    return A.types.reduce((value, type, i) => {
+      var state = map.getState(i);
+      return wrap(value, p.sum(state), q.sum(state), A.types[i], B.types[i]);
+    }, value);
+  }
+
+  if (typeof value === "function") {
+    // Perform the wrapping once
+    wrap_union_single(value);
+
+    // Return a Proxy that will wrap per each function application
+    return new Proxy(value, {
+      apply: function (target, thisArg, args) {
+        var wrapped = wrap_union_single(target);
+
+        return wrapped.apply(thisArg, args);
+      }
+    });
+  }
+
+  return wrap_union_single(value);
+}
+
 
 
 // vim: set ts=2 sw=2 sts=2 et :

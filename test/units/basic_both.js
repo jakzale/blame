@@ -26,7 +26,7 @@ forall = blame.forall,
 arr = blame.arr,
 dict = blame.dict,
 hybrid = blame.hybrid,
-sum = blame.sum,
+union = blame.union,
 obj = blame.obj,
 LazyTypeCache = blame.LazyTypeCache;
 
@@ -1205,79 +1205,77 @@ describe('Dictionaries', function () {
   });
 });
 
-/*
- *describe('Sums', function () {
- *  it('should allow to define simple sums', function () {
- *    var type = sum(Num, Str);
- *
- *    wrap('a', p, q, type, type);
- *    wrap(1, p, q, type, type);
- *
- *    expect(function () {
- *      wrap({}, p, q, type, type);
- *    }).to.throw(p.msg());
- *  });
- *
- *  it('should allow to define ambiguous sums', function () {
- *    function goodA() { return 'a'; }
- *    function goodB() { return 1; }
- *
- *    var funcA = fun([Num], [], null, Str),
- *      funcB = fun([Str], [], null, Num),
- *      type = sum(funcA, funcB),
- *      wrappedA = wrap(goodA, p, q, type, type),
- *      wrappedB = wrap(goodB, p, q, type, type);
- *
- *    wrappedA(1);
- *    wrappedB('a');
- *
- *    expect(function () {
- *      wrappedA('a');
- *    }).to.throw();
- *
- *    expect(function () {
- *      wrappedB(1);
- *    }).to.throw();
- *
- *  });
- *
- *  it('should allow for even more ambiguous sums', function () {
- *    function goodA(o) {
- *      used(o.a);
- *      return {a: 1};
- *    }
- *
- *    function goodB(o) {
- *      used(o.a);
- *      return {a: 'a'};
- *    }
- *
- *    var objAN = obj({a: Num}),
- *      objAS = obj({a: Str}),
- *      funcA = fun([objAN], [], null, objAS),
- *      funcB = fun([objAS], [], null, objAN),
- *      type = sum(funcA, funcB),
- *      wrappedA = wrap(goodA, p, q, type, type),
- *      o;
- *
- *    expect(function () {
- *      wrappedA('a');
- *    }).to.throw();
- *
- *    o = wrappedA({a: 'a'});
- *    expect(o.a).to.equal(1);
- *
- *    o = wrappedA({a: 1});
- *    expect(function () {
- *      used(o.a);
- *    }).to.throw();
- *
- *    o = wrappedA({a: 'a'});
- *    expect(o.a).to.equal(1);
- *
- *  });
- *});
- */
+describe('Unions', function () {
+  it('should allow to define simple unions', function () {
+    var type = union(Num, Str);
+
+    wrap('a', p, q, type, type);
+    wrap(1, p, q, type, type);
+
+    expect(function () {
+      wrap({}, p, q, type, type);
+    }).to.throw(p.l());
+  });
+
+  it('should allow to define ambiguous unions', function () {
+    function goodA() { return 'a'; }
+    function goodB() { return 1; }
+
+    var funcA = fun([Num], [], null, Str),
+      funcB = fun([Str], [], null, Num),
+      type = union(funcA, funcB),
+      wrappedA = wrap(goodA, p, q, type, type),
+      wrappedB = wrap(goodB, p, q, type, type);
+
+    wrappedA(1);
+    wrappedB('a');
+
+    expect(function () {
+      wrappedA('a');
+    }).to.throw();
+
+    expect(function () {
+      wrappedB(1);
+    }).to.throw();
+
+  });
+
+  it('should allow for even more ambiguous unions', function () {
+    function goodA(o) {
+      used(o.a);
+      return {a: 1};
+    }
+
+    function goodB(o) {
+      used(o.a);
+      return {a: 'a'};
+    }
+
+    var objAN = obj({a: Num}),
+      objAS = obj({a: Str}),
+      funcA = fun([objAN], [], null, objAS),
+      funcB = fun([objAS], [], null, objAN),
+      type = union(funcA, funcB),
+      wrappedA = wrap(goodA, p, q, type, type),
+      o;
+
+    expect(function () {
+      wrappedA('a');
+    }).to.throw();
+
+    o = wrappedA({a: 'a'});
+    expect(o.a).to.equal(1);
+
+    o = wrappedA({a: 1});
+    expect(function () {
+      used(o.a);
+    }).to.throw();
+
+    o = wrappedA({a: 'a'});
+    expect(o.a).to.equal(1);
+
+  });
+});
 
 describe('recursive types', function () {
   describe('type cache', function () {
