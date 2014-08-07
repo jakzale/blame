@@ -607,7 +607,7 @@ class BlameCompiler {
     // Compose the resulting type
     if (declarations.length === 0) {
 
-      if (name.indexOf("\"") > -1 || name.indexOf("'")) {
+      if (name.indexOf("\"") > -1 || name.indexOf("'") > -1) {
         // Module with an aliased export
         return this.parseAliasedModule(type, next);
       }
