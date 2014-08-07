@@ -3,5 +3,5 @@ Library     | Status  | NOTES
 sprintf     | OK      | -
 deep-freeze | FIXED   | Wrong polymorphic declaration
 exit        | FIXED   | Incomplete declaration (input is string)
-ansicolors  |
+ansicolors  | FIXED   | Declaration was too general
 
