@@ -1,0 +1,105 @@
+angularjs	node_module/.bin/mocha
+ansicolors	node test/*.js
+asciify	tap ./test
+assert	mocha --ui qunit test.js && zuul -- test.js
+assertion-error	make test
+atmosphere	make test
+atpl	mocha --ui exports --globals name 
+auth0	mocha test
+aws-sdk	npm -s run-script lint && npm -s run-script unit && npm -s run-script buildertest && npm -s run-script browsertest && ([ -f configuration ] && npm -s run-script integration || true)
+big.js	node ./test/every-test.js
+bigint	tap test/*.js
+bootbox	zuul tests/*.js
+bootstrap	grunt test
+chai	make test
+chai-datetime	make test
+chai-fuzzy	make test
+chai-jquery	mocha-phantomjs test/index.html
+chalk	mocha
+cheerio	make test
+clone	nodeunit test.js
+commander	make test
+configstore	mocha
+consolidate	mocha
+convert-source-map	tap test/*.js
+cordova	jasmine-node --color spec
+datejs	grunt test
+deep-freeze	tap test/*.js
+detect-indent	mocha
+diff	node_modules/.bin/mocha test/*.js
+dot	mocha
+dropzone	./test.sh
+dustjs-linkedin	grunt test
+epiceditor	jake test
+es6-promises	echo There are no tests.
+esprima	npm run-script lint && node test/run.js && npm run-script coverage && npm run-script complexity
+exit	grunt nodeunit
+expectations	./runTests
+express-validator	make test
+fibers	node ./test.js
+fuse	make test
+geojson	mocha
+globalize	grunt
+googlemaps	NODE_ENV=test vows test/*.js --spec
+hammerjs	grunt test
+handlebars	grunt
+hashmap	mocha test/*.js
+hellojs	grunt test
+history	make test
+http-string-parser	scripts/test
+jdataview	grunt
+jquery.cookie	grunt
+jquery.payment	cake test
+jquery.transit	mocha
+js-git	ls test/test-* | xargs -n1 node
+jsesc	node tests/tests.js
+json-pointer	make test
+jsrender	nodeunit test.js
+jszip	npm run test-node && npm run test-browser
+karma-jasmine	grunt test
+less	grunt test
+levelup	tap test/*-test.js --stderr
+libxmljs	node --expose_gc ./node_modules/.bin/nodeunit test
+linq	node test/testrunner.js
+lockfile	tap test/*.js
+long	node node_modules/testjs/bin/testjs tests/suite.js
+marked	node test
+minimist	tap test/*.js
+mixpanel	bin/run_tests
+mixto	grunt test
+mkdirp	tap test/*.js
+mocha	make test-all
+moment	grunt test:node
+msgpack	./run_tests
+mustache	mocha test
+nconf	vows test/*-test.js test/**/*-test.js --spec
+node-ffi	mocha -gc --reporter spec
+nodemailer	grunt
+nodeunit	node ./bin/nodeunit
+nomnom	nodeunit test/*.js
+open	node_modules/mocha/bin/mocha
+optimist	tap ./test/*.js
+pegjs	make spec
+phantomjs	nodeunit --reporter=minimal test/tests.js
+phonegap	jasmine-node --color spec
+pixi	grunt travis --verbose
+platform	echo "See the repository CONTRIBUTING.md for testing instructions."
+pubsubjs	mocha test/pubsub-test.js
+qunit	node --harmony ./test/testrunner.js
+redis	node ./test.js
+rickshaw	nodeunit tests
+rimraf	cd test && bash run.sh
+riotjs	make test
+scroller	mocha test
+semver	tap test/*.js
+should	gulp test
+sjcl	make test
+source-map-support	node_modules/mocha/bin/mocha
+stripe	mocha
+swig	make lint && make test reporter=spec && make test-browser && make coverage cov-reporter=travis-cov
+timezone-js	./node_modules/jake/bin/cli.js test:cli
+type-detect	make test
+update-notifier	mocha --timeout 20000
+uri-templates	grunt test
+winston	vows --spec --isolate
+xregexp	node tests/node-qunit.js
