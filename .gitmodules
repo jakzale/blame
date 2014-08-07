@@ -1,3 +1,6 @@
+[submodule "typings"]
+	path = typings
+	url = https://github.com/borisyankov/DefinitelyTyped.git
 [submodule "externals/platform.js"]
 	path = externals/platform.js
 	url = https://github.com/bestiejs/platform.js
@@ -62,6 +65,3 @@
 	path = externals/chalk
 	url = https://github.com/sindresorhus/chalk.git
 	ignore = all
-[submodule "typings"]
-	path = typings
-	url = https://github.com/borisyankov/DefinitelyTyped.git
