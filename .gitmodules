@@ -62,3 +62,6 @@
 	path = externals/chalk
 	url = https://github.com/sindresorhus/chalk.git
 	ignore = all
+[submodule "typings"]
+	path = typings
+	url = https://github.com/borisyankov/DefinitelyTyped.git

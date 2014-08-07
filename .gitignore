@@ -6,8 +6,5 @@ build
 test/gen
 test/wrapped
 
-# Ignore typings --- should be reinstalled by tsd
-typings
-
 # Ignore bower components
 bower_components
