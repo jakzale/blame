@@ -1,12 +1,16 @@
 [submodule "externals/platform.js"]
 	path = externals/platform.js
 	url = https://github.com/bestiejs/platform.js
+	ignore = all
 [submodule "externals/sprintf"]
 	path = externals/sprintf
 	url = https://github.com/maritz/node-sprintf
+	ignore = all
 [submodule "externals/exit"]
 	path = externals/exit
 	url = https://github.com/cowboy/node-exit.git
+	ignore = all
 [submodule "externals/deep-freeze"]
 	path = externals/deep-freeze
 	url = https://github.com/substack/deep-freeze.git
+	ignore = all
