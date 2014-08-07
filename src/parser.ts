@@ -604,6 +604,15 @@ class BlameCompiler {
       declarations.push("Blame.obj({" + members + "})");
     }
 
+    // Add call signatures
+    type.getCallSignatures().forEach((signature) => {
+      declarations.push(this.parseCallSignature(signature, next));
+    });
+
+    type.getConstructSignatures().forEach((signature) => {
+      declarations.push(this.parseCallSignature(signature, next, true));
+    });
+
     // Compose the resulting type
     if (declarations.length === 0) {
 
