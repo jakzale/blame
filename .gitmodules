@@ -65,3 +65,279 @@
 	path = externals/chalk
 	url = https://github.com/sindresorhus/chalk.git
 	ignore = all
+[submodule "externals/angularjs"]
+	path = externals/angularjs
+	url = https://github.com/eugeneware/angularjs.git
+[submodule "externals/assertion-error"]
+	path = externals/assertion-error
+	url = git@github.com:chaijs/assertion-error.git
+[submodule "externals/atmosphere"]
+	path = externals/atmosphere
+	url = git://github.com/ryanlelek/atmosphere.git
+[submodule "externals/atpl"]
+	path = externals/atpl
+	url = git://github.com/soywiz/atpl.js.git
+[submodule "externals/auth0"]
+	path = externals/auth0
+	url = git://github.com/auth0/node-auth0.git
+[submodule "externals/aws-sdk"]
+	path = externals/aws-sdk
+	url = git://github.com/aws/aws-sdk-js
+[submodule "externals/big.js"]
+	path = externals/big.js
+	url = https://github.com/MikeMcl/big.js.git
+[submodule "externals/bigint"]
+	path = externals/bigint
+	url = http://github.com/substack/node-bigint.git
+[submodule "externals/bootbox"]
+	path = externals/bootbox
+	url = git://github.com/makeusabrew/bootbox.git
+[submodule "externals/bootstrap"]
+	path = externals/bootstrap
+	url = https://github.com/twbs/bootstrap.git
+[submodule "externals/chai"]
+	path = externals/chai
+	url = https://github.com/chaijs/chai
+[submodule "externals/chai-datetime"]
+	path = externals/chai-datetime
+	url = git://github.com/gaslight/chai-datetime.git
+[submodule "externals/chai-fuzzy"]
+	path = externals/chai-fuzzy
+	url = git://github.com/elliotf/chai-fuzzy.git
+[submodule "externals/chai-jquery"]
+	path = externals/chai-jquery
+	url = https://github.com/chaijs/chai-jquery
+[submodule "externals/cheerio"]
+	path = externals/cheerio
+	url = git://github.com/MatthewMueller/cheerio.git
+[submodule "externals/clone"]
+	path = externals/clone
+	url = git://github.com/pvorb/node-clone.git
+[submodule "externals/commander"]
+	path = externals/commander
+	url = https://github.com/visionmedia/commander.js.git
+[submodule "externals/configstore"]
+	path = externals/configstore
+	url = git://github.com/yeoman/configstore
+[submodule "externals/consolidate"]
+	path = externals/consolidate
+	url = https://github.com/visionmedia/consolidate.js.git
+[submodule "externals/convert-source-map"]
+	path = externals/convert-source-map
+	url = git://github.com/thlorenz/convert-source-map.git
+[submodule "externals/cordova"]
+	path = externals/cordova
+	url = https://git-wip-us.apache.org/repos/asf/cordova-cli.git
+[submodule "externals/datejs"]
+	path = externals/datejs
+	url = git://github.com/abritinthebay/datejs.git
+[submodule "externals/diff"]
+	path = externals/diff
+	url = git://github.com/kpdecker/jsdiff.git
+[submodule "externals/dot"]
+	path = externals/dot
+	url = git://github.com/olado/doT.git
+[submodule "externals/dropzone"]
+	path = externals/dropzone
+	url = https://github.com/enyo/dropzone.git
+[submodule "externals/dustjs-linkedin"]
+	path = externals/dustjs-linkedin
+	url = https://github.com/linkedin/dustjs.git
+[submodule "externals/epiceditor"]
+	path = externals/epiceditor
+	url = git@github.com:OscarGodson/EpicEditor.git
+[submodule "externals/es6-promises"]
+	path = externals/es6-promises
+	url = https://github.com/Octane/Promise.git
+[submodule "externals/esprima"]
+	path = externals/esprima
+	url = http://github.com/ariya/esprima.git
+[submodule "externals/expectations"]
+	path = externals/expectations
+	url = git://github.com/spmason/expectations.git
+[submodule "externals/express-validator"]
+	path = externals/express-validator
+	url = git://github.com/ctavan/express-validator.git
+[submodule "externals/fibers"]
+	path = externals/fibers
+	url = git://github.com/laverdet/node-fibers.git
+[submodule "externals/fuse"]
+	path = externals/fuse
+	url = https://github.com/smebberson/fuse.git
+[submodule "externals/geojson"]
+	path = externals/geojson
+	url = http://github.com/caseypt/geojson.js.git
+[submodule "externals/globalize"]
+	path = externals/globalize
+	url = git://github.com/jquery/globalize.git
+[submodule "externals/googlemaps"]
+	path = externals/googlemaps
+	url = http://github.com/moshen/node-googlemaps
+[submodule "externals/hammerjs"]
+	path = externals/hammerjs
+	url = git://github.com/hammerjs/hammer.js.git
+[submodule "externals/handlebars"]
+	path = externals/handlebars
+	url = https://github.com/wycats/handlebars.js.git
+[submodule "externals/history"]
+	path = externals/history
+	url = git://github.com/dshaw/history.git
+[submodule "externals/http-string-parser"]
+	path = externals/http-string-parser
+	url = https://github.com/apiaryio/http-string-parser
+[submodule "externals/jdataview"]
+	path = externals/jdataview
+	url = git://github.com/jDataView/jDataView.git
+[submodule "externals/jquery.cookie"]
+	path = externals/jquery.cookie
+	url = git://github.com/carhartl/jquery-cookie.git
+[submodule "externals/jquery.payment"]
+	path = externals/jquery.payment
+	url = https://github.com/stripe/jquery.payment.git
+[submodule "externals/jquery.transit"]
+	path = externals/jquery.transit
+	url = git://github.com/rstacruz/jquery.transit.git
+[submodule "externals/js-git"]
+	path = externals/js-git
+	url = git://github.com/creationix/js-git.git
+[submodule "externals/jsesc"]
+	path = externals/jsesc
+	url = https://github.com/mathiasbynens/jsesc.git
+[submodule "externals/json-pointer"]
+	path = externals/json-pointer
+	url = git://github.com/manuelstofer/json-pointer.git
+[submodule "externals/jsrender"]
+	path = externals/jsrender
+	url = git://github.com/shtylman/node-jsrender.git
+[submodule "externals/jszip"]
+	path = externals/jszip
+	url = https://github.com/Stuk/jszip.git
+[submodule "externals/karma-jasmine"]
+	path = externals/karma-jasmine
+	url = git://github.com/karma-runner/karma-jasmine.git
+[submodule "externals/less"]
+	path = externals/less
+	url = https://github.com/less/less.js.git
+[submodule "externals/levelup"]
+	path = externals/levelup
+	url = https://github.com/rvagg/node-levelup.git
+[submodule "externals/libxmljs"]
+	path = externals/libxmljs
+	url = http://github.com/polotek/libxmljs.git
+[submodule "externals/linq"]
+	path = externals/linq
+	url = https://github.com/mihaifm/linq.git
+[submodule "externals/lockfile"]
+	path = externals/lockfile
+	url = git://github.com/isaacs/lockfile
+[submodule "externals/long"]
+	path = externals/long
+	url = https://github.com/dcodeIO/Long.js.git
+[submodule "externals/marked"]
+	path = externals/marked
+	url = git://github.com/chjj/marked.git
+[submodule "externals/minimist"]
+	path = externals/minimist
+	url = git://github.com/substack/minimist.git
+[submodule "externals/mixpanel"]
+	path = externals/mixpanel
+	url = http://github.com/carlsverre/mixpanel-node.git
+[submodule "externals/mixto"]
+	path = externals/mixto
+	url = https://github.com/atom/mixto
+[submodule "externals/mkdirp"]
+	path = externals/mkdirp
+	url = https://github.com/substack/node-mkdirp.git
+[submodule "externals/mocha"]
+	path = externals/mocha
+	url = git://github.com/visionmedia/mocha.git
+[submodule "externals/moment"]
+	path = externals/moment
+	url = https://github.com/moment/moment.git
+[submodule "externals/msgpack"]
+	path = externals/msgpack
+	url = https://github.com/msgpack/msgpack-node.git
+[submodule "externals/mustache"]
+	path = externals/mustache
+	url = https://github.com/janl/mustache.js.git
+[submodule "externals/nconf"]
+	path = externals/nconf
+	url = http://github.com/flatiron/nconf.git
+[submodule "externals/node-ffi"]
+	path = externals/node-ffi
+	url = http://github.com/rbranson/node-ffi.git
+[submodule "externals/nodemailer"]
+	path = externals/nodemailer
+	url = git://github.com/andris9/Nodemailer.git
+[submodule "externals/nomnom"]
+	path = externals/nomnom
+	url = http://github.com/harthur/nomnom.git
+[submodule "externals/open"]
+	path = externals/open
+	url = https://github.com/pwnall/node-open.git
+[submodule "externals/optimist"]
+	path = externals/optimist
+	url = http://github.com/substack/node-optimist.git
+[submodule "externals/pegjs"]
+	path = externals/pegjs
+	url = http://github.com/dmajda/pegjs.git
+[submodule "externals/phantomjs"]
+	path = externals/phantomjs
+	url = git://github.com/Obvious/phantomjs.git
+[submodule "externals/phonegap"]
+	path = externals/phonegap
+	url = git://github.com/phonegap/phonegap-cli.git
+[submodule "externals/pixi"]
+	path = externals/pixi
+	url = https://github.com/drkibitz/node-pixi
+[submodule "externals/pubsubjs"]
+	path = externals/pubsubjs
+	url = https://github.com/nazomikan/PubsubJS.git
+[submodule "externals/qunit"]
+	path = externals/qunit
+	url = http://github.com/kof/node-qunit.git
+[submodule "externals/redis"]
+	path = externals/redis
+	url = git://github.com/mranney/node_redis.git
+[submodule "externals/riotjs"]
+	path = externals/riotjs
+	url = git://github.com/muut/riotjs.git
+[submodule "externals/scroller"]
+	path = externals/scroller
+	url = https://github.com/popham/scroller.git
+[submodule "externals/semver"]
+	path = externals/semver
+	url = git://github.com/isaacs/node-semver.git
+[submodule "externals/should"]
+	path = externals/should
+	url = https://github.com/shouldjs/should.js.git
+[submodule "externals/sjcl"]
+	path = externals/sjcl
+	url = https://github.com/bitwiseshiftleft/sjcl.git
+[submodule "externals/source-map-support"]
+	path = externals/source-map-support
+	url = https://github.com/evanw/node-source-map-support
+[submodule "externals/stripe"]
+	path = externals/stripe
+	url = git://github.com/stripe/stripe-node.git
+[submodule "externals/swig"]
+	path = externals/swig
+	url = http://github.com/paularmstrong/swig.git
+[submodule "externals/timezone-js"]
+	path = externals/timezone-js
+	url = git://github.com/mde/timezone-js.git
+[submodule "externals/type-detect"]
+	path = externals/type-detect
+	url = git@github.com:chaijs/type-detect.git
+[submodule "externals/update-notifier"]
+	path = externals/update-notifier
+	url = git://github.com/yeoman/update-notifier
+[submodule "externals/uri-templates"]
+	path = externals/uri-templates
+	url = https://github.com/geraintluff/uri-templates.git
+[submodule "externals/winston"]
+	path = externals/winston
+	url = https://github.com/flatiron/winston.git
+[submodule "externals/xregexp"]
+	path = externals/xregexp
+	url = git://github.com/slevithan/XRegExp.git
