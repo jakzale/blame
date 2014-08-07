@@ -11,6 +11,7 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "commander": "^2.3.0",
+    "glob": "^4.0.5",
     "harmony-reflect": "1.0.x",
     "js-beautify": "^1.5.1",
     "typescript-api": "1.0.x"
