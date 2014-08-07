@@ -6,7 +6,7 @@ exit           | FIXED    | Incomplete declaration (input is string)
 ansicolors     | FIXED    | Declaration was too general
 open           | SKIPPED  | Not testable -- depends on OS side effects
 detect-indent  | FIXED    | Function behaviour not modellable in TS, made it any
-domready       | DEFERRED | Not testable in node
+domready       | SKIPPED  | Not testable in node
 graceful-fs    | DEFERRED | Another module alias (not yet supported)
 readdir-stream | DEFERRED | Depends on node.d.ts (not yet implemented)
 errorhandler   | DEFERRED | Depends on express.d.ts
@@ -17,8 +17,8 @@ colors.js      | OK       | weird test file
 assert         | DEFERRED | External declaration is ommitted
 power-assert   | DEFERRED | External declaration is ommitted
 hashmap        | PARTIAL  | Passes test, required manual edition
-hashset        | DEFERRED | No tests
-hashtable      | DEFERRED | No tests
+hashset        | SKIPPED  | No tests
+hashtable      | SKIPPED  | No tests
 nock           | DEFERRED | Function extended by a module
 nodeunit       | DEFERRED | Bug in the parser -- the definition appears empty
 chalk          | DEFERRED | Base type with extended prototype
