@@ -1,7 +1,15 @@
-Library     | Status  | NOTES
-:-----:     | :-----: | :----------------------------------:
-sprintf     | OK      | -
-deep-freeze | FIXED   | Wrong polymorphic declaration
-exit        | FIXED   | Incomplete declaration (input is string)
-ansicolors  | FIXED   | Declaration was too general
+Library       | Status  | NOTES
+:-----:       | :-----: | :----------------------------------:
+sprintf       | OK      | -
+deep-freeze   | FIXED   | Wrong polymorphic declaration
+exit          | FIXED   | Incomplete declaration (input is string)
+ansicolors    | FIXED   | Declaration was too general
+open          | SKIPPED | Not testable -- depends on OS side effects
+detect-indent | FIXED   | Function behaviour not modellable in TS, made it any
+domready      | DEFERRED | Not testable in node
+graceful-fs   | DEFERRED | Another module alias (not yet supported)
+readdir-stream | DEFERRED | Depends on node.d.ts (not yet implemented)
+errorhandler | DEFERRED | Depends on express.d.ts
+body-parser | DEFERRED | Depends on express.d.ts
+rimraf      | OK   | Seems ok, but now allowing objects to be null
 

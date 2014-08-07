@@ -1018,9 +1018,14 @@ function wrap_dict(value: any, p: ILabel, q: ILabel, A: DictionaryType, B: Dicti
 function wrap_obj(value: any, p: ILabel, q: ILabel, A: ObjectType, B: ObjectType): any {
   var type: string = typeof value;
 
-  if (type !== "object" && type !== "function" || !value) {
+  if (type !== "object" && type !== "function") {
     //throw new Error(p.msg("not of type Obj"));
-    p.blame("not of type Obj");
+    p.blame("not of type Obj: " + value);
+    return value;
+  }
+
+  // TODO: Not sure if good..
+  if (!value) {
     return value;
   }
 

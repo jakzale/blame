@@ -18,3 +18,15 @@
 	path = externals/ansicolors
 	url = https://github.com/thlorenz/ansicolors.git
 	ignore = all
+[submodule "externals/detect-indent"]
+	path = externals/detect-indent
+	url = https://github.com/sindresorhus/detect-indent.git
+	ignore = all
+[submodule "externals/graceful-fs"]
+	path = externals/graceful-fs
+	url = https://github.com/isaacs/node-graceful-fs.git
+	ignore = all
+[submodule "externals/rimraf"]
+	path = externals/rimraf
+	url = https://github.com/isaacs/rimraf.git
+	ignore = all

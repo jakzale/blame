@@ -40,6 +40,24 @@
     },
     "open/open.d.ts": {
       "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "detect-indent/detect-indent.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "graceful-fs/graceful-fs.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "readdir-stream/readdir-stream.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "errorhandler/errorhandler.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "body-parser/body-parser.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "rimraf/rimraf.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
     }
   }
 }
