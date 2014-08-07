@@ -25,6 +25,9 @@
     },
     "progressjs/progress.d.ts": {
       "commit": "1b831404eebc5f7ab6f741aac08b9bd3f74b04c3"
+    },
+    "sprintf/sprintf.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
     }
   }
 }

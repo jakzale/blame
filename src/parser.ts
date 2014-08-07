@@ -105,11 +105,13 @@ class TypeCache {
   private declarations: string[];
   private symbols: {[id: string]: boolean};
   private types: {[id: string]: boolean};
+  private node: boolean;
 
-  constructor() {
+  constructor(node?: boolean) {
     this.declarations = [];
     this.symbols = Object.create(null);
     this.types = Object.create(null);
+    this.node = !!node;
   }
 
   public addGlobalDeclaration(identifier: string, type: string): void {
@@ -127,7 +129,12 @@ class TypeCache {
   }
 
   public addModuleDeclaration(name: string, type: string): void {
-    var declaration: string = "M[" + name + "] = " + type + ";";
+    var declaration: string;
+    if (this.node) {
+      declaration = "module.exports = exports = Blame.simple_wrap(module.exports, " + type + ");";
+    } else {
+      declaration = "M[" + name + "] = " + type + ";";
+    }
     this.declarations.push(declaration);
   }
 
@@ -168,9 +175,10 @@ function notBlank(s: string): boolean {
 
 
 class BlameCompiler {
-  private typeCache: TypeCache = new TypeCache();
+  private typeCache: TypeCache;
 
-  constructor(private filename: string) {
+  constructor(private filename: string, node?: boolean) {
+    this.typeCache = new TypeCache(node);
   }
 
   public generateDeclarations(): string {
@@ -685,7 +693,7 @@ class BlameCompiler {
 
 
 
-export function compile(filename: string, source: string, shouldLog?: boolean): string {
+export function compile(filename: string, source: string, shouldLog?: boolean, node?: boolean): string {
   var logger: ILogger;
   if (shouldLog) {
     logger = new Logger();
@@ -695,7 +703,7 @@ export function compile(filename: string, source: string, shouldLog?: boolean): 
 
   logger.log("parsing file: ", filename);
 
-  var blameCompiler: BlameCompiler = new BlameCompiler(filename);
+  var blameCompiler: BlameCompiler = new BlameCompiler(filename, node);
 
   // Create a simple source unit
   var snapshot = TypeScript.ScriptSnapshot.fromString(source);

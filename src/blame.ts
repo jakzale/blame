@@ -1,5 +1,10 @@
 // Blame
 
+// Loading harmony reflect
+if (typeof Proxy !== "function") {
+  require("harmony-reflect");
+}
+
 // Counter for blame labels
 var count: number = 0;
 

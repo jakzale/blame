@@ -1,0 +1,6 @@
+[submodule "externals/platform.js"]
+	path = externals/platform.js
+	url = https://github.com/bestiejs/platform.js
+[submodule "externals/sprintf"]
+	path = externals/sprintf
+	url = https://github.com/maritz/node-sprintf
