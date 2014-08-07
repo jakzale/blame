@@ -232,7 +232,7 @@ class BlameCompiler {
     var type: string = this.parseType(symbol.type, logger.next());
 
     // Checking if this is an external module, hack solution, but should work
-    if (name.indexOf("\"") > -1) {
+    if (name.indexOf("\"") > -1 || name.indexOf("'") > -1) {
       this.typeCache.addModuleDeclaration(name, type);
       logger.log("declared module! " + name + ": " + type);
       return;
@@ -607,7 +607,7 @@ class BlameCompiler {
     // Compose the resulting type
     if (declarations.length === 0) {
 
-      if (name.indexOf("\"") > -1) {
+      if (name.indexOf("\"") > -1 || name.indexOf("'")) {
         // Module with an aliased export
         return this.parseAliasedModule(type, next);
       }
