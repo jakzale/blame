@@ -238,30 +238,21 @@ describe('enum declaration', function () {
 describe('class declaration', function () {
   it('should accept a simple class declaration', function () {
     var source = 'declare class MyClass {}';
-    var desired = [
-      'T.set(\'MyClass\', Blame.obj({}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));'
-    ].join('\n');
+    var desired = 'T.set(\'MyClass\', Blame.obj({}));\nMyClass = Blame.simple_wrap(MyClass, Blame.hybrid(Blame.obj({prototype: T.get(\'MyClass\')}), Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\'))));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should accept a more complicated declaration', function () {
     var source = 'declare class MyClass {x: number;}';
-    var desired = [
-      'T.set(\'MyClass\', Blame.obj({x: Blame.Num}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));'
-    ].join('\n');
+    var desired = 'T.set(\'MyClass\', Blame.obj({x: Blame.Num}));\nMyClass = Blame.simple_wrap(MyClass, Blame.hybrid(Blame.obj({prototype: T.get(\'MyClass\')}), Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\'))));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should accept a recursive type', function () {
     var source = 'declare class MyClass {mc: MyClass;}';
-    var desired = [
-      'T.set(\'MyClass\', Blame.obj({mc: T.get(\'MyClass\')}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));'
-    ].join('\n');
+    var desired = 'T.set(\'MyClass\', Blame.obj({mc: T.get(\'MyClass\')}));\nMyClass = Blame.simple_wrap(MyClass, Blame.hybrid(Blame.obj({prototype: T.get(\'MyClass\')}), Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\'))));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
@@ -270,9 +261,9 @@ describe('class declaration', function () {
     var source = 'declare class A { b: B } declare class B { a: A }';
     var desired = [
       'T.set(\'A\', Blame.obj({b: T.get(\'B\')}));',
-      'A = Blame.simple_wrap(A, Blame.fun([], [], null, Blame.Any, T.get(\'A\')));',
+      'A = Blame.simple_wrap(A, Blame.hybrid(Blame.obj({prototype: T.get(\'A\')}), Blame.fun([], [], null, Blame.Any, T.get(\'A\'))));',
       'T.set(\'B\', Blame.obj({a: T.get(\'A\')}));',
-      'B = Blame.simple_wrap(B, Blame.fun([], [], null, Blame.Any, T.get(\'B\')));'
+      'B = Blame.simple_wrap(B, Blame.hybrid(Blame.obj({prototype: T.get(\'B\')}), Blame.fun([], [], null, Blame.Any, T.get(\'B\'))));'
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -282,8 +273,8 @@ describe('class declaration', function () {
     var source = 'declare class MyClass {} declare var c: MyClass';
     var desired = [
       'T.set(\'MyClass\', Blame.obj({}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));',
-      'c = Blame.simple_wrap(c, T.get(\'MyClass\'));'
+      'MyClass = Blame.simple_wrap(MyClass, Blame.hybrid(Blame.obj({prototype: T.get(\'MyClass\')}), Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\'))));',
+      'c = Blame.simple_wrap(c, T.get(\'MyClass\'));',
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -293,9 +284,9 @@ describe('class declaration', function () {
     var source = 'declare class ParentClass {x: number} declare class MyClass extends ParentClass {b: boolean}';
     var desired = [
       'T.set(\'ParentClass\', Blame.obj({x: Blame.Num}));',
-      'ParentClass = Blame.simple_wrap(ParentClass, Blame.fun([], [], null, Blame.Any, T.get(\'ParentClass\')));',
+      'ParentClass = Blame.simple_wrap(ParentClass, Blame.hybrid(Blame.obj({prototype: T.get(\'ParentClass\')}), Blame.fun([], [], null, Blame.Any, T.get(\'ParentClass\'))));',
       'T.set(\'MyClass\', Blame.obj({b: Blame.Bool, x: Blame.Num}));',
-      'MyClass = Blame.simple_wrap(MyClass, Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\')));'
+      'MyClass = Blame.simple_wrap(MyClass, Blame.hybrid(Blame.obj({prototype: T.get(\'MyClass\')}), Blame.fun([], [], null, Blame.Any, T.get(\'MyClass\'))));',
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -347,7 +338,7 @@ describe('internal modules', function () {
     var source = 'declare module MyModule { export class MyClass { x: number; } var x:MyClass; }';
     var desired = [
       'T.set(\'MyModule.MyClass\', Blame.obj({x: Blame.Num}));',
-      'MyModule = Blame.simple_wrap(MyModule, Blame.obj({MyClass: Blame.fun([], [], null, Blame.Any, T.get(\'MyModule.MyClass\')), x: T.get(\'MyModule.MyClass\')}));'
+      'MyModule = Blame.simple_wrap(MyModule, Blame.obj({MyClass: Blame.hybrid(Blame.obj({prototype: T.get(\'MyModule.MyClass\')}), Blame.fun([], [], null, Blame.Any, T.get(\'MyModule.MyClass\'))), x: T.get(\'MyModule.MyClass\')}));',
     ].join('\n');
 
     expect(parser.compileFromString(source)).to.equal(desired);
@@ -417,14 +408,14 @@ describe('forall types', function () {
 
   it('should parse objects with forall members', function () {
     var source = 'declare class C<X, Y> { x(x: X): Y; y(y: Y): X;}';
-    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nC = Blame.simple_wrap(C, Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, Blame.Any, T.get(\'C<X, Y>\')))));';
+    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nT.set(\'C<any, any>\', Blame.obj({x: Blame.fun([Blame.Any], [], null, Blame.Any), y: Blame.fun([Blame.Any], [], null, Blame.Any)}));\nC = Blame.simple_wrap(C, Blame.hybrid(Blame.obj({prototype: T.get(\'C<any, any>\')}), Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, Blame.Any, T.get(\'C<X, Y>\'))))));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
 
   it('should allow instances with forall members', function () {
     var source = 'declare class C<X, Y> { x(x: X): Y; y(y: Y): X;} declare var c:C<number,string>;';
-    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nC = Blame.simple_wrap(C, Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, Blame.Any, T.get(\'C<X, Y>\')))));\nT.set(\'C<number, string>\', Blame.obj({x: Blame.fun([Blame.Num], [], null, Blame.Str), y: Blame.fun([Blame.Str], [], null, Blame.Num)}));\nc = Blame.simple_wrap(c, T.get(\'C<number, string>\'));';
+    var desired = 'T.set(\'C<X, Y>\', Blame.obj({x: Blame.fun([Blame.tyvar(\'X\')], [], null, Blame.tyvar(\'Y\')), y: Blame.fun([Blame.tyvar(\'Y\')], [], null, Blame.tyvar(\'X\'))}));\nT.set(\'C<any, any>\', Blame.obj({x: Blame.fun([Blame.Any], [], null, Blame.Any), y: Blame.fun([Blame.Any], [], null, Blame.Any)}));\nC = Blame.simple_wrap(C, Blame.hybrid(Blame.obj({prototype: T.get(\'C<any, any>\')}), Blame.forall(\'Y\', Blame.forall(\'X\', Blame.fun([], [], null, Blame.Any, T.get(\'C<X, Y>\'))))));\nT.set(\'C<number, string>\', Blame.obj({x: Blame.fun([Blame.Num], [], null, Blame.Str), y: Blame.fun([Blame.Str], [], null, Blame.Num)}));\nc = Blame.simple_wrap(c, T.get(\'C<number, string>\'));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });
@@ -448,6 +439,13 @@ describe('external modules', function () {
   it('should parse sprintf declaration', function () {
     var source = 'declare module "sprintf" { export function sprintf(fmt: string, ...args: any[]): string; export function vsprintf(fmt: string, args: any[]): string;}';
     var desired = 'M["sprintf"] = Blame.obj({sprintf: Blame.fun([Blame.Str], [], Blame.Any, Blame.Str), vsprintf: Blame.fun([Blame.Str, Blame.arr(Blame.Any)], [], null, Blame.Str)});';
+
+    expect(parser.compileFromString(source)).to.equal(desired);
+  });
+
+  it('should define external module', function () {
+    var source = 'declare function f(n: number): string; declare module f { export function g(n: number): string;} declare module "fu" { export = f; }';
+    var desired = 'f = Blame.simple_wrap(f, Blame.hybrid(Blame.obj({g: Blame.fun([Blame.Num], [], null, Blame.Str)}), Blame.fun([Blame.Num], [], null, Blame.Str)));\nM["fu"] = Blame.hybrid(Blame.obj({g: Blame.fun([Blame.Num], [], null, Blame.Str)}), Blame.fun([Blame.Num], [], null, Blame.Str));';
 
     expect(parser.compileFromString(source)).to.equal(desired);
   });

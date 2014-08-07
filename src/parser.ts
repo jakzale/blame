@@ -105,12 +105,14 @@ class TypeCache {
   private declarations: string[];
   private symbols: {[id: string]: boolean};
   private types: {[id: string]: boolean};
+  private modules: {[id: string]: boolean};
   private node: boolean;
 
   constructor(node?: boolean) {
     this.declarations = [];
     this.symbols = Object.create(null);
     this.types = Object.create(null);
+    this.modules = Object.create(null);
     this.node = !!node;
   }
 
@@ -138,7 +140,9 @@ class TypeCache {
     } else {
       declaration = "M[" + name + "] = " + type + ";";
     }
+
     this.declarations.push(declaration);
+    this.modules[name] = true;
   }
 
   public generateDeclarations(): string {
@@ -151,6 +155,10 @@ class TypeCache {
 
   public isTypeDeclared(name: string): boolean {
     return Object.prototype.hasOwnProperty.call(this.types, name);
+  }
+
+  public isModuleDeclared(name: string): boolean {
+    return Object.prototype.hasOwnProperty.call(this.modules, name);
   }
 }
 
@@ -212,8 +220,12 @@ class BlameCompiler {
 
       case TypeScript.PullElementKind.ObjectType:
       case TypeScript.PullElementKind.FunctionType:
-      case TypeScript.PullElementKind.DynamicModule:
         logger.log("ignored declaration: " + kind);
+        break;
+
+      case TypeScript.PullElementKind.DynamicModule:
+        logger.log("dynamic module:");
+        this.parseAliasedModule(<TypeScript.PullContainerSymbol> symbol, next);
         break;
 
       default:
@@ -236,8 +248,11 @@ class BlameCompiler {
 
     // Checking if this is an external module, hack solution, but should work
     if (name.indexOf("\"") > -1 || name.indexOf("'") > -1) {
-      this.typeCache.addModuleDeclaration(name, type);
-      logger.log("declared module! " + name + ": " + type);
+      if (!this.typeCache.isModuleDeclared(name)) {
+        this.typeCache.addModuleDeclaration(name, type);
+      } else {
+        logger.log("skipping module declaration! " + name);
+      }
       return;
     }
 
@@ -312,7 +327,7 @@ class BlameCompiler {
     var declaration: string;
 
     // Add declaration without checking the cache first
-    declaration = this.parseObjectLikeType(type, logger, true);
+    declaration = this.parseSomeType(type, logger, true);
 
 
 
@@ -338,15 +353,12 @@ class BlameCompiler {
 
       case TypeScript.PullElementKind.FunctionType:
       case TypeScript.PullElementKind.ConstructorType:
-        logger.log("function-like type: " + kind);
-        return this.parseFunctionLikeType(type, next);
-
       case TypeScript.PullElementKind.ObjectType:
       case TypeScript.PullElementKind.Class:
       case TypeScript.PullElementKind.Interface:
       case TypeScript.PullElementKind.Container:
-        logger.log("object-like type: " + kind);
-        return this.parseObjectLikeType(type, next);
+        logger.log("type kind: " + kind);
+        return this.parseSomeType(type, next);
 
         // Enums Are ignored
       case TypeScript.PullElementKind.Enum:
@@ -466,12 +478,8 @@ class BlameCompiler {
     var constrSignatures: TypeScript.PullSignatureSymbol[];
     var generic: boolean = type.getHasGenericSignature();
 
-    // Checking if this is a constructor
-    //if (type.isConstructor()) {
-      constrSignatures = type.getConstructSignatures() || [];
-    //} else {
-      callSignatures = type.getCallSignatures() || [];
-    //}
+    constrSignatures = type.getConstructSignatures() || [];
+    callSignatures = type.getCallSignatures() || [];
 
     logger.log("call signatures: ", callSignatures.length);
     var next: ILogger = logger.next();
@@ -487,7 +495,11 @@ class BlameCompiler {
     if (signatures.length === 0) {
       // No signatures
       logger.log("no call signatures, just a func");
-      return "Blame.fun([], [], Blame.Any, Blame.Any)";
+      if (type.isFunction() || type.isConstructor()) {
+        return "Blame.fun([], [], Blame.Any, Blame.Any)";
+      }
+
+      return "";
     }
 
     if (signatures.length === 1) {
@@ -523,33 +535,70 @@ class BlameCompiler {
     return "";
   }
 
-
-  private parseObjectLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger, declaration?: boolean): string {
+  private parseSomeType(type: TypeScript.PullTypeSymbol, logger: ILogger, declaration?: boolean): string {
     var name: string = type.getTypeName();
     var typeName: string = type.getDisplayName();
     var next: ILogger = logger.next();
 
     var declarations: string[] = [];
 
-    logger.log("object type: " + name);
+    logger.log("some type: " + name);
 
-    // Checking if it is an array
+
+    // It is an array type
     if (type.isArrayNamedTypeReference()) {
-      logger.log("element type: ");
-      return "Blame.arr(" + this.parseType(type.getElementType(), next) + ")";
+      return this.parseArrayType(type, logger.next());
     }
 
-    // Handling build in types
-    //switch (typeName) {
-    //  case "Function":
-    //    return "Blame.Fun";
+    // It is a named type
+    if (type.isNamedTypeSymbol() && !declaration) {
+      return this.parseNamedType(type, next);
+    }
 
-    //  case "Object":
-    //    return "Blame.Obj";
-    //}
+    // Is it an indexed type?
+    if (type.hasOwnIndexSignatures()) {
+      declarations = declarations.concat(this.parseIndexType(type, next));
+    }
 
-    // Handling types from the outside:
-    if (type.isNamedTypeSymbol() && !this.typeCache.isTypeDeclared(name) && !declaration) {
+    // Is it an object type?
+    if (type.isObject() || type.hasMembers()) {
+      var objectDeclaration = this.parseObjectLikeType(type, next);
+      if (objectDeclaration) {
+        declarations.push(objectDeclaration);
+      }
+    }
+
+    if (type.isFunction() || type.hasOwnCallSignatures() || type.hasOwnConstructSignatures()) {
+      var funcDeclaration = this.parseFunctionLikeType(type, next);
+      if (funcDeclaration) {
+        declarations.push(funcDeclaration);
+      }
+    }
+
+    if (declarations.length === 0) {
+      return "";
+    }
+
+    if (declarations.length === 1) {
+      return declarations[0];
+    }
+
+    return "Blame.hybrid(" + declarations.join(", ") + ")";
+  }
+
+  private parseArrayType(type: TypeScript.PullTypeSymbol, logger: ILogger): string {
+    var next: ILogger = logger.next();
+    logger.log("array type: ");
+    return "Blame.arr(" + this.parseType(type.getElementType(), next) + ")";
+  }
+
+  private parseNamedType(type: TypeScript.PullTypeSymbol, logger: ILogger) {
+    var name: string = type.getTypeName();
+    var next: ILogger = logger.next();
+    logger.log("named type: ");
+
+    // Handling unknown type outside of declaration
+    if (!this.typeCache.isTypeDeclared(name)) {
       var sourceDeclarations: TypeScript.PullDecl[] = type.getDeclarations();
 
       sourceDeclarations.forEach((decl) => {
@@ -560,113 +609,92 @@ class BlameCompiler {
       });
     }
 
-    if (type.hasOwnIndexSignatures()) {
-      logger.log("indexable");
-      type.getIndexSignatures().forEach((signature) => {
-        var indexSignature: string = this.parseIndexSignature(signature, next);
-        var idSignature: string = this.parseType(signature.parameters[0].type, next);
+    // Handling an instantiated generic type
+    if (type.isGeneric() && type.getTypeParameters().length) {
 
-        switch (idSignature) {
-          case "Blame.Num":
-            declarations.unshift("Blame.arr(" + indexSignature + ")");
-            break;
-          case "Blame.Str":
-            declarations.unshift("Blame.dict(" + indexSignature + ")");
-            break;
-        }
-      });
+      // Rerun the declaration
+      this.parseTypeDeclarationSymbol(type, next);
     }
 
+    logger.log("load type: " + name);
+    // Checking if the type was defined somewhere else
+    return "T.get('" + name + "')";
+  }
 
-    if (!declaration && type.isNamedTypeSymbol()) {
-      // Checking if type is an instantiated generic type
-      if (type.isGeneric() && type.getTypeParameters().length) {
-        //logger.log('AAAA', type.getTypeParameters().length);
-        // Rerun the declaration
-        this.parseTypeDeclarationSymbol(type, next);
+
+  private parseIndexType(type: TypeScript.PullTypeSymbol, logger: ILogger): string[] {
+    var next: ILogger = logger.next();
+
+    return type.getIndexSignatures().map((signature) => {
+      logger.log("indexable type: ");
+
+      var indexSignature: string = this.parseIndexSignature(signature, next);
+      var idSignature: string = this.parseType(signature.parameters[0].type, next);
+
+      switch (idSignature) {
+        case "Blame.Num":
+          return "Blame.arr(" + indexSignature + ")";
+
+        case "Blame.Str":
+          return "Blame.dict(" + indexSignature + ")";
       }
+    });
+  }
 
-      // If type is not declared try declaring it.
-      logger.log("load type: " + name);
-      // Checking if the type was defined somewhere else
-      return "T.get('" + name + "')";
-    }
+  private parseObjectLikeType(type: TypeScript.PullTypeSymbol, logger: ILogger): string {
+    var name: string = type.getTypeName();
+    var typeName: string = type.getDisplayName();
+    var next: ILogger = logger.next();
 
-    // If it is indexable:
+    var declarations: string[] = [];
+
+    logger.log("object type: " + name);
 
     var members: string = this.parseTypeMembers(type, next);
 
-    // If it is a container, empty members means no code
-    if (type.isContainer() && !members) {
+    // Add members
+    if (members.length > 0) {
+      return "Blame.obj({" + members + "})";
+    }
+
+    //// Compose the resulting type -- this is probably wrong
+    //if (declarations.length === 0) {
+
+    //  if (name.indexOf("\"") > -1 || name.indexOf("'") > -1) {
+    //    // Module with an aliased export
+    //    return this.parseAliasedModule(type, next);
+    //  }
+
+    //  return "Blame.obj({})";
+    //}
+
+    if (type.isContainer()) {
       logger.log("skipping empty container type");
       return "";
     }
 
-    // Add members
-    if (members.length > 0) {
-      declarations.push("Blame.obj({" + members + "})");
-    }
-
-    // Add call signatures
-    type.getCallSignatures().forEach((signature) => {
-      declarations.push(this.parseCallSignature(signature, next));
-    });
-
-    type.getConstructSignatures().forEach((signature) => {
-      declarations.push(this.parseCallSignature(signature, next, true));
-    });
-
-    // Compose the resulting type
-    if (declarations.length === 0) {
-
-      if (name.indexOf("\"") > -1 || name.indexOf("'") > -1) {
-        // Module with an aliased export
-        return this.parseAliasedModule(type, next);
-      }
-
+    if (type.isObject() && !type.isFunction() && !type.hasOwnIndexSignatures()) {
       return "Blame.obj({})";
     }
 
-    if (declarations.length === 1) {
-      return declarations[0];
-    }
-
-    // Return a hybrid type
-
-    return "Blame.hybrid(" + declarations.join(", ") + ")";
+    logger.log("not an object type");
+    return "";
   }
 
-  private parseAliasedModule(type: TypeScript.PullTypeSymbol, logger: ILogger) {
+  private parseAliasedModule(type: TypeScript.PullContainerSymbol, logger: ILogger) {
     var name = type.getDisplayName();
     logger.log("aliased module " + name);
 
     var next = logger.next();
-
     var parentDeclaration: TypeScript.ModuleDeclaration;
 
-    var declarations = type.getDeclarations();
-    if (!declarations || declarations.length === 0) {
-      throw new Error("Panic, aliased external module with no declaration");
+    if (type.hasExportAssignment()) {
+      // Let's assume it only allows values:
+      var value = type.getExportAssignedValueSymbol();
+      var moduleType = this.parseType(value.type, logger.next());
+
+      this.typeCache.addModuleDeclaration(name, moduleType);
     }
-
-    parentDeclaration = <TypeScript.ModuleDeclaration> declarations[0].ast().parent;
-
-    // Finding the type structure of aliased module
-
-    for (var i = 0, n = parentDeclaration.moduleElements.childCount(); i < n; i += 1) {
-      var child = parentDeclaration.moduleElements.childAt(i);
-
-      switch (child.kind()) {
-        case TypeScript.SyntaxKind.ExportAssignment:
-          var exAsgn = <TypeScript.ExportAssignment> child;
-
-          // Get declaration for ast
-          var symbolInfo = compiler.pullGetSymbolInformationFromAST(exAsgn.identifier, compiler.getDocument(this.filename));
-          return this.parseType(symbolInfo.symbol.type, next.next());
-      }
-    }
-
-    throw new Error("Panic, aliased external module with no declaration");
   }
 
 
