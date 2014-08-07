@@ -1,105 +1,103 @@
-angularjs	node_module/.bin/mocha
-ansicolors	node test/*.js
-asciify	tap ./test
-assert	mocha --ui qunit test.js && zuul -- test.js
-assertion-error	make test
-atmosphere	make test
-atpl	mocha --ui exports --globals name 
-auth0	mocha test
-aws-sdk	npm -s run-script lint && npm -s run-script unit && npm -s run-script buildertest && npm -s run-script browsertest && ([ -f configuration ] && npm -s run-script integration || true)
-big.js	node ./test/every-test.js
-bigint	tap test/*.js
-bootbox	zuul tests/*.js
-bootstrap	grunt test
-chai	make test
-chai-datetime	make test
-chai-fuzzy	make test
-chai-jquery	mocha-phantomjs test/index.html
-chalk	mocha
-cheerio	make test
-clone	nodeunit test.js
-commander	make test
-configstore	mocha
-consolidate	mocha
-convert-source-map	tap test/*.js
-cordova	jasmine-node --color spec
-datejs	grunt test
-deep-freeze	tap test/*.js
-detect-indent	mocha
-diff	node_modules/.bin/mocha test/*.js
-dot	mocha
-dropzone	./test.sh
-dustjs-linkedin	grunt test
-epiceditor	jake test
-es6-promises	echo There are no tests.
-esprima	npm run-script lint && node test/run.js && npm run-script coverage && npm run-script complexity
-exit	grunt nodeunit
-expectations	./runTests
-express-validator	make test
-fibers	node ./test.js
-fuse	make test
-geojson	mocha
-globalize	grunt
-googlemaps	NODE_ENV=test vows test/*.js --spec
-hammerjs	grunt test
-handlebars	grunt
-hashmap	mocha test/*.js
-hellojs	grunt test
-history	make test
-http-string-parser	scripts/test
-jdataview	grunt
-jquery.cookie	grunt
-jquery.payment	cake test
-jquery.transit	mocha
-js-git	ls test/test-* | xargs -n1 node
-jsesc	node tests/tests.js
-json-pointer	make test
-jsrender	nodeunit test.js
-jszip	npm run test-node && npm run test-browser
-karma-jasmine	grunt test
-less	grunt test
-levelup	tap test/*-test.js --stderr
-libxmljs	node --expose_gc ./node_modules/.bin/nodeunit test
-linq	node test/testrunner.js
-lockfile	tap test/*.js
-long	node node_modules/testjs/bin/testjs tests/suite.js
-marked	node test
-minimist	tap test/*.js
-mixpanel	bin/run_tests
-mixto	grunt test
-mkdirp	tap test/*.js
-mocha	make test-all
-moment	grunt test:node
-msgpack	./run_tests
-mustache	mocha test
-nconf	vows test/*-test.js test/**/*-test.js --spec
-node-ffi	mocha -gc --reporter spec
-nodemailer	grunt
-nodeunit	node ./bin/nodeunit
-nomnom	nodeunit test/*.js
-open	node_modules/mocha/bin/mocha
-optimist	tap ./test/*.js
-pegjs	make spec
-phantomjs	nodeunit --reporter=minimal test/tests.js
-phonegap	jasmine-node --color spec
-pixi	grunt travis --verbose
-platform	echo "See the repository CONTRIBUTING.md for testing instructions."
-pubsubjs	mocha test/pubsub-test.js
-qunit	node --harmony ./test/testrunner.js
-redis	node ./test.js
-rickshaw	nodeunit tests
-rimraf	cd test && bash run.sh
-riotjs	make test
-scroller	mocha test
-semver	tap test/*.js
-should	gulp test
-sjcl	make test
-source-map-support	node_modules/mocha/bin/mocha
-stripe	mocha
-swig	make lint && make test reporter=spec && make test-browser && make coverage cov-reporter=travis-cov
-timezone-js	./node_modules/jake/bin/cli.js test:cli
-type-detect	make test
-update-notifier	mocha --timeout 20000
-uri-templates	grunt test
-winston	vows --spec --isolate
-xregexp	node tests/node-qunit.js
+angularjs	node_module/.bin/mocha	https://github.com/eugeneware/angularjs.git
+ansicolors	node test/*.js	git://github.com/thlorenz/ansicolors.git
+asciify	tap ./test	https://github.com/olizilla/asciify
+assert	mocha --ui qunit test.js && zuul -- test.js	git://github.com/defunctzombie/commonjs-assert.git
+assertion-error	make test	git@github.com:chaijs/assertion-error.git
+atmosphere	make test	git://github.com/ryanlelek/atmosphere.git
+atpl	mocha --ui exports --globals name 	git://github.com/soywiz/atpl.js.git
+auth0	mocha test	git://github.com/auth0/node-auth0.git
+aws-sdk	npm -s run-script lint && npm -s run-script unit && npm -s run-script buildertest && npm -s run-script browsertest && ([ -f configuration ] && npm -s run-script integration || true)	git://github.com/aws/aws-sdk-js
+big.js	node ./test/every-test.js	https://github.com/MikeMcl/big.js.git
+bigint	tap test/*.js	http://github.com/substack/node-bigint.git
+bootbox	zuul tests/*.js	git://github.com/makeusabrew/bootbox.git
+bootstrap	grunt test	https://github.com/twbs/bootstrap.git
+chai	make test	https://github.com/chaijs/chai
+chai-datetime	make test	git://github.com/gaslight/chai-datetime.git
+chai-fuzzy	make test	git://github.com/elliotf/chai-fuzzy.git
+chai-jquery	mocha-phantomjs test/index.html	https://github.com/chaijs/chai-jquery
+chalk	mocha	git://github.com/sindresorhus/chalk
+cheerio	make test	git://github.com/MatthewMueller/cheerio.git
+clone	nodeunit test.js	git://github.com/pvorb/node-clone.git
+commander	make test	https://github.com/visionmedia/commander.js.git
+configstore	mocha	git://github.com/yeoman/configstore
+consolidate	mocha	https://github.com/visionmedia/consolidate.js.git
+convert-source-map	tap test/*.js	git://github.com/thlorenz/convert-source-map.git
+cordova	jasmine-node --color spec	https://git-wip-us.apache.org/repos/asf/cordova-cli.git
+datejs	grunt test	git://github.com/abritinthebay/datejs.git
+deep-freeze	tap test/*.js	git://github.com/substack/deep-freeze.git
+detect-indent	mocha	git://github.com/sindresorhus/detect-indent
+diff	node_modules/.bin/mocha test/*.js	git://github.com/kpdecker/jsdiff.git
+dot	mocha	git://github.com/olado/doT.git
+dropzone	./test.sh	https://github.com/enyo/dropzone.git
+dustjs-linkedin	grunt test	https://github.com/linkedin/dustjs.git
+epiceditor	jake test	git@github.com:OscarGodson/EpicEditor.git
+es6-promises	echo There are no tests.	https://github.com/Octane/Promise.git
+esprima	npm run-script lint && node test/run.js && npm run-script coverage && npm run-script complexity	http://github.com/ariya/esprima.git
+exit	grunt nodeunit	git://github.com/cowboy/node-exit.git
+expectations	./runTests	git://github.com/spmason/expectations.git
+express-validator	make test	git://github.com/ctavan/express-validator.git
+fibers	node ./test.js	git://github.com/laverdet/node-fibers.git
+fuse	make test	https://github.com/smebberson/fuse.git
+geojson	mocha	http://github.com/caseypt/geojson.js.git
+globalize	grunt	git://github.com/jquery/globalize.git
+googlemaps	NODE_ENV=test vows test/*.js --spec	http://github.com/moshen/node-googlemaps
+hammerjs	grunt test	git://github.com/hammerjs/hammer.js.git
+handlebars	grunt	https://github.com/wycats/handlebars.js.git
+hashmap	mocha test/*.js	git://github.com/flesler/hashmap
+hellojs	grunt test	git@github.com/MrSwitch/hello.js
+history	make test	git://github.com/dshaw/history.git
+http-string-parser	scripts/test	https://github.com/apiaryio/http-string-parser
+jdataview	grunt	git://github.com/jDataView/jDataView.git
+jquery.cookie	grunt	git://github.com/carhartl/jquery-cookie.git
+jquery.payment	cake test	https://github.com/stripe/jquery.payment.git
+jquery.transit	mocha	git://github.com/rstacruz/jquery.transit.git
+js-git	ls test/test-* | xargs -n1 node	git://github.com/creationix/js-git.git
+jsesc	node tests/tests.js	https://github.com/mathiasbynens/jsesc.git
+json-pointer	make test	git://github.com/manuelstofer/json-pointer.git
+jsrender	nodeunit test.js	git://github.com/shtylman/node-jsrender.git
+jszip	npm run test-node && npm run test-browser	https://github.com/Stuk/jszip.git
+karma-jasmine	grunt test	git://github.com/karma-runner/karma-jasmine.git
+less	grunt test	https://github.com/less/less.js.git
+levelup	tap test/*-test.js --stderr	https://github.com/rvagg/node-levelup.git
+libxmljs	node --expose_gc ./node_modules/.bin/nodeunit test	http://github.com/polotek/libxmljs.git
+linq	node test/testrunner.js	https://github.com/mihaifm/linq.git
+lockfile	tap test/*.js	git://github.com/isaacs/lockfile
+long	node node_modules/testjs/bin/testjs tests/suite.js	https://github.com/dcodeIO/Long.js.git
+marked	node test	git://github.com/chjj/marked.git
+minimist	tap test/*.js	git://github.com/substack/minimist.git
+mixpanel	bin/run_tests	http://github.com/carlsverre/mixpanel-node.git
+mixto	grunt test	https://github.com/atom/mixto
+mkdirp	tap test/*.js	https://github.com/substack/node-mkdirp.git
+mocha	make test-all	git://github.com/visionmedia/mocha.git
+moment	grunt test:node	https://github.com/moment/moment.git
+msgpack	./run_tests	https://github.com/msgpack/msgpack-node.git
+mustache	mocha test	https://github.com/janl/mustache.js.git
+nconf	vows test/*-test.js test/**/*-test.js --spec	http://github.com/flatiron/nconf.git
+node-ffi	mocha -gc --reporter spec	http://github.com/rbranson/node-ffi.git
+nodemailer	grunt	git://github.com/andris9/Nodemailer.git
+nodeunit	node ./bin/nodeunit	http://github.com/caolan/nodeunit.git
+nomnom	nodeunit test/*.js	http://github.com/harthur/nomnom.git
+open	node_modules/mocha/bin/mocha	https://github.com/pwnall/node-open.git
+optimist	tap ./test/*.js	http://github.com/substack/node-optimist.git
+pegjs	make spec	http://github.com/dmajda/pegjs.git
+phantomjs	nodeunit --reporter=minimal test/tests.js	git://github.com/Obvious/phantomjs.git
+phonegap	jasmine-node --color spec	git://github.com/phonegap/phonegap-cli.git
+pixi	grunt travis --verbose	https://github.com/drkibitz/node-pixi
+pubsubjs	mocha test/pubsub-test.js	https://github.com/nazomikan/PubsubJS.git
+qunit	node --harmony ./test/testrunner.js	http://github.com/kof/node-qunit.git
+redis	node ./test.js	git://github.com/mranney/node_redis.git
+rimraf	cd test && bash run.sh	git://github.com/isaacs/rimraf.git
+riotjs	make test	git://github.com/muut/riotjs.git
+scroller	mocha test	https://github.com/popham/scroller.git
+semver	tap test/*.js	git://github.com/isaacs/node-semver.git
+should	gulp test	https://github.com/shouldjs/should.js.git
+sjcl	make test	https://github.com/bitwiseshiftleft/sjcl.git
+source-map-support	node_modules/mocha/bin/mocha	https://github.com/evanw/node-source-map-support
+stripe	mocha	git://github.com/stripe/stripe-node.git
+swig	make lint && make test reporter=spec && make test-browser && make coverage cov-reporter=travis-cov	http://github.com/paularmstrong/swig.git
+timezone-js	./node_modules/jake/bin/cli.js test:cli	git://github.com/mde/timezone-js.git
+type-detect	make test	git@github.com:chaijs/type-detect.git
+update-notifier	mocha --timeout 20000	git://github.com/yeoman/update-notifier
+uri-templates	grunt test	https://github.com/geraintluff/uri-templates.git
+winston	vows --spec --isolate	https://github.com/flatiron/winston.git
+xregexp	node tests/node-qunit.js	git://github.com/slevithan/XRegExp.git
