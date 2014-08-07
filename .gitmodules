@@ -14,3 +14,6 @@
 	path = externals/deep-freeze
 	url = https://github.com/substack/deep-freeze.git
 	ignore = all
+[submodule "externals/ansicolors"]
+	path = externals/ansicolors
+	url = https://github.com/thlorenz/ansicolors.git
