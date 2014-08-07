@@ -30,3 +30,35 @@
 	path = externals/rimraf
 	url = https://github.com/isaacs/rimraf.git
 	ignore = all
+[submodule "externals/asciify"]
+	path = externals/asciify
+	url = https://github.com/olizilla/asciify.git
+	ignore = all
+[submodule "externals/colors.js"]
+	path = externals/colors.js
+	url = https://github.com/Marak/colors.js.git
+	ignore = all
+[submodule "externals/assert"]
+	path = externals/assert
+	url = https://github.com/Jxck/assert.git
+	ignore = all
+[submodule "externals/power-assert"]
+	path = externals/power-assert
+	url = https://github.com/twada/power-assert
+	ignore = all
+[submodule "externals/readdir-stream"]
+	path = externals/readdir-stream
+	url = https://github.com/logicalparadox/readdir-stream.git
+	ignore = all
+[submodule "externals/hashmap"]
+	path = externals/hashmap
+	url = https://github.com/flesler/hashmap.git
+	ignore = all
+[submodule "externals/nodeunit"]
+	path = externals/nodeunit
+	url = https://github.com/caolan/nodeunit
+	ignore = all
+[submodule "externals/chalk"]
+	path = externals/chalk
+	url = https://github.com/sindresorhus/chalk.git
+	ignore = all

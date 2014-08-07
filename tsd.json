@@ -58,6 +58,30 @@
     },
     "rimraf/rimraf.d.ts": {
       "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "asciify/asciify.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "colors/colors.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "assert/assert.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "hashmap/hashmap.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "hashset/hashset.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "hashtable/hashtable.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "nodeunit/nodeunit.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "chalk/chalk.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
     }
   }
 }

@@ -116,7 +116,10 @@ class TypeCache {
 
   public addGlobalDeclaration(identifier: string, type: string): void {
     var declaration: string = identifier + " = Blame.simple_wrap(" + identifier + ", " + type + ");";
-    this.declarations.push(declaration);
+    if (!this.node) {
+      // Because those symbols might not be visible
+      this.declarations.push(declaration);
+    }
     this.symbols[identifier] = true;
   }
 

@@ -35,7 +35,7 @@ X     16      56     550 rimraf/rimraf.d.ts
       24      65     634 fibers/fibers.d.ts
       24     109     944 lockfile/lockfile.d.ts
       25      59     531 jsesc/jsesc.d.ts
-      26      47     593 colors/colors.d.ts
+X     26      47     593 colors/colors.d.ts
       26      73     728 glob-stream/glob-stream.d.ts
       26      75     687 svgjs.draggable/svgjs.draggable.d.ts
       26      75     946 convert-source-map/convert-source-map.d.ts
@@ -57,7 +57,7 @@ X     16      56     550 rimraf/rimraf.d.ts
       35     149    1347 watch/watch.d.ts
       36      96    1015 update-notifier/update-notifier.d.ts
       36      97    1087 xml2js/xml2js.d.ts
-      37      97    1143 hashset/hashset.d.ts
+X     37      97    1143 hashset/hashset.d.ts
       37     117    1222 promptly/promptly.d.ts
       37     123    1190 logg/logg.d.ts
       37     147    1355 twig/twig.d.ts
@@ -79,7 +79,7 @@ X     16      56     550 rimraf/rimraf.d.ts
       47      90    1139 tv4/tv4.d.ts
       47     118    1188 persona/persona.d.ts
       47     126    1337 Finch/Finch.d.ts
-      47     143    1464 hashtable/hashtable.d.ts
+X     47     143    1464 hashtable/hashtable.d.ts
       48     124    1509 auth0.widget/auth0.widget.d.ts
       48     259    2041 js-yaml/js-yaml.d.ts
       49     211    1774 rx/rx.backpressure-lite.d.ts
