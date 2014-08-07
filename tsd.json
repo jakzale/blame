@@ -28,6 +28,18 @@
     },
     "sprintf/sprintf.d.ts": {
       "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "deep-freeze/deep-freeze.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "exit/exit.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "ansicolors/ansicolors.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
+    },
+    "open/open.d.ts": {
+      "commit": "70b03acc171f56a5c5ebdee36be71824da52f7f1"
     }
   }
 }
