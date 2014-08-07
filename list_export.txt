@@ -1,5 +1,5 @@
-       9      31     295 deep-freeze/deep-freeze.d.ts
-       9      32     293 exit/exit.d.ts
+X      9      31     295 deep-freeze/deep-freeze.d.ts
+X      9      32     293 exit/exit.d.ts
        9      32     335 ansicolors/ansicolors.d.ts
        9      34     308 open/open.d.ts
        9      35     353 detect-indent/detect-indent.d.ts
@@ -12,7 +12,7 @@
       11      37     389 body-parser/body-parser.d.ts
       11      37     398 buffer-equal/buffer-equal.d.ts
       11      39     432 cookie-parser/cookie-parser.d.ts
-      11      41     463 sprintf/sprintf.d.ts
+X     11      41     463 sprintf/sprintf.d.ts
       12      42     449 stream-to-array/stream-to-array.d.ts
       15      46     483 form-data/form-data.d.ts
       15      48     512 findup-sync/findup-sync.d.ts
