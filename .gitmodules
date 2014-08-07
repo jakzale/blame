@@ -17,3 +17,4 @@
 [submodule "externals/ansicolors"]
 	path = externals/ansicolors
 	url = https://github.com/thlorenz/ansicolors.git
+	ignore = all
