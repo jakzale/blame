@@ -1,0 +1,49 @@
+Assertion.includeStack is deprecated, use chai.config.includeStack instead.
+  ✖ 2 of 48 tests failed:
+
+  1) chai-datetime tdd alias .beforeDate:
+     AssertionError: expected Thu May 30 2013 to be before Fri May 31 2013
+      at Assertion.<anonymous> (/Users/jakub/Developer/Blame/externals/chai-datetime/chai-datetime.js:82:10)
+      at Assertion.assert (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/chai/lib/chai/utils/addChainableMethod.js:83:49)
+      at Function.assert.beforeDate (/Users/jakub/Developer/Blame/externals/chai-datetime/chai-datetime.js:131:40)
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai-datetime/test/test.js:495:16)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runnable.js:200:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:307:10)
+      at /Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:353:12
+      at next (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:235:14)
+      at /Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:244:7
+      at next (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:192:23)
+      at /Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:207:7
+      at Hook.Runnable.run (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runnable.js:202:5)
+      at next (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:201:10)
+      at /Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:212:5
+      at process._tickCallback (node.js:343:11)
+      at Function.Module.runMain (module.js:492:11)
+      at startup (node.js:124:16)
+      at node.js:807:3
+
+  2) chai-datetime tdd alias .notAfterDate:
+     AssertionError: expected Thu May 30 2013 not to be after Thu May 30 2013
+      at Assertion.<anonymous> (/Users/jakub/Developer/Blame/externals/chai-datetime/chai-datetime.js:92:10)
+      at Assertion.assert (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/chai/lib/chai/utils/addChainableMethod.js:83:49)
+      at Function.assert.notAfterDate (/Users/jakub/Developer/Blame/externals/chai-datetime/chai-datetime.js:143:44)
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai-datetime/test/test.js:507:16)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runnable.js:200:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:307:10)
+      at /Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:353:12
+      at next (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:235:14)
+      at /Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:244:7
+      at next (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:192:23)
+      at /Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:207:7
+      at Hook.Runnable.run (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runnable.js:202:5)
+      at next (/Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:201:10)
+      at /Users/jakub/Developer/Blame/externals/chai-datetime/node_modules/mocha/lib/runner.js:212:5
+      at process._tickCallback (node.js:343:11)
+      at Function.Module.runMain (module.js:492:11)
+      at startup (node.js:124:16)
+      at node.js:807:3
+
+
+make: *** [test] Error 2
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

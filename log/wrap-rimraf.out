@@ -1,0 +1,6 @@
+
+> rimraf@2.2.8 test /Users/jakub/Developer/Blame/externals/rimraf
+> cd test && bash run.sh
+
+test-async.js ...pass
+test-sync.js ...pass

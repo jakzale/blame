@@ -1,0 +1,76 @@
+
+> mkdirp@0.5.0 test /Users/jakub/Developer/Blame/externals/mkdirp
+> tap test/*.js
+
+ok test/chmod.js ........................................ 8/8
+ok test/clobber.js ...................................... 5/5
+ok test/mkdirp.js ....................................... 6/6
+not ok test/opts_fs.js .................................. 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node opts_fs.js"
+    TAP version 13
+    not ok 1 test/opts_fs.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122
+          fs.Stats.prototype._checkModeProperty = function(property) {
+                  ^
+          TypeError: Cannot read property 'prototype' of undefined
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122:9)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Object.load (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/moduleEnv.js:19:18)
+              at internalRewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/rewire.js:56:15)
+              at rewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/index.js:11:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/lib/index.js:28:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node opts_fs.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/opts_fs_sync.js ............................. 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node opts_fs_sync.js"
+    TAP version 13
+    not ok 1 test/opts_fs_sync.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122
+          fs.Stats.prototype._checkModeProperty = function(property) {
+                  ^
+          TypeError: Cannot read property 'prototype' of undefined
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122:9)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Object.load (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/moduleEnv.js:19:18)
+              at internalRewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/rewire.js:56:15)
+              at rewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/index.js:11:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/lib/index.js:28:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node opts_fs_sync.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+ok test/perm.js ......................................... 6/6
+ok test/perm_sync.js .................................... 8/8
+ok test/race.js ......................................... 7/7
+ok test/rel.js .......................................... 6/6
+ok test/return.js ....................................... 5/5
+ok test/return_sync.js .................................. 3/3
+ok test/root.js ......................................... 2/2
+ok test/sync.js ......................................... 5/5
+ok test/umask.js ........................................ 6/6
+ok test/umask_sync.js ................................... 5/5
+total ................................................. 72/74
+
+not ok

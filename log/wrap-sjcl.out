@@ -1,0 +1,5 @@
+
+> sjcl@1.0.1 test /Users/jakub/Developer/Blame/externals/sjcl
+> make test
+
+node test/run_tests_node.js sjcl.js browserTest/nodeUtil.js test/test.js test/aes_vectors.js test/aes_test.js test/ocb2_vectors.js test/ocb2_test.js test/ccm_vectors.js test/ccm_test.js test/cbc_vectors.js test/cbc_test.js test/gcm_vectors.js test/gcm_test.js test/sha256_vectors.js test/sha256_test.js test/sha256_test_brute_force.js test/sha512_vectors.js test/sha512_test.js test/sha512_test_brute_force.js test/sha1_vectors.js test/sha1_test.js test/hmac_vectors.js test/hmac_test.js test/pbkdf2_test.js test/bn_vectors.js test/bn_test.js test/ecdsa_test.js test/ecdsa_vectors.js test/ecdh_test.js test/srp_vectors.js test/srp_test.js

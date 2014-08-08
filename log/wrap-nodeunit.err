@@ -1,0 +1,4 @@
+http.createClient is deprecated. Use `http.request` instead.
+path.exists is now called `fs.exists`.
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

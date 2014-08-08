@@ -1,0 +1,75 @@
+
+> json-pointer@0.2.1 test /Users/jakub/Developer/Blame/externals/json-pointer
+> make test
+
+test
+
+[0m[0m
+[0m  json-api[0m
+[0m    #get[0m
+    [32m  ✓[0m[90m should work for root element [0m
+    [32m  ✓[0m[90m should work for "" [0m
+    [32m  ✓[0m[90m should work for "/foo" [0m
+    [32m  ✓[0m[90m should work for "/foo/0" [0m
+    [32m  ✓[0m[90m should work for "/" [0m
+    [32m  ✓[0m[90m should work for "/a~1b" [0m
+    [32m  ✓[0m[90m should work for "/c%d" [0m
+    [32m  ✓[0m[90m should work for "/e^f" [0m
+    [32m  ✓[0m[90m should work for "/g|h" [0m
+    [32m  ✓[0m[90m should work for "/i\j" [0m
+    [32m  ✓[0m[90m should work for "/k"l" [0m
+    [32m  ✓[0m[90m should work for "/ " [0m
+    [32m  ✓[0m[90m should work for "/m~0n" [0m
+[0m    #set[0m
+    [32m  ✓[0m[90m should set a value on an object [0m
+    [32m  ✓[0m[90m should work on first level [0m
+    [32m  ✓[0m[90m should create arrays for numeric reference tokens and objects for other tokens [0m
+[0m    #remove[0m
+    [32m  ✓[0m[90m should work for "/foo" [0m
+    [32m  ✓[0m[90m should work for "/foo/0" [0m
+    [32m  ✓[0m[90m should work for "/" [0m
+    [32m  ✓[0m[90m should work for "/a~1b" [0m
+    [32m  ✓[0m[90m should work for "/c%d" [0m
+    [32m  ✓[0m[90m should work for "/e^f" [0m
+    [32m  ✓[0m[90m should work for "/g|h" [0m
+    [32m  ✓[0m[90m should work for "/i\j" [0m
+    [32m  ✓[0m[90m should work for "/k"l" [0m
+    [32m  ✓[0m[90m should work for "/ " [0m
+    [32m  ✓[0m[90m should work for "/m~0n" [0m
+[0m    #dict[0m
+    [32m  ✓[0m[90m should return a dictionary (pointer -> value) [0m
+    [32m  ✓[0m[90m should work with arrays [0m
+    [32m  ✓[0m[90m should work with other arrays [0m
+[0m    #has[0m
+    [32m  ✓[0m[90m should return true when the pointer exists [0m
+    [32m  ✓[0m[90m should return false when the pointer does not exist [0m
+[0m    #walk[0m
+    [32m  ✓[0m[90m should iterate over an object [0m
+[0m    #parse[0m
+    [32m  ✓[0m[90m should work with top level path [0m
+    [32m  ✓[0m[90m should convert a pointer to an array of reference tokens [0m
+[0m    #compile[0m
+    [32m  ✓[0m[90m should build a json pointer from an array of reference tokens [0m
+[0m    #parse and then #compile pointer[0m
+    [32m  ✓[0m[90m should equal for "" [0m
+    [32m  ✓[0m[90m should equal for "/foo" [0m
+    [32m  ✓[0m[90m should equal for "/foo/0" [0m
+    [32m  ✓[0m[90m should equal for "/" [0m
+    [32m  ✓[0m[90m should equal for "/a~1b" [0m
+    [32m  ✓[0m[90m should equal for "/c%d" [0m
+    [32m  ✓[0m[90m should equal for "/e^f" [0m
+    [32m  ✓[0m[90m should equal for "/g|h" [0m
+    [32m  ✓[0m[90m should equal for "/i\j" [0m
+    [32m  ✓[0m[90m should equal for "/k"l" [0m
+    [32m  ✓[0m[90m should equal for "/ " [0m
+    [32m  ✓[0m[90m should equal for "/m~0n" [0m
+
+[0m  convenience api wrapper[0m
+  [32m  ✓[0m[90m should call #get when passed 2 args [0m
+  [32m  ✓[0m[90m should call #set when passed 3 args [0m
+  [32m  ✓[0m[90m should return a partially applied function when passed 1 arg [0m
+  [32m  ✓[0m[90m should support chainable oo-style [0m
+
+
+[92m [0m[32m 52 passing[0m[90m (23ms)[0m
+

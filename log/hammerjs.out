@@ -1,0 +1,18 @@
+
+> hammerjs@2.0.2 test /Users/jakub/Developer/Blame/externals/hammerjs
+> grunt test
+
+[4mRunning "jshint:build" (jshint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "jscs:src" (jscs) task[24m
+[32m>> [39m29 files without code style errors.
+
+[4mRunning "uglify:test" (uglify) task[24m
+File tests/build.js created: 64.63 kB → 43.73 kB
+
+[4mRunning "qunit:all" (qunit) task[24m
+Testing tests/unit/index.html ..........................................................[32mOK[39m
+[32m>> [39m124 assertions passed (9123ms)
+
+[32mDone, without errors.[39m

@@ -1,0 +1,223 @@
+
+> atpl@0.7.8 test /Users/jakub/Developer/Blame/externals/atpl
+> mocha --ui exports --globals name 
+
+
+[0m[0m
+[0m  ExpressionTokenizer[0m
+  [32m  ✓[0m[90m tokenize 0 [0m
+  [32m  ✓[0m[90m tokenize string [0m
+  [32m  ✓[0m[90m tokenize == [0m
+
+[0m  RuntimeUtils[0m
+  [32m  ✓[0m[90m sprintf [0m
+  [32m  ✓[0m[90m date [0m
+  [32m  ✓[0m[90m strtotime [0m
+  [32m  ✓[0m[90m strtotime_base_time [0m
+  [32m  ✓[0m[90m split [0m
+
+[0m  StringReader[0m
+  [32m  ✓[0m[90m smart test [0m
+  [32m  ✓[0m[90m eof test [0m
+  [32m  ✓[0m[90m readLeft test [0m
+
+[0m  TemplateProvider[0m
+  [32m  ✓[0m[90m test file system [0m
+  [32m  ✓[0m[90m test memory [0m
+
+[0m  TemplateTokenizer[0m
+  [32m  ✓[0m[90m just plain text [0m
+  [32m  ✓[0m[90m comments test [0m
+
+[0m  app[0m
+  [32m  ✓[0m[90m simple should work [0m
+  [32m  ✓[0m[90m extension should work [0m
+  [31m  1) should be compatible with express2 (render file)[0m
+  [31m  2) should be compatible with express2 (render string)[0m
+
+[0m  express3[0m
+  [32m  ✓[0m[90m invalid should fail [0m
+
+[0m  __express[0m
+  [32m  ✓[0m[90m test cache:true for express [0m
+
+[0m  ExpressionParser[0m
+  [32m  ✓[0m[90m operator precedence simple test [0m
+  [32m  ✓[0m[90m array definition test [0m
+
+[0m  fixtures[0m
+[0m    _twig[0m
+[0m      filters[0m
+      [32m  ✓[0m[90m "abs" filter (abs.set) [0m
+      [32m  ✓[0m[90m batch filter (batch.set) [0m
+[0m    complete[0m
+    [32m  ✓[0m[90m for+if (for_if.set) [0m
+    [32m  ✓[0m[90m for range reverse (for_range_op_filter.set) [0m
+    [32m  ✓[0m[90m for range reverse (for_range_reverse.set) [0m
+[0m    filters[0m
+    [32m  ✓[0m[90m abs (abs.set) [0m
+    [32m  ✓[0m[90m capitalize (capitalize.set) [0m
+    [32m  ✓[0m[90m date (date.set) [0m
+    [32m  ✓[0m[90m date_modify filter (date_modify.set) [0m
+    [32m  ✓[0m[90m default (default.set) [0m
+    [32m  ✓[0m[90m first and last filters (first_last.set) [0m
+    [32m  ✓[0m[90m format (format.set) [0m
+    [32m  ✓[0m[90m join (join.set) [0m
+    [32m  ✓[0m[90m json_encode filter (json_encode.set) [0m
+    [32m  ✓[0m[90m json_encode circular (json_encode_circular.set) [0m
+    [32m  ✓[0m[90m keys (keys.set) [0m
+    [32m  ✓[0m[90m length (length.set) [0m
+    [32m  ✓[0m[90m lower (lower.set) [0m
+    [32m  ✓[0m[90m merge filter (merge.set) [0m
+    [32m  ✓[0m[90m nl2br (nl2br.set) [0m
+    [32m  ✓[0m[90m number_format filter (number_format.set) [0m
+    [32m  ✓[0m[90m raw (raw.set) [0m
+    [32m  ✓[0m[90m replace filter (replace.set) [0m
+    [32m  ✓[0m[90m reverse filter (reverse.set) [0m
+    [32m  ✓[0m[90m slice filter (slice.set) [0m
+    [32m  ✓[0m[90m sort (sort.set) [0m
+    [32m  ✓[0m[90m split filter (split.set) [0m
+    [32m  ✓[0m[90m striptags filter (striptags.set) [0m
+    [32m  ✓[0m[90m title (title.set) [0m
+    [32m  ✓[0m[90m trim (trim.set) [0m
+    [32m  ✓[0m[90m upper (upper.set) [0m
+    [32m  ✓[0m[90m url_encode filter (url_encode.set) [0m
+[0m    functions[0m
+    [32m  ✓[0m[90m attribute function (attribute.set) [0m
+    [32m  ✓[0m[90m block (block.set) [0m
+    [32m  ✓[0m[90m date function (date.set) [0m
+    [32m  ✓[0m[90m dump (dump.set) [0m
+    [32m  ✓[0m[90m dump circular (dump_circular.set) [0m
+    [32m  ✓[0m[90m include function (include.set) [0m
+    [32m  ✓[0m[90m inspect (inspect.set) [0m
+    [32m  ✓[0m[90m parent (parent.set) [0m
+    [32m  ✓[0m[90m block (random.set) [0m
+    [32m  ✓[0m[90m range (range.set) [0m
+    [32m  ✓[0m[90m template_from_string function (template_from_string.set) [0m
+[0m    regressions[0m
+    [32m  ✓[0m[90m issue #58 (issue_58.set) [0m
+    [32m  ✓[0m[90m issue #60 parent() returns html entities (issue_60.set) [0m
+    [32m  ✓[0m[90m issue #61 verbatim tag (issue_61.set) [0m
+    [32m  ✓[0m[90m issue #70 for loop inside another for loop (issue_70.set) [0m
+    [32m  ✓[0m[90m issue #71 Pass classes/functions containing fields calls instead of returning that function/object (issue_71.set) [0m
+[0m    syntax[0m
+    [32m  ✓[0m[90m simple 0 (0.set) [0m
+    [32m  ✓[0m[90m _context (_context.set) [0m
+    [32m  ✓[0m[90m field access (array_access.set) [0m
+    [32m  ✓[0m[90m call undefined (call_undefined.set) [0m
+    [32m  ✓[0m[90m simple constants (constants.set) [0m
+    [32m  ✓[0m[90m field access (field_access.set) [0m
+    [32m  ✓[0m[90m in operator with array (in_array.set) [0m
+    [32m  ✓[0m[90m in operator with string (in_string.set) [0m
+    [32m  ✓[0m[90m named arguments (named_arguments.set) [0m
+    [32m  ✓[0m[90m no extended empty block (no_extended_empty_block.set) [0m
+    [32m  ✓[0m[90m special template sequences (put_special_template_sequences.set) [0m
+    [32m  ✓[0m[90m range letters (range_letters.set) [0m
+    [32m  ✓[0m[90m slice operator (slice_operator.set) [0m
+    [32m  ✓[0m[90m string interpolation (string_interpolation.set) [0m
+    [32m  ✓[0m[90m ternary operator (ternary_operator.set) [0m
+    [32m  ✓[0m[90m ternary operator shortcut (ternary_operator_shortcut.set) [0m
+    [32m  ✓[0m[90m undefined key (undefined_key.set) [0m
+    [32m  ✓[0m[90m variable with underscore (underscore_var.set) [0m
+    [32m  ✓[0m[90m whitespace control (whitespace_control.set) [0m
+[0m      escape[0m
+      [32m  ✓[0m[90m autoescape (autoescape.set) [0m
+      [32m  ✓[0m[90m escape css (escape_css.set) [0m
+      [32m  ✓[0m[90m escape html_attr (escape_html_attr.set) [0m
+      [32m  ✓[0m[90m escape js (escape_js.set) [0m
+      [32m  ✓[0m[90m escape url (escape_url.set) [0m
+[0m      exceptions[0m
+      [32m  ✓[0m[90m end tag without matching start (end_tag.set) [0m
+      [32m  ✓[0m[90m missing endblock (incomplete_block.set) [0m
+      [32m  ✓[0m[90m end tag without matching start (incomplete_expression.set) [0m
+      [32m  ✓[0m[90m start tag without matching end (start_tag.set) [0m
+      [32m  ✓[0m[90m text outside block in extended template (text_outside_block_in_extended_template.set) [0m
+      [32m  ✓[0m[90m find an unknown filter (unknown_filter.set) [0m
+      [32m  ✓[0m[90m find an unknown tag (unknown_tag.set) [0m
+[0m      operators[0m
+      [32m  ✓[0m[90m operator in (operator_in.set) [0m
+      [32m  ✓[0m[90m operator is (operator_is.set) [0m
+      [32m  ✓[0m[90m operators (operators.set) [0m
+      [32m  ✓[0m[90m bit operators (operators_bit.set) [0m
+[0m    tags[0m
+[0m      autoescape[0m
+      [32m  ✓[0m[90m autoescape (autoescape.set) [0m
+[0m      block[0m
+      [32m  ✓[0m[90m "block" tag (basic.set) [0m
+      [32m  ✓[0m[90m nested (nested.set) [0m
+[0m      do[0m
+      [32m  ✓[0m[90m do tag (do.set) [0m
+[0m      embed[0m
+      [32m  ✓[0m[90m embed (embed.set) [0m
+[0m      extends[0m
+      [32m  ✓[0m[90m simple (conditional.set) [0m
+      [32m  ✓[0m[90m extends 2 (extends2.set) [0m
+      [32m  ✓[0m[90m extends 3 (extends3.set) [0m
+      [32m  ✓[0m[90m simple (simple.set) [0m
+      [32m  ✓[0m[90m simple2 (simple2.set) [0m
+[0m      filter[0m
+      [32m  ✓[0m[90m filter complex (filter_complex.set) [0m
+      [32m  ✓[0m[90m filter complex parameters (filter_complex_parameters.set) [0m
+      [32m  ✓[0m[90m filter simple (filter_simple.set) [0m
+[0m      for[0m
+      [32m  ✓[0m[90m simple for-else (else.set) [0m
+      [32m  ✓[0m[90m for key, value (key_value.set) [0m
+      [32m  ✓[0m[90m "for" tag adds a loop variable to the context locally (loop_context_local.set) [0m
+      [32m  ✓[0m[90m simple for-else (loop_key.set) [0m
+      [32m  ✓[0m[90m nested for (nested.set) [0m
+      [32m  ✓[0m[90m simple (simple.set) [0m
+      [32m  ✓[0m[90m simple (simple0.set) [0m
+      [32m  ✓[0m[90m simple for-else (simple_else.set) [0m
+[0m      if[0m
+      [32m  ✓[0m[90m if+elseif (elseif.set) [0m
+      [32m  ✓[0m[90m simple if (simple.set) [0m
+[0m      include[0m
+      [32m  ✓[0m[90m include tag (include.set) [0m
+      [32m  ✓[0m[90m include tag with extending template (include_extending.set) [0m
+      [32m  ✓[0m[90m include_with tag (include_with.set) [0m
+[0m      macro[0m
+      [32m  ✓[0m[90m _self macros (_self.set) [0m
+      [32m  ✓[0m[90m from macro (from.set) [0m
+      [32m  ✓[0m[90m macro (macro.set) [0m
+[0m      raw[0m
+      [32m  ✓[0m[90m raw (raw_simple.set) [0m
+[0m      sandbox[0m
+      [32m  ✓[0m[90m sandbox tag (sandbox.set) [0m
+[0m      set[0m
+      [32m  ✓[0m[90m set end_set (set_end_set.set) [0m
+      [32m  ✓[0m[90m test (test.set) [0m
+      [32m  ✓[0m[90m set tuple (tuple.set) [0m
+[0m      spaceless[0m
+      [32m  ✓[0m[90m spaceless tag (spaceless.set) [0m
+[0m      use[0m
+      [32m  ✓[0m[90m untitled: aliases.set [0m
+      [32m  ✓[0m[90m untitled: basic.set [0m
+      [32m  ✓[0m[90m untitled: deep.set [0m
+      [32m  ✓[0m[90m "use" tag deep empty (deep_empty.set) [0m
+      [32m  ✓[0m[90m "use" tag multiple (multiple.set) [0m
+      [32m  ✓[0m[90m "use" tag multiple aliases (multiple_aliases.set) [0m
+[0m    tests[0m
+    [32m  ✓[0m[90m is empty (empty.set) [0m
+    [32m  ✓[0m[90m iterable test (iterable.set) [0m
+    [32m  ✓[0m[90m is null (null.set) [0m
+    [32m  ✓[0m[90m odd (odd.set) [0m
+    [32m  ✓[0m[90m sameas (sameas.set) [0m
+
+[0m  extra fixtures[0m
+  [32m  ✓[0m[90m function call as argument [0m
+  [32m  ✓[0m[90m function call as argument with context [0m
+  [32m  ✓[0m[90m method not accessed as property [0m
+  [32m  ✓[0m[90m test cache [0m
+
+[0m  standalone renderFile[0m
+  [32m  ✓[0m[90m renderFileSync simple [0m
+  [32m  ✓[0m[90m renderFile simple [0m
+
+[0m  utils[0m
+  [32m  ✓[0m[90m simple normalize path [0m
+  [32m  ✓[0m[90m path is inside [0m
+  [32m  ✓[0m[90m interpretNumber [0m
+
+
+[92m [0m[32m 159 passing[0m[90m (241ms)[0m
+

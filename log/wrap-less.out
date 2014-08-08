@@ -1,0 +1,29 @@
+
+> less@1.7.4 test /Users/jakub/Developer/Blame/externals/less
+> grunt test
+
+[4mRunning "clean:test" (clean) task[24m
+Cleaning test/browser/less.js...[32mOK[39m
+Cleaning tmp...[32mOK[39m
+
+[4mRunning "clean:sourcemap-test" (clean) task[24m
+
+[4mRunning "jshint:files" (jshint) task[24m
+
+[1m   lib/less/index.js[22m
+    268 |[90m;[39m
+         ^ Unnecessary semicolon.
+    272 |[90m    M = Object.create(null);[39m
+             ^ 'M' is defined but never used.
+
+[31m>> [39m2 errors in 48 files
+[33mWarning: Task "jshint:files" failed. Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m
+
+
+Execution Time (2014-08-08 03:26:16 UTC)
+loading tasks  362ms  ▇▇▇▇▇▇▇▇▇ 17%
+jshint:files    1.7s  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 82%
+Total 2.1s
+

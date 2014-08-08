@@ -1,0 +1,44 @@
+
+> diff@1.0.8 test /Users/jakub/Developer/Blame/externals/diff
+> mocha test/*.js
+
+
+
+  #applyPatch
+    ◦ should apply patches that change the last line: [2K[0G    ✓ should apply patches that change the last line 
+    ◦ should merge EOFNL: [2K[0G    ✓ should merge EOFNL 
+    ◦ should apply patches: [2K[0G    ✓ should apply patches 
+
+  #createPatch
+    ◦ should handle files with the last line changed: [2K[0G    ✓ should handle files with the last line changed 
+    ◦ should output no newline at end of file message: [2K[0G    ✓ should output no newline at end of file message 
+    ◦ should diff large content blocks: [2K[0G    ✓ should diff large content blocks (40ms)
+    ◦ should generate a patch: [2K[0G    ✓ should generate a patch 
+    ◦ should output headers only for identical files: [2K[0G    ✓ should output headers only for identical files 
+
+  #diffWords
+    ◦ should diff whitespace: [2K[0G    ✓ should diff whitespace 
+    ◦ should diff multiple whitespace values: [2K[0G    ✓ should diff multiple whitespace values 
+    ◦ should diff on word boundaries: [2K[0G    ✓ should diff on word boundaries 
+    ◦ should diff empty content: [2K[0G    ✓ should diff empty content 
+    ◦ should diff when there is no anchor value: [2K[0G    ✓ should diff when there is no anchor value 
+
+  #diffWordsWithSpace
+    ◦ should diff whitespace: [2K[0G    ✓ should diff whitespace 
+    ◦ should diff multiple whitespace values: [2K[0G    ✓ should diff multiple whitespace values 
+
+  #diffCss
+    ◦ should diff css: [2K[0G    ✓ should diff css 
+
+  #diffLines
+    ◦ should diff lines: [2K[0G    ✓ should diff lines 
+    ◦ should the same lines in diff: [2K[0G    ✓ should the same lines in diff 
+    ◦ should handle shorespace: [2K[0G    ✓ should handle shorespace 
+    ◦ should handle windows line endings: [2K[0G    ✓ should handle windows line endings 
+
+  convertToDMP
+    ◦ should output diff-match-patch format: [2K[0G    ✓ should output diff-match-patch format 
+
+
+  ✔ 21 tests complete (83 ms)
+

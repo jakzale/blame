@@ -1,0 +1,120 @@
+
+> libxmljs@0.11.0 test /Users/jakub/Developer/Blame/externals/libxmljs
+> node --expose_gc ./node_modules/.bin/nodeunit test
+
+
+[1mattribute[22m
+✔ new
+✔ create_with_namespace
+✔ getters
+✔ setters
+✔ remove
+
+[1mcomment[22m
+✔ new
+✔ text
+
+[1mdocument[22m
+✔ setDtd
+✔ blank
+✔ version
+✔ full
+✔ null_root
+✔ new_root
+✔ one_child
+✔ root_children
+✔ xpath
+✔ xpath_child
+✔ toString
+✔ add_child_nodes
+✔ add_cdata_nodes
+✔ cloned_node
+✔ validate
+
+[1melement[22m
+✔ new
+✔ newWithContent
+✔ setters
+✔ getters
+✔ remove
+✔ toString
+✔ path
+✔ move
+✔ addChild
+✔ add_prev_sibling
+✔ add_next_sibling
+✔ import
+✔ clone
+
+[1mhtml_parser[22m
+✔ parse
+✔ parse_force_encoding
+✔ parse_synonym
+✔ recoverable_parse
+
+[1mmain[22m
+✔ constants
+
+[1mnamespace[22m
+✔ create
+✔ set
+✔ with_prefix
+✔ from_parsing
+✔ existing
+✔ remove
+✔ all
+✔ empty
+✔ nested
+✔ xmlns
+✔ custom_ns
+
+[1mnode_attributes[22m
+✔ basic
+✔ null
+✔ assign_object
+✔ change
+✔ attrs
+✔ siblings
+✔ getters
+
+[1mref_integrity[22m
+✔ gc
+✔ references
+
+[1msearching[22m
+✔ get
+✔ get_missing
+✔ get_attr
+✔ get_non_nodeset
+✔ find
+✔ namespace - get
+✔ namespace - find
+✔ prefixed_namespace - get
+✔ prefixed_namespace - find
+
+[1mtext_node[22m
+✔ text
+✔ comment
+✔ cdata
+
+[1mtraversal[22m
+✔ built
+✔ children
+✔ siblings
+✔ parsed
+✔ parsed_children
+
+[1mxml_parser[22m
+✔ parse
+✔ parse_buffer
+✔ parse_synonym
+✔ recoverable_parse
+✔ fatal_error
+✔ parse_options
+
+[1mxml_sax_parser[22m
+✔ sax
+✔ sax_push_chunked
+✔ string_parser
+
+[1m[32mOK: [39m[22m298 assertions (122ms)

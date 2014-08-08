@@ -1,0 +1,326 @@
+
+> jsesc@0.4.3 test /Users/jakub/Developer/Blame/externals/jsesc
+> node tests/tests.js
+
+----------------------------------------
+undefined
+----------------------------------------
+ FAIL - jsesc: common usage
+    PASS | EQ | `jsesc.version` must be a string
+    PASS | EQ | `\0` followed by `1`
+    PASS | EQ | `\0` followed by `8`
+    PASS | EQ | `\0` followed by `9`
+    PASS | EQ | `\0` followed by `a`
+    PASS | EQ | Invalid `quotes` setting
+    PASS | EQ | `\\x00` shouldn’t be changed to `\\0`
+    PASS | EQ | `a\\x00` shouldn’t be changed to `\\0`
+    PASS | EQ | `\\\x00` should be changed to `\\\0`
+    PASS | EQ | `\\\\x00` shouldn’t be changed to `\\\\0`
+    PASS | EQ | escapeEverything
+    PASS | EQ | es6
+    PASS | EQ | es6
+    PASS | EQ | es6 + escapeEverything
+    FAIL | OK | Died on test #15     at /Users/jakub/Developer/Blame/externals/jsesc/tests/tests.js:41:2
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/jsesc/tests/tests.js:759:2)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Function.Module.runMain (module.js:490:10)
+    at startup (node.js:124:16): {label_0}[dom] not of type Str: [object Object]
+Please wait.Please wait..Please wait...Please wait.  Please wait..Please wait...Please wait.  Please wait..Please wait...Please wait.  Please wait..Please wait...Please wait.  Please wait..Please wait...               FAIL - jsesc: advanced tests
+    PASS | OK | All Unicode symbols, space-separated, default quote type (single quotes)
+    PASS | OK | All Unicode symbols, space-separated, single quotes
+    PASS | OK | All Unicode symbols, space-separated, single quotes, auto-wrap
+    PASS | OK | All Unicode symbols, space-separated, double quotes
+    PASS | OK | All Unicode symbols, space-separated, double quotes, auto-wrap
+    FAIL | OK | Died on test #6     at /Users/jakub/Developer/Blame/externals/jsesc/tests/tests.js:269:3
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/jsesc/tests/tests.js:759:2)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Function.Module.runMain (module.js:490:10)
+    at startup (node.js:124:16): {label_0}[dom] not of type Str: ,Infinity,Infinity,-Infinity,-Infinity,0,0,0,0,0,0,function anonymous() {
+
+},str,function zomg() { return 'desu'; },,true,true,false,false,[object Object]
+Please wait.Please wait..              FAIL - jsesc binary
+    PASS | EQ | No arguments
+    PASS | EQ | -h option
+    PASS | EQ | --version option
+    PASS | EQ | -s option, piping content
+    PASS | EQ | -s option, piping content
+    PASS | EQ | -s option, piping content
+    PASS | EQ | --single-quotes option, piping content
+    PASS | EQ | --single-quotes option, piping content
+    PASS | EQ | --single-quotes option, piping content
+    PASS | EQ | No options, piping content
+    PASS | EQ | No options, piping content
+    PASS | EQ | No options, piping content
+    PASS | EQ | --double-quotes option, piping content
+    PASS | EQ | --double-quotes option, piping content
+    PASS | EQ | --double-quotes option, piping content
+    PASS | EQ | --help option
+    PASS | EQ | -d option, piping content
+    PASS | EQ | -d option, piping content
+    PASS | EQ | -d option, piping content
+    PASS | EQ | -w option, piping content
+    PASS | EQ | -w option, piping content
+    PASS | EQ | -w option, piping content
+    PASS | EQ | -6 option, piping content
+    PASS | EQ | -6 option, piping content
+    PASS | EQ | -6 option, piping content
+    PASS | EQ | -j option, piping content
+    PASS | EQ | -j option, piping content
+    PASS | EQ | -j option, piping content
+    PASS | EQ | --json option, piping content
+    PASS | EQ | --json option, piping content
+    PASS | EQ | --json option, piping content
+    PASS | EQ | --wrap option, piping content
+    PASS | EQ | --wrap option, piping content
+    PASS | EQ | --wrap option, piping content
+    PASS | EQ | -e option, piping content
+    PASS | EQ | -e option, piping content
+    PASS | EQ | -e option, piping content
+    PASS | EQ | --es6 option, piping content
+    PASS | EQ | --es6 option, piping content
+    PASS | EQ | --es6 option, piping content
+    FAIL | EQ | --object option, piping content | Expected: {label_0}[dom] not of type Str: [object Object]
+
+Error: failed to escape.
+If you think this is a bug in jsesc, please report it:
+https://github.com/mathiasbynens/jsesc/issues/new
+
+Stack trace using jsesc@0.4.3:
+
+Error: {label_0}[dom] not of type Str: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at /Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:92:14
+    at Array.forEach (native)
+    at main (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:50:11)
+    at Socket.<anonymous> (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:133:4)
+, Actual: {'f\xF6o':'b\xE5r \uD834\uDF06 baz'}
+
+    PASS | EQ | --object option, piping content
+    FAIL | EQ | --object option, piping content | Expected: 1, Actual: 0
+    FAIL | EQ | --pretty option, piping content | Expected: {label_0}[dom] not of type Str: [object Object]
+
+Error: failed to escape.
+If you think this is a bug in jsesc, please report it:
+https://github.com/mathiasbynens/jsesc/issues/new
+
+Stack trace using jsesc@0.4.3:
+
+Error: {label_0}[dom] not of type Str: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at /Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:92:14
+    at Array.forEach (native)
+    at main (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:50:11)
+    at Socket.<anonymous> (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:133:4)
+, Actual: {
+	"f\u00F6o": "b\u00E5r \uD834\uDF06 baz"
+}
+
+    PASS | EQ | --pretty option, piping content
+    FAIL | EQ | --pretty option, piping content | Expected: 1, Actual: 0
+    PASS | EQ | --escape-everything option, piping content
+    PASS | EQ | --escape-everything option, piping content
+    PASS | EQ | --escape-everything option, piping content
+    FAIL | EQ | -o option, piping content | Expected: {label_0}[dom] not of type Str: [object Object]
+
+Error: failed to escape.
+If you think this is a bug in jsesc, please report it:
+https://github.com/mathiasbynens/jsesc/issues/new
+
+Stack trace using jsesc@0.4.3:
+
+Error: {label_0}[dom] not of type Str: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at /Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:92:14
+    at Array.forEach (native)
+    at main (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:50:11)
+    at Socket.<anonymous> (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:133:4)
+, Actual: {'f\xF6o':'b\xE5r \uD834\uDF06 baz'}
+
+    PASS | EQ | -o option, piping content
+    FAIL | EQ | -o option, piping content | Expected: 1, Actual: 0
+    FAIL | EQ | -p option, piping content | Expected: {label_0}[dom] not of type Str: [object Object]
+
+Error: failed to escape.
+If you think this is a bug in jsesc, please report it:
+https://github.com/mathiasbynens/jsesc/issues/new
+
+Stack trace using jsesc@0.4.3:
+
+Error: {label_0}[dom] not of type Str: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at /Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:92:14
+    at Array.forEach (native)
+    at main (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:50:11)
+    at Socket.<anonymous> (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:133:4)
+, Actual: {
+	"f\u00F6o": "b\u00E5r \uD834\uDF06 baz"
+}
+
+    PASS | EQ | -p option, piping content
+    FAIL | EQ | -p option, piping content | Expected: 1, Actual: 0
+    PASS | EQ | -s option
+    PASS | EQ | -s option
+    PASS | EQ | -s option
+    PASS | EQ | -v option
+    PASS | EQ | No options
+    PASS | EQ | No options
+    PASS | EQ | No options
+    PASS | EQ | --double-quotes option
+    PASS | EQ | --double-quotes option
+    PASS | EQ | --double-quotes option
+    PASS | EQ | -w option
+    PASS | EQ | -w option
+    PASS | EQ | -w option
+    PASS | EQ | --wrap option
+    PASS | EQ | --wrap option
+    PASS | EQ | --wrap option
+    PASS | EQ | --escape-everything option
+    PASS | EQ | --escape-everything option
+    PASS | EQ | --escape-everything option
+    PASS | EQ | -6 option
+    PASS | EQ | -6 option
+    PASS | EQ | -6 option
+    PASS | EQ | --single-quotes option
+    PASS | EQ | --single-quotes option
+    PASS | EQ | --single-quotes option
+    PASS | EQ | -d option
+    PASS | EQ | -d option
+    PASS | EQ | -d option
+    PASS | EQ | --es6 option
+    PASS | EQ | --es6 option
+    PASS | EQ | --es6 option
+    FAIL | EQ | -o option | Expected: {label_0}[dom] not of type Str: [object Object]
+
+Error: failed to escape.
+If you think this is a bug in jsesc, please report it:
+https://github.com/mathiasbynens/jsesc/issues/new
+
+Stack trace using jsesc@0.4.3:
+
+Error: {label_0}[dom] not of type Str: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at /Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:92:14
+    at Array.forEach (native)
+    at main (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:50:11)
+    at null._onTimeout (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:122:5)
+, Actual: {'f\xF6o':'b\xE5r \uD834\uDF06 baz'}
+
+    PASS | EQ | -o option
+    FAIL | EQ | -o option | Expected: 1, Actual: 0
+    PASS | EQ | --json option
+    PASS | EQ | --json option
+    PASS | EQ | --json option
+    PASS | EQ | -e option
+    PASS | EQ | -e option
+    PASS | EQ | -e option
+    PASS | EQ | -j option
+    PASS | EQ | -j option
+    PASS | EQ | -j option
+    FAIL | EQ | --object option | Expected: {label_0}[dom] not of type Str: [object Object]
+
+Error: failed to escape.
+If you think this is a bug in jsesc, please report it:
+https://github.com/mathiasbynens/jsesc/issues/new
+
+Stack trace using jsesc@0.4.3:
+
+Error: {label_0}[dom] not of type Str: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at /Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:92:14
+    at Array.forEach (native)
+    at main (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:50:11)
+    at null._onTimeout (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:122:5)
+, Actual: {'f\xF6o':'b\xE5r \uD834\uDF06 baz'}
+
+    PASS | EQ | --object option
+    FAIL | EQ | --object option | Expected: 1, Actual: 0
+    FAIL | EQ | -p option | Expected: {label_0}[dom] not of type Str: [object Object]
+
+Error: failed to escape.
+If you think this is a bug in jsesc, please report it:
+https://github.com/mathiasbynens/jsesc/issues/new
+
+Stack trace using jsesc@0.4.3:
+
+Error: {label_0}[dom] not of type Str: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at /Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:92:14
+    at Array.forEach (native)
+    at main (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:50:11)
+    at null._onTimeout (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:122:5)
+, Actual: {
+	"f\u00F6o": "b\u00E5r \uD834\uDF06 baz"
+}
+
+    PASS | EQ | -p option
+    FAIL | EQ | -p option | Expected: 1, Actual: 0
+    FAIL | EQ | --pretty option | Expected: {label_0}[dom] not of type Str: [object Object]
+
+Error: failed to escape.
+If you think this is a bug in jsesc, please report it:
+https://github.com/mathiasbynens/jsesc/issues/new
+
+Stack trace using jsesc@0.4.3:
+
+Error: {label_0}[dom] not of type Str: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at /Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:92:14
+    at Array.forEach (native)
+    at main (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:50:11)
+    at null._onTimeout (/Users/jakub/Developer/Blame/externals/jsesc/bin/jsesc:122:5)
+, Actual: {
+	"f\u00F6o": "b\u00E5r \uD834\uDF06 baz"
+}
+
+    PASS | EQ | --pretty option
+    FAIL | EQ | --pretty option | Expected: 1, Actual: 0
+----------------------------------------
+    PASS: 110  FAIL: 18  TOTAL: 128
+    Finished in 15825 milliseconds.
+----------------------------------------

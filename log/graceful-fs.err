@@ -1,0 +1,3 @@
+sh: tap: command not found
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

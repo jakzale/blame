@@ -1,0 +1,376 @@
+
+> datejs@1.0.0-rc1 test /Users/jakub/Developer/Blame/externals/datejs
+> grunt test
+
+[4mRunning "shell:runTests" (shell) task[24m
+..............................................................................FFFFFFFFFFFFFFFFFFFFFFF..........................................................................................................................................................................................................................................................................................................................................................FFFFFF...........................F....
+
+Failures:
+
+  1) Core Module can convert Date toString in various formats has CultureInfo defined standard formats d == shortDate
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12/4/1995'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12/4/1995'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:571:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  2) Core Module can convert Date toString in various formats has CultureInfo defined standard formats D == longDate
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Monday, December 04, 1995'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Monday, December 04, 1995'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:574:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  3) Core Module can convert Date toString in various formats has CultureInfo defined standard formats F == fullDateTime
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Monday, December 04, 1995 12:00:00 AM'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Monday, December 04, 1995 12:00:00 AM'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:577:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  4) Core Module can convert Date toString in various formats has CultureInfo defined standard formats m == monthDay
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'December 04'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'December 04'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:580:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  5) Core Module can convert Date toString in various formats has CultureInfo defined standard formats r == RFC1123
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Mon, 04 Dec 1995 08:00:00 GMT'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Mon, 04 Dec 1995 08:00:00 GMT'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:583:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  6) Core Module can convert Date toString in various formats has CultureInfo defined standard formats r == RFC1123
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Mon, 04 Dec 1995 08:00:00 GMT'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Mon, 04 Dec 1995 08:00:00 GMT'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:584:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  7) Core Module can convert Date toString in various formats has CultureInfo defined standard formats s == sortableDateTime
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '1995-12-04T00:00:00'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '1995-12-04T00:00:00'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:587:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  8) Core Module can convert Date toString in various formats has CultureInfo defined standard formats t == shortTime
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12:00 AM'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12:00 AM'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:590:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  9) Core Module can convert Date toString in various formats has CultureInfo defined standard formats T == longTime
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12:00:00 AM'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12:00:00 AM'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:593:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  10) Core Module can convert Date toString in various formats has CultureInfo defined standard formats u == universalSortableDateTime
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '1995-12-04 08:00:00Z'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '1995-12-04 08:00:00Z'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:596:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  11) Core Module can convert Date toString in various formats has CultureInfo defined standard formats y == yearMonth
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'December, 1995'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'December, 1995'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:599:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  12) Core Module can convert Date toString in various formats has CultureInfo defined standard formats W == Week Number
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '49'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '49'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:602:29)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  13) Core Module can convert Date toString in various formats has CultureInfo defined standard formats W == Week Number
+    Message:
+      Expected 'Mon Jan 01 1996 00:00:00 GMT-0800 (PST)' to be '1'.
+
+    Stacktrace:
+      Error: Expected 'Mon Jan 01 1996 00:00:00 GMT-0800 (PST)' to be '1'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:605:30)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  14) Core Module can convert Date toString in various formats has CultureInfo defined standard formats WW == ISO Week Number
+    Message:
+      Expected 'Mon Jan 01 1996 00:00:00 GMT-0800 (PST)' to be '01'.
+
+    Stacktrace:
+      Error: Expected 'Mon Jan 01 1996 00:00:00 GMT-0800 (PST)' to be '01'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:610:31)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  15) Core Module can convert Date toString in various formats doesn't parse strings between [ and ]
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'the date is 12/04/1995'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'the date is 12/04/1995'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:615:51)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  16) Core Module can convert Date toString in various formats hh:mm tt
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12:00 AM'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12:00 AM'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:618:35)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  17) Core Module can convert Date toString in various formats MMMM dddd, yyyy - hh:mm:ss tt
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'December 04, 1995 - 12:00:00 AM'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'December 04, 1995 - 12:00:00 AM'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:621:54)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  18) Core Module can convert Date toString in various formats MMM dS, 'yy - HH:mm
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Dec 4th, '95 - 00:00'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Dec 4th, '95 - 00:00'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:624:46)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  19) Core Module can convert Date toString in various formats ddd dS @ h:mmt
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Mon 4th @ 12:00A'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'Mon 4th @ 12:00A'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:627:41)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  20) Core Module can convert Date toString in various formats MM/dd/yyyy
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12/04/1995'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be '12/04/1995'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:630:37)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  21) Core Module can convert Date toString in various formats dddd H m s
+    Message:
+      Expected 'Mon Dec 04 1995 00:14:12 GMT-0800 (PST)' to be 'Monday 0 14 12'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:14:12 GMT-0800 (PST)' to be 'Monday 0 14 12'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:635:38)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  22) Core Module can convert Date toString in various formats fixes incorrectly escaped characters
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'MM/dd/yyyy'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'MM/dd/yyyy'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:638:43)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  23) Core Module can convert Date toString in various formats returns unknown string unchanged
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'xxxxxzxz'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'xxxxxzxz'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:641:35)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  24) Core Module can convert Date toString in various formats works with different ordinal suffixes (1st,2nd,3rd,4th..)
+    Message:
+      Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'th'.
+
+    Stacktrace:
+      Error: Expected 'Mon Dec 04 1995 00:00:00 GMT-0800 (PST)' to be 'th'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:644:28)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  25) Core Module can convert Date toString in various formats works with different ordinal suffixes (1st,2nd,3rd,4th..)
+    Message:
+      Expected 'Sun Dec 03 1995 00:00:00 GMT-0800 (PST)' to be 'rd'.
+
+    Stacktrace:
+      Error: Expected 'Sun Dec 03 1995 00:00:00 GMT-0800 (PST)' to be 'rd'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:646:28)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  26) Core Module can convert Date toString in various formats works with different ordinal suffixes (1st,2nd,3rd,4th..)
+    Message:
+      Expected 'Sat Dec 02 1995 00:00:00 GMT-0800 (PST)' to be 'nd'.
+
+    Stacktrace:
+      Error: Expected 'Sat Dec 02 1995 00:00:00 GMT-0800 (PST)' to be 'nd'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:648:28)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  27) Core Module can convert Date toString in various formats works with different ordinal suffixes (1st,2nd,3rd,4th..)
+    Message:
+      Expected 'Fri Dec 01 1995 00:00:00 GMT-0800 (PST)' to be 'st'.
+
+    Stacktrace:
+      Error: Expected 'Fri Dec 01 1995 00:00:00 GMT-0800 (PST)' to be 'st'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:650:28)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  28) Core Module can convert Date toString in various formats can output quarters with 'q' and 'Q'
+    Message:
+      Expected 'Fri Dec 01 1995 00:00:00 GMT-0800 (PST)' to be 'Q4'.
+
+    Stacktrace:
+      Error: Expected 'Fri Dec 01 1995 00:00:00 GMT-0800 (PST)' to be 'Q4'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:653:28)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  29) Core Module can convert Date toString in various formats can output quarters with 'q' and 'Q'
+    Message:
+      Expected 'Fri Dec 01 1995 00:00:00 GMT-0800 (PST)' to be '4'.
+
+    Stacktrace:
+      Error: Expected 'Fri Dec 01 1995 00:00:00 GMT-0800 (PST)' to be '4'.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Core-spec.js:654:28)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  30) Parsing Module supports relative dates like tomorrow 3pm
+    Message:
+      Expected false to be true.
+
+    Stacktrace:
+      Error: Expected false to be true.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Parsing-spec.js:272:25)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  31) Parsing Module supports relative dates like tomorrow 3am
+    Message:
+      Expected false to be true.
+
+    Stacktrace:
+      Error: Expected false to be true.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Parsing-spec.js:277:25)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  32) Parsing Module supports relative dates like 3pm tomorrow
+    Message:
+      Expected false to be true.
+
+    Stacktrace:
+      Error: Expected false to be true.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Parsing-spec.js:282:25)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  33) Parsing Module supports relative dates like 3am tomorrow
+    Message:
+      Expected false to be true.
+
+    Stacktrace:
+      Error: Expected false to be true.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Parsing-spec.js:287:25)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  34) Parsing Module supports relative dates like 3 tomorrow
+    Message:
+      Expected false to be true.
+
+    Stacktrace:
+      Error: Expected false to be true.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Parsing-spec.js:292:25)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  35) Parsing Module supports relative dates like 15 tomorrow
+    Message:
+      Expected false to be true.
+
+    Stacktrace:
+      Error: Expected false to be true.
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Parsing-spec.js:297:25)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+  36) Sugarpak Extensions can create Dates using syntax sugar at a time that we can parse
+    Message:
+      TypeError: Cannot read property 'is' of null
+
+    Stacktrace:
+      TypeError: Cannot read property 'is' of null
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/datejs/specs/Sugarpak-spec.js:274:12)
+  at Timer.listOnTimeout (timers.js:133:15)
+
+
+Finished in 1.287 seconds
+485 Tests, 30 Failures, 0 Skipped
+
+[33mWarning: Command failed: /bin/sh -c jasmine-node --captureExceptions specs/
+ Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m

@@ -1,0 +1,15 @@
+
+> assertion-error@1.0.0 test /Users/jakub/Developer/Blame/externals/assertion-error
+> make test
+
+
+  ==> [Node.js]
+
+  Tests (4)
+  1. [pass] construction
+  2. [pass] message
+  3. [pass] custom properties
+  4. [pass] .toJSON()
+
+  Failures (0)
+

@@ -1,0 +1,18 @@
+
+> hammerjs@2.0.2 test /Users/jakub/Developer/Blame/externals/hammerjs
+> grunt test
+
+[4mRunning "jshint:build" (jshint) task[24m
+
+[1m   hammer.js[22m
+   2320 |[90m;[39m
+         ^ Unnecessary semicolon.
+   2322 |[90m  var Blame = require('Blame'),[39m
+           ^ Missing "use strict" statement.
+   2324 |[90m    M = Object.create(null);[39m
+             ^ 'M' is defined but never used.
+
+[31m>> [39m3 errors in 1 file
+[33mWarning: Task "jshint:build" failed. Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m

@@ -1,0 +1,109 @@
+
+> chai-fuzzy@1.4.0 test /Users/jakub/Developer/Blame/externals/chai-fuzzy
+> make test
+
+./node_modules/.bin/mocha --recursive -C
+
+
+  chai-fuzzy
+    ✓ exports a function that takes two arguments 
+    matchers
+      .json
+        when given two objects that JSON stringify to similiar results
+          ✓ passes 
+          when negated
+            ✓ fails 
+        when given two objects that JSON stringify to dissimilar results
+          ✓ should fail 
+          when negated
+            ✓ passes 
+      .like
+        when given mixed types
+          ✓ fails 
+          negated
+            ✓ passes 
+        when given arrays
+          ✓ has its tests set up correctly 
+          ✓ fails if either subject or expected has more values 
+          ✓ passes when they are the same 
+          ✓ passes when they are similar 
+          ✓ fails when they are not similar 
+          ✓ passes negated when they are not similar 
+          ✓ fails negated when they are similar 
+        when given objects
+          ✓ has its tests set up correctly 
+          ✓ fails if either subject or expected has more values 
+          ✓ passes when they are the same 
+          ✓ passes when they are similar 
+          ✓ fails when they are not similar 
+          ✓ passes negated when they are not similar 
+          ✓ fails negated when they are similar 
+        when given strings
+          ✓ passes when they are the same 
+          ✓ passes when they are similar 
+          ✓ fails when they are not similar 
+          ✓ passes negated when they are not similar 
+          ✓ fails negated when they are similar 
+        when given numbers
+          ✓ passes when they are the same 
+          ✓ passes when they are similar 
+          ✓ fails when they are not similar 
+          ✓ passes negated when they are not similar 
+          ✓ fails negated when they are similar 
+      .containOneLike
+        1) has its test set up correctly
+        when given unsupported containers
+          ✓ fails 
+        looking in arrays
+          for numbers
+            ✓ passes when items are there 
+            ✓ fails when items are not there 
+            ✓ negated passes when items are not there 
+            ✓ negated fails when items are there 
+          for strings
+            ✓ passes when items are there 
+            ✓ fails when items are not there 
+            ✓ negated passes when items are not there 
+            ✓ negated fails when items are there 
+          for arrays
+            ✓ passes when items are there 
+            ✓ fails when items are not there 
+            ✓ negated passes when items are not there 
+            ✓ negated fails when items are there 
+          for objects
+            ✓ passes when items are there 
+            ✓ fails when items are not there 
+            ✓ negated passes when items are not there 
+            ✓ negated fails when items are there 
+        looking in objects
+          for numbers
+            ✓ passes when items are there 
+            ✓ fails when items are not there 
+            ✓ negated passes when items are not there 
+            ✓ negated fails when items are there 
+          for strings
+            ✓ passes when items are there 
+            ✓ fails when items are not there 
+            ✓ negated passes when items are not there 
+            ✓ negated fails when items are there 
+          for arrays
+            ✓ passes when items are there 
+            ✓ fails when items are not there 
+            ✓ negated passes when items are not there 
+            ✓ negated fails when items are there 
+          for objects
+            ✓ passes when items are there 
+            ✓ fails when items are not there 
+            ✓ negated passes when items are not there 
+            ✓ negated fails when items are there 
+    tdd alias
+      ✓ .like 
+      ✓ .notLike 
+      ✓ .jsonOf 
+      ✓ .notJsonOf 
+      ✓ .containOneLike 
+      ✓ .notContainOneLike 
+
+
+  70 passing (56ms)
+

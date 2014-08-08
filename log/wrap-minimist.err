@@ -1,0 +1,156 @@
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/all_bool.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/bool.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/dash.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/default_bool.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/dotted.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/long.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/num.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/parse.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/parse_modified.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/short.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/minimist/index.js:219
+    minimist '.minimist.Opts')], null, T.get('Object')));
+    ^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/whitespace.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

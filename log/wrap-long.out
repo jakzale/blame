@@ -1,0 +1,39 @@
+
+> long@1.2.1 test /Users/jakub/Developer/Blame/externals/long
+> node node_modules/testjs/bin/testjs tests/suite.js
+
+ 
+ [1m[32m|_[1m[32m _[1m[32m _[1m[32m|_[0m
+ [1m[32m|_[1m[32m(-[1m[32m_)[1m[32m|_[0m [1m[90m                                                      test.js v1.0.3[39m[22m
+ 
+ [1m[31mx[39m[22m [1m[37mlong.basic[39m[22m                                      67.664 ms      2 assertions 
+ 
+ {label_0}[dom] not enough arguments, expected >=2, got: 1
+    [1m[31mError[39m[22m[1m[37m: {label_0}[dom] not enough arguments, expected >=2, got: 1[39m[22m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:863:25)
+      at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+      at Object.suite.basic [as test] (/Users/jakub/Developer/Blame/externals/long/tests/suite.js:29:24)
+      at Domain.<anonymous> (/Users/jakub/Developer/Blame/externals/long/node_modules/testjs/test.js:278:37)
+ 
+ [32m+[39m long[1m[90m.[39m[22mtoString                                  107.651 ms      4 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmin/max                          892.431 ms      4 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mconstruct_negint                  44.244 ms      5 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mconstruct_highlow                 33.786 ms      5 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mconstruct_number                  32.334 ms      5 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mtoSigned/Unsigned                  0.819 ms      3 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmax_unsigned_sub_max_signed      241.304 ms      2 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmax_sub_max                        1.249 ms      6 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mzero_sub_signed                   32.268 ms      5 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmax_unsigned_div_max_signed       19.531 ms      2 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmax_unsigned_div_neg_signed       69.889 ms      1 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmin_signed_div_one               834.454 ms      1 assertions 
+ [1m[31mx[39m[22m [1m[37mlong.NaN[39m[22m                                         1.939 ms      1 assertions 
+ 
+ {"low":0,"high":0,"unsigned":false} === {"low":0,"high":0,"unsigned":false}
+    [1m[31mAssertionError[39m[22m[1m[37m: {"low":0,"high":0,"unsigned":false} === {"low":0,"high":0,"unsigned":false}[39m[22m
+      at null.strictEqual (/Users/jakub/Developer/Blame/externals/long/node_modules/testjs/test.js:321:26)
+      at Object.suite.NaN [as test] (/Users/jakub/Developer/Blame/externals/long/tests/suite.js:168:14)
+      at Domain.<anonymous> (/Users/jakub/Developer/Blame/externals/long/node_modules/testjs/test.js:278:37)
+ 

@@ -1,0 +1,80 @@
+
+> big.js@2.5.1 test /Users/jakub/Developer/Blame/externals/big.js
+> node ./test/every-test.js
+
+
+ STARTING TESTS...
+
+
+ Testing abs...
+
+ 487 of 487 tests passed in 8 ms 
+
+
+ Testing div...
+
+ 5027 of 5027 tests passed in 613 ms 
+
+
+ Testing cmp, eq, gt, gte, lt, lte...
+
+ 23943 of 23943 tests passed in 123 ms 
+
+
+ Testing minus...
+
+ 3411 of 3411 tests passed in 54 ms 
+
+
+ Testing mod...
+
+ 1756 of 1756 tests passed in 118 ms 
+
+
+ Testing plus...
+
+ 3655 of 3655 tests passed in 54 ms 
+
+
+ Testing pow...
+
+ 1026 of 1026 tests passed in 220 ms 
+
+
+ Testing round...
+
+ 5084 of 5084 tests passed in 87 ms 
+
+
+ Testing sqrt...
+
+ 1235 of 1235 tests passed in 179 ms 
+
+
+ Testing times...
+
+ 4133 of 4133 tests passed in 172 ms 
+
+
+ Testing toExponential...
+
+ 390 of 390 tests passed in 7 ms 
+
+
+ Testing toFixed...
+
+ 937 of 937 tests passed in 9 ms 
+
+
+ Testing toPrecision...
+
+ 419 of 419 tests passed in 7 ms 
+
+
+ Testing toString...
+
+ 1000 of 1000 tests passed in 11 ms 
+
+
+ IN TOTAL: 52503 of 52503 tests passed in 1.767 secs.
+

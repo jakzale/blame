@@ -1,0 +1,7 @@
+
+/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/reporters/default.js:95
+                        console.log(a.error.stack + '\n');
+                                           ^
+illegal access
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

@@ -1,0 +1,154 @@
+[31m  6 failing[0m
+
+[0m  1) open should open html file in default browser:
+[0m[31m     Error: {label_0}[dom] not of type Str: function (err){
+        if (err instanceof Error || toString.call(err) === "[object Error]") return done(err);
+        if (null != err) {
+          if (Object.prototype.toString.call(err) === '[object Object]') {
+            return done(new Error('done() invoked with non-Error: ' + JSON.stringify(err)));
+          } else {
+            return done(new Error('done() invoked with non-Error: ' + err));
+          }
+        }
+        done();
+      }[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/open/test/open.js:25:5)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runnable.js:216:15)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  2) open should open https uris in default browser:
+[0m[31m     Error: {label_0}[dom] not of type Str: function (err){
+        if (err instanceof Error || toString.call(err) === "[object Error]") return done(err);
+        if (null != err) {
+          if (Object.prototype.toString.call(err) === '[object Object]') {
+            return done(new Error('done() invoked with non-Error: ' + JSON.stringify(err)));
+          } else {
+            return done(new Error('done() invoked with non-Error: ' + err));
+          }
+        }
+        done();
+      }[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/open/test/open.js:29:5)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runnable.js:216:15)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  3) open should open txt file in default text editor:
+[0m[31m     Error: {label_0}[dom] not of type Str: function (error) {
+      console.log('yep editor is open');
+      done();
+    }[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/open/test/open.js:37:5)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runnable.js:216:15)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  4) open should open files with spaces:
+[0m[31m     Error: {label_0}[dom] not of type Str: function (err){
+        if (err instanceof Error || toString.call(err) === "[object Error]") return done(err);
+        if (null != err) {
+          if (Object.prototype.toString.call(err) === '[object Object]') {
+            return done(new Error('done() invoked with non-Error: ' + JSON.stringify(err)));
+          } else {
+            return done(new Error('done() invoked with non-Error: ' + err));
+          }
+        }
+        done();
+      }[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/open/test/open.js:44:5)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runnable.js:216:15)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  5) open should open files with quotes:
+[0m[31m     Error: {label_0}[dom] not of type Str: function (err){
+        if (err instanceof Error || toString.call(err) === "[object Error]") return done(err);
+        if (null != err) {
+          if (Object.prototype.toString.call(err) === '[object Object]') {
+            return done(new Error('done() invoked with non-Error: ' + JSON.stringify(err)));
+          } else {
+            return done(new Error('done() invoked with non-Error: ' + err));
+          }
+        }
+        done();
+      }[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/open/test/open.js:48:5)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runnable.js:216:15)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  6) open should open files in the specified application:
+[0m[31m     Error: {label_0}[dom] too many arguments, expected <=2, got: 3[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/open/test/open.js:52:5)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runnable.js:216:15)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/open/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

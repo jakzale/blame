@@ -1,0 +1,8 @@
+
+> deep-freeze@0.0.1 test /Users/jakub/Developer/Blame/externals/deep-freeze
+> tap test/*.js
+
+ok test/deep.js ......................................... 3/3
+total ................................................... 3/3
+
+ok

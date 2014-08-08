@@ -1,0 +1,8 @@
+
+> asciify@1.3.5 test /Users/jakub/Developer/Blame/externals/asciify
+> tap ./test
+
+ok test/happypath.js .................................. 23/23
+total ................................................. 23/23
+
+ok

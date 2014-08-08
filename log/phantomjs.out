@@ -1,0 +1,4 @@
+
+> phantomjs@1.9.7-15 test /Users/jakub/Developer/Blame/externals/phantomjs
+> nodeunit --reporter=minimal test/tests.js
+

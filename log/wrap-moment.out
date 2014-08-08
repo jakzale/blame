@@ -1,0 +1,11 @@
+
+> moment@2.8.1 test /Users/jakub/Developer/Blame/externals/moment
+> grunt test:node
+
+[4mRunning "nodeunit:all" (nodeunit) task[24m
+Testing add_subtract.js[31mF[39m[31mF[39m[31mF[39m.......[31mF[39m.[31mF[39m[31mF[39m
+[31m>> [39madd - add short reverse args
+[31m>> [39mError: Expected 16 assertions, 0 ran[31m
+>> [39m  at Object.oncomplete (fs.js:97:15)
+
+[31mFatal error: illegal access[39m

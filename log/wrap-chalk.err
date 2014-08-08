@@ -1,0 +1,243 @@
+[31m  10 failing[0m
+
+[0m  1) chalk should style string:
+[0m[31m     Error: {label_0}[get/rng] not of type Obj: foo[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+      at /Users/jakub/Developer/Blame/build/blame.js:1021:24
+      at Array.reduce (native)
+      at wrap_hybrid (/Users/jakub/Developer/Blame/build/blame.js:1020:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:770:28)
+      at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:8:22)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  2) chalk should support applying multiple styles at once:
+[0m[31m     Error: {label_0}[get/get/get/rng] not of type Obj: foo[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+      at /Users/jakub/Developer/Blame/build/blame.js:1021:24
+      at Array.reduce (native)
+      at wrap_hybrid (/Users/jakub/Developer/Blame/build/blame.js:1020:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:770:28)
+      at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:14:34)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  3) chalk should support nesting styles:
+[0m[31m     Error: {label_0}[get/get/rng] not of type Obj: bar[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+      at /Users/jakub/Developer/Blame/build/blame.js:1021:24
+      at Array.reduce (native)
+      at wrap_hybrid (/Users/jakub/Developer/Blame/build/blame.js:1020:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:770:28)
+      at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:20:38)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  4) chalk should reset all styles with `.reset()`:
+[0m[31m     Error: {label_0}[get/get/get/rng] not of type Obj: foo[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+      at /Users/jakub/Developer/Blame/build/blame.js:1021:24
+      at Array.reduce (native)
+      at wrap_hybrid (/Users/jakub/Developer/Blame/build/blame.js:1020:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:770:28)
+      at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:26:46)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  5) chalk should alias gray to grey:
+
+      [31mAssertionError: "foo" == "\u001b[90mfoo\u001b[39m"[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+[90mfoo[39m[0m
+      [41m-foo[0m
+      [0m[90m
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:30:10)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  6) chalk should support variable number of arguments:
+[0m[31m     Error: {label_0}[get/rng] not of type Obj: foo bar[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+      at /Users/jakub/Developer/Blame/build/blame.js:1021:24
+      at Array.reduce (native)
+      at wrap_hybrid (/Users/jakub/Developer/Blame/build/blame.js:1020:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:770:28)
+      at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:34:22)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  7) chalk should support falsy values:
+[0m[31m     Error: {label_0}[get/dom] not of type Str: 0[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:846:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:38:22)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  8) chalk don't output escape codes if the input is empty:
+[0m[31m     Error: {label_0}[get/rng] not of type Obj: [0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+      at /Users/jakub/Developer/Blame/build/blame.js:1021:24
+      at Array.reduce (native)
+      at wrap_hybrid (/Users/jakub/Developer/Blame/build/blame.js:1020:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:770:28)
+      at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:42:22)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  9) chalk.enabled should not output colors when manually disabled:
+[0m[31m     Error: {label_0}[get/rng] not of type Obj: foo[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+      at /Users/jakub/Developer/Blame/build/blame.js:1021:24
+      at Array.reduce (native)
+      at wrap_hybrid (/Users/jakub/Developer/Blame/build/blame.js:1020:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:770:28)
+      at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:49:22)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  10) chalk.stripColor() should strip color from string:
+[0m[31m     Error: {label_0}[get/get/get/rng] not of type Obj: foo[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+      at /Users/jakub/Developer/Blame/build/blame.js:1021:24
+      at Array.reduce (native)
+      at wrap_hybrid (/Users/jakub/Developer/Blame/build/blame.js:1020:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:770:28)
+      at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:62:53)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

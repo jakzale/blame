@@ -1,0 +1,16 @@
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[get/rng] not of type Bool: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at <error: illegal access>
+    at Suite.<anonymous> (/Users/jakub/Developer/Blame/externals/handlebars/spec/ast.js:239:22)
+    at context.describe.context.context (/Users/jakub/Developer/Blame/externals/handlebars/node_modules/mocha/lib/interfaces/bdd.js:74:10)
+    at Suite.<anonymous> (/Users/jakub/Developer/Blame/externals/handlebars/spec/ast.js:229:3)
+    at context.describe.context.context (/Users/jakub/Developer/Blame/externals/handlebars/node_modules/mocha/lib/interfaces/bdd.js:74:10)
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

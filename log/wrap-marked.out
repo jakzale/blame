@@ -1,0 +1,27 @@
+
+> marked@0.3.2 test /Users/jakub/Developer/Blame/externals/marked
+> node test
+
+#1. amps_and_angles_encoding.text completed.
+#2. auto_links.text completed.
+#3. autolink_lines.text completed.
+#4. blockquote_list_item.text completed.
+#5. backslash_escapes.text completed.
+#6. blockquotes_with_code_blocks.text completed.
+#7. case_insensitive_refs.text completed.
+#8. code_blocks.text completed.
+#9. code_spans.text completed.
+
+#10. def_blocks.text failed at offset 20. Near: "<blockquote><p>hello</p><p><ahref="foo">1</a>:hell".
+
+
+Got:
+<blockquote><p>hello</p><p><ahref="foo">1</a>:hell
+
+
+Expected:
+<blockquote><p>hello[1]:hello</p></blockquote><hr>
+
+#11. double_link.text completed.
+#12. escaped_angles.text completed.
+#13. gfm_break.breaks.text completed.

@@ -1,0 +1,39 @@
+[31m  2 failing[0m
+
+[0m  1) app should be compatible with express2 (render file):
+[0m[31m     Error: {label_0}[get/dom] not enough arguments, expected >=2, got: 1[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:824:25)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/atpl/test/app_test.js:61:25)
+      at callFn (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runnable.js:247:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runnable.js:240:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  2) app should be compatible with express2 (render string):
+[0m[31m     Error: {label_0}[get/dom] not enough arguments, expected >=2, got: 1[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:824:25)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/atpl/test/app_test.js:67:25)
+      at callFn (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runnable.js:247:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runnable.js:240:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/atpl/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

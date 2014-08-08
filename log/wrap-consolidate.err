@@ -1,0 +1,11 @@
+[31m  60 failing[0m
+
+[31m  61 failing[0m
+
+
+/Users/jakub/Developer/Blame/externals/consolidate/node_modules/mocha/lib/reporters/base.js:168
+      , stack = err.stack || message
+                   ^
+illegal access
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

@@ -1,0 +1,23 @@
+
+> dustjs-linkedin@2.4.0 test /Users/jakub/Developer/Blame/externals/dustjs-linkedin
+> grunt test
+
+[4mRunning "clean:build" (clean) task[24m
+Cleaning tmp/coverage...[32mOK[39m
+Cleaning tmp/dust-core.js...[32mOK[39m
+Cleaning tmp/dust-core.min.js...[32mOK[39m
+Cleaning tmp/dust-full.js...[32mOK[39m
+Cleaning tmp/dust-full.min.js...[32mOK[39m
+
+[4mRunning "shell:buildParser" (shell) task[24m
+
+[4mRunning "jshint:libs" (jshint) task[24m
+Linting lib/server.js ...[31mERROR[39m
+[31m[[39m[33mL21[39m[31m:[39m[33mC1[39m[31m][39m [33mW032[39m[31m:[39m [33mUnnecessary semicolon.[39m
+[31m[7m;[27m[39m
+[31m[[39m[33mL26[39m[31m:[39m[33mC20[39m[31m][39m [33mW117[39m[31m:[39m [33m'exports' is not defined.[39m
+  module.exports = [31m[7me[27m[39mxports = Blame.simple_wrap(module.exports, Blame.obj({
+
+[33mWarning: Task "jshint:libs" failed. Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m

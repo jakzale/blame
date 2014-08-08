@@ -1,0 +1,26 @@
+[31m  1 failing[0m
+
+[0m  1) API "before each" hook:
+[0m[31m     Error: {label_0}[] not of type Fun: [object Object][0m[90m
+      at <error: illegal access>
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at wrap_fun (/Users/jakub/Developer/Blame/build/blame.js:813:13)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:744:28)
+      at /Users/jakub/Developer/Blame/build/blame.js:1021:24
+      at Array.reduce (native)
+      at wrap_hybrid (/Users/jakub/Developer/Blame/build/blame.js:1020:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:770:28)
+      at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+      at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:894:41)
+      at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/auth0/test/api.js:20:11)
+      at Hook.Runnable.run (/Users/jakub/Developer/Blame/externals/auth0/node_modules/mocha/lib/runnable.js:221:32)
+      at next (/Users/jakub/Developer/Blame/externals/auth0/node_modules/mocha/lib/runner.js:259:10)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/auth0/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

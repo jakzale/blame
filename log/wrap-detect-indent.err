@@ -1,0 +1,24 @@
+[31m  1 failing[0m
+
+[0m  1)  should return `null` when there are no indentation:
+[0m[31m     Error: {label_0}[rng] not of type Str: null[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/detect-indent/test.js:32:15)
+      at callFn (/Users/jakub/Developer/Blame/externals/detect-indent/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/detect-indent/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/detect-indent/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/detect-indent/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/detect-indent/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/detect-indent/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/detect-indent/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/detect-indent/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

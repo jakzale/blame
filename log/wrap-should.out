@@ -1,0 +1,156 @@
+
+> should@4.0.4 test /Users/jakub/Developer/Blame/externals/should
+> gulp test
+
+[04:27:58] Using gulpfile ~/Developer/Blame/externals/should/gulpfile.js
+[04:27:58] Starting 'test'...
+    
+       exist 
+         ✓ test static should.exist() pass w/ bool 
+         ✓ test static should.exist() pass w/ number 
+         ✓ test static should.exist() pass w/ string 
+         ✓ test static should.exist() pass w/ object 
+         ✓ test static should.exist() pass w/ array 
+         ✓ test static should.exist() fail w/ null 
+         ✓ test static should.exist() fail w/ undefined 
+         ✓ test static should.not.exist() pass w/ null 
+         ✓ test static should.not.exist() pass w/ undefined 
+         ✓ test static should.not.exist() fail w/ bool 
+         ✓ test static should.not.exist() fail w/ number 
+         ✓ test static should.not.exist() fail w/ string 
+         ✓ test static should.not.exist() fail w/ object 
+         ✓ test static should.not.exist() fail w/ array 
+   
+       should 
+         1) test double require 
+         ✓ test assertion 
+         ✓ test .expected and .actual 
+         ✓ test chaining 
+   
+       bool 
+         ✓ test true 
+         ✓ test false 
+         ✓ test ok 
+   
+       property 
+         ✓ test containEql 
+         ✓ test containDeep 
+         ✓ test .containDeepOrdered 
+   
+       eql 
+         ✓ test eql(val) 
+         ✓ test equal(val) 
+         ✓ test .equal() 
+   
+       error 
+         ✓ test throw() 
+         ✓ test throw() with regex message 
+         ✓ test throw() with string message 
+         ✓ test throw() with type 
+         ✓ test throwError() 
+         ✓ test throwError() with regex message 
+         ✓ test throwError() with string message 
+         ✓ test throwError() with type 
+         ✓ test .throw(err, properties) with matching error 
+         ✓ test .throw(properties) with matching error 
+   
+       match 
+         ✓ test string match(regexp) 
+         ✓ test object match(regexp) 
+         ✓ test array match(regexp) 
+         ✓ test match(function) 
+         ✓ test match(object) 
+         ✓ test each property match(function) 
+   
+       number 
+         ✓ test NaN 
+         ✓ test Infinity 
+         ✓ test within(start,  it(finish) 
+         ✓ test approximately(number,  it(delta) 
+         ✓ test above(n) 
+         ✓ test below(n) 
+   
+       property 
+         ✓ test enumerable(name) 
+         ✓ test enumerable(name,  it(val) 
+         ✓ test property(name) 
+         ✓ test property(name,  it(val) 
+         ✓ test length(n) 
+         ✓ test ownProperty(name) 
+         ✓ test ownProperty(name).equal(val) 
+         ✓ test properties(name1, name2,  it(...) 
+         ✓ test properties([names]) 
+         ✓ test any of properties 
+         ✓ test keys(array) 
+         ✓ test empty 
+         ✓ should .propertyByPath lookup properties by name path 
+   
+       string 
+         ✓ test startWith() 
+         ✓ test endWith() 
+   
+       type 
+         ✓ test arguments 
+         ✓ test typeof 
+         ✓ test instanceof 
+         ✓ test instanceOf (non-  it(reserved) 
+         ✓ test Function 
+         ✓ test Object 
+         ✓ test String 
+         ✓ test Array 
+         ✓ test Number 
+         ✓ test Boolean 
+         ✓ test Error 
+   
+
+   Executed 75 tests in 11 suites in 74ms 
+       74 passes 
+       1 failed 
+   
+   1) should test double require 
+   
+       {label_0}[get] not of type Fun: undefined 
+       
+       at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19) 
+       
+       116 |             throw new Error(this.msg(m)); 
+                               ^                       
+       at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11) 
+       
+       805 |         p.blame("not of type " + A.description + ": " + value); 
+                       ^                                                     
+       at wrap_fun (/Users/jakub/Developer/Blame/build/blame.js:813:13) 
+       
+       813 |     value = wrap_base(value, p, exports.Fun); 
+                         ^                                 
+       at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:744:28) 
+       
+       744 |                     return wrap_fun(value, p, q, A, B); 
+                                        ^                            
+       at Object.Proxy.get (/Users/jakub/Developer/Blame/build/blame.js:1000:32) 
+       
+       1000 |                 return exports.wrap(target[name], p.get(), q.get(), A_type, B_type); 
+                                             ^                                                     
+       at Object.Validator.get (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1044:20) 
+       
+       1044 |     var res = trap.call(this.handler, this.target, name, receiver); 
+                                 ^                                                
+       at Object.global.Reflect.get (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1795:22) 
+       
+       1795 |       return handler.get(receiver, name); 
+                                   ^                    
+       at Object.Validator.get (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1040:22) 
+       
+       1040 |       return Reflect.get(this.target, name, receiver); 
+                                   ^                                 
+       at formatValue (/Users/jakub/Developer/Blame/externals/should/lib/inspect.js:134:21) 
+       
+       134 |     isFunction(value.inspect) && 
+                                 ^            
+       at inspect (/Users/jakub/Developer/Blame/externals/should/lib/inspect.js:65:10) 
+       
+       65 |   return formatValue(ctx, obj, ctx.depth); 
+                     ^                                 
+[04:27:59] 'test' errored after 157 ms
+[04:27:59] Error in plugin 'gulp-mocha'
+1 test failed.

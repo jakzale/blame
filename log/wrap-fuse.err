@@ -1,0 +1,31 @@
+  ✖ 1 of 12 tests failed:
+
+  1) Using fuse as a module with html should fuse content with <!-- @depends -->:
+     Error: global leak detected: Reflect
+      at Runner.checkGlobals (/Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runner.js:170:21)
+      at Runner.<anonymous> (/Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runner.js:59:44)
+      at Runner.EventEmitter.emit (events.js:129:20)
+      at /Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runner.js:401:14
+      at done (/Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runnable.js:187:5)
+      at /Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runnable.js:199:9
+      at /Users/jakub/Developer/Blame/externals/fuse/test/test.js:252:7
+      at Fuse.<anonymous> (/Users/jakub/Developer/Blame/externals/fuse/lib/index.js:22:3)
+      at Fuse.EventEmitter.emit (events.js:107:17)
+      at /Users/jakub/Developer/Blame/externals/fuse/lib/fuse.js:352:9
+      at Fuse.fuse (/Users/jakub/Developer/Blame/externals/fuse/lib/fuse.js:384:2)
+      at Fuse.fuseContent (/Users/jakub/Developer/Blame/externals/fuse/lib/fuse.js:346:7)
+      at Object.exports.fuseContent (/Users/jakub/Developer/Blame/externals/fuse/lib/index.js:34:8)
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/fuse/test/test.js:248:11)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runnable.js:196:15)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runner.js:344:10)
+      at /Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runner.js:390:12
+      at next (/Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runner.js:270:14)
+      at /Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runner.js:279:7
+      at next (/Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runner.js:227:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/fuse/node_modules/mocha/lib/runner.js:247:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+make: *** [test] Error 1
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

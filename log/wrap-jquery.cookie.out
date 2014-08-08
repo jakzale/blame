@@ -1,0 +1,19 @@
+
+> jquery.cookie@1.4.1 test /Users/jakub/Developer/Blame/externals/jquery.cookie
+> grunt
+
+[4mRunning "jshint:grunt" (jshint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "jshint:source" (jshint) task[24m
+
+[1m   src/jquery.cookie.js[22m
+    121 |[90m;[39m
+         ^ Unnecessary semicolon.
+    125 |[90m    M = Object.create(null);[39m
+             ^ 'M' is defined but never used.
+
+[31m>> [39m2 errors in 1 file
+[33mWarning: Task "jshint:source" failed. Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m

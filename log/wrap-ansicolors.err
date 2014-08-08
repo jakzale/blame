@@ -1,0 +1,16 @@
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[get] not of type Fun: [object Object]
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at wrap_fun (/Users/jakub/Developer/Blame/build/blame.js:813:13)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:744:28)
+    at Object.Proxy.get (/Users/jakub/Developer/Blame/build/blame.js:972:28)
+    at Object.Validator.get (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1044:20)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/ansicolors/test/ansicolors.js:5:18)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

@@ -1,0 +1,124 @@
+
+> convert-source-map@0.4.1 test /Users/jakub/Developer/Blame/externals/convert-source-map
+> tap test/*.js
+
+not ok test/comment-regex.js .......................... 25/27
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node comment-regex.js"
+    TAP version 13
+    not ok 1 TypeError: Method RegExp.prototype.test called on incompatible receiver object
+      ---
+        type:    TypeError
+        message: Method RegExp.prototype.test called on incompatible receiver object
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    849
+        column:  30
+        stack:   
+          - <error: illegal access>
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - <error: illegal access>
+          - comment (/Users/jakub/Developer/Blame/externals/convert-source-map/test/comment-regex.js:11:13)
+          - /Users/jakub/Developer/Blame/externals/convert-source-map/test/comment-regex.js:25:33
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/convert-source-map/test/comment-regex.js:25:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/convert-source-map/node_modules/tap/lib/tap-test.js:104:8)
+        thrown:  true
+      ...
+    not ok 2 TypeError: Method RegExp.prototype.test called on incompatible receiver object
+      ---
+        type:    TypeError
+        message: Method RegExp.prototype.test called on incompatible receiver object
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    849
+        column:  30
+        stack:   
+          - <error: illegal access>
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - <error: illegal access>
+          - comment (/Users/jakub/Developer/Blame/externals/convert-source-map/test/comment-regex.js:11:13)
+          - /Users/jakub/Developer/Blame/externals/convert-source-map/test/comment-regex.js:44:33
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/convert-source-map/test/comment-regex.js:44:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/convert-source-map/node_modules/tap/lib/tap-test.js:104:8)
+        thrown:  true
+      ...
+    ok 3 matches //@
+    ok 4 matches   //@
+    ok 5 matches 	//@
+    ok 6 matches ///@
+    ok 7 does not match  @// @
+    ok 8 matches //@
+    ok 9 matches   //@
+    ok 10 matches 	//@
+    ok 11 matches //@
+    ok 12 does not match  #//
+    ok 13 matches /*@  :: */
+    ok 14 matches   /*@  ::   */
+    ok 15 matches 	/*@  ::  	*/
+    ok 16 matches leading string/*@  :: */
+    ok 17 matches /*@  ::  	*/
+    ok 18 does not match /*@  ::  */ */
+    ok 19 does not match /*@  ::  */ more text
+    ok 20 matches /*#  :: */
+    ok 21 matches   /*#  ::   */
+    ok 22 matches 	/*#  ::  	*/
+    ok 23 matches leading string/*#  :: */
+    ok 24 matches /*#  ::  	*/
+    ok 25 does not match /*#  ::  */ */
+    ok 26 does not match /*#  ::  */ more text
+    ok 27 test/comment-regex.js
+    
+    1..27
+    # tests 27
+    # pass  25
+    # fail  2
+    
+ok test/convert-source-map.js ......................... 30/30
+not ok test/map-file-comment.js ......................... 7/8
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node map-file-comment.js"
+    TAP version 13
+    ok 1 resolves paths of original sources
+    ok 2 includes filename of generated file
+    ok 3 includes mappings
+    ok 4 resolves paths of original sources
+    ok 5 includes filename of generated file
+    ok 6 includes mappings
+    not ok 7 Error: {label_0}[get/dom] too many arguments, expected <=1, got: 2
+      ---
+        type:    Error
+        message: {label_0}[get/dom] too many arguments, expected <=1, got: 2
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - <error: illegal access>
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/convert-source-map/test/map-file-comment.js:53:22)
+          - Test.EventEmitter.emit (events.js:129:20)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/convert-source-map/node_modules/tap/lib/tap-test.js:104:8)
+          - GlobalHarness.Harness.process (/Users/jakub/Developer/Blame/externals/convert-source-map/node_modules/tap/lib/tap-harness.js:87:13)
+          - process._tickCallback (node.js:343:11)
+          - Function.Module.runMain (module.js:492:11)
+        thrown:  true
+      ...
+    ok 8 test/map-file-comment.js
+    
+    1..8
+    # tests 8
+    # pass  7
+    # fail  1
+    
+total ................................................. 62/65
+
+not ok

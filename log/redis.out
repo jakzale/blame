@@ -1,0 +1,4 @@
+
+> redis@0.11.0 test /Users/jakub/Developer/Blame/externals/redis
+> node ./test.js
+

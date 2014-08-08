@@ -1,0 +1,4 @@
+
+> graceful-fs@3.0.2 test /Users/jakub/Developer/Blame/externals/graceful-fs
+> tap test/*.js
+

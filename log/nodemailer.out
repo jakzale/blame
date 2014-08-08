@@ -1,0 +1,49 @@
+
+> nodemailer@1.1.1 test /Users/jakub/Developer/Blame/externals/nodemailer
+> grunt
+
+[4mRunning "jshint:all" (jshint) task[24m
+[32m>> [39m10 files lint free.
+
+[4mRunning "mochaTest:all" (mochaTest) task[24m
+
+
+  Compiler unit tests
+    ✓ should create new Compiler 
+    #compile
+      ✓ should use Mixed structure with text and attachment 
+      ✓ should use Mixed structure with multiple attachments 
+      ✓ should create Alternative structure with text and html 
+      ✓ should create Alternative structure with text, html and cid attachment 
+      ✓ should create Related structure with html and cid attachment 
+      ✓ should create content node with only text 
+      ✓ should create content node with only an attachment 
+
+  Nodemailer unit tests
+    ✓ should create Nodemailer transport object 
+    Hooking plugins
+      ✓ should add a plugin to queue 
+      ✓ should process compile and stream plugins 
+    #sendMail
+      ✓ should process sendMail 
+      ✓ should return transport error 
+      ✓ should override xMailer 
+    Resolver tests
+      ✓ should set text from html string 
+      ✓ should set text from html buffer 
+      ✓ should set text from a html file 
+      ✓ should set text from an html url 
+      ✓ should set text from a html stream 
+      ✓ should return an error 
+
+  Nodemailer integration tests
+    ✓ should log in and send mail 
+    ✓ should response auth error 
+    ✓ should response envelope error 
+    ✓ should override envelope 
+
+
+  24 passing (96ms)
+
+
+[32mDone, without errors.[39m

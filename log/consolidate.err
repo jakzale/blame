@@ -1,0 +1,23 @@
+[31m  1 failing[0m
+
+[0m  1) atpl should not cache by default:
+
+      [31mAssertionError: expected 4 to be 2[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+2[0m
+      [41m-4[0m
+      [0m[90m
+    at Assertion.prop.(anonymous function) (/Users/jakub/Developer/Blame/externals/consolidate/node_modules/should/lib/should.js:61:14)
+    at /Users/jakub/Developer/Blame/externals/consolidate/test/shared/index.js:47:24
+    at Function.exports.atpl.render (/Users/jakub/Developer/Blame/externals/consolidate/lib/consolidate.js:276:5)
+    at /Users/jakub/Developer/Blame/externals/consolidate/lib/consolidate.js:146:25
+    at /Users/jakub/Developer/Blame/externals/consolidate/lib/consolidate.js:99:5
+    at fs.js:291:14
+    at /Users/jakub/Developer/Blame/externals/consolidate/node_modules/mocha/node_modules/glob/node_modules/graceful-fs/graceful-fs.js:104:5
+    at Object.oncomplete (fs.js:97:15)
+  
+[0m
+
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

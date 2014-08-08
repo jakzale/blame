@@ -1,0 +1,141 @@
+
+> exit@0.1.2 test /Users/jakub/Developer/Blame/externals/exit
+> grunt nodeunit
+
+[4mRunning "nodeunit:files" (nodeunit) task[24m
+Testing exit_test.js.[31mF[39m.[31mF[39m.[31mF[39m.[31mF[39m.[31mF[39m.[31mF[39m.[31mF[39m.[31mF[39m.[31mF[39m.[31mF[39m.[31mF[39m
+[31m>> [39mexit - output (node log.js 0 10 stdout stderr 2>&1)
+[31m>> [39mMessage: [35mshould be the same length.[39m
+[31m>> [39mError: [33m1051[39m == [33m180[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:92:18[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - output (node log.js 0 10 stdout 2>&1)
+[31m>> [39mMessage: [35mshould be the same length.[39m
+[31m>> [39mError: [33m961[39m == [33m90[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:92:18[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - output (node log.js 0 10 stderr 2>&1)
+[31m>> [39mMessage: [35mshould be the same length.[39m
+[31m>> [39mError: [33m961[39m == [33m90[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:92:18[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - output (node log.js 0 100 stdout stderr 2>&1)
+[31m>> [39mMessage: [35mshould be the same length.[39m
+[31m>> [39mError: [33m2851[39m == [33m1980[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:92:18[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - output (node log.js 0 100 stdout 2>&1)
+[31m>> [39mMessage: [35mshould be the same length.[39m
+[31m>> [39mError: [33m1861[39m == [33m990[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:92:18[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - output (node log.js 0 100 stderr 2>&1)
+[31m>> [39mMessage: [35mshould be the same length.[39m
+[31m>> [39mError: [33m1861[39m == [33m990[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:92:18[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - output (node log.js 0 1000 stdout stderr 2>&1)
+[31m>> [39mMessage: [35mshould be the same length.[39m
+[31m>> [39mError: [33m22651[39m == [33m21780[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:92:18[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - output (node log.js 0 1000 stdout 2>&1)
+[31m>> [39mMessage: [35mshould be the same length.[39m
+[31m>> [39mError: [33m11761[39m == [33m10890[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:92:18[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - output (node log.js 0 1000 stderr 2>&1)
+[31m>> [39mMessage: [35mshould be the same length.[39m
+[31m>> [39mError: [33m11761[39m == [33m10890[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:92:18[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - exit code (node log.js 0 10 stdout stderr)
+[31m>> [39mMessage: [35mshould exit with 0 error code.[39m
+[31m>> [39mError: [33m1[39m == [33m0[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:110:14[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[31m>> [39mexit - exit code (node log.js 123 10 stdout stderr)
+[31m>> [39mMessage: [35mshould exit with 123 error code.[39m
+[31m>> [39mError: [33m1[39m == [33m123[39m[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:110:14[31m
+>> [39m  at /Users/jakub/Developer/Blame/externals/exit/test/exit_test.js:67:5[31m
+>> [39m  at ChildProcess.exithandler (child_process.js:736:5)[31m
+>> [39m  at ChildProcess.EventEmitter.emit (events.js:110:17)[31m
+>> [39m  at maybeClose (child_process.js:992:16)[31m
+>> [39m  at Socket.<anonymous> (child_process.js:1142:11)[31m
+>> [39m  at Socket.EventEmitter.emit (events.js:107:17)[31m
+>> [39m  at Pipe.close (net.js:461:12)
+
+[33mWarning: 11/40 assertions failed (1610ms) Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m

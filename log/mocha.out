@@ -1,0 +1,334 @@
+
+> mocha@1.21.4 test /Users/jakub/Developer/Blame/externals/mocha
+> make test-all
+
+
+  
+  [90m․[0m[90m․[0m[90m․[0m[90m․[0m
+
+[92m [0m[32m 4 passing[0m[90m (6ms)[0m
+
+
+  
+  [90m․[0m[90m․[0m[36m․[0m[36m․[0m
+
+[92m [0m[32m 2 passing[0m[90m (6ms)[0m
+[36m [0m[36m 2 pending[0m
+
+
+  
+  [90m․[0m[90m․[0m[90m․[0m
+
+[92m [0m[32m 3 passing[0m[90m (4ms)[0m
+
+
+  
+  [90m․[0m[90m․[0m
+
+[92m [0m[32m 2 passing[0m[90m (6ms)[0m
+
+
+  
+  [90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[93m․[0m[33m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[36m․[0m[90m․[0m[90m․[0m[90m․[0m[93m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m
+  [90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[36m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m
+  [90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m
+  [90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m
+
+[92m [0m[32m 172 passing[0m[90m (655ms)[0m
+[36m [0m[36m 2 pending[0m
+
+
+  
+  [90m․[0m[90m․[0m
+
+[92m [0m[32m 2 passing[0m[90m (4ms)[0m
+
+
+[0m[0m
+[0m  Suite[0m
+[0m    .clone()[0m
+    [32m  ✓[0m[90m should copy the title [0m
+    [32m  ✓[0m[90m should copy the timeout value [0m
+    [32m  ✓[0m[90m should copy the slow value [0m
+    [32m  ✓[0m[90m should copy the bail value [0m
+    [32m  ✓[0m[90m should not copy the values from the suites array [0m
+    [32m  ✓[0m[90m should not copy the values from the tests array [0m
+    [32m  ✓[0m[90m should not copy the values from the _beforeEach array [0m
+    [32m  ✓[0m[90m should not copy the values from the _beforeAll array [0m
+    [32m  ✓[0m[90m should not copy the values from the _afterEach array [0m
+    [32m  ✓[0m[90m should not copy the values from the _afterAll array [0m
+[0m    .timeout()[0m
+[0m      when no argument is passed[0m
+      [32m  ✓[0m[90m should return the timeout value [0m
+[0m      when argument is passed[0m
+      [32m  ✓[0m[90m should return the Suite object [0m
+[0m    .slow()[0m
+[0m      when given a string[0m
+      [32m  ✓[0m[90m should parse it [0m
+[0m      when no argument is passed[0m
+      [32m  ✓[0m[90m should return the slow value [0m
+[0m      when argument is passed[0m
+      [32m  ✓[0m[90m should return the Suite object [0m
+[0m    .bail()[0m
+[0m      when no argument is passed[0m
+      [32m  ✓[0m[90m should return the bail value [0m
+[0m      when argument is passed[0m
+      [32m  ✓[0m[90m should return the Suite object [0m
+[0m    .beforeAll()[0m
+[0m      wraps the passed in function in a Hook[0m
+      [32m  ✓[0m[90m adds it to _beforeAll [0m
+      [32m  ✓[0m[90m appends title to hook [0m
+[0m    .afterAll()[0m
+[0m      wraps the passed in function in a Hook[0m
+      [32m  ✓[0m[90m adds it to _afterAll [0m
+      [32m  ✓[0m[90m appends title to hook [0m
+[0m    .beforeEach()[0m
+[0m      wraps the passed in function in a Hook[0m
+      [32m  ✓[0m[90m adds it to _beforeEach [0m
+      [32m  ✓[0m[90m appends title to hook [0m
+[0m    .afterEach()[0m
+[0m      wraps the passed in function in a Hook[0m
+      [32m  ✓[0m[90m adds it to _afterEach [0m
+      [32m  ✓[0m[90m appends title to hook [0m
+[0m    .addSuite()[0m
+    [32m  ✓[0m[90m sets the parent on the added Suite [0m
+    [32m  ✓[0m[90m copies the timeout value [0m
+    [32m  ✓[0m[90m copies the slow value [0m
+    [32m  ✓[0m[90m adds the suite to the suites collection [0m
+[0m    .fullTitle()[0m
+[0m      when there is no parent[0m
+      [32m  ✓[0m[90m returns the suite title [0m
+[0m      when there is a parent[0m
+      [32m  ✓[0m[90m returns the combination of parent's and suite's title [0m
+[0m    .total()[0m
+[0m      when there are no nested suites or tests[0m
+      [32m  ✓[0m[90m should return 0 [0m
+[0m      when there are several tests in the suite[0m
+      [32m  ✓[0m[90m should return the number [0m
+[0m    .eachTest(fn)[0m
+[0m      when there are no nested suites or tests[0m
+      [32m  ✓[0m[90m should return 0 [0m
+[0m      when there are several tests in the suite[0m
+      [32m  ✓[0m[90m should return the number [0m
+[0m      when there are several levels of nested suites[0m
+      [32m  ✓[0m[90m should return the number [0m
+
+[0m  Runner[0m
+[0m    .grep()[0m
+    [32m  ✓[0m[90m should update the runner.total with number of matched tests [0m
+    [32m  ✓[0m[90m should update the runner.total with number of matched tests when inverted [0m
+[0m    .grepTotal()[0m
+    [32m  ✓[0m[90m should return the total number of matched tests [0m
+    [32m  ✓[0m[90m should return the total number of matched tests when inverted [0m
+[0m    .globalProps()[0m
+    [32m  ✓[0m[90m should include common non enumerable globals [0m
+[0m    .globals()[0m
+    [32m  ✓[0m[90m should default to the known globals [0m
+    [32m  ✓[0m[90m should white-list globals [0m
+[0m    .checkGlobals(test)[0m
+    [32m  ✓[0m[90m should allow variables that match a wildcard [0m
+    [32m  ✓[0m[90m should emit "fail" when a new global is introduced [0m
+    [32m  ✓[0m[90m should emit "fail" when a single new disallowed global is introduced after a single extra global is allowed [0m
+    [32m  ✓[0m[90m should not fail when a new common global is introduced [0m
+    [32m  ✓[0m[90m should pluralize the error message when several are introduced [0m
+    [32m  ✓[0m[90m should respect per test whitelisted globals [0m
+    [32m  ✓[0m[90m should respect per test whitelisted globals but still detect other leaks [0m
+[0m    .fail(test, err)[0m
+    [32m  ✓[0m[90m should increment .failures [0m
+    [32m  ✓[0m[90m should set test.state to "failed" [0m
+    [32m  ✓[0m[90m should emit "fail" [0m
+[0m    .failHook(hook, err)[0m
+    [32m  ✓[0m[90m should increment .failures [0m
+    [32m  ✓[0m[90m should emit "fail" [0m
+    [32m  ✓[0m[90m should emit "end" if suite bail is true [0m
+    [32m  ✓[0m[90m should not emit "end" if suite bail is not true [0m
+
+[0m  Runnable(title, fn)[0m
+[0m    #timeout(ms)[0m
+    [32m  ✓[0m[90m should set the timeout [0m
+[0m    #enableTimeouts(enabled)[0m
+    [32m  ✓[0m[90m should set enabled [0m
+[0m    #slow(ms)[0m
+    [32m  ✓[0m[90m should set the slow threshold [0m
+[0m    .title[0m
+    [32m  ✓[0m[90m should be present [0m
+[0m    when arity >= 1[0m
+    [32m  ✓[0m[90m should be .async [0m
+[0m    when arity == 0[0m
+    [32m  ✓[0m[90m should be .sync [0m
+[0m    #globals[0m
+    [32m  ✓[0m[90m should allow for whitelisting globals [0m
+[0m    .run(fn)[0m
+[0m      when .pending[0m
+      [32m  ✓[0m[90m should not invoke the callback [0m
+[0m      when sync[0m
+[0m        without error[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m        when an exception is thrown[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m      when timeouts are disabled[0m
+      [32m  ✓[0m[90m should not error with timeout [0m
+[0m      when async[0m
+      [32m  ✓[0m[90m should allow updating the timeout [0m
+      [36m  - should allow a timeout of 0[0m
+[0m        without error[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m        when the callback is invoked several times[0m
+[0m          without an error[0m
+          [32m  ✓[0m[90m should emit a single "error" event [0m
+[0m          with an error[0m
+          [32m  ✓[0m[90m should emit a single "error" event [0m
+[0m        when an exception is thrown[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m        when an error is passed[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m        when done() is invoked with a non-Error object[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m        when done() is invoked with a string[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m      when fn returns a promise[0m
+[0m        when the promise is fulfilled with no value[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m        when the promise is fulfilled with a value[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m        when the promise is rejected[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m        when the promise is rejected without a reason[0m
+        [32m  ✓[0m[90m should invoke the callback [0m
+[0m        when the promise takes too long to settle[0m
+        [32m  ✓[0m[90m should give the timeout error [0m
+[0m      when fn returns a non-promise[0m
+      [32m  ✓[0m[90m should invoke the callback [0m
+
+[0m  serial[0m
+[0m    hooks[0m
+    [32m  ✓[0m[90m one [0m
+    [32m  ✓[0m[90m two [0m
+    [32m  ✓[0m[90m three [0m
+
+[0m  serial[0m
+[0m    nested[0m
+    [32m  ✓[0m[90m foo [0m
+    [32m  ✓[0m[90m bar [0m
+[0m      hooks[0m
+      [32m  ✓[0m[90m one [0m
+      [32m  ✓[0m[90m two [0m
+
+[0m  async[0m
+[0m    hooks[0m
+    [32m  ✓[0m[90m one [0m
+    [32m  ✓[0m[90m two [0m
+    [32m  ✓[0m[90m three [0m
+
+[0m  durations[0m
+[0m    when slow[0m
+    [32m  ✓[0m[90m should highlight in red [0m[31m(101ms)[0m
+[0m    when reasonable[0m
+    [32m  ✓[0m[90m should highlight in yellow [0m[33m(50ms)[0m
+[0m    when fast[0m
+    [32m  ✓[0m[90m should highlight in green [0m
+
+[0m  fs.readFile()[0m
+[0m    when the file exists[0m
+    [32m  ✓[0m[90m should succeed [0m
+[0m    when the file does not exist[0m
+    [32m  ✓[0m[90m should fail [0m
+
+[0m  global leaks[0m
+  [32m  ✓[0m[90m should cause tests to fail [0m
+  [32m  ✓[0m[90m should pass when accepted [0m
+  [32m  ✓[0m[90m should pass with wildcard [0m
+  [32m  ✓[0m[90m should pass when prefixed "mocha-" [0m
+
+[0m  pending[0m
+  [36m  - should be allowed[0m
+
+[0m  timeouts[0m
+  [32m  ✓[0m[90m should error on timeout [0m
+  [32m  ✓[0m[90m should allow overriding per-test [0m[31m(302ms)[0m
+[0m    disabling[0m
+    [32m  ✓[0m[90m should allow overriding per-test [0m
+    [32m  ✓[0m[90m should work with timeout(0) [0m
+
+
+[92m [0m[32m 105 passing[0m[90m (565ms)[0m
+[36m [0m[36m 2 pending[0m
+
+done
+
+  
+  [90m․[0m[90m․[0m
+
+[92m [0m[32m 2 passing[0m[90m (4ms)[0m
+
+
+  
+  [90m․[0m[90m․[0m
+
+[92m [0m[32m 2 passing[0m[90m (4ms)[0m
+
+Glob-test passed.
+
+  
+  [90m․[0m
+
+[92m [0m[32m 1 passing[0m[90m (4ms)[0m
+
+
+  {
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2014-08-08T03:02:01.513Z",
+    "end": "2014-08-08T03:02:01.515Z",
+    "duration": 2
+  },
+  "tests": [
+    {
+      "title": "json test 1",
+      "fullTitle": "JSON suite json test 1",
+      "duration": 0,
+      "err": {
+        "stack": "Error: oh shit\n    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mocha/test/reporters/json.js:24:13)\n    at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/mocha/lib/runnable.js:216:15)\n    at Runner.runTest (/Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:373:10)\n    at /Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:451:12\n    at next (/Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:298:14)\n    at /Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:308:7\n    at next (/Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:246:23)\n    at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:275:5)\n    at processImmediate [as _immediateCallback] (timers.js:374:17)",
+        "message": "oh shit"
+      }
+    }
+  ],
+  "failures": [
+    {
+      "title": "json test 1",
+      "fullTitle": "JSON suite json test 1",
+      "duration": 0,
+      "err": {
+        "stack": "Error: oh shit\n    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mocha/test/reporters/json.js:24:13)\n    at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/mocha/lib/runnable.js:216:15)\n    at Runner.runTest (/Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:373:10)\n    at /Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:451:12\n    at next (/Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:298:14)\n    at /Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:308:7\n    at next (/Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:246:23)\n    at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/mocha/lib/runner.js:275:5)\n    at processImmediate [as _immediateCallback] (timers.js:374:17)",
+        "message": "oh shit"
+      }
+    }
+  ],
+  "passes": []
+}
+  [90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m
+
+[92m [0m[32m 5 passing[0m[90m (16ms)[0m
+
+
+  
+  [90m․[0m
+
+[92m [0m[32m 1 passing[0m[90m (3ms)[0m
+
+
+  
+  [90m․[0m
+
+[92m [0m[32m 1 passing[0m[90m (4ms)[0m
+
+
+  
+  [90m․[0m
+
+[92m [0m[32m 1 passing[0m[90m (3ms)[0m
+

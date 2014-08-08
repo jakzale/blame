@@ -1,0 +1,282 @@
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+
+/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+    throw new LevelUPError(missingLevelDOWNError)
+          ^
+LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+    at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+    at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+    at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+    at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+module.js:333
+    throw err;
+          ^
+Error: Cannot find module 'leveldown'
+    at Function.Module._resolveFilename (module.js:331:15)
+    at Function.Module._load (module.js:273:25)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/destroy-repair-test.js:7:17)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Function.Module.runMain (module.js:490:10)
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.buster.testCase.call open twice, should emit "open" once (/Users/jakub/Developer/Blame/externals/levelup/test/idempotent-test.js:39:12)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:153:5)
+/Users/jakub/Developer/Blame/externals/levelup/node_modules/referee/lib/referee.js:167
+            throw exception;
+                  ^
+Error: [assert.exception] InitializationError: Expected thrown Error ({label_0}[dom] not enough arguments, expected >=1, got: 0) to pass matcher function
+    at Object.referee.fail (/Users/jakub/Developer/Blame/externals/levelup/node_modules/referee/lib/referee.js:156:25)
+    at Object.fail (/Users/jakub/Developer/Blame/externals/levelup/node_modules/referee/lib/referee.js:43:17)
+    at Function.assert.exception (/Users/jakub/Developer/Blame/externals/levelup/node_modules/referee/lib/referee.js:538:25)
+    at Object.buster.testCase.levelup() (/Users/jakub/Developer/Blame/externals/levelup/test/init-test.js:23:14)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:18:12
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+    at /Users/jakub/Developer/Blame/externals/levelup/test/common.js:53:14
+    at Object.oncomplete (fs.js:97:15)
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.runTest (/Users/jakub/Developer/Blame/externals/levelup/test/inject-encoding-test.js:22:11)
+    at Object.buster.testCase.simple-object values in "json" encoding (/Users/jakub/Developer/Blame/externals/levelup/test/inject-encoding-test.js:66:12)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.runTest (/Users/jakub/Developer/Blame/externals/levelup/test/json-test.js:20:11)
+    at Object.buster.testCase.simple-object values in "json" encoding (/Users/jakub/Developer/Blame/externals/levelup/test/json-test.js:55:12)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.buster.testCase.null and undefined.setUp (/Users/jakub/Developer/Blame/externals/levelup/test/null-and-undefined-test.js:20:11)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:28:7
+    at /Users/jakub/Developer/Blame/externals/levelup/test/common.js:53:14
+
+/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+    throw new LevelUPError(missingLevelDOWNError)
+          ^
+LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+    at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+    at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+    at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+    at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[dom] too many arguments, expected <=2, got: 3
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+    at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+    at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

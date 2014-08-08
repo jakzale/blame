@@ -1,0 +1,204 @@
+util.error: Use console.error instead
+WARN: Dropping unused function argument options [dist/handlebars.amd.js:337,61]
+util.error: Use console.error instead
+WARN: Dropping unused variable helpers [dist/handlebars.amd.js:476,12]
+util.error: Use console.error instead
+WARN: Dropping unused variable partials [dist/handlebars.amd.js:477,12]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:858,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:860,4]
+util.error: Use console.error instead
+WARN: Dropping unused function argument _$ [dist/handlebars.amd.js:852,75]
+util.error: Use console.error instead
+WARN: Dropping unused function argument hash [dist/handlebars.amd.js:955,41]
+util.error: Use console.error instead
+WARN: Dropping unused function popStack [dist/handlebars.amd.js:971,17]
+util.error: Use console.error instead
+WARN: Dropping unused variable TERROR [dist/handlebars.amd.js:959,143]
+util.error: Use console.error instead
+WARN: Dropping unused variable EOF [dist/handlebars.amd.js:959,155]
+util.error: Use console.error instead
+WARN: Dropping unused variable a [dist/handlebars.amd.js:984,51]
+util.error: Use console.error instead
+WARN: Dropping unused variable col [dist/handlebars.amd.js:1172,16]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1265,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1270,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1276,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1278,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1280,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1282,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1284,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1286,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1292,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1298,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1300,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1302,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1304,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1306,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1308,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1310,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1312,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1316,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1318,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1320,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1322,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1324,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1326,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1330,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1332,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1334,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1336,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1338,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1340,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1342,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1344,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1346,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1348,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1350,4]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.amd.js:1352,4]
+util.error: Use console.error instead
+WARN: Dropping unused variable YYSTATE [dist/handlebars.amd.js:1249,8]
+util.error: Use console.error instead
+WARN: Dropping unused function argument options [dist/handlebars.js:345,59]
+util.error: Use console.error instead
+WARN: Dropping unused variable helpers [dist/handlebars.js:486,10]
+util.error: Use console.error instead
+WARN: Dropping unused variable partials [dist/handlebars.js:487,10]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:874,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:876,2]
+util.error: Use console.error instead
+WARN: Dropping unused function argument _$ [dist/handlebars.js:868,73]
+util.error: Use console.error instead
+WARN: Dropping unused function argument hash [dist/handlebars.js:971,39]
+util.error: Use console.error instead
+WARN: Dropping unused function popStack [dist/handlebars.js:987,15]
+util.error: Use console.error instead
+WARN: Dropping unused variable TERROR [dist/handlebars.js:975,141]
+util.error: Use console.error instead
+WARN: Dropping unused variable EOF [dist/handlebars.js:975,153]
+util.error: Use console.error instead
+WARN: Dropping unused variable a [dist/handlebars.js:1000,49]
+util.error: Use console.error instead
+WARN: Dropping unused variable col [dist/handlebars.js:1188,14]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1281,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1286,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1292,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1294,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1296,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1298,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1300,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1302,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1308,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1314,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1316,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1318,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1320,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1322,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1324,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1326,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1328,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1332,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1334,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1336,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1338,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1340,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1342,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1346,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1348,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1350,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1352,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1354,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1356,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1358,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1360,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1362,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1364,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1366,2]
+util.error: Use console.error instead
+WARN: Dropping unreachable code [dist/handlebars.js:1368,2]
+util.error: Use console.error instead
+WARN: Dropping unused variable YYSTATE [dist/handlebars.js:1265,6]
+util.error: Use console.error instead
+WARN: Dropping unused function argument options [dist/handlebars.runtime.amd.js:337,61]
+util.error: Use console.error instead
+WARN: Dropping unused variable helpers [dist/handlebars.runtime.amd.js:476,12]
+util.error: Use console.error instead
+WARN: Dropping unused variable partials [dist/handlebars.runtime.amd.js:477,12]
+util.error: Use console.error instead
+WARN: Dropping unused function argument options [dist/handlebars.runtime.js:345,59]
+util.error: Use console.error instead
+WARN: Dropping unused variable helpers [dist/handlebars.runtime.js:486,10]
+util.error: Use console.error instead
+WARN: Dropping unused variable partials [dist/handlebars.runtime.js:487,10]

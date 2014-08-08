@@ -1,0 +1,4 @@
+
+> cordova@3.5.0-0.2.8-dev test /Users/jakub/Developer/Blame/externals/cordova
+> jasmine-node --captureExceptions --color spec
+

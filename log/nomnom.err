@@ -1,0 +1,16 @@
+/Users/jakub/Developer/Blame/externals/nomnom/node_modules/nodeunit/lib/utils.js:14
+    Script = process.binding('evals').Script || process.binding('evals').NodeS
+                     ^
+Error: No such module
+    at Error (native)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/nomnom/node_modules/nodeunit/lib/utils.js:14:22)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/nomnom/node_modules/nodeunit/lib/nodeunit.js:13:13)
+    at Module._compile (module.js:449:26)
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

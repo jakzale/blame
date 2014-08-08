@@ -1,0 +1,148 @@
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[get/dom] too many arguments, expected <=0, got: 1
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:870:25)
+  at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/test/log-rewriter-test.js:16:12)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Module.require (module.js:357:17)
+  at require (module.js:373:17)
+  at /Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:567:19
+  at Array.reduce (native)
+  at importSuites (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:560:18)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:290:15)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Function.Module.runMain (module.js:490:10)
+  at startup (node.js:124:16)
+  at node.js:807:3
+
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[get/dom] too many arguments, expected <=0, got: 1
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:870:25)
+  at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/test/logger-levels-test.js:17:12)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Module.require (module.js:357:17)
+  at require (module.js:373:17)
+  at /Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:567:19
+  at Array.reduce (native)
+  at importSuites (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:560:18)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:290:15)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Function.Module.runMain (module.js:490:10)
+  at startup (node.js:124:16)
+  at node.js:807:3
+
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[get/dom] too many arguments, expected <=0, got: 1
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:870:25)
+  at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/test/logger-test.js:19:12)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Module.require (module.js:357:17)
+  at require (module.js:373:17)
+  at /Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:567:19
+  at Array.reduce (native)
+  at importSuites (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:560:18)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:290:15)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Function.Module.runMain (module.js:490:10)
+  at startup (node.js:124:16)
+  at node.js:807:3
+
+debug: test message
+error: test message
+error: test message
+debug: test message
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[get/dom] too many arguments, expected <=0, got: 1
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:870:25)
+  at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+  at module.exports (/Users/jakub/Developer/Blame/externals/winston/test/transports/transport.js:10:11)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/test/transports/daily-rotate-file-test.js:58:53)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Module.require (module.js:357:17)
+  at require (module.js:373:17)
+  at /Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:567:19
+  at Array.reduce (native)
+  at importSuites (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:560:18)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:290:15)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Function.Module.runMain (module.js:490:10)
+  at startup (node.js:124:16)
+  at node.js:807:3
+
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[get/dom] too many arguments, expected <=0, got: 1
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:870:25)
+  at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+  at module.exports (/Users/jakub/Developer/Blame/externals/winston/test/transports/transport.js:10:11)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/test/transports/file-test.js:57:40)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Module.require (module.js:357:17)
+  at require (module.js:373:17)
+  at /Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:567:19
+  at Array.reduce (native)
+  at importSuites (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:560:18)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/winston/node_modules/vows/bin/vows:290:15)
+  at Module._compile (module.js:449:26)
+  at Object.Module._extensions..js (module.js:467:10)
+  at Module.load (module.js:349:32)
+  at Function.Module._load (module.js:305:12)
+  at Function.Module.runMain (module.js:490:10)
+  at startup (node.js:124:16)
+  at node.js:807:3
+
+util.print: Use console.log instead
+util.puts: Use console.log instead
+util.print: Use console.log instead
+util.puts: Use console.log instead
+util.print: Use console.log instead
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

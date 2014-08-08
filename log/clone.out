@@ -1,0 +1,24 @@
+
+> clone@0.1.17 test /Users/jakub/Developer/Blame/externals/clone
+> nodeunit test.js
+
+
+[1mtest.js[22m
+✔ clone string
+✔ clone number
+✔ clone date
+✔ clone object
+✔ clone array
+✔ clone buffer
+✔ clone regexp
+✔ clone object containing array
+✔ clone object with circular reference
+✔ clonePrototype
+✔ cloneWithinNewVMContext
+✔ cloneObjectWithNoConstructor
+✔ clone object with depth argument
+✔ maintain prototype chain in clones
+✔ parent prototype is overriden with prototype provided
+✔ clone object with null children
+
+[1m[32mOK: [39m[22m48 assertions (29ms)

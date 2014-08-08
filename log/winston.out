@@ -1,0 +1,531 @@
+
+> winston@0.7.3 test /Users/jakub/Developer/Blame/externals/winston
+> vows --spec --isolate
+
+ 
+  ♢ winston/logger/cli 
+  
+  When an instance of winston.Logger the cli() method
+    ✓ should set the appropriate values on the logger
+ 
+  ♢ winston/container 
+  
+  An instance of winston.Container the add() method
+    ✓ should correctly instantiate a Logger
+  An instance of winston.Container with explicit transports the get() method
+    ✓ should add the logger correctly
+  An instance of winston.Container with explicit transports the get() method a second call to get()
+    ✓ should respond with the same transport object
+  An instance of winston.Container the add() method the get() method
+    ✓ should respond with the logger previously created
+  An instance of winston.Container the add() method the has() method
+    ✓ should indicate default-test logger exists
+    ✓ should indicate not-has logger doesnt exists
+  An instance of winston.Container the add() method the close() method
+    ✓ should remove the specified logger
+ 
+  ♢ winston/transport/timestamp 
+  
+  When timestamp option is used with file transport with value set to false
+    ✓ should log with the appropriate timestamp
+  When timestamp option is used with file transport with value set to true
+    ✓ should log with the appropriate timestamp
+  When timestamp option is used with file transport and function value
+    ✓ should log with the appropriate timestamp
+ 
+  ♢ winston/exception 
+  
+  When using the winston exception module the getProcessInfo() method
+    ✓ should respond with the appropriate data
+  When using the winston exception module the getOsInfo() method
+    ✓ should respond with the appropriate data
+  When using the winston exception module the getTrace() method
+    ✓ should have the appropriate info
+  When using the winston exception module the getAllInfo() method
+    ✓ should have the appropriate info
+ 
+  ♢ winston/logger/exceptions 
+  
+  When using winston the unhandleException() method
+    ✓ should not write to the specified error file
+  When using winston the handleException() method with the default winston logger
+    ✓ should save the error information to the specified file
+  When using winston the handleException() method with a custom winston.Logger instance
+    ✓ should save the error information to the specified file
+  When using winston the handleException() method when a custom exitOnError function is set
+    ✓ should not exit the process
+ 
+  ♢ winston/logger/rewriter 
+  
+  An instance of winston.Logger the addRewriter() method
+    ✓ should add the rewriter
+  An instance of winston.Logger the addRewriter() method the log() method
+    ✓ should run the rewriter
+  An instance of winston.Logger with explicit rewriter
+    ✓ should add the rewriter
+  An instance of winston.Logger with explicit rewriter the log() method
+    ✓ should run the rewriter
+  An instance of winston.Logger with rewriters the log() method
+    ✓ should run the rewriters in correct order
+ 
+  ♢ winston/logger/levels 
+  
+  The winston logger when passed a string placeholder
+    ✓ should interpolate
+  The winston logger when passed a number placeholder
+    ✓ should interpolate
+  The winston logger when passed a json placholder and an empty object
+    ✓ should interpolate
+  The winston logger when passed a escaped percent sign
+    ✓ should not interpolate
+  The winston logger when passed interpolation strings and a meta object
+    ✓ should interpolate and have a meta object
+  The winston logger when passed multiple strings and a meta object
+    ✓ should join and have a meta object
+  The winston logger when passed interpolations strings, meta object and a callback
+    ✓ should interpolate and have a meta object
+  The winston logger when passed multiple strings, a meta object and a callback
+    ✓ should join and have a meta object
+  The winston logger the info() method when passed metadata
+    ✓ should have metadata object
+ 
+  ♢ winton/logger 
+  
+  An instance of winston.Logger
+    ✓ should have the correct methods / properties defined
+  An instance of winston.Logger the add() with an unsupported transport
+    ✓ should throw an error
+  An instance of winston.Logger the log() method when listening for the 'logging' event
+    ✓ should emit the 'log' event with the appropriate transport
+  An instance of winston.Logger the log() method when listening for the 'logged' event
+    ✓ should emit the 'logged' event
+  An instance of winston.Logger with no transports
+    ✓ the log() method should throw an error
+  An instance of winston.Logger with no transports the extend() method called on an empty object
+    ✓ should define the appropriate methods
+  An instance of winston.Logger with no transports the add() method with a supported transport
+    ✓ should add the console Transport onto transports
+    ✓ should throw an error when the same Transport is added
+  An instance of winston.Logger with no transports the add() method with a supported transport and adding an additional transport
+    ✓ should be able to add multiple transports
+  An instance of winston.Logger with no transports the add() method with a supported transport the startTimer() method when not passed a callback
+    ✓ should respond with the appropriate message
+  An instance of winston.Logger with no transports the add() method with a supported transport the profile() method when passed a callback
+    ✓ should respond with the appropriate profile message
+  An instance of winston.Logger with no transports the add() method with a supported transport the profile() method when passed a callback when passed some metadata
+    ✓ should respond with the right metadata
+  An instance of winston.Logger with no transports the add() method with a supported transport the profile() method when passed a callback when passed some metadata when not passed a callback
+    ✓ should respond with the appropriate profile message
+  An instance of winston.Logger with no transports the add() method with a supported transport the startTimer() method when passed a callback
+    ✓ should respond with the appropriate message
+  The winston logger
+    ✓ should return have two transports
+  The winston logger the remove() with an unadded transport
+    ✓ should throw an Error
+  The winston logger the remove() method with an added transport
+    ✓ should remove the Console transport from transports
+  The winston logger the remove() method with an added transport and removing an additional transport
+    ✓ should remove File transport from transports
+  The winston logger the clear() method
+    ✓ should remove all transports
+  The winston logger the unhandleExceptions() method
+    ✓ should remove all transports
+  The winston logger the log() method when passed a string placeholder
+    ✓ should interpolate
+  The winston logger the log() method when passed a number placeholder
+    ✓ should interpolate
+  The winston logger the log() method when passed a json placholder and an empty object
+    ✓ should interpolate
+  The winston logger the log() method when passed a escaped percent sign
+    ✓ should not interpolate
+  The winston logger the log() method when passed interpolation strings and a meta object
+    ✓ should interpolate and have a meta object
+  The winston logger the log() method when passed multiple strings and a meta object
+    ✓ should join and have a meta object
+  The winston logger the log() method when passed interpolations strings, meta object and a callback
+    ✓ should interpolate and have a meta object
+  The winston logger the log() method when passed multiple strings, a meta object and a callback
+    ✓ should join and have a meta object
+ 
+  ♢ winston/transports/console 
+  
+  An instance of the Console Transport with npm levels
+    ✓ should have the proper methods defined
+  An instance of the Console Transport with syslog levels
+    ✓ should have the proper methods defined
+  An instance of the Console Transport with npm levels the log() method with the silly level
+    ✓ should respond with true
+  An instance of the Console Transport with npm levels the log() method with the debug level
+    ✓ should respond with true
+  An instance of the Console Transport with npm levels the log() method with the verbose level
+    ✓ should respond with true
+  An instance of the Console Transport with npm levels the log() method with the info level
+    ✓ should respond with true
+  An instance of the Console Transport with npm levels the log() method with the warn level
+    ✓ should respond with true
+  An instance of the Console Transport with npm levels the log() method with the error level
+    ✓ should respond with true
+  An instance of the Console Transport with npm levels the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the Console Transport with npm levels the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the Console Transport with npm levels the log() method when passed circular metadata
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method with the emerg level
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method with the alert level
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method with the crit level
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method with the error level
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method with the warning level
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method with the notice level
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method with the info level
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method with the debug level
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the Console Transport with syslog levels the log() method when passed circular metadata
+    ✓ should respond with true
+ 
+  ♢ winston/transports/daily-rotate-file 
+  
+  An instance of the Daily Rotate File Transport when passed a valid filename
+    ✓ should have the proper methods defined
+  An instance of the Daily Rotate File Transport when passed a valid file stream
+    ✓ should have the proper methods defined
+  An instance of the Daily Rotate File Transport when passed a valid file stream the log() method with the silly level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid file stream the log() method with the debug level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid file stream the log() method with the verbose level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid file stream the log() method with the info level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid file stream the log() method with the warn level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid file stream the log() method with the error level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid file stream the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid file stream the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid file stream the log() method when passed circular metadata
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid filename the log() method with the silly level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid filename the log() method with the debug level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid filename the log() method with the verbose level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid filename the log() method with the info level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid filename the log() method with the warn level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid filename the log() method with the error level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid filename the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid filename the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport when passed a valid filename the log() method when passed circular metadata
+    ✓ should respond with true
+  These tests have a non-deterministic end
+    ✓ and this should be fixed before releasing
+  An instance of the Daily Rotate File Transport when passed valid options
+    ✓ should have the proper methods defined
+  An instance of the Daily Rotate File Transport the stream() method using the start option
+    ✓ should stream logs
+  An instance of the Daily Rotate File Transport the stream() method using no options
+    ✓ should stream logs
+  An instance of the Daily Rotate File Transport the log() method with the silly level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport the log() method with the debug level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport the log() method with the verbose level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport the log() method with the info level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport the log() method with the warn level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport the log() method with the error level
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport the log() method when passed circular metadata
+    ✓ should respond with true
+  An instance of the Daily Rotate File Transport after the logs have flushed the query() method using basic querying
+    ✓ should return matching results
+  An instance of the Daily Rotate File Transport after the logs have flushed the query() method using the from and until option
+    ✓ should return matching results
+  An instance of the Daily Rotate File Transport after the logs have flushed the query() method using the rows option
+    ✓ should return one result
+  An instance of the Daily Rotate File Transport after the logs have flushed the query() method using fields and order option
+    ✓ should return matching results
+  An instance of the Daily Rotate File Transport after the logs have flushed the query() method using a bad from and until option
+    ✓ should return no results
+ 
+  ♢ winston/transports/file/maxfiles 
+  
+  An instance of the File Transport when passed a valid filename
+    ✓ should be a valid transporter
+    ✓ should set the maxFiles option correctly
+  An instance of the File Transport when delete old test files and when passed more files than the maxFiles
+    ✓ should be only 3 files called 5.log, 4.log and 3.log
+    ✓ should have the correct content
+ 
+  ♢ winston/transports/file/maxsize 
+  
+  An instance of the File Transport when passed a valid filename the log() method when passed more than the maxsize
+    ✓ should create multiple files correctly
+ 
+  ♢ winston/transports/file 
+  
+  An instance of the File Transport when passed a valid filename
+    ✓ should have the proper methods defined
+  An instance of the File Transport when passed a valid file stream
+    ✓ should have the proper methods defined
+  An instance of the File Transport when passed a valid file stream the log() method with the silly level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid file stream the log() method with the debug level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid file stream the log() method with the verbose level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid file stream the log() method with the info level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid file stream the log() method with the warn level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid file stream the log() method with the error level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid file stream the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid file stream the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid file stream the log() method when passed circular metadata
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid filename the log() method with the silly level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid filename the log() method with the debug level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid filename the log() method with the verbose level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid filename the log() method with the info level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid filename the log() method with the warn level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid filename the log() method with the error level
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid filename the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid filename the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the File Transport when passed a valid filename the log() method when passed circular metadata
+    ✓ should respond with true
+  These tests have a non-deterministic end
+    ✓ and this should be fixed before releasing
+  An instance of the File Transport when passed valid options
+    ✓ should have the proper methods defined
+  An instance of the File Transport the stream() method using the start option
+    ✓ should stream logs
+  An instance of the File Transport the stream() method using no options
+    ✓ should stream logs
+  An instance of the File Transport the log() method with the silly level
+    ✓ should respond with true
+  An instance of the File Transport the log() method with the debug level
+    ✓ should respond with true
+  An instance of the File Transport the log() method with the verbose level
+    ✓ should respond with true
+  An instance of the File Transport the log() method with the info level
+    ✓ should respond with true
+  An instance of the File Transport the log() method with the warn level
+    ✓ should respond with true
+  An instance of the File Transport the log() method with the error level
+    ✓ should respond with true
+  An instance of the File Transport the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the File Transport the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the File Transport the log() method when passed circular metadata
+    ✓ should respond with true
+  An instance of the File Transport after the logs have flushed the query() method using basic querying
+    ✓ should return matching results
+  An instance of the File Transport after the logs have flushed the query() method using the from and until option
+    ✓ should return matching results
+  An instance of the File Transport after the logs have flushed the query() method using the rows option
+    ✓ should return one result
+  An instance of the File Transport after the logs have flushed the query() method using fields and order option
+    ✓ should return matching results
+  An instance of the File Transport after the logs have flushed the query() method using a bad from and until option
+    ✓ should return no results
+ 
+  ♢ winston/transports/memory 
+  
+  An instance of the Memory Transport with npm levels
+    ✓ should have the proper methods defined
+  An instance of the Memory Transport with syslog levels
+    ✓ should have the proper methods defined
+  An instance of the Memory Transport with npm levels the log() method with the silly level
+    ✓ should respond with true
+  An instance of the Memory Transport with npm levels the log() method with the debug level
+    ✓ should respond with true
+  An instance of the Memory Transport with npm levels the log() method with the verbose level
+    ✓ should respond with true
+  An instance of the Memory Transport with npm levels the log() method with the info level
+    ✓ should respond with true
+  An instance of the Memory Transport with npm levels the log() method with the warn level
+    ✓ should respond with true
+  An instance of the Memory Transport with npm levels the log() method with the error level
+    ✓ should respond with true
+  An instance of the Memory Transport with npm levels the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the Memory Transport with npm levels the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the Memory Transport with npm levels the log() method when passed circular metadata
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method with the emerg level
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method with the alert level
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method with the crit level
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method with the error level
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method with the warning level
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method with the notice level
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method with the info level
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method with the debug level
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the Memory Transport with syslog levels the log() method when passed circular metadata
+    ✓ should respond with true
+ 
+  ♢ winston/transports/webhook 
+  
+  An instance of the Webhook Transport when passed valid options
+    ✓ should have the proper methods defined
+  An https instance of the Webhook Transport when passed valid options
+    ✓ should have the proper methods defined
+  An http Basic Auth instance of the Webhook Transport when passed valid options
+    ✓ should have the proper methods defined
+  An instance of the Webhook Transport when passed valid options the log() method with the silly level
+    ✓ should respond with true
+  An instance of the Webhook Transport when passed valid options the log() method with the debug level
+    ✓ should respond with true
+  An instance of the Webhook Transport when passed valid options the log() method with the verbose level
+    ✓ should respond with true
+  An instance of the Webhook Transport when passed valid options the log() method with the info level
+    ✓ should respond with true
+  An instance of the Webhook Transport when passed valid options the log() method with the warn level
+    ✓ should respond with true
+  An instance of the Webhook Transport when passed valid options the log() method with the error level
+    ✓ should respond with true
+  An instance of the Webhook Transport when passed valid options the log() method when passed metadata
+    ✓ should respond with true
+  An instance of the Webhook Transport when passed valid options the log() method when passed primitive metadata
+    ✓ should respond with true
+  An instance of the Webhook Transport when passed valid options the log() method when passed circular metadata
+    ✓ should respond with true
+  An http Basic Auth instance of the Webhook Transport when passed valid options the log() method with the silly level
+    ✓ should respond with true
+  An http Basic Auth instance of the Webhook Transport when passed valid options the log() method with the debug level
+    ✓ should respond with true
+  An http Basic Auth instance of the Webhook Transport when passed valid options the log() method with the verbose level
+    ✓ should respond with true
+  An http Basic Auth instance of the Webhook Transport when passed valid options the log() method with the info level
+    ✓ should respond with true
+  An http Basic Auth instance of the Webhook Transport when passed valid options the log() method with the warn level
+    ✓ should respond with true
+  An http Basic Auth instance of the Webhook Transport when passed valid options the log() method with the error level
+    ✓ should respond with true
+  An http Basic Auth instance of the Webhook Transport when passed valid options the log() method when passed metadata
+    ✓ should respond with true
+✗ Errored » callback not fired 
+      in An https instance of the Webhook Transport when passed valid options the log() method with the silly level 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An https instance of the Webhook Transport when passed valid options the log() method with the debug level 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An https instance of the Webhook Transport when passed valid options the log() method with the verbose level 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An https instance of the Webhook Transport when passed valid options the log() method with the info level 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An https instance of the Webhook Transport when passed valid options the log() method with the warn level 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An https instance of the Webhook Transport when passed valid options the log() method with the error level 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An https instance of the Webhook Transport when passed valid options the log() method when passed metadata 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An https instance of the Webhook Transport when passed valid options the log() method when passed primitive metadata 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An https instance of the Webhook Transport when passed valid options the log() method when passed circular metadata 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An http Basic Auth instance of the Webhook Transport when passed valid options the log() method when passed primitive metadata 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+✗ Errored » callback not fired 
+      in An http Basic Auth instance of the Webhook Transport when passed valid options the log() method when passed circular metadata 
+      in winston/transports/webhook 
+      in test/transports/webhook-test.js
+ 
+  ♢ winston 
+  
+  The winston module
+    ✓ should have the correct methods defined
+  The winston module the extend() method called on an empty object
+    ✓ should define the appropriate methods
+  The winston module the log() method with the silly level
+    ✓ should respond without an error
+  The winston module the log() method with the debug level
+    ✓ should respond without an error
+  The winston module the log() method with the verbose level
+    ✓ should respond without an error
+  The winston module the log() method with the info level
+    ✓ should respond without an error
+  The winston module the log() method with the warn level
+    ✓ should respond without an error
+  The winston module the log() method with the error level
+    ✓ should respond without an error
+  The winston module the log() method when passed metadata
+    ✓ should respond without an error
+  The winston module the log() method when passed primitive metadata
+    ✓ should respond without an error
+  The winston module the log() method when passed circular metadata
+    ✓ should respond without an error
+  The winston module it should
+    ✓ have the correct version set
+  The winston module the setLevels() method
+    ✓ should have the proper methods defined
+
+✗ Errored » 199 honored ∙ 1 errored (5.182s) 
+  

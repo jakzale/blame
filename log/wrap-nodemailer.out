@@ -1,0 +1,111 @@
+
+> nodemailer@1.1.1 test /Users/jakub/Developer/Blame/externals/nodemailer
+> grunt
+
+[4mRunning "jshint:all" (jshint) task[24m
+Linting src/nodemailer.js ...[31mERROR[39m
+[31m[[39m[33mL228[39m[31m:[39m[33mC1[39m[31m][39m [33mW032[39m[31m:[39m [33mUnnecessary semicolon.[39m
+[31m[7m;[27m[39m
+[31m[[39m[33mL230[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'var' to have an indentation at 5 instead at 3.[39m
+  [31m[7mv[27m[39mar Blame = require('Blame'),
+[31m[[39m[33mL233[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'T' to have an indentation at 5 instead at 3.[39m
+  [31m[7mT[27m[39m.set('Object', Blame.obj({
+[31m[[39m[33mL234[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'constructor' to have an indentation at 9 instead at 5.[39m
+    [31m[7mc[27m[39monstructor: Blame.Any,
+[31m[[39m[33mL235[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'hasOwnProperty' to have an indentation at 9 instead at 5.[39m
+    [31m[7mh[27m[39masOwnProperty: Blame.fun([Blame.Any], [], null, null),
+[31m[[39m[33mL235[39m[31m:[39m[33mC19[39m[31m][39m [33mW001[39m[31m:[39m [33m'hasOwnProperty' is a really bad name.[39m
+    hasOwnProperty[31m[7m:[27m[39m Blame.fun([Blame.Any], [], null, null),
+[31m[[39m[33mL236[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'isPrototypeOf' to have an indentation at 9 instead at 5.[39m
+    [31m[7mi[27m[39msPrototypeOf: Blame.fun([Blame.Any], [], null, null),
+[31m[[39m[33mL237[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'propertyIsEnumerable' to have an indentation at 9 instead at 5.[39m
+    [31m[7mp[27m[39mropertyIsEnumerable: Blame.fun([Blame.Any], [], null, null),
+[31m[[39m[33mL238[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'toLocaleString' to have an indentation at 9 instead at 5.[39m
+    [31m[7mt[27m[39moLocaleString: Blame.fun([], [], null, null),
+[31m[[39m[33mL239[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'toString' to have an indentation at 9 instead at 5.[39m
+    [31m[7mt[27m[39moString: Blame.fun([], [], null, null),
+[31m[[39m[33mL240[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'valueOf' to have an indentation at 9 instead at 5.[39m
+    [31m[7mv[27m[39malueOf: Blame.fun([], [], null, null)
+[31m[[39m[33mL241[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected '}' to have an indentation at 5 instead at 3.[39m
+  [31m[7m}[27m[39m));
+[31m[[39m[33mL242[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'T' to have an indentation at 5 instead at 3.[39m
+  [31m[7mT[27m[39m.set('Error', Blame.obj({
+[31m[[39m[33mL243[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'message' to have an indentation at 9 instead at 5.[39m
+    [31m[7mm[27m[39message: Blame.Any,
+[31m[[39m[33mL244[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'name' to have an indentation at 9 instead at 5.[39m
+    [31m[7mn[27m[39mame: Blame.Any
+[31m[[39m[33mL245[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected '}' to have an indentation at 5 instead at 3.[39m
+  [31m[7m}[27m[39m));
+[31m[[39m[33mL246[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'T' to have an indentation at 5 instead at 3.[39m
+  [31m[7mT[27m[39m.set('Transport', Blame.obj({
+[31m[[39m[33mL247[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'close' to have an indentation at 9 instead at 5.[39m
+    [31m[7mc[27m[39mlose: Blame.fun([], [Blame.fun([T.get('Error')], [], null, Blame.Any)], null, Blame.Any),
+[31m[[39m[33mL248[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'options' to have an indentation at 9 instead at 5.[39m
+    [31m[7mo[27m[39mptions: T.get('Object'),
+[31m[[39m[33mL249[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'sendMail' to have an indentation at 9 instead at 5.[39m
+    [31m[7ms[27m[39mendMail: Blame.fun([T.get('MailComposer')], [Blame.fun([T.get('Error')], [], null, Blame.Any)], null, Blame.Any),
+[31m[[39m[33mL250[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'sendMailWithTransport' to have an indentation at 9 instead at 5.[39m
+    [31m[7ms[27m[39mendMailWithTransport: Blame.fun([T.get('MailComposer')], [Blame.fun([T.get('Error')], [], null, Blame.Any)], null, Blame.Any),
+[31m[[39m[33mL251[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'send_mail' to have an indentation at 9 instead at 5.[39m
+    [31m[7ms[27m[39mend_mail: Blame.fun([T.get('MailComposer')], [Blame.fun([T.get('Error')], [], null, Blame.Any)], null, Blame.Any),
+[31m[[39m[33mL252[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'transportType' to have an indentation at 9 instead at 5.[39m
+    [31m[7mt[27m[39mransportType: Blame.Str,
+[31m[[39m[33mL253[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'useDKIM' to have an indentation at 9 instead at 5.[39m
+    [31m[7mu[27m[39mseDKIM: Blame.fun([T.get('DKIMOptions')], [], null, Blame.Void)
+[31m[[39m[33mL254[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected '}' to have an indentation at 5 instead at 3.[39m
+  [31m[7m}[27m[39m));
+[31m[[39m[33mL255[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'T' to have an indentation at 5 instead at 3.[39m
+  [31m[7mT[27m[39m.set('NodeMailerAttachment', Blame.obj({
+[31m[[39m[33mL256[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'cid' to have an indentation at 9 instead at 5.[39m
+    [31m[7mc[27m[39mid: Blame.union(Blame.Str, Blame.Null),
+[31m[[39m[33mL257[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'contentType' to have an indentation at 9 instead at 5.[39m
+    [31m[7mc[27m[39montentType: Blame.union(Blame.Str, Blame.Null),
+[31m[[39m[33mL258[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'contents' to have an indentation at 9 instead at 5.[39m
+    [31m[7mc[27m[39montents: Blame.union(Blame.Any, Blame.Null),
+[31m[[39m[33mL259[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'fileName' to have an indentation at 9 instead at 5.[39m
+    [31m[7mf[27m[39mileName: Blame.Str,
+[31m[[39m[33mL260[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'filePath' to have an indentation at 9 instead at 5.[39m
+    [31m[7mf[27m[39milePath: Blame.union(Blame.Str, Blame.Null)
+[31m[[39m[33mL261[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected '}' to have an indentation at 5 instead at 3.[39m
+  [31m[7m}[27m[39m));
+[31m[[39m[33mL262[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'T' to have an indentation at 5 instead at 3.[39m
+  [31m[7mT[27m[39m.set('MailComposer', Blame.obj({
+[31m[[39m[33mL263[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'attachments' to have an indentation at 9 instead at 5.[39m
+    [31m[7ma[27m[39mttachments: Blame.union(Blame.arr(T.get('NodeMailerAttachment')), Blame.Null),
+[31m[[39m[33mL264[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'forceEmbeddedImages' to have an indentation at 9 instead at 5.[39m
+    [31m[7mf[27m[39morceEmbeddedImages: Blame.union(Blame.Bool, Blame.Null),
+[31m[[39m[33mL265[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'from' to have an indentation at 9 instead at 5.[39m
+    [31m[7mf[27m[39mrom: Blame.Str,
+[31m[[39m[33mL266[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'headers' to have an indentation at 9 instead at 5.[39m
+    [31m[7mh[27m[39meaders: Blame.union(Blame.obj({}), Blame.Null),
+[31m[[39m[33mL267[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'html' to have an indentation at 9 instead at 5.[39m
+    [31m[7mh[27m[39mtml: Blame.union(Blame.Str, Blame.Null),
+[31m[[39m[33mL268[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'subject' to have an indentation at 9 instead at 5.[39m
+    [31m[7ms[27m[39mubject: Blame.Str,
+[31m[[39m[33mL269[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'text' to have an indentation at 9 instead at 5.[39m
+    [31m[7mt[27m[39mext: Blame.union(Blame.Str, Blame.Null),
+[31m[[39m[33mL270[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'to' to have an indentation at 9 instead at 5.[39m
+    [31m[7mt[27m[39mo: Blame.Str
+[31m[[39m[33mL271[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected '}' to have an indentation at 5 instead at 3.[39m
+  [31m[7m}[27m[39m));
+[31m[[39m[33mL272[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'T' to have an indentation at 5 instead at 3.[39m
+  [31m[7mT[27m[39m.set('DKIMOptions', Blame.obj({
+[31m[[39m[33mL273[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'domainName' to have an indentation at 9 instead at 5.[39m
+    [31m[7md[27m[39momainName: Blame.Str,
+[31m[[39m[33mL274[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'keySelector' to have an indentation at 9 instead at 5.[39m
+    [31m[7mk[27m[39meySelector: Blame.Str,
+[31m[[39m[33mL275[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'privateKey' to have an indentation at 9 instead at 5.[39m
+    [31m[7mp[27m[39mrivateKey: Blame.Any
+[31m[[39m[33mL276[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected '}' to have an indentation at 5 instead at 3.[39m
+  [31m[7m}[27m[39m));
+[31m[[39m[33mL277[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'T' to have an indentation at 5 instead at 3.[39m
+  [31m[7mT[27m[39m.set('XOAuthGenerator', Blame.obj({
+[31m[[39m[33mL278[39m[31m:[39m[33mC5[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected 'generate' to have an indentation at 9 instead at 5.[39m
+    [31m[7mg[27m[39menerate: Blame.fun([Blame.fun([], [], null, Blame.Any)], [], null, Blame.Str)
+[31m[[39m[33mL279[39m[31m:[39m[33mC3[39m[31m][39m [33mW015[39m[31m:[39m [33mExpected '}' to have an indentation at 5 instead at 3.[39m
+  [31m[7m}[27m[39m));
+[31m>> [39mToo many errors. (86% scanned).
+
+[33mWarning: Task "jshint:all" failed. Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m

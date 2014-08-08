@@ -1,0 +1,865 @@
+
+> pegjs@0.8.0 test /Users/jakub/Developer/Blame/externals/pegjs
+> make spec
+
+
+generated parser API
+
+    parse
+[32m        parses input[0m
+[32m        throws an exception on syntax error[0m
+
+        start rule
+
+            when |startRule| is not set
+[32m                starts parsing from the first allowed rule[0m
+
+            when |startRule| is set to an allowed rule
+[32m                starts parsing from the specified rule[0m
+
+            when |startRule| is set to a disallowed start rule
+[32m                throws an exception[0m
+[32m        accepts custom options[0m
+
+generated parser behavior
+
+    with options { cache : false, optimize : 'speed' }
+
+        initializer code
+[32m            runs before the parsing begins[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        rule matching
+[32m            does not cache rule match results[0m
+
+        named matching
+[32m            delegates to the expression[0m
+[32m            overwrites expected string on failure[0m
+
+        choice matching
+[32m            matches correctly[0m
+
+        action code
+[32m            tranforms the expression result by returnung a value[0m
+[32m            is not called when the expression does not match[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function to get the text matched by the expression[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use the |expected| function to trigger an error[0m
+[32m            can use the |error| function to trigger an error[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        sequence matching
+[32m            matches correctly[0m
+[32m            does not advance position on failure[0m
+
+        labeled matching
+[32m            delegates to the expression[0m
+
+        text matching
+[32m            matches correctly[0m
+
+        simple and matching
+[32m            matches correctly[0m
+[32m            does not advance position on success[0m
+[32m            does not influence expected strings on failure[0m
+
+        simple not matching
+[32m            matches correctly[0m
+[32m            does not advance position on failure[0m
+[32m            does not influence expected strings on failure[0m
+
+        semantic and code
+[32m            causes successful match by returning |true|[0m
+[32m            causes match failure by returning |false|[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        semantic not code
+[32m            causes successful match by returning |false|[0m
+[32m            causes match failure by returning |true|[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        optional matching
+[32m            matches correctly[0m
+
+        zero or more matching
+[32m            matches correctly[0m
+
+        one or more matching
+[32m            matches correctly[0m
+
+        rule reference matching
+[32m            follows rule references[0m
+
+        literal matching
+[32m            matches empty literal correctly[0m
+[32m            matches one-character literal correctly[0m
+[32m            matches multi-character literal correctly[0m
+[32m            is case sensitive without the "i" flag[0m
+[32m            is case insensitive with the "i" flag[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        class matching
+[32m            matches empty class correctly[0m
+[32m            matches class with a character list correctly[0m
+[32m            matches class with a range correctly[0m
+[32m            matches inverted class correctly[0m
+[32m            is case sensitive without the "i" flag[0m
+[32m            is case insensitive with the "i" flag[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        any matching
+[32m            matches correctly[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        error reporting
+
+            behavior
+[32m                reports only the rightmost error[0m
+
+            expectations reporting
+[32m                reports expectations correctly with no alternative[0m
+[32m                reports expectations correctly with one alternative[0m
+[32m                reports expectations correctly with multiple alternatives[0m
+[32m                removes duplicates from expectations[0m
+[32m                sorts expectations[0m
+
+            found string reporting
+[32m                reports found string correctly at the end of input[0m
+[32m                reports found string correctly in the middle of input[0m
+
+            message building
+[32m                builds message correctly with no alternative[0m
+[32m                builds message correctly with one alternative[0m
+[32m                builds message correctly with multiple alternatives[0m
+[32m                builds message correctly at the end of input[0m
+[32m                builds message correctly in the middle of input[0m
+
+            position reporting
+[32m                reports position correctly with invalid input[0m
+[32m                reports position correctly with trailing input[0m
+[32m                reports position correctly in complex cases[0m
+
+        complex examples
+[32m            handles arithmetics example correctly[0m
+[32m            handles non-context-free language correctly[0m
+[32m            handles nested comments example correctly[0m
+
+    with options { cache : false, optimize : 'size' }
+
+        initializer code
+[32m            runs before the parsing begins[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        rule matching
+[32m            does not cache rule match results[0m
+
+        named matching
+[32m            delegates to the expression[0m
+[32m            overwrites expected string on failure[0m
+
+        choice matching
+[32m            matches correctly[0m
+
+        action code
+[32m            tranforms the expression result by returnung a value[0m
+[32m            is not called when the expression does not match[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function to get the text matched by the expression[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use the |expected| function to trigger an error[0m
+[32m            can use the |error| function to trigger an error[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        sequence matching
+[32m            matches correctly[0m
+[32m            does not advance position on failure[0m
+
+        labeled matching
+[32m            delegates to the expression[0m
+
+        text matching
+[32m            matches correctly[0m
+
+        simple and matching
+[32m            matches correctly[0m
+[32m            does not advance position on success[0m
+[32m            does not influence expected strings on failure[0m
+
+        simple not matching
+[32m            matches correctly[0m
+[32m            does not advance position on failure[0m
+[32m            does not influence expected strings on failure[0m
+
+        semantic and code
+[32m            causes successful match by returning |true|[0m
+[32m            causes match failure by returning |false|[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        semantic not code
+[32m            causes successful match by returning |false|[0m
+[32m            causes match failure by returning |true|[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        optional matching
+[32m            matches correctly[0m
+
+        zero or more matching
+[32m            matches correctly[0m
+
+        one or more matching
+[32m            matches correctly[0m
+
+        rule reference matching
+[32m            follows rule references[0m
+
+        literal matching
+[32m            matches empty literal correctly[0m
+[32m            matches one-character literal correctly[0m
+[32m            matches multi-character literal correctly[0m
+[32m            is case sensitive without the "i" flag[0m
+[32m            is case insensitive with the "i" flag[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        class matching
+[32m            matches empty class correctly[0m
+[32m            matches class with a character list correctly[0m
+[32m            matches class with a range correctly[0m
+[32m            matches inverted class correctly[0m
+[32m            is case sensitive without the "i" flag[0m
+[32m            is case insensitive with the "i" flag[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        any matching
+[32m            matches correctly[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        error reporting
+
+            behavior
+[32m                reports only the rightmost error[0m
+
+            expectations reporting
+[32m                reports expectations correctly with no alternative[0m
+[32m                reports expectations correctly with one alternative[0m
+[32m                reports expectations correctly with multiple alternatives[0m
+[32m                removes duplicates from expectations[0m
+[32m                sorts expectations[0m
+
+            found string reporting
+[32m                reports found string correctly at the end of input[0m
+[32m                reports found string correctly in the middle of input[0m
+
+            message building
+[32m                builds message correctly with no alternative[0m
+[32m                builds message correctly with one alternative[0m
+[32m                builds message correctly with multiple alternatives[0m
+[32m                builds message correctly at the end of input[0m
+[32m                builds message correctly in the middle of input[0m
+
+            position reporting
+[32m                reports position correctly with invalid input[0m
+[32m                reports position correctly with trailing input[0m
+[32m                reports position correctly in complex cases[0m
+
+        complex examples
+[32m            handles arithmetics example correctly[0m
+[32m            handles non-context-free language correctly[0m
+[32m            handles nested comments example correctly[0m
+
+    with options { cache : true, optimize : 'speed' }
+
+        initializer code
+[32m            runs before the parsing begins[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        rule matching
+[32m            caches rule match results[0m
+
+        named matching
+[32m            delegates to the expression[0m
+[32m            overwrites expected string on failure[0m
+
+        choice matching
+[32m            matches correctly[0m
+
+        action code
+[32m            tranforms the expression result by returnung a value[0m
+[32m            is not called when the expression does not match[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function to get the text matched by the expression[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use the |expected| function to trigger an error[0m
+[32m            can use the |error| function to trigger an error[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        sequence matching
+[32m            matches correctly[0m
+[32m            does not advance position on failure[0m
+
+        labeled matching
+[32m            delegates to the expression[0m
+
+        text matching
+[32m            matches correctly[0m
+
+        simple and matching
+[32m            matches correctly[0m
+[32m            does not advance position on success[0m
+[32m            does not influence expected strings on failure[0m
+
+        simple not matching
+[32m            matches correctly[0m
+[32m            does not advance position on failure[0m
+[32m            does not influence expected strings on failure[0m
+
+        semantic and code
+[32m            causes successful match by returning |true|[0m
+[32m            causes match failure by returning |false|[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        semantic not code
+[32m            causes successful match by returning |false|[0m
+[32m            causes match failure by returning |true|[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        optional matching
+[32m            matches correctly[0m
+
+        zero or more matching
+[32m            matches correctly[0m
+
+        one or more matching
+[32m            matches correctly[0m
+
+        rule reference matching
+[32m            follows rule references[0m
+
+        literal matching
+[32m            matches empty literal correctly[0m
+[32m            matches one-character literal correctly[0m
+[32m            matches multi-character literal correctly[0m
+[32m            is case sensitive without the "i" flag[0m
+[32m            is case insensitive with the "i" flag[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        class matching
+[32m            matches empty class correctly[0m
+[32m            matches class with a character list correctly[0m
+[32m            matches class with a range correctly[0m
+[32m            matches inverted class correctly[0m
+[32m            is case sensitive without the "i" flag[0m
+[32m            is case insensitive with the "i" flag[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        any matching
+[32m            matches correctly[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        error reporting
+
+            behavior
+[32m                reports only the rightmost error[0m
+
+            expectations reporting
+[32m                reports expectations correctly with no alternative[0m
+[32m                reports expectations correctly with one alternative[0m
+[32m                reports expectations correctly with multiple alternatives[0m
+[32m                removes duplicates from expectations[0m
+[32m                sorts expectations[0m
+
+            found string reporting
+[32m                reports found string correctly at the end of input[0m
+[32m                reports found string correctly in the middle of input[0m
+
+            message building
+[32m                builds message correctly with no alternative[0m
+[32m                builds message correctly with one alternative[0m
+[32m                builds message correctly with multiple alternatives[0m
+[32m                builds message correctly at the end of input[0m
+[32m                builds message correctly in the middle of input[0m
+
+            position reporting
+[32m                reports position correctly with invalid input[0m
+[32m                reports position correctly with trailing input[0m
+[32m                reports position correctly in complex cases[0m
+
+        complex examples
+[32m            handles arithmetics example correctly[0m
+[32m            handles non-context-free language correctly[0m
+[32m            handles nested comments example correctly[0m
+
+    with options { cache : true, optimize : 'size' }
+
+        initializer code
+[32m            runs before the parsing begins[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        rule matching
+[32m            caches rule match results[0m
+
+        named matching
+[32m            delegates to the expression[0m
+[32m            overwrites expected string on failure[0m
+
+        choice matching
+[32m            matches correctly[0m
+
+        action code
+[32m            tranforms the expression result by returnung a value[0m
+[32m            is not called when the expression does not match[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function to get the text matched by the expression[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use the |expected| function to trigger an error[0m
+[32m            can use the |error| function to trigger an error[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        sequence matching
+[32m            matches correctly[0m
+[32m            does not advance position on failure[0m
+
+        labeled matching
+[32m            delegates to the expression[0m
+
+        text matching
+[32m            matches correctly[0m
+
+        simple and matching
+[32m            matches correctly[0m
+[32m            does not advance position on success[0m
+[32m            does not influence expected strings on failure[0m
+
+        simple not matching
+[32m            matches correctly[0m
+[32m            does not advance position on failure[0m
+[32m            does not influence expected strings on failure[0m
+
+        semantic and code
+[32m            causes successful match by returning |true|[0m
+[32m            causes match failure by returning |false|[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        semantic not code
+[32m            causes successful match by returning |false|[0m
+[32m            causes match failure by returning |true|[0m
+[32m            can use label variables[0m
+[32m            can use the |text| function[0m
+[32m            can use the |offset| function to get the current parse position[0m
+[32m            can use the |line| and |column| functions to get the current line and column[0m
+[32m            can use variables defined in the initializer[0m
+[32m            can use functions defined in the initializer[0m
+[32m            can use the |parser| variable to access the parser object[0m
+[32m            can use options passed to the parser[0m
+
+        optional matching
+[32m            matches correctly[0m
+
+        zero or more matching
+[32m            matches correctly[0m
+
+        one or more matching
+[32m            matches correctly[0m
+
+        rule reference matching
+[32m            follows rule references[0m
+
+        literal matching
+[32m            matches empty literal correctly[0m
+[32m            matches one-character literal correctly[0m
+[32m            matches multi-character literal correctly[0m
+[32m            is case sensitive without the "i" flag[0m
+[32m            is case insensitive with the "i" flag[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        class matching
+[32m            matches empty class correctly[0m
+[32m            matches class with a character list correctly[0m
+[32m            matches class with a range correctly[0m
+[32m            matches inverted class correctly[0m
+[32m            is case sensitive without the "i" flag[0m
+[32m            is case insensitive with the "i" flag[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        any matching
+[32m            matches correctly[0m
+[32m            advances position on success[0m
+[32m            sets expectation correctly on failure[0m
+
+        error reporting
+
+            behavior
+[32m                reports only the rightmost error[0m
+
+            expectations reporting
+[32m                reports expectations correctly with no alternative[0m
+[32m                reports expectations correctly with one alternative[0m
+[32m                reports expectations correctly with multiple alternatives[0m
+[32m                removes duplicates from expectations[0m
+[32m                sorts expectations[0m
+
+            found string reporting
+[32m                reports found string correctly at the end of input[0m
+[32m                reports found string correctly in the middle of input[0m
+
+            message building
+[32m                builds message correctly with no alternative[0m
+[32m                builds message correctly with one alternative[0m
+[32m                builds message correctly with multiple alternatives[0m
+[32m                builds message correctly at the end of input[0m
+[32m                builds message correctly in the middle of input[0m
+
+            position reporting
+[32m                reports position correctly with invalid input[0m
+[32m                reports position correctly with trailing input[0m
+[32m                reports position correctly in complex cases[0m
+
+        complex examples
+[32m            handles arithmetics example correctly[0m
+[32m            handles non-context-free language correctly[0m
+[32m            handles nested comments example correctly[0m
+
+PEG.js API
+
+    buildParser
+[32m        builds parsers[0m
+[32m        throws an exception on syntax error[0m
+[32m        throws an exception on semantic error[0m
+
+        allowed start rules
+
+            when optimizing for parsing speed
+
+                when |allowedStartRules| is not set
+[32m                    the generated parser can start only from the first rule[0m
+
+                when |allowedStartRules| is set
+[32m                    the generated parser can start only from specified rules[0m
+
+            when optimizing for code size
+
+                when |allowedStartRules| is not set
+[32m                    the generated parser can start only from the first rule[0m
+
+                when |allowedStartRules| is set
+[32m                    the generated parser can start only from specified rules[0m
+
+        intermediate results caching
+
+            when |cache| is not set
+[32m                the generated parser doesn't cache intermediate parse results[0m
+
+            when |cache| is set to |false|
+[32m                the generated parser doesn't cache intermediate parse results[0m
+
+            when |cache| is set to |true|
+[32m                the generated parser caches intermediate parse results[0m
+
+        output
+
+            when |output| is not set
+[32m                defaults to "parser"[0m
+
+            when |output| is set to |"parser"|
+[32m                returns generated parser object[0m
+
+            when |output| is set to |"source"|
+[32m                returns generated parser source code[0m
+[32m        accepts custom options[0m
+
+plugin API
+
+    use
+[32m        is called for each plugin[0m
+[32m        receives the configuration[0m
+[32m        receives the options[0m
+[32m        can replace the parser[0m
+[32m        can change compiler passes[0m
+[32m        can change the options[0m
+
+compiler pass |generateBytecode|
+
+    for grammar
+[32m        generates correct bytecode[0m
+[32m        defines correct constants[0m
+
+    for rule
+[32m        generates correct bytecode[0m
+
+    for named
+[32m        generates correct bytecode[0m
+[32m        defines correct constants[0m
+
+    for choice
+[32m        generates correct bytecode[0m
+
+    for action
+
+        without labels
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+        with one label
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+        with multiple labels
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+    for sequence
+[32m        generates correct bytecode[0m
+[32m        defines correct constants[0m
+
+    for labeled
+[32m        generates correct bytecode[0m
+
+    for text
+[32m        generates correct bytecode[0m
+
+    for simple_and
+[32m        generates correct bytecode[0m
+[32m        defines correct constants[0m
+
+    for simple_not
+[32m        generates correct bytecode[0m
+[32m        defines correct constants[0m
+
+    for optional
+[32m        generates correct bytecode[0m
+[32m        defines correct constants[0m
+
+    for zero_or_more
+[32m        generates correct bytecode[0m
+[32m        defines correct constants[0m
+
+    for one_or_more
+[32m        generates correct bytecode[0m
+[32m        defines correct constants[0m
+
+    for semantic_and
+
+        without labels
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+        with labels
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+    for semantic_not
+
+        without labels
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+        with labels
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+    for rule_ref
+[32m        generates correct bytecode[0m
+
+    for literal
+
+        empty
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+        non-empty case-sensitive
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+        non-empty case-insensitive
+[32m            generates correct bytecode[0m
+[32m            defines correct constants[0m
+
+    for class
+[32m        generates correct bytecode[0m
+
+        non-empty non-inverted case-sensitive
+[32m            defines correct constants[0m
+
+        non-empty inverted case-sensitive
+[32m            defines correct constants[0m
+
+        non-empty non-inverted case-insensitive
+[32m            defines correct constants[0m
+
+        non-empty complex
+[32m            defines correct constants[0m
+
+        empty non-inverted
+[32m            defines correct constants[0m
+
+        empty inverted
+[32m            defines correct constants[0m
+
+    for any
+[32m        generates bytecode[0m
+[32m        defines correct constants[0m
+
+compiler pass |removeProxyRules|
+
+    when a proxy rule isn't listed in |allowedStartRules|
+[32m        updates references and removes it[0m
+
+    when a proxy rule is listed in |allowedStartRules|
+[32m        updates references but doesn't remove it[0m
+
+compiler pass |reportLeftRecursion|
+[32m    reports direct left recursion[0m
+[32m    reports indirect left recursion[0m
+
+    in sequences
+[32m        reports left recursion only for the first element[0m
+
+compiler pass |reportMissingRules|
+[32m    reports missing rules[0m
+
+PEG.js grammar parser
+[32m    parses Grammar[0m
+[32m    parses Initializer[0m
+[32m    parses Rule[0m
+[32m    parses Expression[0m
+[32m    parses ChoiceExpression[0m
+[32m    parses ActionExpression[0m
+[32m    parses SequenceExpression[0m
+[32m    parses LabeledExpression[0m
+[32m    parses PrefixedExpression[0m
+[32m    parses PrefixedOperator[0m
+[32m    parses SuffixedExpression[0m
+[32m    parses SuffixedOperator[0m
+[32m    parses PrimaryExpression[0m
+[32m    parses RuleReferenceExpression[0m
+[32m    parses SemanticPredicateExpression[0m
+[32m    parses SemanticPredicateOperator[0m
+[32m    parses WhiteSpace[0m
+[32m    parses LineTerminator[0m
+[32m    parses LineTerminatorSequence[0m
+[32m    parses Comment[0m
+[32m    parses MultiLineComment[0m
+[32m    parses MultiLineCommentNoLineTerminator[0m
+[32m    parses SingleLineComment[0m
+[32m    parses Identifier[0m
+[32m    parses IdentifierName[0m
+[32m    parses IdentifierStart[0m
+[32m    parses IdentifierPart[0m
+[32m    parses LiteralMatcher[0m
+[32m    parses StringLiteral[0m
+[32m    parses DoubleStringCharacter[0m
+[32m    parses SingleStringCharacter[0m
+[32m    parses CharacterClassMatcher[0m
+[32m    parses ClassCharacterRange[0m
+[32m    parses ClassCharacter[0m
+[32m    parses LineContinuation[0m
+[32m    parses EscapeSequence[0m
+[32m    parses CharacterEscapeSequence[0m
+[32m    parses SingleEscapeCharacter[0m
+[32m    parses NonEscapeCharacter[0m
+[32m    parses HexEscapeSequence[0m
+[32m    parses UnicodeEscapeSequence[0m
+[32m    parses AnyMatcher[0m
+[32m    parses CodeBlock[0m
+[32m    parses Code[0m
+[32m    parses __[0m
+[32m    parses _[0m
+[32m    parses EOS[0m
+[32m    parses EOF[0m
+
+Finished in 1.844 seconds
+[32m502 tests, 933 assertions, 0 failures, 0 skipped
+[0m
+

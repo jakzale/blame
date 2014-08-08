@@ -1,0 +1,46 @@
+
+npm ERR! esprima@2.0.0-dev eslint: `node node_modules/eslint/bin/eslint.js esprima.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the esprima@2.0.0-dev eslint script.
+npm ERR! This is most likely a problem with the esprima package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     node node_modules/eslint/bin/eslint.js esprima.js
+npm ERR! You can get their info via:
+npm ERR!     npm owner ls esprima
+npm ERR! There is likely additional logging output above.
+npm ERR! System Darwin 13.3.0
+npm ERR! command "node" "/usr/local/bin/npm" "run-script" "eslint"
+npm ERR! cwd /Users/jakub/Developer/Blame/externals/esprima
+npm ERR! node -v v0.11.13
+npm ERR! npm -v 2.0.0-alpha-5
+npm ERR! code ELIFECYCLE
+npm ERR! 
+npm ERR! Additional logging details can be found in:
+npm ERR!     /Users/jakub/Developer/Blame/externals/esprima/npm-debug.log
+npm ERR! not ok code 0
+
+npm ERR! esprima@2.0.0-dev lint: `npm run-script check-version && npm run-script eslint && npm run-script jscs && npm run-script jslint`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the esprima@2.0.0-dev lint script.
+npm ERR! This is most likely a problem with the esprima package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     npm run-script check-version && npm run-script eslint && npm run-script jscs && npm run-script jslint
+npm ERR! You can get their info via:
+npm ERR!     npm owner ls esprima
+npm ERR! There is likely additional logging output above.
+npm ERR! System Darwin 13.3.0
+npm ERR! command "node" "/usr/local/bin/npm" "run-script" "lint"
+npm ERR! cwd /Users/jakub/Developer/Blame/externals/esprima
+npm ERR! node -v v0.11.13
+npm ERR! npm -v 2.0.0-alpha-5
+npm ERR! code ELIFECYCLE
+npm ERR! 
+npm ERR! Additional logging details can be found in:
+npm ERR!     /Users/jakub/Developer/Blame/externals/esprima/npm-debug.log
+npm ERR! not ok code 0
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

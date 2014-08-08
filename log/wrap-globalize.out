@@ -1,0 +1,178 @@
+
+> globalize@1.0.0-alpha.4 test /Users/jakub/Developer/Blame/externals/globalize
+> grunt
+
+[4mRunning "jshint:grunt" (jshint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "jshint:source" (jshint) task[24m
+[32m>> [39m57 files lint free.
+
+[4mRunning "jshint:test" (jshint) task[24m
+[32m>> [39m22 files lint free.
+
+[4mRunning "test:unit" (test) task[24m
+
+[4mRunning "checkDependencies:bower" (checkDependencies) task[24m
+
+[4mRunning "checkDependencies:npm" (checkDependencies) task[24m
+
+[4mRunning "connect:test" (connect) task[24m
+Started connect web server on localhost:9001.
+
+[4mRunning "qunit:unit" (qunit) task[24m
+Testing http://localhost:9001/unit.html ..............................................................................................................................................................................................[32mOK[39m
+[32m>> [39m552 assertions passed (396ms)
+
+[4mRunning "clean:dist" (clean) task[24m
+Cleaning dist...[32mOK[39m
+
+[4mRunning "requirejs:bundle" (requirejs) task[24m
+
+Tracing dependencies for: globalize
+
+Tracing dependencies for: globalize.date
+
+Tracing dependencies for: globalize.number
+
+Tracing dependencies for: globalize.message
+
+Tracing dependencies for: cldr
+
+Tracing dependencies for: cldr/event
+
+Tracing dependencies for: cldr
+
+Tracing dependencies for: cldr/supplemental
+
+Tracing dependencies for: ./core
+
+Tracing dependencies for: cldr
+
+Tracing dependencies for: cldr/event
+
+Tracing dependencies for: ./core
+
+Tracing dependencies for: cldr
+
+Tracing dependencies for: cldr/event
+
+Tracing dependencies for: ./core
+
+globalize.js
+----------------
+util/to-string.js
+common/format-message.js
+common/create-error.js
+common/validate.js
+util/always-array.js
+common/validate/cldr.js
+common/validate/default-locale.js
+common/validate/presence.js
+common/validate/type.js
+common/validate/type/locale.js
+util/is-plain-object.js
+common/validate/type/plain-object.js
+util/always-cldr.js
+core.js
+
+globalize.date.js
+----------------
+common/validate/type/date.js
+common/validate/type/date-pattern.js
+common/validate/type/string.js
+util/object/values.js
+date/all-presets.js
+common/create-error/invalid-parameter-value.js
+date/expand-pattern.js
+date/week-days.js
+date/first-day-of-week.js
+date/day-of-week.js
+date/distance-in-days.js
+date/start-of.js
+date/day-of-year.js
+date/milliseconds-in-day.js
+date/pattern-re.js
+util/string/pad.js
+date/format.js
+date/tokenizer.js
+util/date/set-date.js
+util/date/set-month.js
+date/parse.js
+date.js
+
+globalize.number.js
+----------------
+common/validate/type/number.js
+common/validate/type/string.js
+number/format/grouping-separator.js
+util/number/truncate.js
+util/string/pad.js
+number/format/integer-fraction-digits.js
+util/number/to-precision.js
+number/format/significant-digits.js
+number/pattern-re.js
+number/pattern-properties.js
+number/numbering-system.js
+number/symbol.js
+number/symbol/name.js
+util/number/round.js
+number/format.js
+number/number-re.js
+number/symbol/map.js
+util/regexp/escape.js
+number/parse.js
+number/pattern.js
+number.js
+
+globalize.message.js
+----------------
+message.js
+
+
+[4mRunning "copy:dist_core" (copy) task[24m
+Copied [36m1[39m files
+
+[4mRunning "copy:dist_modules" (copy) task[24m
+Copied [36m3[39m files
+
+[4mRunning "copy:dist_allinone_node" (copy) task[24m
+Copied [36m1[39m files
+
+[4mRunning "jshint:dist" (jshint) task[24m
+[32m>> [39m5 files lint free.
+
+[4mRunning "test:functional" (test) task[24m
+
+[4mRunning "qunit:functional" (qunit) task[24m
+Testing http://localhost:9001/functional.html ..................................[32mOK[39m
+[32m>> [39m158 assertions passed (153ms)
+
+[4mRunning "uglify:dist" (uglify) task[24m
+File "dist/globalize.min.js" created.
+File "dist/globalize/date.min.js" created.
+File "dist/globalize/number.min.js" created.
+File "dist/globalize/message.min.js" created.
+
+[4mRunning "compare_size:files" (compare_size) task[24m
+   raw     gz Sizes                                                            
+  2048   1034 dist/globalize.min.js                                            
+  9384   2994 dist/globalize/date.min.js                                       
+   775    461 dist/globalize/message.min.js                                    
+  4833   2244 dist/globalize/number.min.js                                     
+
+   raw     gz Compared to master [90m@ 300a9dc6cb4a08eb847c8565ee01eae4cd9aa35c[39m    
+[90m[90m     =[39m [31m[31m    +1[39m dist/globalize.min.js                                            
+[90m[90m     =[39m [90m[90m     =[39m dist/globalize/date.min.js                                       
+[90m[90m     =[39m [90m[90m     =[39m dist/globalize/message.min.js                                    
+[90m[90m     =[39m [90m[90m     =[39m dist/globalize/number.min.js                                     
+
+   raw     gz Compared to last run                                             
+[90m[90m     =[39m [31m[31m    +1[39m dist/globalize.min.js                                            
+[90m[90m     =[39m [90m[90m     =[39m dist/globalize/date.min.js                                       
+[90m[90m     =[39m [90m[90m     =[39m dist/globalize/message.min.js                                    
+[90m[90m     =[39m [90m[90m     =[39m dist/globalize/number.min.js                                     
+
+Saved as: master
+
+[32mDone, without errors.[39m

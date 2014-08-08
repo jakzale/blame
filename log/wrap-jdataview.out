@@ -1,0 +1,202 @@
+
+> jdataview@2.4.7 test /Users/jakub/Developer/Blame/externals/jdataview
+> grunt
+
+[4mRunning "build" task[24m
+
+[4mRunning "clean:all" (clean) task[24m
+[32m>> [39m4 paths cleaned.
+
+[4mRunning "lintspaces:all" (lintspaces) task[24m
+[32m>> [39m33 lint free.
+
+[4mRunning "jshint:grunt" (jshint) task[24m
+
+✔︎ No problems
+
+
+[4mRunning "jshint:before_concat" (jshint) task[24m
+
+✔︎ No problems
+
+
+[4mRunning "concat_sourcemap:all" (concat_sourcemap) task[24m
+File "dist/jdataview.js" created.
+
+[4mRunning "jshint:after_concat" (jshint) task[24m
+
+✔︎ No problems
+
+
+[4mRunning "uglify:browser" (uglify) task[24m
+File dist/browser/jdataview.js.map created (source map).
+File dist/browser/jdataview.js created.
+
+[4mRunning "uglify:node" (uglify) task[24m
+File dist/node/jdataview.js created.
+
+[4mRunning "test:browser" (test) task[24m
+
+[4mRunning "karma:browser" (karma) task[24m
+[32mINFO [karma]: [39mKarma v0.12.21 server started at http://localhost:9876/
+[32mINFO [launcher]: [39mStarting browser Firefox
+[32mINFO [launcher]: [39mStarting browser IE
+[31mERROR [launcher]: [39mNo binary for IE browser on your platform.
+  Please, set "IE_BIN" env variable.
+[32mINFO [Firefox 32.0.0 (Mac OS X 10.9)]: [39mConnected on socket DucvjBrWGDq44YZgpmnH with id 49452183
+Firefox 32.0.0 (Mac OS X 10.9): Executed 0 of 151[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 1 of 151[32m SUCCESS[39m (0 secs / 0.001 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 2 of 151[32m SUCCESS[39m (0 secs / 0.001 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 3 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 4 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 5 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 6 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 7 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 8 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 9 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 10 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 11 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 12 of 151[32m SUCCESS[39m (0 secs / 0.002 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 13 of 151[32m SUCCESS[39m (0 secs / 0.003 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 14 of 151[32m SUCCESS[39m (0 secs / 0.003 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 15 of 151[32m SUCCESS[39m (0 secs / 0.003 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 16 of 151[32m SUCCESS[39m (0 secs / 0.004 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 17 of 151[32m SUCCESS[39m (0 secs / 0.056 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 18 of 151[32m SUCCESS[39m (0 secs / 0.056 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 19 of 151[32m SUCCESS[39m (0 secs / 0.056 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 20 of 151[32m SUCCESS[39m (0 secs / 0.057 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 21 of 151[32m SUCCESS[39m (0 secs / 0.057 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 22 of 151[32m SUCCESS[39m (0 secs / 0.057 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 23 of 151[32m SUCCESS[39m (0 secs / 0.057 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 24 of 151[32m SUCCESS[39m (0 secs / 0.057 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 25 of 151[32m SUCCESS[39m (0 secs / 0.058 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 26 of 151[32m SUCCESS[39m (0 secs / 0.058 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 27 of 151[32m SUCCESS[39m (0 secs / 0.059 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 28 of 151[32m SUCCESS[39m (0 secs / 0.059 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 29 of 151[32m SUCCESS[39m (0 secs / 0.059 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 30 of 151[32m SUCCESS[39m (0 secs / 0.06 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 31 of 151[32m SUCCESS[39m (0 secs / 0.061 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 32 of 151[32m SUCCESS[39m (0 secs / 0.061 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 33 of 151[32m SUCCESS[39m (0 secs / 0.061 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 34 of 151[32m SUCCESS[39m (0 secs / 0.061 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 35 of 151[32m SUCCESS[39m (0 secs / 0.061 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 36 of 151[32m SUCCESS[39m (0 secs / 0.061 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 37 of 151[32m SUCCESS[39m (0 secs / 0.062 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 38 of 151[32m SUCCESS[39m (0 secs / 0.062 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 39 of 151[32m SUCCESS[39m (0 secs / 0.062 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 40 of 151[32m SUCCESS[39m (0 secs / 0.063 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 41 of 151[32m SUCCESS[39m (0 secs / 0.063 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 42 of 151[32m SUCCESS[39m (0 secs / 0.064 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 43 of 151[32m SUCCESS[39m (0 secs / 0.064 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 44 of 151[32m SUCCESS[39m (0 secs / 0.064 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 45 of 151[32m SUCCESS[39m (0 secs / 0.064 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 46 of 151[32m SUCCESS[39m (0 secs / 0.064 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 47 of 151[32m SUCCESS[39m (0 secs / 0.064 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 48 of 151[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 49 of 151[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 50 of 151[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 51 of 151[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 52 of 151[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 53 of 151[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 54 of 151[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 55 of 151[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 56 of 151[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 57 of 151[32m SUCCESS[39m (0 secs / 0.066 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 58 of 151[32m SUCCESS[39m (0 secs / 0.066 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 59 of 151[32m SUCCESS[39m (0 secs / 0.066 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 60 of 151[32m SUCCESS[39m (0 secs / 0.066 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 61 of 151[32m SUCCESS[39m (0 secs / 0.066 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 62 of 151[32m SUCCESS[39m (0 secs / 0.066 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 63 of 151[32m SUCCESS[39m (0 secs / 0.066 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 64 of 151[32m SUCCESS[39m (0 secs / 0.066 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 65 of 151[32m SUCCESS[39m (0 secs / 0.066 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 66 of 151[32m SUCCESS[39m (0 secs / 0.067 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 67 of 151[32m SUCCESS[39m (0 secs / 0.067 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 68 of 151[32m SUCCESS[39m (0 secs / 0.136 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 69 of 151[32m SUCCESS[39m (0 secs / 0.136 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 70 of 151[32m SUCCESS[39m (0 secs / 0.136 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 71 of 151[32m SUCCESS[39m (0 secs / 0.136 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 72 of 151[32m SUCCESS[39m (0 secs / 0.136 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 73 of 151[32m SUCCESS[39m (0 secs / 0.137 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 74 of 151[32m SUCCESS[39m (0 secs / 0.137 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 75 of 151[32m SUCCESS[39m (0 secs / 0.137 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 76 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 77 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 78 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 79 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 80 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 81 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 82 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 83 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 84 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 85 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 86 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 87 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 88 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 89 of 151[32m SUCCESS[39m (0 secs / 0.138 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 90 of 151[32m SUCCESS[39m (0 secs / 0.139 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 91 of 151[32m SUCCESS[39m (0 secs / 0.139 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 92 of 151[32m SUCCESS[39m (0 secs / 0.139 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 93 of 151[32m SUCCESS[39m (0 secs / 0.139 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 94 of 151[32m SUCCESS[39m (0 secs / 0.14 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 95 of 151[32m SUCCESS[39m (0 secs / 0.14 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 96 of 151[32m SUCCESS[39m (0 secs / 0.14 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 97 of 151[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 98 of 151[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 99 of 151[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 100 of 151[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 101 of 151[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 102 of 151[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 103 of 151[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 104 of 151[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 105 of 151[32m SUCCESS[39m (0 secs / 0.141 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 106 of 151[32m SUCCESS[39m (0 secs / 0.142 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 107 of 151[32m SUCCESS[39m (0 secs / 0.142 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 108 of 151[32m SUCCESS[39m (0 secs / 0.142 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 109 of 151[32m SUCCESS[39m (0 secs / 0.142 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 110 of 151[32m SUCCESS[39m (0 secs / 0.142 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 111 of 151[32m SUCCESS[39m (0 secs / 0.142 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 112 of 151[32m SUCCESS[39m (0 secs / 0.142 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 113 of 151[32m SUCCESS[39m (0 secs / 0.142 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 114 of 151[32m SUCCESS[39m (0 secs / 0.143 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 115 of 151[32m SUCCESS[39m (0 secs / 0.143 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 116 of 151[32m SUCCESS[39m (0 secs / 0.143 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 117 of 151[32m SUCCESS[39m (0 secs / 0.143 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 118 of 151[32m SUCCESS[39m (0 secs / 0.224 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 119 of 151[32m SUCCESS[39m (0 secs / 0.224 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 120 of 151[32m SUCCESS[39m (0 secs / 0.224 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 121 of 151[32m SUCCESS[39m (0 secs / 0.224 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 122 of 151[32m SUCCESS[39m (0 secs / 0.225 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 123 of 151[32m SUCCESS[39m (0 secs / 0.225 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 124 of 151[32m SUCCESS[39m (0 secs / 0.225 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 125 of 151[32m SUCCESS[39m (0 secs / 0.226 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 126 of 151[32m SUCCESS[39m (0 secs / 0.226 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 127 of 151[32m SUCCESS[39m (0 secs / 0.226 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 128 of 151[32m SUCCESS[39m (0 secs / 0.227 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 129 of 151[32m SUCCESS[39m (0 secs / 0.227 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 130 of 151[32m SUCCESS[39m (0 secs / 0.227 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 131 of 151[32m SUCCESS[39m (0 secs / 0.227 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 132 of 151[32m SUCCESS[39m (0 secs / 0.227 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 133 of 151[32m SUCCESS[39m (0 secs / 0.227 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 134 of 151[32m SUCCESS[39m (0 secs / 0.228 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 135 of 151[32m SUCCESS[39m (0 secs / 0.228 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 136 of 151[32m SUCCESS[39m (0 secs / 0.228 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 137 of 151[32m SUCCESS[39m (0 secs / 0.228 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 138 of 151[32m SUCCESS[39m (0 secs / 0.228 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 139 of 151[32m SUCCESS[39m (0 secs / 0.228 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 140 of 151[32m SUCCESS[39m (0 secs / 0.229 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 141 of 151[32m SUCCESS[39m (0 secs / 0.23 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 142 of 151[32m SUCCESS[39m (0 secs / 0.23 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 143 of 151[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 144 of 151[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 145 of 151[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 146 of 151[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 147 of 151[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 148 of 151[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 149 of 151[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 150 of 151[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 151 of 151[32m SUCCESS[39m (0 secs / 0.231 secs)
+[1A[2KFirefox 32.0.0 (Mac OS X 10.9): Executed 151 of 151[32m SUCCESS[39m (0.287 secs / 0.231 secs)
+[33mWarning: Task "karma:browser" failed. Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m

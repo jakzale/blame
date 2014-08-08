@@ -1,0 +1,57 @@
+
+> power-assert@0.7.2 test /Users/jakub/Developer/Blame/externals/power-assert
+> gulp test
+
+[04:02:32] Using gulpfile ~/Developer/Blame/externals/power-assert/gulpfile.js
+[04:02:32] Starting 'test'...
+[04:02:32] Starting 'clean_espower'...
+[04:02:32] Starting 'clean_bundle'...
+[04:02:32] Finished 'test' after 14 ms
+[04:02:32] Finished 'clean_bundle' after 14 ms
+[04:02:32] Finished 'clean_espower' after 24 ms
+[04:02:32] Starting 'espower'...
+[04:02:32] Starting 'copy_others'...
+[04:02:32] Starting 'bundle'...
+[04:02:32] Finished 'copy_others' after 369 ms
+[04:02:32] Finished 'espower' after 371 ms
+[04:02:35] Finished 'bundle' after 3.22 s
+[04:02:35] Starting 'unit'...
+[04:02:35] Starting 'test_generated'...
+[04:02:35] Starting 'test_browser'...
+[04:02:35] Starting 'test_amd'...
+
+  [93m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m
+
+[92m [0m[32m 52 passing[0m[90m (238ms)[0m
+
+[04:02:36] Finished 'test_generated' after 542 ms
+
+  [93m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m[90m․[0m
+
+[92m [0m[32m 52 passing[0m[90m (168ms)[0m
+
+[04:02:36] Finished 'unit' after 903 ms
+Error loading resource file:///Users/jakub/Developer/Blame/externals/power-assert/bower_components/mocha/mocha.css (203). Details: Error opening /Users/jakub/Developer/Blame/externals/power-assert/bower_components/mocha/mocha.css: No such file or directory
+Error loading resource file:///Users/jakub/Developer/Blame/externals/power-assert/bower_components/mocha/mocha.css (203). Details: Error opening /Users/jakub/Developer/Blame/externals/power-assert/bower_components/mocha/mocha.css: No such file or directory
+Error loading resource file:///Users/jakub/Developer/Blame/externals/power-assert/bower_components/mocha/mocha.js (203). Details: Error opening /Users/jakub/Developer/Blame/externals/power-assert/bower_components/mocha/mocha.js: No such file or directory
+Error loading resource file:///Users/jakub/Developer/Blame/externals/power-assert/bower_components/requirejs/require.js (203). Details: Error opening /Users/jakub/Developer/Blame/externals/power-assert/bower_components/requirejs/require.js: No such file or directory
+TypeError: 'undefined' is not a function (evaluating 'mocha.setup('bdd')')
+
+  file:///Users/jakub/Developer/Blame/externals/power-assert/test/test-amd.html:16
+Error: proxies not supported on this platform
+
+  file:///Users/jakub/Developer/Blame/externals/power-assert/build/power-assert.js:12511
+  file:///Users/jakub/Developer/Blame/externals/power-assert/build/power-assert.js:10454
+  file:///Users/jakub/Developer/Blame/externals/power-assert/build/power-assert.js:10203
+  file:///Users/jakub/Developer/Blame/externals/power-assert/build/power-assert.js:10460
+[04:02:36] 'test_amd' errored after 1.01 s test failed
+Error running task sequence: { task: 'test_amd',
+  message: 'test_amd stream',
+  duration: 1.009385603,
+  hrDuration: [ 1, 9385603 ],
+  err: 
+   { [Error: test failed]
+     plugin: 'gulp-mocha-phantomjs',
+     showStack: false,
+     message: 'test failed' } }
+[04:02:36] 'test_browser' errored after 1.03 s test failed

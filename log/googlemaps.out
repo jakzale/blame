@@ -1,0 +1,106 @@
+
+> googlemaps@0.1.9 test /Users/jakub/Developer/Blame/externals/googlemaps
+> NODE_ENV=test vows test/*.js --spec
+
+ 
+  ♢ directions 
+  
+  Simple Directions (From: Madison, Wi To: Chicago, Il)
+    ✓ returns as a valid request
+    ✓ returns expected lat/lng for Chicago
+  
+  ♢ elevationFromLocations 
+  
+  Simple elevationFromLocations request (41.850033,-87.6500523)
+    ✓ returns as a valid request
+    ✓ returns the expected elevation for Chicago
+  
+  ♢ elevationFromPath 
+  
+  Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)
+    ✓ returns as a valid request
+    ✓ returns the expected number of samples
+    ✓ returns the expected elevation for Chicago
+  
+  ♢ elevationFromPath when path is too long 
+  
+  Simple elevationFromPath request (43.07333,-89.4026|41.850033,-87.6500523)
+    ✓ returns as a valid request
+    ✓ returns the expected number of samples
+  
+  ♢ createEncodedPolylneFromSingleLatLng 
+  
+  Single point passed to createEncodedPolyline (38.5,-120.2)
+    ✓ returns the expected encoded polyline
+  
+  ♢ createEncodedPolylineMupltipleLatLngs 
+  
+  Multiple points passed to createEncodedPolyline
+    ✓ returns the expected encoded polyline
+  
+  ♢ geocode 
+  
+  Simple geocode (Chicago)
+    ✓ returns as a valid request
+    ✓ returns the expected lat/lng for Chicago
+  Simple geocode (Chicago) Business Parameters URL
+    ✓ returns the expected street view URL
+  
+  ♢ reverseGeocode 
+  
+  Simple reverse geocode (41.850033 , -87.6500523)
+    ✓ returns as a valid request
+    ✓ returns expected name (Pilsen)
+  
+  ♢ staticmaps 
+  
+  Complex static map (Lock Haven, PA) URL
+    ✓ returns the expected static map URL
+  Complex static map (Lock Haven, PA) PNG data
+    ✓ returns the expected static map PNG data
+  
+  ♢ streetview 
+  
+  Street View Simple Parameters URL
+    ✓ returns the expected street view URL
+  Street View With Optonal Parameters URL
+    ✓ returns the expected street view URL
+  Street View With invalid Parameters URL
+    ✓ returns the expected street view URL
+  Street View Business Parameters URL
+    ✓ returns the expected street view URL
+  Street View With Optonal Parameters Image data (jpeg)
+    ✓ returns the expected Street View Image data
+  Street View Simple Parameters Image data (jpeg)
+    ✓ returns the expected Street View Image data
+  Street View With invalid Parameters Image data (jpeg)
+    ✓ returns the expected Street View Image data
+  
+  ♢ checkAndConvertPoint 
+  
+  Using a lat/lng point as a string
+    ✓ result is equal to expected string value
+  Using a lat/lng point as an array of numbers
+    ✓ result is equal to expected string value
+  Using a lat/lng point as a mixed array
+    ✓ result is equal to expected string value
+  Using incorrect lat/lng input (an object)
+    ✓ an exception was caught
+    ✓ exception caught is an Error
+    ✓ error thrown was checkAndConvertPoint's error
+  
+  ♢ checkAndConvertArrayOfPoints 
+  
+  Using a list of lat/lng points as a string
+    ✓ result is equal to expected string value
+  Using a list of lat/lng points as a matrix of numbers
+    ✓ result is equal to expected string value
+  Using a list of lat/lng points as a mixed array
+    ✓ result is equal to expected string value
+  Using incorrect lat/lng input (an object)
+    ✓ an exception was caught
+    ✓ exception caught is an Error
+    ✓ error thrown was checkAndConvertArrayOfPoints's error
+ 
+✓ OK » 37 honored (2.476s) 
+  

@@ -1,0 +1,11 @@
+
+> jsrender@0.0.3 test /Users/jakub/Developer/Blame/externals/jsrender
+> nodeunit test.js
+
+
+[1mtest.js[22m
+✔ blank
+✔ single
+✔ express
+
+[1m[32mOK: [39m[22m4 assertions (8ms)

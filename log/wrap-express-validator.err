@@ -1,0 +1,647 @@
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[rng] not of type Void: function (req, res, next) {
+
+    req.updateParam = function(name, value) {
+      // route params like /user/:id
+      if (this.params && this.params.hasOwnProperty(name) &&
+          undefined !== this.params[name]) {
+        return this.params[name] = value;
+      }
+      // query string params
+      if (undefined !== this.query[name]) {
+        return this.query[name] = value;
+      }
+      // request body params via connect.bodyParser
+      if (this.body && undefined !== this.body[name]) {
+        return this.body[name] = value;
+      }
+      return false;
+    };
+
+    req.check = checkParam(req, function(item) {
+      return req.param(item);
+    });
+    
+    req.checkFiles = checkParam(req, function(item) {
+      return req.files && req.files[item];
+    });
+
+    req.checkBody = checkParam(req, function(item) {
+      return req.body && req.body[item];
+    });
+
+    req.checkParams = checkParam(req, function(item) {
+      return req.params && req.params[item];
+    });
+
+    req.checkQuery = checkParam(req, function(item) {
+      return req.query && req.query[item];
+    });
+
+    req.checkHeader = checkParam(req, function(header) {
+        var toCheck;
+
+        if (header === 'referrer' || header === 'referer') {
+          toCheck = req.headers.referer;
+        } else {
+          toCheck = req.headers[header];
+        }
+        return toCheck || '';
+    });
+
+    req.onValidationError = function(errback) {
+      req.onErrorCallback = errback;
+    };
+
+    req.validationErrors = function(mapped) {
+      if (req._validationErrors === undefined) {
+        return null;
+      }
+      if (mapped) {
+        var errors = {};
+        req._validationErrors.forEach(function(err) {
+          errors[err.param] = err;
+        });
+        return errors;
+      }
+      return req._validationErrors;
+    }
+
+    req.filter = function(param) {
+      return sanitize(this, param, this.param(param));
+    };
+
+    // Create some aliases - might help with code readability
+    req.sanitize = req.filter;
+    req.assert = req.check;
+    req.validate = req.check;
+
+    return next();
+  }
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at App.start (/Users/jakub/Developer/Blame/externals/express-validator/test/helpers/app.js:17:16)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/express-validator/test/basic.js:29:5)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[rng] not of type Void: function (req, res, next) {
+
+    req.updateParam = function(name, value) {
+      // route params like /user/:id
+      if (this.params && this.params.hasOwnProperty(name) &&
+          undefined !== this.params[name]) {
+        return this.params[name] = value;
+      }
+      // query string params
+      if (undefined !== this.query[name]) {
+        return this.query[name] = value;
+      }
+      // request body params via connect.bodyParser
+      if (this.body && undefined !== this.body[name]) {
+        return this.body[name] = value;
+      }
+      return false;
+    };
+
+    req.check = checkParam(req, function(item) {
+      return req.param(item);
+    });
+    
+    req.checkFiles = checkParam(req, function(item) {
+      return req.files && req.files[item];
+    });
+
+    req.checkBody = checkParam(req, function(item) {
+      return req.body && req.body[item];
+    });
+
+    req.checkParams = checkParam(req, function(item) {
+      return req.params && req.params[item];
+    });
+
+    req.checkQuery = checkParam(req, function(item) {
+      return req.query && req.query[item];
+    });
+
+    req.checkHeader = checkParam(req, function(header) {
+        var toCheck;
+
+        if (header === 'referrer' || header === 'referer') {
+          toCheck = req.headers.referer;
+        } else {
+          toCheck = req.headers[header];
+        }
+        return toCheck || '';
+    });
+
+    req.onValidationError = function(errback) {
+      req.onErrorCallback = errback;
+    };
+
+    req.validationErrors = function(mapped) {
+      if (req._validationErrors === undefined) {
+        return null;
+      }
+      if (mapped) {
+        var errors = {};
+        req._validationErrors.forEach(function(err) {
+          errors[err.param] = err;
+        });
+        return errors;
+      }
+      return req._validationErrors;
+    }
+
+    req.filter = function(param) {
+      return sanitize(this, param, this.param(param));
+    };
+
+    // Create some aliases - might help with code readability
+    req.sanitize = req.filter;
+    req.assert = req.check;
+    req.validate = req.check;
+
+    return next();
+  }
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at App.start (/Users/jakub/Developer/Blame/externals/express-validator/test/helpers/app.js:17:16)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/express-validator/test/bodyOnly.js:29:5)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[rng] not of type Void: function (req, res, next) {
+
+    req.updateParam = function(name, value) {
+      // route params like /user/:id
+      if (this.params && this.params.hasOwnProperty(name) &&
+          undefined !== this.params[name]) {
+        return this.params[name] = value;
+      }
+      // query string params
+      if (undefined !== this.query[name]) {
+        return this.query[name] = value;
+      }
+      // request body params via connect.bodyParser
+      if (this.body && undefined !== this.body[name]) {
+        return this.body[name] = value;
+      }
+      return false;
+    };
+
+    req.check = checkParam(req, function(item) {
+      return req.param(item);
+    });
+    
+    req.checkFiles = checkParam(req, function(item) {
+      return req.files && req.files[item];
+    });
+
+    req.checkBody = checkParam(req, function(item) {
+      return req.body && req.body[item];
+    });
+
+    req.checkParams = checkParam(req, function(item) {
+      return req.params && req.params[item];
+    });
+
+    req.checkQuery = checkParam(req, function(item) {
+      return req.query && req.query[item];
+    });
+
+    req.checkHeader = checkParam(req, function(header) {
+        var toCheck;
+
+        if (header === 'referrer' || header === 'referer') {
+          toCheck = req.headers.referer;
+        } else {
+          toCheck = req.headers[header];
+        }
+        return toCheck || '';
+    });
+
+    req.onValidationError = function(errback) {
+      req.onErrorCallback = errback;
+    };
+
+    req.validationErrors = function(mapped) {
+      if (req._validationErrors === undefined) {
+        return null;
+      }
+      if (mapped) {
+        var errors = {};
+        req._validationErrors.forEach(function(err) {
+          errors[err.param] = err;
+        });
+        return errors;
+      }
+      return req._validationErrors;
+    }
+
+    req.filter = function(param) {
+      return sanitize(this, param, this.param(param));
+    };
+
+    // Create some aliases - might help with code readability
+    req.sanitize = req.filter;
+    req.assert = req.check;
+    req.validate = req.check;
+
+    return next();
+  }
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at App.start (/Users/jakub/Developer/Blame/externals/express-validator/test/helpers/app.js:17:16)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/express-validator/test/mapped.js:24:5)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[rng] not of type Void: function (req, res, next) {
+
+    req.updateParam = function(name, value) {
+      // route params like /user/:id
+      if (this.params && this.params.hasOwnProperty(name) &&
+          undefined !== this.params[name]) {
+        return this.params[name] = value;
+      }
+      // query string params
+      if (undefined !== this.query[name]) {
+        return this.query[name] = value;
+      }
+      // request body params via connect.bodyParser
+      if (this.body && undefined !== this.body[name]) {
+        return this.body[name] = value;
+      }
+      return false;
+    };
+
+    req.check = checkParam(req, function(item) {
+      return req.param(item);
+    });
+    
+    req.checkFiles = checkParam(req, function(item) {
+      return req.files && req.files[item];
+    });
+
+    req.checkBody = checkParam(req, function(item) {
+      return req.body && req.body[item];
+    });
+
+    req.checkParams = checkParam(req, function(item) {
+      return req.params && req.params[item];
+    });
+
+    req.checkQuery = checkParam(req, function(item) {
+      return req.query && req.query[item];
+    });
+
+    req.checkHeader = checkParam(req, function(header) {
+        var toCheck;
+
+        if (header === 'referrer' || header === 'referer') {
+          toCheck = req.headers.referer;
+        } else {
+          toCheck = req.headers[header];
+        }
+        return toCheck || '';
+    });
+
+    req.onValidationError = function(errback) {
+      req.onErrorCallback = errback;
+    };
+
+    req.validationErrors = function(mapped) {
+      if (req._validationErrors === undefined) {
+        return null;
+      }
+      if (mapped) {
+        var errors = {};
+        req._validationErrors.forEach(function(err) {
+          errors[err.param] = err;
+        });
+        return errors;
+      }
+      return req._validationErrors;
+    }
+
+    req.filter = function(param) {
+      return sanitize(this, param, this.param(param));
+    };
+
+    // Create some aliases - might help with code readability
+    req.sanitize = req.filter;
+    req.assert = req.check;
+    req.validate = req.check;
+
+    return next();
+  }
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at App.start (/Users/jakub/Developer/Blame/externals/express-validator/test/helpers/app.js:17:16)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/express-validator/test/nested.js:25:5)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[rng] not of type Void: function (req, res, next) {
+
+    req.updateParam = function(name, value) {
+      // route params like /user/:id
+      if (this.params && this.params.hasOwnProperty(name) &&
+          undefined !== this.params[name]) {
+        return this.params[name] = value;
+      }
+      // query string params
+      if (undefined !== this.query[name]) {
+        return this.query[name] = value;
+      }
+      // request body params via connect.bodyParser
+      if (this.body && undefined !== this.body[name]) {
+        return this.body[name] = value;
+      }
+      return false;
+    };
+
+    req.check = checkParam(req, function(item) {
+      return req.param(item);
+    });
+    
+    req.checkFiles = checkParam(req, function(item) {
+      return req.files && req.files[item];
+    });
+
+    req.checkBody = checkParam(req, function(item) {
+      return req.body && req.body[item];
+    });
+
+    req.checkParams = checkParam(req, function(item) {
+      return req.params && req.params[item];
+    });
+
+    req.checkQuery = checkParam(req, function(item) {
+      return req.query && req.query[item];
+    });
+
+    req.checkHeader = checkParam(req, function(header) {
+        var toCheck;
+
+        if (header === 'referrer' || header === 'referer') {
+          toCheck = req.headers.referer;
+        } else {
+          toCheck = req.headers[header];
+        }
+        return toCheck || '';
+    });
+
+    req.onValidationError = function(errback) {
+      req.onErrorCallback = errback;
+    };
+
+    req.validationErrors = function(mapped) {
+      if (req._validationErrors === undefined) {
+        return null;
+      }
+      if (mapped) {
+        var errors = {};
+        req._validationErrors.forEach(function(err) {
+          errors[err.param] = err;
+        });
+        return errors;
+      }
+      return req._validationErrors;
+    }
+
+    req.filter = function(param) {
+      return sanitize(this, param, this.param(param));
+    };
+
+    // Create some aliases - might help with code readability
+    req.sanitize = req.filter;
+    req.assert = req.check;
+    req.validate = req.check;
+
+    return next();
+  }
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at App.start (/Users/jakub/Developer/Blame/externals/express-validator/test/helpers/app.js:17:16)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/express-validator/test/paramsOnly.js:29:5)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[rng] not of type Void: function (req, res, next) {
+
+    req.updateParam = function(name, value) {
+      // route params like /user/:id
+      if (this.params && this.params.hasOwnProperty(name) &&
+          undefined !== this.params[name]) {
+        return this.params[name] = value;
+      }
+      // query string params
+      if (undefined !== this.query[name]) {
+        return this.query[name] = value;
+      }
+      // request body params via connect.bodyParser
+      if (this.body && undefined !== this.body[name]) {
+        return this.body[name] = value;
+      }
+      return false;
+    };
+
+    req.check = checkParam(req, function(item) {
+      return req.param(item);
+    });
+    
+    req.checkFiles = checkParam(req, function(item) {
+      return req.files && req.files[item];
+    });
+
+    req.checkBody = checkParam(req, function(item) {
+      return req.body && req.body[item];
+    });
+
+    req.checkParams = checkParam(req, function(item) {
+      return req.params && req.params[item];
+    });
+
+    req.checkQuery = checkParam(req, function(item) {
+      return req.query && req.query[item];
+    });
+
+    req.checkHeader = checkParam(req, function(header) {
+        var toCheck;
+
+        if (header === 'referrer' || header === 'referer') {
+          toCheck = req.headers.referer;
+        } else {
+          toCheck = req.headers[header];
+        }
+        return toCheck || '';
+    });
+
+    req.onValidationError = function(errback) {
+      req.onErrorCallback = errback;
+    };
+
+    req.validationErrors = function(mapped) {
+      if (req._validationErrors === undefined) {
+        return null;
+      }
+      if (mapped) {
+        var errors = {};
+        req._validationErrors.forEach(function(err) {
+          errors[err.param] = err;
+        });
+        return errors;
+      }
+      return req._validationErrors;
+    }
+
+    req.filter = function(param) {
+      return sanitize(this, param, this.param(param));
+    };
+
+    // Create some aliases - might help with code readability
+    req.sanitize = req.filter;
+    req.assert = req.check;
+    req.validate = req.check;
+
+    return next();
+  }
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at App.start (/Users/jakub/Developer/Blame/externals/express-validator/test/helpers/app.js:17:16)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/express-validator/test/queryOnly.js:29:5)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[rng] not of type Void: function (req, res, next) {
+
+    req.updateParam = function(name, value) {
+      // route params like /user/:id
+      if (this.params && this.params.hasOwnProperty(name) &&
+          undefined !== this.params[name]) {
+        return this.params[name] = value;
+      }
+      // query string params
+      if (undefined !== this.query[name]) {
+        return this.query[name] = value;
+      }
+      // request body params via connect.bodyParser
+      if (this.body && undefined !== this.body[name]) {
+        return this.body[name] = value;
+      }
+      return false;
+    };
+
+    req.check = checkParam(req, function(item) {
+      return req.param(item);
+    });
+    
+    req.checkFiles = checkParam(req, function(item) {
+      return req.files && req.files[item];
+    });
+
+    req.checkBody = checkParam(req, function(item) {
+      return req.body && req.body[item];
+    });
+
+    req.checkParams = checkParam(req, function(item) {
+      return req.params && req.params[item];
+    });
+
+    req.checkQuery = checkParam(req, function(item) {
+      return req.query && req.query[item];
+    });
+
+    req.checkHeader = checkParam(req, function(header) {
+        var toCheck;
+
+        if (header === 'referrer' || header === 'referer') {
+          toCheck = req.headers.referer;
+        } else {
+          toCheck = req.headers[header];
+        }
+        return toCheck || '';
+    });
+
+    req.onValidationError = function(errback) {
+      req.onErrorCallback = errback;
+    };
+
+    req.validationErrors = function(mapped) {
+      if (req._validationErrors === undefined) {
+        return null;
+      }
+      if (mapped) {
+        var errors = {};
+        req._validationErrors.forEach(function(err) {
+          errors[err.param] = err;
+        });
+        return errors;
+      }
+      return req._validationErrors;
+    }
+
+    req.filter = function(param) {
+      return sanitize(this, param, this.param(param));
+    };
+
+    // Create some aliases - might help with code readability
+    req.sanitize = req.filter;
+    req.assert = req.check;
+    req.validate = req.check;
+
+    return next();
+  }
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+    at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at App.start (/Users/jakub/Developer/Blame/externals/express-validator/test/helpers/app.js:17:16)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/express-validator/test/regex.js:24:5)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+make: *** [test] Error 1
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

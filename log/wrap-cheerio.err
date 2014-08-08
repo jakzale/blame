@@ -1,0 +1,33 @@
+/Users/jakub/Developer/Blame/build/blame.js:1047
+                return wrapped.apply(thisArg, args);
+                               ^
+TypeError: undefined is not a function
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at Suite.<anonymous> (/Users/jakub/Developer/Blame/externals/cheerio/test/api.traversing.js:1022:19)
+    at context.describe.context.context (/Users/jakub/Developer/Blame/externals/cheerio/node_modules/mocha/lib/interfaces/bdd.js:74:10)
+    at Suite.<anonymous> (/Users/jakub/Developer/Blame/externals/cheerio/test/api.traversing.js:1020:3)
+    at context.describe.context.context (/Users/jakub/Developer/Blame/externals/cheerio/node_modules/mocha/lib/interfaces/bdd.js:74:10)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/cheerio/test/api.traversing.js:8:1)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at /Users/jakub/Developer/Blame/externals/cheerio/node_modules/mocha/lib/mocha.js:183:27
+    at Array.forEach (native)
+    at Mocha.loadFiles (/Users/jakub/Developer/Blame/externals/cheerio/node_modules/mocha/lib/mocha.js:180:14)
+    at Mocha.run (/Users/jakub/Developer/Blame/externals/cheerio/node_modules/mocha/lib/mocha.js:382:31)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/cheerio/node_modules/mocha/bin/_mocha:381:16)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Function.Module.runMain (module.js:490:10)
+    at startup (node.js:124:16)
+    at node.js:807:3
+make: *** [test] Error 1
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

@@ -1,0 +1,17 @@
+evalmachine.<anonymous>:60
+  var Blame = require('Blame'),
+              ^
+ReferenceError: require is not defined
+    at evalmachine.<anonymous>:60:15
+    at evalmachine.<anonymous>:519:2
+    at Object.exports.runInThisContext (vm.js:70:17)
+    at load (/Users/jakub/Developer/Blame/externals/sjcl/test/run_tests_node.js:5:8)
+    at Array.map (native)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/sjcl/test/run_tests_node.js:10:23)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+make: *** [test] Error 1
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

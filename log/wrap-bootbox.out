@@ -1,0 +1,12 @@
+
+> bootbox.js@4.2.0 test /Users/jakub/Developer/Blame/externals/bootbox
+> karma start
+
+Vendor files: tests/vendor/jquery-1.8.3.min.js, tests/vendor/bootstrap-3.0.0.min.js
+[32mINFO [karma]: [39mKarma v0.10.10 server started at http://localhost:9876/
+[32mINFO [launcher]: [39mStarting browser PhantomJS
+[32mINFO [PhantomJS 1.9.7 (Mac OS X)]: [39mConnected on socket 2IGoWCf_c1Y_pQgGpVye
+[31mPhantomJS 1.9.7 (Mac OS X) ERROR[39m
+	ReferenceError: Can't find variable: require
+	at /Users/jakub/Developer/Blame/externals/bootbox/bootbox.js:6
+PhantomJS 1.9.7 (Mac OS X): Executed 0 of 0[31m ERROR[39m (0.075 secs / 0 secs)

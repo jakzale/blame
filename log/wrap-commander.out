@@ -1,0 +1,13 @@
+
+> commander@2.3.0 test /Users/jakub/Developer/Blame/externals/commander
+> make test
+
+
+[90m   test.literal.args.js[0m [36m✓[0m
+[90m   test.options.args.optional.given.js[0m [36m✓[0m
+[90m   test.options.args.optional.js[0m [36m✓[0m
+[90m   test.options.bool.js[0m [36m✓[0m
+[90m   test.options.bool.no.js[0m [36m✓[0m
+[90m   test.options.bool.small.combined.js[0m [36m✓[0m
+[90m   test.options.bool.small.js[0m [36m✓[0m
+[90m   test.options.camelcase.js[0m [31m✖[0m

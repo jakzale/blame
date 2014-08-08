@@ -1,0 +1,201 @@
+
+> nconf@0.6.9 test /Users/jakub/Developer/Blame/externals/nconf
+> vows test/*-test.js test/**/*-test.js --spec
+
+ 
+  ♢ nconf/common 
+  
+  Using nconf.common module the loadFilesSync() method
+    ✓ should merge the files correctly
+  Using nconf.common module the loadFiles() method
+    ✓ should merge the files correctly
+  
+  ♢ nconf/multiple-stores 
+  
+  When using the nconf with multiple providers
+    ✓ should have the correct stores
+  When using the nconf with multiple providers env vars
+    ✓ are present
+  When using the nconf with multiple providers literal vars
+    ✓ are present
+  When using the nconf with multiple providers and saving synchronously
+    ✓ correct return value
+  When using the nconf with multiple providers json vars
+    ✓ are present
+  When using the nconf with multiple providers and saving synchronously the file
+    ✓ saved correctly
+  When using the nconf with multiple providers and saving asynchronously
+    ✓ correct return value
+  When using the nconf with multiple providers and saving asynchronously the file
+    ✓ saved correctly
+  
+  ♢ nconf/hierarchy 
+  
+  When using nconf configured with two file stores
+    ✗ should have the appropriate keys present 
+        »        
+        actual expected 
+         
+        My spgecnerific title 
+         // hierarchy-test.js:29
+  When using nconf configured with two file stores using file
+    ✗ should have the appropriate keys present 
+        »        
+        actual expected 
+         
+        My spgecnerific title 
+         // hierarchy-test.js:42
+  When using nconf configured with .argv(), .file() and invoked with nested command line options
+    ✗ should merge nested objects  
+        » expected { 
+      apples: true, 
+      candy: { 
+          something: 'foo', 
+          something1: true, 
+          something2: true, 
+          something5: { first: 1, second: 'bar' } 
+      } 
+  }, 
+  	got	 { 
+      apples: true, 
+      candy: { 
+          something: 'file1', 
+          something5: { second: 2, first: 1 }, 
+          something1: true, 
+          something2: true 
+      } 
+  } (deepEqual) // hierarchy-test.js:98
+  When using nconf configured with .argv(), .env() and .file()
+    ✓ should not persist information passed in to process.env and process.argv to disk 
+  
+  ♢ nconf 
+  
+  When using the nconf
+    ✓ should have the correct methods set
+  When using the nconf the use() method
+    ✓ should instaniate the correct store
+  When using the nconf it should
+    ✓ have the correct version set
+  When using the nconf with the memory store the set() method
+    ✓ should respond with true
+  When using the nconf with the memory store the get() method without a callback
+    ✓ should respond with the correct value
+  When using the nconf with the memory store the get() method with a callback
+    ✓ should respond with the correct value
+  When using the nconf with the memory store the get() method
+    ✓ should respond allow access to the root
+  When using the nconf with the memory store the set() method
+    ✓ should respond allow access to the root and complain about non-objects
+  When using nconf with the memory store the clear() method
+    ✓ should respond with the true
+  When using nconf with the memory store the load() method without a callback
+    ✓ should respond with the merged store
+  When using nconf with the memory store the load() method with a callback
+    ✓ should respond with the merged store
+  
+  ♢ nconf/provider/save 
+  
+  When using nconf an instance of 'nconf.Provider' with a Mock store the save() method
+    ✓ should actually save before responding
+  
+  ♢ nconf/provider 
+  
+  When using nconf an instance of 'nconf.Provider' calling the use() method with the same store type and different options
+    ✓ should use a new instance of the store type
+  When using nconf an instance of 'nconf.Provider' when 'argv' is true
+    ✓ should respond with the value passed into the script
+  When using nconf an instance of 'nconf.Provider' when 'env' is true
+    ✓ should respond with the value passed into the script
+  When using nconf the default nconf provider when 'env' is set to true with a nested separator
+    ✓ should respond with the value passed into the script
+  When using nconf the default nconf provider when 'env' is set to true
+    ✓ should respond with the value passed into the script
+  When using nconf the default nconf provider when 'argv' is set to true
+    ✓ should respond with the value passed into the script
+  When using nconf the default nconf provider when hierarchical 'argv' get
+    ✓ should respond with the value passed into the script
+  When using nconf the default nconf provider when 'argv' is set to true and process.argv is modified
+    ✓ should respond with the value passed into the script
+  When using nconf an instance of 'nconf.Provider' the merge() method
+    ✓ should have the result merged in
+    ✓ should merge Objects over null
+  When using nconf an instance of 'nconf.Provider' the load() method when sources are passed in
+    ✓ should respect the hierarchy 
+  When using nconf an instance of 'nconf.Provider' the load() method when multiple stores are used
+    ✓ should respect the hierarchy
+  When using nconf an instance of 'nconf.Provider' the .file() method with a single filepath
+    ✓ should use the correct File store
+  When using nconf an instance of 'nconf.Provider' the .file() method with a name and a filepath
+    ✓ should use the correct File store
+  When using nconf an instance of 'nconf.Provider' the .file() method with a single object
+    ✓ should use the correct File store
+  When using nconf an instance of 'nconf.Provider' the .file() method with a name and an object
+    ✓ should use the correct File store
+  
+  ♢ nconf/stores/argv 
+  
+  An instance of nconf.Argv
+    ✓ should have the correct methods defined
+  
+  ♢ nconf/stores/env 
+  
+  An instance of nconf.Env
+    ✓ should have the correct methods defined
+  
+  ♢ nconf/stores/file 
+  
+  When using the nconf file store with a valid UTF8 JSON file that contains a BOM the loadSync() method
+    ✓ should load the data correctly
+  When using the nconf file store with a valid UTF8 JSON file that contains no BOM the loadSync() method
+    ✓ should load the data correctly
+  When using the nconf file store with a valid JSON file the load() method
+    ✓ should load the data correctly
+  When using the nconf file store with a valid UTF8 JSON file that contains a BOM the load() method
+    ✓ should load the data correctly
+  When using the nconf file store with a malformed JSON file the load() method with a malformed JSON config file
+    ✓ should respond with an error and indicate file name
+  When using the nconf file store with a valid UTF8 JSON file that contains no BOM the load() method
+    ✓ should load the data correctly
+  When using the nconf file store the save() method
+    ✓ should save the data correctly
+  When using the nconf file store the saveSync() method
+    ✓ should save the data correctly
+  When using the nconf file store the set() method
+    ✓ should respond with true
+  When using the nconf file store the get() method
+    ✓ should respond with the correct value
+  When using the nconf file store the clear() method
+    ✓ should respond with the true
+  When using the nconf file store the search() method when the target file exists higher in the directory tree
+    ✓ should update the file appropriately
+  When using the nconf file store the search() method when the target file doesn't exist higher in the directory tree
+    ✓ should update the file appropriately
+  
+  ♢ nconf/stores/literal 
+  
+  An instance of nconf.Literal
+    ✓ should have the correct methods defined
+    ✓ should have the correct values in the store
+  
+  ♢ nconf/stores/memory 
+  
+  When using the nconf memory store the set() method
+    ✓ should respond with true
+  When using the nconf memory store the get() method
+    ✓ should respond with the correct value
+  When using the nconf memory store the clear() method
+    ✓ should respond with the true
+  When using the nconf memory store the merge() method
+    ✓ when overriding an existing literal value
+    ✓ when overriding an existing Array value
+    ✓ when merging into an existing Object value
+  When using the nconf memory store the get() method should not fail when retrieving non-existent keys
+    ✓ at the root level
+    ✓ within numbers
+    ✓ within booleans
+    ✓ within objects
+    ✓ within empty strings
+    ✓ within non-empty strings
+ 
+✗ Broken » 68 honored ∙ 3 broken (1.310s) 
+  

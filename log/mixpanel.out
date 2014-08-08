@@ -1,0 +1,9 @@
+
+> mixpanel@0.0.20 test /Users/jakub/Developer/Blame/externals/mixpanel
+> bin/run_tests
+
+Testing dependencies not met.
+You can get them by running:
+
+    npm install
+

@@ -1,0 +1,36 @@
+
+> jquery.cookie@1.4.1 test /Users/jakub/Developer/Blame/externals/jquery.cookie
+> grunt
+
+[4mRunning "jshint:grunt" (jshint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "jshint:source" (jshint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "jshint:tests" (jshint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "qunit:all" (qunit) task[24m
+Testing test/index.html .......................................[32mOK[39m
+[32m>> [39m41 assertions passed (92ms)
+
+[4mRunning "uglify:build" (uglify) task[24m
+File "build/jquery.cookie-1.4.1.min.js" created.
+
+[4mRunning "compare_size:files" (compare_size) task[24m
+   raw     gz Sizes                                                            
+  1305    701 build/jquery.cookie-1.4.1.min.js                                 
+  3128   1374 src/jquery.cookie.js                                             
+
+   raw     gz Compared to master [90m@ aeb793d27286c7f0b915c3aaee24c3b7d04d71fd[39m    
+[90m[90m     =[39m [90m[90m     =[39m build/jquery.cookie-1.4.1.min.js                                 
+[90m[90m     =[39m [90m[90m     =[39m src/jquery.cookie.js                                             
+
+   raw     gz Compared to last run                                             
+[90m[90m     =[39m [90m[90m     =[39m build/jquery.cookie-1.4.1.min.js                                 
+[90m[90m     =[39m [90m[90m     =[39m src/jquery.cookie.js                                             
+
+Saved as: master
+
+[32mDone, without errors.[39m

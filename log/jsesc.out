@@ -1,0 +1,14 @@
+
+> jsesc@0.4.3 test /Users/jakub/Developer/Blame/externals/jsesc
+> node tests/tests.js
+
+----------------------------------------
+undefined
+----------------------------------------
+ PASS - jsesc: common usage
+Please wait.Please wait..Please wait...Please wait.  Please wait..Please wait...Please wait.  Please wait..Please wait...Please wait.  Please wait..Please wait...Please wait.  Please wait..Please wait...Please wait.               PASS - jsesc: advanced tests
+Please wait..Please wait...               PASS - jsesc binary
+----------------------------------------
+    PASS: 148  FAIL: 0  TOTAL: 148
+    Finished in 16531 milliseconds.
+----------------------------------------

@@ -1,0 +1,103 @@
+../ffi_tests.cc:139:29: error: unknown type name 'Arguments'; did you mean 'v8::internal::Arguments'?
+Handle<Value> Strtoul(const Arguments &args) {
+                            ^~~~~~~~~
+                            v8::internal::Arguments
+/Users/jakub/.node-gyp/0.11.13/deps/v8/include/v8.h:149:7: note: 'v8::internal::Arguments' declared here
+class Arguments;
+      ^
+../ffi_tests.cc:140:15: error: calling a protected constructor of class 'v8::HandleScope'
+  HandleScope scope;
+              ^
+/Users/jakub/.node-gyp/0.11.13/deps/v8/include/v8.h:845:13: note: declared protected here
+  V8_INLINE HandleScope() {}
+            ^
+../ffi_tests.cc:145:7: error: type 'const v8::internal::Arguments' does not provide a subscript operator
+  args[0]->ToString()->WriteUtf8(buf);
+  ~~~~^~
+../ffi_tests.cc:147:33: error: type 'const v8::internal::Arguments' does not provide a subscript operator
+  Local<Value> endptr_arg = args[0];
+                            ~~~~^~
+../ffi_tests.cc:150:14: error: type 'const v8::internal::Arguments' does not provide a subscript operator
+  base = args[2]->Int32Value();
+         ~~~~^~
+../ffi_tests.cc:154:16: error: no member named 'Close' in 'v8::HandleScope'
+  return scope.Close(Integer::NewFromUnsigned(val));
+         ~~~~~ ^
+../ffi_tests.cc:154:50: error: too few arguments to function call, expected 2, have 1
+  return scope.Close(Integer::NewFromUnsigned(val));
+                     ~~~~~~~~~~~~~~~~~~~~~~~~    ^
+/Users/jakub/.node-gyp/0.11.13/deps/v8/include/v8.h:2075:3: note: 'NewFromUnsigned' declared here
+  static Local<Integer> NewFromUnsigned(Isolate* isolate, uint32_t value);
+  ^
+../ffi_tests.cc:163:27: error: unknown type name 'Arguments'; did you mean 'v8::internal::Arguments'?
+Handle<Value> SetCb(const Arguments &args) {
+                          ^~~~~~~~~
+                          v8::internal::Arguments
+/Users/jakub/.node-gyp/0.11.13/deps/v8/include/v8.h:149:7: note: 'v8::internal::Arguments' declared here
+class Arguments;
+      ^
+../ffi_tests.cc:164:15: error: calling a protected constructor of class 'v8::HandleScope'
+  HandleScope scope;
+              ^
+/Users/jakub/.node-gyp/0.11.13/deps/v8/include/v8.h:845:13: note: declared protected here
+  V8_INLINE HandleScope() {}
+            ^
+../ffi_tests.cc:165:32: error: type 'const v8::internal::Arguments' does not provide a subscript operator
+  char *buf = Buffer::Data(args[0].As<Object>());
+                           ~~~~^~
+../ffi_tests.cc:165:39: error: 'Object' does not refer to a value
+  char *buf = Buffer::Data(args[0].As<Object>());
+                                      ^
+/Users/jakub/.node-gyp/0.11.13/deps/v8/include/v8.h:2176:17: note: declared here
+class V8_EXPORT Object : public Value {
+                ^
+../ffi_tests.cc:165:47: error: expected expression
+  char *buf = Buffer::Data(args[0].As<Object>());
+                                              ^
+../ffi_tests.cc:167:16: error: no member named 'Close' in 'v8::HandleScope'
+  return scope.Close(Undefined());
+         ~~~~~ ^
+../ffi_tests.cc:167:22: error: no matching function for call to 'Undefined'
+  return scope.Close(Undefined());
+                     ^~~~~~~~~
+/Users/jakub/.node-gyp/0.11.13/deps/v8/include/v8.h:336:28: note: candidate function not viable: requires single argument 'isolate', but no arguments were provided
+  friend Handle<Primitive> Undefined(Isolate* isolate);
+                           ^
+../ffi_tests.cc:170:28: error: unknown type name 'Arguments'; did you mean 'v8::internal::Arguments'?
+Handle<Value> CallCb(const Arguments &args) {
+                           ^~~~~~~~~
+                           v8::internal::Arguments
+/Users/jakub/.node-gyp/0.11.13/deps/v8/include/v8.h:149:7: note: 'v8::internal::Arguments' declared here
+class Arguments;
+      ^
+../ffi_tests.cc:172:52: error: no member named 'New' in 'v8::String'
+    return ThrowException(Exception::Error(String::New("you must call \"set_cb()\" first")));
+                                           ~~~~~~~~^
+../ffi_tests.cc:176:10: error: no matching function for call to 'Undefined'
+  return Undefined();
+         ^~~~~~~~~
+/Users/jakub/.node-gyp/0.11.13/deps/v8/include/v8.h:336:28: note: candidate function not viable: requires single argument 'isolate', but no arguments were provided
+  friend Handle<Primitive> Undefined(Isolate* isolate);
+                           ^
+../ffi_tests.cc:179:18: error: unknown type name 'uv_work_t'
+void AsyncCbCall(uv_work_t *req) {
+                 ^
+../ffi_tests.cc:184:24: error: unknown type name 'uv_work_t'
+void FinishAsyncCbCall(uv_work_t *req) {
+                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Release/obj.target/ffi_tests/ffi_tests.o] Error 1
+gyp ERR! build error 
+gyp ERR! stack Error: `make` failed with exit code: 2
+gyp ERR! stack     at ChildProcess.onExit (/usr/local/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:267:23)
+gyp ERR! stack     at ChildProcess.EventEmitter.emit (events.js:110:17)
+gyp ERR! stack     at Process.ChildProcess._handle.onexit (child_process.js:1046:12)
+gyp ERR! System Darwin 13.3.0
+gyp ERR! command "node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild" "--directory" "test"
+gyp ERR! cwd /Users/jakub/Developer/Blame/externals/node-ffi/test
+gyp ERR! node -v v0.11.13
+gyp ERR! node-gyp -v v0.13.1
+gyp ERR! not ok 
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

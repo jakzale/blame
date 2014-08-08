@@ -1,0 +1,90 @@
+
+> http-string-parser@0.0.4 test /Users/jakub/Developer/Blame/externals/http-string-parser
+> scripts/test
+
+
+
+  Parse output from curl trace parser
+    request
+      ◦ should parse string to expected object: [2K[0G      ✓ should parse string to expected object 
+    response
+      ◦ should parse string to expected object: [2K[0G      ✓ should parse string to expected object 
+
+  parser module
+    parseHeaders(headersLines)
+      ◦ should be a function: [2K[0G      ✓ should be a function 
+      its return
+        its retrun
+          ◦ should be object: [2K[0G          ✓ should be object 
+          ◦ should contain key 'User-Agent': [2K[0G          ✓ should contain key 'User-Agent' 
+          ◦ should contain key 'Host': [2K[0G          ✓ should contain key 'Host' 
+          ◦ should contain key 'Accept': [2K[0G          ✓ should contain key 'Accept' 
+          ◦ should contain key 'Content-Type': [2K[0G          ✓ should contain key 'Content-Type' 
+          ◦ should contain key 'Content-Length': [2K[0G          ✓ should contain key 'Content-Length' 
+          ◦ should have proper User-Agent string: [2K[0G          ✓ should have proper User-Agent string 
+    parseRequestLine(requestLineString)
+      ◦ should be a function: [2K[0G      ✓ should be a function 
+      return for POST line
+        ◦ should be object: [2K[0G        ✓ should be object 
+        ◦ should contain not empty string on key: method: [2K[0G        ✓ should contain not empty string on key: method 
+        ◦ should contain not empty string on key: uri: [2K[0G        ✓ should contain not empty string on key: uri 
+        ◦ should contain not empty string on key: protocol: [2K[0G        ✓ should contain not empty string on key: protocol 
+        ◦ should have parsed method POST: [2K[0G        ✓ should have parsed method POST 
+        ◦ should have parsed uri POST: [2K[0G        ✓ should have parsed uri POST 
+      return for GET line
+        ◦ should be object: [2K[0G        ✓ should be object 
+        ◦ should contain not empty string on key: method: [2K[0G        ✓ should contain not empty string on key: method 
+        ◦ should contain not empty string on key: uri: [2K[0G        ✓ should contain not empty string on key: uri 
+        ◦ should contain not empty string on key: protocol: [2K[0G        ✓ should contain not empty string on key: protocol 
+        ◦ should have parsed method GET: [2K[0G        ✓ should have parsed method GET 
+        ◦ should have parsed uri GET: [2K[0G        ✓ should have parsed uri GET 
+    parseStatusLine
+      ◦ is a function: [2K[0G      ✓ is a function 
+      its return
+        ◦ should contain not empty string on key: protocol: [2K[0G        ✓ should contain not empty string on key: protocol 
+        ◦ should contain statusCode "201": [2K[0G        ✓ should contain statusCode "201" 
+        ◦ should contain statusMessage "Created": [2K[0G        ✓ should contain statusMessage "Created" 
+        ◦ should contain not empty string on key: statusCode: [2K[0G        ✓ should contain not empty string on key: statusCode 
+        ◦ should contain statusCode "201": [2K[0G        ✓ should contain statusCode "201" 
+        ◦ should contain statusMessage "Created": [2K[0G        ✓ should contain statusMessage "Created" 
+        ◦ should contain not empty string on key: statusMessage: [2K[0G        ✓ should contain not empty string on key: statusMessage 
+        ◦ should contain statusCode "201": [2K[0G        ✓ should contain statusCode "201" 
+        ◦ should contain statusMessage "Created": [2K[0G        ✓ should contain statusMessage "Created" 
+    parseRequest(requestString)
+      ◦ is a function: [2K[0G      ✓ is a function 
+      its return
+        ◦ should have key "method": [2K[0G        ✓ should have key "method" 
+        ◦ should have key "uri": [2K[0G        ✓ should have key "uri" 
+        ◦ should have key "headers": [2K[0G        ✓ should have key "headers" 
+        ◦ should have key "body": [2K[0G        ✓ should have key "body" 
+        method
+          ◦ should contain "POST": [2K[0G          ✓ should contain "POST" 
+        uri
+          ◦ should contain "/shopping-cart": [2K[0G          ✓ should contain "/shopping-cart" 
+        headers
+          ◦ should be object: [2K[0G          ✓ should be object 
+          ◦ should have "User-Agent" key: [2K[0G          ✓ should have "User-Agent" key 
+          ◦ should have proper User-Agent value: [2K[0G          ✓ should have proper User-Agent value 
+        body
+          ◦ should contain proper body string: [2K[0G          ✓ should contain proper body string 
+    parseResponse(responseString)
+      ◦ is a function: [2K[0G      ✓ is a function 
+      its return
+        ◦ should have key "statusCode": [2K[0G        ✓ should have key "statusCode" 
+        ◦ should have key "statusMessage": [2K[0G        ✓ should have key "statusMessage" 
+        ◦ should have key "headers": [2K[0G        ✓ should have key "headers" 
+        ◦ should have key "body": [2K[0G        ✓ should have key "body" 
+        statusCode
+          ◦ should contain "201": [2K[0G          ✓ should contain "201" 
+        statusMessage
+          ◦ should contain "Created": [2K[0G          ✓ should contain "Created" 
+        headers
+          ◦ should be object: [2K[0G          ✓ should be object 
+          ◦ should have "Content-Type" key: [2K[0G          ✓ should have "Content-Type" key 
+          ◦ should have proper Content-Type value: [2K[0G          ✓ should have proper Content-Type value 
+        body
+          ◦ should contain proper body string: [2K[0G          ✓ should contain proper body string 
+
+
+  55 passing (30 ms)
+

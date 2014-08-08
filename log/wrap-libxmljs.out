@@ -1,0 +1,224 @@
+
+> libxmljs@0.11.0 test /Users/jakub/Developer/Blame/externals/libxmljs
+> node --expose_gc ./node_modules/.bin/nodeunit test
+
+
+[1mattribute[22m
+✔ new
+✔ create_with_namespace
+✔ getters
+✔ setters
+✔ remove
+
+[1mcomment[22m
+✔ new
+✔ text
+
+[1mdocument[22m
+✔ setDtd
+✔ blank
+✔ version
+✔ full
+✔ null_root
+✔ new_root
+✔ one_child
+✔ root_children
+✔ xpath
+✔ xpath_child
+✔ toString
+✔ add_child_nodes
+✔ add_cdata_nodes
+✔ cloned_node
+✔ validate
+
+[1melement[22m
+✔ new
+✔ newWithContent
+✔ setters
+✔ getters
+✔ remove
+✔ toString
+✔ path
+✔ move
+✔ addChild
+✔ add_prev_sibling
+✔ add_next_sibling
+✔ import
+✔ clone
+
+[1mhtml_parser[22m
+✔ parse
+✔ parse_force_encoding
+[31m✖ parse_synonym[39m
+
+AssertionError: [Function] === [Function]
+  at Object.strictEqual (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/types.js:83:39)
+  at Object.module.exports.parse_synonym (/Users/jakub/Developer/Blame/externals/libxmljs/test/html_parser.js:69:12)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:70:9)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:123:13)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:134:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:515:17
+  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/types.js:146:17)
+  at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+✔ recoverable_parse
+
+[1mmain[22m
+✔ constants
+
+[1mnamespace[22m
+✔ create
+✔ set
+✔ with_prefix
+✔ from_parsing
+✔ existing
+✔ remove
+✔ all
+✔ empty
+✔ nested
+✔ xmlns
+✔ custom_ns
+
+[1mnode_attributes[22m
+✔ basic
+✔ null
+✔ assign_object
+✔ change
+✔ attrs
+✔ siblings
+✔ getters
+
+[1mref_integrity[22m
+✔ gc
+✔ references
+
+[1msearching[22m
+✔ get
+✔ get_missing
+✔ get_attr
+✔ get_non_nodeset
+✔ find
+✔ namespace - get
+✔ namespace - find
+✔ prefixed_namespace - get
+✔ prefixed_namespace - find
+
+[1mtext_node[22m
+✔ text
+✔ comment
+✔ cdata
+
+[1mtraversal[22m
+✔ built
+✔ children
+✔ siblings
+✔ parsed
+✔ parsed_children
+
+[1mxml_parser[22m
+✔ parse
+✔ parse_buffer
+[31m✖ parse_synonym[39m
+
+AssertionError: [Function] === [Function]
+  at Object.strictEqual (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/types.js:83:39)
+  at Object.module.exports.parse_synonym (/Users/jakub/Developer/Blame/externals/libxmljs/test/xml_parser.js:36:12)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:70:9)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:123:13)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:134:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:515:17
+  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/types.js:146:17)
+  at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+✔ recoverable_parse
+✔ fatal_error
+✔ parse_options
+
+[1mxml_sax_parser[22m
+[31m✖ sax[39m
+
+Error: {label_0}[get/dom] too many arguments, expected <=0, got: 1
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:870:25)
+  at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+  at createParser (/Users/jakub/Developer/Blame/externals/libxmljs/test/xml_sax_parser.js:89:18)
+  at Object.module.exports.sax (/Users/jakub/Developer/Blame/externals/libxmljs/test/xml_sax_parser.js:132:18)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:70:9)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:123:13)
+  at async.forEachSeries (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:139:9)
+  at _concat (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:512:9)
+  at Object.concatSeries (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:152:23)
+  at Object.exports.runSuite (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:96:11)
+  at Object.exports.runModule (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:158:13)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/nodeunit.js:75:21
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:123:13)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:134:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:515:17
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:165:9
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:518:13
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:131:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:515:17
+  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/types.js:146:17)
+  at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+[31m✖ sax_push_chunked[39m
+
+Error: {label_0}[get/dom] too many arguments, expected <=0, got: 1
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:870:25)
+  at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+  at createParser (/Users/jakub/Developer/Blame/externals/libxmljs/test/xml_sax_parser.js:89:18)
+  at Object.module.exports.sax_push_chunked (/Users/jakub/Developer/Blame/externals/libxmljs/test/xml_sax_parser.js:141:18)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:70:9)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:123:13)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:134:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:515:17
+  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/types.js:146:17)
+  at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+[31m✖ string_parser[39m
+
+Error: {label_0}[get/dom] too many arguments, expected <=0, got: 1
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at Object.Proxy.construct (/Users/jakub/Developer/Blame/build/blame.js:870:25)
+  at Object.Validator.construct (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1341:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1989:27
+  at createParser (/Users/jakub/Developer/Blame/externals/libxmljs/test/xml_sax_parser.js:89:18)
+  at Object.module.exports.string_parser (/Users/jakub/Developer/Blame/externals/libxmljs/test/xml_sax_parser.js:155:18)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:236:16
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:70:9)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:123:13)
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:134:25
+  at /Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/deps/async.js:515:17
+  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/libxmljs/node_modules/nodeunit/lib/types.js:146:17)
+  at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+
+[1m[31mFAILURES: [39m[22m5/298 assertions failed (112ms)

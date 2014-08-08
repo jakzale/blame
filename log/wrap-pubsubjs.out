@@ -1,0 +1,9 @@
+
+> pubsubjs@0.3.7 test /Users/jakub/Developer/Blame/externals/pubsubjs
+> mocha test/pubsub-test.js
+
+
+  ․․․․․․․․․․․․․․․․․․․․․․
+
+  22 tests complete (9 ms)
+

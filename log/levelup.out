@@ -1,0 +1,641 @@
+
+> levelup@0.18.6 test /Users/jakub/Developer/Blame/externals/levelup
+> tap test/*-test.js --stderr
+
+not ok test/approximate-size-test.js .................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node approximate-size-test.js"
+    TAP version 13
+    not ok 1 test/approximate-size-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node approximate-size-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/argument-checking-test.js ................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node argument-checking-test.js"
+    TAP version 13
+    not ok 1 test/argument-checking-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node argument-checking-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/batch-test.js ............................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node batch-test.js"
+    TAP version 13
+    not ok 1 test/batch-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node batch-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/binary-test.js .............................. 1/2
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node binary-test.js"
+    TAP version 13
+    ok 1 Binary API: sanity check on test data
+    not ok 2 test/binary-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node binary-test.js"
+      ...
+    
+    1..2
+    # tests 2
+    # pass  1
+    # fail  1
+    
+not ok test/compression-test.js ......................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node compression-test.js"
+    TAP version 13
+    not ok 1 test/compression-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node compression-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/copy-test.js ................................ 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node copy-test.js"
+    TAP version 13
+    not ok 1 test/copy-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node copy-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/deferred-open-test.js ....................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node deferred-open-test.js"
+    TAP version 13
+    not ok 1 test/deferred-open-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.buster.testCase.put() and get() on pre-opened database (/Users/jakub/Developer/Blame/externals/levelup/test/deferred-open-test.js:21:22)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+              at /Users/jakub/Developer/Blame/externals/levelup/test/common.js:53:14
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node deferred-open-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/destroy-repair-test.js ...................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node destroy-repair-test.js"
+    TAP version 13
+    not ok 1 test/destroy-repair-test.js
+      ---
+        exit:    1
+        stderr:  |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module 'leveldown'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/destroy-repair-test.js:7:17)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Function.Module.runMain (module.js:490:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node destroy-repair-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/encoding-test.js ............................ 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node encoding-test.js"
+    TAP version 13
+    not ok 1 test/encoding-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node encoding-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/get-put-del-test.js ......................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node get-put-del-test.js"
+    TAP version 13
+    not ok 1 test/get-put-del-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node get-put-del-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/idempotent-test.js .......................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node idempotent-test.js"
+    TAP version 13
+    not ok 1 test/idempotent-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.buster.testCase.call open twice, should emit "open" once (/Users/jakub/Developer/Blame/externals/levelup/test/idempotent-test.js:39:12)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:153:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/test/common.js:53:14
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node idempotent-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/init-test.js ................................ 1/2
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node init-test.js"
+    TAP version 13
+    ok 1 Init & open(): levelup()
+    not ok 2 test/init-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.buster.testCase.default options (/Users/jakub/Developer/Blame/externals/levelup/test/init-test.js:28:7)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+              at /Users/jakub/Developer/Blame/externals/levelup/test/common.js:53:14
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node init-test.js"
+      ...
+    
+    1..2
+    # tests 2
+    # pass  1
+    # fail  1
+    
+not ok test/inject-encoding-test.js ..................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node inject-encoding-test.js"
+    TAP version 13
+    not ok 1 test/inject-encoding-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.runTest (/Users/jakub/Developer/Blame/externals/levelup/test/inject-encoding-test.js:22:11)
+              at Object.buster.testCase.simple-object values in "json" encoding (/Users/jakub/Developer/Blame/externals/levelup/test/inject-encoding-test.js:66:12)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/inject-encoding-test.js:59:9)
+              at /Users/jakub/Developer/Blame/externals/levelup/test/common.js:53:14
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node inject-encoding-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/json-test.js ................................ 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node json-test.js"
+    TAP version 13
+    not ok 1 test/json-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.runTest (/Users/jakub/Developer/Blame/externals/levelup/test/json-test.js:20:11)
+              at Object.buster.testCase.simple-object values in "json" encoding (/Users/jakub/Developer/Blame/externals/levelup/test/json-test.js:55:12)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/json-test.js:48:9)
+              at /Users/jakub/Developer/Blame/externals/levelup/test/common.js:53:14
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node json-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/key-value-streams-test.js ................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node key-value-streams-test.js"
+    TAP version 13
+    not ok 1 test/key-value-streams-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node key-value-streams-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+ok test/leveldown-substitution-test.js .................. 2/2
+not ok test/null-and-undefined-test.js .................. 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node null-and-undefined-test.js"
+    TAP version 13
+    not ok 1 test/null-and-undefined-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.buster.testCase.null and undefined.setUp (/Users/jakub/Developer/Blame/externals/levelup/test/null-and-undefined-test.js:20:11)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:28:7
+              at /Users/jakub/Developer/Blame/externals/levelup/test/common.js:53:14
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node null-and-undefined-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/open-patchsafe-test.js ...................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node open-patchsafe-test.js"
+    TAP version 13
+    not ok 1 test/open-patchsafe-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/open-patchsafe-test.js:17:20)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:74:17
+              at /Users/jakub/Developer/Blame/externals/levelup/test/common.js:53:14
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node open-patchsafe-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/optional-leveldown-test.js .................. 5/9
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node optional-leveldown-test.js"
+    TAP version 13
+    ok 1 Optional LevelDOWN: test getLevelDOWN()
+    not ok 2 Error: Cannot find module 'leveldown'
+      ---
+        type:    Error
+        message: Cannot find module 'leveldown'
+        code:    MODULE_NOT_FOUND
+        errno:   ~
+        file:    module.js
+        line:    331
+        column:  15
+        stack:   
+          - Function.Module._resolveFilename (module.js:331:15)
+          - Function.require.resolve (module.js:377:19)
+          - Object.clearCache (/Users/jakub/Developer/Blame/externals/levelup/test/optional-leveldown-test.js:13:32)
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:18:12
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:28:7
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:15:41
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:27:5
+          - execute (/Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:73:15)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:84:13)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    ok 3 Optional LevelDOWN: test wrong version
+    not ok 4 Error: Cannot find module 'leveldown'
+      ---
+        type:    Error
+        message: Cannot find module 'leveldown'
+        code:    MODULE_NOT_FOUND
+        errno:   ~
+        file:    module.js
+        line:    331
+        column:  15
+        stack:   
+          - Function.Module._resolveFilename (module.js:331:15)
+          - Function.require.resolve (module.js:377:19)
+          - Object.clearCache (/Users/jakub/Developer/Blame/externals/levelup/test/optional-leveldown-test.js:13:32)
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:18:12
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:28:7
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:15:41
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:27:5
+          - execute (/Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:73:15)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:84:13)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    ok 5 Optional LevelDOWN: test no leveldown/package
+    not ok 6 Error: Cannot find module 'leveldown'
+      ---
+        type:    Error
+        message: Cannot find module 'leveldown'
+        code:    MODULE_NOT_FOUND
+        errno:   ~
+        file:    module.js
+        line:    331
+        column:  15
+        stack:   
+          - Function.Module._resolveFilename (module.js:331:15)
+          - Function.require.resolve (module.js:377:19)
+          - Object.clearCache (/Users/jakub/Developer/Blame/externals/levelup/test/optional-leveldown-test.js:13:32)
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:18:12
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:28:7
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:15:41
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:27:5
+          - execute (/Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:73:15)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:84:13)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    ok 7 Optional LevelDOWN: test no leveldown
+    not ok 8 Error: Cannot find module 'leveldown'
+      ---
+        type:    Error
+        message: Cannot find module 'leveldown'
+        code:    MODULE_NOT_FOUND
+        errno:   ~
+        file:    module.js
+        line:    331
+        column:  15
+        stack:   
+          - Function.Module._resolveFilename (module.js:331:15)
+          - Function.require.resolve (module.js:377:19)
+          - Object.clearCache (/Users/jakub/Developer/Blame/externals/levelup/test/optional-leveldown-test.js:13:32)
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:18:12
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:28:7
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:15:41
+          - /Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:27:5
+          - execute (/Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:73:15)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/node_modules/bustermove/bustermove.js:84:13)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    ok 9 test/optional-leveldown-test.js
+    
+    1..9
+    # tests 9
+    # pass  5
+    # fail  4
+    
+not ok test/read-stream-test.js ......................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node read-stream-test.js"
+    TAP version 13
+    not ok 1 test/read-stream-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node read-stream-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/snapshot-test.js ............................ 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node snapshot-test.js"
+    TAP version 13
+    not ok 1 test/snapshot-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node snapshot-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/write-stream-test.js ........................ 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node write-stream-test.js"
+    TAP version 13
+    not ok 1 test/write-stream-test.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55
+              throw new LevelUPError(missingLevelDOWNError)
+                    ^
+          LevelUPError: Could not locate LevelDOWN, try `npm install leveldown`
+              at getLevelDOWN (/Users/jakub/Developer/Blame/externals/levelup/lib/util.js:55:11)
+              at LevelUP.open (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:113:37)
+              at new LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:86:8)
+              at LevelUP (/Users/jakub/Developer/Blame/externals/levelup/lib/levelup.js:46:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/levelup/test/common.js:74:5)
+              at CB (/Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:68:5)
+              at /Users/jakub/Developer/Blame/externals/levelup/node_modules/rimraf/rimraf.js:91:16
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node write-stream-test.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+total .................................................. 9/33
+
+not ok

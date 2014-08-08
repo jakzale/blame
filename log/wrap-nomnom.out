@@ -1,0 +1,4 @@
+
+> nomnom@1.8.0 test /Users/jakub/Developer/Blame/externals/nomnom
+> nodeunit test/*.js
+

@@ -1,0 +1,37 @@
+[31m  4 failing[0m
+
+[0m  1) API updateUserEmail should work on request success:
+[0m[31m     Uncaught Error: Nock: No match for HTTP request PUT /api/users/auth0%7Comguser/email {"email":"doge@auth0.com","verify":true}[0m[90m
+      at RequestOverrider.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/nock/lib/request_overrider.js:170:13)
+      at OverridenClientRequest.RequestOverrider.req.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/nock/lib/request_overrider.js:109:7)
+      at Request.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/request/request.js:1213:12)
+      at /Users/jakub/Developer/Blame/externals/auth0/node_modules/request/request.js:408:12
+      at process._tickCallback (node.js:343:11)
+[0m
+[0m  2) API updateUserEmail should fail when request fail:
+[0m[31m     Uncaught Error: Nock: No match for HTTP request PUT /api/users/auth0%7Comguser/email {"email":"doge@auth0.com","verify":true}[0m[90m
+      at RequestOverrider.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/nock/lib/request_overrider.js:170:13)
+      at OverridenClientRequest.RequestOverrider.req.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/nock/lib/request_overrider.js:109:7)
+      at Request.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/request/request.js:1213:12)
+      at /Users/jakub/Developer/Blame/externals/auth0/node_modules/request/request.js:408:12
+      at process._tickCallback (node.js:343:11)
+[0m
+[0m  3) API updateUserPassword should work on request success:
+[0m[31m     Uncaught Error: Nock: No match for HTTP request PUT /api/users/auth0%7Comguser/password {"password":"sosecretsuchcrypto","verify":true}[0m[90m
+      at RequestOverrider.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/nock/lib/request_overrider.js:170:13)
+      at OverridenClientRequest.RequestOverrider.req.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/nock/lib/request_overrider.js:109:7)
+      at Request.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/request/request.js:1213:12)
+      at /Users/jakub/Developer/Blame/externals/auth0/node_modules/request/request.js:408:12
+      at process._tickCallback (node.js:343:11)
+[0m
+[0m  4) API updateUserPassword should fail when request fail:
+[0m[31m     Uncaught Error: Nock: No match for HTTP request PUT /api/users/auth0%7Comguser/password {"password":"sosecretsuchcrypto","verify":true}[0m[90m
+      at RequestOverrider.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/nock/lib/request_overrider.js:170:13)
+      at OverridenClientRequest.RequestOverrider.req.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/nock/lib/request_overrider.js:109:7)
+      at Request.end (/Users/jakub/Developer/Blame/externals/auth0/node_modules/request/request.js:1213:12)
+      at /Users/jakub/Developer/Blame/externals/auth0/node_modules/request/request.js:408:12
+      at process._tickCallback (node.js:343:11)
+[0m
+
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

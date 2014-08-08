@@ -1,0 +1,252 @@
+
+> lockfile@0.4.2 test /Users/jakub/Developer/Blame/externals/lockfile
+> tap test/*.js
+
+not ok test/basic.js ................................ 222/223
+    Command: "node" "basic.js"
+    TAP version 13
+    ok 1 acquiring starter
+    ok 2 acquired starter lock
+    ok 3 unlocking starter
+    ok 4 unlocked starter
+    ok 5 locked and unlocked #1
+    ok 6 locked and unlocked #2
+    ok 7 locked and unlocked #3
+    ok 8 locked and unlocked #4
+    ok 9 locked and unlocked #5
+    ok 10 locked and unlocked #6
+    ok 11 locked and unlocked #7
+    ok 12 locked and unlocked #8
+    ok 13 locked and unlocked #9
+    ok 14 locked and unlocked #10
+    ok 15 locked and unlocked #11
+    ok 16 locked and unlocked #12
+    ok 17 locked and unlocked #13
+    ok 18 locked and unlocked #14
+    ok 19 locked and unlocked #15
+    ok 20 locked and unlocked #16
+    ok 21 locked and unlocked #17
+    ok 22 locked and unlocked #18
+    ok 23 locked and unlocked #19
+    ok 24 locked and unlocked #20
+    ok 25 locked and unlocked #21
+    ok 26 locked and unlocked #22
+    ok 27 locked and unlocked #23
+    ok 28 locked and unlocked #24
+    ok 29 locked and unlocked #25
+    ok 30 locked and unlocked #26
+    ok 31 locked and unlocked #27
+    ok 32 locked and unlocked #28
+    ok 33 locked and unlocked #29
+    ok 34 locked and unlocked #30
+    ok 35 locked and unlocked #31
+    ok 36 locked and unlocked #32
+    ok 37 locked and unlocked #33
+    ok 38 locked and unlocked #34
+    ok 39 locked and unlocked #35
+    ok 40 locked and unlocked #36
+    ok 41 locked and unlocked #37
+    ok 42 locked and unlocked #38
+    ok 43 locked and unlocked #39
+    ok 44 locked and unlocked #40
+    ok 45 locked and unlocked #41
+    ok 46 locked and unlocked #42
+    ok 47 locked and unlocked #43
+    ok 48 locked and unlocked #44
+    ok 49 locked and unlocked #45
+    ok 50 locked and unlocked #46
+    ok 51 locked and unlocked #47
+    ok 52 locked and unlocked #48
+    ok 53 locked and unlocked #49
+    ok 54 locked and unlocked #50
+    ok 55 locked and unlocked #51
+    ok 56 locked and unlocked #52
+    ok 57 locked and unlocked #53
+    ok 58 locked and unlocked #54
+    ok 59 locked and unlocked #55
+    ok 60 locked and unlocked #56
+    ok 61 locked and unlocked #57
+    ok 62 locked and unlocked #58
+    ok 63 locked and unlocked #59
+    ok 64 locked and unlocked #60
+    ok 65 locked and unlocked #61
+    ok 66 locked and unlocked #62
+    ok 67 locked and unlocked #63
+    ok 68 locked and unlocked #64
+    ok 69 locked and unlocked #65
+    ok 70 locked and unlocked #66
+    ok 71 locked and unlocked #67
+    ok 72 locked and unlocked #68
+    ok 73 locked and unlocked #69
+    ok 74 locked and unlocked #70
+    ok 75 locked and unlocked #71
+    ok 76 locked and unlocked #72
+    ok 77 locked and unlocked #73
+    ok 78 locked and unlocked #74
+    ok 79 locked and unlocked #75
+    ok 80 locked and unlocked #76
+    ok 81 locked and unlocked #77
+    ok 82 locked and unlocked #78
+    ok 83 locked and unlocked #79
+    ok 84 locked and unlocked #80
+    ok 85 locked and unlocked #81
+    ok 86 locked and unlocked #82
+    ok 87 locked and unlocked #83
+    ok 88 locked and unlocked #84
+    ok 89 locked and unlocked #85
+    ok 90 locked and unlocked #86
+    ok 91 locked and unlocked #87
+    ok 92 locked and unlocked #88
+    ok 93 locked and unlocked #89
+    ok 94 locked and unlocked #90
+    ok 95 locked and unlocked #91
+    ok 96 locked and unlocked #92
+    ok 97 locked and unlocked #93
+    ok 98 locked and unlocked #94
+    ok 99 locked and unlocked #95
+    ok 100 locked and unlocked #96
+    ok 101 locked and unlocked #97
+    ok 102 locked and unlocked #98
+    ok 103 locked and unlocked #99
+    ok 104 locked and unlocked #100
+    ok 105 locked and unlocked #101
+    ok 106 locked and unlocked #102
+    ok 107 locked and unlocked #103
+    ok 108 locked and unlocked #104
+    ok 109 locked and unlocked #105
+    ok 110 locked and unlocked #106
+    ok 111 locked and unlocked #107
+    ok 112 locked and unlocked #108
+    ok 113 locked and unlocked #109
+    ok 114 locked and unlocked #110
+    ok 115 locked and unlocked #111
+    ok 116 locked and unlocked #112
+    ok 117 locked and unlocked #113
+    ok 118 locked and unlocked #114
+    ok 119 locked and unlocked #115
+    ok 120 locked and unlocked #116
+    ok 121 locked and unlocked #117
+    ok 122 locked and unlocked #118
+    ok 123 locked and unlocked #119
+    ok 124 locked and unlocked #120
+    ok 125 locked and unlocked #121
+    ok 126 locked and unlocked #122
+    ok 127 locked and unlocked #123
+    ok 128 locked and unlocked #124
+    ok 129 locked and unlocked #125
+    ok 130 locked and unlocked #126
+    ok 131 locked and unlocked #127
+    ok 132 locked and unlocked #128
+    ok 133 locked and unlocked #129
+    ok 134 locked and unlocked #130
+    ok 135 locked and unlocked #131
+    ok 136 locked and unlocked #132
+    ok 137 locked and unlocked #133
+    ok 138 locked and unlocked #134
+    ok 139 locked and unlocked #135
+    ok 140 locked and unlocked #136
+    ok 141 locked and unlocked #137
+    ok 142 locked and unlocked #138
+    ok 143 locked and unlocked #139
+    ok 144 locked and unlocked #140
+    ok 145 locked and unlocked #141
+    ok 146 locked and unlocked #142
+    ok 147 locked and unlocked #143
+    ok 148 locked and unlocked #144
+    ok 149 locked and unlocked #145
+    ok 150 locked and unlocked #146
+    ok 151 locked and unlocked #147
+    ok 152 locked and unlocked #148
+    ok 153 locked and unlocked #149
+    ok 154 locked and unlocked #150
+    ok 155 locked and unlocked #151
+    ok 156 locked and unlocked #152
+    ok 157 locked and unlocked #153
+    ok 158 locked and unlocked #154
+    ok 159 locked and unlocked #155
+    ok 160 locked and unlocked #156
+    ok 161 locked and unlocked #157
+    ok 162 locked and unlocked #158
+    ok 163 locked and unlocked #159
+    ok 164 locked and unlocked #160
+    ok 165 locked and unlocked #161
+    ok 166 locked and unlocked #162
+    ok 167 locked and unlocked #163
+    ok 168 locked and unlocked #164
+    ok 169 locked and unlocked #165
+    ok 170 locked and unlocked #166
+    ok 171 locked and unlocked #167
+    ok 172 locked and unlocked #168
+    ok 173 locked and unlocked #169
+    ok 174 locked and unlocked #170
+    ok 175 locked and unlocked #171
+    ok 176 locked and unlocked #172
+    ok 177 locked and unlocked #173
+    ok 178 locked and unlocked #174
+    ok 179 locked and unlocked #175
+    ok 180 locked and unlocked #176
+    ok 181 locked and unlocked #177
+    ok 182 locked and unlocked #178
+    ok 183 locked and unlocked #179
+    ok 184 locked and unlocked #180
+    ok 185 locked and unlocked #181
+    ok 186 locked and unlocked #182
+    ok 187 locked and unlocked #183
+    ok 188 locked and unlocked #184
+    ok 189 locked and unlocked #185
+    ok 190 locked and unlocked #186
+    ok 191 locked and unlocked #187
+    ok 192 locked and unlocked #188
+    ok 193 locked and unlocked #189
+    ok 194 locked and unlocked #190
+    ok 195 locked and unlocked #191
+    ok 196 locked and unlocked #192
+    ok 197 locked and unlocked #193
+    ok 198 locked and unlocked #194
+    ok 199 locked and unlocked #195
+    ok 200 locked and unlocked #196
+    ok 201 locked and unlocked #197
+    ok 202 locked and unlocked #198
+    ok 203 locked and unlocked #199
+    ok 204 locked and unlocked #200
+    ok 205 got all locks
+    ok 206 (unnamed assert)
+    ok 207 (unnamed assert)
+    ok 208 (unnamed assert)
+    ok 209 (unnamed assert)
+    ok 210 (unnamed assert)
+    ok 211 (unnamed assert)
+    ok 212 (unnamed assert)
+    ok 213 (unnamed assert)
+    ok 214 (unnamed assert)
+    ok 215 (unnamed assert)
+    ok 216 (unnamed assert)
+    ok 217 should be equal
+    ok 218 should be equal
+    ok 219 should be equal
+    not ok 220 got second lock?  that unpossible!
+      ---
+        file:   fs.js
+        line:   97
+        column: 15
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/lockfile/node_modules/tap/lib/tap-assert.js:415:17)
+          - assert (/Users/jakub/Developer/Blame/externals/lockfile/node_modules/tap/lib/tap-assert.js:20:16)
+          - Function.fail (/Users/jakub/Developer/Blame/externals/lockfile/node_modules/tap/lib/tap-assert.js:94:10)
+          - Test._testAssert [as fail] (/Users/jakub/Developer/Blame/externals/lockfile/node_modules/tap/lib/tap-test.js:86:16)
+          - /Users/jakub/Developer/Blame/externals/lockfile/test/basic.js:244:11
+          - /Users/jakub/Developer/Blame/externals/lockfile/lockfile.js:161:16
+          - Object.oncomplete (fs.js:97:15)
+      ...
+    ok 221 should be locked and not stale
+    ok 222 second lock failed, windows file tunneling problem fixed
+    ok 223 test/basic.js
+    
+    1..223
+    # tests 223
+    # pass  222
+    # fail  1
+    
+total ............................................... 222/223
+
+not ok

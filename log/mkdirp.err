@@ -1,0 +1,31 @@
+about to write to /tmp/b865
+/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122
+fs.Stats.prototype._checkModeProperty = function(property) {
+        ^
+TypeError: Cannot read property 'prototype' of undefined
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122:9)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Object.load (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/moduleEnv.js:19:18)
+    at internalRewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/rewire.js:56:15)
+    at rewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/index.js:11:12)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/lib/index.js:28:14)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122
+fs.Stats.prototype._checkModeProperty = function(property) {
+        ^
+TypeError: Cannot read property 'prototype' of undefined
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122:9)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Object.load (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/moduleEnv.js:19:18)
+    at internalRewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/rewire.js:56:15)
+    at rewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/index.js:11:12)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/lib/index.js:28:14)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

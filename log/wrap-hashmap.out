@@ -1,0 +1,52 @@
+
+> hashmap@1.1.0 test /Users/jakub/Developer/Blame/externals/hashmap
+> mocha test/*.js
+
+
+[0m[0m
+[0m  hashmap[0m
+[0m    hashmap.type()[0m
+    [32m  ✓[0m[90m should detect types accurately [0m
+[0m    hashmap.hash()[0m
+    [32m  ✓[0m[90m should hash primitives accurately [0m
+    [32m  ✓[0m[90m should hash objects with primitive representation accurately [0m
+    [32m  ✓[0m[90m should hash arrays accurately [0m
+    [32m  ✓[0m[90m should hash unrecognized objects accurately [0m
+    [32m  ✓[0m[90m should not add any iterable property to objects [0m
+[0m    hashmap.has()[0m
+    [32m  ✓[0m[90m should return false when it does not have an entry with a key [0m
+    [32m  ✓[0m[90m should return true when it has an entry with a key [0m
+[0m    hashmap.remove()[0m
+    [32m  ✓[0m[90m should remove an entry by key [0m
+    [32m  ✓[0m[90m should not fail when the key is not found [0m
+[0m    hashmap.get()[0m
+    [32m  ✓[0m[90m should map the same key consistenly to the same hash [0m
+    [32m  ✓[0m[90m should map these pair of keys to the same hash [0m
+    [32m  ✓[0m[90m should NOT map these pair of keys to the same hash [0m
+[0m    hashmap.forEach()[0m
+    [32m  ✓[0m[90m should pass the basic test [0m
+    [32m  ✓[0m[90m should call the callback once per key [0m
+    [32m  ✓[0m[90m should not call the callback on removed keys [0m
+    [32m  ✓[0m[90m should remain consistent among calls [0m
+[0m    hashmap.keys()[0m
+    [32m  ✓[0m[90m should return an empty array for an empty hashmap [0m
+    [32m  ✓[0m[90m should return an array with one key once added [0m
+    [32m  ✓[0m[90m should work for several keys [0m
+[0m    hashmap.values()[0m
+    [32m  ✓[0m[90m should return an empty array for an empty hashmap [0m
+    [32m  ✓[0m[90m should return an array with one value once added [0m
+    [32m  ✓[0m[90m should work for several values [0m
+[0m    hashmap.count()[0m
+    [32m  ✓[0m[90m should return 0 when nothing was added [0m
+    [32m  ✓[0m[90m should return 1 once an entry was added [0m
+    [32m  ✓[0m[90m should not increase when setting an existing key [0m
+    [32m  ✓[0m[90m should increase when setting different key [0m
+    [32m  ✓[0m[90m should decrease when removing a key [0m
+[0m    hashmap.clear()[0m
+    [32m  ✓[0m[90m should do nothing when empty [0m
+    [32m  ✓[0m[90m should remove the only entry [0m
+    [32m  ✓[0m[90m should remove multiple entries [0m
+
+
+[92m [0m[32m 31 passing[0m[90m (25ms)[0m
+

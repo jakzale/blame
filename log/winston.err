@@ -1,0 +1,11 @@
+debug: test message
+error: test message
+error: test message
+debug: test message
+util.print: Use console.log instead
+util.puts: Use console.log instead
+debug: test message
+error: test message
+util.print: Use console.log instead
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

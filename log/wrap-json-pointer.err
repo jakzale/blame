@@ -1,0 +1,154 @@
+[31m  5 failing[0m
+
+[0m  1) json-api #set should set a value on an object:
+[0m[31m     Error: {label_0}[get/rng] not of type Void: function api(obj, pointer, value) {
+    // .set()
+    if (arguments.length === 3) {
+        return api.set(obj, pointer, value);
+    }
+    // .get()
+    if (arguments.length === 2) {
+        return api.get(obj, pointer);
+    }
+    // Return a partially applied function on `obj`.
+    var wrapped = api.bind(api, obj);
+
+    // Support for oo style
+    for (var name in api) {
+        if (api.hasOwnProperty(name)) {
+            wrapped[name] = api[name].bind(wrapped, obj);
+        }
+    }
+    return wrapped;
+}[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/json-pointer/test/test.js:72:21)
+      at callFn (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  2) json-api #set should work on first level:
+[0m[31m     Error: {label_0}[get/rng] not of type Void: function api(obj, pointer, value) {
+    // .set()
+    if (arguments.length === 3) {
+        return api.set(obj, pointer, value);
+    }
+    // .get()
+    if (arguments.length === 2) {
+        return api.get(obj, pointer);
+    }
+    // Return a partially applied function on `obj`.
+    var wrapped = api.bind(api, obj);
+
+    // Support for oo style
+    for (var name in api) {
+        if (api.hasOwnProperty(name)) {
+            wrapped[name] = api[name].bind(wrapped, obj);
+        }
+    }
+    return wrapped;
+}[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/json-pointer/test/test.js:81:21)
+      at callFn (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  3) json-api #set should create arrays for numeric reference tokens and objects for other tokens:
+[0m[31m     Error: {label_0}[get/rng] not of type Void: function api(obj, pointer, value) {
+    // .set()
+    if (arguments.length === 3) {
+        return api.set(obj, pointer, value);
+    }
+    // .get()
+    if (arguments.length === 2) {
+        return api.get(obj, pointer);
+    }
+    // Return a partially applied function on `obj`.
+    var wrapped = api.bind(api, obj);
+
+    // Support for oo style
+    for (var name in api) {
+        if (api.hasOwnProperty(name)) {
+            wrapped[name] = api[name].bind(wrapped, obj);
+        }
+    }
+    return wrapped;
+}[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/json-pointer/test/test.js:87:21)
+      at callFn (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  4) convenience api wrapper should call #get when passed 2 args:
+[0m[31m     Error: {label_0}[dom] too many arguments, expected <=1, got: 2[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/json-pointer/test/test.js:216:9)
+      at callFn (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  5) convenience api wrapper should call #set when passed 3 args:
+[0m[31m     Error: {label_0}[dom] too many arguments, expected <=1, got: 3[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/json-pointer/test/test.js:225:9)
+      at callFn (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/json-pointer/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+
+make: *** [test] Error 5
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

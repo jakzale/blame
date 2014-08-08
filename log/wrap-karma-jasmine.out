@@ -1,0 +1,12 @@
+
+> karma-jasmine@0.2.2 test /Users/jakub/Developer/Blame/externals/karma-jasmine
+> grunt test
+
+[4mRunning "karma:adapter" (karma) task[24m
+[32mINFO [karma]: [39mKarma v0.12.21 server started at http://localhost:9876/
+[32mINFO [launcher]: [39mStarting browser Chrome
+[32mINFO [Chrome 36.0.1985 (Mac OS X 10.9.4)]: [39mConnected on socket 6OybuTtrr7A1x4FcpwJg with id 16154691
+.........
+Chrome 36.0.1985 (Mac OS X 10.9.4): Executed 9 of 9[32m SUCCESS[39m (0.024 secs / 0.022 secs)
+
+[32mDone, without errors.[39m

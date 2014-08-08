@@ -1,0 +1,189 @@
+
+> consolidate@0.10.0 test /Users/jakub/Developer/Blame/externals/consolidate
+> mocha
+
+
+[0m[0m
+[0m  jade[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  ejs[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  swig[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  jazz[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  jqtpl[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  liquor[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  haml[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  eco[0m
+  [32m  ✓[0m[90m should support locals [0m[33m(49ms)[0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  whiskers[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  haml-coffee[0m
+  [32m  ✓[0m[90m should support locals [0m[33m(72ms)[0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  hogan[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  hogan[0m
+  [32m  ✓[0m[90m should support partials [0m
+
+[0m  dust[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  dust[0m
+  [32m  ✓[0m[90m should support rendering a partial [0m
+
+[0m  handlebars[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  handlebars[0m
+  [32m  ✓[0m[90m should support partials [0m
+
+[0m  handlebars[0m
+  [32m  ✓[0m[90m should support helpers [0m
+
+[0m  underscore[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  lodash[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  qejs[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  walrus[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  mustache[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  mustache[0m
+  [32m  ✓[0m[90m should support partials [0m
+
+[0m  just[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  ect[0m
+  [32m  ✓[0m[90m should support locals [0m[33m(38ms)[0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  mote[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  toffee[0m
+  [32m  ✓[0m[90m should support locals [0m[31m(122ms)[0m
+  [32m  ✓[0m[90m should not cache by default [0m[31m(93ms)[0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  atpl[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [31m  1) should not cache by default[0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  templayed[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  dot[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  ractive[0m
+  [32m  ✓[0m[90m should support locals [0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+[0m  ractive[0m
+  [32m  ✓[0m[90m should support partials [0m
+
+[0m  nunjucks[0m
+  [32m  ✓[0m[90m should support locals [0m[33m(38ms)[0m
+  [32m  ✓[0m[90m should not cache by default [0m
+  [32m  ✓[0m[90m should support caching [0m
+  [32m  ✓[0m[90m should support rendering a string [0m
+
+
+[92m [0m[32m 113 passing[0m[90m (996ms)[0m
+

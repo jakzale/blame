@@ -1,0 +1,15 @@
+
+> swig@1.4.2 test /Users/jakub/Developer/Blame/externals/swig
+> make lint && make test reporter=spec && make test-browser && make coverage cov-reporter=travis-cov
+
+[1;31m./index.js, line 5, character 1:[0m Unexpected ';'.
+;
+[1;31m./index.js, line 5, character 1:[0m Unexpected space between ';' and ';'.
+;
+[1;31m./index.js, line 5, character 1:[0m Expected ';' at column 3, not column 1.
+;
+[1;31m./index.js, line 6, character 10:[0m Expected exactly one space between 'function' and '('.
+(function() {
+[1;31m./index.js, line 10, character 20:[0m Read only.
+module.exports = exports = Blame.simple_wrap(module.exports, Blame.obj({
+5 errors

@@ -1,0 +1,118 @@
+
+> clone@0.1.17 test /Users/jakub/Developer/Blame/externals/clone
+> nodeunit test.js
+
+
+[1mtest.js[22m
+[31m✖ clone string[39m
+
+Error: Expected 2 assertions, 0 ran
+  at Object.test.done (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/types.js:121:25)
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:73:14)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:123:13)
+  at async.forEachSeries (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:139:9)
+  at _concat (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:512:9)
+  at Object.concatSeries (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:152:23)
+  at Object.exports.runSuite (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:96:11)
+  at Object.exports.runModule (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:158:13)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/nodeunit.js:75:21
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:123:13)
+  at async.forEachSeries (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:139:9)
+  at _concat (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:512:9)
+  at Object.concatSeries (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:152:23)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/nodeunit.js:73:15
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:518:13
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:110:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:515:17
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/utils.js:65:24
+  at Object.oncomplete (fs.js:97:15)
+
+
+Error: {label_0}[dom] not of type Obj: foo
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+  at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+  at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+  at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+  at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+  at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+  at Object.exports.clone string (/Users/jakub/Developer/Blame/externals/clone/test.js:17:20)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:236:16)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:236:16
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:70:9)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:123:13)
+  at async.forEachSeries (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:139:9)
+  at _concat (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:512:9)
+  at Object.concatSeries (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:152:23)
+  at Object.exports.runSuite (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:96:11)
+  at Object.exports.runModule (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:158:13)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/nodeunit.js:75:21
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:123:13)
+  at async.forEachSeries (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:139:9)
+  at _concat (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:512:9)
+  at Object.concatSeries (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:152:23)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/nodeunit.js:73:15
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:518:13
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:110:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:515:17
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/utils.js:65:24
+  at Object.oncomplete (fs.js:97:15)
+
+
+[31m✖ clone number[39m
+
+Error: Expected 5 assertions, 0 ran
+  at Object.test.done (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/types.js:121:25)
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:73:14)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:123:13)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:134:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:515:17
+  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/types.js:146:17)
+  at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+Error: {label_0}[dom] not of type Obj: 0
+  at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+  at wrap_obj (/Users/jakub/Developer/Blame/build/blame.js:985:11)
+  at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:764:28)
+  at wrap_lazy (/Users/jakub/Developer/Blame/build/blame.js:1026:20)
+  at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:783:28)
+  at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+  at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+  at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+  at Object.exports.clone number (/Users/jakub/Developer/Blame/externals/clone/test.js:30:20)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:236:16)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:236:16
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:70:9)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:123:13)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:134:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:515:17
+  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/types.js:146:17)
+  at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+[31m✖ clone date[39m
+
+Error: Expected 3 assertions, 0 ran
+  at Object.test.done (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/types.js:121:25)
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:73:14)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:123:13)
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:134:25
+  at /Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/deps/async.js:515:17
+  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/clone/node_modules/nodeunit/lib/types.js:146:17)
+  at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+

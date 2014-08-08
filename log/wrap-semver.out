@@ -1,0 +1,853 @@
+
+> semver@3.0.1 test /Users/jakub/Developer/Blame/externals/semver
+> tap test/*.js
+
+not ok test/amd.js ...................................... 2/3
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node amd.js"
+    TAP version 13
+    ok 1 amd function called
+    not ok 2 amd stuff same as require stuff
+      ---
+        file:   /Users/jakub/Developer/Blame/externals/semver/test/amd.js
+        line:   13
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:418:17)
+          - assert (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:21:16)
+          - Function.equal (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:162:10)
+          - Test._testAssert [as equal] (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-test.js:87:16)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/amd.js:13:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-test.js:104:8)
+          - GlobalHarness.Harness.process (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-harness.js:87:13)
+          - process._tickCallback (node.js:343:11)
+          - Function.Module.runMain (module.js:492:11)
+        found:  |
+          function SemVer(version, loose) {
+            if (version instanceof SemVer) {
+              if (version.loose === loose)
+                return version;
+              else
+                version = version.version;
+            } else if (typeof version !== 'string') {
+              throw new TypeError('Invalid Version: ' + version);
+            }
+          
+            if (!(this instanceof SemVer))
+              return new SemVer(version, loose);
+          
+            debug('SemVer', version, loose);
+            this.loose = loose;
+            var m = version.trim().match(loose ? re[LOOSE] : re[FULL]);
+          
+            if (!m)
+              throw new TypeError('Invalid Version: ' + version);
+          
+            this.raw = version;
+          
+            // these are actually numbers
+            this.major = +m[1];
+            this.minor = +m[2];
+            this.patch = +m[3];
+          
+            // numberify any prerelease numeric ids
+            if (!m[4])
+              this.prerelease = [];
+            else
+              this.prerelease = m[4].split('.').map(function(id) {
+                return (/^[0-9]+$/.test(id)) ? +id : id;
+              });
+          
+            this.build = m[5] ? m[5].split('.') : [];
+            this.format();
+          }
+        wanted: |
+          function SemVer(version, loose) {
+            if (version instanceof SemVer) {
+              if (version.loose === loose)
+                return version;
+              else
+                version = version.version;
+            } else if (typeof version !== 'string') {
+              throw new TypeError('Invalid Version: ' + version);
+            }
+          
+            if (!(this instanceof SemVer))
+              return new SemVer(version, loose);
+          
+            debug('SemVer', version, loose);
+            this.loose = loose;
+            var m = version.trim().match(loose ? re[LOOSE] : re[FULL]);
+          
+            if (!m)
+              throw new TypeError('Invalid Version: ' + version);
+          
+            this.raw = version;
+          
+            // these are actually numbers
+            this.major = +m[1];
+            this.minor = +m[2];
+            this.patch = +m[3];
+          
+            // numberify any prerelease numeric ids
+            if (!m[4])
+              this.prerelease = [];
+            else
+              this.prerelease = m[4].split('.').map(function(id) {
+                return (/^[0-9]+$/.test(id)) ? +id : id;
+              });
+          
+            this.build = m[5] ? m[5].split('.') : [];
+            this.format();
+          }
+      ...
+    ok 3 test/amd.js
+    
+    1..3
+    # tests 3
+    # pass  2
+    # fail  1
+    
+ok test/clean.js ........................................ 9/9
+ok test/gtr.js ...................................... 142/142
+not ok test/index.js ................................ 413/425
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node index.js"
+    TAP version 13
+    not ok 1 Error: {label_0}[get/dom] not of type Bool: undefined
+      ---
+        type:    Error
+        message: {label_0}[get/dom] not of type Bool: undefined
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:57:10
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:53:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    ok 2 eq('1.2.3', 'v1.2.3')
+    ok 3 !neq('1.2.3', 'v1.2.3')
+    ok 4 cmp(1.2.3==v1.2.3)
+    ok 5 !cmp(1.2.3!=v1.2.3)
+    ok 6 !cmp(1.2.3===v1.2.3)
+    ok 7 cmp(1.2.3!==v1.2.3)
+    ok 8 !gt('1.2.3', 'v1.2.3')
+    ok 9 gte('1.2.3', 'v1.2.3')
+    ok 10 !lt('1.2.3', 'v1.2.3')
+    ok 11 lte('1.2.3', 'v1.2.3')
+    ok 12 eq('1.2.3', '=1.2.3')
+    ok 13 !neq('1.2.3', '=1.2.3')
+    ok 14 cmp(1.2.3===1.2.3)
+    ok 15 !cmp(1.2.3!==1.2.3)
+    ok 16 !cmp(1.2.3====1.2.3)
+    ok 17 cmp(1.2.3!===1.2.3)
+    ok 18 !gt('1.2.3', '=1.2.3')
+    ok 19 gte('1.2.3', '=1.2.3')
+    ok 20 !lt('1.2.3', '=1.2.3')
+    ok 21 lte('1.2.3', '=1.2.3')
+    ok 22 eq('1.2.3', 'v 1.2.3')
+    ok 23 !neq('1.2.3', 'v 1.2.3')
+    ok 24 cmp(1.2.3==v 1.2.3)
+    ok 25 !cmp(1.2.3!=v 1.2.3)
+    ok 26 !cmp(1.2.3===v 1.2.3)
+    ok 27 cmp(1.2.3!==v 1.2.3)
+    ok 28 !gt('1.2.3', 'v 1.2.3')
+    ok 29 gte('1.2.3', 'v 1.2.3')
+    ok 30 !lt('1.2.3', 'v 1.2.3')
+    ok 31 lte('1.2.3', 'v 1.2.3')
+    ok 32 eq('1.2.3', '= 1.2.3')
+    ok 33 !neq('1.2.3', '= 1.2.3')
+    ok 34 cmp(1.2.3=== 1.2.3)
+    ok 35 !cmp(1.2.3!== 1.2.3)
+    ok 36 !cmp(1.2.3==== 1.2.3)
+    ok 37 cmp(1.2.3!=== 1.2.3)
+    ok 38 !gt('1.2.3', '= 1.2.3')
+    ok 39 gte('1.2.3', '= 1.2.3')
+    ok 40 !lt('1.2.3', '= 1.2.3')
+    ok 41 lte('1.2.3', '= 1.2.3')
+    ok 42 eq('1.2.3', ' v1.2.3')
+    ok 43 !neq('1.2.3', ' v1.2.3')
+    ok 44 cmp(1.2.3== v1.2.3)
+    ok 45 !cmp(1.2.3!= v1.2.3)
+    ok 46 !cmp(1.2.3=== v1.2.3)
+    ok 47 cmp(1.2.3!== v1.2.3)
+    ok 48 !gt('1.2.3', ' v1.2.3')
+    ok 49 gte('1.2.3', ' v1.2.3')
+    ok 50 !lt('1.2.3', ' v1.2.3')
+    ok 51 lte('1.2.3', ' v1.2.3')
+    ok 52 eq('1.2.3', ' =1.2.3')
+    ok 53 !neq('1.2.3', ' =1.2.3')
+    ok 54 cmp(1.2.3== =1.2.3)
+    ok 55 !cmp(1.2.3!= =1.2.3)
+    ok 56 !cmp(1.2.3=== =1.2.3)
+    ok 57 cmp(1.2.3!== =1.2.3)
+    ok 58 !gt('1.2.3', ' =1.2.3')
+    ok 59 gte('1.2.3', ' =1.2.3')
+    ok 60 !lt('1.2.3', ' =1.2.3')
+    ok 61 lte('1.2.3', ' =1.2.3')
+    ok 62 eq('1.2.3', ' v 1.2.3')
+    ok 63 !neq('1.2.3', ' v 1.2.3')
+    ok 64 cmp(1.2.3== v 1.2.3)
+    ok 65 !cmp(1.2.3!= v 1.2.3)
+    ok 66 !cmp(1.2.3=== v 1.2.3)
+    ok 67 cmp(1.2.3!== v 1.2.3)
+    ok 68 !gt('1.2.3', ' v 1.2.3')
+    ok 69 gte('1.2.3', ' v 1.2.3')
+    ok 70 !lt('1.2.3', ' v 1.2.3')
+    ok 71 lte('1.2.3', ' v 1.2.3')
+    ok 72 eq('1.2.3', ' = 1.2.3')
+    ok 73 !neq('1.2.3', ' = 1.2.3')
+    ok 74 cmp(1.2.3== = 1.2.3)
+    ok 75 !cmp(1.2.3!= = 1.2.3)
+    ok 76 !cmp(1.2.3=== = 1.2.3)
+    ok 77 cmp(1.2.3!== = 1.2.3)
+    ok 78 !gt('1.2.3', ' = 1.2.3')
+    ok 79 gte('1.2.3', ' = 1.2.3')
+    ok 80 !lt('1.2.3', ' = 1.2.3')
+    ok 81 lte('1.2.3', ' = 1.2.3')
+    ok 82 eq('1.2.3-0', 'v1.2.3-0')
+    ok 83 !neq('1.2.3-0', 'v1.2.3-0')
+    ok 84 cmp(1.2.3-0==v1.2.3-0)
+    ok 85 !cmp(1.2.3-0!=v1.2.3-0)
+    ok 86 !cmp(1.2.3-0===v1.2.3-0)
+    ok 87 cmp(1.2.3-0!==v1.2.3-0)
+    ok 88 !gt('1.2.3-0', 'v1.2.3-0')
+    ok 89 gte('1.2.3-0', 'v1.2.3-0')
+    ok 90 !lt('1.2.3-0', 'v1.2.3-0')
+    ok 91 lte('1.2.3-0', 'v1.2.3-0')
+    ok 92 eq('1.2.3-0', '=1.2.3-0')
+    ok 93 !neq('1.2.3-0', '=1.2.3-0')
+    ok 94 cmp(1.2.3-0===1.2.3-0)
+    ok 95 !cmp(1.2.3-0!==1.2.3-0)
+    ok 96 !cmp(1.2.3-0====1.2.3-0)
+    ok 97 cmp(1.2.3-0!===1.2.3-0)
+    ok 98 !gt('1.2.3-0', '=1.2.3-0')
+    ok 99 gte('1.2.3-0', '=1.2.3-0')
+    ok 100 !lt('1.2.3-0', '=1.2.3-0')
+    ok 101 lte('1.2.3-0', '=1.2.3-0')
+    ok 102 eq('1.2.3-0', 'v 1.2.3-0')
+    ok 103 !neq('1.2.3-0', 'v 1.2.3-0')
+    ok 104 cmp(1.2.3-0==v 1.2.3-0)
+    ok 105 !cmp(1.2.3-0!=v 1.2.3-0)
+    ok 106 !cmp(1.2.3-0===v 1.2.3-0)
+    ok 107 cmp(1.2.3-0!==v 1.2.3-0)
+    ok 108 !gt('1.2.3-0', 'v 1.2.3-0')
+    ok 109 gte('1.2.3-0', 'v 1.2.3-0')
+    ok 110 !lt('1.2.3-0', 'v 1.2.3-0')
+    ok 111 lte('1.2.3-0', 'v 1.2.3-0')
+    ok 112 eq('1.2.3-0', '= 1.2.3-0')
+    ok 113 !neq('1.2.3-0', '= 1.2.3-0')
+    ok 114 cmp(1.2.3-0=== 1.2.3-0)
+    ok 115 !cmp(1.2.3-0!== 1.2.3-0)
+    ok 116 !cmp(1.2.3-0==== 1.2.3-0)
+    ok 117 cmp(1.2.3-0!=== 1.2.3-0)
+    ok 118 !gt('1.2.3-0', '= 1.2.3-0')
+    ok 119 gte('1.2.3-0', '= 1.2.3-0')
+    ok 120 !lt('1.2.3-0', '= 1.2.3-0')
+    ok 121 lte('1.2.3-0', '= 1.2.3-0')
+    ok 122 eq('1.2.3-0', ' v1.2.3-0')
+    ok 123 !neq('1.2.3-0', ' v1.2.3-0')
+    ok 124 cmp(1.2.3-0== v1.2.3-0)
+    ok 125 !cmp(1.2.3-0!= v1.2.3-0)
+    ok 126 !cmp(1.2.3-0=== v1.2.3-0)
+    ok 127 cmp(1.2.3-0!== v1.2.3-0)
+    ok 128 !gt('1.2.3-0', ' v1.2.3-0')
+    ok 129 gte('1.2.3-0', ' v1.2.3-0')
+    ok 130 !lt('1.2.3-0', ' v1.2.3-0')
+    ok 131 lte('1.2.3-0', ' v1.2.3-0')
+    ok 132 eq('1.2.3-0', ' =1.2.3-0')
+    ok 133 !neq('1.2.3-0', ' =1.2.3-0')
+    ok 134 cmp(1.2.3-0== =1.2.3-0)
+    ok 135 !cmp(1.2.3-0!= =1.2.3-0)
+    ok 136 !cmp(1.2.3-0=== =1.2.3-0)
+    ok 137 cmp(1.2.3-0!== =1.2.3-0)
+    ok 138 !gt('1.2.3-0', ' =1.2.3-0')
+    ok 139 gte('1.2.3-0', ' =1.2.3-0')
+    ok 140 !lt('1.2.3-0', ' =1.2.3-0')
+    ok 141 lte('1.2.3-0', ' =1.2.3-0')
+    ok 142 eq('1.2.3-0', ' v 1.2.3-0')
+    ok 143 !neq('1.2.3-0', ' v 1.2.3-0')
+    ok 144 cmp(1.2.3-0== v 1.2.3-0)
+    ok 145 !cmp(1.2.3-0!= v 1.2.3-0)
+    ok 146 !cmp(1.2.3-0=== v 1.2.3-0)
+    ok 147 cmp(1.2.3-0!== v 1.2.3-0)
+    ok 148 !gt('1.2.3-0', ' v 1.2.3-0')
+    ok 149 gte('1.2.3-0', ' v 1.2.3-0')
+    ok 150 !lt('1.2.3-0', ' v 1.2.3-0')
+    ok 151 lte('1.2.3-0', ' v 1.2.3-0')
+    ok 152 eq('1.2.3-0', ' = 1.2.3-0')
+    ok 153 !neq('1.2.3-0', ' = 1.2.3-0')
+    ok 154 cmp(1.2.3-0== = 1.2.3-0)
+    ok 155 !cmp(1.2.3-0!= = 1.2.3-0)
+    ok 156 !cmp(1.2.3-0=== = 1.2.3-0)
+    ok 157 cmp(1.2.3-0!== = 1.2.3-0)
+    ok 158 !gt('1.2.3-0', ' = 1.2.3-0')
+    ok 159 gte('1.2.3-0', ' = 1.2.3-0')
+    ok 160 !lt('1.2.3-0', ' = 1.2.3-0')
+    ok 161 lte('1.2.3-0', ' = 1.2.3-0')
+    ok 162 eq('1.2.3-1', 'v1.2.3-1')
+    ok 163 !neq('1.2.3-1', 'v1.2.3-1')
+    ok 164 cmp(1.2.3-1==v1.2.3-1)
+    ok 165 !cmp(1.2.3-1!=v1.2.3-1)
+    ok 166 !cmp(1.2.3-1===v1.2.3-1)
+    ok 167 cmp(1.2.3-1!==v1.2.3-1)
+    ok 168 !gt('1.2.3-1', 'v1.2.3-1')
+    ok 169 gte('1.2.3-1', 'v1.2.3-1')
+    ok 170 !lt('1.2.3-1', 'v1.2.3-1')
+    ok 171 lte('1.2.3-1', 'v1.2.3-1')
+    ok 172 eq('1.2.3-1', '=1.2.3-1')
+    ok 173 !neq('1.2.3-1', '=1.2.3-1')
+    ok 174 cmp(1.2.3-1===1.2.3-1)
+    ok 175 !cmp(1.2.3-1!==1.2.3-1)
+    ok 176 !cmp(1.2.3-1====1.2.3-1)
+    ok 177 cmp(1.2.3-1!===1.2.3-1)
+    ok 178 !gt('1.2.3-1', '=1.2.3-1')
+    ok 179 gte('1.2.3-1', '=1.2.3-1')
+    ok 180 !lt('1.2.3-1', '=1.2.3-1')
+    ok 181 lte('1.2.3-1', '=1.2.3-1')
+    ok 182 eq('1.2.3-1', 'v 1.2.3-1')
+    ok 183 !neq('1.2.3-1', 'v 1.2.3-1')
+    ok 184 cmp(1.2.3-1==v 1.2.3-1)
+    ok 185 !cmp(1.2.3-1!=v 1.2.3-1)
+    ok 186 !cmp(1.2.3-1===v 1.2.3-1)
+    ok 187 cmp(1.2.3-1!==v 1.2.3-1)
+    ok 188 !gt('1.2.3-1', 'v 1.2.3-1')
+    ok 189 gte('1.2.3-1', 'v 1.2.3-1')
+    ok 190 !lt('1.2.3-1', 'v 1.2.3-1')
+    ok 191 lte('1.2.3-1', 'v 1.2.3-1')
+    ok 192 eq('1.2.3-1', '= 1.2.3-1')
+    ok 193 !neq('1.2.3-1', '= 1.2.3-1')
+    ok 194 cmp(1.2.3-1=== 1.2.3-1)
+    ok 195 !cmp(1.2.3-1!== 1.2.3-1)
+    ok 196 !cmp(1.2.3-1==== 1.2.3-1)
+    ok 197 cmp(1.2.3-1!=== 1.2.3-1)
+    ok 198 !gt('1.2.3-1', '= 1.2.3-1')
+    ok 199 gte('1.2.3-1', '= 1.2.3-1')
+    ok 200 !lt('1.2.3-1', '= 1.2.3-1')
+    ok 201 lte('1.2.3-1', '= 1.2.3-1')
+    ok 202 eq('1.2.3-1', ' v1.2.3-1')
+    ok 203 !neq('1.2.3-1', ' v1.2.3-1')
+    ok 204 cmp(1.2.3-1== v1.2.3-1)
+    ok 205 !cmp(1.2.3-1!= v1.2.3-1)
+    ok 206 !cmp(1.2.3-1=== v1.2.3-1)
+    ok 207 cmp(1.2.3-1!== v1.2.3-1)
+    ok 208 !gt('1.2.3-1', ' v1.2.3-1')
+    ok 209 gte('1.2.3-1', ' v1.2.3-1')
+    ok 210 !lt('1.2.3-1', ' v1.2.3-1')
+    ok 211 lte('1.2.3-1', ' v1.2.3-1')
+    ok 212 eq('1.2.3-1', ' =1.2.3-1')
+    ok 213 !neq('1.2.3-1', ' =1.2.3-1')
+    ok 214 cmp(1.2.3-1== =1.2.3-1)
+    ok 215 !cmp(1.2.3-1!= =1.2.3-1)
+    ok 216 !cmp(1.2.3-1=== =1.2.3-1)
+    ok 217 cmp(1.2.3-1!== =1.2.3-1)
+    ok 218 !gt('1.2.3-1', ' =1.2.3-1')
+    ok 219 gte('1.2.3-1', ' =1.2.3-1')
+    ok 220 !lt('1.2.3-1', ' =1.2.3-1')
+    ok 221 lte('1.2.3-1', ' =1.2.3-1')
+    ok 222 eq('1.2.3-1', ' v 1.2.3-1')
+    ok 223 !neq('1.2.3-1', ' v 1.2.3-1')
+    ok 224 cmp(1.2.3-1== v 1.2.3-1)
+    ok 225 !cmp(1.2.3-1!= v 1.2.3-1)
+    ok 226 !cmp(1.2.3-1=== v 1.2.3-1)
+    ok 227 cmp(1.2.3-1!== v 1.2.3-1)
+    ok 228 !gt('1.2.3-1', ' v 1.2.3-1')
+    ok 229 gte('1.2.3-1', ' v 1.2.3-1')
+    ok 230 !lt('1.2.3-1', ' v 1.2.3-1')
+    ok 231 lte('1.2.3-1', ' v 1.2.3-1')
+    ok 232 eq('1.2.3-1', ' = 1.2.3-1')
+    ok 233 !neq('1.2.3-1', ' = 1.2.3-1')
+    ok 234 cmp(1.2.3-1== = 1.2.3-1)
+    ok 235 !cmp(1.2.3-1!= = 1.2.3-1)
+    ok 236 !cmp(1.2.3-1=== = 1.2.3-1)
+    ok 237 cmp(1.2.3-1!== = 1.2.3-1)
+    ok 238 !gt('1.2.3-1', ' = 1.2.3-1')
+    ok 239 gte('1.2.3-1', ' = 1.2.3-1')
+    ok 240 !lt('1.2.3-1', ' = 1.2.3-1')
+    ok 241 lte('1.2.3-1', ' = 1.2.3-1')
+    ok 242 eq('1.2.3-beta', 'v1.2.3-beta')
+    ok 243 !neq('1.2.3-beta', 'v1.2.3-beta')
+    ok 244 cmp(1.2.3-beta==v1.2.3-beta)
+    ok 245 !cmp(1.2.3-beta!=v1.2.3-beta)
+    ok 246 !cmp(1.2.3-beta===v1.2.3-beta)
+    ok 247 cmp(1.2.3-beta!==v1.2.3-beta)
+    ok 248 !gt('1.2.3-beta', 'v1.2.3-beta')
+    ok 249 gte('1.2.3-beta', 'v1.2.3-beta')
+    ok 250 !lt('1.2.3-beta', 'v1.2.3-beta')
+    ok 251 lte('1.2.3-beta', 'v1.2.3-beta')
+    ok 252 eq('1.2.3-beta', '=1.2.3-beta')
+    ok 253 !neq('1.2.3-beta', '=1.2.3-beta')
+    ok 254 cmp(1.2.3-beta===1.2.3-beta)
+    ok 255 !cmp(1.2.3-beta!==1.2.3-beta)
+    ok 256 !cmp(1.2.3-beta====1.2.3-beta)
+    ok 257 cmp(1.2.3-beta!===1.2.3-beta)
+    ok 258 !gt('1.2.3-beta', '=1.2.3-beta')
+    ok 259 gte('1.2.3-beta', '=1.2.3-beta')
+    ok 260 !lt('1.2.3-beta', '=1.2.3-beta')
+    ok 261 lte('1.2.3-beta', '=1.2.3-beta')
+    ok 262 eq('1.2.3-beta', 'v 1.2.3-beta')
+    ok 263 !neq('1.2.3-beta', 'v 1.2.3-beta')
+    ok 264 cmp(1.2.3-beta==v 1.2.3-beta)
+    ok 265 !cmp(1.2.3-beta!=v 1.2.3-beta)
+    ok 266 !cmp(1.2.3-beta===v 1.2.3-beta)
+    ok 267 cmp(1.2.3-beta!==v 1.2.3-beta)
+    ok 268 !gt('1.2.3-beta', 'v 1.2.3-beta')
+    ok 269 gte('1.2.3-beta', 'v 1.2.3-beta')
+    ok 270 !lt('1.2.3-beta', 'v 1.2.3-beta')
+    ok 271 lte('1.2.3-beta', 'v 1.2.3-beta')
+    ok 272 eq('1.2.3-beta', '= 1.2.3-beta')
+    ok 273 !neq('1.2.3-beta', '= 1.2.3-beta')
+    ok 274 cmp(1.2.3-beta=== 1.2.3-beta)
+    ok 275 !cmp(1.2.3-beta!== 1.2.3-beta)
+    ok 276 !cmp(1.2.3-beta==== 1.2.3-beta)
+    ok 277 cmp(1.2.3-beta!=== 1.2.3-beta)
+    ok 278 !gt('1.2.3-beta', '= 1.2.3-beta')
+    ok 279 gte('1.2.3-beta', '= 1.2.3-beta')
+    ok 280 !lt('1.2.3-beta', '= 1.2.3-beta')
+    ok 281 lte('1.2.3-beta', '= 1.2.3-beta')
+    ok 282 eq('1.2.3-beta', ' v1.2.3-beta')
+    ok 283 !neq('1.2.3-beta', ' v1.2.3-beta')
+    ok 284 cmp(1.2.3-beta== v1.2.3-beta)
+    ok 285 !cmp(1.2.3-beta!= v1.2.3-beta)
+    ok 286 !cmp(1.2.3-beta=== v1.2.3-beta)
+    ok 287 cmp(1.2.3-beta!== v1.2.3-beta)
+    ok 288 !gt('1.2.3-beta', ' v1.2.3-beta')
+    ok 289 gte('1.2.3-beta', ' v1.2.3-beta')
+    ok 290 !lt('1.2.3-beta', ' v1.2.3-beta')
+    ok 291 lte('1.2.3-beta', ' v1.2.3-beta')
+    ok 292 eq('1.2.3-beta', ' =1.2.3-beta')
+    ok 293 !neq('1.2.3-beta', ' =1.2.3-beta')
+    ok 294 cmp(1.2.3-beta== =1.2.3-beta)
+    ok 295 !cmp(1.2.3-beta!= =1.2.3-beta)
+    ok 296 !cmp(1.2.3-beta=== =1.2.3-beta)
+    ok 297 cmp(1.2.3-beta!== =1.2.3-beta)
+    ok 298 !gt('1.2.3-beta', ' =1.2.3-beta')
+    ok 299 gte('1.2.3-beta', ' =1.2.3-beta')
+    ok 300 !lt('1.2.3-beta', ' =1.2.3-beta')
+    ok 301 lte('1.2.3-beta', ' =1.2.3-beta')
+    ok 302 eq('1.2.3-beta', ' v 1.2.3-beta')
+    ok 303 !neq('1.2.3-beta', ' v 1.2.3-beta')
+    ok 304 cmp(1.2.3-beta== v 1.2.3-beta)
+    ok 305 !cmp(1.2.3-beta!= v 1.2.3-beta)
+    ok 306 !cmp(1.2.3-beta=== v 1.2.3-beta)
+    ok 307 cmp(1.2.3-beta!== v 1.2.3-beta)
+    ok 308 !gt('1.2.3-beta', ' v 1.2.3-beta')
+    ok 309 gte('1.2.3-beta', ' v 1.2.3-beta')
+    ok 310 !lt('1.2.3-beta', ' v 1.2.3-beta')
+    ok 311 lte('1.2.3-beta', ' v 1.2.3-beta')
+    ok 312 eq('1.2.3-beta', ' = 1.2.3-beta')
+    ok 313 !neq('1.2.3-beta', ' = 1.2.3-beta')
+    ok 314 cmp(1.2.3-beta== = 1.2.3-beta)
+    ok 315 !cmp(1.2.3-beta!= = 1.2.3-beta)
+    ok 316 !cmp(1.2.3-beta=== = 1.2.3-beta)
+    ok 317 cmp(1.2.3-beta!== = 1.2.3-beta)
+    ok 318 !gt('1.2.3-beta', ' = 1.2.3-beta')
+    ok 319 gte('1.2.3-beta', ' = 1.2.3-beta')
+    ok 320 !lt('1.2.3-beta', ' = 1.2.3-beta')
+    ok 321 lte('1.2.3-beta', ' = 1.2.3-beta')
+    ok 322 eq('1.2.3-beta+build', ' = 1.2.3-beta+otherbuild')
+    ok 323 !neq('1.2.3-beta+build', ' = 1.2.3-beta+otherbuild')
+    ok 324 cmp(1.2.3-beta+build== = 1.2.3-beta+otherbuild)
+    ok 325 !cmp(1.2.3-beta+build!= = 1.2.3-beta+otherbuild)
+    ok 326 !cmp(1.2.3-beta+build=== = 1.2.3-beta+otherbuild)
+    ok 327 cmp(1.2.3-beta+build!== = 1.2.3-beta+otherbuild)
+    ok 328 !gt('1.2.3-beta+build', ' = 1.2.3-beta+otherbuild')
+    ok 329 gte('1.2.3-beta+build', ' = 1.2.3-beta+otherbuild')
+    ok 330 !lt('1.2.3-beta+build', ' = 1.2.3-beta+otherbuild')
+    ok 331 lte('1.2.3-beta+build', ' = 1.2.3-beta+otherbuild')
+    ok 332 eq('1.2.3+build', ' = 1.2.3+otherbuild')
+    ok 333 !neq('1.2.3+build', ' = 1.2.3+otherbuild')
+    ok 334 cmp(1.2.3+build== = 1.2.3+otherbuild)
+    ok 335 !cmp(1.2.3+build!= = 1.2.3+otherbuild)
+    ok 336 !cmp(1.2.3+build=== = 1.2.3+otherbuild)
+    ok 337 cmp(1.2.3+build!== = 1.2.3+otherbuild)
+    ok 338 !gt('1.2.3+build', ' = 1.2.3+otherbuild')
+    ok 339 gte('1.2.3+build', ' = 1.2.3+otherbuild')
+    ok 340 !lt('1.2.3+build', ' = 1.2.3+otherbuild')
+    ok 341 lte('1.2.3+build', ' = 1.2.3+otherbuild')
+    not ok 342 Error: {label_0}[get/dom] not of type Bool: undefined
+      ---
+        type:    Error
+        message: {label_0}[get/dom] not of type Bool: undefined
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:116:10
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:112:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    not ok 343 Error: {label_0}[get/dom] not of type Bool: undefined
+      ---
+        type:    Error
+        message: {label_0}[get/dom] not of type Bool: undefined
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:225:10
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:221:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    not ok 344 Error: {label_0}[get/dom] not of type Bool: undefined
+      ---
+        type:    Error
+        message: {label_0}[get/dom] not of type Bool: undefined
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:292:17
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:288:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    not ok 345 Error: {label_0}[get/dom] not of type Bool: undefined
+      ---
+        type:    Error
+        message: {label_0}[get/dom] not of type Bool: undefined
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:345:17
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:340:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    not ok 346 Error: {label_0}[get/dom] not of type Bool: undefined
+      ---
+        type:    Error
+        message: {label_0}[get/dom] not of type Bool: undefined
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:432:17
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:428:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    ok 347 toComparators(1.0.0 - 2.0.0) === [[">=1.0.0","<=2.0.0"]]
+    ok 348 toComparators(1.0.0) === [["1.0.0"]]
+    ok 349 toComparators(>=*) === [[">=0.0.0-0"]]
+    ok 350 toComparators() === [[""]]
+    ok 351 toComparators(*) === [[""]]
+    ok 352 toComparators(*) === [[""]]
+    ok 353 toComparators(>=1.0.0) === [[">=1.0.0"]]
+    ok 354 toComparators(>=1.0.0) === [[">=1.0.0"]]
+    ok 355 toComparators(>=1.0.0) === [[">=1.0.0"]]
+    ok 356 toComparators(>1.0.0) === [[">1.0.0"]]
+    ok 357 toComparators(>1.0.0) === [[">1.0.0"]]
+    ok 358 toComparators(<=2.0.0) === [["<=2.0.0"]]
+    ok 359 toComparators(1) === [[">=1.0.0-0","<2.0.0-0"]]
+    ok 360 toComparators(<=2.0.0) === [["<=2.0.0"]]
+    ok 361 toComparators(<=2.0.0) === [["<=2.0.0"]]
+    ok 362 toComparators(<2.0.0) === [["<2.0.0-0"]]
+    ok 363 toComparators(<2.0.0) === [["<2.0.0-0"]]
+    ok 364 toComparators(>= 1.0.0) === [[">=1.0.0"]]
+    ok 365 toComparators(>=  1.0.0) === [[">=1.0.0"]]
+    ok 366 toComparators(>=   1.0.0) === [[">=1.0.0"]]
+    ok 367 toComparators(> 1.0.0) === [[">1.0.0"]]
+    ok 368 toComparators(>  1.0.0) === [[">1.0.0"]]
+    ok 369 toComparators(<=   2.0.0) === [["<=2.0.0"]]
+    ok 370 toComparators(<= 2.0.0) === [["<=2.0.0"]]
+    ok 371 toComparators(<=  2.0.0) === [["<=2.0.0"]]
+    ok 372 toComparators(<    2.0.0) === [["<2.0.0-0"]]
+    ok 373 toComparators(<	2.0.0) === [["<2.0.0-0"]]
+    ok 374 toComparators(>=0.1.97) === [[">=0.1.97"]]
+    ok 375 toComparators(>=0.1.97) === [[">=0.1.97"]]
+    ok 376 toComparators(0.1.20 || 1.2.4) === [["0.1.20"],["1.2.4"]]
+    ok 377 toComparators(>=0.2.3 || <0.0.1) === [[">=0.2.3"],["<0.0.1-0"]]
+    ok 378 toComparators(>=0.2.3 || <0.0.1) === [[">=0.2.3"],["<0.0.1-0"]]
+    ok 379 toComparators(>=0.2.3 || <0.0.1) === [[">=0.2.3"],["<0.0.1-0"]]
+    ok 380 toComparators(||) === [[""],[""]]
+    ok 381 toComparators(2.x.x) === [[">=2.0.0-0","<3.0.0-0"]]
+    ok 382 toComparators(1.2.x) === [[">=1.2.0-0","<1.3.0-0"]]
+    ok 383 toComparators(1.2.x || 2.x) === [[">=1.2.0-0","<1.3.0-0"],[">=2.0.0-0","<3.0.0-0"]]
+    ok 384 toComparators(1.2.x || 2.x) === [[">=1.2.0-0","<1.3.0-0"],[">=2.0.0-0","<3.0.0-0"]]
+    ok 385 toComparators(x) === [[""]]
+    ok 386 toComparators(2.*.*) === [[">=2.0.0-0","<3.0.0-0"]]
+    ok 387 toComparators(1.2.*) === [[">=1.2.0-0","<1.3.0-0"]]
+    ok 388 toComparators(1.2.* || 2.*) === [[">=1.2.0-0","<1.3.0-0"],[">=2.0.0-0","<3.0.0-0"]]
+    ok 389 toComparators(1.2.* || 2.*) === [[">=1.2.0-0","<1.3.0-0"],[">=2.0.0-0","<3.0.0-0"]]
+    ok 390 toComparators(*) === [[""]]
+    ok 391 toComparators(2) === [[">=2.0.0-0","<3.0.0-0"]]
+    ok 392 toComparators(2.3) === [[">=2.3.0-0","<2.4.0-0"]]
+    ok 393 toComparators(~2.4) === [[">=2.4.0-0","<2.5.0-0"]]
+    ok 394 toComparators(~2.4) === [[">=2.4.0-0","<2.5.0-0"]]
+    ok 395 toComparators(~>3.2.1) === [[">=3.2.1-0","<3.3.0-0"]]
+    ok 396 toComparators(~1) === [[">=1.0.0-0","<2.0.0-0"]]
+    ok 397 toComparators(~>1) === [[">=1.0.0-0","<2.0.0-0"]]
+    ok 398 toComparators(~> 1) === [[">=1.0.0-0","<2.0.0-0"]]
+    ok 399 toComparators(~1.0) === [[">=1.0.0-0","<1.1.0-0"]]
+    ok 400 toComparators(~ 1.0) === [[">=1.0.0-0","<1.1.0-0"]]
+    ok 401 toComparators(~ 1.0.3) === [[">=1.0.3-0","<1.1.0-0"]]
+    ok 402 toComparators(~> 1.0.3) === [[">=1.0.3-0","<1.1.0-0"]]
+    ok 403 toComparators(<1) === [["<1.0.0-0"]]
+    ok 404 toComparators(< 1) === [["<1.0.0-0"]]
+    ok 405 toComparators(>=1) === [[">=1.0.0-0"]]
+    ok 406 toComparators(>= 1) === [[">=1.0.0-0"]]
+    ok 407 toComparators(<1.2) === [["<1.2.0-0"]]
+    ok 408 toComparators(< 1.2) === [["<1.2.0-0"]]
+    ok 409 toComparators(1) === [[">=1.0.0-0","<2.0.0-0"]]
+    ok 410 toComparators(1 2) === [[">=1.0.0-0","<2.0.0-0",">=2.0.0-0","<3.0.0-0"]]
+    ok 411 toComparators(1.2 - 3.4.5) === [[">=1.2.0-0","<=3.4.5"]]
+    ok 412 toComparators(1.2.3 - 3.4) === [[">=1.2.3","<3.5.0-0"]]
+    ok 413 Expected to throw: TypeError Invalid Version: 1.2.3.4
+    ok 414 Expected to throw: TypeError Invalid Version: NOT VALID
+    not ok 415 Expected to throw: TypeError Invalid Version: 1.2
+      ---
+        file:   /Users/jakub/Developer/Blame/externals/semver/test/index.js
+        line:   526
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:418:17)
+          - assert (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:21:16)
+          - equivalent (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:182:12)
+          - Function.similar (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:263:10)
+          - Function.throws (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:135:28)
+          - Test._testAssert [as throws] (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-test.js:87:16)
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:527:7
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:526:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+        found:  
+          name:    Error
+          message: {label_0}[get/dom] not of type Str: 1.2
+        wanted: 
+          name:    TypeError
+          message: Invalid Version: 1.2
+        diff:   |
+          {
+            "name" : [34m[1m"Error"[0m,[36m[1m // != "TypeError"[0m
+            "message" : [34m[1m"{label_0}[get/dom] not of type Str: 1.2"[0m[36m[1m // != "Invalid Version: 1.2"[0m
+          }
+      ...
+    not ok 416 Expected to throw: TypeError Invalid Version: null
+      ---
+        file:   /Users/jakub/Developer/Blame/externals/semver/test/index.js
+        line:   526
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:418:17)
+          - assert (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:21:16)
+          - equivalent (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:182:12)
+          - Function.similar (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:263:10)
+          - Function.throws (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:135:28)
+          - Test._testAssert [as throws] (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-test.js:87:16)
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:527:7
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:526:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+        found:  
+          name:    Error
+          message: {label_0}[get/dom] not of type Str: null
+        wanted: 
+          name:    TypeError
+          message: Invalid Version: null
+        diff:   |
+          {
+            "name" : [34m[1m"Error"[0m,[36m[1m // != "TypeError"[0m
+            "message" : [34m[1m"{label_0}[get/dom] not of type Str: null"[0m[36m[1m // != "Invalid Version: null"[0m
+          }
+      ...
+    ok 417 Expected to throw: TypeError Invalid Version: Infinity.NaN.Infinity
+    ok 418 Expected to throw
+    not ok 419 Error: {label_0}[get/get/get] not of type Str: undefined
+      ---
+        type:    Error
+        message: {label_0}[get/get/get] not of type Str: undefined
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.get (/Users/jakub/Developer/Blame/build/blame.js:1000:32)
+          - Object.Validator.get (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1044:20)
+          - Object.Proxy.get (/Users/jakub/Developer/Blame/build/blame.js:1000:43)
+          - Object.Validator.get (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1044:20)
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:548:15
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:541:5)
+        thrown:  true
+      ...
+    ok 420 Expected to throw
+    not ok 421 should be equal
+      ---
+        file:   /Users/jakub/Developer/Blame/externals/semver/test/index.js
+        line:   563
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:418:17)
+          - assert (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:21:16)
+          - Function.equal (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:162:10)
+          - Test._testAssert [as equal] (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-test.js:87:16)
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:569:7
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:563:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-test.js:104:8)
+          - GlobalHarness.Harness.process (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-harness.js:87:13)
+        found:  ~
+        wanted: >=1.2.3
+        type:   
+          found:  undefined
+          wanted: undefined
+      ...
+    ok 422 Expected to throw
+    not ok 423 should be equal
+      ---
+        file:   /Users/jakub/Developer/Blame/externals/semver/test/index.js
+        line:   563
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:418:17)
+          - assert (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:21:16)
+          - Function.equal (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-assert.js:162:10)
+          - Test._testAssert [as equal] (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-test.js:87:16)
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:569:7
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:563:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-test.js:104:8)
+          - GlobalHarness.Harness.process (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-harness.js:87:13)
+        found:  ~
+        wanted: >=1.2.3-beta <1.3.0-0
+        type:   
+          found:  undefined
+          wanted: undefined
+      ...
+    not ok 424 Error: {label_0}[get/dom] not of type Bool: undefined
+      ---
+        type:    Error
+        message: {label_0}[get/dom] not of type Bool: undefined
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - Function.<anonymous> (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27)
+          - /Users/jakub/Developer/Blame/externals/semver/test/index.js:584:25
+          - Array.forEach (native)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/index.js:579:5)
+          - Test.EventEmitter.emit (events.js:129:20)
+        thrown:  true
+      ...
+    ok 425 test/index.js
+    
+    1..425
+    # tests 425
+    # pass  413
+    # fail  12
+    
+ok test/ltr.js ...................................... 144/144
+not ok test/no-module.js ................................ 1/2
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node no-module.js"
+    TAP version 13
+    not ok 1 ReferenceError: semver.js:1047   var Blame = require('Blame'),               ^ require is not defined
+      ---
+        type:    ReferenceError
+        message: |
+          semver.js:1047
+            var Blame = require('Blame'),
+                        ^
+          require is not defined
+        code:    ~
+        errno:   ~
+        file:    semver.js
+        line:    1128
+        column:  2
+        stack:   
+          - var Blame = require('Blame'),
+          - ^
+          - ReferenceError: require is not defined
+          - semver.js:1047:15
+          - exports.object.define.function.define.amd.semver (semver.js:1128:2)
+          - semver.js:1130:3
+          - Object.exports.runInThisContext (vm.js:70:17)
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/semver/test/no-module.js:10:6)
+          - Test.EventEmitter.emit (events.js:129:20)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-test.js:104:8)
+          - GlobalHarness.Harness.process (/Users/jakub/Developer/Blame/externals/semver/node_modules/tap/lib/tap-harness.js:87:13)
+          - process._tickCallback (node.js:343:11)
+          - Function.Module.runMain (module.js:492:11)
+        thrown:  true
+      ...
+    ok 2 test/no-module.js
+    
+    1..2
+    # tests 2
+    # pass  1
+    # fail  1
+    
+total ............................................... 711/725
+
+not ok

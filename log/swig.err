@@ -1,0 +1,19 @@
+util.puts: Use console.log instead
+  1 failing
+
+  1) bin/swig compile + run include:
+     Uncaught Error: expected '' to equal 'Nachos, Tacos, and Burritos are delicious.\n\n\nNachos, Churros, and Nachos are delicious.\n\n\nChurros, and Nachos are delicious.\n\n\nNachos, Tacos, and Burritos are delicious.\n\n\n\n\n\n  a\n\n\n  b\n\n\n  c\n\n\n'
+      at Assertion.assert (/Users/jakub/Developer/Blame/externals/swig/node_modules/expect.js/expect.js:99:13)
+      at Assertion.be.Assertion.equal (/Users/jakub/Developer/Blame/externals/swig/node_modules/expect.js/expect.js:200:10)
+      at /Users/jakub/Developer/Blame/externals/swig/tests/bin/bin.test.js:81:46
+      at ChildProcess.exithandler (child_process.js:736:5)
+      at ChildProcess.EventEmitter.emit (events.js:110:17)
+      at maybeClose (child_process.js:992:16)
+      at Socket.<anonymous> (child_process.js:1142:11)
+      at Socket.EventEmitter.emit (events.js:107:17)
+      at Pipe.close (net.js:461:12)
+
+
+make: *** [test] Error 1
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

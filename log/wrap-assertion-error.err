@@ -1,0 +1,17 @@
+/Users/jakub/Developer/Blame/externals/assertion-error/index.js:130
+      assertion - error '.AssertionError')
+      ^^^^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/assertion-error/test/index.js:5:25)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+make: *** [test-node] Error 1
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

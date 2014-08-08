@@ -1,0 +1,18 @@
+
+> open@0.0.5 test /Users/jakub/Developer/Blame/externals/open
+> node_modules/mocha/bin/mocha
+
+
+[0m[0m
+[0m  open[0m
+  [32m  ✓[0m[90m should open html file in default browser [0m
+  [32m  ✓[0m[90m should open https uris in default browser [0m
+yep editor is open
+  [32m  ✓[0m[90m should open txt file in default text editor [0m
+  [32m  ✓[0m[90m should open files with spaces [0m
+  [32m  ✓[0m[90m should open files with quotes [0m
+  [32m  ✓[0m[90m should open files in the specified application [0m
+
+
+[92m [0m[32m 6 passing[0m[90m (176ms)[0m
+

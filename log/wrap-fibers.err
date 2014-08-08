@@ -1,0 +1,306 @@
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/already-running.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/bad-context.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/child-process.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/current.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/exec.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/exit.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/fibonacci.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/finish-multiple.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/future-exception.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/future.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/illegal-yield.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/pool.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/process-title.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/stack-overflow.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/stack-overflow2.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/started.js:2:13)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 
+test: *fail*
+code: 1
+stderr: /Users/jakub/Developer/Blame/externals/fibers/fibers.js:13
+	throw new Error('`'+ modPath+ '.node` is missing. Try reinstalling `node-fibe
+	      ^
+Error: `/Users/jakub/Developer/Blame/externals/fibers/bin/darwin-x64-v8-3.25/fibers.node` is missing. Try reinstalling `node-fibers`?
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/fibers.js:13:8)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/fibers/test/unwind.js:1:75)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+
+stdout: 

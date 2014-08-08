@@ -1,0 +1,564 @@
+
+> less@1.7.4 test /Users/jakub/Developer/Blame/externals/less
+> grunt test
+
+[4mRunning "clean:test" (clean) task[24m
+Cleaning test/browser/less.js...[32mOK[39m
+Cleaning tmp...[32mOK[39m
+
+[4mRunning "clean:sourcemap-test" (clean) task[24m
+
+[4mRunning "jshint:files" (jshint) task[24m
+[32m>> [39m48 files lint free.
+
+[4mRunning "shell:test" (shell) task[24m
+
+[4mLess[24m
+
+- Integration - creating parser without options: [32m[32mOK
+[39m[39m
+- colors: [32mOK[39m
+- comments: [32mOK[39m
+- css-3: [32mOK[39m
+- css-escapes: [32mOK[39m
+- css-guards: [32mOK[39m
+- css: [32mOK[39m
+- detached-rulesets: [32mOK[39m
+- empty: [32mOK[39m
+- extend-chaining: [32mOK[39m
+- extend-clearfix: [32mOK[39m
+- extend-exact: [32mOK[39m
+- extend-media: [32mOK[39m
+- extend-selector: [32mOK[39m
+- extend: [32mOK[39m
+- extend-nest: [32mOK[39m
+- extract-and-length: [32mOK[39m
+- functions: [32mOK[39m
+- ie-filters: [32mOK[39m
+- javascript: [32mOK[39m
+- lazy-eval: [32mOK[39m
+- media: [32mOK[39m
+- merge: [32mOK[39m
+- mixins-args: [32mOK[39m
+- mixins-closure: [32mOK[39m
+- mixins-guards-default-func: [32mOK[39m
+- mixins-guards: [32mOK[39m
+- mixins-important: [32mOK[39m
+- mixins-interpolated: [32mOK[39m
+- mixins-named-args: [32mOK[39m
+- mixins-nested: [32mOK[39m
+- mixins-pattern: [32mOK[39m
+- mixins: [32mOK[39m
+- no-output: [32mOK[39m
+- operations: [32mOK[39m
+- parens: [32mOK[39m
+- property-name-interp: [32mOK[39m
+- rulesets: [32mOK[39m
+- scope: [32mOK[39m
+- selectors: [32mOK[39m
+- strings: [32mOK[39m
+- variables-in-at-rules: [32mOK[39m
+- variables: [32mOK[39m
+- whitespace: [32mOK[39m
+- errors/add-mixed-units: [32mOK[39m
+- errors/add-mixed-units2: [32mOK[39m
+- errors/at-rules-undefined-var: [32mOK[39m
+- errors/bad-variable-declaration1: [32mOK[39m
+- errors/color-func-invalid-color: [32mOK[39m
+- errors/color-invalid-hex-code: [32mOK[39m
+- errors/color-invalid-hex-code2: [32mOK[39m
+- errors/comment-in-selector: [32mOK[39m
+- errors/css-guard-default-func: [32mOK[39m
+- errors/detached-ruleset-1: [32mOK[39m
+- errors/detached-ruleset-2: [32mOK[39m
+- errors/detached-ruleset-3: [32mOK[39m
+- errors/divide-mixed-units: [32mOK[39m
+- errors/extend-no-selector: [32mOK[39m
+- errors/extend-not-at-end: [32mOK[39m
+- errors/detached-ruleset-6: [32mOK[39m
+- errors/detached-ruleset-5: [32mOK[39m
+- errors/import-malformed: [32mOK[39m
+- errors/detached-ruleset-4: [32mOK[39m
+- errors/import-no-semi: [32mOK[39m
+- errors/javascript-undefined-var: [32mOK[39m
+- errors/mixed-mixin-definition-args-1: [32mOK[39m
+- errors/mixed-mixin-definition-args-2: [32mOK[39m
+- errors/javascript-error: [32mOK[39m
+- errors/mixin-not-defined: [32mOK[39m
+- errors/mixin-not-matched2: [32mOK[39m
+- errors/mixins-guards-default-func-1: [32mOK[39m
+- errors/mixin-not-visible-in-scope-1: [32mOK[39m
+- errors/mixin-not-matched: [32mOK[39m
+- errors/mixins-guards-default-func-2: [32mOK[39m
+- errors/mixins-guards-default-func-3: [32mOK[39m
+- errors/multiple-guards-on-css-selectors: [32mOK[39m
+- errors/multiply-mixed-units: [32mOK[39m
+- errors/parens-error-1: [32mOK[39m
+- errors/multiple-guards-on-css-selectors2: [32mOK[39m
+- errors/parse-error-curly-bracket: [32mOK[39m
+- errors/parens-error-2: [32mOK[39m
+- errors/parse-error-extra-parens: [32mOK[39m
+- errors/parens-error-3: [32mOK[39m
+- errors/parse-error-missing-bracket: [32mOK[39m
+- errors/percentage-missing-space: [32mOK[39m
+- errors/parse-error-missing-parens: [32mOK[39m
+- errors/property-asterisk-only-name: [32mOK[39m
+- errors/property-in-root: [32mOK[39m
+- errors/property-ie5-hack: [32mOK[39m
+- errors/property-interp-not-defined: [32mOK[39m
+- errors/recursive-variable: [32mOK[39m
+- errors/property-in-root3: [32mOK[39m
+- errors/svg-gradient1: [32mOK[39m
+- errors/svg-gradient2: [32mOK[39m
+- errors/svg-gradient3: [32mOK[39m
+- errors/unit-function: [32mOK[39m
+- no-js-errors/no-js-errors: [32mOK[39m
+- compression/compression: [32mOK[39m
+- legacy/legacy: [32mOK[39m
+- globalVars/extended: [32mOK[39m
+- globalVars/simple: [32mOK[39m
+- modifyVars/extended: [32mOK[39m
+- errors/import-missing: [32mOK[39m
+- errors/parse-error-with-import: [32mOK[39m
+- charsets: [32mOK[39m
+- import-inline: [32mOK[39m
+- errors/property-in-root2: [32mOK[39m
+- debug/linenumbers-comments: [32mOK[39m
+- debug/linenumbers-mediaquery: [32mOK[39m
+- debug/linenumbers-all: [32mOK[39m
+- sourcemaps/basic: [32mOK[39m
+- url-args/urls: [32mOK[39m
+- import-interpolation: [32mOK[39m
+- import-once: [32mOK[39m
+- urls: [32mOK[39m
+- static-urls/urls: [32mOK[39m
+- import-reference: [32mOK[39m
+- import: [32mOK[39m
+- errors/import-subfolder1: [32mOK[39m
+- errors/import-subfolder2: [32mOK[39m
+
+[32mAll Passed [39m120 run
+
+[4mRunning "concat:browsertest" (concat) task[24m
+File test/browser/less.js created.
+
+[4mRunning "connect:server" (connect) task[24m
+Started connect web server on http://0.0.0.0:8081
+
+[4mRunning "jasmine:main" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/less/charsets.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-charset-test.less'
+less: parsed http://localhost:8081/test/less/charsets.less successfully.
+less: css for http://localhost:8081/test/less/charsets.less generated in 17ms
+less: XHR: Getting 'http://localhost:8081/test/less/colors.less'
+less: parsed http://localhost:8081/test/less/colors.less successfully.
+less: css for http://localhost:8081/test/less/colors.less generated in 12ms
+less: XHR: Getting 'http://localhost:8081/test/less/comments.less'
+less: parsed http://localhost:8081/test/less/comments.less successfully.
+less: css for http://localhost:8081/test/less/comments.less generated in 8ms
+less: XHR: Getting 'http://localhost:8081/test/less/css-3.less'
+less: parsed http://localhost:8081/test/less/css-3.less successfully.
+less: css for http://localhost:8081/test/less/css-3.less generated in 9ms
+less: XHR: Getting 'http://localhost:8081/test/less/css-escapes.less'
+less: parsed http://localhost:8081/test/less/css-escapes.less successfully.
+less: css for http://localhost:8081/test/less/css-escapes.less generated in 7ms
+less: XHR: Getting 'http://localhost:8081/test/less/css-guards.less'
+less: parsed http://localhost:8081/test/less/css-guards.less successfully.
+less: css for http://localhost:8081/test/less/css-guards.less generated in 8ms
+less: XHR: Getting 'http://localhost:8081/test/less/css.less'
+less: parsed http://localhost:8081/test/less/css.less successfully.
+less: css for http://localhost:8081/test/less/css.less generated in 6ms
+less: XHR: Getting 'http://localhost:8081/test/less/detached-rulesets.less'
+less: parsed http://localhost:8081/test/less/detached-rulesets.less successfully.
+less: css for http://localhost:8081/test/less/detached-rulesets.less generated in 11ms
+less: XHR: Getting 'http://localhost:8081/test/less/extend-chaining.less'
+less: parsed http://localhost:8081/test/less/extend-chaining.less successfully.
+less: css for http://localhost:8081/test/less/extend-chaining.less generated in 15ms
+less: XHR: Getting 'http://localhost:8081/test/less/extend-clearfix.less'
+less: parsed http://localhost:8081/test/less/extend-clearfix.less successfully.
+less: css for http://localhost:8081/test/less/extend-clearfix.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/extend-exact.less'
+less: parsed http://localhost:8081/test/less/extend-exact.less successfully.
+less: css for http://localhost:8081/test/less/extend-exact.less generated in 4ms
+less: XHR: Getting 'http://localhost:8081/test/less/extend-media.less'
+less: parsed http://localhost:8081/test/less/extend-media.less successfully.
+less: css for http://localhost:8081/test/less/extend-media.less generated in 4ms
+less: XHR: Getting 'http://localhost:8081/test/less/extend-nest.less'
+less: parsed http://localhost:8081/test/less/extend-nest.less successfully.
+less: css for http://localhost:8081/test/less/extend-nest.less generated in 6ms
+less: XHR: Getting 'http://localhost:8081/test/less/extend-selector.less'
+less: parsed http://localhost:8081/test/less/extend-selector.less successfully.
+less: css for http://localhost:8081/test/less/extend-selector.less generated in 7ms
+less: XHR: Getting 'http://localhost:8081/test/less/extend.less'
+less: parsed http://localhost:8081/test/less/extend.less successfully.
+less: css for http://localhost:8081/test/less/extend.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/extract-and-length.less'
+less: parsed http://localhost:8081/test/less/extract-and-length.less successfully.
+less: css for http://localhost:8081/test/less/extract-and-length.less generated in 14ms
+less: XHR: Getting 'http://localhost:8081/test/less/functions.less'
+less: parsed http://localhost:8081/test/less/functions.less successfully.
+less: css for http://localhost:8081/test/less/functions.less generated in 18ms
+less: XHR: Getting 'http://localhost:8081/test/less/ie-filters.less'
+less: parsed http://localhost:8081/test/less/ie-filters.less successfully.
+less: css for http://localhost:8081/test/less/ie-filters.less generated in 9ms
+less: XHR: Getting 'http://localhost:8081/test/less/import-inline.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-d.css'
+less: XHR: Getting 'http://localhost:8081/test/less/import/invalid-css.less'
+less: parsed http://localhost:8081/test/less/import-inline.less successfully.
+less: css for http://localhost:8081/test/less/import-inline.less generated in 9ms
+less: XHR: Getting 'http://localhost:8081/test/less/import-interpolation.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-e.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-interpolation.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-interpolation2.less'
+less: parsed http://localhost:8081/test/less/import-interpolation.less successfully.
+less: css for http://localhost:8081/test/less/import-interpolation.less generated in 13ms
+less: XHR: Getting 'http://localhost:8081/test/less/import-once.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-once-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-once-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-once-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/deeper/import-once-test-a.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-once-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-f.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-e.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-f.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-e.less'
+less: parsed http://localhost:8081/test/less/import-once.less successfully.
+less: css for http://localhost:8081/test/less/import-once.less generated in 18ms
+less: XHR: Getting 'http://localhost:8081/test/less/import-reference.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import-once.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-once-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-once-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-once-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/deeper/import-once-test-a.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-once-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-f.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-e.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-f.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-e.less'
+less: XHR: Getting 'http://localhost:8081/test/less/css-3.less'
+less: XHR: Getting 'http://localhost:8081/test/less/media.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-reference.less'
+less: parsed http://localhost:8081/test/less/import-reference.less successfully.
+less: css for http://localhost:8081/test/less/import-reference.less generated in 39ms
+less: XHR: Getting 'http://localhost:8081/test/less/import.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-e.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-a.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-b.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-c.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/urls.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-d.css'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-e.less'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-d.css'
+less: XHR: Getting 'http://localhost:8081/test/less/import/import-test-e.less'
+less: parsed http://localhost:8081/test/less/import.less successfully.
+less: css for http://localhost:8081/test/less/import.less generated in 31ms
+less: XHR: Getting 'http://localhost:8081/test/less/lazy-eval.less'
+less: parsed http://localhost:8081/test/less/lazy-eval.less successfully.
+less: css for http://localhost:8081/test/less/lazy-eval.less generated in 3ms
+less: XHR: Getting 'http://localhost:8081/test/less/media.less'
+less: parsed http://localhost:8081/test/less/media.less successfully.
+less: css for http://localhost:8081/test/less/media.less generated in 10ms
+less: XHR: Getting 'http://localhost:8081/test/less/merge.less'
+less: parsed http://localhost:8081/test/less/merge.less successfully.
+less: css for http://localhost:8081/test/less/merge.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins-args.less'
+less: parsed http://localhost:8081/test/less/mixins-args.less successfully.
+less: css for http://localhost:8081/test/less/mixins-args.less generated in 14ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins-closure.less'
+less: parsed http://localhost:8081/test/less/mixins-closure.less successfully.
+less: css for http://localhost:8081/test/less/mixins-closure.less generated in 4ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins-guards-default-func.less'
+less: parsed http://localhost:8081/test/less/mixins-guards-default-func.less successfully.
+less: css for http://localhost:8081/test/less/mixins-guards-default-func.less generated in 18ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins-guards.less'
+less: parsed http://localhost:8081/test/less/mixins-guards.less successfully.
+less: css for http://localhost:8081/test/less/mixins-guards.less generated in 17ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins-important.less'
+less: parsed http://localhost:8081/test/less/mixins-important.less successfully.
+less: css for http://localhost:8081/test/less/mixins-important.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins-interpolated.less'
+less: parsed http://localhost:8081/test/less/mixins-interpolated.less successfully.
+less: css for http://localhost:8081/test/less/mixins-interpolated.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins-named-args.less'
+less: parsed http://localhost:8081/test/less/mixins-named-args.less successfully.
+less: css for http://localhost:8081/test/less/mixins-named-args.less generated in 8ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins-nested.less'
+less: parsed http://localhost:8081/test/less/mixins-nested.less successfully.
+less: css for http://localhost:8081/test/less/mixins-nested.less generated in 9ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins-pattern.less'
+less: parsed http://localhost:8081/test/less/mixins-pattern.less successfully.
+less: css for http://localhost:8081/test/less/mixins-pattern.less generated in 10ms
+less: XHR: Getting 'http://localhost:8081/test/less/mixins.less'
+less: parsed http://localhost:8081/test/less/mixins.less successfully.
+less: css for http://localhost:8081/test/less/mixins.less generated in 11ms
+less: XHR: Getting 'http://localhost:8081/test/less/no-output.less'
+less: parsed http://localhost:8081/test/less/no-output.less successfully.
+less: css for http://localhost:8081/test/less/no-output.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/operations.less'
+less: parsed http://localhost:8081/test/less/operations.less successfully.
+less: css for http://localhost:8081/test/less/operations.less generated in 6ms
+less: XHR: Getting 'http://localhost:8081/test/less/parens.less'
+less: parsed http://localhost:8081/test/less/parens.less successfully.
+less: css for http://localhost:8081/test/less/parens.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/property-name-interp.less'
+less: parsed http://localhost:8081/test/less/property-name-interp.less successfully.
+less: css for http://localhost:8081/test/less/property-name-interp.less generated in 7ms
+less: XHR: Getting 'http://localhost:8081/test/less/rulesets.less'
+less: parsed http://localhost:8081/test/less/rulesets.less successfully.
+less: css for http://localhost:8081/test/less/rulesets.less generated in 4ms
+less: XHR: Getting 'http://localhost:8081/test/less/scope.less'
+less: parsed http://localhost:8081/test/less/scope.less successfully.
+less: css for http://localhost:8081/test/less/scope.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/selectors.less'
+less: parsed http://localhost:8081/test/less/selectors.less successfully.
+less: css for http://localhost:8081/test/less/selectors.less generated in 7ms
+less: XHR: Getting 'http://localhost:8081/test/less/strings.less'
+less: parsed http://localhost:8081/test/less/strings.less successfully.
+less: css for http://localhost:8081/test/less/strings.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/variables-in-at-rules.less'
+less: parsed http://localhost:8081/test/less/variables-in-at-rules.less successfully.
+less: css for http://localhost:8081/test/less/variables-in-at-rules.less generated in 3ms
+less: XHR: Getting 'http://localhost:8081/test/less/variables.less'
+less: parsed http://localhost:8081/test/less/variables.less successfully.
+less: css for http://localhost:8081/test/less/variables.less generated in 5ms
+less: XHR: Getting 'http://localhost:8081/test/less/whitespace.less'
+less: parsed http://localhost:8081/test/less/whitespace.less successfully.
+less: css for http://localhost:8081/test/less/whitespace.less generated in 5ms
+less: less has finished. css generated in 456ms
+...............................................
+47 specs in 0.739s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:legacy" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/less/legacy/legacy.less'
+less: parsed http://localhost:8081/test/less/legacy/legacy.less successfully.
+less: css for http://localhost:8081/test/less/legacy/legacy.less generated in 13ms
+less: less has finished. css generated in 13ms
+.
+1 spec in 0s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:errors" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/less/errors/add-mixed-units.less'
+less: parsed http://localhost:8081/test/less/errors/add-mixed-units.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/add-mixed-units2.less'
+less: parsed http://localhost:8081/test/less/errors/add-mixed-units2.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/at-rules-undefined-var.less'
+less: parsed http://localhost:8081/test/less/errors/at-rules-undefined-var.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/bad-variable-declaration1.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/color-func-invalid-color.less'
+less: parsed http://localhost:8081/test/less/errors/color-func-invalid-color.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/color-invalid-hex-code.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/color-invalid-hex-code2.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/comment-in-selector.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/css-guard-default-func.less'
+less: parsed http://localhost:8081/test/less/errors/css-guard-default-func.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/detached-ruleset-1.less'
+less: parsed http://localhost:8081/test/less/errors/detached-ruleset-1.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/detached-ruleset-2.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/detached-ruleset-3.less'
+less: parsed http://localhost:8081/test/less/errors/detached-ruleset-3.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/detached-ruleset-4.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/detached-ruleset-5.less'
+less: parsed http://localhost:8081/test/less/errors/detached-ruleset-5.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/detached-ruleset-6.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/divide-mixed-units.less'
+less: parsed http://localhost:8081/test/less/errors/divide-mixed-units.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/extend-no-selector.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/extend-not-at-end.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/import-malformed.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/import-missing.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/file-does-not-exist.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/import-no-semi.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/import-subfolder1.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/imports/import-subfolder1.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/imports/subfolder/mixin-not-defined.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixin-not-defined.less'
+less: parsed http://localhost:8081/test/less/errors/import-subfolder1.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/import-subfolder2.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/imports/import-subfolder2.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/imports/subfolder/parse-error-curly-bracket.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/parse-error-curly-bracket.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/javascript-undefined-var.less'
+less: parsed http://localhost:8081/test/less/errors/javascript-undefined-var.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixed-mixin-definition-args-1.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixed-mixin-definition-args-2.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixin-not-defined.less'
+less: parsed http://localhost:8081/test/less/errors/mixin-not-defined.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixin-not-matched.less'
+less: parsed http://localhost:8081/test/less/errors/mixin-not-matched.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixin-not-matched2.less'
+less: parsed http://localhost:8081/test/less/errors/mixin-not-matched2.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixin-not-visible-in-scope-1.less'
+less: parsed http://localhost:8081/test/less/errors/mixin-not-visible-in-scope-1.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixins-guards-default-func-1.less'
+less: parsed http://localhost:8081/test/less/errors/mixins-guards-default-func-1.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixins-guards-default-func-2.less'
+less: parsed http://localhost:8081/test/less/errors/mixins-guards-default-func-2.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/mixins-guards-default-func-3.less'
+less: parsed http://localhost:8081/test/less/errors/mixins-guards-default-func-3.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/multiple-guards-on-css-selectors.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/multiple-guards-on-css-selectors2.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/multiply-mixed-units.less'
+less: parsed http://localhost:8081/test/less/errors/multiply-mixed-units.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/parens-error-1.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/parens-error-2.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/parens-error-3.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/parse-error-curly-bracket.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/parse-error-extra-parens.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/parse-error-missing-bracket.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/parse-error-missing-parens.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/parse-error-with-import.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/import/import-test.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/percentage-missing-space.less'
+less: parsed http://localhost:8081/test/less/errors/percentage-missing-space.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/property-asterisk-only-name.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/property-ie5-hack.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/property-in-root.less'
+less: parsed http://localhost:8081/test/less/errors/property-in-root.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/property-in-root2.less'
+less: XHR: Getting 'http://localhost:8081/test/less/errors/property-in-root.less'
+less: parsed http://localhost:8081/test/less/errors/property-in-root2.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/property-in-root3.less'
+less: parsed http://localhost:8081/test/less/errors/property-in-root3.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/property-interp-not-defined.less'
+less: parsed http://localhost:8081/test/less/errors/property-interp-not-defined.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/recursive-variable.less'
+less: parsed http://localhost:8081/test/less/errors/recursive-variable.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/svg-gradient1.less'
+less: parsed http://localhost:8081/test/less/errors/svg-gradient1.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/svg-gradient2.less'
+less: parsed http://localhost:8081/test/less/errors/svg-gradient2.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/svg-gradient3.less'
+less: parsed http://localhost:8081/test/less/errors/svg-gradient3.less successfully.
+less: XHR: Getting 'http://localhost:8081/test/less/errors/unit-function.less'
+less: parsed http://localhost:8081/test/less/errors/unit-function.less successfully.
+........................................................
+56 specs in 0.731s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:noJsErrors" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/less/no-js-errors/no-js-errors.less'
+.
+1 spec in 0.001s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:browser" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/browser/less/urls.less'
+less: XHR: Getting 'http://localhost:8081/test/browser/less/imports/urls.less'
+less: XHR: Getting 'http://localhost:8081/test/browser/less/imports/urls2.less'
+less: parsed http://localhost:8081/test/browser/less/urls.less successfully.
+less: css for http://localhost:8081/test/browser/less/urls.less generated in 27ms
+less: less has finished. css generated in 27ms
+less: XHR: Getting '/test/less/charsets.less'
+less: XHR: Getting '/test/less/import/import-charset-test.less'
+less: XHR: Getting '/test/less/colors.less'
+less: XHR: Getting '/test/less/comments.less'
+less: XHR: Getting '/test/less/css-3.less'
+less: XHR: Getting '/test/less/strings.less'
+less: XHR: Getting '/test/less/media.less'
+less: XHR: Getting '/test/less/mixins.less'
+.........
+9 specs in 0.106s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:relativeUrls" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/browser/less/relative-urls/urls.less'
+less: XHR: Getting 'http://localhost:8081/test/browser/less/imports/urls.less'
+less: XHR: Getting 'http://localhost:8081/test/browser/less/imports/urls2.less'
+less: parsed http://localhost:8081/test/browser/less/relative-urls/urls.less successfully.
+less: css for http://localhost:8081/test/browser/less/relative-urls/urls.less generated in 26ms
+less: less has finished. css generated in 26ms
+.
+1 spec in 0s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:rootpath" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/browser/less/rootpath/urls.less'
+less: XHR: Getting 'http://localhost:8081/test/browser/less/imports/urls.less'
+less: XHR: Getting 'http://localhost:8081/test/browser/less/imports/urls2.less'
+less: parsed http://localhost:8081/test/browser/less/rootpath/urls.less successfully.
+less: css for http://localhost:8081/test/browser/less/rootpath/urls.less generated in 21ms
+less: less has finished. css generated in 21ms
+.
+1 spec in 0.001s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:rootpathRelative" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/browser/less/rootpath-relative/urls.less'
+less: XHR: Getting 'http://localhost:8081/test/browser/less/imports/urls.less'
+less: XHR: Getting 'http://localhost:8081/test/browser/less/imports/urls2.less'
+less: parsed http://localhost:8081/test/browser/less/rootpath-relative/urls.less successfully.
+less: css for http://localhost:8081/test/browser/less/rootpath-relative/urls.less generated in 20ms
+less: less has finished. css generated in 20ms
+.
+1 spec in 0.001s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:production" (jasmine) task[24m
+Testing jasmine specs via phantom
+.
+1 spec in 0.001s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:modifyVars" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/browser/less/modify-vars/simple.less'
+less: XHR: Getting 'http://localhost:8081/test/browser/less/modify-vars/imports/simple2.less'
+less: parsed http://localhost:8081/test/browser/less/modify-vars/simple.less successfully.
+less: css for http://localhost:8081/test/browser/less/modify-vars/simple.less generated in 14ms
+less: less has finished. css generated in 14ms
+..
+2 specs in 0.001s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:globalVars" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/browser/less/global-vars/simple.less'
+less: parsed http://localhost:8081/test/browser/less/global-vars/simple.less successfully.
+less: css for http://localhost:8081/test/browser/less/global-vars/simple.less generated in 11ms
+less: less has finished. css generated in 11ms
+.
+1 spec in 0.001s.
+[32m>> [39m0 failures
+
+[4mRunning "jasmine:postProcessor" (jasmine) task[24m
+Testing jasmine specs via phantom
+less: XHR: Getting 'http://localhost:8081/test/browser/less/postProcessor/postProcessor.less'
+less: parsed http://localhost:8081/test/browser/less/postProcessor/postProcessor.less successfully.
+less: css for http://localhost:8081/test/browser/less/postProcessor/postProcessor.less generated in 10ms
+less: less has finished. css generated in 10ms
+.
+1 spec in 0s.
+[32m>> [39m0 failures
+
+[32mDone, without errors.[39m
+
+
+Execution Time (2014-08-08 03:01:08 UTC)
+loading tasks             357ms  ▇ 2%
+jshint:files               1.6s  ▇▇▇▇ 9%
+shell:test                671ms  ▇▇ 4%
+jasmine:main               3.2s  ▇▇▇▇▇▇▇ 18%
+jasmine:legacy            720ms  ▇▇ 4%
+jasmine:errors             1.7s  ▇▇▇▇ 9%
+jasmine:noJsErrors        718ms  ▇▇ 4%
+jasmine:browser           923ms  ▇▇ 5%
+jasmine:relativeUrls      723ms  ▇▇ 4%
+jasmine:rootpath           1.9s  ▇▇▇▇ 11%
+jasmine:rootpathRelative   2.4s  ▇▇▇▇▇ 14%
+jasmine:production        724ms  ▇▇ 4%
+jasmine:modifyVars        723ms  ▇▇ 4%
+jasmine:globalVars        722ms  ▇▇ 4%
+jasmine:postProcessor     723ms  ▇▇ 4%
+Total 17.9s
+

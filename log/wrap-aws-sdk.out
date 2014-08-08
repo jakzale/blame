@@ -1,0 +1,12 @@
+
+> aws-sdk@2.0.11 test /Users/jakub/Developer/Blame/externals/aws-sdk
+> npm -s run-script lint && npm -s run-script unit && npm -s run-script buildertest && npm -s run-script browsertest && ([ -f configuration ] && npm -s run-script integration || true)
+
+
+lib/aws.js
+  53:0  error  Unnecessary semicolon                        no-extra-semi
+  55:2  error  Do not mix 'require' and other declarations  no-mixed-requires
+  57:4  error  M is defined but never used                  no-unused-vars
+
+✖ 3 problems
+

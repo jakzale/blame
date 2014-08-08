@@ -1,0 +1,16 @@
+/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1726
+      return handler.deleteProperty(target, name);
+                     ^
+TypeError: undefined is not a function
+    at Object.global.Reflect.deleteProperty (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1726:22)
+    at Object.Validator [as delete] (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:810:22)
+    at runTests (/Users/jakub/Developer/Blame/externals/marked/test/index.js:92:14)
+    at main (/Users/jakub/Developer/Blame/externals/marked/test/index.js:523:10)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/marked/test/index.js:532:16)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Function.Module.runMain (module.js:490:10)
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

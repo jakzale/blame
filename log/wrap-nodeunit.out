@@ -1,0 +1,117 @@
+
+> nodeunit@0.9.0 test /Users/jakub/Developer/Blame/externals/nodeunit
+> node ./bin/nodeunit
+
+
+[1mtest-base[22m
+✔ testCalled
+✔ testOk
+✔ testEquals
+✔ testSame
+✔ testEqual
+✔ testNotEqual
+✔ testDeepEqual
+✔ testNotDeepEqual
+✔ testStrictEqual
+✔ testNotStrictEqual
+✔ testThrows
+✔ testThrowsWithReGex
+✔ testThrowsWithErrorValidation
+✔ testDoesNotThrows
+✔ testIfError
+✔ testExpect
+
+[1mtest-bettererrors[22m
+[31m✖ testEqual[39m
+
+AssertionError: expected [String: 'AssertionError: \n  at Object.exports.testEqual (/Users/jakub/Developer/Blame/externals/nodeunit/test/test-bettererrors.js:29:16)\n  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:236:16)\n  at /Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:236:16\n  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:70:9)\n  at /Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:118:25\n  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:513:13\n  at iterate (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:123:13)\n  at async.forEachSeries (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:139:9)\n  at _concat (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:512:9)\n  at Object.concatSeries (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:152:23)\n  at Object.exports.runSuite (/Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:96:11)\n  at Object.exports.runModule (/Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:158:13)\n  at /Users/jakub/Developer/Blame/externals/nodeunit/lib/nodeunit.js:75:21\n  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:513:13\n  at iterate (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:123:13)\n  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:134:25\n  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:515:17\n  at /Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:165:9\n  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:518:13\n  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:131:25\n  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:515:17\n  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/nodeunit/lib/types.js:146:17)\n  at processImmediate [as _immediateCallback] (timers.js:374:17)\n'] to include 'true'
+  at Object.Assertion.include (/Users/jakub/Developer/Blame/externals/nodeunit/node_modules/should/lib/should.js:479:10)
+  at Object.exports.testEqual (/Users/jakub/Developer/Blame/externals/nodeunit/test/test-bettererrors.js:33:34)
+  at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:236:16)
+  at /Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:236:16
+  at Object.exports.runTest (/Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:70:9)
+  at /Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:118:25
+  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:123:13)
+  at async.forEachSeries (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:139:9)
+  at _concat (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:512:9)
+  at Object.concatSeries (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:152:23)
+  at Object.exports.runSuite (/Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:96:11)
+  at Object.exports.runModule (/Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:158:13)
+  at /Users/jakub/Developer/Blame/externals/nodeunit/lib/nodeunit.js:75:21
+  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:513:13
+  at iterate (/Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:123:13)
+  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:134:25
+  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:515:17
+  at /Users/jakub/Developer/Blame/externals/nodeunit/lib/core.js:165:9
+  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:518:13
+  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:131:25
+  at /Users/jakub/Developer/Blame/externals/nodeunit/deps/async.js:515:17
+  at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/nodeunit/lib/types.js:146:17)
+  at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+✔ testAssertThrows
+✔ testErrorIsNotAssertion
+
+[1mtest-cli[22m
+✔ run test suite using absolute path
+
+[1mtest-failing-callbacks[22m
+✔ testFailingLog
+✔ testFailingTestDone
+✔ testAssertionObj
+✔ testLogOptional
+✔ testExpectWithFailure
+
+[1mtest-httputil[22m
+✔ testHttpUtilBasics
+✔ testHttpUtilJsonHandling
+
+[1mtest-runfiles[22m
+✔ testRunFiles
+✔ testRunFilesEmpty
+✔ testEmptyDir
+✔ testCoffeeScript
+
+[1mtest-runmodule[22m
+✔ testRunModule
+✔ testRunModuleTestSpec
+✔ testRunModuleEmpty
+✔ testNestedTests
+
+[1mtest-runtest[22m
+✔ testArgs
+✔ testDoneCallback
+✔ testThrowError
+
+[1mtest-sandbox[22m
+✔ testSimpleSandbox
+✔ testSandboxContext
+✔ testSandboxMultiple
+
+[1mtest-testcase[22m
+✔ testTestCase
+✔ tearDownAfterError
+✔ catchSetUpError
+✔ setUpErrorCallback
+✔ catchTearDownError
+✔ tearDownErrorCallback
+✔ testErrorAndtearDownError
+✔ testCaseGroups
+✔ nestedTestCases
+✔ deepNestedTestCases
+
+[1mtest-testcase-legacy[22m
+✔ testTestCase
+✔ tearDownAfterError
+✔ catchSetUpError
+✔ setUpErrorCallback
+✔ catchTearDownError
+✔ tearDownErrorCallback
+✔ testErrorAndtearDownError
+✔ testCaseGroups
+✔ nestedTestCases
+✔ deepNestedTestCases
+
+[1m[31mFAILURES: [39m[22m1/229 assertions failed (305ms)

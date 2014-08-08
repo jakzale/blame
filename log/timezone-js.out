@@ -1,0 +1,4 @@
+
+> timezone-js@0.4.10 test /Users/jakub/Developer/Blame/externals/timezone-js
+> ./node_modules/jake/bin/cli.js test:cli
+

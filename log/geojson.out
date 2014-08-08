@@ -1,0 +1,30 @@
+
+> geojson@0.1.5 test /Users/jakub/Developer/Blame/externals/geojson
+> mocha
+
+
+[0m[0m
+[0m  GeoJSON[0m
+[0m    #defaults[0m
+    [32m  ✓[0m[90m exists as a public object of GeoJSON [0m
+    [32m  ✓[0m[90m is initially empty [0m
+[0m    #parse[0m
+    [32m  ✓[0m[90m returns output with the same number of features as the input [0m
+    [32m  ✓[0m[90m doesn't include geometry fields in feature properties [0m
+    [32m  ✓[0m[90m includes all properties besides geometry attributes when include or exclude isn't set [0m
+    [32m  ✓[0m[90m only includes attributes that are listed in the include parameter [0m
+    [32m  ✓[0m[90m does not include attributes listed in the exclude parameter [0m
+    [32m  ✓[0m[90m handles Point geom with x,y stored in one or two attributes [0m
+    [32m  ✓[0m[90m parses data with different geometry types [0m
+    [32m  ✓[0m[90m uses the default settings when they have been specified [0m
+    [32m  ✓[0m[90m adds 'bbox' and/or 'crs' to the output if either is specified in the parameters [0m
+    [32m  ✓[0m[90m adds extra attributes if extra param is set [0m
+    [32m  ✓[0m[90m adds a properties key at the top level if the extraGlobal parameter is set [0m
+    [32m  ✓[0m[90m throws an error if the objects parameter is empty [0m
+    [32m  ✓[0m[90m throws an error if no geometry attributes have been specified [0m
+    [32m  ✓[0m[90m calls the calback function if one is provided [0m
+    [32m  ✓[0m[90m returns the GeoJSON output if the callback parameter is not a function [0m
+
+
+[92m [0m[32m 17 passing[0m[90m (117ms)[0m
+

@@ -1,0 +1,74 @@
+(node) warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
+Trace
+    at Stream.EventEmitter.addListener (events.js:179:15)
+    at Stream.pipe (stream.js:71:12)
+    at module.exports (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/node_modules/charm/index.js:42:15)
+    at difflet (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:41:17)
+    at Function.fn.compare (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:20:9)
+    at diffObject (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:398:50)
+    at assert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:55:18)
+    at Function.equivalent (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:182:12)
+    at Test._testAssert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-test.js:87:16)
+    at Test.<anonymous> (/Users/jakub/Developer/Blame/externals/optimist/test/parse.js:31:7)
+(node) warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
+Trace
+    at Stream.EventEmitter.addListener (events.js:179:15)
+    at Stream.pipe (stream.js:118:10)
+    at module.exports (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/node_modules/charm/index.js:42:15)
+    at difflet (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:41:17)
+    at Function.fn.compare (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:20:9)
+    at diffObject (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:398:50)
+    at assert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:55:18)
+    at Function.equivalent (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:182:12)
+    at Test._testAssert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-test.js:87:16)
+    at Test.<anonymous> (/Users/jakub/Developer/Blame/externals/optimist/test/parse.js:31:7)
+(node) warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
+Trace
+    at Stream.EventEmitter.addListener (events.js:179:15)
+    at Stream.pipe (stream.js:99:8)
+    at module.exports (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/node_modules/charm/index.js:38:15)
+    at difflet (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:41:17)
+    at Function.fn.compare (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:20:9)
+    at diffObject (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:398:50)
+    at assert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:55:18)
+    at Function.equivalent (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:182:12)
+    at Test._testAssert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-test.js:87:16)
+    at Test.<anonymous> (/Users/jakub/Developer/Blame/externals/optimist/test/parse.js:47:7)
+(node) warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
+Trace
+    at Stream.EventEmitter.addListener (events.js:179:15)
+    at Stream.pipe (stream.js:65:8)
+    at module.exports (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/node_modules/charm/index.js:38:15)
+    at difflet (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:41:17)
+    at Function.fn.compare (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:20:9)
+    at diffObject (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:398:50)
+    at assert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:55:18)
+    at Function.equivalent (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:182:12)
+    at Test._testAssert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-test.js:87:16)
+    at Test.<anonymous> (/Users/jakub/Developer/Blame/externals/optimist/test/parse.js:87:7)
+(node) warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
+Trace
+    at Stream.EventEmitter.addListener (events.js:179:15)
+    at Stream.pipe (stream.js:57:10)
+    at module.exports (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/node_modules/charm/index.js:42:15)
+    at difflet (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:41:17)
+    at Function.fn.compare (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:20:9)
+    at diffObject (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:398:50)
+    at assert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:55:18)
+    at Function.equivalent (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:182:12)
+    at Test._testAssert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-test.js:87:16)
+    at Test.<anonymous> (/Users/jakub/Developer/Blame/externals/optimist/test/parse.js:87:7)
+(node) warning: possible EventEmitter memory leak detected. 11 listeners added. Use emitter.setMaxListeners() to increase limit.
+Trace
+    at Stream.EventEmitter.addListener (events.js:179:15)
+    at Stream.EventEmitter.once (events.js:204:8)
+    at module.exports (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/node_modules/charm/index.js:45:11)
+    at difflet (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:41:17)
+    at Function.fn.compare (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/node_modules/difflet/index.js:20:9)
+    at diffObject (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:398:50)
+    at assert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:55:18)
+    at Function.equivalent (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-assert.js:182:12)
+    at Test._testAssert (/Users/jakub/Developer/Blame/externals/optimist/node_modules/tap/lib/tap-test.js:87:16)
+    at Test.<anonymous> (/Users/jakub/Developer/Blame/externals/optimist/test/parse.js:87:7)
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

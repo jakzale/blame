@@ -1,0 +1,377 @@
+
+> uri-templates@0.1.5 test /Users/jakub/Developer/Blame/externals/uri-templates
+> grunt test
+
+[4mRunning "uglify:main" (uglify) task[24m
+File "uri-templates.min.js" created.
+Original: [32m12745[39m bytes.
+Minified: [32m4426[39m bytes.
+
+[4mRunning "copy:test_deps" (copy) task[24m
+Copied [36m2[39m files
+
+[4mRunning "mochaTest:any" (mochaTest) task[24m
+
+[36m->[39m running [36m11 suites[39m
+
+   [36mBasic tests[39m
+      Basic substitution.. [32mok[39m
+
+   [36mSpec examples by section(substitution)[39m
+      [36m3.2.1 Variable Expansion[39m
+         {count}.. [32mok[39m
+         {count*}.. [32mok[39m
+         {/count}.. [32mok[39m
+         {/count*}.. [32mok[39m
+         {;count}.. [32mok[39m
+         {;count*}.. [32mok[39m
+         {?count}.. [32mok[39m
+         {?count*}.. [32mok[39m
+         {&count*}.. [32mok[39m
+      [36m3.2.2 Simple String Expansion[39m
+         {var}.. [32mok[39m
+         {hello}.. [32mok[39m
+         {half}.. [32mok[39m
+         O{empty}X.. [32mok[39m
+         O{undef}X.. [32mok[39m
+         {x,y}.. [32mok[39m
+         {x,hello,y}.. [32mok[39m
+         ?{x,empty}.. [32mok[39m
+         ?{x,undef}.. [32mok[39m
+         ?{undef,y}.. [32mok[39m
+         {var:3}.. [32mok[39m
+         {var:30}.. [32mok[39m
+         {list}.. [32mok[39m
+         {list*}.. [32mok[39m
+         {keys}.. [32mok[39m
+         {keys*}.. [32mok[39m
+      [36m3.2.3 Reserved Expansion[39m
+         {+var}.. [32mok[39m
+         {+hello}.. [32mok[39m
+         {+half}.. [32mok[39m
+         {base}index.. [32mok[39m
+         {+base}index.. [32mok[39m
+         O{+empty}X.. [32mok[39m
+         O{+undef}X.. [32mok[39m
+         {+path}/here.. [32mok[39m
+         {+path:6}/here.. [32mok[39m
+         here?ref={+path}.. [32mok[39m
+         up{+path}{var}/here.. [32mok[39m
+         {+x,hello,y}.. [32mok[39m
+         {+path,x}/here.. [32mok[39m
+         {+list}.. [32mok[39m
+         {+list*}.. [32mok[39m
+         {+keys}.. [32mok[39m
+         {+keys*}.. [32mok[39m
+      [36m3.2.4 Fragment Expansion[39m
+         {#var}.. [32mok[39m
+         {#hello}.. [32mok[39m
+         {#half}.. [32mok[39m
+         foo{#empty}.. [32mok[39m
+         foo{#undef}.. [32mok[39m
+         {#x,hello,y}.. [32mok[39m
+         {#path,x}/here.. [32mok[39m
+         {#path:6}/here.. [32mok[39m
+         {#list}.. [32mok[39m
+         {#list*}.. [32mok[39m
+         {#keys}.. [32mok[39m
+      [36m3.2.5 Label Expansion with Dot-Prefix[39m
+         {.who}.. [32mok[39m
+         {.who,who}.. [32mok[39m
+         {.half,who}.. [32mok[39m
+         www{.dom*}.. [32mok[39m
+         X{.var}.. [32mok[39m
+         X{.var:3}.. [32mok[39m
+         X{.empty}.. [32mok[39m
+         X{.undef}.. [32mok[39m
+         X{.list}.. [32mok[39m
+         X{.list*}.. [32mok[39m
+         {#keys}.. [32mok[39m
+         {#keys*}.. [32mok[39m
+         X{.empty_keys}.. [32mok[39m
+         X{.empty_keys*}.. [32mok[39m
+      [36m3.2.6 Path Segment Expansion[39m
+         {/who}.. [32mok[39m
+         {/who,who}.. [32mok[39m
+         {/half,who}.. [32mok[39m
+         {/who,dub}.. [32mok[39m
+         {/var}.. [32mok[39m
+         {/var,empty}.. [32mok[39m
+         {/var,undef}.. [32mok[39m
+         {/var,x}/here.. [32mok[39m
+         {/var:1,var}.. [32mok[39m
+         {/list}.. [32mok[39m
+         {/list*}.. [32mok[39m
+         {/list*,path:4}.. [32mok[39m
+         {/keys}.. [32mok[39m
+         {/keys*}.. [32mok[39m
+      [36m3.2.7 Path-Style Parameter Expansion[39m
+         {;who}.. [32mok[39m
+         {;half}.. [32mok[39m
+         {;empty}.. [32mok[39m
+         {;hello:5}.. [32mok[39m
+         {;v,empty,who}.. [32mok[39m
+         {;v,bar,who}.. [32mok[39m
+         {;x,y}.. [32mok[39m
+         {;x,y,empty}.. [32mok[39m
+         {;x,y,undef}.. [32mok[39m
+         {;list}.. [32mok[39m
+         {;list*}.. [32mok[39m
+         {;keys}.. [32mok[39m
+         {;keys*}.. [32mok[39m
+      [36m3.2.8 Form-Style Query Expansion[39m
+         {?who}.. [32mok[39m
+         {?half}.. [32mok[39m
+         {?x,y}.. [32mok[39m
+         {?x,y,empty}.. [32mok[39m
+         {?x,y,undef}.. [32mok[39m
+         {?var:3}.. [32mok[39m
+         {?list}.. [32mok[39m
+         {?list*}.. [32mok[39m
+         {?keys}.. [32mok[39m
+         {?keys*}.. [32mok[39m
+      [36m3.2.9 Form-Style Query Continuation[39m
+         {&who}.. [32mok[39m
+         {&half}.. [32mok[39m
+         ?fixed=yes{&x}.. [32mok[39m
+         {&var:3}.. [32mok[39m
+         {&x,y,empty}.. [32mok[39m
+         {&x,y,undef}.. [32mok[39m
+         {&list}.. [32mok[39m
+         {&list*}.. [32mok[39m
+         {&keys}.. [32mok[39m
+         {&keys*}.. [32mok[39m
+
+   [36mSpec examples by section (de-substitution)[39m
+      [36m3.2.1 Variable Expansion[39m
+         {count}.. [32mok[39m
+         {count*}.. [32mok[39m
+         {/count}.. [32mok[39m
+         {/count*}.. [32mok[39m
+         {;count}.. [32mok[39m
+         {;count*}.. [32mok[39m
+         {?count}.. [32mok[39m
+         {?count*}.. [32mok[39m
+         {&count*}.. [32mok[39m
+      [36m3.2.2 Simple String Expansion[39m
+         {var}.. [32mok[39m
+         {hello}.. [32mok[39m
+         {half}.. [32mok[39m
+         O{empty}X.. [32mok[39m
+         O{undef}X.. [32mok[39m
+         {x,y}.. [32mok[39m
+         {x,hello,y}.. [32mok[39m
+         ?{x,empty}.. [32mok[39m
+         ?{x,undef}.. [32mok[39m
+         ?{undef,y}.. [32mok[39m
+         {var:3}.. [32mok[39m
+         {var:30}.. [32mok[39m
+         {list}.. [32mok[39m
+         {list*}.. [32mok[39m
+         {keys}.. [32mok[39m
+         {keys*}.. [32mok[39m
+      [36m3.2.3 Reserved Expansion[39m
+         {+var}.. [32mok[39m
+         {+hello}.. [32mok[39m
+         {+half}.. [32mok[39m
+         {base}index.. [32mok[39m
+         {+base}index.. [32mok[39m
+         O{+empty}X.. [32mok[39m
+         O{+undef}X.. [32mok[39m
+         {+path}/here.. [32mok[39m
+         {+path:6}/here.. [32mok[39m
+         here?ref={+path}.. [32mok[39m
+         up{+path}{var}/here.. [32mok[39m
+         {+x,hello,y}.. [32mok[39m
+         {+path,x}/here.. [32mok[39m
+         {+list}.. [32mok[39m
+         {+list*}.. [32mok[39m
+         {+keys}.. [32mok[39m
+         {+keys*}.. [32mok[39m
+      [36m3.2.4 Fragment Expansion[39m
+         {#var}.. [32mok[39m
+         {#hello}.. [32mok[39m
+         {#half}.. [32mok[39m
+         foo{#empty}.. [32mok[39m
+         foo{#undef}.. [32mok[39m
+         {#x,hello,y}.. [32mok[39m
+         {#path,x}/here.. [32mok[39m
+         {#path:6}/here.. [32mok[39m
+         {#list}.. [32mok[39m
+         {#list*}.. [32mok[39m
+         {#keys}.. [32mok[39m
+      [36m3.2.5 Label Expansion with Dot-Prefix[39m
+         {.who}.. [32mok[39m
+         {.who,who}.. [32mok[39m
+         {.half,who}.. [32mok[39m
+         www{.dom*}.. [32mok[39m
+         X{.var}.. [32mok[39m
+         X{.var:3}.. [32mok[39m
+         X{.empty}.. [32mok[39m
+         X{.undef}.. [32mok[39m
+         X{.list}.. [32mok[39m
+         X{.list*}.. [32mok[39m
+         {#keys}.. [32mok[39m
+         {#keys*}.. [32mok[39m
+         X{.empty_keys}.. [32mok[39m
+         X{.empty_keys*}.. [32mok[39m
+      [36m3.2.6 Path Segment Expansion[39m
+         {/who}.. [32mok[39m
+         {/who,who}.. [32mok[39m
+         {/half,who}.. [32mok[39m
+         {/who,dub}.. [32mok[39m
+         {/var}.. [32mok[39m
+         {/var,empty}.. [32mok[39m
+         {/var,undef}.. [32mok[39m
+         {/var,x}/here.. [32mok[39m
+         {/var:1,var}.. [32mok[39m
+         {/list}.. [32mok[39m
+         {/list*}.. [32mok[39m
+         {/list*,path:4}.. [32mok[39m
+         {/keys}.. [32mok[39m
+         {/keys*}.. [32mok[39m
+      [36m3.2.7 Path-Style Parameter Expansion[39m
+         {;who}.. [32mok[39m
+         {;half}.. [32mok[39m
+         {;empty}.. [32mok[39m
+         {;hello:5}.. [32mok[39m
+         {;v,empty,who}.. [32mok[39m
+         {;v,bar,who}.. [32mok[39m
+         {;x,y}.. [32mok[39m
+         {;x,y,empty}.. [32mok[39m
+         {;x,y,undef}.. [32mok[39m
+         {;list}.. [32mok[39m
+         {;list*}.. [32mok[39m
+         {;keys}.. [32mok[39m
+         {;keys*}.. [32mok[39m
+      [36m3.2.8 Form-Style Query Expansion[39m
+         {?who}.. [32mok[39m
+         {?half}.. [32mok[39m
+         {?x,y}.. [32mok[39m
+         {?x,y,empty}.. [32mok[39m
+         {?x,y,undef}.. [32mok[39m
+         {?var:3}.. [32mok[39m
+         {?list}.. [32mok[39m
+         {?list*}.. [32mok[39m
+         {?keys}.. [32mok[39m
+         {?keys*}.. [32mok[39m
+      [36m3.2.9 Form-Style Query Continuation[39m
+         {&who}.. [32mok[39m
+         {&half}.. [32mok[39m
+         ?fixed=yes{&x}.. [32mok[39m
+         {&var:3}.. [32mok[39m
+         {&x,y,empty}.. [32mok[39m
+         {&x,y,undef}.. [32mok[39m
+         {&list}.. [32mok[39m
+         {&list*}.. [32mok[39m
+         {&keys}.. [32mok[39m
+         {&keys*}.. [32mok[39m
+
+   [36mExtended examples(substitution)[39m
+      [36mAdditional Examples 1[39m
+         {/id*}.. [32mok[39m
+         {/id*}{?fields,first_name,last.name,token}.. [32mok[39m
+         /search.{format}{?q,geocode,lang,locale,page,result_type}.. [32mok[39m
+         /test{/Some%20Thing}.. [32mok[39m
+         /set{?number}.. [32mok[39m
+         /loc{?long,lat}.. [32mok[39m
+         /base{/group_id,first_name}/pages{/page,lang}{?format,q}.. [32mok[39m
+         /sparql{?query}.. [32mok[39m
+         /go{?uri}.. [32mok[39m
+         /service{?word}.. [32mok[39m
+         /lookup{?Stra%C3%9Fe}.. [32mok[39m
+         {random}.. [32mok[39m
+         {?assoc_special_chars*}.. [32mok[39m
+      [36mAdditional Examples 2[39m
+         {/id*}.. [32mok[39m
+         {/id*}{?fields,token}.. [32mok[39m
+      [36mAdditional Examples 3: Empty Variables[39m
+         {/empty_list}.. [32mok[39m
+         {/empty_list*}.. [32mok[39m
+         {?empty_list}.. [32mok[39m
+         {?empty_list*}.. [32mok[39m
+         {?empty_assoc}.. [32mok[39m
+         {?empty_assoc*}.. [32mok[39m
+      [36mAdditional Examples 4: Numeric Keys[39m
+         {42}.. [32mok[39m
+         {?42}.. [32mok[39m
+         {1337}.. [32mok[39m
+         {?1337*}.. [32mok[39m
+         {?german*}.. [32mok[39m
+
+   [36mExtended examples (de-substitution)[39m
+      [36mAdditional Examples 1[39m
+         {/id*}.. [32mok[39m
+         {/id*}{?fields,first_name,last.name,token}.. [32mok[39m
+         /search.{format}{?q,geocode,lang,locale,page,result_type}.. [32mok[39m
+         /test{/Some%20Thing}.. [32mok[39m
+         /set{?number}.. [32mok[39m
+         /loc{?long,lat}.. [32mok[39m
+         /base{/group_id,first_name}/pages{/page,lang}{?format,q}.. [32mok[39m
+         /sparql{?query}.. [32mok[39m
+         /go{?uri}.. [32mok[39m
+         /service{?word}.. [32mok[39m
+         /lookup{?Stra%C3%9Fe}.. [32mok[39m
+         {random}.. [32mok[39m
+         {?assoc_special_chars*}.. [32mok[39m
+      [36mAdditional Examples 2[39m
+         {/id*}.. [32mok[39m
+         {/id*}{?fields,token}.. [32mok[39m
+      [36mAdditional Examples 3: Empty Variables[39m
+         {/empty_list}.. [32mok[39m
+         {/empty_list*}.. [32mok[39m
+         {?empty_list}.. [32mok[39m
+         {?empty_list*}.. [32mok[39m
+         {?empty_assoc}.. [32mok[39m
+         {?empty_assoc*}.. [32mok[39m
+      [36mAdditional Examples 4: Numeric Keys[39m
+         {42}.. [32mok[39m
+         {?42}.. [32mok[39m
+         {1337}.. [32mok[39m
+         {?1337*}.. [32mok[39m
+         {?german*}.. [32mok[39m
+
+   [36mCustom examples 1(substitution)[39m
+      [36mCustom examples 1[39m
+         prefix/{someString}/suffix.. [32mok[39m
+         prefix/{someBoolean}/suffix.. [32mok[39m
+         prefix/{someArray}/suffix.. [32mok[39m
+         prefix/{someArray*}/suffix.. [32mok[39m
+         prefix{/someArray}/suffix.. [32mok[39m
+         prefix{/someArray*}/suffix.. [32mok[39m
+         prefix{/someArray*}/.. [32mok[39m
+         prefix{?someObject*}?.. [32mok[39m
+
+   [36mCustom examples 1 (de-substitution)[39m
+      [36mCustom examples 1[39m
+         prefix/{someString}/suffix.. [32mok[39m
+         prefix/{someBoolean}/suffix.. [32mok[39m
+         prefix/{someArray}/suffix.. [32mok[39m
+         prefix/{someArray*}/suffix.. [32mok[39m
+         prefix{/someArray}/suffix.. [32mok[39m
+         prefix{/someArray*}/suffix.. [32mok[39m
+         prefix{/someArray*}/.. [32mok[39m
+         prefix{?someObject*}?.. [32mok[39m
+
+   [36mCustom examples 2(substitution)[39m
+      [36mCustom Examples 1[39m
+         {path}{?query*}.. [32mok[39m
+         {+path}{?query*}.. [32mok[39m
+         {+path2}/c/capture{/date,id,page}.. [32mok[39m
+
+   [36mCustom examples 2 (de-substitution)[39m
+      [36mCustom Examples 1[39m
+         {path}{?query*}.. [32mok[39m
+         {+path}{?query*}.. [32mok[39m
+         {+path2}/c/capture{/date,id,page}.. [32mok[39m
+
+   [36mGuessing variable priority[39m
+      GitHub issue #8.. [32mok[39m
+
+   [36mOriginal string available[39m
+      GitHub issue #7.. [32mok[39m
+
+-> [32mpassed 305[39m of [36m305 tests[39m (72ms)
+
+
+[32mDone, without errors.[39m

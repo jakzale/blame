@@ -1,0 +1,20 @@
+[31m  1 failing[0m
+
+[0m  1)  function constructor:
+[0m[31m     AssertionError: "    at Object.Function (native)" does not match /^    at Object\.Function \((?:unknown source|<anonymous>)\)$/[0m[90m
+      at compareLines (/Users/jakub/Developer/Blame/externals/source-map-support/test.js:15:7)
+      at compareStackTrace (/Users/jakub/Developer/Blame/externals/source-map-support/test.js:85:5)
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/source-map-support/test.js:217:3)
+      at callFn (/Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/runnable.js:223:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/runnable.js:216:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

@@ -1,0 +1,29 @@
+
+> qunit@0.7.2 test /Users/jakub/Developer/Blame/externals/qunit
+> node --harmony ./test/testrunner.js
+
+
+Testing  /Users/jakub/Developer/Blame/externals/qunit/test/fixtures/testrunner-code.js ... 
+done
+
+Testing  /Users/jakub/Developer/Blame/externals/qunit/test/fixtures/child-code-global.js ... 
+done
+
+Testing  /Users/jakub/Developer/Blame/externals/qunit/test/fixtures/testrunner-code.js ... 
+done
+
+Testing  /Users/jakub/Developer/Blame/externals/qunit/test/fixtures/child-code-namespace.js ... 
+done
+
+Testing  /Users/jakub/Developer/Blame/externals/qunit/test/fixtures/async-code.js ... 
+done
+
+Testing  /Users/jakub/Developer/Blame/externals/qunit/test/fixtures/uncaught-exception-code.js ... 
+
+Testing  /Users/jakub/Developer/Blame/externals/qunit/test/fixtures/coverage-code.js ... 
+done
+
+Testing  /Users/jakub/Developer/Blame/externals/qunit/test/fixtures/generators-code.js ... 
+done
+
+All tests ok.

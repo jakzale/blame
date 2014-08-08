@@ -1,0 +1,56 @@
+
+> scroller@0.0.2 test /Users/jakub/Developer/Blame/externals/scroller
+> mocha test
+
+
+[0m[0m
+[0m  Animation[0m
+  [32m  ✓[0m[90m should scroll to the sought position [0m[31m(1002ms)[0m
+  [32m  ✓[0m[90m should zoom to the sought state [0m[31m(1003ms)[0m
+  [32m  ✓[0m[90m should compose scrolling and zooming [0m[31m(1002ms)[0m
+
+[0m  Mixed animation and static movement[0m
+  [32m  ✓[0m[90m should truncate animated scrolling with static scrolling [0m[31m(501ms)[0m
+  [32m  ✓[0m[90m should truncate animated scrolling with static zooming [0m[31m(1502ms)[0m
+  [32m  ✓[0m[90m should truncate animated zooming with static zooming [0m[31m(1502ms)[0m
+  [32m  ✓[0m[90m should truncate animated zooming with static scrolling [0m[31m(1502ms)[0m
+
+[0m  Overlapping animation[0m
+  [32m  ✓[0m[90m should compose two scrolls [0m[31m(1503ms)[0m
+  [32m  ✓[0m[90m should interrupt scrolling with a zoom [0m[31m(1504ms)[0m
+  [32m  ✓[0m[90m should compose two zooms [0m[31m(1501ms)[0m
+  [32m  ✓[0m[90m should interrupt a zoom with a scroll [0m[31m(1503ms)[0m
+
+[0m  Automatic positioning[0m
+  [32m  ✓[0m[90m should snap to specified tiles [0m
+  [32m  ✓[0m[90m should paginate to the specified dimension [0m
+
+[0m  Boundaries[0m
+  [32m  ✓[0m[90m should project scrolling into feasible window [0m
+  [32m  ✓[0m[90m should project scrolling along a fixed axis to 0 [0m
+  [32m  ✓[0m[90m should constrain zooming to avoid leaving the feasible window [0m
+
+[0m  Events[0m
+  [32m  ✓[0m[90m should induce scrolling via Move and Acceleration [0m
+  [32m  ✓[0m[90m should induce zooming via Wheel [0m
+
+[0m  Initialization[0m
+  [32m  ✓[0m[90m should construct scroller objects [0m
+  [32m  ✓[0m[90m should accept dimensions [0m
+  [32m  ✓[0m[90m should recall accepted dimensions [0m
+
+[0m  Movement[0m
+  [32m  ✓[0m[90m should follow scrolling [0m
+  [32m  ✓[0m[90m should follow zooming [0m
+  [32m  ✓[0m[90m should follow composed zooming and scrolling [0m
+  [32m  ✓[0m[90m should follow composed scrolling and zooming [0m
+  [32m  ✓[0m[90m should follow composed scrolling and zooming without an explicit zoom origin [0m
+  [32m  ✓[0m[90m should compose scrolling, zooming, and then scrolling [0m
+
+[0m  Relative movement[0m
+  [32m  ✓[0m[90m should zoom relative to current zoom [0m
+  [32m  ✓[0m[90m should scroll relative to current position [0m
+
+
+[92m [0m[32m 29 passing[0m[90m (14s)[0m
+

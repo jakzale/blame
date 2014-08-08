@@ -1,0 +1,13 @@
+
+> update-notifier@0.2.0 test /Users/jakub/Developer/Blame/externals/update-notifier
+> mocha --timeout 20000
+
+
+[0m[0m
+[0m  updateNotifier[0m
+  [32m  ✓[0m[90m should check for update [0m[31m(918ms)[0m
+  [32m  ✓[0m[90m should check for update with callback [0m[31m(215ms)[0m
+
+
+[92m [0m[32m 2 passing[0m[90m (1s)[0m
+

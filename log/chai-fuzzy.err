@@ -1,0 +1,27 @@
+Assertion.includeStack is deprecated, use chai.config.includeStack instead.
+  1 failing
+
+  1) chai-fuzzy matchers .containOneLike has its test set up correctly:
+     AssertionError: expected [ Array(4) ] to not include { w: 'waffles' }
+      at Assertion.include (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/chai/lib/chai/core/assertions.js:169:10)
+      at Assertion.assert (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/chai/lib/chai/utils/addChainableMethod.js:83:49)
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai-fuzzy/test/chai-fuzzy.js:318:35)
+      at callFn (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runner.js:246:23)
+      at /Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runner.js:270:7
+      at done (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runnable.js:205:5)
+      at callFn (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runnable.js:260:7)
+      at Hook.Runnable.run (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runnable.js:242:7)
+      at next (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runner.js:258:10)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai-fuzzy/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+
+
+make: *** [test] Error 1
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

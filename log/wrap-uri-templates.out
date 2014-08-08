@@ -1,0 +1,17 @@
+
+> uri-templates@0.1.5 test /Users/jakub/Developer/Blame/externals/uri-templates
+> grunt test
+
+[4mRunning "uglify:main" (uglify) task[24m
+{ message: 'Unexpected token name «uri», expected punc «,»',
+  line: 413,
+  col: 4,
+  pos: 13105,
+  stack: 'Error\n    at new JS_Parse_Error (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:189:18)\n    at js_error (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:197:11)\n    at croak (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:660:41)\n    at token_error (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:664:9)\n    at expect_token (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:677:9)\n    at expect (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:680:36)\n    at expr_list (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:1172:44)\n    at subscripts (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:1310:30)\n    at subscripts (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:1287:20)\n    at expr_atom (/Users/jakub/Developer/Blame/externals/uri-templates/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js:1164:20)' }
+[31m>> [39mUglifying source "uri-templates.js" failed.
+[33mWarning: Uglification failed.
+Unexpected token name «uri», expected punc «,». 
+Line 413 in uri-templates.js
+ Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m

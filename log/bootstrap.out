@@ -1,0 +1,640 @@
+
+> bootstrap@3.2.0 test /Users/jakub/Developer/Blame/externals/bootstrap
+> grunt test
+
+[4mRunning "less:compileCore" (less) task[24m
+File dist/css/bootstrap.css.map created.
+File dist/css/bootstrap.css created: 134.54 kB → 134.58 kB
+
+[4mRunning "less:compileTheme" (less) task[24m
+File dist/css/bootstrap-theme.css.map created.
+File dist/css/bootstrap-theme.css created: 17.93 kB → 17.98 kB
+
+[4mRunning "autoprefixer:core" (autoprefixer) task[24m
+File dist/css/bootstrap.css created.
+File dist/css/bootstrap.css.map created (source map).
+
+[4mRunning "autoprefixer:theme" (autoprefixer) task[24m
+File dist/css/bootstrap-theme.css created.
+File dist/css/bootstrap-theme.css.map created (source map).
+
+[4mRunning "autoprefixer:docs" (autoprefixer) task[24m
+File docs/assets/css/src/docs.css created.
+
+[4mRunning "autoprefixer:examples" (autoprefixer) task[24m
+File docs/examples/blog/blog.css created.
+File docs/examples/carousel/carousel.css created.
+File docs/examples/cover/cover.css created.
+File docs/examples/dashboard/dashboard.css created.
+File docs/examples/grid/grid.css created.
+File docs/examples/jumbotron-narrow/jumbotron-narrow.css created.
+File docs/examples/jumbotron/jumbotron.css created.
+File docs/examples/justified-nav/justified-nav.css created.
+File docs/examples/navbar-fixed-top/navbar-fixed-top.css created.
+File docs/examples/navbar-static-top/navbar-static-top.css created.
+File docs/examples/navbar/navbar.css created.
+File docs/examples/non-responsive/non-responsive.css created.
+File docs/examples/offcanvas/offcanvas.css created.
+File docs/examples/signin/signin.css created.
+File docs/examples/starter-template/starter-template.css created.
+File docs/examples/sticky-footer-navbar/sticky-footer-navbar.css created.
+File docs/examples/sticky-footer/sticky-footer.css created.
+File docs/examples/theme/theme.css created.
+File docs/examples/tooltip-viewport/tooltip-viewport.css created.
+
+[4mRunning "usebanner:files" (usebanner) task[24m
+[35m✔[39m grunt-banner completed successfully
+
+[4mRunning "csscomb:dist" (csscomb) task[24m
+[32m>> [39mUsing custom config file "less/.csscomb.json"...
+[32m>> [39mSorting file "dist/css/bootstrap-theme.css"...
+[32m>> [39mSorting file "dist/css/bootstrap.css"...
+
+[4mRunning "csscomb:examples" (csscomb) task[24m
+[32m>> [39mUsing custom config file "less/.csscomb.json"...
+[32m>> [39mSorting file "docs/examples/blog/blog.css"...
+[32m>> [39mSorting file "docs/examples/carousel/carousel.css"...
+[32m>> [39mSorting file "docs/examples/cover/cover.css"...
+[32m>> [39mSorting file "docs/examples/dashboard/dashboard.css"...
+[32m>> [39mSorting file "docs/examples/grid/grid.css"...
+[32m>> [39mSorting file "docs/examples/jumbotron-narrow/jumbotron-narrow.css"...
+[32m>> [39mSorting file "docs/examples/jumbotron/jumbotron.css"...
+[32m>> [39mSorting file "docs/examples/justified-nav/justified-nav.css"...
+[32m>> [39mSorting file "docs/examples/navbar-fixed-top/navbar-fixed-top.css"...
+[32m>> [39mSorting file "docs/examples/navbar-static-top/navbar-static-top.css"...
+[32m>> [39mSorting file "docs/examples/navbar/navbar.css"...
+[32m>> [39mSorting file "docs/examples/non-responsive/non-responsive.css"...
+[32m>> [39mSorting file "docs/examples/offcanvas/offcanvas.css"...
+[32m>> [39mSorting file "docs/examples/signin/signin.css"...
+[32m>> [39mSorting file "docs/examples/starter-template/starter-template.css"...
+[32m>> [39mSorting file "docs/examples/sticky-footer-navbar/sticky-footer-navbar.css"...
+[32m>> [39mSorting file "docs/examples/sticky-footer/sticky-footer.css"...
+[32m>> [39mSorting file "docs/examples/theme/theme.css"...
+[32m>> [39mSorting file "docs/examples/tooltip-viewport/tooltip-viewport.css"...
+
+[4mRunning "csscomb:docs" (csscomb) task[24m
+[32m>> [39mUsing custom config file "less/.csscomb.json"...
+[32m>> [39mSorting file "docs/assets/css/src/docs.css"...
+
+[4mRunning "cssmin:core" (cssmin) task[24m
+File dist/css/bootstrap.min.css created: 135.87 kB → 112.48 kB
+File dist/css/bootstrap-theme.min.css created: 21.45 kB → 18.93 kB
+
+[4mRunning "cssmin:docs" (cssmin) task[24m
+File docs/assets/css/docs.min.css created: 32.3 kB → 21.14 kB
+
+[4mRunning "csslint:src" (csslint) task[24m
+[32m>> [39m2 files lint free.
+
+[4mRunning "csslint:examples" (csslint) task[24m
+[32m>> [39m19 files lint free.
+
+[4mRunning "csslint:docs" (csslint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "jshint:grunt" (jshint) task[24m
+[32m>> [39m3 files lint free.
+
+[4mRunning "jshint:src" (jshint) task[24m
+[32m>> [39m12 files lint free.
+
+[4mRunning "jshint:test" (jshint) task[24m
+[32m>> [39m12 files lint free.
+
+[4mRunning "jshint:assets" (jshint) task[24m
+[32m>> [39m5 files lint free.
+
+[4mRunning "jscs:grunt" (jscs) task[24m
+[32m>> [39m3 files without code style errors.
+
+[4mRunning "jscs:src" (jscs) task[24m
+[32m>> [39m12 files without code style errors.
+
+[4mRunning "jscs:test" (jscs) task[24m
+[32m>> [39m12 files without code style errors.
+
+[4mRunning "jscs:assets" (jscs) task[24m
+[32m>> [39m5 files without code style errors.
+
+[4mRunning "qunit:files" (qunit) task[24m
+Testing js/tests/index.html 
+
+Starting test suite
+================================================
+
+.✔ All tests passed in "alert plugin" module
+.....✔ All tests passed in "alert" module
+.✔ All tests passed in "button plugin" module
+.........✔ All tests passed in "button" module
+.✔ All tests passed in "carousel plugin" module
+...........✔ All tests passed in "carousel" module
+.✔ All tests passed in "collapse plugin" module
+..........✔ All tests passed in "collapse" module
+.✔ All tests passed in "dropdowns plugin" module
+..........✔ All tests passed in "dropdowns" module
+.✔ All tests passed in "modal plugin" module
+.................✔ All tests passed in "modal" module
+.✔ All tests passed in "scrollspy plugin" module
+......✔ All tests passed in "scrollspy" module
+.✔ All tests passed in "tabs plugin" module
+......✔ All tests passed in "tabs" module
+.✔ All tests passed in "tooltip plugin" module
+..........................................✔ All tests passed in "tooltip" module
+.✔ All tests passed in "popover plugin" module
+...........✔ All tests passed in "popover" module
+.✔ All tests passed in "affix plugin" module
+....✔ All tests passed in "affix" module
+[32mOK[39m
+[32m>> [39m298 assertions passed (1859ms)
+
+[4mRunning "jade:compile" (jade) task[24m
+File docs/_includes/customizer-variables.html created.
+File docs/_includes/nav/customize.html created.
+
+[4mRunning "jekyll:docs" (jekyll) task[24m
+`jekyll build` was initiated.
+
+
+Jekyll output:
+Configuration file: /Users/jakub/Developer/Blame/externals/bootstrap/_config.yml
+            Source: docs
+       Destination: _gh_pages
+      Generating... [33mWarning: Command failed: /bin/sh -c jekyll build
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/posix-spawn-0.3.8/lib/posix_spawn_ext.bundle: [BUG] Segmentation fault
+ruby 2.0.0p451 (2014-02-24 revision 45167) [universal.x86_64-darwin13]
+
+-- Crash Report log information --------------------------------------------
+   See Crash Report log file under the one of following:
+     * ~/Library/Logs/CrashReporter
+     * /Library/Logs/CrashReporter
+     * ~/Library/Logs/DiagnosticReports
+     * /Library/Logs/DiagnosticReports
+   the more detail of.
+
+-- Control frame information -----------------------------------------------
+c:0048 p:-17529833590818 s:0236 e:000235 TOP    [FINISH]
+c:0047 p:---- s:0234 e:000233 CFUNC  :require
+c:0046 p:0115 s:0230 e:000229 METHOD /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55
+c:0045 p:0021 s:0220 e:000219 TOP    /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:2 [FINISH]
+c:0044 p:---- s:0218 e:000217 CFUNC  :require
+c:0043 p:0115 s:0214 e:000213 METHOD /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55
+c:0042 p:0007 s:0204 e:000203 TOP    /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/pygments.rb-0.5.4/lib/pygments/popen.rb:2 [FINISH]
+c:0041 p:---- s:0202 e:000201 CFUNC  :require
+c:0040 p:0115 s:0198 e:000197 METHOD /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55
+c:0039 p:0027 s:0188 e:000187 TOP    /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/pygments.rb-0.5.4/lib/pygments.rb:1 [FINISH]
+c:0038 p:---- s:0186 e:000185 CFUNC  :require
+c:0037 p:0115 s:0182 e:000181 METHOD /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55
+c:0036 p:0009 s:0172 e:000171 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/highlight.rb:52
+c:0035 p:0029 s:0166 e:000165 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/highlight.rb:45
+c:0034 p:0081 s:0162 e:000160 BLOCK  /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:106 [FINISH]
+c:0033 p:---- s:0157 e:000156 CFUNC  :each
+c:0032 p:0014 s:0154 e:000153 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:93
+c:0031 p:0012 s:0148 e:000147 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:82
+c:0030 p:0291 s:0144 e:000143 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/template.rb:124
+c:0029 p:0016 s:0137 e:000136 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/template.rb:132
+c:0028 p:0029 s:0133 e:000132 BLOCK  /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/include.rb:104
+c:0027 p:0018 s:0131 e:000130 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/context.rb:105
+c:0026 p:0139 s:0127 e:000126 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/include.rb:102
+c:0025 p:0081 s:0118 e:000116 BLOCK  /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:106 [FINISH]
+c:0024 p:---- s:0113 e:000112 CFUNC  :each
+c:0023 p:0014 s:0110 e:000109 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:93
+c:0022 p:0012 s:0104 e:000103 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:82
+c:0021 p:0291 s:0100 e:000099 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/template.rb:124
+c:0020 p:0016 s:0093 e:000092 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/template.rb:132
+c:0019 p:0026 s:0089 e:000088 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/convertible.rb:88
+c:0018 p:0079 s:0081 e:000079 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/convertible.rb:150
+c:0017 p:0033 s:0074 e:000073 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/page.rb:115
+c:0016 p:0013 s:0068 e:000067 BLOCK  /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/site.rb:239 [FINISH]
+c:0015 p:---- s:0065 e:000064 CFUNC  :each
+c:0014 p:0029 s:0062 e:000061 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/site.rb:238
+c:0013 p:0025 s:0057 e:000056 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/site.rb:39
+c:0012 p:0008 s:0054 e:000053 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/command.rb:18
+c:0011 p:0084 s:0049 e:000048 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/commands/build.rb:23
+c:0010 p:0028 s:0042 e:000041 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/commands/build.rb:7
+c:0009 p:0045 s:0037 e:000036 BLOCK  /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/bin/jekyll:77 [FINISH]
+c:0008 p:---- s:0033 e:000032 CFUNC  :call
+c:0007 p:0100 s:0028 e:000027 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/command.rb:180
+c:0006 p:0012 s:0021 e:000020 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/command.rb:155
+c:0005 p:0054 s:0017 e:000016 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/runner.rb:402
+c:0004 p:0122 s:0014 E:000dd8 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/runner.rb:66
+c:0003 p:0024 s:0009 e:000008 METHOD /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/delegates.rb:7
+c:0002 p:0007 s:0004 e:000003 BLOCK  /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/import.rb:10 [FINISH]
+c:0001 p:0000 s:0002 E:0017f8 TOP    [FINISH]
+
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/import.rb:10:in `block in <top (required)>'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/delegates.rb:7:in `run!'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/runner.rb:66:in `run!'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/runner.rb:402:in `run_active_command'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/command.rb:155:in `run'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/command.rb:180:in `call'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/command.rb:180:in `call'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/bin/jekyll:77:in `block (2 levels) in <top (required)>'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/commands/build.rb:7:in `process'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/commands/build.rb:23:in `build'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/command.rb:18:in `process_site'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/site.rb:39:in `process'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/site.rb:238:in `render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/site.rb:238:in `each'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/site.rb:239:in `block in render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/page.rb:115:in `render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/convertible.rb:150:in `do_layout'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/convertible.rb:88:in `render_liquid'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/template.rb:132:in `render!'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/template.rb:124:in `render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:82:in `render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:93:in `render_all'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:93:in `each'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:106:in `block in render_all'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/include.rb:102:in `render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/context.rb:105:in `stack'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/include.rb:104:in `block in render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/template.rb:132:in `render!'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/template.rb:124:in `render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:82:in `render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:93:in `render_all'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:93:in `each'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb:106:in `block in render_all'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/highlight.rb:45:in `render'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/highlight.rb:52:in `render_pygments'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/pygments.rb-0.5.4/lib/pygments.rb:1:in `<top (required)>'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/pygments.rb-0.5.4/lib/pygments/popen.rb:2:in `<top (required)>'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+/Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/posix-spawn-0.3.8/lib/posix/spawn.rb:2:in `<top (required)>'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+
+-- C level backtrace information -------------------------------------------
+
+-- Other runtime information -----------------------------------------------
+
+* Loaded script: /Users/jakub/.rvm/gems/ruby-2.0.0-p353/bin/jekyll
+
+* Loaded features:
+
+    0 enumerator.so
+    1 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/enc/encdb.bundle
+    2 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/enc/trans/transdb.bundle
+    3 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/rbconfig.rb
+    4 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/compatibility.rb
+    5 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/defaults.rb
+    6 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/deprecate.rb
+    7 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/errors.rb
+    8 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/version.rb
+    9 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/requirement.rb
+   10 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/platform.rb
+   11 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/specification.rb
+   12 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/exceptions.rb
+   13 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_gem.rb
+   14 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/thread.rb
+   15 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/monitor.rb
+   16 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb
+   17 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems.rb
+   18 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/path_support.rb
+   19 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/dependency.rb
+   20 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/executable-hooks-1.2.6/lib/executable-hooks/hooks.rb
+   21 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/etc.bundle
+   22 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/fileutils.rb
+   23 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/pathname.bundle
+   24 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/pathname.rb
+   25 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.3.5/lib/bundler/gem_path_manipulation.rb
+   26 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.3.5/lib/bundler/gem_helpers.rb
+   27 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.3.5/lib/bundler/match_platform.rb
+   28 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.3.5/lib/bundler/rubygems_ext.rb
+   29 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/user_interaction.rb
+   30 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/config_file.rb
+   31 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.3.5/lib/bundler/rubygems_integration.rb
+   32 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.3.5/lib/bundler/version.rb
+   33 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-1.3.5/lib/bundler.rb
+   34 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/bundler-unload-1.0.2/lib/bundler-unload.rb
+   35 /Users/jakub/.rvm/gems/ruby-2.0.0-p353@global/gems/rubygems-bundler-1.4.2/lib/rubygems-bundler/noexec.rb
+   36 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/cgi/util.rb
+   37 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/strscan.bundle
+   38 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/erb.rb
+   39 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/optparse.rb
+   40 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/stringio.bundle
+   41 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/abbrev.rb
+   42 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/highline-1.6.20/lib/highline/compatibility.rb
+   43 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/highline-1.6.20/lib/highline/system_extensions.rb
+   44 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/date_core.bundle
+   45 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/date/format.rb
+   46 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/date.rb
+   47 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/highline-1.6.20/lib/highline/question.rb
+   48 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/highline-1.6.20/lib/highline/menu.rb
+   49 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/highline-1.6.20/lib/highline/color_scheme.rb
+   50 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/highline-1.6.20/lib/highline/style.rb
+   51 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/highline-1.6.20/lib/highline/string_extensions.rb
+   52 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/highline-1.6.20/lib/highline.rb
+   53 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/forwardable.rb
+   54 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/highline-1.6.20/lib/highline/import.rb
+   55 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/version.rb
+   56 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/blank.rb
+   57 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/delegate.rb
+   58 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/tmpdir.rb
+   59 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/tempfile.rb
+   60 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/shellwords.rb
+   61 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/user_interaction.rb
+   62 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/core_ext/array.rb
+   63 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/core_ext/object.rb
+   64 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/core_ext.rb
+   65 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/runner.rb
+   66 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/command.rb
+   67 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/help_formatters.rb
+   68 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/platform.rb
+   69 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander.rb
+   70 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/delegates.rb
+   71 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/import.rb
+   72 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/time.rb
+   73 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/syntax_error.rb
+   74 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/psych.bundle
+   75 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/nodes/node.rb
+   76 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/nodes/stream.rb
+   77 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/nodes/document.rb
+   78 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/nodes/sequence.rb
+   79 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/nodes/scalar.rb
+   80 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/nodes/mapping.rb
+   81 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/nodes/alias.rb
+   82 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/nodes.rb
+   83 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/streaming.rb
+   84 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/visitors/visitor.rb
+   85 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/scalar_scanner.rb
+   86 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/visitors/to_ruby.rb
+   87 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/visitors/emitter.rb
+   88 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/visitors/yaml_tree.rb
+   89 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/json/ruby_events.rb
+   90 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/visitors/json_tree.rb
+   91 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/visitors/depth_first.rb
+   92 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/visitors.rb
+   93 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/handler.rb
+   94 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/tree_builder.rb
+   95 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/parser.rb
+   96 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/omap.rb
+   97 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/set.rb
+   98 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/coder.rb
+   99 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/core_ext.rb
+  100 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/deprecated.rb
+  101 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/stream.rb
+  102 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/json/yaml_events.rb
+  103 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/json/tree_builder.rb
+  104 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/json/stream.rb
+  105 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych/handlers/document_stream.rb
+  106 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/psych.rb
+  107 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/yaml.rb
+  108 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/set.rb
+  109 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/deep.rb
+  110 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/parse/hexadecimal.rb
+  111 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/parse/sexagesimal.rb
+  112 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/parse/date.rb
+  113 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/transform/transformation_map.rb
+  114 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/transform/to_boolean.rb
+  115 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/transform/to_date.rb
+  116 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/transform/to_float.rb
+  117 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/transform/to_integer.rb
+  118 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/transform/to_nil.rb
+  119 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/transform/to_symbol.rb
+  120 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/base64.rb
+  121 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/transform.rb
+  122 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/resolver.rb
+  123 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/psych_handler.rb
+  124 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/psych_resolver.rb
+  125 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml/safe_to_ruby_visitor.rb
+  126 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/safe_yaml-0.9.7/lib/safe_yaml.rb
+  127 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/English.rb
+  128 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/drop.rb
+  129 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/extensions.rb
+  130 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/errors.rb
+  131 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/interrupts.rb
+  132 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/strainer.rb
+  133 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/context.rb
+  134 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tag.rb
+  135 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/block.rb
+  136 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/document.rb
+  137 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/variable.rb
+  138 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/file_system.rb
+  139 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/template.rb
+  140 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/htmltags.rb
+  141 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/cgi/core.rb
+  142 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/cgi/cookie.rb
+  143 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/cgi.rb
+  144 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/standardfilters.rb
+  145 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/condition.rb
+  146 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/module_ex.rb
+  147 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/utils.rb
+  148 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/assign.rb
+  149 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/break.rb
+  150 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/capture.rb
+  151 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/case.rb
+  152 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/comment.rb
+  153 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/continue.rb
+  154 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/cycle.rb
+  155 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/decrement.rb
+  156 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/for.rb
+  157 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/if.rb
+  158 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/ifchanged.rb
+  159 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/include.rb
+  160 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/increment.rb
+  161 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/raw.rb
+  162 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid/tags/unless.rb
+  163 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/liquid-2.5.4/lib/liquid.rb
+  164 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/attributes.rb
+  165 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/element.rb
+  166 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/document.rb
+  167 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/inspect_element.rb
+  168 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/defaults.rb
+  169 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/html.rb
+  170 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/helpers.rb
+  171 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/input/parse_doc.rb
+  172 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/string_utils.rb
+  173 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/input/linesource.rb
+  174 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/input/mdline.rb
+  175 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/input/html_helper.rb
+  176 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/input/parse_block.rb
+  177 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/input/charsource.rb
+  178 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/input/parse_span.rb
+  179 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/input/rubypants.rb
+  180 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/input/extensions.rb
+  181 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/errors.rb
+  182 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/toc.rb
+  183 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/ext/div.rb
+  184 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/ext/fenced_code.rb
+  185 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/version.rb
+  186 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/parseexception.rb
+  187 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/formatters/default.rb
+  188 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/formatters/pretty.rb
+  189 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/node.rb
+  190 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/child.rb
+  191 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/parent.rb
+  192 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/xmltokens.rb
+  193 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/namespace.rb
+  194 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/rexml.rb
+  195 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/encoding.rb
+  196 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/source.rb
+  197 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/entity.rb
+  198 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/attlistdecl.rb
+  199 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/doctype.rb
+  200 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/text.rb
+  201 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/attribute.rb
+  202 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/cdata.rb
+  203 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/functions.rb
+  204 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/syncenumerator.rb
+  205 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/parsers/xpathparser.rb
+  206 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/xpath_parser.rb
+  207 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/xpath.rb
+  208 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/element.rb
+  209 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/xmldecl.rb
+  210 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/comment.rb
+  211 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/instruction.rb
+  212 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/output.rb
+  213 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/undefinednamespaceexception.rb
+  214 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/parsers/baseparser.rb
+  215 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/parsers/streamparser.rb
+  216 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/validation/validationexception.rb
+  217 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/parsers/treeparser.rb
+  218 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rexml/document.rb
+  219 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/singleton.rb
+  220 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/output/entity_table.rb
+  221 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/output/to_html.rb
+  222 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/output/to_latex.rb
+  223 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/output/to_markdown.rb
+  224 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/output/s5/to_s5.rb
+  225 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/output/s5/fancy.rb
+  226 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/output/to_s.rb
+  227 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku/maruku.rb
+  228 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/maruku-0.7.0/lib/maruku.rb
+  229 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/colorator-0.1/lib/colorator/core_ext.rb
+  230 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/colorator-0.1/lib/colorator.rb
+  231 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/slice.rb
+  232 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/cause.rb
+  233 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/source/line_cache.rb
+  234 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/source.rb
+  235 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/can_flatten.rb
+  236 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/context.rb
+  237 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/dsl.rb
+  238 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/base.rb
+  239 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/named.rb
+  240 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/lookahead.rb
+  241 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/alternative.rb
+  242 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/sequence.rb
+  243 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/repetition.rb
+  244 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/re.rb
+  245 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/str.rb
+  246 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/entity.rb
+  247 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/capture.rb
+  248 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/dynamic.rb
+  249 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms/scope.rb
+  250 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/atoms.rb
+  251 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/pattern.rb
+  252 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/pattern/binding.rb
+  253 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/transform.rb
+  254 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/parser.rb
+  255 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/error_reporter/tree.rb
+  256 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/error_reporter/deepest.rb
+  257 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/error_reporter.rb
+  258 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet/scope.rb
+  259 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/parslet-1.5.0/lib/parslet.rb
+  260 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/toml-0.1.0/lib/toml/key.rb
+  261 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/toml-0.1.0/lib/toml/table.rb
+  262 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/toml-0.1.0/lib/toml/parslet.rb
+  263 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/toml-0.1.0/lib/toml/transformer.rb
+  264 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/toml-0.1.0/lib/toml/parser.rb
+  265 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/toml-0.1.0/lib/toml/generator.rb
+  266 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/toml-0.1.0/lib/toml.rb
+  267 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/core_ext.rb
+  268 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/stevenson.rb
+  269 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/deprecator.rb
+  270 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/configuration.rb
+  271 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/site.rb
+  272 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/convertible.rb
+  273 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/url.rb
+  274 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/layout.rb
+  275 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/page.rb
+  276 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/post.rb
+  277 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/excerpt.rb
+  278 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/draft.rb
+  279 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/uri/common.rb
+  280 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/uri/generic.rb
+  281 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/uri/ftp.rb
+  282 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/uri/http.rb
+  283 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/uri/https.rb
+  284 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/uri/ldap.rb
+  285 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/uri/ldaps.rb
+  286 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/uri/mailto.rb
+  287 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/uri.rb
+  288 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/json/version.rb
+  289 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/ostruct.rb
+  290 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/json/generic_object.rb
+  291 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/json/common.rb
+  292 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/enc/utf_16be.bundle
+  293 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/enc/utf_16le.bundle
+  294 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/enc/utf_32be.bundle
+  295 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/enc/utf_32le.bundle
+  296 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/json/ext/parser.bundle
+  297 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/universal-darwin13/json/ext/generator.bundle
+  298 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/json/ext.rb
+  299 /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/json.rb
+  300 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/filters.rb
+  301 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/static_file.rb
+  302 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/errors.rb
+  303 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/related_posts.rb
+  304 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/cleaner.rb
+  305 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/entry_filter.rb
+  306 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/plugin.rb
+  307 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/converter.rb
+  308 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/generator.rb
+  309 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/command.rb
+  310 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/commands/build.rb
+  311 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/commands/doctor.rb
+  312 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/commands/new.rb
+  313 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/commands/serve.rb
+  314 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/converters/identity.rb
+  315 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/converters/markdown.rb
+  316 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/converters/textile.rb
+  317 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/converters/markdown/kramdown_parser.rb
+  318 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/converters/markdown/maruku_parser.rb
+  319 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/converters/markdown/rdiscount_parser.rb
+  320 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/converters/markdown/redcarpet_parser.rb
+  321 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/generators/pagination.rb
+  322 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/gist.rb
+  323 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/highlight.rb
+  324 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/include.rb
+  325 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll/tags/post_url.rb
+  326 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/jekyll-1.4.1/lib/jekyll.rb
+  327 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/help_formatters/base.rb
+  328 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/help_formatters/terminal.rb
+  329 /Users/jakub/.rvm/gems/ruby-2.0.0-p353/gems/commander-4.1.5/lib/commander/help_formatters/terminal_compact.rb
+
+[NOTE]
+You may have encountered a bug in the Ruby interpreter or extension libraries.
+Bug reports are welcome.
+For details: http://www.ruby-lang.org/bugreport.html
+
+ Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m
+
+
+Execution Time (2014-08-08 02:58:21 UTC)
+less:compileCore       1s  ▇▇▇▇▇ 11%
+less:compileTheme   110ms  ▇ 1%
+autoprefixer:core   562ms  ▇▇▇ 6%
+autoprefixer:theme  101ms  ▇ 1%
+csscomb:dist         1.2s  ▇▇▇▇▇▇ 12%
+csscomb:examples    198ms  ▇ 2%
+csscomb:docs        236ms  ▇▇ 3%
+csslint:src         374ms  ▇▇ 4%
+jshint:grunt        131ms  ▇ 1%
+jshint:src          443ms  ▇▇ 5%
+jshint:test         404ms  ▇▇ 4%
+jshint:assets       118ms  ▇ 1%
+jscs:grunt          107ms  ▇ 1%
+jscs:src            116ms  ▇ 1%
+jscs:test            94ms  ▇ 1%
+qunit:files          2.6s  ▇▇▇▇▇▇▇▇▇▇▇▇ 28%
+jade:compile        354ms  ▇▇ 4%
+jekyll:docs         886ms  ▇▇▇▇ 9%
+Total 9.3s
+

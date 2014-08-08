@@ -1,0 +1,19 @@
+client: Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED
+    at RedisClient.on_error (/Users/jakub/Developer/Blame/externals/redis/index.js:196:24)
+    at Socket.<anonymous> (/Users/jakub/Developer/Blame/externals/redis/index.js:106:14)
+    at Socket.EventEmitter.emit (events.js:107:17)
+    at net.js:436:14
+    at process._tickCallback (node.js:343:11)
+Uncaught exception: AssertionError: true == false
+    at process.<anonymous> (/Users/jakub/Developer/Blame/externals/redis/test.js:2237:12)
+    at process.EventEmitter.emit (events.js:107:17)
+    at process.exit (node.js:597:17)
+    at RedisClient.<anonymous> (/Users/jakub/Developer/Blame/externals/redis/test.js:2212:13)
+    at RedisClient.EventEmitter.emit (events.js:107:17)
+    at RedisClient.on_error (/Users/jakub/Developer/Blame/externals/redis/index.js:196:10)
+    at Socket.<anonymous> (/Users/jakub/Developer/Blame/externals/redis/index.js:106:14)
+    at Socket.EventEmitter.emit (events.js:107:17)
+    at net.js:436:14
+    at process._tickCallback (node.js:343:11)
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

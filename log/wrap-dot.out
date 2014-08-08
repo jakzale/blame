@@ -1,0 +1,17 @@
+
+> dot@1.0.1 test /Users/jakub/Developer/Blame/externals/dot
+> mocha
+
+
+[0m[0m
+[0m  doT[0m
+[0m    #template()[0m
+    [32m  ✓[0m[90m should return a function [0m
+[0m    #()[0m
+    [32m  ✓[0m[90m should render the template [0m
+[0m    defines[0m
+    [32m  ✓[0m[90m should render define [0m
+
+
+[92m [0m[32m 3 passing[0m[90m (6ms)[0m
+

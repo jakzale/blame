@@ -1,0 +1,22 @@
+
+> long@1.2.1 test /Users/jakub/Developer/Blame/externals/long
+> node node_modules/testjs/bin/testjs tests/suite.js
+
+ 
+ [1m[32m|_[1m[32m _[1m[32m _[1m[32m|_[0m
+ [1m[32m|_[1m[32m(-[1m[32m_)[1m[32m|_[0m [1m[90m                                                      test.js v1.0.3[39m[22m
+ 
+ [32m+[39m long[1m[90m.[39m[22mbasic                                       2.308 ms      5 assertions 
+ [32m+[39m long[1m[90m.[39m[22mtoString                                    0.829 ms      4 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmin/max                            0.809 ms      4 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mconstruct_negint                   0.128 ms      5 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mconstruct_highlow                  0.089 ms      5 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mconstruct_number                   0.081 ms      5 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mtoSigned/Unsigned                  0.114 ms      3 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmax_unsigned_sub_max_signed        0.202 ms      2 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmax_sub_max                        0.095 ms      6 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mzero_sub_signed                    0.091 ms      5 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmax_unsigned_div_max_signed        0.141 ms      2 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmax_unsigned_div_neg_signed        0.361 ms      1 assertions 
+ [32m+[39m long[1m[90m.[39m[22munsigned[1m[90m.[39m[22mmin_signed_div_one                 0.269 ms      1 assertions 
+ [32m+[39m long[1m[90m.[39m[22mNaN                                         0.558 ms      6 assertions 

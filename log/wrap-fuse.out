@@ -1,0 +1,33 @@
+
+> fuse@0.4.0 test /Users/jakub/Developer/Blame/externals/fuse
+> make test
+
+
+
+  Using fuse
+    on the command line
+      with javascript
+        should fuse two files
+          ◦ by @depends: [2K[0G          ✓ by @depends (138ms)
+          ◦ by @import: [2K[0G          ✓ by @import (129ms)
+          ◦ by @include: [2K[0G          ✓ by @include (130ms)
+        should fuse multiple files
+          ◦ with two depends: [2K[0G          ✓ with two depends (126ms)
+      with html
+        should fuse two files
+          ◦ by <!-- @depends -->: [2K[0G          ✓ by <!-- @depends --> (128ms)
+          ◦ by <!-- @import -->: [2K[0G          ✓ by <!-- @import --> (127ms)
+          ◦ by <!-- @include -->: [2K[0G          ✓ by <!-- @include --> (131ms)
+        should fuse multiple files
+          ◦ with two depends: [2K[0G          ✓ with two depends (126ms)
+    as a module
+      with html
+        should fuse content
+          ◦ with <!-- @depends -->: [2K[0G          ✓ with <!-- @depends --> (70ms)
+[2K[0G          1) with <!-- @depends -->
+          ◦ without a directive: [2K[0G          ✓ without a directive 
+        it should fuse two files
+          ◦ by <!-- @depends -->: [2K[0G          ✓ by <!-- @depends --> 
+          ◦ without a directive: [2K[0G          ✓ without a directive 
+
+

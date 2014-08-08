@@ -1,0 +1,315 @@
+
+> minimist@0.2.0 test /Users/jakub/Developer/Blame/externals/minimist
+> tap test/*.js
+
+not ok test/all_bool.js ................................. 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node all_bool.js"
+    TAP version 13
+    not ok 1 test/all_bool.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/all_bool.js:1:75)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node all_bool.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/bool.js ..................................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node bool.js"
+    TAP version 13
+    not ok 1 test/bool.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/bool.js:1:75)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node bool.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/dash.js ..................................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node dash.js"
+    TAP version 13
+    not ok 1 test/dash.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/dash.js:1:75)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node dash.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/default_bool.js ............................. 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node default_bool.js"
+    TAP version 13
+    not ok 1 test/default_bool.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/default_bool.js:2:13)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node default_bool.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/dotted.js ................................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node dotted.js"
+    TAP version 13
+    not ok 1 test/dotted.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/dotted.js:1:75)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node dotted.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/long.js ..................................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node long.js"
+    TAP version 13
+    not ok 1 test/long.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/long.js:2:13)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node long.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/num.js ...................................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node num.js"
+    TAP version 13
+    not ok 1 test/num.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/num.js:1:75)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node num.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/parse.js .................................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node parse.js"
+    TAP version 13
+    not ok 1 test/parse.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/parse.js:1:75)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node parse.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/parse_modified.js ........................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node parse_modified.js"
+    TAP version 13
+    not ok 1 test/parse_modified.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/parse_modified.js:1:75)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node parse_modified.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/short.js .................................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node short.js"
+    TAP version 13
+    not ok 1 test/short.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/short.js:1:75)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node short.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/whitespace.js ............................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node whitespace.js"
+    TAP version 13
+    not ok 1 test/whitespace.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/minimist/index.js:219
+              minimist '.minimist.Opts')], null, T.get('Object')));
+              ^^^^^^^^
+          SyntaxError: Unexpected identifier
+              at exports.runInThisContext (vm.js:69:16)
+              at Module._compile (module.js:432:25)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+              at require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/minimist/test/whitespace.js:1:75)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node whitespace.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+total .................................................. 0/11
+
+not ok

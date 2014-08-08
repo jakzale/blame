@@ -1,0 +1,10 @@
+
+> convert-source-map@0.4.1 test /Users/jakub/Developer/Blame/externals/convert-source-map
+> tap test/*.js
+
+ok test/comment-regex.js .............................. 44/44
+ok test/convert-source-map.js ......................... 30/30
+ok test/map-file-comment.js ........................... 10/10
+total ................................................. 84/84
+
+ok

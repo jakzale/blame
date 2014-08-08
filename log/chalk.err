@@ -1,0 +1,138 @@
+[31m  7 failing[0m
+
+[0m  1) chalk should style string:
+
+      [31mAssertionError: "foo" == "\u001b[4mfoo\u001b[24m"[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+[4mfoo[24m[0m
+      [41m-foo[0m
+      [0m[90m
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:8:10)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  2) chalk should support applying multiple styles at once:
+
+      [31mAssertionError: "foo" == "\u001b[4m\u001b[42m\u001b[31mfoo\u001b[39m\u001b[49m\u001b[24m"[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+[4m[42m[31mfoo[39m[49m[24m[0m
+      [41m-foo[0m
+      [0m[90m
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:14:10)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  3) chalk should support nesting styles:
+
+      [31mAssertionError: "foobar!" == "\u001b[31mfoo\u001b[44m\u001b[4mbar\u001b[24m\u001b[49m!\u001b[39m"[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+[31mfoo[44m[4mbar[24m[49m![39m[0m
+      [41m-foobar![0m
+      [0m[90m
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:19:10)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  4) chalk should reset all styles with `.reset()`:
+
+      [31mAssertionError: "foofoo" == "\u001b[0m\u001b[4m\u001b[42m\u001b[31mfoo\u001b[39m\u001b[49m\u001b[24mfoo\u001b[0m"[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+[0m[4m[42m[31mfoo[39m[49m[24mfoo[0m[0m
+      [41m-foofoo[0m
+      [0m[90m
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:26:10)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  5) chalk should alias gray to grey:
+
+      [31mAssertionError: "foo" == "\u001b[90mfoo\u001b[39m"[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+[90mfoo[39m[0m
+      [41m-foo[0m
+      [0m[90m
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:30:10)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  6) chalk should support variable number of arguments:
+
+      [31mAssertionError: "foo bar" == "\u001b[31mfoo bar\u001b[39m"[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+[31mfoo bar[39m[0m
+      [41m-foo bar[0m
+      [0m[90m
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:34:10)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  7) chalk should support falsy values:
+
+      [31mAssertionError: "0" == "\u001b[31m0\u001b[39m"[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+[31m0[39m[0m
+      [41m-0[0m
+      [0m[90m
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chalk/test.js:38:10)
+      at callFn (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:249:21)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runnable.js:242:7)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:373:10)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:451:12
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:298:14)
+      at /Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:308:7
+      at next (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:246:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chalk/node_modules/mocha/lib/runner.js:275:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

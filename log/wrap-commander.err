@@ -1,0 +1,17 @@
+/Users/jakub/Developer/Blame/build/blame.js:116
+            throw new Error(this.msg(m));
+                  ^
+Error: {label_0}[get/dom/dom] too many arguments, expected <=1, got: 2
+    at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:831:25)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+    at <error: illegal access>
+    at <error: illegal access>
+    at <error: illegal access>
+    at <error: illegal access>
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+make: *** [test] Error 1
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

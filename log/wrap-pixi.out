@@ -1,0 +1,432 @@
+
+> pixi@0.3.0-dev test /Users/jakub/Developer/Blame/externals/pixi
+> grunt test
+
+[4mRunning "jshint:source" (jshint) task[24m
+[32m>> [39m74 files lint free.
+
+[4mRunning "jshint:test" (jshint) task[24m
+[32m>> [39m47 files lint free.
+
+[4mRunning "clean:coverage" (clean) task[24m
+Cleaning build/coverage...[32mOK[39m
+
+[4mRunning "karma:coverage" (karma) task[24m
+[32mINFO [karma]: [39mKarma v0.10.10 server started at http://localhost:9877/
+[32mINFO [launcher]: [39mStarting browser Chrome
+[32mINFO [Chrome 36.0.1985 (Mac OS X 10.9.4)]: [39mConnected on socket Ih5UflCHCe343W8Zp7Wd
+
+  InteractionManager
+    [32m✓ [39mModule exists
+
+  display/DisplayObject
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  display/DisplayObjectContainer
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  display/MovieClip
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  display/Sprite
+    [32m✓ [39mModule exists
+    [32m✓ [39mMembers exist
+    [32m✓ [39mConfirm new instance
+
+  display/Stage
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  display/blendModes
+    [32m✓ [39mModule exists
+    [32m✓ [39mMembers exist
+
+  events/EventTarget
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+    [32m✓ [39maddEventListener and dispatchEvent works
+    [32m✓ [39mremoveEventListener works
+    [32m✓ [39mmultiple dispatches
+    [32m✓ [39mmultiple events
+    [32m✓ [39mmultiple events one removed
+
+  extras/CustomRenderable
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  extras/Rope
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  extras/Spine
+    [32m✓ [39mModule exists
+
+  extras/Strip
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  extras/TilingSprite
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  filters/FilterBlock
+    [32m✓ [39mModule exists
+
+  geom/Circle
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  geom/Ellipse
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  geom/Point
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  geom/Polygon
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  geom/Rectangle
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  geom/matrix
+    [32m✓ [39mEnsure determineMatrixArrayType works
+    [32m✓ [39mmat3 exists
+    [32m✓ [39mConfirm new mat3 matrix
+    [32m✓ [39mmat3 exists
+    [32m✓ [39mConfirm new mat4 matrix
+
+  pixi
+    [32m✓ [39mModule exists
+
+  loaders/AssetLoader
+    [32m✓ [39mModule exists
+
+  loaders/BitmapFontLoader
+    [32m✓ [39mModule exists
+
+  loaders/ImageLoader
+    [32m✓ [39mModule exists
+
+  loaders/JsonLoader
+    [32m✓ [39mModule exists
+
+  loaders/SpineLoader
+    [32m✓ [39mModule exists
+
+  loaders/SpriteSheetLoader
+    [32m✓ [39mModule exists
+
+  primitives/Graphics
+    [32m✓ [39mModule exists
+    [32m✓ [39mConfirm new instance
+
+  renderers/canvas/CanvasRenderer
+    [32m✓ [39mModule exists
+
+  renders/canvas/graphics
+    [32m✓ [39mModule exists
+    [32m✓ [39mMembers exist
+
+  renderers/webgl/WebGLBatch
+    [32m✓ [39mModule exists
+
+  renderers/webgl/WebGLRenderGroup
+    [32m✓ [39mModule exists
+
+  renderers/webgl/WebGLRenderer
+    [32m✓ [39mModule exists
+
+  renderers/wegbl/graphics
+    [32m✓ [39mModule exists
+    [32m✓ [39mMembers exist
+
+  renderers/webgl/shaders
+    [32m✓ [39mModule members exist
+
+  text/BitmapText
+    [32m✓ [39mModule exists
+
+  text/Text
+    [32m✓ [39mModule exists
+
+  textures/BaseTexture
+    [32m✓ [39mModule exists
+
+  textures/RenderTexture
+    [32m✓ [39mModule exists
+
+  textures/Texture
+    [32m✓ [39mModule exists
+    [32m✓ [39mMembers exist
+    [32m✓ [39mConfirm new instance
+
+  utils/Polyk
+    [32m✓ [39mModule exists
+    [32m✓ [39mMembers exist
+
+  utils/autoDetectRenderer
+    [32m✓ [39mModule exists
+
+  Utils
+    [32m✓ [39mrequestAnimationFrame exists
+    [32m✓ [39mcancelAnimationFrame exists
+    [32m✓ [39mrequestAnimFrame exists
+
+Chrome 36.0.1985 (Mac OS X 10.9.4): Executed 77 of 77[32m SUCCESS[39m (0.41 secs / 0.055 secs)
+
+
+[4mRunning "mochaTest:source" (mochaTest) task[24m
+
+
+  InteractionManager
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  display/DisplayObject
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  display/DisplayObjectContainer
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  display/MovieClip
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance (204ms)
+
+  display/Sprite
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Members exist: 
+    ✓ Members exist 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance (202ms)
+
+  display/Stage
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  display/blendModes
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Members exist: 
+    ✓ Members exist 
+
+  events/EventTarget
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+    ◦ addEventListener and dispatchEvent works: 
+    ✓ addEventListener and dispatchEvent works 
+    ◦ removeEventListener works: 
+    ✓ removeEventListener works 
+    ◦ multiple dispatches: 
+    ✓ multiple dispatches 
+    ◦ multiple events: 
+    ✓ multiple events 
+    ◦ multiple events one removed: 
+    ✓ multiple events one removed 
+
+  extras/CustomRenderable
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  extras/Rope
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  extras/Spine
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  extras/Strip
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  extras/TilingSprite
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  filters/FilterBlock
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  geom/Circle
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  geom/Ellipse
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  geom/Point
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  geom/Polygon
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  geom/Rectangle
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  geom/matrix
+    ◦ Ensure determineMatrixArrayType works: 
+    ✓ Ensure determineMatrixArrayType works 
+    ◦ mat3 exists: 
+    ✓ mat3 exists 
+    ◦ Confirm new mat3 matrix: 
+    ✓ Confirm new mat3 matrix 
+    ◦ mat3 exists: 
+    ✓ mat3 exists 
+    ◦ Confirm new mat4 matrix: 
+    ✓ Confirm new mat4 matrix 
+
+  pixi
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  loaders/AssetLoader
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  loaders/BitmapFontLoader
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  loaders/ImageLoader
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  loaders/JsonLoader
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  loaders/SpineLoader
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  loaders/SpriteSheetLoader
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  primitives/Graphics
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance 
+
+  renderers/canvas/CanvasRenderer
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  renders/canvas/graphics
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Members exist: 
+    ✓ Members exist 
+
+  renderers/webgl/WebGLBatch
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  renderers/webgl/WebGLRenderGroup
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  renderers/webgl/WebGLRenderer
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  renderers/wegbl/graphics
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Members exist: 
+    ✓ Members exist 
+
+  renderers/webgl/shaders
+    ◦ Module members exist: 
+    ✓ Module members exist 
+
+  text/BitmapText
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  text/Text
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  textures/BaseTexture
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  textures/RenderTexture
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  textures/Texture
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Members exist: 
+    ✓ Members exist 
+    ◦ Confirm new instance: 
+    ✓ Confirm new instance (181ms)
+
+  utils/Polyk
+    ◦ Module exists: 
+    ✓ Module exists 
+    ◦ Members exist: 
+    ✓ Members exist 
+
+  utils/autoDetectRenderer
+    ◦ Module exists: 
+    ✓ Module exists 
+
+  Utils
+    ◦ requestAnimationFrame exists: 
+    ✓ requestAnimationFrame exists 
+    ◦ cancelAnimationFrame exists: 
+    ✓ cancelAnimationFrame exists 
+    ◦ requestAnimFrame exists: 
+    ✓ requestAnimFrame exists 
+
+
+  77 passing (636ms)
+
+
+[32mDone, without errors.[39m

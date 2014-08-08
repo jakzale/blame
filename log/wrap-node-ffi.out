@@ -1,0 +1,5 @@
+
+> ffi@1.2.7 test /Users/jakub/Developer/Blame/externals/node-ffi
+> node-gyp rebuild --directory test && mocha -gc --reporter spec
+
+  CXX(target) Release/obj.target/ffi_tests/ffi_tests.o

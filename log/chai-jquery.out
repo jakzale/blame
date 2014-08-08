@@ -1,0 +1,174 @@
+
+> chai-jquery@1.2.3 test /Users/jakub/Developer/Blame/externals/chai-jquery
+> mocha-phantomjs test/index.html
+
+
+[0m[0m
+[0m  jQuery.fn.inspect[0m
+[2K[0G  [32m  ✓[0m[90m returns the outer HTML of the first matched element [0m
+[2K[0G  [32m  ✓[0m[90m respects depth [0m
+
+[0m  jQuery assertions[0m
+[0m    attr[0m
+[2K[0G    [32m  ✓[0m[90m chains [0m
+[0m      when only attribute name is provided[0m
+[2K[0G      [32m  ✓[0m[90m passes when the element has the attribute [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element does not have the attribute [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element does not have the attribute [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the element has the attribute [0m
+[0m      when attribute name and value are provided[0m
+[2K[0G      [32m  ✓[0m[90m passes when the element has the attribute with the given value [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element does not have the attribute [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element has the attribute with a different value [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element does not have the attribute [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element has the attribute with a different value [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the element has the attribute with the given value [0m
+[0m    data[0m
+[2K[0G    [32m  ✓[0m[90m chains [0m
+[0m      when only key is provided[0m
+[2K[0G      [32m  ✓[0m[90m passes when the element's data has the key [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element's data does not have the key [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element's data does not have the key [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the element's data has the key [0m
+[0m      when key and value are provided[0m
+[2K[0G      [32m  ✓[0m[90m passes when the element's data has the key with the given value [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element's data does not have the key [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element's data has the key with a different value [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element's data does not have the key [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element's data has the key with a different value [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the element's data has the key with the given value [0m
+[0m    css[0m
+[2K[0G    [32m  ✓[0m[90m chains [0m
+[0m      when only property name is provided[0m
+[2K[0G      [32m  ✓[0m[90m passes when the element's css has the property [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element's css does not have the property [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element's css does not have the property [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the element's css has the property [0m
+[0m      when property name and value are provided[0m
+[2K[0G      [32m  ✓[0m[90m passes when the element's css has the property with the given value [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element's css does not have the given property [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element's css has the property with a different value [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element's css does not have the property [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element's css has the property with a different value [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the element's css has the property with the given value [0m
+[0m    prop[0m
+[2K[0G    [32m  ✓[0m[90m chains [0m
+[0m      when only property name is provided[0m
+[2K[0G      [32m  ✓[0m[90m passes when the element has the property [0m
+[2K[0G      [32m  ✓[0m[90m passes when the property exists by default [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the property does not exists by default [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the element has the property [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the property exists by default [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element does not have the property [0m
+[0m      when property name and value are provided[0m
+[2K[0G      [32m  ✓[0m[90m passes when the element has the property with the given value [0m
+[2K[0G      [32m  ✓[0m[90m passes when the property has the given value by default [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the element has the property with a different value [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the property has a different value by default [0m
+[2K[0G      [32m  ✓[0m[90m passes negated when the property does not exists by default [0m
+[2K[0G      [32m  ✓[0m[90m fails when the element has the property with a different value [0m
+[2K[0G      [32m  ✓[0m[90m fails when the property has a different value by default [0m
+[2K[0G      [32m  ✓[0m[90m fails when the property does not exist by default [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the element has the property with the given value [0m
+[2K[0G      [32m  ✓[0m[90m fails negated when the property has the given value by default [0m
+[0m    class[0m
+[2K[0G    [32m  ✓[0m[90m passes when the element has the class [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the element does not have the class [0m
+[2K[0G    [32m  ✓[0m[90m fails when the element does not have the class [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the element has the class [0m
+[0m    id[0m
+[2K[0G    [32m  ✓[0m[90m passes when the element has the id [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the element does not have the id [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the element does not have an id [0m
+[2K[0G    [32m  ✓[0m[90m fails when the element does not have the id [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the element has the id [0m
+[2K[0G    [32m  ✓[0m[90m fails when the element does not have an id [0m
+[0m    html[0m
+[2K[0G    [32m  ✓[0m[90m passes when the HTML matches [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the HTML doesn't match [0m
+[2K[0G    [32m  ✓[0m[90m fails when the HTML doesn't match [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the HTML matches [0m
+[0m    text[0m
+[2K[0G    [32m  ✓[0m[90m passes when the text matches [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the text doesn't match [0m
+[2K[0G    [32m  ✓[0m[90m fails when the text doesn't match [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the text matches [0m
+[0m    value[0m
+[2K[0G    [32m  ✓[0m[90m passes when the value matches [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the value doesn't match [0m
+[2K[0G    [32m  ✓[0m[90m fails when the value doesn't match [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the value matches [0m
+[0m    visible[0m
+[2K[0G    [32m  ✓[0m[90m passes when the element is visible [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the element is hidden [0m
+[2K[0G    [32m  ✓[0m[90m fails when the element is hidden [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when element is visible [0m
+[0m    hidden[0m
+[2K[0G    [32m  ✓[0m[90m passes when the element is hidden [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the element is visible [0m
+[2K[0G    [32m  ✓[0m[90m fails when the element is visible [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when element is hidden [0m
+[0m    selected[0m
+[2K[0G    [32m  ✓[0m[90m passes when the element is selected [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the element is not selected [0m
+[2K[0G    [32m  ✓[0m[90m fails when the element is not selected [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when element is selected [0m
+[0m    checked[0m
+[2K[0G    [32m  ✓[0m[90m passes when the element is checked [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the element is not checked [0m
+[2K[0G    [32m  ✓[0m[90m fails when the element is not checked [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when element is checked [0m
+[0m    enabled[0m
+[2K[0G    [32m  ✓[0m[90m passes when the element is enabled [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the element is disabled [0m
+[2K[0G    [32m  ✓[0m[90m fails when the element is disabled [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when element is enabled [0m
+[0m    disabled[0m
+[2K[0G    [32m  ✓[0m[90m passes when the element is disabled [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the element is enabled [0m
+[2K[0G    [32m  ✓[0m[90m fails when the element is enabled [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when element is disabled [0m
+[0m    exist[0m
+[2K[0G    [32m  ✓[0m[90m preserves existing behavior on non-jQuery objects [0m
+[2K[0G    [32m  ✓[0m[90m passes when the selection isn't empty [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the selection is empty [0m
+[2K[0G    [32m  ✓[0m[90m fails when the selection is empty [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the selection isn't empty [0m
+[0m    empty[0m
+[2K[0G    [32m  ✓[0m[90m preserves existing behavior on non-jQuery objects [0m
+[2K[0G    [32m  ✓[0m[90m passes when the elment has no children [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the elment has children [0m
+[2K[0G    [32m  ✓[0m[90m fails when the elment has children [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the elment has no children [0m
+[0m    match[0m
+[2K[0G    [32m  ✓[0m[90m preserves existing behavior on non-jQuery objects [0m
+[2K[0G    [32m  ✓[0m[90m passes when the selection matches the given selector [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the selection does not match the given selector [0m
+[2K[0G    [32m  ✓[0m[90m fails when the selection does not match the given selector [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the selection matches the given selector [0m
+[0m    be[0m
+[2K[0G    [32m  ✓[0m[90m preserves existing behavior on non-jQuery objects [0m
+[2K[0G    [32m  ✓[0m[90m preserves length assertion on non-jQuery objects [0m
+[2K[0G    [32m  ✓[0m[90m preserves existing behavior when used incorrectly [0m
+[2K[0G    [32m  ✓[0m[90m passes when the selection matches the given selector [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the selection does not match the given selector [0m
+[2K[0G    [32m  ✓[0m[90m fails when the selection does not match the given selector [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the selection matches the given selector [0m
+[0m    contain[0m
+[2K[0G    [32m  ✓[0m[90m preserves existing behavior on non-jQuery objects [0m
+[2K[0G    [32m  ✓[0m[90m passes when the selection contains the given text [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the selection does not contain the given text [0m
+[2K[0G    [32m  ✓[0m[90m fails when the selection does not contain the given text [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the selection contains the given text [0m
+[2K[0G    [32m  ✓[0m[90m handles quotes [0m
+[0m    have[0m
+[2K[0G    [32m  ✓[0m[90m preserves existing behavior on non-jQuery objects [0m
+[2K[0G    [32m  ✓[0m[90m preserves length assertion on non-jQuery objects [0m
+[2K[0G    [32m  ✓[0m[90m passes when the selection has the given selector [0m
+[2K[0G    [32m  ✓[0m[90m passes negated when the selection does not have the given selector [0m
+[2K[0G    [32m  ✓[0m[90m fails when the selection does not have the given selector [0m
+[2K[0G    [32m  ✓[0m[90m fails negated when the selection has the given selector [0m
+
+
+[92m [0m[32m 132 passing[0m[90m (97ms)[0m
+

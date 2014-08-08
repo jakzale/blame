@@ -1,0 +1,27 @@
+
+> handlebars@2.0.0-alpha.4 test /Users/jakub/Developer/Blame/externals/handlebars
+> grunt
+
+[4mRunning "clean:0" (clean) task[24m
+
+[4mRunning "clean:1" (clean) task[24m
+Cleaning "dist"...[32mOK[39m
+
+[4mRunning "clean:2" (clean) task[24m
+Cleaning "lib/handlebars/compiler/parser.js"...[32mOK[39m
+
+[4mRunning "parser" task[24m
+Parser "lib/handlebars/compiler/parser.js" created.
+
+[4mRunning "packager:cjs" (packager) task[24m
+
+[4mRunning "packager:global" (packager) task[24m
+
+[4mRunning "jshint:files" (jshint) task[24m
+[32m>> [39m14 files lint free.
+
+[4mRunning "test:bin" task[24m
+
+[4mRunning "test:mocha" task[24m
+Running env: ./node
+[31mFatal error: 1 tests failed[39m

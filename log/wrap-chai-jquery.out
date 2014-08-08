@@ -1,0 +1,8 @@
+
+> chai-jquery@1.2.3 test /Users/jakub/Developer/Blame/externals/chai-jquery
+> mocha-phantomjs test/index.html
+
+ReferenceError: Can't find variable: require
+
+  file:///Users/jakub/Developer/Blame/externals/chai-jquery/chai-jquery.js:270
+  file:///Users/jakub/Developer/Blame/externals/chai-jquery/chai-jquery.js:305

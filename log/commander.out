@@ -1,0 +1,32 @@
+
+> commander@2.3.0 test /Users/jakub/Developer/Blame/externals/commander
+> make test
+
+
+[90m   test.literal.args.js[0m [36m✓[0m
+[90m   test.options.args.optional.given.js[0m [36m✓[0m
+[90m   test.options.args.optional.js[0m [36m✓[0m
+[90m   test.options.bool.js[0m [36m✓[0m
+[90m   test.options.bool.no.js[0m [36m✓[0m
+[90m   test.options.bool.small.combined.js[0m [36m✓[0m
+[90m   test.options.bool.small.js[0m [36m✓[0m
+[90m   test.options.camelcase.js[0m [36m✓[0m
+[90m   test.options.cflags.js[0m [36m✓[0m
+[90m   test.options.coercion.js[0m [36m✓[0m
+[90m   test.options.commands.js[0m 
+  Usage: exec|ex [options] <cmd>
+
+  Options:
+
+    -h, --help              output usage information
+    -e, --exec_mode <mode>  Which exec mode to use
+    -t, --target [target]   Target to use
+
+[36m✓[0m
+[90m   test.options.defaults.given.js[0m [36m✓[0m
+[90m   test.options.defaults.js[0m [36m✓[0m
+[90m   test.options.equals.js[0m [36m✓[0m
+[90m   test.options.hyphen.js[0m [36m✓[0m
+[90m   test.options.large-only-with-value.js[0m [36m✓[0m
+[90m   test.options.large-only.js[0m [36m✓[0m
+

@@ -1,0 +1,8 @@
+Deprecation warning: moment().add(period, number) is deprecated. Please use moment().add(number, period).
+Deprecation warning: moment().subtract(period, number) is deprecated. Please use moment().subtract(number, period).
+Deprecation warning: toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)
+Deprecation warning: years accessor is deprecated. Use year instead.
+Deprecation warning: dates accessor is deprecated. Use date instead.
+Deprecation warning: moment.lang is deprecated. Use moment.locale instead.
+Deprecation warning: moment.langData is deprecated. Use moment.localeData instead.
+Deprecation warning: moment().lang() is deprecated. Use moment().localeData() instead.

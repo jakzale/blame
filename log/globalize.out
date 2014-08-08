@@ -1,0 +1,26 @@
+
+> globalize@1.0.0-alpha.4 test /Users/jakub/Developer/Blame/externals/globalize
+> grunt
+
+[4mRunning "jshint:grunt" (jshint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "jshint:source" (jshint) task[24m
+[32m>> [39m57 files lint free.
+
+[4mRunning "jshint:test" (jshint) task[24m
+[32m>> [39m22 files lint free.
+
+[4mRunning "test:unit" (test) task[24m
+
+[4mRunning "checkDependencies:bower" (checkDependencies) task[24m
+[31m>> [39mcldrjs: not installed!
+[31m>> [39mes5-shim: not installed!
+[31m>> [39mqunit: not installed!
+[31m>> [39mrequirejs: not installed!
+[31m>> [39mrequirejs-plugins: not installed!
+[31m>> [39mrequirejs-text: not installed!
+[31m>> [39mInvoke bower install to install missing packages
+[33mWarning: Task "checkDependencies:bower" failed. Use --force to continue.[39m
+
+[31mAborted due to warnings.[39m

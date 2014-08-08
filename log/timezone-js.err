@@ -1,0 +1,7 @@
+jake aborted.
+TypeError: Cannot read property 'on' of undefined
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/timezone-js/Jakefile:89:36)
+    at Module._compile (module.js:449:26)
+(See full trace by running task with --trace)
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

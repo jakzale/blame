@@ -1,0 +1,275 @@
+
+> expectations@0.2.6 test /Users/jakub/Developer/Blame/externals/expectations
+> ./runTests
+
+ok 1 Chrome 36.0 - expect appears as global
+ok 2 Chrome 36.0 - expect toEqual can expect true to be true
+ok 3 Chrome 36.0 - expect toEqual can expect false not to be true
+ok 4 Chrome 36.0 - expect toEqual can expect an object to be a different but equivalent object
+ok 5 Chrome 36.0 - expect toEqual Ignores undefined values when comparing objects
+ok 6 Chrome 36.0 - expect toEqual equates undefined values and null
+ok 7 Chrome 36.0 - expect toEqual Can expect a more complex object to equal another complex object
+ok 8 Chrome 36.0 - expect toEqual Can expect undefined to equal an object correctly
+ok 9 Chrome 36.0 - expect toNotEqual can expect true to be false
+ok 10 Chrome 36.0 - expect toNotEqual can expect true not to be true
+ok 11 Chrome 36.0 - expect toBe can expect an object to be the same object
+ok 12 Chrome 36.0 - expect toBe does not expect an object to be a different
+ok 13 Chrome 36.0 - expect toMatch can expect string toMatch
+ok 14 Chrome 36.0 - expect toMatch can expect string to not match
+ok 15 Chrome 36.0 - expect toBeTruthy can expect toBeTruthy when truthy
+ok 16 Chrome 36.0 - expect toBeTruthy can expect toBeTruthy when falsey
+ok 17 Chrome 36.0 - expect toContain can expect array of numbers to contain number (passing)
+ok 18 Chrome 36.0 - expect toContain can expect array of numbers to contain number (failing)
+ok 19 Chrome 36.0 - expect toContain can expect array of objects to contain object (passing)
+ok 20 Chrome 36.0 - expect toContain can expect array of objects to contain object (failing)
+ok 21 Chrome 36.0 - expect toBeFalsy can expect toBeFalsy when falsey
+ok 22 Chrome 36.0 - expect toBeFalsy can expect toBeFalsy when truthy
+ok 23 Chrome 36.0 - expect toBeGreaterThan can expect 1 toBeGreaterThan 0
+ok 24 Chrome 36.0 - expect toBeGreaterThan can expect 0 toBeGreaterThan 1 throws
+ok 25 Chrome 36.0 - expect toBeLessThan can expect 0 toBeLessThan 1
+ok 26 Chrome 36.0 - expect toBeLessThan can expect 1 toBeLessThan 0 throws
+ok 27 Chrome 36.0 - expect toBeDefined can expect values toBeDefined
+ok 28 Chrome 36.0 - expect toBeDefined throws when expects undefined values toBeDefined
+ok 29 Chrome 36.0 - expect toBeUndefined can expect undefined values toBeUndefined
+ok 30 Chrome 36.0 - expect toBeUndefined throws when expects defined values toBeUndefined
+ok 31 Chrome 36.0 - expect toThrow can expect functions to throw
+ok 32 Chrome 36.0 - expect toThrow throws when function does not throw
+ok 33 Chrome 36.0 - expect toThrow throws when toThrow is called on a non-function
+ok 34 Chrome 36.0 - expect toThrow throws when parameterized Error message does not match the thrown Error message
+ok 35 Chrome 36.0 - expect toThrow throws when parameterized string does not match the thrown Error messsage
+ok 36 Chrome 36.0 - expect toBeNull can expect values toBeNull
+ok 37 Chrome 36.0 - expect toBeNull throws when expects non-null values toBeNull
+ok 38 Chrome 36.0 - expect not negates equal
+ok 39 Chrome 36.0 - expect messages can generate correct message for objects
+ok 40 Chrome 36.0 - expect messages can generate correct message for arrays
+ok 41 Chrome 36.0 - expect messages can generate correct message for arrays of values
+ok 42 Chrome 36.0 - expect messages can generate correct message for nested arrays of values
+ok 43 Chrome 36.0 - expect messages can generate correct message for Function with custom toString()
+ok 44 Chrome 36.0 - expect messages can generate correct message for Errors
+ok 45 Chrome 36.0 - expect messages can generate correct message for objects with circular references
+ok 46 Chrome 36.0 - expect messages can generate correct message for deep objects
+ok 47 Chrome 36.0 - expect messages can generate correct message for deep objects with arrays
+ok 48 Chrome 36.0 - expect messages can generate correct message for objects with undefined values
+ok 49 Chrome 36.0 - expect messages can generate correct message for anonymous functions
+ok 50 Chrome 36.0 - expect messages can generate correct message for named functions
+ok 51 Chrome 36.0 - expect messages can generate correct message for Dates
+ok 52 Chrome 36.0 - expect messages can generate correct message for DOM elements
+ok 53 Chrome 36.0 - expect extensibility allows you to add your own assertions
+ok 54 Firefox 32.0 - expect appears as global
+ok 55 Firefox 32.0 - expect toEqual can expect true to be true
+ok 56 Firefox 32.0 - expect toEqual can expect false not to be true
+ok 57 Firefox 32.0 - expect toEqual can expect an object to be a different but equivalent object
+ok 58 Firefox 32.0 - expect toEqual Ignores undefined values when comparing objects
+ok 59 Firefox 32.0 - expect toEqual equates undefined values and null
+ok 60 Firefox 32.0 - expect toEqual Can expect a more complex object to equal another complex object
+ok 61 Firefox 32.0 - expect toEqual Can expect undefined to equal an object correctly
+ok 62 Firefox 32.0 - expect toNotEqual can expect true to be false
+ok 63 Firefox 32.0 - expect toNotEqual can expect true not to be true
+ok 64 Firefox 32.0 - expect toBe can expect an object to be the same object
+ok 65 Firefox 32.0 - expect toBe does not expect an object to be a different
+ok 66 Firefox 32.0 - expect toMatch can expect string toMatch
+ok 67 Firefox 32.0 - expect toMatch can expect string to not match
+ok 68 Firefox 32.0 - expect toBeTruthy can expect toBeTruthy when truthy
+ok 69 Firefox 32.0 - expect toBeTruthy can expect toBeTruthy when falsey
+ok 70 Firefox 32.0 - expect toContain can expect array of numbers to contain number (passing)
+ok 71 Firefox 32.0 - expect toContain can expect array of numbers to contain number (failing)
+ok 72 Firefox 32.0 - expect toContain can expect array of objects to contain object (passing)
+ok 73 Firefox 32.0 - expect toContain can expect array of objects to contain object (failing)
+ok 74 Firefox 32.0 - expect toBeFalsy can expect toBeFalsy when falsey
+ok 75 Firefox 32.0 - expect toBeFalsy can expect toBeFalsy when truthy
+ok 76 Firefox 32.0 - expect toBeGreaterThan can expect 1 toBeGreaterThan 0
+ok 77 Firefox 32.0 - expect toBeGreaterThan can expect 0 toBeGreaterThan 1 throws
+ok 78 Firefox 32.0 - expect toBeLessThan can expect 0 toBeLessThan 1
+ok 79 Firefox 32.0 - expect toBeLessThan can expect 1 toBeLessThan 0 throws
+ok 80 Firefox 32.0 - expect toBeDefined can expect values toBeDefined
+ok 81 Firefox 32.0 - expect toBeDefined throws when expects undefined values toBeDefined
+ok 82 Firefox 32.0 - expect toBeUndefined can expect undefined values toBeUndefined
+ok 83 Firefox 32.0 - expect toBeUndefined throws when expects defined values toBeUndefined
+ok 84 Firefox 32.0 - expect toThrow can expect functions to throw
+ok 85 Firefox 32.0 - expect toThrow throws when function does not throw
+ok 86 Firefox 32.0 - expect toThrow throws when toThrow is called on a non-function
+ok 87 Firefox 32.0 - expect toThrow throws when parameterized Error message does not match the thrown Error message
+ok 88 Firefox 32.0 - expect toThrow throws when parameterized string does not match the thrown Error messsage
+ok 89 Firefox 32.0 - expect toBeNull can expect values toBeNull
+ok 90 Firefox 32.0 - expect toBeNull throws when expects non-null values toBeNull
+ok 91 Firefox 32.0 - expect not negates equal
+ok 92 Firefox 32.0 - expect messages can generate correct message for objects
+ok 93 Firefox 32.0 - expect messages can generate correct message for arrays
+ok 94 Firefox 32.0 - expect messages can generate correct message for arrays of values
+ok 95 Firefox 32.0 - expect messages can generate correct message for nested arrays of values
+ok 96 Firefox 32.0 - expect messages can generate correct message for Function with custom toString()
+ok 97 Firefox 32.0 - expect messages can generate correct message for Errors
+ok 98 Firefox 32.0 - expect messages can generate correct message for objects with circular references
+ok 99 Firefox 32.0 - expect messages can generate correct message for deep objects
+ok 100 Firefox 32.0 - expect messages can generate correct message for deep objects with arrays
+ok 101 Firefox 32.0 - expect messages can generate correct message for objects with undefined values
+ok 102 Firefox 32.0 - expect messages can generate correct message for anonymous functions
+ok 103 Firefox 32.0 - expect messages can generate correct message for named functions
+ok 104 Firefox 32.0 - expect messages can generate correct message for Dates
+ok 105 Firefox 32.0 - expect messages can generate correct message for DOM elements
+ok 106 Firefox 32.0 - expect extensibility allows you to add your own assertions
+ok 107 Safari 7.0 - expect appears as global
+ok 108 Safari 7.0 - expect toEqual can expect true to be true
+ok 109 Safari 7.0 - expect toEqual can expect false not to be true
+ok 110 Safari 7.0 - expect toEqual can expect an object to be a different but equivalent object
+ok 111 Safari 7.0 - expect toEqual Ignores undefined values when comparing objects
+ok 112 Safari 7.0 - expect toEqual equates undefined values and null
+ok 113 Safari 7.0 - expect toEqual Can expect a more complex object to equal another complex object
+ok 114 Safari 7.0 - expect toEqual Can expect undefined to equal an object correctly
+ok 115 Safari 7.0 - expect toNotEqual can expect true to be false
+ok 116 Safari 7.0 - expect toNotEqual can expect true not to be true
+ok 117 Safari 7.0 - expect toBe can expect an object to be the same object
+ok 118 Safari 7.0 - expect toBe does not expect an object to be a different
+ok 119 Safari 7.0 - expect toMatch can expect string toMatch
+ok 120 Safari 7.0 - expect toMatch can expect string to not match
+ok 121 Safari 7.0 - expect toBeTruthy can expect toBeTruthy when truthy
+ok 122 Safari 7.0 - expect toBeTruthy can expect toBeTruthy when falsey
+ok 123 Safari 7.0 - expect toContain can expect array of numbers to contain number (passing)
+ok 124 Safari 7.0 - expect toContain can expect array of numbers to contain number (failing)
+ok 125 Safari 7.0 - expect toContain can expect array of objects to contain object (passing)
+ok 126 Safari 7.0 - expect toContain can expect array of objects to contain object (failing)
+ok 127 Safari 7.0 - expect toBeFalsy can expect toBeFalsy when falsey
+ok 128 Safari 7.0 - expect toBeFalsy can expect toBeFalsy when truthy
+ok 129 Safari 7.0 - expect toBeGreaterThan can expect 1 toBeGreaterThan 0
+ok 130 Safari 7.0 - expect toBeGreaterThan can expect 0 toBeGreaterThan 1 throws
+ok 131 Safari 7.0 - expect toBeLessThan can expect 0 toBeLessThan 1
+ok 132 Safari 7.0 - expect toBeLessThan can expect 1 toBeLessThan 0 throws
+ok 133 Safari 7.0 - expect toBeDefined can expect values toBeDefined
+ok 134 Safari 7.0 - expect toBeDefined throws when expects undefined values toBeDefined
+ok 135 Safari 7.0 - expect toBeUndefined can expect undefined values toBeUndefined
+ok 136 Safari 7.0 - expect toBeUndefined throws when expects defined values toBeUndefined
+ok 137 Safari 7.0 - expect toThrow can expect functions to throw
+ok 138 Safari 7.0 - expect toThrow throws when function does not throw
+ok 139 Safari 7.0 - expect toThrow throws when toThrow is called on a non-function
+ok 140 Safari 7.0 - expect toThrow throws when parameterized Error message does not match the thrown Error message
+ok 141 Safari 7.0 - expect toThrow throws when parameterized string does not match the thrown Error messsage
+ok 142 Safari 7.0 - expect toBeNull can expect values toBeNull
+ok 143 Safari 7.0 - expect toBeNull throws when expects non-null values toBeNull
+ok 144 Safari 7.0 - expect not negates equal
+ok 145 Safari 7.0 - expect messages can generate correct message for objects
+ok 146 Safari 7.0 - expect messages can generate correct message for arrays
+ok 147 Safari 7.0 - expect messages can generate correct message for arrays of values
+ok 148 Safari 7.0 - expect messages can generate correct message for nested arrays of values
+ok 149 Safari 7.0 - expect messages can generate correct message for Function with custom toString()
+ok 150 Safari 7.0 - expect messages can generate correct message for Errors
+ok 151 Safari 7.0 - expect messages can generate correct message for objects with circular references
+ok 152 Safari 7.0 - expect messages can generate correct message for deep objects
+ok 153 Safari 7.0 - expect messages can generate correct message for deep objects with arrays
+ok 154 Safari 7.0 - expect messages can generate correct message for objects with undefined values
+ok 155 Safari 7.0 - expect messages can generate correct message for anonymous functions
+ok 156 Safari 7.0 - expect messages can generate correct message for named functions
+ok 157 Safari 7.0 - expect messages can generate correct message for Dates
+ok 158 Safari 7.0 - expect messages can generate correct message for DOM elements
+ok 159 Safari 7.0 - expect extensibility allows you to add your own assertions
+ok 160 PhantomJS 1.9 - expect appears as global
+ok 161 PhantomJS 1.9 - expect toEqual can expect true to be true
+ok 162 PhantomJS 1.9 - expect toEqual can expect false not to be true
+ok 163 PhantomJS 1.9 - expect toEqual can expect an object to be a different but equivalent object
+ok 164 PhantomJS 1.9 - expect toEqual Ignores undefined values when comparing objects
+ok 165 PhantomJS 1.9 - expect toEqual equates undefined values and null
+ok 166 PhantomJS 1.9 - expect toEqual Can expect a more complex object to equal another complex object
+ok 167 PhantomJS 1.9 - expect toEqual Can expect undefined to equal an object correctly
+ok 168 PhantomJS 1.9 - expect toNotEqual can expect true to be false
+ok 169 PhantomJS 1.9 - expect toNotEqual can expect true not to be true
+ok 170 PhantomJS 1.9 - expect toBe can expect an object to be the same object
+ok 171 PhantomJS 1.9 - expect toBe does not expect an object to be a different
+ok 172 PhantomJS 1.9 - expect toMatch can expect string toMatch
+ok 173 PhantomJS 1.9 - expect toMatch can expect string to not match
+ok 174 PhantomJS 1.9 - expect toBeTruthy can expect toBeTruthy when truthy
+ok 175 PhantomJS 1.9 - expect toBeTruthy can expect toBeTruthy when falsey
+ok 176 PhantomJS 1.9 - expect toContain can expect array of numbers to contain number (passing)
+ok 177 PhantomJS 1.9 - expect toContain can expect array of numbers to contain number (failing)
+ok 178 PhantomJS 1.9 - expect toContain can expect array of objects to contain object (passing)
+ok 179 PhantomJS 1.9 - expect toContain can expect array of objects to contain object (failing)
+ok 180 PhantomJS 1.9 - expect toBeFalsy can expect toBeFalsy when falsey
+ok 181 PhantomJS 1.9 - expect toBeFalsy can expect toBeFalsy when truthy
+ok 182 PhantomJS 1.9 - expect toBeGreaterThan can expect 1 toBeGreaterThan 0
+ok 183 PhantomJS 1.9 - expect toBeGreaterThan can expect 0 toBeGreaterThan 1 throws
+ok 184 PhantomJS 1.9 - expect toBeLessThan can expect 0 toBeLessThan 1
+ok 185 PhantomJS 1.9 - expect toBeLessThan can expect 1 toBeLessThan 0 throws
+ok 186 PhantomJS 1.9 - expect toBeDefined can expect values toBeDefined
+ok 187 PhantomJS 1.9 - expect toBeDefined throws when expects undefined values toBeDefined
+ok 188 PhantomJS 1.9 - expect toBeUndefined can expect undefined values toBeUndefined
+ok 189 PhantomJS 1.9 - expect toBeUndefined throws when expects defined values toBeUndefined
+ok 190 PhantomJS 1.9 - expect toThrow can expect functions to throw
+ok 191 PhantomJS 1.9 - expect toThrow throws when function does not throw
+ok 192 PhantomJS 1.9 - expect toThrow throws when toThrow is called on a non-function
+ok 193 PhantomJS 1.9 - expect toThrow throws when parameterized Error message does not match the thrown Error message
+ok 194 PhantomJS 1.9 - expect toThrow throws when parameterized string does not match the thrown Error messsage
+ok 195 PhantomJS 1.9 - expect toBeNull can expect values toBeNull
+ok 196 PhantomJS 1.9 - expect toBeNull throws when expects non-null values toBeNull
+ok 197 PhantomJS 1.9 - expect not negates equal
+ok 198 PhantomJS 1.9 - expect messages can generate correct message for objects
+ok 199 PhantomJS 1.9 - expect messages can generate correct message for arrays
+ok 200 PhantomJS 1.9 - expect messages can generate correct message for arrays of values
+ok 201 PhantomJS 1.9 - expect messages can generate correct message for nested arrays of values
+ok 202 PhantomJS 1.9 - expect messages can generate correct message for Function with custom toString()
+ok 203 PhantomJS 1.9 - expect messages can generate correct message for Errors
+ok 204 PhantomJS 1.9 - expect messages can generate correct message for objects with circular references
+ok 205 PhantomJS 1.9 - expect messages can generate correct message for deep objects
+ok 206 PhantomJS 1.9 - expect messages can generate correct message for deep objects with arrays
+ok 207 PhantomJS 1.9 - expect messages can generate correct message for objects with undefined values
+ok 208 PhantomJS 1.9 - expect messages can generate correct message for anonymous functions
+ok 209 PhantomJS 1.9 - expect messages can generate correct message for named functions
+ok 210 PhantomJS 1.9 - expect messages can generate correct message for Dates
+ok 211 PhantomJS 1.9 - expect messages can generate correct message for DOM elements
+ok 212 PhantomJS 1.9 - expect extensibility allows you to add your own assertions
+ok 213 Mocha - expect appears as global
+ok 214 Mocha - expect toEqual can expect true to be true
+ok 215 Mocha - expect toEqual can expect false not to be true
+ok 216 Mocha - expect toEqual can expect an object to be a different but equivalent object
+ok 217 Mocha - expect toEqual Ignores undefined values when comparing objects
+ok 218 Mocha - expect toEqual equates undefined values and null
+ok 219 Mocha - expect toEqual Can expect a more complex object to equal another complex object
+ok 220 Mocha - expect toEqual Can expect undefined to equal an object correctly
+ok 221 Mocha - expect toNotEqual can expect true to be false
+ok 222 Mocha - expect toNotEqual can expect true not to be true
+ok 223 Mocha - expect toBe can expect an object to be the same object
+ok 224 Mocha - expect toBe does not expect an object to be a different
+ok 225 Mocha - expect toMatch can expect string toMatch
+ok 226 Mocha - expect toMatch can expect string to not match
+ok 227 Mocha - expect toBeTruthy can expect toBeTruthy when truthy
+ok 228 Mocha - expect toBeTruthy can expect toBeTruthy when falsey
+ok 229 Mocha - expect toContain can expect array of numbers to contain number (passing)
+ok 230 Mocha - expect toContain can expect array of numbers to contain number (failing)
+ok 231 Mocha - expect toContain can expect array of objects to contain object (passing)
+ok 232 Mocha - expect toContain can expect array of objects to contain object (failing)
+ok 233 Mocha - expect toBeFalsy can expect toBeFalsy when falsey
+ok 234 Mocha - expect toBeFalsy can expect toBeFalsy when truthy
+ok 235 Mocha - expect toBeGreaterThan can expect 1 toBeGreaterThan 0
+ok 236 Mocha - expect toBeGreaterThan can expect 0 toBeGreaterThan 1 throws
+ok 237 Mocha - expect toBeLessThan can expect 0 toBeLessThan 1
+ok 238 Mocha - expect toBeLessThan can expect 1 toBeLessThan 0 throws
+ok 239 Mocha - expect toBeDefined can expect values toBeDefined
+ok 240 Mocha - expect toBeDefined throws when expects undefined values toBeDefined
+ok 241 Mocha - expect toBeUndefined can expect undefined values toBeUndefined
+ok 242 Mocha - expect toBeUndefined throws when expects defined values toBeUndefined
+ok 243 Mocha - expect toThrow can expect functions to throw
+ok 244 Mocha - expect toThrow throws when function does not throw
+ok 245 Mocha - expect toThrow throws when toThrow is called on a non-function
+ok 246 Mocha - expect toThrow throws when parameterized Error message does not match the thrown Error message
+ok 247 Mocha - expect toThrow throws when parameterized string does not match the thrown Error messsage
+ok 248 Mocha - expect toBeNull can expect values toBeNull
+ok 249 Mocha - expect toBeNull throws when expects non-null values toBeNull
+ok 250 Mocha - expect not negates equal
+ok 251 Mocha - expect messages can generate correct message for objects
+ok 252 Mocha - expect messages can generate correct message for arrays
+ok 253 Mocha - expect messages can generate correct message for arrays of values
+ok 254 Mocha - expect messages can generate correct message for nested arrays of values
+ok 255 Mocha - expect messages can generate correct message for Function with custom toString()
+ok 256 Mocha - expect messages can generate correct message for Errors
+ok 257 Mocha - expect messages can generate correct message for objects with circular references
+ok 258 Mocha - expect messages can generate correct message for deep objects
+ok 259 Mocha - expect messages can generate correct message for deep objects with arrays
+ok 260 Mocha - expect messages can generate correct message for objects with undefined values
+ok 261 Mocha - expect messages can generate correct message for anonymous functions
+ok 262 Mocha - expect messages can generate correct message for named functions
+ok 263 Mocha - expect messages can generate correct message for Dates
+ok 264 Mocha - expect extensibility allows you to add your own assertions
+
+1..264
+# tests 264
+# pass  264
+# fail  0
+
+# ok

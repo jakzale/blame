@@ -1,0 +1,27 @@
+
+> atmosphere@0.0.2 test /Users/jakub/Developer/Blame/externals/atmosphere
+> make test
+
+./node_modules/mocha/bin/mocha --recursive -R spec test/
+
+[0m[0m
+[0m  Atmosphere Initialization[0m
+  [32m  ✓[0m[90m should throw an error when provided environment is not an object [0m
+  [32m  ✓[0m[90m should continue when provided environment is an object [0m
+
+[0m  Atmosphere.get()[0m
+  [32m  ✓[0m[90m should return the environment variable when name is given [0m
+  [32m  ✓[0m[90m should return undefined when the requested environment variable is not set [0m
+  [32m  ✓[0m[90m should return the environment value when a configuration object is given and does not have the same key [0m
+  [32m  ✓[0m[90m should return the configuration value when a configuration object is given and has the same key [0m
+  [36m  - should automatically uppercase the requested key[0m
+  [36m  - should automatically replace spaces in the requested key[0m
+  [36m  - should support an environment variable prefix[0m
+  [36m  - should convert the return value type to an integer when requested[0m
+  [36m  - should convert the return value type to an string when requested[0m
+  [36m  - should return an intelligent global default (based on best practices) when neither the environment nor configuration match the key[0m
+
+
+[92m [0m[32m 6 passing[0m[90m (9ms)[0m
+[36m [0m[36m 6 pending[0m
+

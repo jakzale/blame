@@ -1,0 +1,19 @@
+
+> express-validator@2.3.0 test /Users/jakub/Developer/Blame/externals/express-validator
+> make test
+
+for F in test/*.js; do echo "$F: "; node $F; done;
+test/basic.js: 
+All 16 tests passed.
+test/bodyOnly.js: 
+All 11 tests passed.
+test/mapped.js: 
+All 2 tests passed.
+test/nested.js: 
+All 2 tests passed.
+test/paramsOnly.js: 
+All 18 tests passed.
+test/queryOnly.js: 
+All 14 tests passed.
+test/regex.js: 
+All 2 tests passed.

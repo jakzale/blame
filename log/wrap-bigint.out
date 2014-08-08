@@ -1,0 +1,531 @@
+
+> bigint@0.4.2 test /Users/jakub/Developer/Blame/externals/bigint
+> tap test/*.js
+
+not ok test/arithmetic.js ............................... 0/1
+    Command: "node" "arithmetic.js"
+    TAP version 13
+    not ok 1 test/arithmetic.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "arithmetic.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/bit_length.js ............................... 0/1
+    Command: "node" "bit_length.js"
+    TAP version 13
+    not ok 1 test/bit_length.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "bit_length.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/bitwise.js .................................. 0/1
+    Command: "node" "bitwise.js"
+    TAP version 13
+    not ok 1 test/bitwise.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "bitwise.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/buf.js ...................................... 0/1
+    Command: "node" "buf.js"
+    TAP version 13
+    not ok 1 test/buf.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "buf.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/cmp.js ...................................... 0/1
+    Command: "node" "cmp.js"
+    TAP version 13
+    not ok 1 test/cmp.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "cmp.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/create.js ................................... 0/1
+    Command: "node" "create.js"
+    TAP version 13
+    not ok 1 test/create.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "create.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/gcd.js ...................................... 0/1
+    Command: "node" "gcd.js"
+    TAP version 13
+    not ok 1 test/gcd.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "gcd.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/invertm.js .................................. 0/1
+    Command: "node" "invertm.js"
+    TAP version 13
+    not ok 1 test/invertm.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "invertm.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/mod.js ...................................... 0/1
+    Command: "node" "mod.js"
+    TAP version 13
+    not ok 1 test/mod.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "mod.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/pow.js ...................................... 0/1
+    Command: "node" "pow.js"
+    TAP version 13
+    not ok 1 test/pow.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "pow.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/primes.js ................................... 0/1
+    Command: "node" "primes.js"
+    TAP version 13
+    not ok 1 test/primes.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "primes.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/rand.js ..................................... 0/1
+    Command: "node" "rand.js"
+    TAP version 13
+    not ok 1 test/rand.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "rand.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/seed.js .................................... 2/10
+    Command: "node" "seed.js"
+    TAP version 13
+    not ok 1 (unnamed assert)
+      ---
+        file:   child_process.js
+        line:   736
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:415:17)
+          - Function.assert (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:20:16)
+          - Test._testAssert [as ok] (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-test.js:86:16)
+          - /Users/jakub/Developer/Blame/externals/bigint/test/seed.js:13:15
+          - ChildProcess.exithandler (child_process.js:736:5)
+          - ChildProcess.EventEmitter.emit (events.js:110:17)
+          - maybeClose (child_process.js:992:16)
+          - Socket.<anonymous> (child_process.js:1142:11)
+          - Socket.EventEmitter.emit (events.js:107:17)
+          - Pipe.close (net.js:461:12)
+      ...
+    not ok 2 (unnamed assert)
+      ---
+        file:   child_process.js
+        line:   736
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:415:17)
+          - Function.assert (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:20:16)
+          - Test._testAssert [as ok] (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-test.js:86:16)
+          - /Users/jakub/Developer/Blame/externals/bigint/test/seed.js:14:15
+          - ChildProcess.exithandler (child_process.js:736:5)
+          - ChildProcess.EventEmitter.emit (events.js:110:17)
+          - maybeClose (child_process.js:992:16)
+          - Socket.<anonymous> (child_process.js:1142:11)
+          - Socket.EventEmitter.emit (events.js:107:17)
+          - Pipe.close (net.js:461:12)
+      ...
+    not ok 3 "" is not an integer
+      ---
+        file:   child_process.js
+        line:   736
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:415:17)
+          - Function.assert (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:20:16)
+          - Test._testAssert [as ok] (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-test.js:86:16)
+          - /Users/jakub/Developer/Blame/externals/bigint/test/seed.js:16:15
+          - ChildProcess.exithandler (child_process.js:736:5)
+          - ChildProcess.EventEmitter.emit (events.js:110:17)
+          - maybeClose (child_process.js:992:16)
+          - Socket.<anonymous> (child_process.js:1142:11)
+          - Socket.EventEmitter.emit (events.js:107:17)
+          - Pipe.close (net.js:461:12)
+      ...
+    not ok 4 "" is not an integer
+      ---
+        file:   child_process.js
+        line:   736
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:415:17)
+          - Function.assert (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:20:16)
+          - Test._testAssert [as ok] (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-test.js:86:16)
+          - /Users/jakub/Developer/Blame/externals/bigint/test/seed.js:20:15
+          - ChildProcess.exithandler (child_process.js:736:5)
+          - ChildProcess.EventEmitter.emit (events.js:110:17)
+          - maybeClose (child_process.js:992:16)
+          - Socket.<anonymous> (child_process.js:1142:11)
+          - Socket.EventEmitter.emit (events.js:107:17)
+          - Pipe.close (net.js:461:12)
+      ...
+    not ok 5 n1 >= 0
+      ---
+        file:   child_process.js
+        line:   736
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:415:17)
+          - Function.assert (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:20:16)
+          - Test._testAssert [as ok] (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-test.js:86:16)
+          - /Users/jakub/Developer/Blame/externals/bigint/test/seed.js:28:15
+          - ChildProcess.exithandler (child_process.js:736:5)
+          - ChildProcess.EventEmitter.emit (events.js:110:17)
+          - maybeClose (child_process.js:992:16)
+          - Socket.<anonymous> (child_process.js:1142:11)
+          - Socket.EventEmitter.emit (events.js:107:17)
+          - Pipe.close (net.js:461:12)
+      ...
+    not ok 6 n2 >= 0
+      ---
+        file:   child_process.js
+        line:   736
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:415:17)
+          - Function.assert (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:20:16)
+          - Test._testAssert [as ok] (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-test.js:86:16)
+          - /Users/jakub/Developer/Blame/externals/bigint/test/seed.js:29:15
+          - ChildProcess.exithandler (child_process.js:736:5)
+          - ChildProcess.EventEmitter.emit (events.js:110:17)
+          - maybeClose (child_process.js:992:16)
+          - Socket.<anonymous> (child_process.js:1142:11)
+          - Socket.EventEmitter.emit (events.js:107:17)
+          - Pipe.close (net.js:461:12)
+      ...
+    not ok 7 n1 < 1000
+      ---
+        file:   child_process.js
+        line:   736
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:415:17)
+          - Function.assert (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:20:16)
+          - Test._testAssert [as ok] (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-test.js:86:16)
+          - /Users/jakub/Developer/Blame/externals/bigint/test/seed.js:30:15
+          - ChildProcess.exithandler (child_process.js:736:5)
+          - ChildProcess.EventEmitter.emit (events.js:110:17)
+          - maybeClose (child_process.js:992:16)
+          - Socket.<anonymous> (child_process.js:1142:11)
+          - Socket.EventEmitter.emit (events.js:107:17)
+          - Pipe.close (net.js:461:12)
+      ...
+    not ok 8 n2 < 1000
+      ---
+        file:   child_process.js
+        line:   736
+        column: 5
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:415:17)
+          - Function.assert (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-assert.js:20:16)
+          - Test._testAssert [as ok] (/Users/jakub/Developer/Blame/externals/bigint/node_modules/tap/lib/tap-test.js:86:16)
+          - /Users/jakub/Developer/Blame/externals/bigint/test/seed.js:31:15
+          - ChildProcess.exithandler (child_process.js:736:5)
+          - ChildProcess.EventEmitter.emit (events.js:110:17)
+          - maybeClose (child_process.js:992:16)
+          - Socket.<anonymous> (child_process.js:1142:11)
+          - Socket.EventEmitter.emit (events.js:107:17)
+          - Pipe.close (net.js:461:12)
+      ...
+    ok 9 n1 != n2
+    ok 10 test/seed.js
+    
+    1..10
+    # tests 10
+    # pass  2
+    # fail  8
+    
+not ok test/shift.js .................................... 0/1
+    Command: "node" "shift.js"
+    TAP version 13
+    not ok 1 test/shift.js
+      ---
+        timedOut: ~
+        exit:     1
+        stderr:   |
+          module.js:333
+              throw err;
+                    ^
+          Error: Cannot find module './build/Release/bigint'
+              at Function.Module._resolveFilename (module.js:331:15)
+              at Function.Module._load (module.js:273:25)
+              at Module.require (module.js:357:17)
+              at new require (module.js:373:17)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/bigint/index.js:6:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Function.Module._load (module.js:305:12)
+              at Module.require (module.js:357:17)
+        command:  "node" "shift.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+total .................................................. 2/23
+
+not ok

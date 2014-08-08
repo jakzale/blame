@@ -1,0 +1,8 @@
+
+> chai-datetime@1.2.0 test /Users/jakub/Developer/Blame/externals/chai-datetime
+> make test
+
+./node_modules/.bin/mocha --recursive -C
+
+  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․
+

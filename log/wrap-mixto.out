@@ -1,0 +1,22 @@
+
+> mixto@1.0.0 test /Users/jakub/Developer/Blame/externals/mixto
+> grunt test
+
+[4mRunning "coffeelint:src" (coffeelint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "coffeelint:test" (coffeelint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "coffeelint:gruntfile" (coffeelint) task[24m
+[32m>> [39m1 file lint free.
+
+[4mRunning "shell:test" (shell) task[24m
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+Finished in 0.007 seconds
+[32m8 tests, 17 assertions, 0 failures, 0 skipped
+[0m
+
+
+[32mDone, without errors.[39m

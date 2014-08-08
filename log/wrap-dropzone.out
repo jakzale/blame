@@ -1,0 +1,213 @@
+
+> dropzone@3.10.2 test /Users/jakub/Developer/Blame/externals/dropzone
+> ./test.sh
+
+[4mRunning "coffee:default" (coffee) task[24m
+
+[4mRunning "coffee:test" (coffee) task[24m
+
+[4mRunning "componentbuild:app" (componentbuild) task[24m
+resolved in 21ms
+[32m>> [39mbuild: files in 7ms
+[32m>> [39mbuild: build/build.js in 17ms - 60kb
+[32m>> [39mbuild: build/build.css in 67ms - 3kb
+
+[4mRunning "copy:component" (copy) task[24m
+Copied [36m1[39m files
+
+[4mRunning "concat:amd" (concat) task[24m
+File downloads/dropzone-amd-module.js created.
+
+[4mRunning "stylus:basic" (stylus) task[24m
+File downloads/css/basic.css created.
+
+[4mRunning "stylus:dropzone" (stylus) task[24m
+File downloads/css/dropzone.css created.
+
+[4mRunning "uglify:js" (uglify) task[24m
+File downloads/dropzone-amd-module.min.js created: 57.6 kB → 28.77 kB
+File downloads/dropzone.min.js created: 61.84 kB → 30.59 kB
+
+[32mDone, without errors.[39m
+
+[0m[0m
+[0m  Dropzone[0m
+[0m    static functions[0m
+[0m      Dropzone.createElement()[0m
+[2K[0G      [32m  ✓[0m[90m should properly create an element from a string [0m
+[2K[0G      [32m  ✓[0m[90m should properly add the correct class [0m
+[2K[0G      [32m  ✓[0m[90m should properly create child elements [0m
+[2K[0G      [32m  ✓[0m[90m should always return only one element [0m
+[0m      Dropzone.elementInside()[0m
+[2K[0G      [32m  ✓[0m[90m should return yes if elements are the same [0m
+[2K[0G      [32m  ✓[0m[90m should return yes if element is direct child [0m
+[2K[0G      [32m  ✓[0m[90m should return yes if element is some child [0m
+[2K[0G      [32m  ✓[0m[90m should return no unless element is some child [0m
+[0m      Dropzone.optionsForElement()[0m
+[2K[0G      [32m  ✓[0m[90m should take options set in Dropzone.options from camelized id [0m
+[2K[0G      [32m  ✓[0m[90m should return undefined if no options set [0m
+[2K[0G      [32m  ✓[0m[90m should return undefined and not throw if it's a form with an input element of the name 'id' [0m
+[2K[0G      [32m  ✓[0m[90m should ignore input fields with the name='id' [0m
+[0m      Dropzone.forElement()[0m
+[2K[0G      [32m  ✓[0m[90m should throw an exception if no dropzone attached [0m
+[2K[0G      [32m  ✓[0m[90m should accept css selectors [0m
+[2K[0G      [32m  ✓[0m[90m should accept native elements [0m
+[0m      Dropzone.discover()[0m
+[0m        specific options[0m
+[2K[0G        [32m  ✓[0m[90m should find elements with a .dropzone class [0m
+[2K[0G        [32m  ✓[0m[90m should not create dropzones with disabled options [0m
+[0m        Dropzone.autoDiscover[0m
+[2K[0G        [32m  ✓[0m[90m should create dropzones even if Dropzone.autoDiscover == false [0m
+[2K[0G        [32m  ✓[0m[90m should not automatically be called if Dropzone.autoDiscover == false [0m
+[0m      Dropzone.isValidFile()[0m
+[2K[0G      [32m  ✓[0m[90m should return true if called without acceptedFiles [0m
+[2K[0G      [32m  ✓[0m[90m should properly validate if called with concrete mime types [0m
+[2K[0G      [32m  ✓[0m[90m should properly validate if called with base mime types [0m
+[2K[0G      [32m  ✓[0m[90m should properly validate if called with mixed mime types [0m
+[2K[0G      [32m  ✓[0m[90m should properly validate even with spaces in between [0m
+[2K[0G      [32m  ✓[0m[90m should properly validate extensions [0m
+[0m      Dropzone.confirm[0m
+[2K[0G      [32m  ✓[0m[90m should forward to window.confirm and call the callbacks accordingly [0m
+[2K[0G      [32m  ✓[0m[90m should not error if rejected is not provided [0m
+[0m    Dropzone.getElement() / getElements()[0m
+[0m      .getElement()[0m
+[2K[0G      [32m  ✓[0m[90m should accept a string [0m
+[2K[0G      [32m  ✓[0m[90m should accept a node [0m
+[2K[0G      [32m  ✓[0m[90m should fail if invalid selector [0m
+[0m      .getElements()[0m
+[2K[0G      [32m  ✓[0m[90m should accept a list of strings [0m
+[2K[0G      [32m  ✓[0m[90m should accept a list of nodes [0m
+[2K[0G      [32m  ✓[0m[90m should accept a mixed list [0m
+[2K[0G      [32m  ✓[0m[90m should accept a string selector [0m
+[2K[0G      [32m  ✓[0m[90m should accept a single node [0m
+[2K[0G      [32m  ✓[0m[90m should fail if invalid selector [0m
+[0m    constructor()[0m
+[2K[0G    [32m  ✓[0m[90m should throw an exception if the element is invalid [0m
+[2K[0G    [32m  ✓[0m[90m should throw an exception if assigned twice to the same element [0m
+[2K[0G    [32m  ✓[0m[90m should throw an exception if both acceptedFiles and acceptedMimeTypes are specified [0m
+[2K[0G    [32m  ✓[0m[90m should set itself as element.dropzone [0m
+[2K[0G    [32m  ✓[0m[90m should add itself to Dropzone.instances [0m
+[2K[0G    [32m  ✓[0m[90m should use the action attribute not the element with the name action [0m
+[0m      options[0m
+[2K[0G      [32m  ✓[0m[90m should take the options set in Dropzone.options [0m
+[2K[0G      [32m  ✓[0m[90m should prefer passed options over Dropzone.options [0m
+[2K[0G      [32m  ✓[0m[90m should take the default options if nothing set in Dropzone.options [0m
+[2K[0G      [32m  ✓[0m[90m should call the fallback function if forceFallback == true [0m
+[2K[0G      [32m  ✓[0m[90m should set acceptedFiles if deprecated acceptedMimetypes option has been passed [0m
+[0m        options.clickable[0m
+[2K[0G        [32m  ✓[0m[90m should use the default element if clickable == true [0m
+[2K[0G        [32m  ✓[0m[90m should lookup the element if clickable is a CSS selector [0m
+[2K[0G        [32m  ✓[0m[90m should simply use the provided element [0m
+[2K[0G        [32m  ✓[0m[90m should accept multiple clickable elements [0m
+[2K[0G        [32m  ✓[0m[90m should throw an exception if the element is invalid [0m
+[0m    init()[0m
+[2K[0G    [32m  ✓[0m[90m should create a .dz-message element [0m
+[2K[0G    [32m  ✓[0m[90m should not create a .dz-message element if there already is one [0m
+[0m      clickable[0m
+[2K[0G      [32m  ✓[0m[90m should not add an accept attribute if no acceptParameter [0m
+[0m        using acceptedFiles[0m
+[2K[0G        [32m  ✓[0m[90m should create a hidden file input if clickable [0m
+[2K[0G        [32m  ✓[0m[90m should use the acceptParameter [0m
+[2K[0G        [32m  ✓[0m[90m should create a new input element when something is selected to reset the input field [0m
+[0m        using acceptedMimeTypes[0m
+[2K[0G        [32m  ✓[0m[90m should create a hidden file input if clickable [0m
+[2K[0G        [32m  ✓[0m[90m should use the acceptParameter [0m
+[2K[0G        [32m  ✓[0m[90m should create a new input element when something is selected to reset the input field [0m
+[0m    options[0m
+[0m      file specific[0m
+[0m        .addedFile()[0m
+[2K[0G        [32m  ✓[0m[90m should properly create the previewElement [0m
+[0m        .error()[0m
+[2K[0G        [32m  ✓[0m[90m should properly insert the error [0m
+[2K[0G        [32m  ✓[0m[90m should properly insert the error when provided with an object containing the error [0m
+[0m        .thumbnail()[0m
+[2K[0G        [32m  ✓[0m[90m should properly insert the error [0m
+[0m        .uploadprogress()[0m
+[2K[0G        [32m  ✓[0m[90m should properly set the width [0m
+[0m        .resize()[0m
+[0m          with default thumbnail settings[0m
+[2K[0G          [32m  ✓[0m[90m should properly return target dimensions [0m
+[0m          with null thumbnail settings[0m
+[2K[0G          [32m  ✓[0m[90m should properly return target dimensions [0m
+[0m    instance[0m
+[0m      .accept()[0m
+[2K[0G      [32m  ✓[0m[90m should pass if the filesize is OK [0m
+[2K[0G      [32m  ✓[0m[90m shouldn't pass if the filesize is too big [0m
+[2K[0G      [32m  ✓[0m[90m should properly accept files which mime types are listed in acceptedFiles [0m
+[2K[0G      [32m  ✓[0m[90m should properly reject files when the mime type isn't listed in acceptedFiles [0m
+[2K[0G      [32m  ✓[0m[90m should fail if maxFiles has been exceeded and call the event maxfilesexceeded [0m
+[2K[0G      [32m  ✓[0m[90m should properly handle if maxFiles is 0 [0m
+[0m      .removeFile()[0m
+[2K[0G      [32m  ✓[0m[90m should abort uploading if file is currently being uploaded [0m
+[0m      .cancelUpload()[0m
+[2K[0G      [32m  ✓[0m[90m should properly cancel upload if file currently uploading [0m
+[2K[0G      [32m  ✓[0m[90m should properly cancel the upload if file is not yet uploading [0m
+[2K[0G      [32m  ✓[0m[90m should call processQueue() [0m
+[2K[0G      [32m  ✓[0m[90m should properly cancel all files with the same XHR if uploadMultiple is true [0m
+[0m      .disable()[0m
+[2K[0G      [32m  ✓[0m[90m should properly cancel all pending uploads [0m
+[0m      .destroy()[0m
+[2K[0G      [32m  ✓[0m[90m should properly cancel all pending uploads and remove all file references [0m
+[2K[0G      [32m  ✓[0m[90m should be able to create instance of dropzone on the same element after destroy [0m
+[2K[0G      [32m  ✓[0m[90m should remove itself from Dropzone.instances [0m
+[0m      .filesize()[0m
+[2K[0G      [32m  ✓[0m[90m should convert to KiloBytes, etc.. not KibiBytes [0m
+[0m      ._updateMaxFilesReachedClass()[0m
+[2K[0G      [32m  ✓[0m[90m should properly add the dz-max-files-reached class [0m
+[2K[0G      [32m  ✓[0m[90m should fire the 'maxfilesreached' event when appropriate [0m
+[2K[0G      [32m  ✓[0m[90m should properly remove the dz-max-files-reached class [0m
+[0m      events[0m
+[0m        progress updates[0m
+[2K[0G        [32m  ✓[0m[90m should properly emit a totaluploadprogress event [0m
+[0m    helper function[0m
+[0m      getExistingFallback()[0m
+[2K[0G      [32m  ✓[0m[90m should return undefined if no fallback [0m
+[2K[0G      [32m  ✓[0m[90m should only return the fallback element if it contains exactly fallback [0m
+[2K[0G      [32m  ✓[0m[90m should return divs as fallback [0m
+[2K[0G      [32m  ✓[0m[90m should return forms as fallback [0m
+[0m      getFallbackForm()[0m
+[2K[0G      [32m  ✓[0m[90m should use the paramName without [0] if uploadMultiple is false [0m
+[2K[0G      [32m  ✓[0m[90m should properly add [0] to the file name if uploadMultiple is true [0m
+[0m      getAcceptedFiles() / getRejectedFiles()[0m
+[2K[0G      [32m  ✓[0m[90m getAcceptedFiles() should only return accepted files [0m
+[2K[0G      [32m  ✓[0m[90m getRejectedFiles() should only return rejected files [0m
+[0m      getQueuedFiles()[0m
+[2K[0G      [32m  ✓[0m[90m should return all files with the status Dropzone.QUEUED [0m
+[0m      getUploadingFiles()[0m
+[2K[0G      [32m  ✓[0m[90m should return all files with the status Dropzone.UPLOADING [0m
+[0m      getActiveFiles()[0m
+[2K[0G      [32m  ✓[0m[90m should return all files with the status Dropzone.UPLOADING or Dropzone.QUEUED [0m
+[0m      getFilesWithStatus()[0m
+[2K[0G      [32m  ✓[0m[90m should return all files with provided status [0m
+[0m    file handling[0m
+[0m      addFile()[0m
+[2K[0G      [32m  ✓[0m[90m should properly set the status of the file [0m
+[2K[0G      [32m  ✓[0m[90m should properly set the status of the file if autoProcessQueue is false and not call processQueue [0m
+[2K[0G      [32m  ✓[0m[90m should not add the file to the queue if autoQueue is false [0m
+[2K[0G      [32m  ✓[0m[90m should create a remove link if configured to do so [0m
+[2K[0G      [32m  ✓[0m[90m should attach an event handler to data-dz-remove links [0m
+[0m        thumbnails[0m
+[2K[0G        [32m  ✓[0m[90m should properly queue the thumbnail creation [0m
+[0m      enqueueFile()[0m
+[2K[0G      [32m  ✓[0m[90m should be wrapped by enqueueFiles() [0m
+[2K[0G      [32m  ✓[0m[90m should fail if the file has already been processed [0m
+[2K[0G      [32m  ✓[0m[90m should set the status to QUEUED and call processQueue asynchronously if everything's ok [0m
+[0m      uploadFiles()[0m
+[2K[0G      [32m  ✓[0m[90m should be wrapped by uploadFile() [0m
+[2K[0G      [32m  ✓[0m[90m should ignore the onreadystate callback if readyState != 4 [0m
+[2K[0G      [32m  ✓[0m[90m should emit error and errormultiple when response was not OK [0m
+[2K[0G      [32m  ✓[0m[90m should include hidden files in the form and unchecked checkboxes and radiobuttons should be excluded [0m
+[2K[0G      [32m  ✓[0m[90m should all values of a select that has the multiple attribute [0m
+[0m        settings()[0m
+[2K[0G        [32m  ✓[0m[90m should correctly set `withCredentials` on the xhr object [0m
+[2K[0G        [32m  ✓[0m[90m should correctly override headers on the xhr object [0m
+[2K[0G        [32m  ✓[0m[90m should properly use the paramName without [n] as file upload if uploadMultiple is false [0m
+[2K[0G        [32m  ✓[0m[90m should properly use the paramName with [n] as file upload if uploadMultiple is true [0m
+[0m        should properly set status of file[0m
+[2K[0G        [32m  ✓[0m[90m should correctly set `withCredentials` on the xhr object [0m
+[0m      complete file[0m
+[2K[0G      [32m  ✓[0m[90m should properly emit the queuecomplete event when the complete queue is finished [0m[33m(42ms)[0m
+
+
+[92m [0m[32m 120 passing[0m[90m (564ms)[0m
+

@@ -1,0 +1,14 @@
+
+> ansicolors@0.3.2 test /Users/jakub/Developer/Blame/externals/ansicolors
+> node test/*.js
+
+Foreground colors ..
+OK
+Background colors ..
+OK
+Mixing background and foreground colors ..
+OK
+Open ...
+OK
+Close ...
+OK

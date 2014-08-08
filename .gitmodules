@@ -143,9 +143,6 @@
 [submodule "externals/dustjs-linkedin"]
 	path = externals/dustjs-linkedin
 	url = https://github.com/linkedin/dustjs.git
-[submodule "externals/epiceditor"]
-	path = externals/epiceditor
-	url = git@github.com:OscarGodson/EpicEditor.git
 [submodule "externals/es6-promises"]
 	path = externals/es6-promises
 	url = https://github.com/Octane/Promise.git

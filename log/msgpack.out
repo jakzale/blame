@@ -1,0 +1,11 @@
+
+> msgpack@0.2.3 test /Users/jakub/Developer/Blame/externals/msgpack
+> ./run_tests
+
+Error: No such module
+
+Cannot find required modules.
+You can intall modules for this project by doing:
+
+    npm install
+

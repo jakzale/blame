@@ -1,0 +1,37 @@
+
+> riotjs@1.0.1 test /Users/jakub/Developer/Blame/externals/riotjs
+> make test
+
+node test/node.js
+
+--- Observable ---
+Single listener
+Multiple listeners
+One
+One & on
+Remove listeners
+Remove multiple listeners
+does not call trigger infinitely
+is able to trigger events inside a listener
+Multiple arguments
+Remove all listeners
+Remove specific listener
+
+--- riot.render ---
+Single token
+Multiple tokens
+Single quotes
+Empty values
+With spaces
+Empty template
+Nearby brackets
+Newline characters
+Backslashes
+Escaping
+Escaping empty values
+Not Escaping
+Nested objects
+Undefined properties
+Custom escape function
+Custom escape function args
+Can be set to not escape

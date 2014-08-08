@@ -1,0 +1,464 @@
+[31m  15 failing[0m
+
+[0m  1) assert fail:
+[0m[31m     TypeError: Method RegExp.prototype.toString called on incompatible receiver object[0m[90m
+      at <error: illegal access>
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:55)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:842:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/assert.js:16:16)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  2) assert include:
+[0m[31m     TypeError: Proxy target must be an Object, given foobar[0m[90m
+      at new global.Proxy (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1970:13)
+      at wrap_arr (/Users/jakub/Developer/Blame/build/blame.js:941:12)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:756:24)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/assert.js:392:12)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  3) assert notInclude:
+[0m[31m     TypeError: Proxy target must be an Object, given foobar[0m[90m
+      at new global.Proxy (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1970:13)
+      at wrap_arr (/Users/jakub/Developer/Blame/build/blame.js:941:12)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:756:24)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/assert.js:406:12)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  4) assert match:
+[0m[31m     TypeError: Method RegExp.prototype.exec called on incompatible receiver object[0m[90m
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Assertion.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/lib/chai/core/assertions.js:893:12)
+      at Assertion.ctx.(anonymous function) [as match] (/Users/jakub/Developer/Blame/externals/chai/lib/chai/utils/addMethod.js:40:25)
+      at <error: TypeError: undefined is not a function>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/assert.js:429:12)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  5) assert throws:
+[0m[31m     Error: {label_0}[get/get/sum#0/rng] not of type Void: Error: foo
+{label_0}[get/get/sum#1/dom] not enough arguments, expected >=2, got: 1
+{label_0}[get/get/sum#2/dom] not enough arguments, expected >=2, got: 1
+{label_0}[get/get/sum#3/dom] not enough arguments, expected >=3, got: 1[0m[90m
+      at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:113:23)
+      at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:825:31)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:825:31)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:825:31)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/assert.js:486:12)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  6) configuration includeStack is true:
+[0m[31m     TypeError: Proxy target must be an Object, given AssertionError: expected 'foo' to equal 'bar'
+    at <error: illegal access>
+    at <error: illegal access>
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at <error: illegal access>
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at <error: illegal access>
+    at fooThrows (/Users/jakub/Developer/Blame/externals/chai/test/configuration.js:22:30)
+    at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/configuration.js:29:7)
+    at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+    at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+    at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+    at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+    at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+    at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+    at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:271:7
+    at Hook.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:223:5)
+    at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:259:10)
+    at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+    at processImmediate [as _immediateCallback] (timers.js:374:17)[0m[90m
+      at new global.Proxy (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1970:13)
+      at wrap_arr (/Users/jakub/Developer/Blame/build/blame.js:941:12)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:756:24)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/configuration.js:34:16)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:271:7
+      at Hook.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:223:5)
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:259:10)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  7) configuration includeStack is false:
+[0m[31m     TypeError: Proxy target must be an Object, given AssertionError: expected 'foo' to equal 'bar'
+    at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+    at <error: illegal access>
+    at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+    at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+    at <error: illegal access>
+    at fooThrows (/Users/jakub/Developer/Blame/externals/chai/test/configuration.js:22:30)
+    at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/configuration.js:45:7)
+    at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+    at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+    at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+    at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+    at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+    at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+    at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:271:7
+    at Hook.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:223:5)
+    at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:259:10)
+    at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+    at processImmediate [as _immediateCallback] (timers.js:374:17)[0m[90m
+      at new global.Proxy (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1970:13)
+      at wrap_arr (/Users/jakub/Developer/Blame/build/blame.js:941:12)
+      at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:756:24)
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: TypeError: undefined is not a function>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/configuration.js:52:16)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:271:7
+      at Hook.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:223:5)
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:259:10)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  8) expect match(regexp):
+[0m[31m     TypeError: Method RegExp.prototype.exec called on incompatible receiver object[0m[90m
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at <error: illegal access>
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/expect.js:260:25)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  9) expect keys(array):
+[0m[31m     Error: the string "illegal access" was thrown, throw an Error :)[0m[90m
+      at Runner.fail (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:197:11)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:456:16
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:225:5)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  10) expect throw:
+
+      [31mAssertionError: expected [Function] to throw 'RangeError: boo' but 'RangeError: boo' was thrown[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [0m[90m
+      at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:832:31)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/expect.js:649:35)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  11) expect respondTo:
+[0m[31m     TypeError: Method RegExp.prototype.exec called on incompatible receiver object[0m[90m
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at <error: illegal access>
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at global.err (/Users/jakub/Developer/Blame/externals/chai/test/bootstrap/index.js:19:35)
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/expect.js:747:5)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  12) should throw:
+[0m[31m     TypeError: Method RegExp.prototype.exec called on incompatible receiver object[0m[90m
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at <error: illegal access>
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at global.err (/Users/jakub/Developer/Blame/externals/chai/test/bootstrap/index.js:19:35)
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/should.js:625:5)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  13) should respondTo:
+[0m[31m     TypeError: Method RegExp.prototype.exec called on incompatible receiver object[0m[90m
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at <error: illegal access>
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at global.err (/Users/jakub/Developer/Blame/externals/chai/test/bootstrap/index.js:19:35)
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/should.js:677:5)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  14) utilities addChainableMethod:
+
+      [31mexpected [Function] to throw 'AssertionError' but 'AssertionError[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+AssertionError[0m
+      [41m-AssertionError: expected 'foo' to equal 'x'[0m
+      [0m[90m
+      at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:832:31)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at /Users/jakub/Developer/Blame/externals/chai/test/utilities.js:252:18
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/utilities.js:236:10)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+[0m  15) utilities overwriteChainableMethod:
+
+      [31mexpected [Function] to throw 'AssertionError' but 'AssertionError[0m
+      [42m+ expected[0m [41m- actual[0m
+
+      [42m+AssertionError[0m
+      [41m-AssertionError: expected 'foo' to equal 'x'[0m
+      [0m[90m
+      at Object.global.Reflect.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1939:37)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1318:22)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:832:31)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:1047:32)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at /Users/jakub/Developer/Blame/externals/chai/test/utilities.js:293:18
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+      at <error: illegal access>
+      at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:849:30)
+      at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+      at <error: illegal access>
+      at Context.<anonymous> (/Users/jakub/Developer/Blame/externals/chai/test/utilities.js:269:10)
+      at Test.Runnable.run (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runnable.js:221:32)
+      at Runner.runTest (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:374:10)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:452:12
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:299:14)
+      at /Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:309:7
+      at next (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:247:23)
+      at Immediate._onImmediate (/Users/jakub/Developer/Blame/externals/chai/node_modules/mocha/lib/runner.js:276:5)
+      at processImmediate [as _immediateCallback] (timers.js:374:17)
+[0m
+
+make: *** [test-node] Error 15
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

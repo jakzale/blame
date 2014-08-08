@@ -1,0 +1,3 @@
+Deprecation warning: moment().add(period, number) is deprecated. Please use moment().add(number, period).
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

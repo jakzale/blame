@@ -1,0 +1,9 @@
+
+> auth0@0.6.1 test /Users/jakub/Developer/Blame/externals/auth0
+> mocha test
+
+
+  [31m․[0m[90m․[0m[90m․[0m
+
+[92m [0m[32m 2 passing[0m[90m (23ms)[0m
+

@@ -1,0 +1,244 @@
+
+> mkdirp@0.5.0 test /Users/jakub/Developer/Blame/externals/mkdirp
+> tap test/*.js
+
+ok test/chmod.js ........................................ 8/8
+ok test/clobber.js ...................................... 5/5
+ok test/mkdirp.js ....................................... 6/6
+not ok test/opts_fs.js .................................. 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node opts_fs.js"
+    TAP version 13
+    not ok 1 test/opts_fs.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122
+          fs.Stats.prototype._checkModeProperty = function(property) {
+                  ^
+          TypeError: Cannot read property 'prototype' of undefined
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122:9)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Object.load (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/moduleEnv.js:19:18)
+              at internalRewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/rewire.js:56:15)
+              at rewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/index.js:11:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/lib/index.js:28:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node opts_fs.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/opts_fs_sync.js ............................. 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node opts_fs_sync.js"
+    TAP version 13
+    not ok 1 test/opts_fs_sync.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122
+          fs.Stats.prototype._checkModeProperty = function(property) {
+                  ^
+          TypeError: Cannot read property 'prototype' of undefined
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node/fs-0.11.10.js:122:9)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+              at Module.load (module.js:349:32)
+              at Object.load (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/moduleEnv.js:19:18)
+              at internalRewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/rewire.js:56:15)
+              at rewire (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/node_modules/rewire/lib/index.js:11:12)
+              at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/mock-fs/lib/index.js:28:14)
+              at Module._compile (module.js:449:26)
+              at Object.Module._extensions..js (module.js:467:10)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node opts_fs_sync.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/perm.js ..................................... 5/6
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node perm.js"
+    TAP version 13
+    ok 1 (unnamed assert)
+    ok 2 file created
+    ok 3 (unnamed assert)
+    ok 4 should be equal
+    ok 5 target not a directory
+    not ok 6 test/perm.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/build/blame.js:113
+                          throw new Error(this.state.msg());
+                                ^
+          Error: {label_0}[sum#0/dom] too many arguments, expected <=2, got: 3
+          {label_0}[sum#1/dom/dom] not of type Str: null
+              at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:113:23)
+              at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+              at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+              at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+              at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+              at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+              at /Users/jakub/Developer/Blame/externals/mkdirp/index.js:47:26
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node perm.js"
+      ...
+    
+    1..6
+    # tests 6
+    # pass  5
+    # fail  1
+    
+not ok test/perm_sync.js ................................ 5/7
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node perm_sync.js"
+    TAP version 13
+    ok 1 file created
+    ok 2 (unnamed assert)
+    ok 3 should be equal
+    ok 4 target not a directory
+    not ok 5 Error: {label_0}[get/rng] not of type Str: null
+      ---
+        type:    Error
+        message: {label_0}[get/rng] not of type Str: null
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - <error: TypeError: undefined is not a function>
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/test/perm_sync.js:26:12)
+          - Test.EventEmitter.emit (events.js:129:20)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-test.js:104:8)
+          - GlobalHarness.Harness.process (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-harness.js:87:13)
+        thrown:  true
+      ...
+    not ok 6 test count != plan
+      ---
+        file:   node.js
+        line:   343
+        column: 11
+        stack:  
+          - getCaller (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-assert.js:418:17)
+          - assert (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-assert.js:21:16)
+          - Function.equal (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-assert.js:162:10)
+          - Test.Harness.end (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-harness.js:117:31)
+          - Test.threw (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-test.js:50:26)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-test.js:108:10)
+          - GlobalHarness.Harness.process (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-harness.js:87:13)
+          - process._tickCallback (node.js:343:11)
+        found:  1
+        wanted: 3
+      ...
+    ok 7 test/perm_sync.js
+    
+    1..7
+    # tests 7
+    # pass  5
+    # fail  2
+    
+ok test/race.js ......................................... 7/7
+ok test/rel.js .......................................... 6/6
+not ok test/return.js ................................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node return.js"
+    TAP version 13
+    not ok 1 test/return.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/build/blame.js:113
+                          throw new Error(this.state.msg());
+                                ^
+          Error: {label_0}[sum#0/dom/dom] not of type Str: null
+          {label_0}[sum#1/dom] not enough arguments, expected >=3, got: 2
+              at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:113:23)
+              at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+              at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+              at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+              at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+              at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+              at /Users/jakub/Developer/Blame/externals/mkdirp/index.js:47:26
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node return.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+not ok test/return_sync.js .............................. 2/3
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node return_sync.js"
+    TAP version 13
+    ok 1 should be equal
+    not ok 2 Error: {label_0}[get/rng] not of type Str: null
+      ---
+        type:    Error
+        message: {label_0}[get/rng] not of type Str: null
+        code:    ~
+        errno:   ~
+        file:    /Users/jakub/Developer/Blame/build/blame.js
+        line:    116
+        column:  19
+        stack:   
+          - Label.blame (/Users/jakub/Developer/Blame/build/blame.js:116:19)
+          - wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+          - Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+          - Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:851:28)
+          - Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+          - <error: TypeError: undefined is not a function>
+          - Test.<anonymous> (/Users/jakub/Developer/Blame/externals/mkdirp/test/return_sync.js:22:19)
+          - Test.EventEmitter.emit (events.js:129:20)
+          - Test.emit (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-test.js:104:8)
+          - GlobalHarness.Harness.process (/Users/jakub/Developer/Blame/externals/mkdirp/node_modules/tap/lib/tap-harness.js:87:13)
+        thrown:  true
+      ...
+    ok 3 test/return_sync.js
+    
+    1..3
+    # tests 3
+    # pass  2
+    # fail  1
+    
+not ok test/root.js ..................................... 0/1
+    Command: "/usr/local/Cellar/node/0.11.13/bin/node root.js"
+    TAP version 13
+    not ok 1 test/root.js
+      ---
+        exit:    1
+        stderr:  |
+          /Users/jakub/Developer/Blame/build/blame.js:113
+                          throw new Error(this.state.msg());
+                                ^
+          Error: {label_0}[sum#0/dom] too many arguments, expected <=2, got: 3
+          {label_0}[sum#1/dom/dom] not of type Str: null
+              at Label.blame (/Users/jakub/Developer/Blame/build/blame.js:113:23)
+              at wrap_base (/Users/jakub/Developer/Blame/build/blame.js:805:11)
+              at Object.wrap (/Users/jakub/Developer/Blame/build/blame.js:738:28)
+              at Object.Proxy.apply (/Users/jakub/Developer/Blame/build/blame.js:838:43)
+              at Object.Validator.apply (/Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1322:19)
+              at /Users/jakub/Developer/Blame/node_modules/harmony-reflect/reflect.js:1984:27
+              at /Users/jakub/Developer/Blame/externals/mkdirp/index.js:47:26
+              at Object.oncomplete (fs.js:97:15)
+        command: "/usr/local/Cellar/node/0.11.13/bin/node root.js"
+      ...
+    
+    1..1
+    # tests 1
+    # fail  1
+    
+ok test/sync.js ......................................... 5/5
+ok test/umask.js ........................................ 6/6
+ok test/umask_sync.js ................................... 5/5
+total ................................................. 60/68
+
+not ok

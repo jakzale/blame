@@ -1,0 +1,4 @@
+util.puts: Use console.log instead
+make: *** [lint] Error 2
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

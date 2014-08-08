@@ -1,0 +1,32 @@
+/Users/jakub/Developer/Blame/externals/source-map-support/source-map-support.js:321
+      source - map - support '.Options')], null, Blame.Void),
+      ^^^^^^
+SyntaxError: Unexpected identifier
+    at exports.runInThisContext (vm.js:69:16)
+    at Module._compile (module.js:432:25)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/source-map-support/test.js:1:63)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Module.require (module.js:357:17)
+    at require (module.js:373:17)
+    at /Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/mocha.js:172:27
+    at Array.forEach (native)
+    at Mocha.loadFiles (/Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/mocha.js:169:14)
+    at Mocha.run (/Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/lib/mocha.js:356:31)
+    at Object.<anonymous> (/Users/jakub/Developer/Blame/externals/source-map-support/node_modules/mocha/bin/_mocha:359:16)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:349:32)
+    at Function.Module._load (module.js:305:12)
+    at Function.Module.runMain (module.js:490:10)
+    at startup (node.js:124:16)
+    at node.js:807:3
+npm ERR! Test failed.  See above for more details.
+npm ERR! not ok code 0

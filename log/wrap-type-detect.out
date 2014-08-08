@@ -1,0 +1,53 @@
+
+> type-detect@0.1.2 test /Users/jakub/Developer/Blame/externals/type-detect
+> make test
+
+
+  ==> [Node.js]
+[0m[0m
+[0m  new Library[0m
+  [32m  ✓[0m[90m should detect primatives [0m
+  [32m  ✓[0m[90m should detect custom regexp tests [0m
+  [32m  ✓[0m[90m should detect custom function tests [0m
+  [32m  ✓[0m[90m should throw when test not defined [0m
+
+[0m  type(obj)[0m
+  [32m  ✓[0m[90m array [0m
+  [32m  ✓[0m[90m regexp [0m
+  [32m  ✓[0m[90m function [0m
+  [32m  ✓[0m[90m arguments [0m
+  [32m  ✓[0m[90m date [0m
+  [32m  ✓[0m[90m number [0m
+  [32m  ✓[0m[90m string [0m
+  [32m  ✓[0m[90m null [0m
+  [32m  ✓[0m[90m undefined [0m
+  [32m  ✓[0m[90m object [0m
+
+
+[92m [0m[32m 14 passing[0m[90m (9ms)[0m
+
+
+  ==> [Phantom.Js]Error loading resource file:///Users/jakub/Developer/Blame/externals/type-detect/node_modules/chai/chai.js (203). Details: Error opening /Users/jakub/Developer/Blame/externals/type-detect/node_modules/chai/chai.js: No such file or directory
+
+[0m[0m
+[0m  new Library[0m
+[2K[0G  [32m  ✓[0m[90m should detect primatives [0m
+[2K[0G  [32m  ✓[0m[90m should detect custom regexp tests [0m
+[2K[0G  [32m  ✓[0m[90m should detect custom function tests [0m
+[2K[0G  [32m  ✓[0m[90m should throw when test not defined [0m
+
+[0m  type(obj)[0m
+[2K[0G  [32m  ✓[0m[90m array [0m
+[2K[0G  [32m  ✓[0m[90m regexp [0m
+[2K[0G  [32m  ✓[0m[90m function [0m
+[2K[0G  [32m  ✓[0m[90m arguments [0m
+[2K[0G  [32m  ✓[0m[90m date [0m
+[2K[0G  [32m  ✓[0m[90m number [0m
+[2K[0G  [32m  ✓[0m[90m string [0m
+[2K[0G  [32m  ✓[0m[90m null [0m
+[2K[0G  [32m  ✓[0m[90m undefined [0m
+[2K[0G  [32m  ✓[0m[90m object [0m
+
+
+[92m [0m[32m 14 passing[0m[90m (9ms)[0m
+

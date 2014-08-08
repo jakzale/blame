@@ -1,0 +1,517 @@
+
+> swig@1.4.2 test /Users/jakub/Developer/Blame/externals/swig
+> make lint && make test reporter=spec && make test-browser && make coverage cov-reporter=travis-cov
+
+0 errors
+
+
+  version
+    ◦ is 1.4.2: [2K[0G    ✓ is 1.4.2 
+
+  options
+    open/close controls
+      ◦ can have new lines inside: [2K[0G      ✓ can have new lines inside 
+      ◦ can be set at compile time: [2K[0G      ✓ can be set at compile time 
+      ◦ can be set at render time: [2K[0G      ✓ can be set at render time 
+      ◦ can be set as default: [2K[0G      ✓ can be set as default 
+      ◦ must be an array with 2 strings: [2K[0G      ✓ must be an array with 2 strings 
+      ◦ must be different: [2K[0G      ✓ must be different 
+      ◦ must be at least 2 characters: [2K[0G      ✓ must be at least 2 characters 
+    locals
+      ◦ can be set as defaults: [2K[0G      ✓ can be set as defaults 
+      ◦ use local-context first for output: [2K[0G      ✓ use local-context first for output 
+    cache
+      ◦ can be falsy: [2K[0G      ✓ can be falsy 
+      ◦ can be "memory" and is by default: [2K[0G      ✓ can be "memory" and is by default 
+      ◦ can accept custom "get" and "set" methods: [2K[0G      ✓ can accept custom "get" and "set" methods 
+      ◦ throws on anything else: [2K[0G      ✓ throws on anything else 
+      ◦ gh-423: compile method respects local cache setting: [2K[0G      ✓ gh-423: compile method respects local cache setting 
+    null object
+      ◦ can skip null object: [2K[0G      ✓ can skip null object 
+
+  separate instances
+    ◦ can be created and don't interfere: [2K[0G    ✓ can be created and don't interfere 
+    ◦ properly autoescapes: [2K[0G    ✓ properly autoescapes 
+
+  swig.compileFile
+    ◦ can run syncronously: [2K[0G    ✓ can run syncronously 
+    ◦ can run asynchronously: [2K[0G    ✓ can run asynchronously 
+    ◦ can use callback with errors: [2K[0G    ✓ can use callback with errors 
+
+  swig.renderFile
+    ◦ can use callback with errors occurred at the time of rendering: [2K[0G    ✓ can use callback with errors occurred at the time of rendering 
+    ◦ can run syncronously: [2K[0G    ✓ can run syncronously 
+    ◦ can run asynchronously: [2K[0G    ✓ can run asynchronously 
+    ◦ can use callbacks with errors: [2K[0G    ✓ can use callbacks with errors 
+
+  swig.run
+    ◦ runs compiled templates: [2K[0G    ✓ runs compiled templates 
+    ◦ does not cache if no filename given: [2K[0G    ✓ does not cache if no filename given 
+    ◦ caches if given a filename: [2K[0G    ✓ caches if given a filename 
+
+  bin/swig -v
+    ◦ shows the version number: [2K[0G    ✓ shows the version number (134ms)
+
+  bin/swig render
+    ◦ nested_blocks: [2K[0G    ✓ nested_blocks (125ms)
+
+  bin/swig compile + run
+    ◦ include: [2K[0G    1) include
+
+  bin/swig compile -m
+    ◦ minifies output: [2K[0G    ✓ minifies output (150ms)
+
+  bin/swig compile & run from swig
+    ◦ can be run: [2K[0G    ✓ can be run (127ms)
+
+  bin/swig render with custom extensions
+    ◦ works with custom filters: [2K[0G    ✓ works with custom filters (124ms)
+    ◦ works with custom tags: [2K[0G    ✓ works with custom tags (123ms)
+
+  bin/swig custom options
+    ◦ change varControls: [2K[0G    ✓ change varControls (125ms)
+    ◦ change tagControls: [2K[0G    ✓ change tagControls (125ms)
+
+  Comments
+    ◦ are ignored and removed from output: [2K[0G    ✓ are ignored and removed from output 
+
+  Filters:
+    ◦ defaultTZOffset affects date filter: [2K[0G    ✓ defaultTZOffset affects date filter 
+    ◦ can accept params: [2K[0G    ✓ can accept params 
+    ◦ can be very complexly nested: [2K[0G    ✓ can be very complexly nested 
+    ◦ throws on unknown filter: [2K[0G    ✓ throws on unknown filter 
+    ◦ gh-337: does not overwrite original data: [2K[0G    ✓ gh-337: does not overwrite original data 
+    ◦ gh-365: filters applied to functions after dotkey: [2K[0G    ✓ gh-365: filters applied to functions after dotkey 
+    ◦ gh-397: Filter index applied to functions with arguments is one-off: [2K[0G    ✓ gh-397: Filter index applied to functions with arguments is one-off 
+    ◦ gh-441: Chaining filters on top of functions within tags: [2K[0G    ✓ gh-441: Chaining filters on top of functions within tags 
+    can be set
+      ◦ and used in templates: [2K[0G      ✓ and used in templates 
+      ◦ and throw when you don't pass a function: [2K[0G      ✓ and throw when you don't pass a function 
+    addslashes
+      ◦ {{ v|addslashes }}, v="\"Top O' the\\ mornin\"" should render \&quot;Top O\&#39; the\\ mornin\&quot;: [2K[0G      ✓ {{ v|addslashes }}, v="\"Top O' the\\ mornin\"" should render \&quot;Top O\&#39; the\\ mornin\&quot; 
+      ◦ {{ v|addslashes|raw }}, v=["\"Top","O'","the\\","mornin\""] should render \"Top,O\',the\\,mornin\": [2K[0G      ✓ {{ v|addslashes|raw }}, v=["\"Top","O'","the\\","mornin\""] should render \"Top,O\',the\\,mornin\" 
+    capitalize
+      ◦ {{ v|capitalize }}, v="awesome sAuce." should render Awesome sauce.: [2K[0G      ✓ {{ v|capitalize }}, v="awesome sAuce." should render Awesome sauce. 
+      ◦ {{ v|capitalize }}, v=345 should render 345: [2K[0G      ✓ {{ v|capitalize }}, v=345 should render 345 
+      ◦ {{ v|capitalize }}, v=["foo","bar"] should render Foo,Bar: [2K[0G      ✓ {{ v|capitalize }}, v=["foo","bar"] should render Foo,Bar 
+    date
+      ◦ {{ v|date("d") }}, v="2011-09-06T16:05:02.000Z" should render 06: [2K[0G      ✓ {{ v|date("d") }}, v="2011-09-06T16:05:02.000Z" should render 06 
+      ◦ {{ v|date("D") }}, v="2011-09-06T16:05:02.000Z" should render Tue: [2K[0G      ✓ {{ v|date("D") }}, v="2011-09-06T16:05:02.000Z" should render Tue 
+      ◦ {{ v|date("j") }}, v="2011-09-06T16:05:02.000Z" should render 6: [2K[0G      ✓ {{ v|date("j") }}, v="2011-09-06T16:05:02.000Z" should render 6 
+      ◦ {{ v|date("l") }}, v="2011-09-06T16:05:02.000Z" should render Tuesday: [2K[0G      ✓ {{ v|date("l") }}, v="2011-09-06T16:05:02.000Z" should render Tuesday 
+      ◦ {{ v|date("N") }}, v="2011-09-06T16:05:02.000Z" should render 2: [2K[0G      ✓ {{ v|date("N") }}, v="2011-09-06T16:05:02.000Z" should render 2 
+      ◦ {{ v|date("N") }}, v="2011-09-04T07:00:00.000Z" should render 7: [2K[0G      ✓ {{ v|date("N") }}, v="2011-09-04T07:00:00.000Z" should render 7 
+      ◦ {{ v|date("S") }}, v="2011-09-06T16:05:02.000Z" should render th: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-06T16:05:02.000Z" should render th 
+      ◦ {{ v|date("w") }}, v="2011-09-06T16:05:02.000Z" should render 2: [2K[0G      ✓ {{ v|date("w") }}, v="2011-09-06T16:05:02.000Z" should render 2 
+      ◦ {{ v|date("z") }}, v="2011-09-06T16:05:02.000Z" should render 248: [2K[0G      ✓ {{ v|date("z") }}, v="2011-09-06T16:05:02.000Z" should render 248 
+      ◦ {{ v|date("z", 480) }}, v="2011-01-01T08:00:00.000Z" should render 0: [2K[0G      ✓ {{ v|date("z", 480) }}, v="2011-01-01T08:00:00.000Z" should render 0 
+      ◦ {{ v|date("z", 480) }}, v="2011-12-31T08:00:00.000Z" should render 364: [2K[0G      ✓ {{ v|date("z", 480) }}, v="2011-12-31T08:00:00.000Z" should render 364 
+      ◦ {{ v|date("W") }}, v="2011-09-06T16:05:02.000Z" should render 36: [2K[0G      ✓ {{ v|date("W") }}, v="2011-09-06T16:05:02.000Z" should render 36 
+      ◦ {{ v|date("F") }}, v="2011-09-06T16:05:02.000Z" should render September: [2K[0G      ✓ {{ v|date("F") }}, v="2011-09-06T16:05:02.000Z" should render September 
+      ◦ {{ v|date("m") }}, v="2011-09-06T16:05:02.000Z" should render 09: [2K[0G      ✓ {{ v|date("m") }}, v="2011-09-06T16:05:02.000Z" should render 09 
+      ◦ {{ v|date("M") }}, v="2011-09-06T16:05:02.000Z" should render Sep: [2K[0G      ✓ {{ v|date("M") }}, v="2011-09-06T16:05:02.000Z" should render Sep 
+      ◦ {{ v|date("n") }}, v="2011-09-06T16:05:02.000Z" should render 9: [2K[0G      ✓ {{ v|date("n") }}, v="2011-09-06T16:05:02.000Z" should render 9 
+      ◦ {{ v|date("t") }}, v="2011-09-06T16:05:02.000Z" should render 30: [2K[0G      ✓ {{ v|date("t") }}, v="2011-09-06T16:05:02.000Z" should render 30 
+      ◦ {{ v|date("L") }}, v="2011-09-06T16:05:02.000Z" should render false: [2K[0G      ✓ {{ v|date("L") }}, v="2011-09-06T16:05:02.000Z" should render false 
+      ◦ {{ v|date("L", 480) }}, v="2008-02-29T08:00:00.000Z" should render true: [2K[0G      ✓ {{ v|date("L", 480) }}, v="2008-02-29T08:00:00.000Z" should render true 
+      ◦ {{ v|date("o") }}, v="2011-09-06T16:05:02.000Z" should render 2011: [2K[0G      ✓ {{ v|date("o") }}, v="2011-09-06T16:05:02.000Z" should render 2011 
+      ◦ {{ v|date("o", 480) }}, v="2011-01-01T08:00:00.000Z" should render 2010: [2K[0G      ✓ {{ v|date("o", 480) }}, v="2011-01-01T08:00:00.000Z" should render 2010 
+      ◦ {{ v|date("Y") }}, v="2011-09-06T16:05:02.000Z" should render 2011: [2K[0G      ✓ {{ v|date("Y") }}, v="2011-09-06T16:05:02.000Z" should render 2011 
+      ◦ {{ v|date("y") }}, v="2011-09-06T16:05:02.000Z" should render 11: [2K[0G      ✓ {{ v|date("y") }}, v="2011-09-06T16:05:02.000Z" should render 11 
+      ◦ {{ v|date("a") }}, v="2011-09-06T16:05:02.000Z" should render am: [2K[0G      ✓ {{ v|date("a") }}, v="2011-09-06T16:05:02.000Z" should render am 
+      ◦ {{ v|date("A") }}, v="2011-09-06T16:05:02.000Z" should render AM: [2K[0G      ✓ {{ v|date("A") }}, v="2011-09-06T16:05:02.000Z" should render AM 
+      ◦ {{ v|date("B") }}, v="2011-09-06T16:05:02.000Z" should render 712: [2K[0G      ✓ {{ v|date("B") }}, v="2011-09-06T16:05:02.000Z" should render 712 
+      ◦ {{ v|date("g") }}, v="2011-09-06T16:05:02.000Z" should render 9: [2K[0G      ✓ {{ v|date("g") }}, v="2011-09-06T16:05:02.000Z" should render 9 
+      ◦ {{ v|date("G") }}, v="2011-09-06T16:05:02.000Z" should render 9: [2K[0G      ✓ {{ v|date("G") }}, v="2011-09-06T16:05:02.000Z" should render 9 
+      ◦ {{ v|date("h") }}, v="2011-09-06T16:05:02.000Z" should render 09: [2K[0G      ✓ {{ v|date("h") }}, v="2011-09-06T16:05:02.000Z" should render 09 
+      ◦ {{ v|date("h", 480) }}, v="2011-01-01T18:00:00.000Z" should render 10: [2K[0G      ✓ {{ v|date("h", 480) }}, v="2011-01-01T18:00:00.000Z" should render 10 
+      ◦ {{ v|date("H") }}, v="2011-09-06T16:05:02.000Z" should render 09: [2K[0G      ✓ {{ v|date("H") }}, v="2011-09-06T16:05:02.000Z" should render 09 
+      ◦ {{ v|date("i") }}, v="2011-09-06T16:05:02.000Z" should render 05: [2K[0G      ✓ {{ v|date("i") }}, v="2011-09-06T16:05:02.000Z" should render 05 
+      ◦ {{ v|date("s") }}, v="2011-09-06T16:05:02.000Z" should render 02: [2K[0G      ✓ {{ v|date("s") }}, v="2011-09-06T16:05:02.000Z" should render 02 
+      ◦ {{ v|date("d-m-Y") }}, v="2011-09-06T16:05:02.000Z" should render 06-09-2011: [2K[0G      ✓ {{ v|date("d-m-Y") }}, v="2011-09-06T16:05:02.000Z" should render 06-09-2011 
+      ◦ {{ v|date("O") }}, v="2011-09-06T16:05:02.000Z" should render +0700: [2K[0G      ✓ {{ v|date("O") }}, v="2011-09-06T16:05:02.000Z" should render +0700 
+      ◦ {{ v|date("O", -120) }}, v="2011-01-01T22:00:00.000Z" should render -0200: [2K[0G      ✓ {{ v|date("O", -120) }}, v="2011-01-01T22:00:00.000Z" should render -0200 
+      ◦ {{ v|date("Z") }}, v="2011-09-06T16:05:02.000Z" should render 25200: [2K[0G      ✓ {{ v|date("Z") }}, v="2011-09-06T16:05:02.000Z" should render 25200 
+      ◦ {{ v|date("O", 360) }}, v="2011-09-06T16:05:02.000Z" should render +0600: [2K[0G      ✓ {{ v|date("O", 360) }}, v="2011-09-06T16:05:02.000Z" should render +0600 
+      ◦ {{ v|date("G", 320) }}, v="2011-09-06T16:05:02.000Z" should render 10: [2K[0G      ✓ {{ v|date("G", 320) }}, v="2011-09-06T16:05:02.000Z" should render 10 
+      ◦ {{ v|date("c") }}, v="2011-09-06T16:05:02.000Z" should render 2011-09-06T16:05:02.000Z: [2K[0G      ✓ {{ v|date("c") }}, v="2011-09-06T16:05:02.000Z" should render 2011-09-06T16:05:02.000Z 
+      ◦ {{ v|date("r") }}, v="2011-09-06T16:05:02.000Z" should render Tue, 06 Sep 2011 16:05:02 GMT: [2K[0G      ✓ {{ v|date("r") }}, v="2011-09-06T16:05:02.000Z" should render Tue, 06 Sep 2011 16:05:02 GMT 
+      ◦ {{ v|date("U") }}, v="2011-09-06T16:05:02.000Z" should render 1315325102: [2K[0G      ✓ {{ v|date("U") }}, v="2011-09-06T16:05:02.000Z" should render 1315325102 
+      ◦ {{ v|date("S") }}, v="2011-09-01T07:00:00.000Z" should render st: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-01T07:00:00.000Z" should render st 
+      ◦ {{ v|date("S") }}, v="2011-09-02T07:00:00.000Z" should render nd: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-02T07:00:00.000Z" should render nd 
+      ◦ {{ v|date("S") }}, v="2011-09-03T07:00:00.000Z" should render rd: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-03T07:00:00.000Z" should render rd 
+      ◦ {{ v|date("S") }}, v="2011-09-04T07:00:00.000Z" should render th: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-04T07:00:00.000Z" should render th 
+      ◦ {{ v|date("S") }}, v="2011-09-10T07:00:00.000Z" should render th: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-10T07:00:00.000Z" should render th 
+      ◦ {{ v|date("S") }}, v="2011-09-11T07:00:00.000Z" should render th: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-11T07:00:00.000Z" should render th 
+      ◦ {{ v|date("S") }}, v="2011-09-12T07:00:00.000Z" should render th: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-12T07:00:00.000Z" should render th 
+      ◦ {{ v|date("S") }}, v="2011-09-13T07:00:00.000Z" should render th: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-13T07:00:00.000Z" should render th 
+      ◦ {{ v|date("S") }}, v="2011-09-21T07:00:00.000Z" should render st: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-21T07:00:00.000Z" should render st 
+      ◦ {{ v|date("S") }}, v="2011-09-22T07:00:00.000Z" should render nd: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-22T07:00:00.000Z" should render nd 
+      ◦ {{ v|date("S") }}, v="2011-09-23T07:00:00.000Z" should render rd: [2K[0G      ✓ {{ v|date("S") }}, v="2011-09-23T07:00:00.000Z" should render rd 
+      ◦ {{ v|date("\D") }}, v="2011-09-06T16:05:02.000Z" should render D: [2K[0G      ✓ {{ v|date("\D") }}, v="2011-09-06T16:05:02.000Z" should render D 
+      ◦ {{ v|date("\t\e\s\t") }}, v="2011-09-06T16:05:02.000Z" should render test: [2K[0G      ✓ {{ v|date("\t\e\s\t") }}, v="2011-09-06T16:05:02.000Z" should render test 
+      ◦ {{ v|date("\\D") }}, v="2011-09-06T16:05:02.000Z" should render \Tue: [2K[0G      ✓ {{ v|date("\\D") }}, v="2011-09-06T16:05:02.000Z" should render \Tue 
+      ◦ {{ v|date("jS \o\f F") }}, v="2012-07-04T07:00:00.000Z" should render 4th of July: [2K[0G      ✓ {{ v|date("jS \o\f F") }}, v="2012-07-04T07:00:00.000Z" should render 4th of July 
+    default
+      ◦ {{ v|default("tacos") }}, v="foo" should render foo: [2K[0G      ✓ {{ v|default("tacos") }}, v="foo" should render foo 
+      ◦ {{ v|default("tacos") }}, v=0 should render 0: [2K[0G      ✓ {{ v|default("tacos") }}, v=0 should render 0 
+      ◦ {{ v|default("tacos") }}, v="" should render tacos: [2K[0G      ✓ {{ v|default("tacos") }}, v="" should render tacos 
+      ◦ {{ v|default("tacos") }}, v=undefined should render tacos: [2K[0G      ✓ {{ v|default("tacos") }}, v=undefined should render tacos 
+      ◦ {{ v|default("tacos") }}, v=null should render tacos: [2K[0G      ✓ {{ v|default("tacos") }}, v=null should render tacos 
+      ◦ {{ v|default("tacos") }}, v=false should render tacos: [2K[0G      ✓ {{ v|default("tacos") }}, v=false should render tacos 
+    escape
+      ◦ {{ v|escape }}, v="<foo>" should render &lt;foo&gt;: [2K[0G      ✓ {{ v|escape }}, v="<foo>" should render &lt;foo&gt; 
+      ◦ {{ v|e("js") }}, v="\"double quotes\" and 'single quotes'" should render \u0022double quotes\u0022 and \u0027single quotes\u0027: [2K[0G      ✓ {{ v|e("js") }}, v="\"double quotes\" and 'single quotes'" should render \u0022double quotes\u0022 and \u0027single quotes\u0027 
+      ◦ {{ v|escape("js") }}, v="<script>and this</script>" should render \u003Cscript\u003Eand this\u003C/script\u003E: [2K[0G      ✓ {{ v|escape("js") }}, v="<script>and this</script>" should render \u003Cscript\u003Eand this\u003C/script\u003E 
+      ◦ {{ v|e("js") }}, v="\\ : backslashes, too" should render \u005C : backslashes, too: [2K[0G      ✓ {{ v|e("js") }}, v="\\ : backslashes, too" should render \u005C : backslashes, too 
+      ◦ {{ v|e("js") }}, v="and lots of whitespace: \r\n\t\u000b\f\b" should render and lots of whitespace: \u000D\u000A\u0009\u000B\u000C\u0008: [2K[0G      ✓ {{ v|e("js") }}, v="and lots of whitespace: \r\n\t\u000b\f\b" should render and lots of whitespace: \u000D\u000A\u0009\u000B\u000C\u0008 
+      ◦ {{ v|e("js") }}, v="and \"special\" chars = -1;" should render and \u0022special\u0022 chars \u003D \u002D1\u003B: [2K[0G      ✓ {{ v|e("js") }}, v="and \"special\" chars = -1;" should render and \u0022special\u0022 chars \u003D \u002D1\u003B 
+      ◦ {{ v|e }}, v=["<p>","</p>"] should render &lt;p&gt;,&lt;/p&gt;: [2K[0G      ✓ {{ v|e }}, v=["<p>","</p>"] should render &lt;p&gt;,&lt;/p&gt; 
+    first
+      ◦ {{ v|first }}, v=[1,2,3,4] should render 1: [2K[0G      ✓ {{ v|first }}, v=[1,2,3,4] should render 1 
+      ◦ {{ v|first }}, v="213" should render 2: [2K[0G      ✓ {{ v|first }}, v="213" should render 2 
+      ◦ {{ v|first }}, v={"foo":"blah"} should render blah: [2K[0G      ✓ {{ v|first }}, v={"foo":"blah"} should render blah 
+    groupBy
+      ◦ {{ v|groupBy("name")|json }}, v=[{"name":"a","a":1},{"name":"a","a":2},{"name":"b","a":3}] should render {&quot;a&quot;:[{&quot;a&quot;:1},{&quot;a&quot;:2}],&quot;b&quot;:[{&quot;a&quot;:3}]}: [2K[0G      ✓ {{ v|groupBy("name")|json }}, v=[{"name":"a","a":1},{"name":"a","a":2},{"name":"b","a":3}] should render {&quot;a&quot;:[{&quot;a&quot;:1},{&quot;a&quot;:2}],&quot;b&quot;:[{&quot;a&quot;:3}]} 
+      ◦ {{ v|groupBy("name") }}, v="foo" should render foo: [2K[0G      ✓ {{ v|groupBy("name") }}, v="foo" should render foo 
+    join
+      ◦ {{ v|join("+") }}, v=[1,2,3] should render 1+2+3: [2K[0G      ✓ {{ v|join("+") }}, v=[1,2,3] should render 1+2+3 
+      ◦ {{ v|join(" * ") }}, v=[1,2,3] should render 1 * 2 * 3: [2K[0G      ✓ {{ v|join(" * ") }}, v=[1,2,3] should render 1 * 2 * 3 
+      ◦ {{ v|join(",") }}, v=[1,2,3] should render 1,2,3: [2K[0G      ✓ {{ v|join(",") }}, v=[1,2,3] should render 1,2,3 
+      ◦ {{ v|join(", ") }}, v={"f":1,"b":2,"z":3} should render 1, 2, 3: [2K[0G      ✓ {{ v|join(", ") }}, v={"f":1,"b":2,"z":3} should render 1, 2, 3 
+      ◦ {{ v|join("-") }}, v="asdf" should render asdf: [2K[0G      ✓ {{ v|join("-") }}, v="asdf" should render asdf 
+    json
+      ◦ {{ v|json }}, v={"foo":"bar","baz":[1,2,3]} should render {&quot;foo&quot;:&quot;bar&quot;,&quot;baz&quot;:[1,2,3]}: [2K[0G      ✓ {{ v|json }}, v={"foo":"bar","baz":[1,2,3]} should render {&quot;foo&quot;:&quot;bar&quot;,&quot;baz&quot;:[1,2,3]} 
+      ◦ {{ v|json(2) }}, v={"foo":"bar","baz":[1,2,3]} should render {\n  &quot;foo&quot;: &quot;bar&quot;,\n  &quot;baz&quot;: [\n    1,\n    2,\n    3\n  ]\n}: [2K[0G      ✓ {{ v|json(2) }}, v={"foo":"bar","baz":[1,2,3]} should render {\n  &quot;foo&quot;: &quot;bar&quot;,\n  &quot;baz&quot;: [\n    1,\n    2,\n    3\n  ]\n} 
+    last
+      ◦ {{ v|last }}, v=[1,2,3,4] should render 4: [2K[0G      ✓ {{ v|last }}, v=[1,2,3,4] should render 4 
+      ◦ {{ v|last }}, v="123" should render 3: [2K[0G      ✓ {{ v|last }}, v="123" should render 3 
+      ◦ {{ v|last }}, v={"foo":"blah","bar":"nope"} should render nope: [2K[0G      ✓ {{ v|last }}, v={"foo":"blah","bar":"nope"} should render nope 
+    lower
+      ◦ {{ v|lower }}, v="BaR" should render bar: [2K[0G      ✓ {{ v|lower }}, v="BaR" should render bar 
+      ◦ {{ v|lower }}, v="345" should render 345: [2K[0G      ✓ {{ v|lower }}, v="345" should render 345 
+      ◦ {{ v|lower }}, v=["FOO","bAr"] should render foo,bar: [2K[0G      ✓ {{ v|lower }}, v=["FOO","bAr"] should render foo,bar 
+      ◦ {{ v|lower|join("") }}, v={"foo":"BAR"} should render bar: [2K[0G      ✓ {{ v|lower|join("") }}, v={"foo":"BAR"} should render bar 
+    safe
+      ◦ {{ v|safe }}, v="<&>" should render <&>: [2K[0G      ✓ {{ v|safe }}, v="<&>" should render <&> 
+      ◦ {{ v|raw }}, v="<&>" should render <&>: [2K[0G      ✓ {{ v|raw }}, v="<&>" should render <&> 
+      ◦ {{ v|first|safe }}, v=["<&>"] should render <&>: [2K[0G      ✓ {{ v|first|safe }}, v=["<&>"] should render <&> 
+      ◦ {{ v|safe|lower }}, v="<&>fOo" should render <&>foo: [2K[0G      ✓ {{ v|safe|lower }}, v="<&>fOo" should render <&>foo 
+    replace
+      ◦ {{ v|replace("o", "a") }}, v="foo" should render fao: [2K[0G      ✓ {{ v|replace("o", "a") }}, v="foo" should render fao 
+      ◦ {{ v|replace("o", "", "g") }}, v="fooboo" should render fb: [2K[0G      ✓ {{ v|replace("o", "", "g") }}, v="fooboo" should render fb 
+      ◦ {{ v|replace("\W+", "-") }}, v="$*&1aZ" should render -1aZ: [2K[0G      ✓ {{ v|replace("\W+", "-") }}, v="$*&1aZ" should render -1aZ 
+    reverse
+      ◦ {{ v|reverse }}, v=[1,2,3] should render 3,2,1: [2K[0G      ✓ {{ v|reverse }}, v=[1,2,3] should render 3,2,1 
+      ◦ {{ v|reverse }}, v="asdf" should render fdsa: [2K[0G      ✓ {{ v|reverse }}, v="asdf" should render fdsa 
+      ◦ {{ v|reverse }}, v={"baz":"bop","foo":"bar"} should render foo,baz: [2K[0G      ✓ {{ v|reverse }}, v={"baz":"bop","foo":"bar"} should render foo,baz 
+    sort
+      ◦ {{ v|sort }}, v=[3,1,4] should render 1,3,4: [2K[0G      ✓ {{ v|sort }}, v=[3,1,4] should render 1,3,4 
+      ◦ {{ v|sort }}, v="zaq" should render aqz: [2K[0G      ✓ {{ v|sort }}, v="zaq" should render aqz 
+      ◦ {{ v|sort }}, v={"foo":"1","bar":"2"} should render bar,foo: [2K[0G      ✓ {{ v|sort }}, v={"foo":"1","bar":"2"} should render bar,foo 
+    striptags
+      ◦ {{ v|striptags }}, v="<h1>foo</h1> <div class=\"blah\">hi</div>" should render foo hi: [2K[0G      ✓ {{ v|striptags }}, v="<h1>foo</h1> <div class=\"blah\">hi</div>" should render foo hi 
+      ◦ {{ v|striptags }}, v=["<foo>bar</foo>","<bar>foo"] should render bar,foo: [2K[0G      ✓ {{ v|striptags }}, v=["<foo>bar</foo>","<bar>foo"] should render bar,foo 
+    title
+      ◦ {{ v|title }}, v="this iS titLe case" should render This Is Title Case: [2K[0G      ✓ {{ v|title }}, v="this iS titLe case" should render This Is Title Case 
+      ◦ {{ v|title }}, v=["foo","bAr"] should render Foo,Bar: [2K[0G      ✓ {{ v|title }}, v=["foo","bAr"] should render Foo,Bar 
+    uniq
+      ◦ {{ v|uniq }}, v=[2,1,2,3,4,4] should render 2,1,3,4: [2K[0G      ✓ {{ v|uniq }}, v=[2,1,2,3,4,4] should render 2,1,3,4 
+      ◦ {{ v|uniq }}, v="foo" should render : [2K[0G      ✓ {{ v|uniq }}, v="foo" should render  
+    upper
+      ◦ {{ v|upper }}, v="bar" should render BAR: [2K[0G      ✓ {{ v|upper }}, v="bar" should render BAR 
+      ◦ {{ v|upper }}, v=345 should render 345: [2K[0G      ✓ {{ v|upper }}, v=345 should render 345 
+      ◦ {{ v|upper }}, v=["foo","bAr"] should render FOO,BAR: [2K[0G      ✓ {{ v|upper }}, v=["foo","bAr"] should render FOO,BAR 
+      ◦ {{ v|upper|join("") }}, v={"foo":"bar"} should render BAR: [2K[0G      ✓ {{ v|upper|join("") }}, v={"foo":"bar"} should render BAR 
+    url_encode
+      ◦ {{ v|url_encode }}, v="param=1&anotherParam=2" should render param%3D1%26anotherParam%3D2: [2K[0G      ✓ {{ v|url_encode }}, v="param=1&anotherParam=2" should render param%3D1%26anotherParam%3D2 
+      ◦ {{ v|url_encode }}, v=["param=1","anotherParam=2"] should render param%3D1,anotherParam%3D2: [2K[0G      ✓ {{ v|url_encode }}, v=["param=1","anotherParam=2"] should render param%3D1,anotherParam%3D2 
+    url_decode
+      ◦ {{ v|url_decode }}, v="param%3D1%26anotherParam%3D2" should render param=1&amp;anotherParam=2: [2K[0G      ✓ {{ v|url_decode }}, v="param%3D1%26anotherParam%3D2" should render param=1&amp;anotherParam=2 
+      ◦ {{ v|url_decode }}, v=["param%3D1","anotherParam%3D2"] should render param=1,anotherParam=2: [2K[0G      ✓ {{ v|url_decode }}, v=["param%3D1","anotherParam%3D2"] should render param=1,anotherParam=2 
+
+  swig.loaders
+    API
+      ◦ requires load and resolve methods: [2K[0G      ✓ requires load and resolve methods 
+    Memory
+      ◦ can use extends: [2K[0G      ✓ can use extends 
+      ◦ can use include: [2K[0G      ✓ can use include 
+      ◦ can use base paths: [2K[0G      ✓ can use base paths 
+      ◦ throws on undefined template: [2K[0G      ✓ throws on undefined template 
+      ◦ will run asynchronously: [2K[0G      ✓ will run asynchronously 
+    FileSystem
+      ◦ is the default: [2K[0G      ✓ is the default 
+      ◦ can take a base path: [2K[0G      ✓ can take a base path 
+      ◦ will run asynchronously: [2K[0G      ✓ will run asynchronously 
+      ◦ takes cwd as default base path: [2K[0G      ✓ takes cwd as default base path 
+
+  Regressions
+    ◦ gh-285: preserves forward-slashes in text: [2K[0G    ✓ gh-285: preserves forward-slashes in text 
+    ◦ gh-303: sets work in loops: [2K[0G    ✓ gh-303: sets work in loops 
+    ◦ gh-322: logic words are not partially matched: [2K[0G    ✓ gh-322: logic words are not partially matched 
+    ◦ gh-323: stuff: [2K[0G    ✓ gh-323: stuff 
+    ◦ gh-287: Options object overwrite exposure: [2K[0G    ✓ gh-287: Options object overwrite exposure 
+
+  Tag: autoescape
+    ◦ {% autoescape true %} turns escaping on: [2K[0G    ✓ {% autoescape true %} turns escaping on 
+    ◦ {% autoescape "js" %} escapes for js: [2K[0G    ✓ {% autoescape "js" %} escapes for js 
+    ◦ {% autoescape false %} turns escaping off: [2K[0G    ✓ {% autoescape false %} turns escaping off 
+    ◦ {% autoescape whatthewhat %} throws because unknown argument: [2K[0G    ✓ {% autoescape whatthewhat %} throws because unknown argument 
+
+  Tag: else
+    ◦ {% if true %}{% else %}: [2K[0G    ✓ {% if true %}{% else %} 
+    ◦ {% if false %}{% else %}: [2K[0G    ✓ {% if false %}{% else %} 
+    ◦ must be within an {% if %}: [2K[0G    ✓ must be within an {% if %} 
+    ◦ does not accept conditionals/args (use elseif, elif): [2K[0G    ✓ does not accept conditionals/args (use elseif, elif) 
+
+  Tag: elseif, elif
+    ◦ {% if false %}{% elseif true %}: [2K[0G    ✓ {% if false %}{% elseif true %} 
+    ◦ {% if false %}{% elseif false %}: [2K[0G    ✓ {% if false %}{% elseif false %} 
+    ◦ {% if false %}{% elseif foo > 1 %}: [2K[0G    ✓ {% if false %}{% elseif foo > 1 %} 
+    ◦ must be within an {% if %}: [2K[0G    ✓ must be within an {% if %} 
+    ◦ requires a conditional: [2K[0G    ✓ requires a conditional 
+
+  Tag: extends
+    ◦ throws if template has no filename: [2K[0G    ✓ throws if template has no filename 
+
+  Tag: filter
+    ◦ {% filter upper %}: [2K[0G    ✓ {% filter upper %} 
+    ◦ {% filter default("foobar") %}: [2K[0G    ✓ {% filter default("foobar") %} 
+    ◦ {% filter replace("s", "d", "g") %}: [2K[0G    ✓ {% filter replace("s", "d", "g") %} 
+    ◦ {% filter default(fn("foo")) %}: [2K[0G    ✓ {% filter default(fn("foo")) %} 
+    ◦ {% filter default(foo) %}: [2K[0G    ✓ {% filter default(foo) %} 
+    ◦ throws on non-existent filter: [2K[0G    ✓ throws on non-existent filter 
+
+  Tag: for
+    ◦ {% for a in b %}{{ a }}{% endfor %} should render "123": [2K[0G    ✓ {% for a in b %}{{ a }}{% endfor %} should render "123" 
+    ◦ {% for a in [1,2,3] %}{{ a }}{% endfor %} should render "123": [2K[0G    ✓ {% for a in [1,2,3] %}{{ a }}{% endfor %} should render "123" 
+    ◦ {% for a in b %}{{ loop.index }}{% endfor %} should render "123": [2K[0G    ✓ {% for a in b %}{{ loop.index }}{% endfor %} should render "123" 
+    ◦ {% for a in c %}{{ loop.index }}{% endfor %} should render "12": [2K[0G    ✓ {% for a in c %}{{ loop.index }}{% endfor %} should render "12" 
+    ◦ {% for a in b %}{{ loop.index0 }}{% endfor %} should render "012": [2K[0G    ✓ {% for a in b %}{{ loop.index0 }}{% endfor %} should render "012" 
+    ◦ {% for a in c %}{{ loop.index0 }}{% endfor %} should render "01": [2K[0G    ✓ {% for a in c %}{{ loop.index0 }}{% endfor %} should render "01" 
+    ◦ {% for a in b %}{{ loop.revindex }}{% endfor %} should render "321": [2K[0G    ✓ {% for a in b %}{{ loop.revindex }}{% endfor %} should render "321" 
+    ◦ {% for a in c %}{{ loop.revindex }}{% endfor %} should render "21": [2K[0G    ✓ {% for a in c %}{{ loop.revindex }}{% endfor %} should render "21" 
+    ◦ {% for a in b %}{{ loop.revindex0 }}{% endfor %} should render "210": [2K[0G    ✓ {% for a in b %}{{ loop.revindex0 }}{% endfor %} should render "210" 
+    ◦ {% for a in c %}{{ loop.revindex0 }}{% endfor %} should render "10": [2K[0G    ✓ {% for a in c %}{{ loop.revindex0 }}{% endfor %} should render "10" 
+    ◦ {% for a in b %}{{ loop.key }}{% endfor %} should render "012": [2K[0G    ✓ {% for a in b %}{{ loop.key }}{% endfor %} should render "012" 
+    ◦ {% for a in c %}{{ loop.key }}{% endfor %} should render "ab": [2K[0G    ✓ {% for a in c %}{{ loop.key }}{% endfor %} should render "ab" 
+    ◦ {% for a,b in b %}{{ loop.key }}{% endfor %} should render "012": [2K[0G    ✓ {% for a,b in b %}{{ loop.key }}{% endfor %} should render "012" 
+    ◦ {% for a,b in c %}{{ loop.key }}{% endfor %} should render "ab": [2K[0G    ✓ {% for a,b in c %}{{ loop.key }}{% endfor %} should render "ab" 
+    ◦ {% for a in b %}{{ loop.first }}, {% endfor %} should render "true, false, false, ": [2K[0G    ✓ {% for a in b %}{{ loop.first }}, {% endfor %} should render "true, false, false, " 
+    ◦ {% for a in b %}{{ loop.last }}, {% endfor %} should render "false, false, true, ": [2K[0G    ✓ {% for a in b %}{{ loop.last }}, {% endfor %} should render "false, false, true, " 
+    ◦ {% for a in c %}{{ loop.first }}, {% endfor %} should render "true, false, ": [2K[0G    ✓ {% for a in c %}{{ loop.first }}, {% endfor %} should render "true, false, " 
+    ◦ {% for a in c %}{{ loop.last }}, {% endfor %} should render "false, true, ": [2K[0G    ✓ {% for a in c %}{{ loop.last }}, {% endfor %} should render "false, true, " 
+    ◦ {% for a,b in b %}{{ a }}{{ b }}{% endfor %} should render "011223": [2K[0G    ✓ {% for a,b in b %}{{ a }}{{ b }}{% endfor %} should render "011223" 
+    ◦ {% for a, b in c %}{{ b }}{% endfor %} should render "applebanana": [2K[0G    ✓ {% for a, b in c %}{{ b }}{% endfor %} should render "applebanana" 
+    ◦ {% for a in d|default(["a"]) %}{{ a }}{% endfor %} should render "a": [2K[0G    ✓ {% for a in d|default(["a"]) %}{{ a }}{% endfor %} should render "a" 
+    ◦ {% for a in q %}hi{% endfor %} should render "": [2K[0G    ✓ {% for a in q %}hi{% endfor %} should render "" 
+    ◦ {% for a in b %}{% for d in c %}{% for a in b %}{% endfor %}{% endfor %}{% if loop.last %}last happens only once{% endif %}{% endfor %} should render "last happens only once": [2K[0G    ✓ {% for a in b %}{% for d in c %}{% for a in b %}{% endfor %}{% endfor %}{% if loop.last %}last happens only once{% endif %}{% endfor %} should render "last happens only once" 
+    ◦ {% for a in "foobar"|reverse %}{{ a }}{% endfor %} should render "raboof": [2K[0G    ✓ {% for a in "foobar"|reverse %}{{ a }}{% endfor %} should render "raboof" 
+    ◦ resets loop and vars: [2K[0G    ✓ resets loop and vars 
+    ◦ throws on numbers as any argument: [2K[0G    ✓ throws on numbers as any argument 
+    ◦ throws on any comparator: [2K[0G    ✓ throws on any comparator 
+
+  Tag: if
+    ◦ {% if foo %}: [2K[0G    ✓ {% if foo %} 
+    ◦ {% if true %}: [2K[0G    ✓ {% if true %} 
+    ◦ {% if false %}: [2K[0G    ✓ {% if false %} 
+    ◦ {% if foo > bar %}: [2K[0G    ✓ {% if foo > bar %} 
+    ◦ {% if foo gt bar %}: [2K[0G    ✓ {% if foo gt bar %} 
+    ◦ {% if foo >= foo %}: [2K[0G    ✓ {% if foo >= foo %} 
+    ◦ {% if foo gte bar %}: [2K[0G    ✓ {% if foo gte bar %} 
+    ◦ {% if foo >= bar %}: [2K[0G    ✓ {% if foo >= bar %} 
+    ◦ {% if foo < bar %}: [2K[0G    ✓ {% if foo < bar %} 
+    ◦ {% if foo lt bar %}: [2K[0G    ✓ {% if foo lt bar %} 
+    ◦ {% if bar <= bar %}: [2K[0G    ✓ {% if bar <= bar %} 
+    ◦ {% if foo <= bar %}: [2K[0G    ✓ {% if foo <= bar %} 
+    ◦ {% if foo lte bar %}: [2K[0G    ✓ {% if foo lte bar %} 
+    ◦ {% if foo !== bar %}: [2K[0G    ✓ {% if foo !== bar %} 
+    ◦ {% if foo != bar %}: [2K[0G    ✓ {% if foo != bar %} 
+    ◦ {% if !foo %}: [2K[0G    ✓ {% if !foo %} 
+    ◦ {% if not foo %}: [2K[0G    ✓ {% if not foo %} 
+    ◦ {% if !bar %}: [2K[0G    ✓ {% if !bar %} 
+    ◦ {% if not bar %}: [2K[0G    ✓ {% if not bar %} 
+    ◦ {% if foo in baz %}: [2K[0G    ✓ {% if foo in baz %} 
+    ◦ {% if bar in baz %}: [2K[0G    ✓ {% if bar in baz %} 
+    ◦ {% if 1 < 0 %}: [2K[0G    ✓ {% if 1 < 0 %} 
+    ◦ {% if "a" === "a" %}: [2K[0G    ✓ {% if "a" === "a" %} 
+    ◦ {% if 1 === foo %}: [2K[0G    ✓ {% if 1 === foo %} 
+    ◦ {% if 1 === bar %}: [2K[0G    ✓ {% if 1 === bar %} 
+    ◦ {% if true && false %}: [2K[0G    ✓ {% if true && false %} 
+    ◦ {% if 0 || (bar && foo) %}: [2K[0G    ✓ {% if 0 || (bar && foo) %} 
+    ◦ {% if not (2 in baz) %}: [2K[0G    ✓ {% if not (2 in baz) %} 
+    ◦ requires a conditional: [2K[0G    ✓ requires a conditional 
+    ◦ throws on bad logic: [2K[0G    ✓ throws on bad logic 
+
+  Tag: import
+    ◦ throws on bad arguments: [2K[0G    ✓ throws on bad arguments 
+
+  Tag: include
+    ◦ Works with non-relative loader setups: [2K[0G    ✓ Works with non-relative loader setups 
+    {% include "foo" ignore missing %}
+      ◦ does not throw if missing: [2K[0G      ✓ does not throw if missing 
+      ◦ throws on bad syntax: [2K[0G      ✓ throws on bad syntax 
+
+  Tag: macro
+    ◦ {% macro tacos() %}: [2K[0G    ✓ {% macro tacos() %} 
+    ◦ {% macro tacos(a, b, c) %}: [2K[0G    ✓ {% macro tacos(a, b, c) %} 
+    ◦ does not auto-escape: [2K[0G    ✓ does not auto-escape 
+    ◦ throws on bad argument names: [2K[0G    ✓ throws on bad argument names 
+    ◦ gh-457: local context is copied and overwritten within macro context: [2K[0G    ✓ gh-457: local context is copied and overwritten within macro context 
+    ◦ gh-499: a macro can be set to a variable: [2K[0G    ✓ gh-499: a macro can be set to a variable 
+
+  Tag: parent
+    ◦ does nothing if no parent: [2K[0G    ✓ does nothing if no parent 
+    ◦ does not accept arguments: [2K[0G    ✓ does not accept arguments 
+
+  Tag: raw
+    ◦ {% raw %}{{ foo }}{% endraw %}: [2K[0G    ✓ {% raw %}{{ foo }}{% endraw %} 
+    ◦ {% raw %}{% foo %}{% endraw %}: [2K[0G    ✓ {% raw %}{% foo %}{% endraw %} 
+    ◦ {% raw %}
+{% if true %}
+stuff
+{% endif %}
+{% endraw %}: [2K[0G    ✓ {% raw %}
+{% if true %}
+stuff
+{% endif %}
+{% endraw %} 
+    ◦ {% raw %}{# foo #}{% endraw %}: [2K[0G    ✓ {% raw %}{# foo #}{% endraw %} 
+    ◦ does not accept arguments: [2K[0G    ✓ does not accept arguments 
+
+  Tag: set
+    ◦ {% set bar = "bar" %}{% set foo[bar] = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set foo[bar] = "con queso" %} 
+    ◦ {% set bar = "bar" %}{% set foo['bar'] = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set foo['bar'] = "con queso" %} 
+    ◦ {% set bar = "bar" %}{% set foo["bar"] = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set foo["bar"] = "con queso" %} 
+    ◦ {% set bar = "bar" %}{% set foo['bar.baz'] = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set foo['bar.baz'] = "con queso" %} 
+    ◦ {% set bar = "bar" %}{% set foo["bar.baz"] = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set foo["bar.baz"] = "con queso" %} 
+    ◦ {% set bar = "bar" %}{% set foo['bar=baz'] = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set foo['bar=baz'] = "con queso" %} 
+    ◦ {% set bar = "bar" %}{% set foo["bar=baz"] = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set foo["bar=baz"] = "con queso" %} 
+    ◦ {% set bar = "bar" %}{% set baz.bar = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set baz.bar = "con queso" %} 
+    ◦ {% set bar = "bar" %}{% set baz.bar.baz = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set baz.bar.baz = "con queso" %} 
+    ◦ {% set bar = "bar" %}{% set baz["bar"].baz = "con queso" %}: [2K[0G    ✓ {% set bar = "bar" %}{% set baz["bar"].baz = "con queso" %} 
+    ◦ {% set foo = 1 %}: [2K[0G    ✓ {% set foo = 1 %} 
+    ◦ {% set foo = "burritos" %}: [2K[0G    ✓ {% set foo = "burritos" %} 
+    ◦ {% set foo = 1 + 3 %}: [2K[0G    ✓ {% set foo = 1 + 3 %} 
+    ◦ {% set foo += 4 %}: [2K[0G    ✓ {% set foo += 4 %} 
+    ◦ {% set foo -= 1 %}: [2K[0G    ✓ {% set foo -= 1 %} 
+    ◦ {% set foo *= 3 %}: [2K[0G    ✓ {% set foo *= 3 %} 
+    ◦ {% set foo /= 2 %}: [2K[0G    ✓ {% set foo /= 2 %} 
+    ◦ {% set foo = bar|default(1) %}: [2K[0G    ✓ {% set foo = bar|default(1) %} 
+    ◦ {% set foo = foo === 1 %}: [2K[0G    ✓ {% set foo = foo === 1 %} 
+    ◦ {% set foo = 1 === 1 and not false %}: [2K[0G    ✓ {% set foo = 1 === 1 and not false %} 
+    ◦ throws on incorrect assignments: [2K[0G    ✓ throws on incorrect assignments 
+
+  Tag: spaceless
+    ◦ {% spaceless %} <p> foo </p> <p>bar</p> {% endspaceless %}: [2K[0G    ✓ {% spaceless %} <p> foo </p> <p>bar</p> {% endspaceless %} 
+    ◦ {% spaceless %}{% if true %}<p></p> <p></p>{% endif %}{% endspaceless %}: [2K[0G    ✓ {% spaceless %}{% if true %}<p></p> <p></p>{% endif %}{% endspaceless %} 
+    ◦ {% spaceless %}{% if false %}{% else %}<p></p> <p></p>{% endif %}{% endspaceless %}: [2K[0G    ✓ {% spaceless %}{% if false %}{% else %}<p></p> <p></p>{% endif %}{% endspaceless %} 
+    ◦ {% spaceless %}{% macro foo %}<p></p> <p></p>{% endmacro %}{% endspaceless %}{{ foo() }}: [2K[0G    ✓ {% spaceless %}{% macro foo %}<p></p> <p></p>{% endmacro %}{% endspaceless %}{{ foo() }} 
+    ◦ {% macro foo %}<p></p> <p></p>{% endmacro %}{% spaceless %}{{ foo() }}{% endspaceless %}: [2K[0G    ✓ {% macro foo %}<p></p> <p></p>{% endmacro %}{% spaceless %}{{ foo() }}{% endspaceless %} 
+    ◦ Throws on tokens: [2K[0G    ✓ Throws on tokens 
+
+  Tags
+    ◦ throws on unknown tags: [2K[0G    ✓ throws on unknown tags 
+    ◦ throws on unexpected endtag: [2K[0G    ✓ throws on unexpected endtag 
+    ◦ can have any set of tokens in end tags: [2K[0G    ✓ can have any set of tokens in end tags 
+    can be set
+      ◦ and used in templates: [2K[0G      ✓ and used in templates 
+      ◦ and use custom extensions: [2K[0G      ✓ and use custom extensions 
+      ◦ and throw if are not written correctly: [2K[0G      ✓ and throw if are not written correctly 
+
+  Templates
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_1: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_1 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_2: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_2 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_set: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_set 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/import: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/import 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/include: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/include 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/include_extends: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/include_extends 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/macros: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/macros 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/nested_blocks: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/nested_blocks 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/parent-parent: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/parent-parent 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/parent: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/parent 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/set: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/set 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_tests/extends_3: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_tests/extends_3 
+    ◦ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_tests/extends_4: [2K[0G    ✓ /Users/jakub/Developer/Blame/externals/swig/tests/cases/extends_tests/extends_4 
+    ◦ throw if circular extends are found: [2K[0G    ✓ throw if circular extends are found 
+    ◦ throw with filename reporting: [2K[0G    ✓ throw with filename reporting 
+
+  Variables
+    can be output
+      ◦ {{ ap }}, {{ bu }}: [2K[0G      ✓ {{ ap }}, {{ bu }} 
+    can be string and number literals
+      ◦ {{ "a" }}: [2K[0G      ✓ {{ "a" }} 
+      ◦ {{ 1 }}: [2K[0G      ✓ {{ 1 }} 
+      ◦ {{ 1.5 }}: [2K[0G      ✓ {{ 1.5 }} 
+      ◦ {{ true }}: [2K[0G      ✓ {{ true }} 
+    return empty string if undefined
+      ◦ "{{ u }}": [2K[0G      ✓ "{{ u }}" 
+    return empty string if null
+      ◦ "{{ n }}": [2K[0G      ✓ "{{ n }}" 
+      ◦ "{{ o3.n }}": [2K[0G      ✓ "{{ o3.n }}" 
+    can use operators
+      ◦ {{ a + 3 }}: [2K[0G      ✓ {{ a + 3 }} 
+      ◦ {{ a * 3 }}: [2K[0G      ✓ {{ a * 3 }} 
+      ◦ {{ a / 3 }}: [2K[0G      ✓ {{ a / 3 }} 
+      ◦ {{ 3 - a }}: [2K[0G      ✓ {{ 3 - a }} 
+      ◦ {{ a % 3 }}: [2K[0G      ✓ {{ a % 3 }} 
+    can include objects
+      ◦ {{ {0: 1, a: "b"} }}: [2K[0G      ✓ {{ {0: 1, a: "b"} }} 
+      ◦ {{ Object.keys({ 0: 1, a: "b" }) }}: [2K[0G      ✓ {{ Object.keys({ 0: 1, a: "b" }) }} 
+      ◦ {{ o.foo() }}: [2K[0G      ✓ {{ o.foo() }} 
+      ◦ {{ o2.foo() }}: [2K[0G      ✓ {{ o2.foo() }} 
+      ◦ {{ o2.foo("foobar") }}: [2K[0G      ✓ {{ o2.foo("foobar") }} 
+      ◦ {{ o2.bar }}: [2K[0G      ✓ {{ o2.bar }} 
+      ◦ {{ o2.$bar }}: [2K[0G      ✓ {{ o2.$bar }} 
+    can include arrays
+      ◦ {{ [0, 1, 3] }}: [2K[0G      ✓ {{ [0, 1, 3] }} 
+    are escaped by default
+      ◦ {{ foo }}: [2K[0G      ✓ {{ foo }} 
+    can execute functions
+      ◦ {{ c() }}: [2K[0G      ✓ {{ c() }} 
+      ◦ {{ c(1) }}: [2K[0G      ✓ {{ c(1) }} 
+      ◦ {{ d(1)|default("tacos")|replace("tac", "churr") }}: [2K[0G      ✓ {{ d(1)|default("tacos")|replace("tac", "churr") }} 
+      ◦ {{ d()|default("tacos") }}: [2K[0G      ✓ {{ d()|default("tacos") }} 
+      ◦ {{ e.f(4, "blah") }}: [2K[0G      ✓ {{ e.f(4, "blah") }} 
+      ◦ {{ q.r(4, "blah") }}: [2K[0G      ✓ {{ q.r(4, "blah") }} 
+      ◦ {{ e["f"](4, "blah") }}: [2K[0G      ✓ {{ e["f"](4, "blah") }} 
+      ◦ {{ chalupa().bar() }}: [2K[0G      ✓ {{ chalupa().bar() }} 
+      ◦ {{ { foo: "bar" }.foo }}: [2K[0G      ✓ {{ { foo: "bar" }.foo }} 
+    can run multiple filters
+      ◦ {{ a|default("")|default(1) }}: [2K[0G      ✓ {{ a|default("")|default(1) }} 
+    can have filters with operators
+      ◦ {{ a|default("1") + b|default("2") }}: [2K[0G      ✓ {{ a|default("1") + b|default("2") }} 
+    can use both notation types
+      ◦ {{ food.a }}: [2K[0G      ✓ {{ food.a }} 
+      ◦ {{ food["a"] }}: [2K[0G      ✓ {{ food["a"] }} 
+      ◦ {{ g[0][h.g.i]["c"].b[i] }}: [2K[0G      ✓ {{ g[0][h.g.i]["c"].b[i] }} 
+    can do some logical operations
+      ◦ {{ ap === "apples" }}: [2K[0G      ✓ {{ ap === "apples" }} 
+      ◦ {{ not a }}: [2K[0G      ✓ {{ not a }} 
+      ◦ {{ a <= 4 }}: [2K[0G      ✓ {{ a <= 4 }} 
+    null objects
+      ◦ {{ n }}: [2K[0G      ✓ {{ n }} 
+    can throw errors when parsing
+      ◦ with left open state: [2K[0G      ✓ with left open state 
+      ◦ with unknown filters: [2K[0G      ✓ with unknown filters 
+      ◦ with weird closing characters: [2K[0G      ✓ with weird closing characters 
+      ◦ with colons outside of objects: [2K[0G      ✓ with colons outside of objects 
+      ◦ with random dots: [2K[0G      ✓ with random dots 
+      ◦ with bad commas: [2K[0G      ✓ with bad commas 
+      ◦ reserved JS words: [2K[0G      ✓ reserved JS words (65ms)
+      ◦ invalid logic: [2K[0G      ✓ invalid logic 
+
+  Whitespace
+    strips before
+      ◦ "burritos\n \n{{- tacos }}\n": [2K[0G      ✓ "burritos\n \n{{- tacos }}\n" 
+      ◦ "burritos\n \n{%- if tacos %}\ntacos\r\n{%- endif %}\n": [2K[0G      ✓ "burritos\n \n{%- if tacos %}\ntacos\r\n{%- endif %}\n" 
+    strips after
+      ◦ "burritos\n \n{{ tacos -}}\n": [2K[0G      ✓ "burritos\n \n{{ tacos -}}\n" 
+      ◦ "burritos\n \n{% if tacos -%}\ntacos\r\n{% endif -%}\n": [2K[0G      ✓ "burritos\n \n{% if tacos -%}\ntacos\r\n{% endif -%}\n" 
+    strips both
+      ◦ "burritos\n \n{{- tacos -}}\n": [2K[0G      ✓ "burritos\n \n{{- tacos -}}\n" 
+      ◦ "burritos\n \n{%- if tacos -%}\ntacos\r\n{%- endif -%}\n": [2K[0G      ✓ "burritos\n \n{%- if tacos -%}\ntacos\r\n{%- endif -%}\n" 
+
+
+  379 passing (2 seconds)
+
