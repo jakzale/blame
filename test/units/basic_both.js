@@ -1217,6 +1217,118 @@ describe('Unions', function () {
     }).to.throw(p.l());
   });
 
+  describe('multiple application', function () {
+    function f(a) {
+      if (typeof a === 'number') {
+        return true;
+      }
+
+      return a;
+    }
+
+    it('should fail for ground types', function () {
+      var type = union(Num, Str);
+
+      expect(function () {
+        wrap(f, p, q, type, type);
+      }).to.throw(p.l());
+
+    });
+
+    it('should work for A -> B \\/ B -> B', function () {
+
+      var type = union(func(Num, Bool), func(Bool, Bool)),
+      wrapped_f = wrap(f, p, q, type, type);
+
+
+      expect(wrapped_f(wrapped_f(1))).to.equal(true);
+    });
+
+    it('should work for ((A -> B) \\/ B -> B) -> B', function () {
+      function app1(f) {
+        return f(f(1));
+      }
+
+      var type = func(union(func(Num, Bool), func(Bool, Bool)), Bool),
+        wrapped_app1 = wrap(app1, p, q, type, type);
+
+      expect(wrapped_app1(f)).to.equal(true);
+    });
+
+    describe('more test', function () {
+      function app(f, n) {
+        return f(f(n));
+      }
+
+      function posid(x) {
+        if (typeof x === 'boolean') {
+          return x;
+        }
+        return x >= 0;
+      }
+
+      describe('union of function contracts', function () {
+        it('should pass with wrapped function', function () {
+          var type = union(func(Num, Bool), func(Bool, Bool)),
+            wrapped_posid = wrap(posid, p, q, type, type);
+
+          expect(app(wrapped_posid, 1)).to.equal(true);
+        });
+
+        it('should pass with wrapped application', function () {
+          var type = func(union(func(Num, Bool), func(Bool, Bool)), Num, Bool),
+            wrapped_app = wrap(app, p, q, type, type);
+
+          expect(wrapped_app(posid, 1)).to.equal(true);
+        });
+      });
+
+      describe('function of union contracts', function () {
+        it('should pass with wrapped function', function () {
+          var type = func(union(Num, Bool), Bool),
+            wrapped_posid = wrap(posid, p, q, type, type);
+
+          expect(app(wrapped_posid, 1)).to.equal(true);
+        });
+
+        it('should pass with wrapped application', function () {
+          var type = func(func(union(Num, Bool), Bool), Num, Bool),
+            wrapped_app = wrap(app, p, q, type, type);
+
+          expect(wrapped_app(posid, 1)).to.equal(true);
+        });
+      });
+
+      describe('double application of id', function () {
+        function incr(x) {
+          return x + 1;
+        }
+
+        function db(g) {
+          return g(incr)(g(1));
+        }
+
+        function id(x) {
+          return x;
+        }
+
+        it('should pass with wrapped function', function () {
+          var type = union(func(Num, Num), func(func(Num, Num), func(Num, Num)));
+          var wrapped_id = wrap(id, p, q, type, type);
+
+          expect(db(wrapped_id)).to.equal(2);
+        });
+
+        it('should pass with wrapped application', function () {
+          var type = func(union(func(Num, Num), func(func(Num, Num), func(Num, Num))), Num);
+          var wrapped_db = wrap(db, p, q, type, type);
+
+          expect(wrapped_db(id)).to.equal(2);
+        });
+      });
+    });
+  });
+
   it('should allow to define ambiguous unions', function () {
     function goodA() { return 'a'; }
     function goodB() { return 1; }
