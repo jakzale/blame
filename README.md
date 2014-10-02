@@ -1,7 +1,23 @@
 Blame Calculus
 ==============
-
 A simple implementation of Blame calculus in JavaScript.
+
+Notice
+------
+Because the model for overloaded functions needs to be updated, generating wrappers for overloaded functions is slightly buggy.
+
+TODO
+----
+1. Add *useful* information to this Readme
+2. Give pointers on compiling node with harmony flags on by default
+3. Clean stuff:
+    - refactor out gulp-karma
+    - remove dependency on git submodules -- find a neater way
+4. Fix stuff:
+    - Fix the model for overloaded functions
+    - refactor shell scripts to JavaScript
+    - cache results of querying npm registry in json
+    - output results to json
 
 Karma
 -----
